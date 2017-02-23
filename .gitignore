@@ -4,6 +4,25 @@ ehthumbs.db
 
 # Folder config file
 Desktop.ini
+api
+config
+dist
+node_modules
+src/assets
+src/app/charts
+src/app/components
+src/app/error
+src/app/extra
+src/app/forms
+src/app/grid
+src/app/inbox
+src/app/layout
+src/app/maps
+src/app/profile
+src/app/scss
+src/app/tables
+src/app/ui-elements
+src/app/widgets
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
