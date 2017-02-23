@@ -1,8 +1,9 @@
+import 'messenger/build/js/messenger.js';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
+import { TooltipModule } from 'ng2-bootstrap';
 import { Login } from './login.component';
 
 export const routes = [
@@ -16,6 +17,7 @@ export const routes = [
   imports: [
     CommonModule,
     FormsModule,
+    TooltipModule.forRoot(),
     RouterModule.forChild(routes),
   ]
 })
