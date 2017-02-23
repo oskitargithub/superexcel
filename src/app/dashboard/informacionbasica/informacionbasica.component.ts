@@ -2,6 +2,8 @@ import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
 import { __platform_browser_private__ } from '@angular/platform-browser';
 
+
+
 import {InformacionBasicaModel} from './informacionbasica.model';
 import {InformacionBasicaService} from "./informacionbasica.service";
 
@@ -18,8 +20,7 @@ declare var Messenger: any;
 export class InformacionBasicaComponent implements OnInit {
     injector: Injector;
     domSharedStylesHost: any;
-    colorOptions: Object = {color: '#f0b518'};
-
+    colorOptions: Object = {color: '#f0b518'};    
     submitted = false;
 
     public informacionbasica: InformacionBasicaModel;
@@ -39,6 +40,7 @@ export class InformacionBasicaComponent implements OnInit {
                     this.domSharedStylesHost.__onStylesAdded__(additions);
             }
         };
+  
     }
 
     onSubmit() {         

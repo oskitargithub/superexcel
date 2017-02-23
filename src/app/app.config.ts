@@ -8,6 +8,7 @@ export class AppConfig {
     name: 'FDI',
     title: 'FORMULARIO DE DIAGNÓSTICO DE IGUALDAD -- Equality Momentum',
     version: '1.0.0',
+    api: 'http://localhost/angular2/app/api/',
     /**
      * Whether to print and alert some log information
      */

@@ -5,16 +5,26 @@ import 'rxjs/add/operator/map';
 
 import {InformacionBasicaModel} from './informacionbasica.model';
 
+
+import { AppConfig } from '../../app.config';
+
+
 @Injectable()
 export class InformacionBasicaService{
-	constructor(private _http: Http){}
+    config: any;
+	constructor(private _http: Http,config: AppConfig){
+         this.config = config.getConfig(); //me traigo la configuración para saber la url de la api
+    }
 
     getInformacionBasica(){
         let mitoken = JSON.parse(localStorage.getItem('fditoken'));        
         let json = JSON.stringify({fditoken: mitoken.token});
         let params = "json="+json;
 		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
-        return this._http.post("http://localhost/angular2/app/api/informacionbasica.php/getinformacionbasica", 
+        
+
+
+        return this._http.post(this.config + "informacionbasica.php/getinformacionbasica", 
 				params, {headers: headers}).map(res => res.json());
     }
     
@@ -24,7 +34,7 @@ export class InformacionBasicaService{
 		let params = "json="+json;
 		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
 
-		return this._http.post("http://localhost/angular2/app/api/informacionbasica.php/updinformacionbasica", 
+		return this._http.post(this.config + "informacionbasica.php/updinformacionbasica", 
 				params, {headers: headers}).map(res => res.json());
     }
 }

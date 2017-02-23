@@ -1,0 +1,36 @@
+import { Injectable } from '@angular/core';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/delay';
+
+@Injectable()
+export class AuthService {
+  isLoggedIn: boolean = false;
+  
+
+  // store the URL so we can redirect after logging in
+  redirectUrl: string;
+
+
+  estaLogado(url: string, roles:Array<string>){
+      let mitoken = JSON.parse(localStorage.getItem('fditoken')); 
+      //consultamos en la BD si está logado
+  }
+
+  login(): Observable<boolean> {
+    return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
+  }
+
+  logout(): void {
+    this.isLoggedIn = false;
+  }
+}
+
+
+/*
+Copyright 2017 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/
