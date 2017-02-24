@@ -25,17 +25,19 @@ export class Login implements OnInit {
   constructor(public authService: AuthService, public router: Router) {  }
   ngOnInit(): void {
       Messenger.options = { theme: 'air' };
-      this.authuser = new AuthModel("","","");
+      this.authuser = new AuthModel("","","","");
+      localStorage.removeItem('fditoken');
       console.log("nginit");
   }
 
-  login(){
+  onSubmit(){
     this.authService.login(this.authuser)
 			.subscribe(
 				response => {						
 						this.status = response.status;
                         this.errorMessage = response.message;
-						if(this.status !== "success"){
+						if(this.status !== "success")
+                        {
 							if(this.status == "tokenerror"){
                                  Messenger().post({
                                     message: 'Ha ocurrido un error de token.' + this.errorMessage,
@@ -52,14 +54,19 @@ export class Login implements OnInit {
                                 });
                             }
 						}
-            else{  
-              this.authService.isLoggedIn = true;            
-                Messenger().post({
-                    message: 'se ha logado correctamente en el sistema',
-                    type: 'success',
-                    showCloseButton: true
-                });
-            }
+                        else{  
+                            this.authService.isLoggedIn = true;  
+                            this.authuser = response.data;
+                            console.log(this.authuser);
+                            localStorage.setItem('fditoken', JSON.stringify({ "token": this.authuser.token, "usuario": this.authuser.usuario, "perfil": this.authuser.perfil }));                             
+                            let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/app/dashboard';
+                            console.log("redirect a " +redirect);
+                            let navigationExtras: NavigationExtras = {
+                                preserveQueryParams: true,
+                                preserveFragment: true
+                            };                            
+                            this.router.navigate([redirect], navigationExtras);
+                        }
 				},
 				error => {
 					this.errorMessage = <any>error;
@@ -73,20 +80,7 @@ export class Login implements OnInit {
 					
 					}
 				});	
-      console.log("devolviendo true");
-      if( this.authService.isLoggedIn){
-          let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/app/dashboard';
-            console.log("redirect a " +redirect);
-            // Set our navigation extras object
-            // that passes on our global query params and fragment
-            let navigationExtras: NavigationExtras = {
-                preserveQueryParams: true,
-                preserveFragment: true
-            };
-
-            // Redirect the user
-            this.router.navigate([redirect], navigationExtras);
-    }
+        
      /* if (this.authService.isLoggedIn) { return true; }*/
 
   }

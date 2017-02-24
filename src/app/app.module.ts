@@ -5,6 +5,9 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
+import { AuthGuard }                from './auth/auth-guard.service';
+import { AuthService }                from './auth/auth.service';
+
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -47,7 +50,8 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    AuthGuard,AuthService
   ]
 })
 export class AppModule {

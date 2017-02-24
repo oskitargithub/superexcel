@@ -6,7 +6,9 @@ import {
   CanActivateChild,
   NavigationExtras,
   CanLoad, Route
-}                           from '@angular/router';
+}     
+                      from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { AuthService }      from './auth.service';
 import {AuthModel} from './auth.model';
 
@@ -22,77 +24,44 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
 
   constructor(private authService: AuthService, private router: Router) {}
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):Observable<boolean> | boolean {
     let url: string = state.url;
     let roles = route.data["roles"] as Array<string>;    
+    console.log(roles);
     //return this.checkLogin(url);
     return this.checkLoginRoles(url, roles);
   }
 
-  canActivateRole(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    let url: string = state.url;
-    let roles = route.data["roles"] as Array<string>;
-    return this.checkLoginRoles(url, roles);    
-  }
   
 
-  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):Observable<boolean> | boolean {
     return this.canActivate(route, state);
   }
 
-  canLoad(route: Route): boolean {
-    let url = `/${route.path}`;
+  canLoad(route: Route):Observable<boolean> | boolean {
+    let url = '/${route.path}';
     let roles = route.data["roles"] as Array<string>;
     //return this.checkLogin(url);
     return this.checkLoginRoles(url, roles);   
   }
 
 
-  checkLoginRoles(url: string, roles:Array<string>){
-       this.authService.estaLogado(roles)
-			.subscribe(
-				response => {
-						this.usuario = response.data;
-						this.status = response.status;
-						if(this.status !== "success"){
-							if(this.status == "tokenerror"){
-                                 Messenger().post({
-                                    message: 'Ha ocurrido un error de token.' + this.errorMessage,
-                                    type: 'error',
-                                    showCloseButton: true
-                                });
-                            }
-                            else{
-                                Messenger().post({
-                                    message: 'Ha ocurrido un error cargando los datos.' + this.errorMessage,
-                                    type: 'error',
-                                    showCloseButton: true
-                                });
-                            }
-						}
-            else{  
-              this.authService.isLoggedIn = true;            
-                Messenger().post({
-                    message: 'está logado correctamente en el sistema',
-                    type: 'success',
-                    showCloseButton: true
-                });
-            }
-				},
-				error => {
-					this.errorMessage = <any>error;
-					if(this.errorMessage !== null){
-                                          
-                        Messenger().post({
-                            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
-                            type: 'error',
-                            showCloseButton: true
-                        });
-					
-					}
-				});	
-      
-      return this.authService.isLoggedIn;
+  checkLoginRoles(url: string, roles:Array<string>):Observable<boolean> | boolean{
+      console.log("haciendo check");
+      //let check = this.authService.estaLogado(roles);
+      return Observable.of(this.authService.estaLogado(roles));
+      /*console.log(check);
+      if(check == true){
+        
+        return true;
+      }
+      else{
+        this.authService.redirectUrl = url;        
+      // Navigate to the login page with extras
+        this.router.navigate(['/login']);
+        return false;
+      }*/
+      //return this.authService.isLoggedIn;
      /* if (this.authService.isLoggedIn) { return true; }*/
 
   }

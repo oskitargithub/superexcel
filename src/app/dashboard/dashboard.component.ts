@@ -20,6 +20,6 @@ export class Dashboard {
     let now = new Date();
     this.month = now.getMonth() + 1;
     this.year = now.getFullYear();
-    localStorage.setItem('fditoken', JSON.stringify({ token: 4567489 }));
+    //localStorage.setItem('fditoken', JSON.stringify({ token: 4567489 }));
   }
 }

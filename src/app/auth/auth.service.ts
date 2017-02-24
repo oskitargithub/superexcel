@@ -24,20 +24,70 @@ export class AuthService {
   redirectUrl: string;
 
 
-  estaLogado(roles:Array<string>){
+  estaLogado(roles:Array<string>):Observable<boolean> | boolean{
+    
+    if (localStorage.getItem("fditoken") === null) {
+      //return Observable.of(false).do(val => this.isLoggedIn = false);
+      return Observable.of(false);
+      //return false;
+    }
       let mitoken = JSON.parse(localStorage.getItem('fditoken')); 
-      let json = JSON.stringify({fditoken: mitoken.token, permisos: roles});
+      //paso el roles[0] porque nada más voy a considerar que se pone un rol por ruta
+      let json = JSON.stringify({fditoken: mitoken.token, permisos: roles[0], usuario: mitoken.usuario, perfil: mitoken.perfil});
       let params = "json="+json;
       //consultamos en la BD si está logado
+      console.log("Consultamos la bd con el rol:" + roles[0]);
       let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
-      return this._http.post(this.config.api + "login.php/isLogged", 
-				params, {headers: headers}).map(res => res.json());  
+      let obs;
+      try {
+        obs = this._http.post(this.config.api + "login.php/isLogged2", params, {headers: headers})
+            .map(res => res.json())
+            .map(resultJson => (resultJson && resultJson.success));
+
+        } catch (err) {
+          console.log("error en post islogged2");
+            obs = Observable.of(false);
+        }
+
+        return obs
+        .map(success => {
+            console.log("devolviendo");
+             return success;
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+      /*return this._http.post(this.config.api + "login.php/isLogged", 
+				params, {headers: headers}).map(res => res.json()).map((res) => {
+        console.log("estalogado");
+        console.log(res);
+        if (res.status == "success") {          
+          this.isLoggedIn = true;
+        }  
+        else{
+          console.log("No está logado bien");
+        }      
+        return false; //this.isLoggedIn;
+      });  */
   }
 
   login(usuario : AuthModel) {
     localStorage.removeItem('fditoken');
     let json = JSON.stringify(usuario);
     let params = "json="+json;
+    this.redirectUrl = this.config.urluser;
     let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
       return this._http.post(this.config.api + "login.php/login", 
 				params, {headers: headers}).map(res => res.json());  

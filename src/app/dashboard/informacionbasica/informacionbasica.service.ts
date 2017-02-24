@@ -24,7 +24,7 @@ export class InformacionBasicaService{
         
 
 
-        return this._http.post(this.config + "informacionbasica.php/getinformacionbasica", 
+        return this._http.post(this.config.api + "informacionbasica.php/getinformacionbasica", 
 				params, {headers: headers}).map(res => res.json());
     }
     
@@ -34,7 +34,7 @@ export class InformacionBasicaService{
 		let params = "json="+json;
 		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
 
-		return this._http.post(this.config + "informacionbasica.php/updinformacionbasica", 
+		return this._http.post(this.config.api + "informacionbasica.php/updinformacionbasica", 
 				params, {headers: headers}).map(res => res.json());
     }
 }
