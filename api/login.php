@@ -36,7 +36,7 @@
 		$perfil = $data["roles"];
 		$token = $data["fditoken"];
 		$usuario = $data["usuario"];
-
+        
 		$query = "SELECT *, '4567489' as token FROM usuarios where usuario='{$usuario}'";
 		$usuario = $db->query($query);
 		if ($usuario->num_rows == 1) {
@@ -64,14 +64,49 @@
 	});
 
 
+$app->post("/dimePerfil", function($request, $response, $args) use($db, $app) {
+		header("Access-Control-Allow-Origin: *");
+        $json = $request->getParam("json");//$request->post("json");
+		$data = json_decode($json, true);		
+		$token = $data["fditoken"];
+		
+        if(!isset($data["usuario"])){
+            $result = array(
+				"perfil" => "");
+                echo json_encode($result);
+                die();
+        }
+        $usuario = $data["usuario"];
+		$query = "SELECT *, '4567489' as token FROM usuarios where usuario='{$usuario}'";
+		$usuario = $db->query($query);
+		if ($usuario->num_rows == 1) {
+            $asoc = $usuario->fetch_assoc();
+            $result = array(
+				"perfil" => $asoc["perfil"]);
+		}
+		else{
+			$result = array(
+				"perfil" => "");
+		}
+		echo json_encode($result);
+	});
+
 	$app->post("/isLogged2", function($request, $response, $args) use($db, $app) {
 		header("Access-Control-Allow-Origin: *");
         $json = $request->getParam("json");//$request->post("json");
 		$data = json_decode($json, true);
-		$perfil = $data["roles"];
+		$perfil = $data["permisos"];
 		$token = $data["fditoken"];
-		$usuario = $data["usuario"];
-
+		
+        if(!isset($data["usuario"])){
+            $result = array(
+				"status" => "error",
+				"message" => "El usuario no está logado" ,
+                "data" => "");
+                echo json_encode($result);
+                die();
+        }
+        $usuario = $data["usuario"];
 		$query = "SELECT *, '4567489' as token FROM usuarios where usuario='{$usuario}'";
 		$usuario = $db->query($query);
 		if ($usuario->num_rows == 1) {

@@ -23,7 +23,8 @@ export class App {
     public appState: AppState) {
 
   }
-
+  
+  
   ngOnInit() {
     console.log('Initial App State', this.appState.state);
   }

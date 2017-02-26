@@ -60,6 +60,9 @@ export class Login implements OnInit {
                             console.log(this.authuser);
                             localStorage.setItem('fditoken', JSON.stringify({ "token": this.authuser.token, "usuario": this.authuser.usuario, "perfil": this.authuser.perfil }));                             
                             let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/app/dashboard';
+                            if(this.authuser.perfil == "ADM"){
+                                redirect = redirect + "admin";
+                            }
                             console.log("redirect a " +redirect);
                             let navigationExtras: NavigationExtras = {
                                 preserveQueryParams: true,
