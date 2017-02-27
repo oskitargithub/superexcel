@@ -12,9 +12,7 @@ import { DashboardAdmin } from './dashboardadmin.component.ts';
 import { WidgetModule } from '../layout/widget/widget.module';
 import { UtilsModule } from '../layout/utils/utils.module';
 import { RickshawChartModule } from '../components/rickshaw/rickshaw.module';
-import { GeoLocationsWidget } from '../dashboard/geo-locations-widget/geo-locations-widget.directive';
-import { MarketStatsWidget } from '../dashboard/market-stats-widget/market-stats-widget.component';
-import { BootstrapCalendar } from '../dashboard/bootstrap-calendar/bootstrap-calendar.component';
+
 
 export const routes = [
   { path: '', component: DashboardAdmin, pathMatch: 'full' }
@@ -31,9 +29,7 @@ export const routes = [
   ],
   declarations: [
     DashboardAdmin,    
-    GeoLocationsWidget,
-    BootstrapCalendar,
-    MarketStatsWidget
+    
   ]
 })
 export class DashboardAdminModule {
