@@ -11,6 +11,7 @@ export class AppConfig {
     api: 'http://localhost/superexcel/api/',
     urluser: '/app/dashboard',
     urladmin: '/app/dashboardadmin',
+    login: '/login',
     /**
      * Whether to print and alert some log information
      */

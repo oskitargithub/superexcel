@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http, Response, Headers} from "@angular/http";
+import { Router}      from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -13,14 +14,15 @@ export class AuthService {
   isLoggedIn: boolean = false;
   perfilauth : string = '';
 
-	constructor(private _http: Http,config: AppConfig){
+	constructor(private _http: Http,config: AppConfig, private router: Router){
          this.config = config.getConfig(); //me traigo la configuración para saber la url de la api
          
     }
   // store the URL so we can redirect after logging in
   redirectUrl: string;
   auth(roles:Array<string>): Observable<boolean> {
-     if (localStorage.getItem("fditoken") === null) {
+     if (localStorage.getItem("fditoken") === null) {   
+       this.router.navigate(['/login']);
       return Observable.of(false);
     }
     let mitoken = JSON.parse(localStorage.getItem('fditoken')); 
