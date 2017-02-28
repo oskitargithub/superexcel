@@ -10,7 +10,7 @@ export class AppConfig {
     version: '1.0.0',
     api: 'http://localhost/superexcel/api/',
     urluser: '/app/dashboard',
-    urladmin: '/app/dashboardadmin',
+    urladmin: '/app/admin/dashboardadmin',
     login: '/login',
     /**
      * Whether to print and alert some log information

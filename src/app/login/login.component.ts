@@ -4,7 +4,7 @@ import { Router,
 
 import { AuthService }      from '../auth/auth.service';
 import {AuthModel}  from '../auth/auth.model';
-
+import { AppConfig } from '../app.config';
 declare var Messenger: any;
 
 @Component({
@@ -18,14 +18,17 @@ declare var Messenger: any;
   }
 })
 export class Login implements OnInit {
-  message: string;
-  public authuser: AuthModel;
-  public errorMessage: string;
-	public status: string;
-  constructor(public authService: AuthService, public router: Router) {  }
-  ngOnInit(): void {
+    message: string;
+    public authuser: AuthModel;
+    public errorMessage: string;
+    public status: string;
+    config: any;
+    
+    constructor(public authService: AuthService, public router: Router,config: AppConfig) { this.config = config.getConfig(); }
+    
+    ngOnInit(): void {
       Messenger.options = { theme: 'air' };
-      this.authuser = new AuthModel("","","","");
+      this.authuser = new AuthModel("","","","","","");
       localStorage.removeItem('fditoken');
       console.log("nginit");
   }
@@ -59,9 +62,13 @@ export class Login implements OnInit {
                             this.authuser = response.data;
                             console.log(this.authuser);
                             localStorage.setItem('fditoken', JSON.stringify({ "token": this.authuser.token, "usuario": this.authuser.usuario, "perfil": this.authuser.perfil }));                             
-                            let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/app/dashboard';
+                            //let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '';
+                            let redirect = '';
                             if(this.authuser.perfil == "ADM"){
-                                redirect = redirect + "admin";
+                                redirect = this.config.urladmin; 
+                            }
+                            else{
+                                redirect = this.config.urladmin; 
                             }
                             console.log("redirect a " +redirect);
                             let navigationExtras: NavigationExtras = {

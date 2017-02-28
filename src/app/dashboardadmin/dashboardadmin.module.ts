@@ -1,7 +1,10 @@
-import { NgModule }      from '@angular/core';
-import { CommonModule }  from '@angular/common';
-
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AlertModule, TooltipModule } from 'ng2-bootstrap';
+import { ButtonsModule, DropdownModule, PaginationModule  } from 'ng2-bootstrap';
+import { DataTableModule } from 'angular2-datatable';
 
 import 'jquery.animate-number/jquery.animateNumber.js';
 import 'jQuery-Mapael/js/jquery.mapael.js';
@@ -13,6 +16,10 @@ import { WidgetModule } from '../layout/widget/widget.module';
 import { UtilsModule } from '../layout/utils/utils.module';
 import { RickshawChartModule } from '../components/rickshaw/rickshaw.module';
 
+import {DashBoardAdminService} from "./dashboardadmin.service";
+
+import { Ng2TableModule } from 'ng2-table';
+import { SearchPipe } from './pipes/search-pipe';
 
 export const routes = [
   { path: '', component: DashboardAdmin, pathMatch: 'full' }
@@ -22,15 +29,24 @@ export const routes = [
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    AlertModule.forRoot(),
+    TooltipModule.forRoot(),
     RouterModule.forChild(routes),
+    ButtonsModule.forRoot(),
+    DropdownModule.forRoot(),
+    PaginationModule.forRoot(),
     WidgetModule,
     UtilsModule,
+    Ng2TableModule,
     RickshawChartModule
   ],
+  schemas:  [ CUSTOM_ELEMENTS_SCHEMA ],
   declarations: [
-    DashboardAdmin,    
-    
-  ]
+    DashboardAdmin,
+    SearchPipe
+  ],
+  providers: [DashBoardAdminService]
 })
 export class DashboardAdminModule {
   static routes = routes;

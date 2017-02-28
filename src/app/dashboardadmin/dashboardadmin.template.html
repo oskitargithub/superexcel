@@ -1,3 +1,43 @@
 <h1 class="page-title">Dashboard Administrador <small><small>FDI</small></small></h1>
 
 
+<section class="widget" widget>
+  <header>
+    <h4>Ng2 <span class="fw-semi-bold">Tables</span></h4>
+    <div class="widget-controls">
+      <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
+      <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+      <a data-widgster="close" title="Close" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+    </div>
+  </header>
+  <div class="widget-body">
+    <p>
+      Simple table extension with sorting, filtering and pagination for Angular2 apps. Built with
+      <a href="http://valor-software.github.io/ng2-table/" target="_blank">ng2-table</a>
+    </p>
+     <p>
+      <input *ngIf="tableconfig.filtering"
+             [ngTableFiltering]="tableconfig.filtering"
+             (tableChanged)="onChangeTable(tableconfig)"
+             class="form-control input-no-border bg-gray-lighter"
+             placeholder="Filter Table" type="text">
+    </p>
+    <ng-table [config]="tableconfig.sorting"
+              (tableChanged)="onChangeTable(tableconfig)"
+              [rows]="rows" [columns]="columns">
+    </ng-table>
+    <pagination *ngIf="tableconfig.paging"
+                class="pagination-sm"
+                [(ngModel)]="page"
+                [totalItems]="length"
+                [itemsPerPage]="itemsPerPage"
+                [maxSize]="maxSize"
+                [boundaryLinks]="true"
+                [rotate]="false"
+                (pageChanged)="onChangeTable(tableconfig, $event)"
+                (numPages)="numPages = $event">
+    </pagination>
+    <pre *ngIf="tableconfig.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>
+  </div>
+
+</section>
