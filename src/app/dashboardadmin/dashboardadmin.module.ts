@@ -39,6 +39,7 @@ export const routes = [
     WidgetModule,
     UtilsModule,
     Ng2TableModule,
+    DataTableModule,
     RickshawChartModule
   ],
   schemas:  [ CUSTOM_ELEMENTS_SCHEMA ],

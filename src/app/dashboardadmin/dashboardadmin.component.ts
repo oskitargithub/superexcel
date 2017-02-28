@@ -4,6 +4,53 @@ import { AppConfig } from '../app.config';
 import {AuthModel} from '../auth/auth.model';
 import {DashBoardAdminService} from "./dashboardadmin.service";
 
+const PEOPLE = [
+  {
+    'id': '1',
+    'name': 'Algerd',
+    'info': {
+      'type': 'JPEG',
+      'dimensions': '200x150'
+    },
+    'description': 'Palo Alto',
+    'date': 'June 27, 2013',
+    'status': {
+      'progress': '29%',
+      'type': 'success'
+    }
+  },
+  {
+    'id': '2',
+    'name': 'Vitaut',
+    'info': {
+      'type': 'PNG',
+      'dimensions': '6433x4522'
+    },
+    'description': 'Vilnia',
+    'date': 'January 1, 1442',
+    'status': {
+      'progress': '19%',
+      'type': 'danger'
+    }
+  },
+  {
+    'id': '3',
+    'name': 'Honar',
+    'info': {
+      'type': 'AVI',
+      'dimensions': '1440x980'
+    },
+    'description': 'Berlin',
+    'date': 'August 6, 2013',
+    'status': {
+      'progress': '49%',
+      'type': 'bar-gray-light'
+    }
+  }
+];
+
+
+
 declare var Messenger: any;
 declare var jQuery: any;
 
@@ -22,11 +69,12 @@ export class DashboardAdmin {
 	public status: string;
 
   rows: Array<any> = [];
-  data: AuthModel[];
+  data: any[] = PEOPLE;
   columns: Array<any> = [
     {title: 'Usuario', name: 'usuario'},
     {title: 'Nombre', name: 'nombre', sort: false},
-    {title: 'Apellidos', name: 'apellidos', sort: 'asc'}    
+    {title: 'Apellidos', name: 'apellidos', sort: 'asc'} ,
+    {title: 'Acciones', name: 'acciones', sort: false}   
   ];
 
   public page:number = 1;
@@ -63,6 +111,10 @@ export class DashboardAdmin {
       response => {
         
         this.ng2TableData = response.data;
+        this.ng2TableData.forEach(element => {
+          element.acciones = "<button class='btn btn-inverse width-100 mb-xs' role='button' (click)='console.log(\"fafa\")'><i class='fa fa-exclamation text-warning'></i>Editar</button>";
+        });
+        
         this.length = this.ng2TableData.length;
         let searchInput = jQuery('#table-search-input, #search-countries');
         searchInput
@@ -91,6 +143,17 @@ export class DashboardAdmin {
 
     
   }
+
+  prueba(): void{
+console.log("seleccionado usuario");
+  }
+
+
+  onSelect(persona: AuthModel){
+    console.log("seleccionado usuario");
+    console.log(persona);
+  }
+
   changePage(page: any, data: Array<any> = this.ng2TableData): Array<any> {
     let start = (page.page - 1) * page.itemsPerPage;
     let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;

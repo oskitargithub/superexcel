@@ -68,7 +68,7 @@ export class Login implements OnInit {
                                 redirect = this.config.urladmin; 
                             }
                             else{
-                                redirect = this.config.urladmin; 
+                                redirect = this.config.urluser; 
                             }
                             console.log("redirect a " +redirect);
                             let navigationExtras: NavigationExtras = {

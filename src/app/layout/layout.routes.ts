@@ -3,7 +3,7 @@ import { Layout } from './layout.component';
 import { AuthGuard } from '../auth/auth-guard.service';
 // noinspection TypeScriptValidateTypes
 const routes: Routes = [
-  { path: '', component: Layout, canActivateChild: [AuthGuard], data:{ roles:['USER'] }, children: [
+  { path: '', component: Layout, children: [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivateChild: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'dashboard', loadChildren: '../dashboard/dashboard.module#DashboardModule', canActivate: [AuthGuard], data:{ roles:['USER'] }},
     { path: 'introduccion', loadChildren: '../dashboard/introduccion/introduccion.module#IntroduccionModule', canLoad: [AuthGuard], data:{ roles:['USER'] } },
@@ -20,7 +20,7 @@ const routes: Routes = [
     { path: 'grid', loadChildren: '../grid/grid.module#GridModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'widgets', loadChildren: '../widgets/widgets.module#WidgetsModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
 ]},
-  { path: 'admin', component: Layout, canActivateChild: [AuthGuard], data:{ roles:['ADM'] }, children: [
+  { path: 'admin', component: Layout, children: [
     { path: 'dashboardadmin', loadChildren: '../dashboardadmin/dashboardadmin.module#DashboardAdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'graficas1', loadChildren: '../dashboardadmin/graficas1admin/graficas1admin.module#Graficas1AdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
   ]}
