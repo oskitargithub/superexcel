@@ -21,8 +21,8 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   redirectUrl: string;
   auth(roles:Array<string>): Observable<boolean> {
-     if (localStorage.getItem("fditoken") === null) {   
-       this.router.navigate(['/login']);
+     if (localStorage.getItem("fditoken") === null) {
+       this.router.navigate([this.config.login]);
       return Observable.of(false);
     }
     let mitoken = JSON.parse(localStorage.getItem('fditoken')); 
@@ -49,6 +49,17 @@ export class AuthService {
     this.redirectUrl = this.config.urluser;
     let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
       return this._http.post(this.config.api + "login.php/login", 
+				params, {headers: headers}).map(res => res.json());  
+   
+  }
+
+  ResetPassword(usuario : AuthModel) {
+    localStorage.removeItem('fditoken');
+    let json = JSON.stringify(usuario);
+    let params = "json="+json;
+    this.redirectUrl = this.config.urluser;
+    let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+      return this._http.post(this.config.api + "login.php/resetpassword", 
 				params, {headers: headers}).map(res => res.json());  
    
   }

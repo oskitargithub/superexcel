@@ -24,6 +24,7 @@ export class Layout {
   el: ElementRef;
   router: Router;
   chatOpened: boolean = false;
+ 
 
   constructor(config: AppConfig,
               el: ElementRef,
@@ -162,7 +163,7 @@ export class Layout {
   }
 
   ngOnInit(): void {
-
+    
     if (localStorage.getItem('nav-static') === 'true') {
       this.config.state['nav-static'] = true;
     }

@@ -4,20 +4,47 @@
       <div class="col-xl-4 col-md-6 col-xs-10 offset-xl-4 offset-md-3 offset-xs-1">
         <h5 class="widget-login-logo animated fadeInUp">
           <i class="fa fa-circle text-gray"></i>
-          sing
+          FDI
           <i class="fa fa-circle text-warning"></i>
         </h5>
-        <section class="widget widget-login animated fadeInUp">
+
+           <section class="widget widget-login animated bounceInDown" *ngIf="!visiblelogin">
+
+            <header>
+              <h3>Recordar password FDI</h3>
+            </header>
+            <div class="widget-body">
+              <form class="login-form mt-lg" (ngSubmit)="RecuerdaPassword()" #loginForm="ngForm" role="form">
+                <div class="form-group">
+                  <!-- <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Username"> -->
+                  <input type="text" id="usuario" class="form-control" [(ngModel)]="authuser.usuario" name="usuario" #usuario="ngModel" required
+                    tooltip="Usuario" placeholder="Usuario/Email" />
+                </div>
+                <div class="form-group">
+                  <input type="text" id="password" class="form-control" [(ngModel)]="authuser.password" name="password" #usuario="ngModel"
+                    tooltip="Password" type="password" required placeholder="Nuevo Password" />
+
+                </div>
+                <div class="clearfix">
+                  <div class="btn-toolbar float-xs-right m-t-1">
+                    <a class="btn btn-gray btn-sm" href="javascript:;" (click)="VerLogin()"> <i class="fa fa-step-backward text-warning"></i>
+                      Volver</a>
+                    <button type="submit" [disabled]="!loginForm.form.valid" class="btn btn-primary btn-sm">
+                      <i class="fa fa-check text-danger"></i>
+                      Envia nuevo password</button>
+
+                  </div>
+                </div>                
+              </form>
+            </div>
+          </section>
+
+
+        <section class="widget widget-login animated fadeInUp" *ngIf="visiblelogin">
           <header>
-            <h3>Login en Superexcel</h3>
+            <h3>Login FDI</h3>
           </header>
-          <div class="widget-body">
-            <p class="widget-login-info">
-              Use Facebook, Twitter or your email to sign in.
-            </p>
-            <p class="widget-login-info">
-              Don't have an account? Sign up now!
-            </p>
+          <div class="widget-body">           
             <form class="login-form mt-lg" (ngSubmit)="onSubmit()" #loginForm="ngForm" role="form">
               <div class="form-group">
                 <!-- <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Username"> -->
@@ -26,7 +53,7 @@
                                 #usuario="ngModel"
                                 required
                                 tooltip="Usuario"
-                                placeholder="Usuario" />
+                                placeholder="Usuario/Email" />
               </div>
               <div class="form-group">
                 <input type="text" id="password" class="form-control" 
@@ -40,22 +67,24 @@
               </div>
               <div class="clearfix">
                 <div class="btn-toolbar float-xs-right m-t-1">                 
-                  <button type="submit"  [disabled]="!loginForm.form.valid" class="btn btn-primary btn-sm">login</button>
+                  <button type="submit"  [disabled]="!loginForm.form.valid" class="btn btn-primary btn-sm">
+                    <i class="fa fa-check text-success"></i>
+                    Acceder</button>
                   
                 </div>
               </div>
               <div class="row m-t-1">
-                <div class="col-md-6 push-md-6">
+                 <div class="col-md-4">
                   <div class="clearfix">
-                    <div class="abc-checkbox widget-login-info float-xs-right">
+                    <!-- <div class="abc-checkbox widget-login-info float-xs-right">
                       <input type="checkbox" id="checkbox1" value="1">
                       <label for="checkbox1">Keep me signed in </label>
-                    </div>
+                    </div> -->
                   </div>
-                </div>
+                </div> 
 
-                <div class="col-md-6 pull-md-6">
-                  <a class="mr-n-lg" href="#">Trouble with account?</a>
+                <div class="col-md-8">
+                  <a class="mr-n-lg" href="javascript:;" (click)="VerRecuerdaPassword()">¿No recuerdas la contraseña?</a>
                 </div>
               </div>
             </form>
@@ -65,6 +94,6 @@
     </div>
   </main>
   <footer class="page-footer">
-    2017 &copy; Sing. Admin Dashboard Template.
+    2017 &copy; Formulario Diagnóstico Igualdad. Equality Momentum
   </footer>
 </div>

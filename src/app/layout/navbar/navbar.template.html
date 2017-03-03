@@ -17,17 +17,17 @@
           <i class="fa fa-bars fa-lg hidden-sm-down"></i>
         </a>
       </li>
-      <li class="nav-item ml-sm hidden-sm-down"><a class="nav-link" href="#"><i class="fa fa-refresh fa-lg"></i></a></li>
-      <li class="nav-item ml-n-xs hidden-sm-down"><a class="nav-link" href="#"><i class="fa fa-times fa-lg"></i></a></li>
+      <!--<li class="nav-item ml-sm hidden-sm-down"><a class="nav-link" href="#"><i class="fa fa-refresh fa-lg"></i></a></li>
+      <li class="nav-item ml-n-xs hidden-sm-down"><a class="nav-link" href="#"><i class="fa fa-times fa-lg"></i></a></li> -->
     </ul>
-    <ul class="nav navbar-nav navbar-right hidden-md-up">
+    <!-- toggles chat --><!-- <ul class="nav navbar-nav navbar-right hidden-md-up">
       <li class="nav-item">
-        <!-- toggles chat -->
+        
         <a class="nav-link" href="#" (click)="toggleChat()">
           <span class="rounded rounded-lg bg-gray text-white"><i class="fa fa-globe fa-lg"></i></span>
         </a>
       </li>
-    </ul>
+    </ul>-->
     <a class="navbar-brand hidden-md-up" [routerLink]=" ['/app/dashboard'] ">
       <i class="fa fa-circle text-gray mr-n-sm"></i>
       <i class="fa fa-circle text-warning"></i>
@@ -42,7 +42,7 @@
   <!-- this part is hidden for xs screens -->
   <div class="collapse navbar-collapse">
     <!-- search-results form! link it to your search-results server -->
-    <form class="navbar-form float-xs-left" role="search" #f="ngForm" (ngSubmit)="onDashboardSearch(f)">
+    <!-- <form class="navbar-form float-xs-left" role="search" #f="ngForm" (ngSubmit)="onDashboardSearch(f)">
       <div class="form-group">
         <div class="input-group input-group-no-border">
           <span class="input-group-addon">
@@ -51,9 +51,9 @@
           <input class="form-control" name="search" ngModel type="text" placeholder="Search Dashboard">
         </div>
       </div>
-    </form>
+    </form>-->
     <ul class="nav navbar-nav float-xs-right" (click)="$event.preventDefault()">
-      <li class="nav-item dropdown">
+      <!--<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle dropdown-toggle-notifications"
            id="notifications-dropdown-toggle" data-toggle="dropdown">
                 <span class="thumb-sm avatar float-xs-left">
@@ -66,27 +66,28 @@
                 </span>
           <b class="caret"></b>
         </a>
-        <!-- ready to use notifications dropdown. inspired by smartadmin template.
+        
+        <div notifications class="dropdown-menu dropdown-menu-right animated animated-fast fadeInUp"
+          ></div>
+      </li>--><!-- ready to use notifications dropdown. inspired by smartadmin template.
                      consists of three components:
                      notifications, messages, progress. leave or add what's important for you.
                      uses Sing's ajax-load plugin for async content loading. See #load-notifications-btn -->
-        <div notifications class="dropdown-menu dropdown-menu-right animated animated-fast fadeInUp"
-          ></div>
-      </li>
       <li class="nav-item dropdown">
         <a href class="nav-link dropdown-toggle" data-toggle="dropdown">
           <i class="fa fa-cog fa-lg"></i>
         </a>
         <ul class="dropdown-menu dropdown-menu-right">
-          <li><a class="dropdown-item" href="#"><i class="glyphicon glyphicon-user"></i> &nbsp; My Account</a></li>
+          <li><a class="dropdown-item" *ngIf="!esAdmin"  [routerLink]=" ['/profile'] "><i class="glyphicon glyphicon-user"></i> &nbsp; Mi cuenta</a></li>
+          <li><a class="dropdown-item" *ngIf="esAdmin"  [routerLink]=" ['/profile'] "><i class="glyphicon glyphicon-user"></i> &nbsp; Mi cuenta Admin</a></li>
           <li class="dropdown-divider"></li>
-          <li><a class="dropdown-item" [routerLink]=" ['/app', 'extra', 'calendar'] ">Calendar</a></li>
+          <!-- <li><a class="dropdown-item" [routerLink]=" ['/app', 'extra', 'calendar'] ">Calendar</a></li>
           <li><a class="dropdown-item" [routerLink]=" ['/app', 'inbox'] ">Inbox &nbsp;&nbsp;<span class="badge label-pill bg-danger text-white animated bounceIn">9</span></a></li>
-          <li class="dropdown-divider"></li>
-          <li><a class="dropdown-item" [routerLink]=" ['/login'] "><i class="fa fa-sign-out"></i> &nbsp; Log Out</a></li>
+          <li class="dropdown-divider"></li>-->
+          <li><a class="dropdown-item" [routerLink]=" ['/login'] "  ><i class="fa fa-sign-out"></i> &nbsp; Log Out</a></li>
         </ul>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="#" (click)="toggleChat()" id="toggle-chat">
           <i class="fa fa-globe fa-lg"></i>
         </a>
@@ -101,7 +102,7 @@
             <p class="text">Hi there! <br> This is a completely new version of Sing App <br> built with <strong class="text-danger">Angular 2.0 Final Release</strong> </p>
           </div>
         </div>
-      </li>
+      </li> -->
     </ul>
   </div>
 </div>

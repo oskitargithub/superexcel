@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ng2-bootstrap';
+
 import { Login } from './login.component';
 
 export const routes = [
@@ -11,15 +12,16 @@ export const routes = [
 ];
 
 @NgModule({
-  declarations: [
+  declarations: [            
     Login
   ],
   imports: [
     CommonModule,
-    FormsModule,
+    FormsModule,     
     TooltipModule.forRoot(),
     RouterModule.forChild(routes),
   ]
+
 })
 export class LoginModule {
   static routes = routes;

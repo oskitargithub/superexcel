@@ -13,6 +13,7 @@ export class Navbar implements OnInit {
   $el: any;
   config: any;
   router: Router;
+   esAdmin: boolean = false;
 
   constructor(el: ElementRef, config: AppConfig, router: Router) {
     this.$el = jQuery(el.nativeElement);
@@ -33,7 +34,18 @@ export class Navbar implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
+    console.log("oninit");
+    if (localStorage.getItem('fditoken')!= null ) {
+      let mitoken = JSON.parse(localStorage.getItem('fditoken')); 
+      console.log(mitoken.perfil);
+      if(mitoken.perfil == "ADM"){
+        this.esAdmin = true;
+      }
+      else{
+        this.esAdmin = false;
+      }
+    }
+    /*setTimeout(() => {
       let $chatNotification = jQuery('#chat-notification');
       $chatNotification.removeClass('hide').addClass('animated fadeIn')
         .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', () => {
@@ -48,7 +60,7 @@ export class Navbar implements OnInit {
         });
       $chatNotification.siblings('#toggle-chat')
         .append('<i class="chat-notification-sing animated bounceIn"></i>');
-    }, 4000);
+    }, 4000);*/
 
     this.$el.find('.input-group-addon + .form-control').on('blur focus', function(e): void {
       jQuery(this).parents('.input-group')

@@ -23,6 +23,7 @@ export class Login implements OnInit {
     public errorMessage: string;
     public status: string;
     config: any;
+    public visiblelogin = true;
     
     constructor(public authService: AuthService, public router: Router,config: AppConfig) { this.config = config.getConfig(); }
     
@@ -31,6 +32,66 @@ export class Login implements OnInit {
       this.authuser = new AuthModel("","","","","","");
       localStorage.removeItem('fditoken');
       console.log("nginit");
+  }
+
+
+  VerRecuerdaPassword(){
+      this.authuser.password="";
+      this.visiblelogin = false;
+  }
+  VerLogin(){
+      this.visiblelogin = true;
+  }
+
+  RecuerdaPassword(){
+      //enviamos el email --hay que comprobar si existe y devolver true si la operación fue correcta
+      this.authService.ResetPassword(this.authuser)
+			.subscribe(
+				response => {						
+						this.status = response.status;
+                        this.errorMessage = response.message;
+						if(this.status !== "success")
+                        {
+							if(this.status == "tokenerror"){
+                                 Messenger().post({
+                                    message: 'Ha ocurrido un error de token.' + this.errorMessage,
+                                    type: 'error',
+                                    showCloseButton: true
+                                });
+                            }
+                            else{
+                                console.log("error ");
+                                Messenger().post({
+                                    message: 'Ha ocurrido un error cargando los datos.' + this.errorMessage,
+                                    type: 'error',
+                                    showCloseButton: true
+                                });
+                            }
+						}
+                        else{  
+                            Messenger().post({
+                                    message: 'Se ha enviado un email a su correo electrónico para reactivar la cuenta.',
+                                    type: 'success',
+                                    showCloseButton: true
+                                });
+                                this.authuser.usuario="";
+                                this.authuser.password="";
+                            
+                        }
+				},
+				error => {
+					this.errorMessage = <any>error;
+					if(this.errorMessage !== null){
+                                          
+                        Messenger().post({
+                            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                            type: 'error',
+                            showCloseButton: true
+                        });
+					
+					}
+				});	
+        
   }
 
   onSubmit(){

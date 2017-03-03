@@ -29,6 +29,40 @@
 		echo json_encode($result);
 	});
 	
+
+	$app->post("/resetpassword", function($request, $response, $args) use($db, $app) {
+		header("Access-Control-Allow-Origin: *");
+        $json = $request->getParam("json");//$request->post("json");
+		$data = json_decode($json, true);
+        $query = "SELECT *, '4567489' as token FROM usuarios where usuario='{$data["usuario"]}'";
+        $usuario = $db->query($query);
+		if ($usuario->num_rows == 1) {			
+            $asoc = $usuario->fetch_assoc();
+			$result = array(
+                "status" => "success",
+				"data" => $asoc
+                );
+		} else {
+			$result = array(
+				"status" => "error",
+				"message" => "Ha ocurrido un error durante el reseteo" ,
+                "data" => "");
+		}
+		echo json_encode($result);
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
 	$app->post("/isLogged", function($request, $response, $args) use($db, $app) {
 		header("Access-Control-Allow-Origin: *");
         $json = $request->getParam("json");//$request->post("json");
