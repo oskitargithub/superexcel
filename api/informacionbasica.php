@@ -35,11 +35,20 @@ $app->get("/informacionbasica", function() use($db, $app) {
         $token = $data["fditoken"];
         if($token == "4567489"){
             $query = $db->query("SELECT * FROM informacionbasica WHERE id_usuario = 45");
-				//. "{$data["id_usuario"]}");		
+            $query2 = $db->query("SELECT centro,actividad FROM infobasica_centros_actividades WHERE id_informacionbasica = 2");
+			
+            	//. "{$data["id_usuario"]}");		
             $datos = $query->fetch_assoc();
             if ($query->num_rows == 1) {
+                $centros_actividades=array();
+                while ($fila = $query2->fetch_assoc()) {
+                    array_push($centros_actividades,array("centro"=>$fila["centro"], "actividad"=>$fila["actividad"])) ;
+                }
+                
+                //$datos["centros_actividades"] = $centros_actividades;
+                
                 $result = array("status" => "success",
-                    "data" => $datos);
+                    "data" => $datos, "centros_actividades"=> $centros_actividades);
             } else {
                 $result = array(
                     "status" => "error",

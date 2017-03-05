@@ -5,9 +5,10 @@
 <h1 class="page-title">Información <span class="fw-semi-bold">Básica</span></h1>
 <div class="row">
   <div class="col-lg-12">
+    
     <section class="widget" widget>
       <div class="widget-body">
-        <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
+        <form class="form-horizontal" (ngSubmit)="onSubmit()" [formGroup]="ifForm" role="form">
             <fieldset>
                 <legend>Datos de la  <strong>Empresa</strong></legend>                  
 
@@ -20,21 +21,23 @@
                         </div>
                     </div>
 
-                     <div class="form-group row">
+                    <div class="form-group row">
                         <label class="col-md-3  col-form-label text-md-right" for="tooltip-enabled">CIF</label>
                         <div class="col-md-8 ">
-                            <input type="text" class="form-control" 
-                            formControlName="cif" 
+                            <input type="text" id="cif" class="form-control" 
+                            [(ngModel)]="informacionbasica.cif" name="cif"
+                                #cif="ngModel"
                                 tooltip="CIF"
                                 placeholder="CIF" />
                         </div>
                     </div>
-                    
+
                     <div class="form-group row">
                         <label class="col-md-3  col-form-label text-md-right" for="tooltip-enabled">Ámbito de Administración</label>
                         <div class="col-md-8 ">
-                            <input type="text" class="form-control" 
-                            formControlName="ambito"                                
+                            <input type="text" id="ambito" class="form-control" 
+                            [(ngModel)]="informacionbasica.ambito" name="ambito"
+                                #ambito="ngModel"
                                 tooltip="Ámbito"
                                 placeholder="Ámbito" />
                         </div>
@@ -43,8 +46,9 @@
                     <div class="form-group row">
                         <label class="col-md-3  col-form-label text-md-right" for="tooltip-enabled">Convenio Colectivo</label>
                         <div class="col-md-8 ">
-                            <input type="text" class="form-control" 
-                            formControlName="convenio"
+                            <input type="text" id="convenio" class="form-control" 
+                            [(ngModel)]="informacionbasica.convenio" name="convenio"
+                                #convenio="ngModel"
                                 tooltip="Convenio Colectivo"
                                 placeholder="Convenio Colectivo" />
                         </div>
@@ -53,8 +57,9 @@
                     <div class="form-group row">
                         <label class="col-md-3  col-form-label text-md-right" for="tooltip-enabled">Domicilio social</label>
                         <div class="col-md-8 ">
-                            <input type="text"class="form-control" 
-                            formControlName="domicilio"
+                            <input type="text" id="domicilio" class="form-control" 
+                            [(ngModel)]="informacionbasica.domicilio" name="domicilio"
+                                #domicilio="ngModel"
                                 tooltip="Domicilio social"
                                 placeholder="Domicilio social" />
                         </div>
@@ -63,23 +68,23 @@
                     <div class="form-group row">
                         <label class="col-md-3  col-form-label text-md-right" for="tooltip-enabled">Web</label>
                         <div class="col-md-8 ">
-                            <input type="text"class="form-control" 
-                            formControlName="web"
+                            <input type="text" id="web" class="form-control" 
+                            [(ngModel)]="informacionbasica.web" name="web"
+                                #web="ngModel"
                                 tooltip="Web"
                                 placeholder="Web" />
                         </div>
                     </div>
-                    
             </fieldset>
 
-
-             <fieldset>
+            <fieldset>
                 <legend>Información de  <strong>Contacto</strong></legend> 
                   <div class="form-group row">
                     <label class="col-md-3  col-form-label text-md-right" for="tooltip-enabled">Personas de contacto</label>
                     <div class="col-md-8 ">
-                        <input type="text" class="form-control" 
-                        formControlName="personas"
+                        <input type="text" id="personas" class="form-control" 
+                        [(ngModel)]="informacionbasica.web" name="personas"
+                            #personas="ngModel"
                             tooltip="Personas de contacto"
                             placeholder="Personas de contacto" />
                     </div>
@@ -88,16 +93,18 @@
                   <div class="form-group row">
                     <label class="col-md-3  col-form-label text-md-right" for="tooltip-enabled">Teléfono Fijo y Móvil</label>
                     <div class="col-md-4 ">
-                        <input type="text" class="form-control" 
-                        formControlName="personas"
+                        <input type="text" id="personas" class="form-control" 
+                        [(ngModel)]="informacionbasica.web" name="personas"
+                            #personas="ngModel"
                             tooltip="Personas de contacto"
                             placeholder="Personas de contacto" />
                     </div>
                   
                     <label class="col-md-1  col-form-label text-md-right" for="tooltip-enabled">E-Mail</label>
                     <div class="col-md-3 ">
-                        <input type="text" class="form-control" 
-                        formControlName="email"
+                        <input type="text" id="email" class="form-control" 
+                        [(ngModel)]="informacionbasica.email" name="email"
+                            #email="ngModel"
                             tooltip="E-Mail"
                             placeholder="E-Mail" />
                     </div>
@@ -106,8 +113,9 @@
                    <div class="form-group row">
                     <label class="col-md-3  col-form-label text-md-right" for="tooltip-enabled">Personas de contacto</label>
                     <div class="col-md-8 ">
-                        <input type="text" class="form-control" 
-                        formControlName="personas"
+                        <input type="text" id="personas" class="form-control" 
+                        [(ngModel)]="informacionbasica.web" name="personas"
+                            #personas="ngModel"
                             tooltip="Personas de contacto"
                             placeholder="Personas de contacto" />
                     </div>
@@ -119,94 +127,83 @@
                    <div class="form-group row">
                     <label class="col-md-3  col-form-label text-md-right" for="tooltip-enabled">Día</label>
                     <div class="col-md-1 ">
-                        <input type="text" class="form-control" 
-                       formControlName="dia"
+                        <input type="text" id="dia" class="form-control" 
+                        [(ngModel)]="informacionbasica.dia" name="dia"
+                            #dia="ngModel"
                             tooltip="Día"
                             placeholder="Día" />
                     </div>
                  
                     <label class="col-md-1  col-form-label text-md-right" for="tooltip-enabled">Mes</label>
                     <div class="col-md-1 ">
-                        <input type="text" class="form-control" 
-                        formControlName="mes"
+                        <input type="text" id="mes" class="form-control" 
+                        [(ngModel)]="informacionbasica.mes" name="mes"
+                            #mes="ngModel"
                             tooltip="Mes"
                             placeholder="Mes" />
                     </div>
                  
                     <label class="col-md-1  col-form-label text-md-right" for="tooltip-enabled">Año</label>
                     <div class="col-md-1 ">
-                        <input type="text" class="form-control" 
-                        formControlName="anyo"
+                        <input type="text" id="anyo" class="form-control" 
+                        [(ngModel)]="informacionbasica.anyo" name="anyo"
+                            #anyo="ngModel"
                             tooltip="Año"
                             placeholder="Año" />
                     </div>
                   </div>
 
             </fieldset>
-            
 
             <fieldset>
-                <div class="abc-checkbox abc-checkbox-primary">
+               <div class="abc-checkbox abc-checkbox-primary">
                   
                   <input id="desarrollaact" type="checkbox"  
-                    formControlName="desarrollaact" />
+               [(ngModel)]="informacionbasica.desarrollaact" name="desarrollaact"
+               #desarrollaact="ngModel">
                   <label for="desarrollaact">
                     ¿Desarrolla la organización actividades diferenciadas? ¿Existe algún organismo autónomo?
                   </label>
                 </div>
-                <p>En caso afirmativo, detállense las actividades y los centros en que se desarrollan. Por ejemplo, si existe una
+                <p>En caso afirmativo, detállense las actividades y los centros en que se desarrollan. Por ejemplo, si existe una<br/>
                 Empresa Pública de Contratación, Conservatorio, etc., y rellene una herramienta por cada organización.</p>
                 
                 <legend>Centro / Actividad</legend>
-                <div class="row">
-                        <div class="col-md-5 ">
-                          <div class="form-group">
-                            <label >Centro:</label>
-                          </div>
-                        </div>
-                        <div class="col-md-5 ">
-                             <div class="form-group">
-                              <label >Actividad:</label>
-                             </div>
-                        </div>
+                <div class="form-group row" *ngFor="let CentroActividad of informacionbasica.centros_actividades; let i = index">
+                  <!-- 
+                  <div class="col-md-4">
+                    <input id="centro" type="text"  class="form-control"  
+                      [(ngModel)]="CentroActividad" name="centro"
+                      #CentroActividad="ngModel"
+                      tooltip="Centro"
+                        placeholder="Centro" />
+                  </div>
+                   <div class="col-md-4">
+                    <input id="actividad" type="text"  class="form-control"  
+                      [(ngModel)]="CentroActividad" name="actividad"
+                      #CentroActividad="ngModel"
+                      tooltip="Actividad"
+                        placeholder="Actividad" />
+                  </div>
+                  -->
+               {{i}} -- {{CentroActividad.centro}} /// {{CentroActividad.actividad}} 
                 </div>
-                 <div formArrayName="centros_actividades">
-                   <div *ngFor="let centroact of centros_actividades.controls; let i=index" [formGroupName]="i" >
-                      
-                      <div class="row">
-                        <div class="col-md-5 ">
-                          <div class="form-group">
-                           <div class="input-group">
-                              <input class="form-control" formControlName="centro"/>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-5 ">
-                             <div class="form-group">
-                       <div class="input-group">
-                          <input class="form-control" formControlName="actividad"/>
-                        </div>
-                      </div>
-                        </div>
-                      <span *ngIf="centros_actividades.controls.length > 1" >
-                        <button type="button"(click)="removeCentroActividad(i)" class="btn btn-danger btn-xs mb-xs">borra</button>
-                        
-                    </span>
-                      
-                    </div>
-                   </div>
-                     <button (click)="addCentroActividad()" type="button" class="btn btn-success btn-xs mb-xs">Añade Centro/Actividad</button>
-                 </div>
-                 <p>infobasica value: {{ ifForm.value | json}}</p>
-                
-              
+               <!--  <div>
+                  <div *ngFor="let CentroActividad of informacionbasica.centros_actividades; let i = index">
+                    
+                      <input type="text" formControlName="centro" placeholder="centro">
+                      <input type="text" formControlName="actividad" placeholder="actividad">
+                    
+                    
+                  </div>
+                </div>-->
             </fieldset>
 
 
             <div class="form-actions">
             <div class="row">
               <div class="offset-md-4 col-md-7 ">
-                  <button type="button" (click)="onSubmit2()" class="btn btn-success">probando</button>
+                  <button type="submit" class="btn btn-success" [disabled]="!informacionbasicaForm.form.valid">Submit</button>
                 <button type="submit" class="btn btn-primary">Guardar cambios</button>
                 <button type="button" class="btn btn-inverse">Cancelar</button>
               </div>

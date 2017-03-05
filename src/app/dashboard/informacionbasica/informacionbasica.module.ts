@@ -2,7 +2,7 @@ import 'messenger/build/js/messenger.js';
 
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule,ReactiveFormsModule  }    from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
 
@@ -20,6 +20,7 @@ export const routes = [
 @NgModule({
   imports: [ CommonModule, 
             FormsModule,
+            ReactiveFormsModule ,
             TooltipModule.forRoot(),
             RouterModule.forChild(routes) ],
   declarations: [ InformacionBasicaComponent  ] ,
