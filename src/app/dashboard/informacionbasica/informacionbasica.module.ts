@@ -11,6 +11,8 @@ import { TooltipModule } from 'ng2-bootstrap';
 import { InformacionBasicaComponent } from './informacionbasica.component';
 
 
+import { QuestionModule } from '../../question/question.module';
+
 /*import { InformacionBasicaService } from './informacionbasica.service';*/
 
 export const routes = [
@@ -20,7 +22,8 @@ export const routes = [
 @NgModule({
   imports: [ CommonModule, 
             FormsModule,
-            ReactiveFormsModule ,
+            ReactiveFormsModule, 
+            QuestionModule ,
             TooltipModule.forRoot(),
             RouterModule.forChild(routes) ],
   declarations: [ InformacionBasicaComponent  ] ,

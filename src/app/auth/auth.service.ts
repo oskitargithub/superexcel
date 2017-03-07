@@ -13,7 +13,7 @@ export class AuthService {
   config: any;
   isLoggedIn: boolean = false;
   perfilauth : string = '';
-
+  tipocuest: number = 0;
 	constructor(private _http: Http,config: AppConfig, private router: Router){
          this.config = config.getConfig(); //me traigo la configuración para saber la url de la api
          

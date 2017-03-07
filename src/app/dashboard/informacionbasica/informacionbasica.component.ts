@@ -110,16 +110,16 @@ export class InformacionBasicaComponent implements OnInit {
          dia: '',
          mes: '',
          anyo: '',
-         desarrollaact: '',         
-         denominacion: '',
-         mujeres: 0,
-         hombres: 0,
-         bpoliticas1: false,
-         bpoliticas2: false,
-         bpoliticas3: false,
-         bpoliticas4: false,
-         bpoliticas5: false,
-         centros_actividades: this.fb.array([])
+         preg_1: '',         
+         preg_3: '',
+         preg_5: 0,
+         preg_6: 0,
+         preg_19: false,
+         preg_20: false,
+         preg_21: false,
+         preg_22: false,
+         preg_23: false,
+         preg_2_tabla_2: this.fb.array([])
         });
     }
 
@@ -134,22 +134,22 @@ export class InformacionBasicaComponent implements OnInit {
     //jQuery('.selectpicker').selectpicker();
   }
 
- setCentroActividad(centros_actividades: CentroActividad[]){
-     const addressFGs = centros_actividades.map(centroact => this.fb.group(centroact));
+ setCentroActividad(preg_2_tabla_2: CentroActividad[]){
+     const addressFGs = preg_2_tabla_2.map(centroact => this.fb.group(centroact));
      const addressFormArray = this.fb.array(addressFGs);
-     this.ifForm.setControl('centros_actividades', addressFormArray);
+     this.ifForm.setControl('preg_2_tabla_2', addressFormArray);
  }
 
- get centros_actividades(): FormArray {
-    return this.ifForm.get('centros_actividades') as FormArray;
+ get preg_2_tabla_2(): FormArray {
+    return this.ifForm.get('preg_2_tabla_2') as FormArray;
   };
 
   addCentroActividad() {
-    this.centros_actividades.push(this.fb.group(new CentroActividad()));
+    this.preg_2_tabla_2.push(this.fb.group(new CentroActividad()));
   }
 
   removeCentroActividad(i:number){
-      this.centros_actividades.removeAt(i);
+      this.preg_2_tabla_2.removeAt(i);
   }
 
 
@@ -158,7 +158,7 @@ export class InformacionBasicaComponent implements OnInit {
 			.subscribe(
 				response => {
                         this.ifForm = this.fb.group(response.data); 
-						this.setCentroActividad(response.centros_actividades);
+						this.setCentroActividad(response.preg_2_tabla_2);                        
 						this.status = response.status;
 						if(this.status !== "success"){
 							if(this.status == "tokenerror"){
@@ -201,7 +201,7 @@ export class InformacionBasicaComponent implements OnInit {
     preparaParaGuardar(): InformacionBasicaModel {
         const formModel = this.ifForm.value;
     // deep copy of form model lairs
-        const secretLairsDeepCopy: CentroActividad[] = formModel.centros_actividades.map(
+        const secretLairsDeepCopy: CentroActividad[] = formModel.preg_2_tabla_2.map(
         (centroact: CentroActividad) => Object.assign({}, centroact)
         );
     // return new `Hero` object containing a combination of original hero value(s)
@@ -222,16 +222,16 @@ export class InformacionBasicaComponent implements OnInit {
         dia: formModel.dia,
         mes: formModel.mes,
         anyo: formModel.anyo,
-        desarrollaact: formModel.desarrollaact,    
-        denominacion: formModel.denominacion,
-        mujeres: formModel.mujeres,
-        hombres: formModel.hombres,
-        bpoliticas1: formModel.bpoliticas1,
-        bpoliticas2: formModel.bpoliticas2,
-        bpoliticas3: formModel.bpoliticas3,
-        bpoliticas4: formModel.bpoliticas4,
-        bpoliticas5: formModel.bpoliticas5, 
-        centros_actividades: secretLairsDeepCopy
+        preg_1: formModel.desarrollaact,    
+        preg_3: formModel.denominacion,
+        preg_5: formModel.mujeres,
+        preg_6: formModel.hombres,
+        preg_19: formModel.bpoliticas1,
+        preg_20: formModel.bpoliticas2,
+        preg_21: formModel.bpoliticas3,
+        preg_22: formModel.bpoliticas4,
+        preg_23: formModel.bpoliticas5, 
+        preg_2_tabla_2: secretLairsDeepCopy
     };
     return saveInformacionBasica;
   }

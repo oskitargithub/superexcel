@@ -1,5 +1,6 @@
+
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AlertModule, TooltipModule } from 'ng2-bootstrap';
@@ -10,11 +11,15 @@ import 'jquery.animate-number/jquery.animateNumber.js';
 import 'jQuery-Mapael/js/jquery.mapael.js';
 import 'jQuery-Mapael/js/maps/usa_states';
 import 'bootstrap_calendar/bootstrap_calendar/js/bootstrap_calendar.js';
+import 'messenger/build/js/messenger.js';
 
 import { DashboardAdmin } from './dashboardadmin.component.ts';
 import { WidgetModule } from '../layout/widget/widget.module';
 import { UtilsModule } from '../layout/utils/utils.module';
 import { RickshawChartModule } from '../components/rickshaw/rickshaw.module';
+
+import 'parsleyjs';
+import 'parsleyjs/dist/i18n/es.js';
 
 import {DashBoardAdminService} from "./dashboardadmin.service";
 
@@ -30,6 +35,7 @@ export const routes = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     AlertModule.forRoot(),
     TooltipModule.forRoot(),
     RouterModule.forChild(routes),

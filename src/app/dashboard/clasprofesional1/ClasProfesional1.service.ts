@@ -2,16 +2,20 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { AppConfig } from '../../app.config';
 
 @Injectable()
 export class ClasProfesional1Service {
   public datos;
-  constructor(private http: Http) {}
+  config: any;
+	constructor(private _http: Http,config: AppConfig){
+         this.config = config.getConfig(); //me traigo la configuración para saber la url de la api
+    }
 
   getDatos(){
-      return this.http
-               .get('http://localhost:8080/superexcel/api/probando.php')
-               .map(response => response.json().data as string);
+      return this._http
+               .get(this.config.api + 'probando.php')
+               .map(res => res.json());
   }
 
  

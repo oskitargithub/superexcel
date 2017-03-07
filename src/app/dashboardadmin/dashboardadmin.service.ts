@@ -3,7 +3,8 @@ import {Http, Response, Headers} from "@angular/http";
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { AppConfig } from '../app.config';
-import {AuthModel} from '../auth/auth.model';
+
+import {DashBoardAdminModel} from './dashboardadmin.model';
 
 @Injectable()
 export class DashBoardAdminService{
@@ -18,7 +19,14 @@ export class DashBoardAdminService{
         let json = JSON.stringify({fditoken: mitoken.token});
         let params = "json="+json;
 		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
-        return this._http.post(this.config.api + "cuestionarios.php/getlistado", 
-				params, {headers: headers}).map(res => res.json());
+        return this._http.get(this.config.apilaravel + "gestion/cuestionarios").map(res => res.json());
+    }
+
+    getDatosUsuario(usuario:DashBoardAdminModel){
+        let mitoken = JSON.parse(localStorage.getItem('fditoken'));        
+        let json = JSON.stringify({fditoken: mitoken.token});
+        let params = "json="+json;
+		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+        return this._http.get(this.config.apilaravel + "gestion/usuario/"+usuario.id).map(res => res.json());
     }
 }

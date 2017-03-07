@@ -1,0 +1,56 @@
+<!-- <div [formGroup]="form">
+  <label [attr.for]="question.key">{{question.label}}</label>
+
+  <div [ngSwitch]="question.controlType">
+
+    <input *ngSwitchCase="'textbox'" [formControlName]="question.key"
+            [id]="question.key" [type]="question.type">
+
+    <select [id]="question.key" *ngSwitchCase="'dropdown'" [formControlName]="question.key">
+      <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
+    </select>
+
+  </div> 
+
+  <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
+</div>-->
+
+<span  [ngSwitch]="question.controlType">
+
+    <!-- campo texto normal -->
+    <div [formGroup]="form" class="form-group row"  *ngSwitchCase="'textbox'">   
+        <label class="col-md-3  col-form-label text-md-right" for="tooltip-enabled" [attr.for]="question.key">{{question.label}}</label>
+        <div class="col-md-8 ">
+            <input type="text" [formControlName]="question.key"
+                [id]="question.key" [type]="question.type" class="form-control" 
+                tooltip="{{question.label}}"
+                placeholder="{{question.label}}" />
+        </div>   
+    </div>
+    <!-- fin campo texto normal -->
+
+
+    <!-- campo crece doble -->
+    <div [formGroup]="form" class="form-group row"  *ngSwitchCase="'dobletext'">  
+        <legend>{{question.TituloGeneral}}</legend>
+
+        <div class="col-md-5 ">
+            <div class="form-group">
+            <label >{{question.value}}:</label>
+            </div>
+        </div>
+        <div class="col-md-5 ">
+                <div class="form-group">
+                <label >{{question.label}}:</label>
+                </div>
+        </div>
+        <!-- <div formArrayName="form.centros_actividades">
+            <div *ngFor="let centroact of centros_actividades2.controls; let i=index" [formGroupName]="i" >
+                <input *ngFor="let opt of question.options" class="form-control" [formControlName]="opt.key" tooltip="Centro" placeholder="Centro" />
+            </div>
+        </div> -->
+         {{ form.value | json}}
+         
+    </div>
+    <!-- fin campo crece doble -->
+</span>

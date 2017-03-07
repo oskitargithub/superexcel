@@ -1,9 +1,12 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { FormsModule }    from '@angular/forms';
+import { ReactiveFormsModule }          from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
 import { ClasProfesional1Component } from './clasprofesional1.component';
+
+
+import { QuestionModule } from '../../question/question.module';
 
 import { ClasProfesional1Service } from './ClasProfesional1.service';
 
@@ -12,7 +15,7 @@ export const routes = [
 ];
 
 @NgModule({
-  imports: [ CommonModule, FormsModule, RouterModule.forChild(routes) ],
+  imports: [ CommonModule, ReactiveFormsModule, QuestionModule, RouterModule.forChild(routes) ],
   declarations: [ ClasProfesional1Component ],
   providers: [ ClasProfesional1Service ]
 })

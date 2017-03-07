@@ -1,0 +1,17 @@
+<div>  
+  <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
+
+    <div *ngFor="let question of questions" class="form-row">
+      <df-question [question]="question" [form]="ifform"></df-question>
+    </div>
+
+    <div class="form-row">
+      <button type="submit" [disabled]="!ifform.valid">Save</button>
+    </div>
+  </form>
+
+  <div *ngIf="payLoad" class="form-row">
+    <strong>Saved the following values</strong><br>{{payLoad}}
+  </div>
+</div>
+

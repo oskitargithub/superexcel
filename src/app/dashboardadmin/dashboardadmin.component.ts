@@ -1,55 +1,11 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
+import { __platform_browser_private__ } from '@angular/platform-browser';
 import { AppConfig } from '../app.config';
-
-import {AuthModel} from '../auth/auth.model';
+import { Router} from '@angular/router';
+import {DashBoardAdminModel, UserAdminModel} from './dashboardadmin.model';
 import {DashBoardAdminService} from "./dashboardadmin.service";
-
-const PEOPLE = [
-  {
-    'id': '1',
-    'name': 'Algerd',
-    'info': {
-      'type': 'JPEG',
-      'dimensions': '200x150'
-    },
-    'description': 'Palo Alto',
-    'date': 'June 27, 2013',
-    'status': {
-      'progress': '29%',
-      'type': 'success'
-    }
-  },
-  {
-    'id': '2',
-    'name': 'Vitaut',
-    'info': {
-      'type': 'PNG',
-      'dimensions': '6433x4522'
-    },
-    'description': 'Vilnia',
-    'date': 'January 1, 1442',
-    'status': {
-      'progress': '19%',
-      'type': 'danger'
-    }
-  },
-  {
-    'id': '3',
-    'name': 'Honar',
-    'info': {
-      'type': 'AVI',
-      'dimensions': '1440x980'
-    },
-    'description': 'Berlin',
-    'date': 'August 6, 2013',
-    'status': {
-      'progress': '49%',
-      'type': 'bar-gray-light'
-    }
-  }
-];
-
-
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {AuthService} from '../auth/auth.service';
 
 declare var Messenger: any;
 declare var jQuery: any;
@@ -60,74 +16,87 @@ declare var jQuery: any;
   styleUrls: ['./dashboardadmin.style.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class DashboardAdmin {
+export class DashboardAdmin implements OnInit {
   config: any;
   month: any;
   year: any;
   
+  ifForm: FormGroup;
+
   public errorMessage: string;
 	public status: string;
-
-  rows: Array<any> = [];
-  data: any[] = PEOPLE;
-  columns: Array<any> = [
-    {title: 'Usuario', name: 'usuario'},
-    {title: 'Nombre', name: 'nombre', sort: false},
-    {title: 'Apellidos', name: 'apellidos', sort: 'asc'} ,
-    {title: 'Acciones', name: 'acciones', sort: false}   
-  ];
-
+  public data:  any[];
+  
   public page:number = 1;
   public itemsPerPage:number = 10;
   public maxSize:number = 5;
   public numPages:number = 1;
   public length:number = 0;
+  public muestrausu: boolean = false;
+  public ususel : UserAdminModel;
+ 
+ domSharedStylesHost: any;
 
-  tableconfig: any = {
-    paging: true,
-    sorting: {columns: this.columns},
-    filtering: {filterString: '', columnName: 'nombre'}
-  };
-  ng2TableData: Array<any>;
+  constructor(
+    config: AppConfig, 
+    public router: Router, 
+    private dashboardadminservice:DashBoardAdminService, 
+    private AuthService: AuthService, 
+    private fb: FormBuilder,
+    injector: Injector) 
+  {
+      this.config = config.getConfig();   
+      this.creaFormUsuario(); 
 
-
-  constructor(config: AppConfig, private dashboardadminservice:DashBoardAdminService ) {
-    this.config = config.getConfig();
-     let firstCellValue = 'No usuarios',
-                    firstCellName = 'Titel',
-                    emptyMessage:any = {};
-                emptyMessage[firstCellName] = firstCellValue;
-                this.rows = [emptyMessage];
+      this.domSharedStylesHost = injector.get(__platform_browser_private__.DomSharedStylesHost);
+    this.domSharedStylesHost.__onStylesAdded__ = this.domSharedStylesHost.onStylesAdded;
+    this.domSharedStylesHost.onStylesAdded = (additions) => {
+      const style = additions[0];
+      if (!style || !style.trim().startsWith('.select2-container')) {
+        this.domSharedStylesHost.__onStylesAdded__(additions);
+      }
+    };
   }
  
+  creaFormUsuario(){
+    this.ifForm = this.fb.group({
+     id: 0,
+     user:0,
+     cuest:0,
+     fecha_ini:'',
+     fecha_fin: '',
+     nomUsu:'',
+     Personal:'',
+     apellidos:''
+    });
+    console.log(this.ifForm);
+    }
+
+ 
   ngOnInit(): void {
+    
     let now = new Date();
     this.month = now.getMonth() + 1;
-    this.year = now.getFullYear();
+    this.year = now.getFullYear();    
+    Messenger.options = { theme: 'air' };
+     
     
 
-    //llamamos a la carga de datos
+
     this.dashboardadminservice.getCuestionarios().subscribe(
-      response => {
+      response => { 
+        /*copio user a name */
+        let prueba = response.data;
+        for(var item in prueba){         
+          prueba[item].name = prueba[item].nomUsu + ' ' + prueba[item].apellidos;
+        }
         
-        this.ng2TableData = response.data;
-        this.ng2TableData.forEach(element => {
-          element.acciones = "<button class='btn btn-inverse width-100 mb-xs' role='button' (click)='console.log(\"fafa\")'><i class='fa fa-exclamation text-warning'></i>Editar</button>";
-        });
+        this.data = prueba;
+
         
-        this.length = this.ng2TableData.length;
-        let searchInput = jQuery('#table-search-input, #search-countries');
-        searchInput
-          .focus((e) => {
-          jQuery(e.target).closest('.input-group').addClass('focus');
-        })
-          .focusout((e) => {
-          jQuery(e.target).closest('.input-group').removeClass('focus');
-        });
-        this.onChangeTable(this.tableconfig);
       },
       error => {
-          this.errorMessage = <any>error;
+        this.errorMessage = <any>error;
 					if(this.errorMessage !== null){
                                           
                         Messenger().post({
@@ -138,85 +107,70 @@ export class DashboardAdmin {
 					
 					}
       }
-    );
+     );
+  }
 
+  onSubmit(model:DashBoardAdminModel){
+     Messenger().post({
+                            message: 'Los datos han sido guardados correctamente',
+                            type: 'success',
+                            showCloseButton: true
+                        });
+    console.log(model);
+    this.muestrausu=false;
+  }
 
+  getDatosUsuario(usuario: DashBoardAdminModel){    
+    this.dashboardadminservice.getDatosUsuario(usuario).subscribe(
+      response => { 
+        this.ususel = response.data;
+        this.ususel.password="";
+        this.ususel.repitepassword ="";
+        this.ifForm = this.fb.group(this.ususel);
+        this.muestrausu=true;  
+        console.log("parsely");
+        setTimeout(() => jQuery('.parsleyjs').parsley(), 1000);
+        
+        ;  
+       },
+      error => {
+        this.errorMessage = <any>error;
+					if(this.errorMessage !== null){
+                                          
+                        Messenger().post({
+                            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                            type: 'error',
+                            showCloseButton: true
+                        });
+					
+					}
+      }
+     );
     
+    
+         
+  }
+
+  cancelModifUsu(){
+    this.muestrausu=false;
   }
 
   prueba(): void{
-console.log("seleccionado usuario");
-  }
-
-
-  onSelect(persona: AuthModel){
     console.log("seleccionado usuario");
+  }
+
+
+  onSelect(persona: DashBoardAdminModel){
+    console.log("seleccionado usuario");
+    this.AuthService.tipocuest = persona.cuest;
     console.log(persona);
-  }
-
-  changePage(page: any, data: Array<any> = this.ng2TableData): Array<any> {
-    let start = (page.page - 1) * page.itemsPerPage;
-    let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
-    return data.slice(start, end);
-  }
-
-  changeSort(data: any, tableconfig: any): any {
-    if (!tableconfig.sorting) {
-      return data;
+    let redirect = '';
+    if(persona.cuest == 1){
+      redirect = this.config.urlpestanapublic;
     }
-
-    let columns = this.tableconfig.sorting.columns || [];
-    let columnName: string = void 0;
-    let sort: string = void 0;
-
-    for (let i = 0; i < columns.length; i++) {
-      if (columns[i].sort !== '' && columns[i].sort !== false) {
-        columnName = columns[i].name;
-        sort = columns[i].sort;
-      }
+    else if(persona.cuest==2){
+      redirect = this.config.urlpestanaprivate;
     }
-
-    if (!columnName) {
-      return data;
-    }
-
-    // simple sorting
-    return data.sort((previous: any, current: any) => {
-      if (previous[columnName] > current[columnName]) {
-        return sort === 'desc' ? -1 : 1;
-      } else if (previous[columnName] < current[columnName]) {
-        return sort === 'asc' ? -1 : 1;
-      }
-      return 0;
-    });
-  }
-
-  changeFilter(data: any, tableconfig: any): any {
-    
-    if (!tableconfig.filtering) {
-      return data;
-    }
-console.log("a filtrar data");
-console.log(data);
-    let filteredData: Array<any> = data.filter((item: any) =>
-      item[tableconfig.filtering.columnName].match(this.tableconfig.filtering.filterString));
-
-    return filteredData;
-  }
-
-  onChangeTable(tableconfig: any, page: any = {page: this.page, itemsPerPage: this.itemsPerPage}): any {
-    if (tableconfig.filtering) {
-      Object.assign(this.tableconfig.filtering, tableconfig.filtering);
-    }
-    if (tableconfig.sorting) {
-      Object.assign(this.tableconfig.sorting, tableconfig.sorting);
-    }
-
-    let filteredData = this.changeFilter(this.ng2TableData, this.tableconfig);
-    let sortedData = this.changeSort(filteredData, this.tableconfig);
-    this.rows = page && tableconfig.paging ? this.changePage(page, sortedData) : sortedData;
-    console.log("rows cambiadas");
-    console.log(this.rows);
-    this.length = sortedData.length;
+    this.router.navigate([redirect]);
   }
 }
