@@ -19,6 +19,8 @@ const routes: Routes = [
     { path: 'maps', loadChildren: '../maps/maps.module#MapsModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'grid', loadChildren: '../grid/grid.module#GridModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'widgets', loadChildren: '../widgets/widgets.module#WidgetsModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
+
+    { path: 'informacionbasicapr', loadChildren: '../dashboard/informacionbasicapr/informacionbasicapr.module#InformacionBasicaPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
 ]},
   { path: 'admin', component: Layout, children: [
     { path: 'dashboardadmin', loadChildren: '../dashboardadmin/dashboardadmin.module#DashboardAdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},

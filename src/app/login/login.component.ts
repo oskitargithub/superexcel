@@ -29,7 +29,7 @@ export class Login implements OnInit {
     
     ngOnInit(): void {
       Messenger.options = { theme: 'air' };
-      this.authuser = new AuthModel("","","","","","");
+      this.authuser = new AuthModel("","","","","","",0);
       localStorage.removeItem('fditoken');
       console.log("nginit");
   }
@@ -121,6 +121,7 @@ export class Login implements OnInit {
                         else{  
                             this.authService.isLoggedIn = true;  
                             this.authuser = response.data;
+                            this.authService.tipocuest = this.authuser.tipocuest;
                             console.log(this.authuser);
                             localStorage.setItem('fditoken', JSON.stringify({ "token": this.authuser.token, "usuario": this.authuser.usuario, "perfil": this.authuser.perfil }));                             
                             //let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '';

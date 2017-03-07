@@ -17,7 +17,7 @@
         <li><a [routerLink]=" ['dashboard'] ">Dashboard</a></li>
         <li><a [routerLink]=" ['widgets'] ">Widgets</a></li>
         <li><a [routerLink]=" ['introduccion'] ">Introducción</a></li>
-        <li><a [routerLink]=" ['informacionbasica'] ">Información Básica</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['informacionbasica'] ">Información Básica</a></li>
         <li><a [routerLink]=" ['clasificacionprofesional'] ">Clasificación Profesional I</a></li>
         <li><a [routerLink]=" [''] ">Clasificación Profesional II</a></li>
         <li><a [routerLink]=" [''] ">Retribuciones</a></li>
@@ -30,6 +30,9 @@
         <li><a [routerLink]=" [''] ">Acoso Sexual y por razon de Sexo</a></li>
         <li><a [routerLink]=" [''] ">Representación de Personal</a></li>
         <li><a [routerLink]=" [''] ">Comunicación</a></li>
+
+         
+         <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['informacionbasicapr'] ">Información Básica</a></li>
       </ul>
     </li>
 

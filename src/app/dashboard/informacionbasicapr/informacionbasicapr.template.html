@@ -1,0 +1,331 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Home</li>
+  <li class="breadcrumb-item active">Información Básica</li>
+</ol>
+<h1 class="page-title">Información <span class="fw-semi-bold">Básica Empresa Privada</span></h1>
+<div class="row">
+  <div class="col-lg-12">
+    <section class="widget" widget>
+      <div class="widget-body">
+        <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
+            <fieldset>
+                <legend>Datos de la  <strong>Empresa</strong></legend>                  
+
+                    <div class="form-group row">
+                        <label class="col-md-3  col-form-label text-md-right" for="razon_social">RAZÓN SOCIAL EMPRESA</label>
+                        <div class="col-md-8 ">
+                            <input type="text" formControlName="razon_social" class="form-control" 
+                                tooltip="RAZÓN SOCIAL EMPRESA PÚBLICA / ADMON PÚBLICA"
+                                placeholder="RAZÓN SOCIAL EMPRESA PÚBLICA / ADMON PÚBLICA" />
+                        </div>
+                    </div>
+
+                     <div class="form-group row">
+                        <label class="col-md-3  col-form-label text-md-right" for="cif">CIF</label>
+                        <div class="col-md-8 ">
+                            <input type="text" class="form-control" 
+                            formControlName="cif" 
+                                tooltip="CIF"
+                                placeholder="CIF" />
+                        </div>
+                    </div>
+                    
+                   <div class="form-group row">
+                        <label class="col-md-3  col-form-label text-md-right" for="convenio">Sector Productivo</label>
+                        <div class="col-md-8 ">
+                            <input type="text" class="form-control" 
+                            formControlName="sector_productivo"
+                                tooltip="Sector Productivo"
+                                placeholder="Sector Productivo" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-md-3  col-form-label text-md-right" for="convenio">Convenio Colectivo</label>
+                        <div class="col-md-8 ">
+                            <input type="text" class="form-control" 
+                            formControlName="convenio"
+                                tooltip="Convenio Colectivo"
+                                placeholder="Convenio Colectivo" />
+                        </div>
+                    </div>
+
+                     
+
+                     <div class="form-group row">
+                        <label class="col-md-3  col-form-label text-md-right" for="ambito">Ámbito</label>
+                        <div class="col-md-8 ">
+                            <input type="text" class="form-control" 
+                            formControlName="ambito"                                
+                                tooltip="Ámbito"
+                                placeholder="Ámbito" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3  col-form-label text-md-right" for="domicilio">Domicilio social</label>
+                        <div class="col-md-8 ">
+                            <input type="text"class="form-control" 
+                            formControlName="domicilio"
+                                tooltip="Domicilio social"
+                                placeholder="Domicilio social" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3  col-form-label text-md-right" for="web">Web</label>
+                        <div class="col-md-8 ">
+                            <input type="text"class="form-control" 
+                            formControlName="web"
+                                tooltip="Web"
+                                placeholder="Web" />
+                        </div>
+                    </div>
+
+                     <div class="form-group row">
+                        <label class="col-md-3  col-form-label text-md-right" for="web">Nº de Centros de Trabajo</label>
+                        <div class="col-md-8 ">
+                            <input type="text"class="form-control" 
+                            formControlName="centros_trabajo"
+                                tooltip="Nº de Centros de Trabajo"
+                                placeholder="Nº de Centros de Trabajo" />
+                        </div>
+                    </div>
+
+                     <div class="form-group row">
+                        <label class="col-md-3  col-form-label text-md-right" for="web">Nº de Comunidades</label>
+                        <div class="col-md-8 ">
+                            <input type="text"class="form-control" 
+                            formControlName="comunidades"
+                                tooltip="Nº de Comunidades"
+                                placeholder="Nº de Comunidades" />
+                        </div>
+                    </div>
+                    
+            </fieldset>
+
+
+             <fieldset>
+                <legend>Información de  <strong>Contacto</strong></legend> 
+                  <div class="form-group row">
+                    <label class="col-md-3  col-form-label text-md-right" for="personas">Personas de contacto</label>
+                    <div class="col-md-8 ">
+                        <input type="text" class="form-control" 
+                        formControlName="personas"
+                            tooltip="Personas de contacto"
+                            placeholder="Personas de contacto" />
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-md-3  col-form-label text-md-right" for="personas">Teléfono Fijo y Móvil</label>
+                    <div class="col-md-4 ">
+                        <input type="text" class="form-control" 
+                        formControlName="personas"
+                            tooltip="Personas de contacto"
+                            placeholder="Personas de contacto" />
+                    </div>
+                  
+                    <label class="col-md-1  col-form-label text-md-right" for="email">E-Mail</label>
+                    <div class="col-md-3 ">
+                        <input type="text" class="form-control" 
+                        formControlName="email"
+                            tooltip="E-Mail"
+                            placeholder="E-Mail" />
+                    </div>
+                  </div>
+
+                   <div class="form-group row">
+                    <label class="col-md-3  col-form-label text-md-right" for="personas">Personas de contacto</label>
+                    <div class="col-md-8 ">
+                        <input type="text" class="form-control" 
+                        formControlName="personas"
+                            tooltip="Personas de contacto"
+                            placeholder="Personas de contacto" />
+                    </div>
+                  </div>
+
+                  <div class="row">&nbsp;</div>
+
+                  <h4>Fecha de cumplimentación</h4>
+                   <div class="form-group row">
+                    <label class="col-md-3  col-form-label text-md-right" for="dia">Día</label>
+                    <div class="col-md-1 ">
+                        <input type="text" class="form-control" 
+                       formControlName="dia"
+                            tooltip="Día"
+                            placeholder="Día" />
+                    </div>
+                 
+                    <label class="col-md-1  col-form-label text-md-right" for="mes">Mes</label>
+                    <div class="col-md-1 ">
+                        <input type="text" class="form-control" 
+                        formControlName="mes"
+                            tooltip="Mes"
+                            placeholder="Mes" />
+                    </div>
+                 
+                    <label class="col-md-1  col-form-label text-md-right" for="anyo">Año</label>
+                    <div class="col-md-1 ">
+                        <input type="text" class="form-control" 
+                        formControlName="anyo"
+                            tooltip="Año"
+                            placeholder="Año" />
+                    </div>
+                  </div>
+
+            </fieldset>
+            
+
+            <fieldset>
+                <div class="abc-checkbox abc-checkbox-primary">
+                  
+                  <input id="preg_1" type="checkbox"  
+                    formControlName="preg_1" />
+                  <label for="preg_1">
+                   ¿Desarrolla la organización actividades productivas diferenciadas? 
+                  </label>
+                </div>
+                <p>En caso afirmativo, detállense las actividades y los centros en que se desarrollan</p>
+                
+                <legend>Centro / Actividad</legend>
+                <div class="row">
+                        <div class="col-md-5 ">
+                          <div class="form-group">
+                            <label >Centro:</label>
+                          </div>
+                        </div>
+                        <div class="col-md-5 ">
+                             <div class="form-group">
+                              <label >Actividad:</label>
+                             </div>
+                        </div>
+                </div>
+                 <div formArrayName="preg_2_tabla_2">
+                   <div *ngFor="let centroact of preg_2_tabla_2.controls; let i=index" [formGroupName]="i" >
+                      
+                      <div class="row">
+                        <div class="col-md-5 ">
+                          <div class="form-group">
+                           <div class="input-group">
+                              <input class="form-control" formControlName="centro" tooltip="Centro"
+                            placeholder="Centro" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-5 ">
+                             <div class="form-group">
+                       <div class="input-group">
+                          <input class="form-control" formControlName="actividad" tooltip="Actividad"
+                            placeholder="Actividad" />
+                        </div>
+                      </div>
+                        </div>
+                      <span *ngIf="preg_2_tabla_2.controls.length > 1" >
+                        <button type="button"(click)="removeCentroActividad(i)" class="btn btn-danger btn-xs mb-xs">borra</button>
+                        
+                    </span>
+                      
+                    </div>
+                   </div>
+                     <button (click)="addCentroActividad()" type="button" class="btn btn-success btn-xs mb-xs">Añade Centro/Actividad</button>
+                 </div>
+                
+                
+              
+            </fieldset>
+            <fieldset>
+                <legend><strong>ÓRGANO RECTOR</strong></legend>
+                <div class="form-group row">
+                    <label class="col-md-3  col-form-label text-md-right" for="preg_3">Denominación</label>
+                    <div class="col-md-8 ">
+                        <input type="text" formControlName="preg_3" class="form-control" tooltip="Denominación" placeholder="Denominación" />
+                    </div>
+                </div>
+                 <div class="form-group row">
+                     <h6>Composición de órgano</h6>
+                    <label class="col-md-1  col-form-label text-md-right" for="preg_5">Mujeres</label>
+                    <div class="col-md-2 ">
+                        <input type="text" class="form-control" 
+                        formControlName="preg_5"
+                            tooltip="Mujeres"
+                            placeholder="Mujeres" />
+                    </div>
+                  
+                    <label class="col-md-1  col-form-label text-md-right" for="preg_6">Hombres</label>
+                    <div class="col-md-2 ">
+                        <input type="text" class="form-control" 
+                        formControlName="preg_6"
+                            tooltip="Hombres"
+                            placeholder="Hombres" />
+                    </div>
+
+                    <label class="col-md-1  col-form-label text-md-right" for="total">Total</label>
+                    <div class="col-md-2 ">
+                        <input type="text" class="form-control"                         
+                            tooltip="Total"
+                            placeholder="Total" />
+                    </div>
+                  </div>
+                
+            </fieldset>
+
+            <fieldset>
+                <legend><strong>ORGANOS DE DIRECCIÓN TÉCNICA</strong></legend>
+                 <div formArrayName="preg_3_tabla_3">
+                   <div *ngFor="let centroact of preg_3_tabla_3.controls; let i=index" [formGroupName]="i" >
+                      
+                      <div class="row">
+                        <div class="col-md-3 ">
+                          <div class="form-group">
+                           <div class="input-group">
+                              <input class="form-control" formControlName="denominacion" tooltip="Denominación"
+                            placeholder="Denominación" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3 ">
+                             <div class="form-group">
+                       <div class="input-group">
+                          <input class="form-control" formControlName="mujeres" tooltip="Mujeres"
+                            placeholder="Mujeres" />
+                        </div>
+                      </div>
+                        </div>
+                         <div class="col-md-3 ">
+                             <div class="form-group">
+                       <div class="input-group">
+                          <input class="form-control" formControlName="hombres" tooltip="Hombres"
+                            placeholder="Hombres" />
+                        </div>
+                      </div>
+                        </div>
+
+                        <div class="col-md-3 ">
+                             <div class="form-group">
+                       <div class="input-group">
+                         <span>Total {{hombres.value + mujeres.value}}</span>
+                        </div>
+                      </div>
+                        </div>
+                      <span *ngIf="preg_3_tabla_3.controls.length > 1" >
+                        <button type="button"(click)="removeOrganoDirTec(i)" class="btn btn-danger btn-xs mb-xs">borra</button>
+                        
+                    </span>
+                      
+                    </div>
+                   </div>
+                     <button (click)="addOrganoDirTec()" type="button" class="btn btn-success btn-xs mb-xs">Añade Nuevo Órgano</button>
+                 </div>
+            </fieldset>
+
+            <div class="form-actions">
+            <div class="row">
+              <div class="offset-md-4 col-md-7 ">
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                <button type="button" class="btn btn-inverse">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+       

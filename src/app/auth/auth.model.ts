@@ -5,6 +5,7 @@ export class AuthModel{
         public perfil:string,
         public nombre: string,
         public apellidos: string,
-        public token: string
+        public token: string,
+        public tipocuest: number
     ) { }
 }
