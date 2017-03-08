@@ -12,7 +12,7 @@ declare var Messenger: any;
 
 @Component({
     selector: 'informacionbasica',
-    templateUrl: './informacionbasica.template.html',
+    templateUrl: './informacionbasicapr.template.html',
     styleUrls: [ '../../forms/elements/elements.style.scss','../../ui-elements/notifications/notifications.style.scss' ],
     providers: [InformacionBasicaPrService],
     encapsulation: ViewEncapsulation.None,
