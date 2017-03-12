@@ -17,22 +17,22 @@
         <li><a [routerLink]=" ['dashboard'] ">Dashboard</a></li>
         <li><a [routerLink]=" ['widgets'] ">Widgets</a></li>
         <li><a [routerLink]=" ['introduccion'] ">Introducción</a></li>
-        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['informacionbasica'] ">Información Básica</a></li>
-        <li><a [routerLink]=" ['clasificacionprofesional'] ">Clasificación Profesional I</a></li>
-        <li><a [routerLink]=" [''] ">Clasificación Profesional II</a></li>
-        <li><a [routerLink]=" [''] ">Retribuciones</a></li>
-        <li><a [routerLink]=" [''] ">Acceso al Empleo</a></li>
-        <li><a [routerLink]=" [''] ">Incorporaciones y Bajas</a></li>
-        <li><a [routerLink]=" [''] ">Conciliacion Familiar</a></li>
-        <li><a [routerLink]=" [''] ">Formación</a></li>
-        <li><a [routerLink]=" [''] ">Promoción y Carrera Profesional</a></li>
-        <li><a [routerLink]=" [''] ">Salud Laboral y PRL</a></li>
-        <li><a [routerLink]=" [''] ">Acoso Sexual y por razon de Sexo</a></li>
-        <li><a [routerLink]=" [''] ">Representación de Personal</a></li>
-        <li><a [routerLink]=" [''] ">Comunicación</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['informacionbasica'] ">Información Básica cuest1</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['clasificacionprofesional'] ">Clasificación Profesional I</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Clasificación Profesional II</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Retribuciones</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Acceso al Empleo</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Incorporaciones y Bajas</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Conciliacion Familiar</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Formación</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Promoción y Carrera Profesional</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Salud Laboral y PRL</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Acoso Sexual y por razon de Sexo</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Representación de Personal</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Comunicación</a></li>
 
          
-         <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['informacionbasicapr'] ">Información Básica</a></li>
+         <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['informacionbasicapr'] ">Información Básica cuest2</a></li>
       </ul>
     </li>
 
@@ -49,22 +49,22 @@
         <li><a [routerLink]=" ['graficas1'] "><i class="glyphicon glyphicon-tree-conifer"></i>Graficas</a></li>
         
         <!-- rutas y enlaces para amin cuestionarios tipo=1 que son de empresa pública -->  
-          <li *ngIf="authService.tipocuest=='1'" ><a [routerLink]=" ['infoencuestapb'] ">Inicio</a></li>      
-          <li *ngIf="authService.tipocuest=='1'" ><a [routerLink]=" [''] ">1 Clasificación Profesional</a></li>
-          <li *ngIf="authService.tipocuest=='1'" ><a [routerLink]=" [''] ">Tipo de Contrato</a></li>
-          <li *ngIf="authService.tipocuest=='1'" ><a [routerLink]=" [''] ">Estructura Salarial</a></li>
-          <li *ngIf="authService.tipocuest=='1'" ><a [routerLink]=" [''] ">Bajas e Incorporaciones</a></li>
-          <li *ngIf="authService.tipocuest=='1'" ><a [routerLink]=" [''] ">Conciliacion Familiar</a></li>
-          <li *ngIf="authService.tipocuest=='1'" ><a [routerLink]=" [''] ">Formación</a></li>
-          <li *ngIf="authService.tipocuest=='1'" ><a [routerLink]=" [''] ">Promoción y Carrera Profesional</a></li>
-          <li *ngIf="authService.tipocuest=='1'" ><a [routerLink]=" [''] ">Acoso por Razón de Sexo</a></li>
-          <li *ngIf="authService.tipocuest=='1'" ><a [routerLink]=" [''] ">Representación Plantilla</a></li>
+          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['infoencuestapb'] ">Inicio</a></li>      
+          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">1 Clasificación Profesional</a></li>
+          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Tipo de Contrato</a></li>
+          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Estructura Salarial</a></li>
+          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Bajas e Incorporaciones</a></li>
+          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Conciliacion Familiar</a></li>
+          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Formación</a></li>
+          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Promoción y Carrera Profesional</a></li>
+          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Acoso por Razón de Sexo</a></li>
+          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Representación Plantilla</a></li>
         
         <!-- fin enlaces empresa pública -->
         
         <!-- rutas y enlaces para amin cuestionarios tipo=1 que son de empresa privada -->   
-          <li *ngIf="authService.tipocuest=='2'" ><a [routerLink]=" ['infoencuestapr'] ">Inicio</a></li>    
-          <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" [''] ">2 Clasificación Profesional</a></li>      
+          <li *ngIf="authService.tipocuest=='2' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['infoencuestapr'] ">Inicio</a></li>    
+          <li *ngIf="authService.tipocuest=='2' && authService.perfilauth=='ADM'"><a [routerLink]=" [''] ">2 Clasificación Profesional</a></li>      
         <!-- fin enlaces empresa pública -->
 
 

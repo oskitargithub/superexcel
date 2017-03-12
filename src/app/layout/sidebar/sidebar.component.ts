@@ -26,7 +26,7 @@ export class Sidebar implements OnInit {
     this.config = config.getConfig();
     this.router = router;
     this.location = location;
-    
+    console.log("cargando menus"+authService.tipocuest);
   }
 
 

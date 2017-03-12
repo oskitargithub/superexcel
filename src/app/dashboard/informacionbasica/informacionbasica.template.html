@@ -72,7 +72,7 @@
                     
             </fieldset>
 
-
+<div class="section" style="margin-top:40px">
              <fieldset>
                 <legend>Información de  <strong>Contacto</strong></legend> 
                   <div class="form-group row">
@@ -143,8 +143,8 @@
                   </div>
 
             </fieldset>
-            
-
+            </div>
+            <div class="section" style="margin-top:40px">
             <fieldset>
                 <div class="abc-checkbox abc-checkbox-primary">
                   
@@ -199,10 +199,12 @@
                    </div>
                      <button (click)="addCentroActividad()" type="button" class="btn btn-success btn-xs mb-xs">Añade Centro/Actividad</button>
                  </div>
-                 <p>infobasica value: {{ ifForm.value | json}}</p>
+                
                 
               
             </fieldset>
+            </div>
+            <div class="section" style="margin-top:40px">
             <fieldset>
                 <legend><strong>ÓRGANO DE TOMA DE DECISIONES</strong></legend>
                 <div class="form-group row">
@@ -238,11 +240,84 @@
                   </div>
                 
             </fieldset>
+            </div>
+            <div class="section" style="margin-top:40px">
+            <fieldset>
+                <legend><strong>POLÍTICAS DE IGUALDAD DE OPORTUNIDADES ENTRE MUJERES Y HOMBRES</strong></legend>
+                 <div class="form-group row">
+                     <div class="col-md-6 ">
+                          La organización, ¿dispone de estructuras, programas de actuación, guías de buenas prácticas o cualesquiera medidas específicas (sectoriales  o  pactadas )  en  materia  de igualdad de oportunidades entre mujeres y hombres?
+                     </div>
+                    <div class="col-md-6 ">
+                        <div class="abc-radio">
+                            <label for="preg19si">Si</label><input type="radio" name="preg19" id="preg19si" value="si">
+                             &nbsp;&nbsp;&nbsp;&nbsp;
+                            <label for="preg19no">No</label><input type="radio" name="preg19" id="preg19no" value="no">                            
+                        </div>
+                    </div>
+                 </div>
+
+                 <div class="form-group row">
+                     <div class="col-md-6 ">
+                          La organización, ¿dispone de estructuras, programas de actuación, guías de buenas prácticas o cualesquiera medidas específicas (sectoriales o pactadas) en materia de conciliación de la vida laboral y familiar? 
+                          </div>
+                    <div class="col-md-6 ">
+                        <div class="abc-radio">
+                            <label for="preg20si">Si</label><input type="radio" name="preg20" id="preg20si" value="si">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <label for="preg20no">No</label><input type="radio" name="preg20" id="preg20no" value="no">
+                        </div>
+                    </div>
+                 </div>
+
+                 <div class="form-group row">
+                     <div class="col-md-6 ">
+                          La organización, ¿dispone de estructuras, programas de actuación, guías de buenas prácticas o cualesquiera medidas específicas (sectoriales  o  pactadas)  en  materia  de violencia de género?
+                          </div>
+                    <div class="col-md-6 ">
+                        <div class="abc-radio">
+                            <label for="preg21si">Si</label><input type="radio" name="preg21" id="preg21si" value="si">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <label for="preg21no">No</label><input type="radio" name="preg21" id="preg21no" value="no">
+                        </div>
+                    </div>
+                 </div>
+
+                 <div class="form-group row">
+                     <div class="col-md-6 ">
+                          La  organización  ¿ha incorporado en su dinámica de contratación cláusulas sociales con perspectiva de género? 
+                    </div>
+                    <div class="col-md-6 ">
+                       <div class="abc-radio">
+                           <label for="preg22si">Si</label><input type="radio" name="preg22" id="preg22si" value="si">
+                           &nbsp;&nbsp;&nbsp;&nbsp;
+                           <label for="preg22no">No</label><input type="radio" name="preg22" id="preg22no" value="no">
+                        </div>
+                    </div>
+                 </div>
+
+                 <div class="form-group row">
+                     <div class="col-md-6 ">
+                         La  organización  ¿ha realizado informes de impacto de género? </div>
+                    <div class="col-md-6 ">
+                        <div class="abc-radio">
+                            <label for="preg23si">Si</label><input type="radio" name="preg23" id="preg23si" value="si">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <label for="preg23no">No</label><input type="radio" name="preg23" id="preg23no" value="no">
+                        </div>
+                    </div>
+                 </div>
+
+                 <p class="text-warning">En caso de marcar "Sí" en alguna de las opciones anteriores, será importante proporcionar esta información (Guías, programas, memorias, informes, etc.) a Equality Momentum</p>
+            </fieldset>
+            </div>
+
+
 
             <div class="form-actions">
             <div class="row">
               <div class="offset-md-4 col-md-7 ">
-                  <button type="button" (click)="onSubmit2()" class="btn btn-success">probando</button>
+                  <button type="button" (click)="onSubmit2()" class="btn btn-success">Siguiente</button>
                 <button type="submit" class="btn btn-primary">Guardar cambios</button>
                 <button type="button" class="btn btn-inverse">Cancelar</button>
               </div>

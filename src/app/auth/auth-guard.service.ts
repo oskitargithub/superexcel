@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
       let url: string = state.url;
-      let roles = route.data["roles"] as Array<string>;    
+      let roles = route.data["roles"] as Array<string>;  
       return this.authService.auth(roles);
     
   }

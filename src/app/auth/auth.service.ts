@@ -38,6 +38,7 @@ export class AuthService {
     return this._http.post(this.config.api + "login.php/isLogged2", params, {headers: headers})
       .map(res => {
         this.perfilauth = roles[0];
+        this.tipocuest= res.json().tipocuest;
         return res.json().success});  
   }
 
