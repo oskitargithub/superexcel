@@ -4,7 +4,7 @@ import { __platform_browser_private__ } from '@angular/platform-browser';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
-import {InformacionBasicaPrModel, CentroActividad, DenominacionMujeresHombres} from './informacionbasicapr.model';
+import {InformacionBasicaPrModel, CentroActividad, TipodeMovimiento} from './informacionbasicapr.model';
 import {InformacionBasicaPrService} from "./informacionbasicapr.service";
 
 declare var jQuery: any;
@@ -97,15 +97,18 @@ export class InformacionBasicaPrComponent implements OnInit {
 
     createForm() {
         this.ifForm = this.fb.group({
-        razon_social: '',
-        cif: '',
+        empresa: '',
+            cif: '',
+            num_centros:'',
+            num_comunidades:'',
          ambito: '',
+         sector: '',
          convenio: '',
          domicilio: '',
          web: '',
          personas: '',
-         telefono: '',
-         horario: '',
+         telefonos: '',
+         horarios: '',
          email: '',
          dia: '',
          mes: '',
@@ -114,13 +117,24 @@ export class InformacionBasicaPrComponent implements OnInit {
          preg_3: '',
          preg_5: 0,
          preg_6: 0,
-         preg_19: false,
-         preg_20: false,
-         preg_21: false,
-         preg_22: false,
-         preg_23: false,
+         preg_8: 0,
+         preg_9: 0,
+         preg_10: 0,
+         preg_11: 0,
+         preg_12: 0, 
+         preg_13: 0,
+         preg_14: 0,
+         preg_15: 0,
+         preg_16: 0,
+         preg_17: 0,
+         preg_18: 0,
+         preg_19: 0,
+         preg_20: 0,
+         preg_21: 0,
+         preg_22: 0,
+         preg_23: 0,        
          preg_2_tabla_2: this.fb.array([]),
-         preg_3_tabla_3: this.fb.array([])
+         preg_17_tabla_4: this.fb.array([])
         });
     }
 
@@ -136,31 +150,36 @@ export class InformacionBasicaPrComponent implements OnInit {
   }
 
  setCentroActividad(preg_2_tabla_2: CentroActividad[]){
+     console.log("estableciendo CentroActividad");
      const addressFGs = preg_2_tabla_2.map(centroact => this.fb.group(centroact));
      const addressFormArray = this.fb.array(addressFGs);
      this.ifForm.setControl('preg_2_tabla_2', addressFormArray);
+     console.log("fin CentroActividad");
  }
 
- setDenominacionMujeresHombres(preg_3_tabla_3: DenominacionMujeresHombres[]){
-     const addressFGs1 = preg_3_tabla_3.map(denommh => this.fb.group(denommh));
+ setTipodeMovimiento(preg_17_tabla_4: TipodeMovimiento[]){
+     console.log("estableciendo tipo mov");
+     const addressFGs1 = preg_17_tabla_4.map(tipomov => this.fb.group(tipomov));
      const addressFormArray1 = this.fb.array(addressFGs1);
-     this.ifForm.setControl('preg_3_tabla_3', addressFormArray1);
+     this.ifForm.setControl('preg_17_tabla_4', addressFormArray1);
  }
+
+
 
  get preg_2_tabla_2(): FormArray {
     return this.ifForm.get('preg_2_tabla_2') as FormArray;
   };
 
-get preg_3_tabla_3(): FormArray {
-    return this.ifForm.get('preg_3_tabla_3') as FormArray;
+get preg_17_tabla_4(): FormArray {
+    return this.ifForm.get('preg_17_tabla_4') as FormArray;
   };
 
   addCentroActividad() {
     this.preg_2_tabla_2.push(this.fb.group(new CentroActividad()));
   }
 
-  addOrganoDirTec() {
-    this.preg_3_tabla_3.push(this.fb.group(new DenominacionMujeresHombres()));
+  addTipoMov() {
+    this.preg_17_tabla_4.push(this.fb.group(new TipodeMovimiento()));
   }
 
 
@@ -168,8 +187,8 @@ get preg_3_tabla_3(): FormArray {
       this.preg_2_tabla_2.removeAt(i);
   }
 
-  removeOrganoDirTec(i:number){
-      this.preg_3_tabla_3.removeAt(i);
+  removeTipoMov(i:number){
+      this.preg_17_tabla_4.removeAt(i);
   }
 
 
@@ -178,7 +197,8 @@ get preg_3_tabla_3(): FormArray {
 			.subscribe(
 				response => {
                         this.ifForm = this.fb.group(response.data); 
-						this.setCentroActividad(response.preg_2_tabla_2);                        
+						this.setCentroActividad(response.preg_2_tabla_2);     
+                        this.setTipodeMovimiento(response.preg_17_tabla_4);                   
 						this.status = response.status;
 						if(this.status !== "success"){
 							if(this.status == "tokenerror"){
@@ -224,38 +244,52 @@ get preg_3_tabla_3(): FormArray {
         const secretLairsDeepCopy: CentroActividad[] = formModel.preg_2_tabla_2.map(
         (centroact: CentroActividad) => Object.assign({}, centroact)
         );
-        const cstDenominacionMujeresHombres: DenominacionMujeresHombres[] = formModel.DenominacionMujeresHombres.map(
-            (denommh: DenominacionMujeresHombres) => Object.assign({}, denommh)
+        const cstTipodeMovimiento: TipodeMovimiento[] = formModel.TipodeMovimiento.map(
+            (tipomov: TipodeMovimiento) => Object.assign({}, tipomov)
         );
     // return new `Hero` object containing a combination of original hero value(s)
     // and deep copies of changed form model values
     const saveInformacionBasica: InformacionBasicaPrModel = {
         id: formModel.id,
-        id_usuario: formModel.id_usuario,
-        razon_social:formModel.razon_social,
+        user_id: formModel.user_id,
+        empresa:formModel.empresa,
+        sector: formModel.sector,
+        num_centros: formModel.num_centros,
+        num_comunidades: formModel.num_comunidades,
         cif: formModel.cif,
         ambito: formModel.ambito,
         convenio: formModel.convenio,
         domicilio: formModel.domicilio,
         web: formModel.web,
         personas: formModel.personas,
-        telefono: formModel.telefono,
-        horario: formModel.horario,
+        telefonos: formModel.telefonos,
+        horarios: formModel.horarios,
         email: formModel.email,
         dia: formModel.dia,
         mes: formModel.mes,
         anyo: formModel.anyo,
-        preg_1: formModel.desarrollaact,    
-        preg_3: formModel.denominacion,
-        preg_5: formModel.mujeres,
-        preg_6: formModel.hombres,
-        preg_19: formModel.bpoliticas1,
-        preg_20: formModel.bpoliticas2,
-        preg_21: formModel.bpoliticas3,
-        preg_22: formModel.bpoliticas4,
-        preg_23: formModel.bpoliticas5, 
+        preg_1: formModel.preg_1,    
+        preg_3: formModel.preg_3,
+        preg_5: formModel.preg_5,
+        preg_6: formModel.preg_6,
+        preg_8: formModel.preg_8,
+        preg_9: formModel.preg_9,
+        preg_10: formModel.preg_10,
+        preg_11: formModel.preg_11,
+        preg_12: formModel.preg_12,
+        preg_13: formModel.preg_13,
+        preg_14: formModel.preg_14,
+        preg_15: formModel.preg_15,
+        preg_16: formModel.preg_16,
+        preg_17: formModel.preg_17,
+        preg_18: formModel.preg_18,
+        preg_19: formModel.preg_19,
+        preg_20: formModel.preg_20,
+        preg_21: formModel.preg_21,
+        preg_22: formModel.preg_22,
+        preg_23: formModel.preg_23,
         preg_2_tabla_2: secretLairsDeepCopy,
-        preg_3_tabla_3: cstDenominacionMujeresHombres
+        preg_17_tabla_4: cstTipodeMovimiento
     };
     return saveInformacionBasica;
   }

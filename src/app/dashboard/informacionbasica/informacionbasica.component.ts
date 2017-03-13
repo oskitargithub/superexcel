@@ -54,6 +54,7 @@ export class InformacionBasicaComponent implements OnInit {
     onSubmit2(){
         this.informacionbasica = this.preparaParaGuardar();
         console.log(this.informacionbasica);
+
     }
     onSubmit(model:InformacionBasicaModel) {    
         
@@ -222,15 +223,15 @@ export class InformacionBasicaComponent implements OnInit {
         dia: formModel.dia,
         mes: formModel.mes,
         anyo: formModel.anyo,
-        preg_1: formModel.desarrollaact,    
-        preg_3: formModel.denominacion,
-        preg_5: formModel.mujeres,
-        preg_6: formModel.hombres,
-        preg_19: formModel.bpoliticas1,
-        preg_20: formModel.bpoliticas2,
-        preg_21: formModel.bpoliticas3,
-        preg_22: formModel.bpoliticas4,
-        preg_23: formModel.bpoliticas5, 
+        preg_1: formModel.preg_1,    
+        preg_3: formModel.preg_3,
+        preg_5: formModel.preg_5,
+        preg_6: formModel.preg_6,
+        preg_19: formModel.preg_19,
+        preg_20: formModel.preg_20,
+        preg_21: formModel.preg_21,
+        preg_22: formModel.preg_22,
+        preg_23: formModel.preg_23, 
         preg_2_tabla_2: secretLairsDeepCopy
     };
     return saveInformacionBasica;

@@ -23,7 +23,7 @@ export class InformacionBasicaPrService{
 		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
         
         
-        return this._http.get(this.config.apilaravel + "cuestionario/seccion/1").map(res => res.json());
+        return this._http.get(this.config.apilaravel + "cuestionario/seccion/20").map(res => res.json());
         /*return this._http.post(this.config.api + "informacionbasica.php/getinformacionbasica", 
 				params, {headers: headers}).map(res => res.json());*/
     }

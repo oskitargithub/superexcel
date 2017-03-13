@@ -12,9 +12,9 @@
                 <legend>Datos de la  <strong>Empresa</strong></legend>                  
 
                     <div class="form-group row">
-                        <label class="col-md-3  col-form-label text-md-right" for="razon_social">RAZÓN SOCIAL EMPRESA</label>
+                        <label class="col-md-3  col-form-label text-md-right" for="empresa">RAZÓN SOCIAL EMPRESA</label>
                         <div class="col-md-8 ">
-                            <input type="text" formControlName="razon_social" class="form-control" 
+                            <input type="text" formControlName="empresa" class="form-control" 
                                 tooltip="RAZÓN SOCIAL EMPRESA"
                                 placeholder="RAZÓN SOCIAL EMPRESA" />
                         </div>
@@ -31,10 +31,10 @@
                     </div>
                     
                    <div class="form-group row">
-                        <label class="col-md-3  col-form-label text-md-right" for="convenio">Sector Productivo</label>
+                        <label class="col-md-3  col-form-label text-md-right" for="sector">Sector Productivo</label>
                         <div class="col-md-8 ">
                             <input type="text" class="form-control" 
-                            formControlName="sector_productivo"
+                            formControlName="sector"
                                 tooltip="Sector Productivo"
                                 placeholder="Sector Productivo" />
                         </div>
@@ -83,20 +83,20 @@
                     </div>
 
                      <div class="form-group row">
-                        <label class="col-md-3  col-form-label text-md-right" for="web">Nº de Centros de Trabajo</label>
+                        <label class="col-md-3  col-form-label text-md-right" for="num_centros">Nº de Centros de Trabajo</label>
                         <div class="col-md-8 ">
                             <input type="text"class="form-control" 
-                            formControlName="centros_trabajo"
+                            formControlName="num_centros"
                                 tooltip="Nº de Centros de Trabajo"
                                 placeholder="Nº de Centros de Trabajo" />
                         </div>
                     </div>
 
                      <div class="form-group row">
-                        <label class="col-md-3  col-form-label text-md-right" for="web">Nº de Comunidades</label>
+                        <label class="col-md-3  col-form-label text-md-right" for="num_comunidades">Nº de Comunidades</label>
                         <div class="col-md-8 ">
                             <input type="text"class="form-control" 
-                            formControlName="comunidades"
+                            formControlName="num_comunidades"
                                 tooltip="Nº de Comunidades"
                                 placeholder="Nº de Comunidades" />
                         </div>
@@ -118,10 +118,10 @@
                   </div>
 
                   <div class="form-group row">
-                    <label class="col-md-3  col-form-label text-md-right" for="personas">Teléfono Fijo y Móvil</label>
+                    <label class="col-md-3  col-form-label text-md-right" for="telefonos">Teléfono Fijo y Móvil</label>
                     <div class="col-md-4 ">
                         <input type="text" class="form-control" 
-                        formControlName="personas"
+                        formControlName="telefonos"
                             tooltip="Personas de contacto"
                             placeholder="Personas de contacto" />
                     </div>
@@ -278,11 +278,16 @@
                      <div class="col-md-6 ">
                           Comité de Empresa
                     </div>
-                    <div class="col-md-6 ">
+                    <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <label for="preg19si">Si</label><input type="radio" name="preg19" id="preg19si" value="si">
-                             &nbsp;&nbsp;&nbsp;&nbsp;
-                            <label for="preg19no">No</label><input type="radio" name="preg19" id="preg19no" value="no">                            
+                            <input type="radio" name="preg8" id="preg8si" value="si">   
+                            <label for="preg8si">Si</label>                    
+                        </div>
+                    </div>
+                    <div class="col-md-1 ">
+                        <div class="abc-radio">
+                            <input type="radio" name="preg8" id="preg8no" value="no">    
+                            <label for="preg8no">No</label>                        
                         </div>
                     </div>
                  </div>
@@ -291,11 +296,16 @@
                      <div class="col-md-6 ">
                           Alguna/s sección/es sindicales
                     </div>
-                    <div class="col-md-6 ">
+                    <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <label for="preg20si">Si</label><input type="radio" name="preg20" id="preg20si" value="si">
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <label for="preg20no">No</label><input type="radio" name="preg20" id="preg20no" value="no">
+                           <input type="radio" name="preg9" id="preg9si" value="si">
+                            <label for="preg9si">Si</label>
+                        </div>
+                    </div>
+                     <div class="col-md-1 ">
+                        <div class="abc-radio">
+                            <input type="radio" name="preg9" id="preg9no" value="no">
+                            <label for="preg9no">No</label>
                         </div>
                     </div>
                  </div>
@@ -304,11 +314,16 @@
                      <div class="col-md-6 ">
                           El comité de seguridad y salud
                     </div>
-                    <div class="col-md-6 ">
+                    <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <label for="preg21si">Si</label><input type="radio" name="preg21" id="preg21si" value="si">
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <label for="preg21no">No</label><input type="radio" name="preg21" id="preg21no" value="no">
+                            <input type="radio" name="preg10" id="preg10si" value="si">   
+                            <label for="preg10si">Si</label>                         
+                        </div>
+                    </div>
+                    <div class="col-md-1 ">
+                        <div class="abc-radio">
+                           <input type="radio" name="preg10" id="preg10no" value="no">
+                            <label for="preg10no">No</label>
                         </div>
                     </div>
                  </div>
@@ -317,11 +332,16 @@
                      <div class="col-md-6 ">
                           Un comité de empresa intercentros
                     </div>
-                    <div class="col-md-6 ">
+                    <div class="col-md-1 ">
                        <div class="abc-radio">
-                           <label for="preg22si">Si</label><input type="radio" name="preg22" id="preg22si" value="si">
-                           &nbsp;&nbsp;&nbsp;&nbsp;
-                           <label for="preg22no">No</label><input type="radio" name="preg22" id="preg22no" value="no">
+                           <input type="radio" name="preg11" id="preg11si" value="si">
+                           <label for="preg11si">Si</label>
+                        </div>
+                    </div>
+                     <div class="col-md-1 ">
+                       <div class="abc-radio">
+                           <input type="radio" name="preg11" id="preg11no" value="no">
+                           <label for="preg11no">No</label>
                         </div>
                     </div>
                  </div>
@@ -330,11 +350,16 @@
                      <div class="col-md-6 ">
                         Un comité de seguridad y salud intercentros
                     </div>
-                    <div class="col-md-6 ">
+                    <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <label for="preg23si">Si</label><input type="radio" name="preg23" id="preg23si" value="si">
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <label for="preg23no">No</label><input type="radio" name="preg23" id="preg23no" value="no">
+                            <input type="radio" name="preg12" id="preg12si" value="si">
+                            <label for="preg12si">Si</label>
+                        </div>
+                    </div>
+                     <div class="col-md-1 ">
+                        <div class="abc-radio">
+                            <input type="radio" name="preg12" id="preg12no" value="no">
+                            <label for="preg12no">No</label>
                         </div>
                     </div>
                  </div>
@@ -345,11 +370,16 @@
                      <div class="col-md-6 ">
                         Delegados/as de personal?
                     </div>
-                    <div class="col-md-6 ">
+                    <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <label for="preg23si">Si</label><input type="radio" name="preg23" id="preg23si" value="si">
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <label for="preg23no">No</label><input type="radio" name="preg23" id="preg23no" value="no">
+                            <input type="radio" name="preg13" id="preg13si" value="si">
+                            <label for="preg13si">Si</label>
+                        </div>
+                    </div>
+                    <div class="col-md-1 ">
+                        <div class="abc-radio">
+                            <input type="radio" name="preg13" id="preg13no" value="no">
+                            <label for="preg13no">No</label>
                         </div>
                     </div>
                  </div>
@@ -357,11 +387,16 @@
                      <div class="col-md-6 ">
                        Delegados/as sindicales?
                     </div>
-                    <div class="col-md-6 ">
+                    <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <label for="preg23si">Si</label><input type="radio" name="preg23" id="preg23si" value="si">
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <label for="preg23no">No</label><input type="radio" name="preg23" id="preg23no" value="no">
+                            <input type="radio" name="preg14" id="preg14si" value="si">
+                            <label for="preg14si">Si</label>
+                        </div>
+                    </div>
+                    <div class="col-md-1 ">
+                        <div class="abc-radio">
+                            <input type="radio" name="preg14" id="preg14no" value="no">
+                            <label for="preg14no">No</label>
                         </div>
                     </div>
                  </div>
@@ -369,11 +404,16 @@
                      <div class="col-md-6 ">
                         Delegados/as de prevención?
                     </div>
-                    <div class="col-md-6 ">
+                    <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <label for="preg23si">Si</label><input type="radio" name="preg23" id="preg23si" value="si">
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <label for="preg23no">No</label><input type="radio" name="preg23" id="preg23no" value="no">
+                            <input type="radio" name="preg15" id="preg15si" value="si">
+                            <label for="preg15si">Si</label>
+                        </div>
+                    </div>
+                    <div class="col-md-1 ">
+                        <div class="abc-radio">
+                            <input type="radio" name="preg15" id="preg15no" value="no">
+                            <label for="preg15no">No</label>
                         </div>
                     </div>
                  </div>
@@ -381,32 +421,32 @@
 
 
             <fieldset>
-                <legend><strong>ORGANOS DE DIRECCIÓN TÉCNICA</strong></legend>
-                 <div formArrayName="preg_3_tabla_3">
-                   <div *ngFor="let centroact of preg_3_tabla_3.controls; let i=index" [formGroupName]="i" >
+                <legend><strong>Tipo de Movimiento</strong></legend>
+                 <div formArrayName="preg_17_tabla_4">
+                   <div *ngFor="let tipomov of preg_17_tabla_4.controls; let i=index" [formGroupName]="i" >
                       
                       <div class="row">
                         <div class="col-md-3 ">
                           <div class="form-group">
                            <div class="input-group">
-                              <input class="form-control" formControlName="denominacion" tooltip="Denominación"
-                            placeholder="Denominación" />
+                              <input class="form-control" formControlName="fecha" tooltip="Fecha"
+                            placeholder="Fecha" />
                             </div>
                           </div>
                         </div>
                         <div class="col-md-3 ">
                              <div class="form-group">
                        <div class="input-group">
-                          <input class="form-control" formControlName="mujeres" tooltip="Mujeres"
-                            placeholder="Mujeres" />
+                          <input class="form-control" formControlName="mujeres" tooltip="Mujeres afectadas"
+                            placeholder="Mujeres afectadas" />
                         </div>
                       </div>
                         </div>
                          <div class="col-md-3 ">
                              <div class="form-group">
                        <div class="input-group">
-                          <input class="form-control" formControlName="hombres" tooltip="Hombres"
-                            placeholder="Hombres" />
+                          <input class="form-control" formControlName="hombres" tooltip="Hombres afectados"
+                            placeholder="Hombres afectados" />
                         </div>
                       </div>
                         </div>
@@ -418,14 +458,14 @@
                         </div>
                       </div>
                         </div>
-                      <span *ngIf="preg_3_tabla_3.controls.length > 1" >
-                        <button type="button"(click)="removeOrganoDirTec(i)" class="btn btn-danger btn-xs mb-xs">borra</button>
+                      <span *ngIf="preg_17_tabla_4.controls.length > 1" >
+                        <button type="button"(click)="removeTipoMov(i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                         
                     </span>
                       
                     </div>
                    </div>
-                     <button (click)="addOrganoDirTec()" type="button" class="btn btn-success btn-xs mb-xs">Añade Nuevo Órgano</button>
+                     <button (click)="addTipoMov()" type="button" class="btn btn-success btn-xs mb-xs">Añade Nuevo Órgano</button>
                  </div>
             </fieldset>
 

@@ -3,7 +3,7 @@ export class InformacionBasicaModel{
         public id_usuario : number;
         public razon_social: string;
         public cif: string;
-        public ambito: string;
+        public ambito: string;        
         public convenio: string;
         public domicilio: string;
         public web: string;
