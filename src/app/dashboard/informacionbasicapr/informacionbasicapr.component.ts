@@ -113,28 +113,25 @@ export class InformacionBasicaPrComponent implements OnInit {
          dia: '',
          mes: '',
          anyo: '',
-         preg_1: '',         
-         preg_3: '',
-         preg_5: 0,
-         preg_6: 0,
-         preg_8: 0,
-         preg_9: 0,
-         preg_10: 0,
-         preg_11: 0,
-         preg_12: 0, 
-         preg_13: 0,
-         preg_14: 0,
-         preg_15: 0,
-         preg_16: 0,
-         preg_17: 0,
-         preg_18: 0,
-         preg_19: 0,
-         preg_20: 0,
-         preg_21: 0,
-         preg_22: 0,
-         preg_23: 0,        
+         preg_24: '',         
+         preg_26: '',
+         preg_28: 0,
+         preg_29: 0,
+         preg_31: 0,
+         preg_32: 0,
+         preg_33: 0,
+         preg_34: 0,
+         preg_35: 0, 
+         preg_36: 0,
+         preg_37: 0,
+         preg_38: 0,
+         preg_39: 0,
+         preg_41: 0,
+         preg_42: 0,
+         preg_43: 0,
+         preg_44: 0,        
          preg_2_tabla_2: this.fb.array([]),
-         preg_17_tabla_4: this.fb.array([])
+         preg_40_tabla_4: this.fb.array([])
         });
     }
 
@@ -157,11 +154,11 @@ export class InformacionBasicaPrComponent implements OnInit {
      console.log("fin CentroActividad");
  }
 
- setTipodeMovimiento(preg_17_tabla_4: TipodeMovimiento[]){
+ setTipodeMovimiento(preg_40_tabla_4: TipodeMovimiento[]){
      console.log("estableciendo tipo mov");
-     const addressFGs1 = preg_17_tabla_4.map(tipomov => this.fb.group(tipomov));
+     const addressFGs1 = preg_40_tabla_4.map(tipomov => this.fb.group(tipomov));
      const addressFormArray1 = this.fb.array(addressFGs1);
-     this.ifForm.setControl('preg_17_tabla_4', addressFormArray1);
+     this.ifForm.setControl('preg_40_tabla_4', addressFormArray1);
  }
 
 
@@ -170,26 +167,32 @@ export class InformacionBasicaPrComponent implements OnInit {
     return this.ifForm.get('preg_2_tabla_2') as FormArray;
   };
 
-get preg_17_tabla_4(): FormArray {
-    return this.ifForm.get('preg_17_tabla_4') as FormArray;
-  };
 
   addCentroActividad() {
     this.preg_2_tabla_2.push(this.fb.group(new CentroActividad()));
   }
 
-  addTipoMov() {
-    this.preg_17_tabla_4.push(this.fb.group(new TipodeMovimiento()));
-  }
 
-
-  removeCentroActividad(i:number){
+  
+   removeCentroActividad(i:number){
       this.preg_2_tabla_2.removeAt(i);
   }
 
-  removeTipoMov(i:number){
-      this.preg_17_tabla_4.removeAt(i);
+  
+ 
+ get preg_40_tabla_4(): FormArray {
+    return this.ifForm.get('preg_40_tabla_4') as FormArray;
+  };
+  
+ addTipoMov() {
+    this.preg_40_tabla_4.push(this.fb.group(new TipodeMovimiento()));
   }
+
+removeTipoMov(i:number){
+      this.preg_40_tabla_4.removeAt(i);
+  }
+  
+  
 
 
     getInformacionBasica(){
@@ -197,8 +200,8 @@ get preg_17_tabla_4(): FormArray {
 			.subscribe(
 				response => {
                         this.ifForm = this.fb.group(response.data); 
-						this.setCentroActividad(response.preg_2_tabla_2);     
-                        this.setTipodeMovimiento(response.preg_17_tabla_4);                   
+						this.setCentroActividad(response.preg_25_tabla_2);     
+                        this.setTipodeMovimiento(response.preg_40_tabla_4);                   
 						this.status = response.status;
 						if(this.status !== "success"){
 							if(this.status == "tokenerror"){
@@ -244,7 +247,7 @@ get preg_17_tabla_4(): FormArray {
         const secretLairsDeepCopy: CentroActividad[] = formModel.preg_2_tabla_2.map(
         (centroact: CentroActividad) => Object.assign({}, centroact)
         );
-        const cstTipodeMovimiento: TipodeMovimiento[] = formModel.TipodeMovimiento.map(
+        const cstTipodeMovimiento: TipodeMovimiento[] = formModel.preg_40_tabla_4.map(
             (tipomov: TipodeMovimiento) => Object.assign({}, tipomov)
         );
     // return new `Hero` object containing a combination of original hero value(s)
@@ -268,28 +271,25 @@ get preg_17_tabla_4(): FormArray {
         dia: formModel.dia,
         mes: formModel.mes,
         anyo: formModel.anyo,
-        preg_1: formModel.preg_1,    
-        preg_3: formModel.preg_3,
-        preg_5: formModel.preg_5,
-        preg_6: formModel.preg_6,
-        preg_8: formModel.preg_8,
-        preg_9: formModel.preg_9,
-        preg_10: formModel.preg_10,
-        preg_11: formModel.preg_11,
-        preg_12: formModel.preg_12,
-        preg_13: formModel.preg_13,
-        preg_14: formModel.preg_14,
-        preg_15: formModel.preg_15,
-        preg_16: formModel.preg_16,
-        preg_17: formModel.preg_17,
-        preg_18: formModel.preg_18,
-        preg_19: formModel.preg_19,
-        preg_20: formModel.preg_20,
-        preg_21: formModel.preg_21,
-        preg_22: formModel.preg_22,
-        preg_23: formModel.preg_23,
+        preg_24: formModel.preg_24,    
+        preg_26: formModel.preg_3,
+        preg_28: formModel.preg_28,
+        preg_29: formModel.preg_29,
+        preg_31: formModel.preg_31,
+        preg_32: formModel.preg_32,
+        preg_33: formModel.preg_33,
+        preg_34: formModel.preg_34,
+        preg_35: formModel.preg_35,
+        preg_36: formModel.preg_36,
+        preg_37: formModel.preg_37,
+        preg_38: formModel.preg_38,
+        preg_39: formModel.preg_39,
+        preg_41: formModel.preg_41,
+        preg_42: formModel.preg_42,
+        preg_43: formModel.preg_43,
+        preg_44: formModel.preg_44,
         preg_2_tabla_2: secretLairsDeepCopy,
-        preg_17_tabla_4: cstTipodeMovimiento
+        preg_40_tabla_4: cstTipodeMovimiento
     };
     return saveInformacionBasica;
   }

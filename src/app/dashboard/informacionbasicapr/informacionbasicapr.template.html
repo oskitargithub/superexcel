@@ -105,7 +105,7 @@
             </fieldset>
 
 
-             <fieldset>
+             <fieldset style="margin-top:40px">
                 <legend>Información de  <strong>Contacto</strong></legend> 
                   <div class="form-group row">
                     <label class="col-md-3  col-form-label text-md-right" for="personas">Personas de contacto</label>
@@ -177,12 +177,12 @@
             </fieldset>
             
 
-            <fieldset>
+            <fieldset style="margin-top:40px">
                 <div class="abc-checkbox abc-checkbox-primary">
                   
-                  <input id="preg_1" type="checkbox"  
-                    formControlName="preg_1" />
-                  <label for="preg_1">
+                  <input id="preg_24" type="checkbox"  
+                    formControlName="preg_24" />
+                  <label for="preg_24">
                    ¿Desarrolla la organización actividades productivas diferenciadas? 
                   </label>
                 </div>
@@ -230,41 +230,36 @@
                    </div>
                      <button (click)="addCentroActividad()" type="button" class="btn btn-success btn-xs mb-xs">Añade Centro/Actividad</button>
                  </div>
-                
-                
-              
             </fieldset>
-            <fieldset>
+            <fieldset style="margin-top:40px">
                 <legend><strong>ÓRGANO RECTOR</strong></legend>
                 <div class="form-group row">
-                    <label class="col-md-3  col-form-label text-md-right" for="preg_3">Denominación</label>
+                    <label class="col-md-3  col-form-label text-md-right" for="preg_26">Denominación</label>
                     <div class="col-md-8 ">
-                        <input type="text" formControlName="preg_3" class="form-control" tooltip="Denominación" placeholder="Denominación" />
+                        <input type="text" formControlName="preg_26" class="form-control" tooltip="Denominación" placeholder="Denominación" />
                     </div>
                 </div>
                  <div class="form-group row">
                      <h6>Composición de órgano</h6>
-                    <label class="col-md-1  col-form-label text-md-right" for="preg_5">Mujeres</label>
+                    <label class="col-md-1  col-form-label text-md-right" for="preg_28">Mujeres</label>
                     <div class="col-md-2 ">
                         <input type="text" class="form-control" 
-                        formControlName="preg_5"
+                        formControlName="preg_28"
                             tooltip="Mujeres"
                             placeholder="Mujeres" />
                     </div>
                   
-                    <label class="col-md-1  col-form-label text-md-right" for="preg_6">Hombres</label>
+                    <label class="col-md-1  col-form-label text-md-right" for="preg_29">Hombres</label>
                     <div class="col-md-2 ">
                         <input type="text" class="form-control" 
-                        formControlName="preg_6"
+                        formControlName="preg_29"
                             tooltip="Hombres"
                             placeholder="Hombres" />
                     </div>
 
                     <label class="col-md-1  col-form-label text-md-right" for="total">Total</label>
-                    <div class="col-md-2 ">
-                        <input type="text" class="form-control"                         
-                            tooltip="Total"
-                            placeholder="Total" />
+                    <div class="col-md-2 ">{{(ifForm.controls.preg_28.value*1) + (ifForm.controls.preg_29.value*1)}}
+                       
                     </div>
                   </div>
                 
@@ -280,14 +275,14 @@
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg8" id="preg8si" value="si">   
-                            <label for="preg8si">Si</label>                    
+                            <input type="radio" name="preg_31" id="preg_31si" value="si">   
+                            <label for="preg_31si">Si</label>                    
                         </div>
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg8" id="preg8no" value="no">    
-                            <label for="preg8no">No</label>                        
+                            <input type="radio" name="preg_31" id="preg_31no" value="no">    
+                            <label for="preg_31no">No</label>                        
                         </div>
                     </div>
                  </div>
@@ -298,14 +293,14 @@
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                           <input type="radio" name="preg9" id="preg9si" value="si">
-                            <label for="preg9si">Si</label>
+                           <input type="radio" name="preg_32" id="preg_32si" value="si">
+                            <label for="preg_32si">Si</label>
                         </div>
                     </div>
                      <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg9" id="preg9no" value="no">
-                            <label for="preg9no">No</label>
+                            <input type="radio" name="preg_32" id="preg_32no" value="no">
+                            <label for="preg_32no">No</label>
                         </div>
                     </div>
                  </div>
@@ -316,14 +311,14 @@
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg10" id="preg10si" value="si">   
-                            <label for="preg10si">Si</label>                         
+                            <input type="radio" name="preg_33" id="preg_33si" value="si">   
+                            <label for="preg_33si">Si</label>                         
                         </div>
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                           <input type="radio" name="preg10" id="preg10no" value="no">
-                            <label for="preg10no">No</label>
+                           <input type="radio" name="preg_33" id="preg_33no" value="no">
+                            <label for="preg_33no">No</label>
                         </div>
                     </div>
                  </div>
@@ -334,14 +329,14 @@
                     </div>
                     <div class="col-md-1 ">
                        <div class="abc-radio">
-                           <input type="radio" name="preg11" id="preg11si" value="si">
-                           <label for="preg11si">Si</label>
+                           <input type="radio" name="preg_34" id="preg_34si" value="si">
+                           <label for="preg_34si">Si</label>
                         </div>
                     </div>
                      <div class="col-md-1 ">
                        <div class="abc-radio">
-                           <input type="radio" name="preg11" id="preg11no" value="no">
-                           <label for="preg11no">No</label>
+                           <input type="radio" name="preg_34" id="preg_34no" value="no">
+                           <label for="preg_34no">No</label>
                         </div>
                     </div>
                  </div>
@@ -352,14 +347,14 @@
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg12" id="preg12si" value="si">
-                            <label for="preg12si">Si</label>
+                            <input type="radio" name="preg_35" id="preg_35si" value="si">
+                            <label for="preg_35si">Si</label>
                         </div>
                     </div>
                      <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg12" id="preg12no" value="no">
-                            <label for="preg12no">No</label>
+                            <input type="radio" name="preg_35" id="preg_35no" value="no">
+                            <label for="preg_35no">No</label>
                         </div>
                     </div>
                  </div>
@@ -372,14 +367,14 @@
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg13" id="preg13si" value="si">
-                            <label for="preg13si">Si</label>
+                            <input type="radio" name="preg_36" id="preg_36si" value="si">
+                            <label for="preg_36si">Si</label>
                         </div>
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg13" id="preg13no" value="no">
-                            <label for="preg13no">No</label>
+                            <input type="radio" name="preg_36" id="preg_36no" value="no">
+                            <label for="preg_36no">No</label>
                         </div>
                     </div>
                  </div>
@@ -389,14 +384,14 @@
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg14" id="preg14si" value="si">
-                            <label for="preg14si">Si</label>
+                            <input type="radio" name="preg_37" id="preg_37si" value="si">
+                            <label for="preg_37si">Si</label>
                         </div>
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg14" id="preg14no" value="no">
-                            <label for="preg14no">No</label>
+                            <input type="radio" name="preg_37" id="preg_37no" value="no">
+                            <label for="preg_37no">No</label>
                         </div>
                     </div>
                  </div>
@@ -406,14 +401,14 @@
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg15" id="preg15si" value="si">
-                            <label for="preg15si">Si</label>
+                            <input type="radio" name="preg_38" id="preg_38si" value="si">
+                            <label for="preg_38si">Si</label>
                         </div>
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg15" id="preg15no" value="no">
-                            <label for="preg15no">No</label>
+                            <input type="radio" name="preg_38" id="preg_38no" value="no">
+                            <label for="preg_38no">No</label>
                         </div>
                     </div>
                  </div>
@@ -422,8 +417,8 @@
 
             <fieldset>
                 <legend><strong>Tipo de Movimiento</strong></legend>
-                 <div formArrayName="preg_17_tabla_4">
-                   <div *ngFor="let tipomov of preg_17_tabla_4.controls; let i=index" [formGroupName]="i" >
+                 <div formArrayName="preg_40_tabla_4">
+                   <div *ngFor="let tipomov of preg_40_tabla_4.controls; let i=index" [formGroupName]="i" >
                       
                       <div class="row">
                         <div class="col-md-3 ">
@@ -451,14 +446,8 @@
                       </div>
                         </div>
 
-                        <div class="col-md-3 ">
-                             <div class="form-group">
-                       <div class="input-group">
-                         <span>Total {{hombres.value + mujeres.value}}</span>
-                        </div>
-                      </div>
-                        </div>
-                      <span *ngIf="preg_17_tabla_4.controls.length > 1" >
+                      
+                      <span *ngIf="preg_40_tabla_4.controls.length > 1" >
                         <button type="button"(click)="removeTipoMov(i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                         
                     </span>
@@ -467,7 +456,7 @@
                    </div>
                      <button (click)="addTipoMov()" type="button" class="btn btn-success btn-xs mb-xs">Añade Nuevo Órgano</button>
                  </div>
-            </fieldset>
+            </fieldset> 
 
             <div class="form-actions">
             <div class="row">

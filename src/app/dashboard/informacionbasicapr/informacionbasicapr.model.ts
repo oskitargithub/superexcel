@@ -17,28 +17,25 @@ export class InformacionBasicaPrModel{
         public dia: string;
         public mes: string;
         public anyo: string;
-        public preg_1: string;//public desarrollaact: string;       
-        public preg_3: string;//public denominacion: string;
-        public preg_5: string;//public mujeres: number;
-        public preg_6: string;//public hombres: number;
-        public preg_8: string;
-        public preg_9: string;
-        public preg_10: string;
-        public preg_11: string;
-        public preg_12: string;  
-        public preg_13: string; 
-        public preg_14: string; 
-        public preg_15: string; 
-        public preg_16: string; 
-        public preg_17: string; 
-        public preg_18: string; 
-        public preg_19: string; 
-        public preg_20: string; 
-        public preg_21: string;   
-        public preg_22: string;    
-        public preg_23: string;       
+        public preg_24: string;//public desarrollaact: string;       
+        public preg_26: string;//public denominacion: string;
+        public preg_28: string;//public mujeres: number;
+        public preg_29: string;//public hombres: number;
+        public preg_31: string; //comité empresa
+        public preg_32: string;
+        public preg_33: string;
+        public preg_34: string;
+        public preg_35: string;  
+        public preg_36: string; 
+        public preg_37: string; 
+        public preg_38: string; 
+        public preg_39: string; 
+        public preg_41: string; 
+        public preg_42: string; 
+        public preg_43: string; 
+        public preg_44: string;     
         public preg_2_tabla_2: CentroActividad[];         
-        public preg_17_tabla_4: TipodeMovimiento[];
+        public preg_40_tabla_4: TipodeMovimiento[];
 }
 
 export class CentroActividad{
