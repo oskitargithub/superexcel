@@ -1,4 +1,127 @@
-<p>vamos a traernos datos dinámmicos</p>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Clasificación profesional</li>
+</ol>
+<h1 class="page-title">Estructura <span class="fw-semi-bold">Organizacional</span></h1>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="widget" widget>
+            <div class="widget-body">
+                <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <legend><strong>Composición del personal contratado y en plantilla</strong></legend>
+                            <div class="form-group row">
+                                <label class="col-md-2  col-form-label text-md-right">Total</label>
+                                <label class="col-md-1  col-form-label text-md-right" for="preg_5">Mujeres</label>
+                                <div class="col-md-1 ">
+                                    <input type="text" class="form-control" formControlName="preg_5" tooltip="Mujeres" placeholder="Mujeres" />
+                                </div>
 
-    <p>infobasica value: {{ ifForm.value | json}}</p>
-    
+                                <label class="col-md-1  col-form-label text-md-right" for="preg_6">Hombres</label>
+                                <div class="col-md-1 ">
+                                    <input type="text" class="form-control" formControlName="preg_6" tooltip="Hombres" placeholder="Hombres" />
+                                </div>
+                                <label class="col-md-1  col-form-label text-md-right" for="total">Total</label>
+                                <div class="col-md-2 ">
+                                    {{(ifForm.controls.preg_5.value*1) + (ifForm.controls.preg_6.value*1)}}
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <legend>Departamentos Servicios y/o Unidades Funcionales</legend>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Denominación:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_3_tabla_3">
+                                <div *ngFor="let dptos of preg_3_tabla_3.controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="denominacion" tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span *ngIf="preg_3_tabla_3.controls.length > 1">
+                                        <button type="button"(click)="removeFila(i)" class="btn btn-danger btn-xs mb-xs">borra</button>
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <button (click)="addFilaDpto()" type="button" class="btn btn-success btn-xs mb-xs">Añade Dptos/Unidades</button>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        total mujeres {{ifForm.controls.preg_3_tabla_3.value | json}}
+                                        valor:{{ifForm.controls.preg_3_tabla_3.value[0].mujeres | json}}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        total hombres
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        total suma
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

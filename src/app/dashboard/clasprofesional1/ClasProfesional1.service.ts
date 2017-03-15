@@ -18,7 +18,13 @@ export class ClasProfesional1Service {
                .map(res => res.json());
   }
 
- 
+ getClasProfesional1(){
+    var respuesta = {"status":"success","total":24,"respondidas":0,
+    "data":{"user_id":2,"nombre":"Personal","apellidos":"de l''ajuntament","preg_5":1,"preg_6":5},
+    "preg_3_tabla_3":[ { "denominacion": "wewe", "mujeres": "2", "hombres": "3" }]
+  };
+   return Observable.of(respuesta);
+ }
 
  
 }

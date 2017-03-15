@@ -1,110 +1,127 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, Injector, OnInit} from '@angular/core';
+import { Select2OptionData } from 'ng2-select2';
+import { __platform_browser_private__ } from '@angular/platform-browser';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { ClasProfesional1Service } from './ClasProfesional1.service';
+import { ClasProfesional1Model, Tabla3Model } from './ClasProfesional1.model';
 
-import { FormArray, FormBuilder, FormGroup, Validators }                 from '@angular/forms';
-
-import { DynamicFormComponent }         from '../../question/dynamic-form.component';
-import { DynamicFormQuestionComponent } from '../../question/dynamic-form-question.component';
-
-import { QuestionBase }     from '../../question/question-base';
-import { TextboxQuestion }  from '../../question/question-textbox';
-import { DobleTextQuestion }  from '../../question/question-dobletext';
-
-
-import {InformacionBasicaModel, CentroActividad} from '../informacionbasica/informacionbasica.model';
+declare var jQuery: any;
+declare var Messenger: any;
 
 @Component({    
     selector: 'clasprofesional',
-    templateUrl: './clasprofesional1.template.html'
+    templateUrl: './clasprofesional1.template.html',
+    styleUrls: [ '../../forms/elements/elements.style.scss','../../ui-elements/notifications/notifications.style.scss' ],
+    providers: [ClasProfesional1Service],
+    encapsulation: ViewEncapsulation.None,
 })
 export class ClasProfesional1Component implements OnInit {   
-    questions: QuestionBase<any>[];
+    injector: Injector;
+    domSharedStylesHost: any;
+    colorOptions: Object = {color: '#f0b518'};    
+    submitted = false;
     ifForm: FormGroup;
+
+    public clasprofesional1: ClasProfesional1Model;
+    public errorMessage: string;
+	public status: string;
     
     constructor(
         private fb: FormBuilder,
-        private ClasProfesional1Service: ClasProfesional1Service
-    ) {    
-        this.questions = [new TextboxQuestion({
-                            key: 'firstName',
-                            label: 'First name',
-                            value: 'Bombasto',
-                            required: true,
-                            order: 1
-                        })];
+        private clasprofesional1service: ClasProfesional1Service, 
+        injector: Injector
+    ) {
         this.createForm(); 
-}
+        this.getClasProfesional1();
 
-    ngOnInit() {           
-        this.ClasProfesional1Service.getDatos()
-            .subscribe(
-                result => {
-                    console.log(result.data);
-                        this.ifForm = this.fb.group([{"razon_social":"mi empresa", "cif": "68484654F"}]); 
-                        this.setCentroActividad([{"centro":"centro1", "actividad":"actividad1"},{"centro":"centro2", "actividad":"actividad2"}]);
-                        
-                        
-                        
-                        let mispreguntas: QuestionBase<any>[] = 
-                        //this.datos = result;  
-                        [
-                            /*new TextboxQuestion({
-                                key: result.data.id,
-                                label: result.data.nombre,
-                                value: result.data.valor,
-                                required: false,
-                                order: result.data.orden
-                            }),*/
-                            new TextboxQuestion({
-                                key: 'razon_social',
-                                label: 'Razon Social',
-                                type: 'text',
-                                value: 'mi empresatxtbox',
-                                order: 1
-                            }),
-                            new TextboxQuestion({
-                                key: 'cif',
-                                label: 'Cif',
-                                type: 'text',
-                                value: '48523698F',
-                                order: 2
-                            }),
-                            new DobleTextQuestion({
-                                key: '27',
-                                TituloGeneral: 'Centros/Actividades',
-                                value: 'Centro',
-                                label: 'Actividad',
-                                order: 3,
-                                centros_actividades: [{"centro":"centro1", "actividad":"actividad1"},{"centro":"centro2", "actividad":"actividad2"}],
-                                options: [
-                                   {key: 'centro1',  value: 'actividad1'},
-                                   {key: 'centro2',  value: 'actividad2'}, 
-                                ]
-                            })];    
 
-                        this.questions =   mispreguntas;                                    
-                        //console.log(this.datos);
-                },
-                error => {
-                    console.log(<any>error);                                            
-                }
-            );
+    //
+    // This is a hack on angular style loader to prevent ng2-select2 from adding its styles.
+    // They are hard-coded into the component, so there are no other way to get rid of them
+    //
+        this.domSharedStylesHost = injector.get(__platform_browser_private__.DomSharedStylesHost);
+        this.domSharedStylesHost.__onStylesAdded__ = this.domSharedStylesHost.onStylesAdded;
+        this.domSharedStylesHost.onStylesAdded = (additions) => {
+            const style = additions[0];
+            if (!style || !style.trim().startsWith('.select2-container')) {
+                    this.domSharedStylesHost.__onStylesAdded__(additions);
+            }
+        };
+  
     }
+
+    getClasProfesional1(){
+        this.clasprofesional1service.getClasProfesional1()
+			.subscribe(
+				response => {
+                        this.ifForm = this.fb.group(response.data); 
+                        this.setTablaDpto(response.preg_3_tabla_3); 						                      
+						this.status = response.status;
+						if(this.status !== "success"){
+							if(this.status == "tokenerror"){
+                                 Messenger().post({
+                                    message: 'Ha ocurrido un error de token.' + this.errorMessage,
+                                    type: 'error',
+                                    showCloseButton: true
+                                });
+                            }
+                            else{
+                                Messenger().post({
+                                    message: 'Ha ocurrido un error cargando los datos.' + this.errorMessage,
+                                    type: 'error',
+                                    showCloseButton: true
+                                });
+                            }
+						}
+                        else{
+                            Messenger().post({
+                                message: 'Los datos han sido cargados correctamente',
+                                type: 'success',
+                                showCloseButton: true
+                            });
+                        }
+				},
+				error => {
+					this.errorMessage = <any>error;
+					if(this.errorMessage !== null){
+                                          
+                        Messenger().post({
+                            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                            type: 'error',
+                            showCloseButton: true
+                        });
+					
+					}
+				});		
+    }
+
     createForm() {
         this.ifForm = this.fb.group({
-            razon_social: '',
-            cif: '',         
-            centros_actividades: this.fb.array([])
-        });
+            preg_5: '0',
+            preg_6: '0',
+            preg_3_tabla_3: this.fb.array([])
+            });
+    }
+    ngOnInit(): void {
+      Messenger.options = { theme: 'air' };
     }
 
-    setCentroActividad(centros_actividades: CentroActividad[]){
-     const addressFGs = centros_actividades.map(centroact => this.fb.group(centroact));
-     const addressFormArray = this.fb.array(addressFGs);
-     this.ifForm.setControl('centros_actividades', addressFormArray);
- }
+    get preg_3_tabla_3(): FormArray {
+        return this.ifForm.get('preg_3_tabla_3') as FormArray;
+    };
 
- get centros_actividades(): FormArray {
-    return this.ifForm.get('centros_actividades') as FormArray;
-  };
+    addFilaDpto(){
+        this.preg_3_tabla_3.push(this.fb.group(new Tabla3Model()));
+    }
+
+    removeFilaDpto(i){
+        this.preg_3_tabla_3.removeAt(i);
+    }
+
+    setTablaDpto(preg_3_tabla_3: Tabla3Model[]){
+     const addressFGs = preg_3_tabla_3.map(dptos => this.fb.group(dptos));
+     const addressFormArray = this.fb.array(addressFGs);
+     this.ifForm.setControl('preg_3_tabla_3', addressFormArray);
+ }
 }
