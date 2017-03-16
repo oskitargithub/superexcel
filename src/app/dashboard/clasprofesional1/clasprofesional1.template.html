@@ -82,17 +82,17 @@
                                         <div class="col-md-2 ">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                   
+                                                   {{ifForm.controls.preg_3_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_3_tabla_3.value[i].hombres*1 }}
                                                 </div>
                                             </div>
                                         </div>
                                         <span *ngIf="preg_3_tabla_3.controls.length > 1">
-                                        <button type="button"(click)="removeFila(i)" class="btn btn-danger btn-xs mb-xs">borra</button>
+                                        <button type="button"(click)="removeFila(ifForm.controls.preg_3_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                                         </span>
 
                                     </div>
                                 </div>
-                                <button (click)="addFilaDpto()" type="button" class="btn btn-success btn-xs mb-xs">Añade Dptos/Unidades</button>
+                                <button (click)="addFila(ifForm.controls.preg_3_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Dptos/Unidades</button>
                             </div>
                             <div class="row">
                                 <div class="col-md-2 ">
@@ -101,18 +101,17 @@
                                 </div>
                                 <div class="col-md-2 ">
                                     <div class="form-group">
-                                        total mujeres {{ifForm.controls.preg_3_tabla_3.value | json}}
-                                        valor:{{ifForm.controls.preg_3_tabla_3.value[0].mujeres | json}}
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_3_tabla_3) }}
                                     </div>
                                 </div>
                                 <div class="col-md-2 ">
                                     <div class="form-group">
-                                        total hombres
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_3_tabla_3) }}
                                     </div>
                                 </div>
                                 <div class="col-md-2 ">
                                     <div class="form-group">
-                                        total suma
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_3_tabla_3) }}
                                     </div>
                                 </div>
                             </div>

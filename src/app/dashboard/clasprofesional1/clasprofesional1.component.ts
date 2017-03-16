@@ -96,6 +96,23 @@ export class ClasProfesional1Component implements OnInit {
 				});		
     }
 
+    getTotalMujeres(elemento : FormArray){
+        return elemento.value.map(c=>c.mujeres).reduce((sum,current) => (sum*1)+(current*1));
+    }
+    getTotalHombres(elemento : FormArray){
+        return elemento.value.map(c=>c.hombres).reduce((sum,current) => (sum*1)+(current*1));
+    }
+    getTotalTotal(elemento : FormArray){
+        let hombres = elemento.value.map(c=>c.hombres).reduce((sum,current) => (sum*1)+(current*1));
+        let mujeres = elemento.value.map(c=>c.mujeres).reduce((sum,current) => (sum*1)+(current*1));
+        return (hombres*1 + mujeres*1);
+    }
+
+    /*
+    getTotalMujeres(){
+        return this.preg_3_tabla_3.value.map(c=>c.mujeres).reduce((sum,current) => (sum*1)+(current*1));
+    }*/
+
     createForm() {
         this.ifForm = this.fb.group({
             preg_5: '0',
@@ -110,13 +127,13 @@ export class ClasProfesional1Component implements OnInit {
     get preg_3_tabla_3(): FormArray {
         return this.ifForm.get('preg_3_tabla_3') as FormArray;
     };
+   
 
-    addFilaDpto(){
-        this.preg_3_tabla_3.push(this.fb.group(new Tabla3Model()));
+    addFila(elemento:FormArray){
+        elemento.push(this.fb.group(new Tabla3Model()));
     }
-
-    removeFilaDpto(i){
-        this.preg_3_tabla_3.removeAt(i);
+    removeFila(elemento:FormArray, i : number){
+        elemento.removeAt(i);
     }
 
     setTablaDpto(preg_3_tabla_3: Tabla3Model[]){
