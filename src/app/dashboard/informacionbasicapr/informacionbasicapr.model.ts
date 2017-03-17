@@ -1,22 +1,5 @@
 export class InformacionBasicaPrModel{
-    public id: number;
-        public user_id : number;
-        public empresa: string;
-        public cif: string;
-        public ambito: string;
-        public sector: string;
-        public convenio: string;
-        public domicilio: string;
-        public web: string;
-        public personas: string;
-        public telefonos: string;
-        public horarios: string;
-        public email: string;
-        public num_centros: string;
-        public num_comunidades:string;
-        public dia: string;
-        public mes: string;
-        public anyo: string;
+        public user: datosUser[];
         public preg_24: string;//public desarrollaact: string;       
         public preg_26: string;//public denominacion: string;
         public preg_28: string;//public mujeres: number;
@@ -52,4 +35,24 @@ export class TipodeMovimiento{
         fecha: string = '';
         mujeres: string ='';
         hombres: string ='';
+}
+
+export class datosUser{
+        public user_id : number;
+        public empresa: string;
+        public cif: string;
+        public ambito: string;
+        public sector: string;
+        public convenio: string;
+        public domicilio: string;
+        public web: string;
+        public personas: string;
+        public telefonos: string;
+        public horarios: string;
+        public email: string;
+        public num_centros: string;
+        public num_comunidades:string;
+        public dia: string;
+        public mes: string;
+        public anyo: string;
 }

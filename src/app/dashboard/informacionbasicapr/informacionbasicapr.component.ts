@@ -199,7 +199,9 @@ removeTipoMov(i:number){
         this.informacionbasicaservice.getInformacionBasica()
 			.subscribe(
 				response => {
-                        this.ifForm = this.fb.group(response.data); 
+                        this.ifForm = this.fb.group(response.data.concat(response.user));
+                        console.log("asignando datos"); 
+                        console.log(this.ifForm);                        
 						this.setCentroActividad(response.preg_25_tabla_2);     
                         this.setTipodeMovimiento(response.preg_40_tabla_4);                   
 						this.status = response.status;

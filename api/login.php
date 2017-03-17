@@ -146,7 +146,7 @@ $app->post("/dimePerfil", function($request, $response, $args) use($db, $app) {
 		if ($usuario->num_rows == 1) {
             $asoc = $usuario->fetch_assoc();
 			if($asoc["perfil"] == $perfil){
-				$result = array("success" => true, "tipocuest"=>2);
+				$result = array("success" => true, "tipocuest"=>1);
 			}
 			else{
 				$result = array("success" => false);

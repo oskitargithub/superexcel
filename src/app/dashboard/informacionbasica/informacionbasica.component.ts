@@ -4,7 +4,7 @@ import { __platform_browser_private__ } from '@angular/platform-browser';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
-import {InformacionBasicaModel, CentroActividad} from './informacionbasica.model';
+import {InformacionBasicaModel, CentroActividad, datosUserModel} from './informacionbasica.model';
 import {InformacionBasicaService} from "./informacionbasica.service";
 
 declare var jQuery: any;
@@ -52,7 +52,7 @@ export class InformacionBasicaComponent implements OnInit {
   
     }
     onSubmit2(){
-        this.informacionbasica = this.preparaParaGuardar();
+        //this.informacionbasica = this.preparaParaGuardar();
         console.log(this.informacionbasica);
 
     }
@@ -98,19 +98,7 @@ export class InformacionBasicaComponent implements OnInit {
 
     createForm() {
         this.ifForm = this.fb.group({
-        razon_social: '',
-        cif: '',
-         ambito: '',
-         convenio: '',
-         domicilio: '',
-         web: '',
-         personas: '',
-         telefono: '',
-         horario: '',
-         email: '',
-         dia: '',
-         mes: '',
-         anyo: '',
+         datosuser: datosUserModel,
          preg_1: '',         
          preg_3: '',
          preg_5: 0,
@@ -134,6 +122,19 @@ export class InformacionBasicaComponent implements OnInit {
     //jQuery('#colorpicker').colorpicker(this.colorOptions);
     //jQuery('.selectpicker').selectpicker();
   }
+
+
+setDatosUser(datosuser : datosUserModel[]){
+    const miarrayFGs = datosuser.map(misdatos => this.fb.group(misdatos));
+    const misdatosFormArray = this.fb.array(miarrayFGs);
+    this.ifForm.setControl('datosuser', misdatosFormArray);
+}
+
+get datosuser():FormArray {
+    return this.ifForm.get('datosuser') as FormArray;
+  };
+
+
 
  setCentroActividad(preg_2_tabla_2: CentroActividad[]){
      const addressFGs = preg_2_tabla_2.map(centroact => this.fb.group(centroact));
@@ -159,6 +160,10 @@ export class InformacionBasicaComponent implements OnInit {
 			.subscribe(
 				response => {
                         this.ifForm = this.fb.group(response.data); 
+                        this.ifForm.controls.user = response.user;
+                        console.log("cargando datos");
+                        console.log(this.ifForm);
+                        //this.setDatosUser(response.user);                        
 						this.setCentroActividad(response.preg_2_tabla_2);                        
 						this.status = response.status;
 						if(this.status !== "success"){
@@ -210,7 +215,7 @@ export class InformacionBasicaComponent implements OnInit {
     const saveInformacionBasica: InformacionBasicaModel = {
         id: formModel.id,
         id_usuario: formModel.id_usuario,
-        razon_social:formModel.razon_social,
+        empresa:formModel.empresa,
         cif: formModel.cif,
         ambito: formModel.ambito,
         convenio: formModel.convenio,

@@ -1,19 +1,5 @@
 export class InformacionBasicaModel{
-    public id: number;
-        public id_usuario : number;
-        public razon_social: string;
-        public cif: string;
-        public ambito: string;        
-        public convenio: string;
-        public domicilio: string;
-        public web: string;
-        public personas: string;
-        public telefono: string;
-        public horario: string;
-        public email: string;
-        public dia: string;
-        public mes: string;
-        public anyo: string;
+        public user: datosUserModel[];
         public preg_1: string;//public desarrollaact: string;       
         public preg_3: string;//public denominacion: string;
         public preg_5: string;//public mujeres: number;
@@ -30,4 +16,23 @@ export class InformacionBasicaModel{
 export class CentroActividad{
         centro: string = '';
         actividad: string ='';
+}
+export class datosUserModel{
+        public user_id : number;
+        public empresa: string;
+        public cif: string;
+        public ambito: string;
+        public sector: string;
+        public convenio: string;
+        public domicilio: string;
+        public web: string;
+        public personas: string;
+        public telefonos: string;
+        public horarios: string;
+        public email: string;
+        public num_centros: string;
+        public num_comunidades:string;
+        public dia: string;
+        public mes: string;
+        public anyo: string;
 }
