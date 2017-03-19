@@ -28,12 +28,16 @@ export class InformacionBasicaComponent implements OnInit {
     public errorMessage: string;
 	public status: string;
     public token:string;
+    public respondidasSeccion:string;
+    public totalSeccion: string;
     
     constructor(
         private fb: FormBuilder,
         private informacionbasicaservice: InformacionBasicaService, 
         injector: Injector
     ) {
+        this.respondidasSeccion='0';
+        this.totalSeccion='0';
         this.createForm(); 
         this.getInformacionBasica();
 
@@ -157,7 +161,11 @@ getTotal(){
                         this.token = this.ifForm.get("_token").value;
                         this.ifForm.setControl('user',this.fb.group(response.user));
                         this.ifForm.setControl('data',this.fb.group(response.data));                                       
-						this.setCentroActividad(response.preg_2_tabla_2);                        
+						this.setCentroActividad(response.preg_2_tabla_2);   
+
+                        this.respondidasSeccion = response.respondidasSeccion;
+                        this.totalSeccion = response.totalSeccion;
+
 						this.status = response.status;
 						if(this.status !== "success"){
 							if(this.status == "tokenerror"){
