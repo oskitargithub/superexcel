@@ -8,6 +8,7 @@
     <section class="widget" widget>
       <div class="widget-body">
         <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
+            <div formGroupName="user">
             <fieldset>
                 <legend>Datos de la  <strong>Empresa</strong></legend>                  
 
@@ -175,10 +176,10 @@
                   </div>
 
             </fieldset>
-            
+            </div>        
 
             <fieldset style="margin-top:40px">
-                <div class="abc-checkbox abc-checkbox-primary">
+                <div class="abc-checkbox abc-checkbox-primary" formGroupName="data">
                   
                   <input id="preg_24" type="checkbox"  
                     formControlName="preg_24" />
@@ -201,8 +202,8 @@
                              </div>
                         </div>
                 </div>
-                 <div formArrayName="preg_2_tabla_2">
-                   <div *ngFor="let centroact of preg_2_tabla_2.controls; let i=index" [formGroupName]="i" >
+                 <div formArrayName="preg_25_tabla_2">
+                   <div *ngFor="let centroact of preg_25_tabla_2.controls; let i=index" [formGroupName]="i" >
                       
                       <div class="row">
                         <div class="col-md-5 ">
@@ -221,7 +222,7 @@
                         </div>
                       </div>
                         </div>
-                      <span *ngIf="preg_2_tabla_2.controls.length > 1" >
+                      <span *ngIf="preg_25_tabla_2.controls.length > 1" >
                         <button type="button"(click)="removeCentroActividad(i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                         
                     </span>
@@ -231,18 +232,18 @@
                      <button (click)="addCentroActividad()" type="button" class="btn btn-success btn-xs mb-xs">Añade Centro/Actividad</button>
                  </div>
             </fieldset>
-            <fieldset style="margin-top:40px">
+            <fieldset style="margin-top:40px" formGroupName="data">
                 <legend><strong>ÓRGANO RECTOR</strong></legend>
                 <div class="form-group row">
-                    <label class="col-md-3  col-form-label text-md-right" for="preg_26">Denominación</label>
-                    <div class="col-md-8 ">
+                    <label class="col-md-2  col-form-label text-md-right" for="preg_26">Denominación</label>
+                    <div class="col-md-6 ">
                         <input type="text" formControlName="preg_26" class="form-control" tooltip="Denominación" placeholder="Denominación" />
                     </div>
                 </div>
                  <div class="form-group row">
-                     <h6>Composición de órgano</h6>
+                     <label class="col-md-2  col-form-label text-md-right">Composición de órgano</label>
                     <label class="col-md-1  col-form-label text-md-right" for="preg_28">Mujeres</label>
-                    <div class="col-md-2 ">
+                    <div class="col-md-1 ">
                         <input type="text" class="form-control" 
                         formControlName="preg_28"
                             tooltip="Mujeres"
@@ -250,7 +251,7 @@
                     </div>
                   
                     <label class="col-md-1  col-form-label text-md-right" for="preg_29">Hombres</label>
-                    <div class="col-md-2 ">
+                    <div class="col-md-1 ">
                         <input type="text" class="form-control" 
                         formControlName="preg_29"
                             tooltip="Hombres"
@@ -258,15 +259,15 @@
                     </div>
 
                     <label class="col-md-1  col-form-label text-md-right" for="total">Total</label>
-                    <div class="col-md-2 ">{{(ifForm.controls.preg_28.value*1) + (ifForm.controls.preg_29.value*1)}}
-                       
+                    <div class="col-md-1 ">
+                        {{ getTotal() }}      
                     </div>
                   </div>
                 
             </fieldset>
 
 
-<fieldset style="margin-top:40px">
+<fieldset style="margin-top:40px" formGroupName="data">
     <legend><strong>ESTRUCTURAS DE REPRESENTACIÓN DEL PERSONAL</strong></legend>
     <p>A continuación encontrará un listado de estructuras de representación, por favor marque frente a cada una de ellas si han sido constituidas en la organización o no.</p>
     <div class="form-group row">
@@ -275,13 +276,13 @@
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg_31" id="preg_31si" value="si">   
+                            <input type="radio" name="preg_31" id="preg_31si" formControlName="preg_31" value="si">   
                             <label for="preg_31si">Si</label>                    
                         </div>
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg_31" id="preg_31no" value="no">    
+                            <input type="radio" name="preg_31" id="preg_31no" formControlName="preg_31" value="no">    
                             <label for="preg_31no">No</label>                        
                         </div>
                     </div>
@@ -293,13 +294,13 @@
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                           <input type="radio" name="preg_32" id="preg_32si" value="si">
+                           <input type="radio" name="preg_32" id="preg_32si" formControlName="preg_32" value="si">
                             <label for="preg_32si">Si</label>
                         </div>
                     </div>
                      <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg_32" id="preg_32no" value="no">
+                            <input type="radio" name="preg_32" id="preg_32no" formControlName="preg_32" value="no">
                             <label for="preg_32no">No</label>
                         </div>
                     </div>
@@ -311,13 +312,13 @@
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg_33" id="preg_33si" value="si">   
+                            <input type="radio" name="preg_33" id="preg_33si" formControlName="preg_33" value="si">   
                             <label for="preg_33si">Si</label>                         
                         </div>
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                           <input type="radio" name="preg_33" id="preg_33no" value="no">
+                           <input type="radio" name="preg_33" id="preg_33no" formControlName="preg_33" value="no">
                             <label for="preg_33no">No</label>
                         </div>
                     </div>
@@ -329,13 +330,13 @@
                     </div>
                     <div class="col-md-1 ">
                        <div class="abc-radio">
-                           <input type="radio" name="preg_34" id="preg_34si" value="si">
+                           <input type="radio" name="preg_34" id="preg_34si" formControlName="preg_34" value="si">
                            <label for="preg_34si">Si</label>
                         </div>
                     </div>
                      <div class="col-md-1 ">
                        <div class="abc-radio">
-                           <input type="radio" name="preg_34" id="preg_34no" value="no">
+                           <input type="radio" name="preg_34" id="preg_34no" formControlName="preg_34" value="no">
                            <label for="preg_34no">No</label>
                         </div>
                     </div>
@@ -347,13 +348,13 @@
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg_35" id="preg_35si" value="si">
+                            <input type="radio" name="preg_35" id="preg_35si" formControlName="preg_35" value="si">
                             <label for="preg_35si">Si</label>
                         </div>
                     </div>
                      <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg_35" id="preg_35no" value="no">
+                            <input type="radio" name="preg_35" id="preg_35no" formControlName="preg_35" value="no">
                             <label for="preg_35no">No</label>
                         </div>
                     </div>
@@ -367,13 +368,13 @@
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg_36" id="preg_36si" value="si">
+                            <input type="radio" name="preg_36" id="preg_36si" formControlName="preg_36" value="si">
                             <label for="preg_36si">Si</label>
                         </div>
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg_36" id="preg_36no" value="no">
+                            <input type="radio" name="preg_36" id="preg_36no" formControlName="preg_36" value="no">
                             <label for="preg_36no">No</label>
                         </div>
                     </div>
@@ -384,13 +385,13 @@
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg_37" id="preg_37si" value="si">
+                            <input type="radio" name="preg_37" id="preg_37si" formControlName="preg_37" value="si">
                             <label for="preg_37si">Si</label>
                         </div>
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg_37" id="preg_37no" value="no">
+                            <input type="radio" name="preg_37" id="preg_37no" formControlName="preg_37" value="no">
                             <label for="preg_37no">No</label>
                         </div>
                     </div>
@@ -401,13 +402,13 @@
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg_38" id="preg_38si" value="si">
+                            <input type="radio" name="preg_38" id="preg_38si" formControlName="preg_38" value="si">
                             <label for="preg_38si">Si</label>
                         </div>
                     </div>
                     <div class="col-md-1 ">
                         <div class="abc-radio">
-                            <input type="radio" name="preg_38" id="preg_38no" value="no">
+                            <input type="radio" name="preg_38" id="preg_38no" formControlName="preg_38" value="no">
                             <label for="preg_38no">No</label>
                         </div>
                     </div>
@@ -416,20 +417,71 @@
 
 
             <fieldset>
-                <legend><strong>Tipo de Movimiento</strong></legend>
+                <legend><strong>Movimientos de plantilla en bloque</strong></legend>
+                  <div class="form-group row" formGroupName="data">
+                     <div class="col-md-6 ">
+                        En los últimos 5 años ¿se han producido movimientos de plantilla que hayan afectado en bloque a más de 10 trabajadoras/es?
+                    </div>
+                    <div class="col-md-1 ">
+                        <div class="abc-radio">
+                            <input type="radio" name="preg_39" id="preg_39si" formControlName="preg_39" value="si">
+                            <label for="preg_39si">Si</label>
+                        </div>
+                    </div>
+                    <div class="col-md-1 ">
+                        <div class="abc-radio">
+                            <input type="radio" name="preg_39" id="preg_39no" formControlName="preg_39" value="no">
+                            <label for="preg_39no">No</label>
+                        </div>
+                    </div>
+                 </div>
+                 
+
+
+
+                 <div class="row">
+                                <div class="col-md-5 ">
+                                    <div class="form-group">
+                                        <label>Tipo de movimiento:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Fecha:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Mujeres afectadas:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Hombres afectados:</label>
+                                    </div>
+                                </div>
+                            </div>
                  <div formArrayName="preg_40_tabla_4">
                    <div *ngFor="let tipomov of preg_40_tabla_4.controls; let i=index" [formGroupName]="i" >
                       
                       <div class="row">
-                        <div class="col-md-3 ">
+                           <div class="col-md-5 ">
                           <div class="form-group">
                            <div class="input-group">
-                              <input class="form-control" formControlName="fecha" tooltip="Fecha"
-                            placeholder="Fecha" />
+                              <input class="form-control" formControlName="tipo_movimiento" tooltip="tipo"
+                            placeholder="Tipo" />
                             </div>
                           </div>
                         </div>
-                        <div class="col-md-3 ">
+                        <div class="col-md-2 ">
+                          <div class="form-group">
+                           <div class="input-group">
+                             
+                             <datetime  [timepicker]="false" (locale)="es" formControlName="fecha" tooltip="Fecha" title="Fecha" placeholder="Fecha"  [datepicker]="datepickerOpts"></datetime>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-2 ">
                              <div class="form-group">
                        <div class="input-group">
                           <input class="form-control" formControlName="mujeres" tooltip="Mujeres afectadas"
@@ -437,7 +489,7 @@
                         </div>
                       </div>
                         </div>
-                         <div class="col-md-3 ">
+                         <div class="col-md-2 ">
                              <div class="form-group">
                        <div class="input-group">
                           <input class="form-control" formControlName="hombres" tooltip="Hombres afectados"
@@ -447,17 +499,97 @@
                         </div>
 
                       
-                      <span *ngIf="preg_40_tabla_4.controls.length > 1" >
+                      <span *ngIf="i > 2" >
                         <button type="button"(click)="removeTipoMov(i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                         
                     </span>
                       
                     </div>
                    </div>
-                     <button (click)="addTipoMov()" type="button" class="btn btn-success btn-xs mb-xs">Añade Nuevo Órgano</button>
+                     <button (click)="addTipoMov()" type="button" class="btn btn-success btn-xs mb-xs">Añade Tipo de movimiento</button>
                  </div>
             </fieldset> 
+            <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <legend><strong>POLÍTICAS DE IGUALDAD DE OPORTUNIDADES ENTRE MUJERES Y HOMBRES</strong></legend>
+                            <div class="form-group row">
+                                <div class="col-md-6 ">
+                                    La empresa, ¿dispone de estructuras, programas de actuación, guías de buenas prácticas o cualesquiera medidas específicas (sectoriales o pactadas)  en  materia  de igualdad de oportunidades entre mujeres y hombres?
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="abc-radio">
+                                        <input type="radio" name="preg_41" id="preg41si" formControlName="preg_41" value="si">
+                                        <label for="preg41si">Si</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="abc-radio">
+                                        <input type="radio" name="preg_41" id="preg41no" formControlName="preg_41" value="no">
+                                        <label for="preg41no">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6 ">
+                                   La empresa, ¿dispone de estructuras, programas de actuación, guías de buenas prácticas o cualesquiera medidas específicas (sectoriales o pactadas) en materia de conciliación de la vida laboral y familiar?
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="abc-radio">
+                                        <input type="radio" name="preg_42" id="preg42si"  formControlName="preg_42" value="si">
+                                        <label for="preg42si">Si</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="abc-radio">
+                                        <input type="radio" name="preg_42" id="preg42no" formControlName="preg_42" value="no">
+                                        <label for="preg42no">No</label>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="form-group row">
+                                <div class="col-md-6 ">
+                                   La empresa, ¿dispone de estructuras, programas de actuación, guías de buenas prácticas o cualesquiera medidas específicas (sectoriales  o  pactadas)  en  materia  de violencia de género?
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="abc-radio">
+                                        <input type="radio" name="preg_43" id="preg43si"  formControlName="preg_43" value="si">
+                                        <label for="preg43si">Si</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="abc-radio">
+                                        <input type="radio" name="preg_43" id="preg43no"  formControlName="preg_43" value="no">
+                                        <label for="preg43no">No</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="form-group row">
+                                <div class="col-md-6 ">
+                                    Caso de que la empresa haya implementado ya un plan de igualdad, dichas medidas han sido evaluadas con carácter interno o externo a la organización?
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="abc-radio">
+                                        <input type="radio" name="preg_44" id="preg44si"  formControlName="preg_44" value="si">
+                                        <label for="preg44si">Si</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="abc-radio">
+                                        <input type="radio" name="preg_44" id="preg44no"  formControlName="preg_44" value="no">
+                                        <label for="preg44no">No</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                          
+                            <p class="text-danger">Proporcionar esta
+                                información (Plan de igualdad anterior, Guía de buenas prácticas, programas, memorias, informes, etc.) a Equality Momentum</p>
+                        </fieldset>
+                    </div>
             <div class="form-actions">
             <div class="row">
               <div class="offset-md-4 col-md-7 ">

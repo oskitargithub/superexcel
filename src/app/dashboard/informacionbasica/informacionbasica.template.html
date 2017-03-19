@@ -1,120 +1,131 @@
 <ol class="breadcrumb">
-  <li class="breadcrumb-item">Home</li>
-  <li class="breadcrumb-item active">Información Básica</li>
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Información Básica</li>
 </ol>
 <h1 class="page-title">Información <span class="fw-semi-bold">Básica</span></h1>
+
+
 <div class="row">
     <div class="col-lg-12">
         <section class="widget" widget>
             <div class="widget-body">
                 <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
-                    <fieldset>
-                        <legend>Datos de la <strong>Empresa</strong></legend>
-
-                        <div class="form-group row">
-                            <label class="col-md-3  col-form-label text-md-right" for="empresa">RAZÓN SOCIAL EMPRESA PÚBLICA / ADMON PÚBLICA</label>
-                            <div class="col-md-8 ">
-                                <input type="text" formControlName="user->empresa" class="form-control" tooltip="RAZÓN SOCIAL EMPRESA PÚBLICA / ADMON PÚBLICA"
-                                    placeholder="RAZÓN SOCIAL EMPRESA PÚBLICA / ADMON PÚBLICA" />
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-3  col-form-label text-md-right" for="cif">CIF</label>
-                            <div class="col-md-8 ">
-                                <input type="text" class="form-control" formControlName="cif" tooltip="CIF" placeholder="CIF" />
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-3  col-form-label text-md-right" for="ambito">Ámbito de Administración</label>
-                            <div class="col-md-8 ">
-                                <input type="text" class="form-control" formControlName="ambito" tooltip="Ámbito" placeholder="Ámbito" />
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-3  col-form-label text-md-right" for="convenio">Convenio Colectivo</label>
-                            <div class="col-md-8 ">
-                                <input type="text" class="form-control" formControlName="convenio" tooltip="Convenio Colectivo" placeholder="Convenio Colectivo"
-                                />
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-3  col-form-label text-md-right" for="domicilio">Domicilio social</label>
-                            <div class="col-md-8 ">
-                                <input type="text" class="form-control" formControlName="domicilio" tooltip="Domicilio social" placeholder="Domicilio social"
-                                />
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-3  col-form-label text-md-right" for="web">Web</label>
-                            <div class="col-md-8 ">
-                                <input type="text" class="form-control" formControlName="web" tooltip="Web" placeholder="Web" />
-                            </div>
-                        </div>
-
-                    </fieldset>
-
-                    <div class="section" style="margin-top:40px">
+                    <div formGroupName="user">
                         <fieldset>
-                            <legend>Información de <strong>Contacto</strong></legend>
+                            <legend>Datos de la <strong>Empresa</strong></legend>
+
                             <div class="form-group row">
-                                <label class="col-md-3  col-form-label text-md-right" for="personas">Personas de contacto</label>
+                                <label class="col-md-3  col-form-label text-md-right" for="empresa">RAZÓN SOCIAL EMPRESA PÚBLICA / ADMON PÚBLICA</label>
                                 <div class="col-md-8 ">
-                                    <input type="text" class="form-control" formControlName="personas" tooltip="Personas de contacto" placeholder="Personas de contacto"
-                                    />
+                                    <input type="text" formControlName="empresa" class="form-control" tooltip="RAZÓN SOCIAL EMPRESA PÚBLICA / ADMON PÚBLICA"
+                                        placeholder="RAZÓN SOCIAL EMPRESA PÚBLICA / ADMON PÚBLICA" />
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-md-3  col-form-label text-md-right" for="personas">Teléfono Fijo y Móvil</label>
-                                <div class="col-md-4 ">
-                                    <input type="text" class="form-control" formControlName="personas" tooltip="Personas de contacto" placeholder="Personas de contacto"
-                                    />
-                                </div>
-
-                                <label class="col-md-1  col-form-label text-md-right" for="email">E-Mail</label>
-                                <div class="col-md-3 ">
-                                    <input type="text" class="form-control" formControlName="email" tooltip="E-Mail" placeholder="E-Mail" />
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3  col-form-label text-md-right" for="personas">Personas de contacto</label>
+                                <label class="col-md-3  col-form-label text-md-right" for="cif">CIF</label>
                                 <div class="col-md-8 ">
-                                    <input type="text" class="form-control" formControlName="personas" tooltip="Personas de contacto" placeholder="Personas de contacto"
+                                    <input type="text" class="form-control" formControlName="cif" tooltip="CIF" placeholder="CIF" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-3  col-form-label text-md-right" for="ambito">Ámbito de Administración</label>
+                                <div class="col-md-8 ">
+                                    <input type="text" class="form-control" formControlName="ambito" tooltip="Ámbito" placeholder="Ámbito" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-3  col-form-label text-md-right" for="convenio">Convenio Colectivo</label>
+                                <div class="col-md-8 ">
+                                    <input type="text" class="form-control" formControlName="convenio" tooltip="Convenio Colectivo" placeholder="Convenio Colectivo"
                                     />
                                 </div>
                             </div>
 
-                            <div class="row">&nbsp;</div>
-
-                            <h4>Fecha de cumplimentación</h4>
                             <div class="form-group row">
-                                <label class="col-md-3  col-form-label text-md-right" for="dia">Día</label>
-                                <div class="col-md-1 ">
-                                    <input type="text" class="form-control" formControlName="dia" tooltip="Día" placeholder="Día" />
+                                <label class="col-md-3  col-form-label text-md-right" for="domicilio">Domicilio social</label>
+                                <div class="col-md-8 ">
+                                    <input type="text" class="form-control" formControlName="domicilio" tooltip="Domicilio social" placeholder="Domicilio social"
+                                    />
                                 </div>
+                            </div>
 
-                                <label class="col-md-1  col-form-label text-md-right" for="mes">Mes</label>
-                                <div class="col-md-1 ">
-                                    <input type="text" class="form-control" formControlName="mes" tooltip="Mes" placeholder="Mes" />
-                                </div>
-
-                                <label class="col-md-1  col-form-label text-md-right" for="anyo">Año</label>
-                                <div class="col-md-1 ">
-                                    <input type="text" class="form-control" formControlName="anyo" tooltip="Año" placeholder="Año" />
+                            <div class="form-group row">
+                                <label class="col-md-3  col-form-label text-md-right" for="web">Web</label>
+                                <div class="col-md-8 ">
+                                    <input type="text" class="form-control" formControlName="web" tooltip="Web" placeholder="Web" />
                                 </div>
                             </div>
 
                         </fieldset>
+
+                        <div class="section" style="margin-top:40px">
+                            <fieldset>
+                                <legend>Información de <strong>Contacto</strong></legend>
+                                <div class="form-group row">
+                                    <label class="col-md-3  col-form-label text-md-right" for="personas">Personas de contacto</label>
+                                    <div class="col-md-8 ">
+                                        <input type="text" class="form-control" formControlName="personas" tooltip="Personas de contacto" placeholder="Personas de contacto"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3  col-form-label text-md-right" for="telefonos">Teléfono Fijo y Móvil</label>
+                                    <div class="col-md-4 ">
+                                        <input type="text" class="form-control" formControlName="telefonos" tooltip="Teléfono Fijo y Móvil" placeholder="Teléfono Fijo y Móvil"
+                                        />
+                                    </div>
+
+                                    <label class="col-md-1  col-form-label text-md-right" for="email">E-Mail</label>
+                                    <div class="col-md-3 ">
+                                        <input type="text" class="form-control" formControlName="email" tooltip="E-Mail" placeholder="E-Mail" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3  col-form-label text-md-right" for="horarios">Horario</label>
+                                    <div class="col-md-8 ">
+                                        <input type="text" class="form-control" formControlName="horarios" tooltip="Horario" placeholder="Horario" />
+                                    </div>
+                                </div>
+
+                                <div class="row">&nbsp;</div>
+
+                                <h4>Fecha de cumplimentación</h4>
+                                <div class="form-group row">
+                                    <!-- <datetime  [timepicker]="false" formControlName="num_comunidades" tooltip="Fecha" title="Fecha" placeholder="Fecha"  
+                                [datepicker]="datepickerOpts"></datetime>-->
+
+                                    <label class="col-md-3  col-form-label text-md-right" for="dia">Día</label>
+                                    <div class="col-md-12 ">
+                                        <!-- <input type="text" class="form-control" formControlName="created_at" tooltip="Día" placeholder="Día" />
+                                    <datetime  [timepicker]="false" (locale)="es" formControlName="created_at" tooltip="Fecha" title="Fecha" placeholder="Fecha"  [datepicker]="datepickerOpts"></datetime>
+                                   
+                                    
+                                    -->
+
+                                    </div>
+
+                                    <label class="col-md-1  col-form-label text-md-right" for="mes">Mes</label>
+                                    <div class="col-md-1 ">
+                                        <input type="text" class="form-control" formControlName="mes" tooltip="Mes" placeholder="Mes" />
+                                    </div>
+
+                                    <label class="col-md-1  col-form-label text-md-right" for="anyo">Año</label>
+                                    <div class="col-md-1 ">
+                                        <input type="text" class="form-control" formControlName="anyo" tooltip="Año" placeholder="Año" />
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </div>
                     </div>
                     <div class="section" style="margin-top:40px">
                         <fieldset>
-                            <div class="abc-checkbox abc-checkbox-primary">
+                            <div class="abc-checkbox abc-checkbox-primary" formGroupName="data">
 
                                 <input id="preg_1" type="checkbox" formControlName="preg_1" />
                                 <label for="preg_1">
@@ -170,7 +181,7 @@
 
                         </fieldset>
                     </div>
-                    <div class="section" style="margin-top:40px">
+                    <div class="section" style="margin-top:40px" formGroupName="data">
                         <fieldset>
                             <legend><strong>ÓRGANO DE TOMA DE DECISIONES</strong></legend>
                             <div class="form-group row">
@@ -193,15 +204,33 @@
 
                                 <label class="col-md-1  col-form-label text-md-right" for="total">Total</label>
                                 <div class="col-md-1 ">
-                                    <input type="text" class="form-control" tooltip="Total" placeholder="Total" />
+                                    {{ getTotal() }}
                                 </div>
                             </div>
 
                         </fieldset>
                     </div>
-                    <div class="section" style="margin-top:40px">
+                    <div class="section" style="margin-top:40px" formGroupName="data">
                         <fieldset>
                             <legend><strong>POLÍTICAS DE IGUALDAD DE OPORTUNIDADES ENTRE MUJERES Y HOMBRES</strong></legend>
+                            <div class="form-group row">
+                                <div class="col-md-6 ">
+                                    La organización, ¿dispone de estructuras, programas de actuación, guías de buenas prácticas o cualesquiera medidas específicas
+                                    (sectoriales o pactadas) en materia de violencia de género?
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="abc-radio">
+                                        <input type="radio" name="preg_18" id="preg18si" formControlName="preg_18" value="si">
+                                        <label for="preg18si">Si</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="abc-radio">
+                                        <input type="radio" name="preg_18" id="preg18no" formControlName="preg_18" value="no">
+                                        <label for="preg18no">No</label>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <div class="col-md-6 ">
                                     La organización, ¿dispone de estructuras, programas de actuación, guías de buenas prácticas o cualesquiera medidas específicas
@@ -209,13 +238,13 @@
                                 </div>
                                 <div class="col-md-1 ">
                                     <div class="abc-radio">
-                                        <input type="radio" name="preg19" id="preg19si" value="si">
+                                        <input type="radio" name="preg_19" id="preg19si" formControlName="preg_19" value="si">
                                         <label for="preg19si">Si</label>
                                     </div>
                                 </div>
                                 <div class="col-md-1 ">
                                     <div class="abc-radio">
-                                        <input type="radio" name="preg19" id="preg19no" value="no">
+                                        <input type="radio" name="preg_19" id="preg19no" formControlName="preg_19" value="no">
                                         <label for="preg19no">No</label>
                                     </div>
                                 </div>
@@ -228,36 +257,19 @@
                                 </div>
                                 <div class="col-md-1 ">
                                     <div class="abc-radio">
-                                        <input type="radio" name="preg20" id="preg20si" value="si">
+                                        <input type="radio" name="preg_20" id="preg20si" formControlName="preg_20" value="si">
                                         <label for="preg20si">Si</label>
                                     </div>
                                 </div>
                                 <div class="col-md-1 ">
                                     <div class="abc-radio">
-                                        <input type="radio" name="preg20" id="preg20no" value="no">
+                                        <input type="radio" name="preg_20" id="preg20no" formControlName="preg_20" value="no">
                                         <label for="preg20no">No</label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col-md-6 ">
-                                    La organización, ¿dispone de estructuras, programas de actuación, guías de buenas prácticas o cualesquiera medidas específicas
-                                    (sectoriales o pactadas) en materia de violencia de género?
-                                </div>
-                                <div class="col-md-1 ">
-                                    <div class="abc-radio">
-                                        <input type="radio" name="preg21" id="preg21si" value="si">
-                                        <label for="preg21si">Si</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-1 ">
-                                    <div class="abc-radio">
-                                        <input type="radio" name="preg21" id="preg21no" value="no">
-                                        <label for="preg21no">No</label>
-                                    </div>
-                                </div>
-                            </div>
+
 
                             <div class="form-group row">
                                 <div class="col-md-6 ">
@@ -265,13 +277,13 @@
                                 </div>
                                 <div class="col-md-1 ">
                                     <div class="abc-radio">
-                                        <input type="radio" name="preg22" id="preg22si" value="si">
+                                        <input type="radio" name="preg_22" id="preg22si" formControlName="preg_22" value="si">
                                         <label for="preg22si">Si</label>
                                     </div>
                                 </div>
                                 <div class="col-md-1 ">
                                     <div class="abc-radio">
-                                        <input type="radio" name="preg22" id="preg22no" value="no">
+                                        <input type="radio" name="preg_22" id="preg22no" formControlName="preg_22" value="no">
                                         <label for="preg22no">No</label>
                                     </div>
                                 </div>
@@ -282,13 +294,13 @@
                                     La organización ¿ha realizado informes de impacto de género? </div>
                                 <div class="col-md-1 ">
                                     <div class="abc-radio">
-                                        <input type="radio" name="preg23" id="preg23si" value="si">
+                                        <input type="radio" name="preg_23" id="preg23si" formControlName="preg_23" value="si">
                                         <label for="preg23si">Si</label>
                                     </div>
                                 </div>
                                 <div class="col-md-1 ">
                                     <div class="abc-radio">
-                                        <input type="radio" name="preg23" id="preg23no" value="no">
+                                        <input type="radio" name="preg_23" id="preg23no" formControlName="preg_23" value="no">
                                         <label for="preg23no">No</label>
                                     </div>
                                 </div>

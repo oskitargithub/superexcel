@@ -4,7 +4,7 @@ import { __platform_browser_private__ } from '@angular/platform-browser';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
-import {InformacionBasicaModel, CentroActividad, datosUserModel} from './informacionbasica.model';
+import {InformacionBasicaModel, CentroActividad, datosUserModel, dataModel} from './informacionbasica.model';
 import {InformacionBasicaService} from "./informacionbasica.service";
 
 declare var jQuery: any;
@@ -27,6 +27,7 @@ export class InformacionBasicaComponent implements OnInit {
     public informacionbasica: InformacionBasicaModel;
     public errorMessage: string;
 	public status: string;
+    public token:string;
     
     constructor(
         private fb: FormBuilder,
@@ -52,16 +53,16 @@ export class InformacionBasicaComponent implements OnInit {
   
     }
     onSubmit2(){
-        //this.informacionbasica = this.preparaParaGuardar();
+        this.informacionbasica = this.preparaParaGuardar();
         console.log(this.informacionbasica);
 
     }
     onSubmit(model:InformacionBasicaModel) {    
-        
-        console.log(model); 
-        /*this.submitted = true;
+         this.informacionbasica = this.preparaParaGuardar();
+       
+       this.submitted = true;
         console.log("formulario enviado"); 
-        this.informacionbasicaservice.edit(this.informacionbasica)
+        this.informacionbasicaservice.edit(this.informacionbasica,this.token)
         .subscribe(
 				response => {
 						//this.informacionbasica = response.data;
@@ -93,22 +94,15 @@ export class InformacionBasicaComponent implements OnInit {
                         });
 					
 					}
-				});*/
+				});
     }
 
     createForm() {
         this.ifForm = this.fb.group({
-         datosuser: datosUserModel,
-         preg_1: '',         
-         preg_3: '',
-         preg_5: 0,
-         preg_6: 0,
-         preg_19: false,
-         preg_20: false,
-         preg_21: false,
-         preg_22: false,
-         preg_23: false,
-         preg_2_tabla_2: this.fb.array([])
+        user: this.fb.group(new datosUserModel()),
+        data: this.fb.group(new dataModel()),
+        preg_2_tabla_2: this.fb.array([]),
+        _token: ''
         });
     }
 
@@ -123,18 +117,17 @@ export class InformacionBasicaComponent implements OnInit {
     //jQuery('.selectpicker').selectpicker();
   }
 
-
-setDatosUser(datosuser : datosUserModel[]){
-    const miarrayFGs = datosuser.map(misdatos => this.fb.group(misdatos));
-    const misdatosFormArray = this.fb.array(miarrayFGs);
-    this.ifForm.setControl('datosuser', misdatosFormArray);
-}
-
-get datosuser():FormArray {
-    return this.ifForm.get('datosuser') as FormArray;
+get user():FormArray {
+    return this.ifForm.get('user') as FormArray;
   };
 
+get data():FormArray {
+    return this.ifForm.get('data') as FormArray;
+  };
 
+getTotal(){
+    return (this.ifForm.get('data.preg_5').value*1 + this.ifForm.get('data.preg_6').value*1);
+}
 
  setCentroActividad(preg_2_tabla_2: CentroActividad[]){
      const addressFGs = preg_2_tabla_2.map(centroact => this.fb.group(centroact));
@@ -159,11 +152,11 @@ get datosuser():FormArray {
         this.informacionbasicaservice.getInformacionBasica()
 			.subscribe(
 				response => {
-                        this.ifForm = this.fb.group(response.data); 
-                        this.ifForm.controls.user = response.user;
-                        console.log("cargando datos");
-                        console.log(this.ifForm);
-                        //this.setDatosUser(response.user);                        
+                        
+                        //this.ifForm = this.fb.group(response); 
+                        this.token = this.ifForm.get("_token").value;
+                        this.ifForm.setControl('user',this.fb.group(response.user));
+                        this.ifForm.setControl('data',this.fb.group(response.data));                                       
 						this.setCentroActividad(response.preg_2_tabla_2);                        
 						this.status = response.status;
 						if(this.status !== "success"){
@@ -206,40 +199,36 @@ get datosuser():FormArray {
 
     preparaParaGuardar(): InformacionBasicaModel {
         const formModel = this.ifForm.value;
-    // deep copy of form model lairs
         const secretLairsDeepCopy: CentroActividad[] = formModel.preg_2_tabla_2.map(
         (centroact: CentroActividad) => Object.assign({}, centroact)
         );
-    // return new `Hero` object containing a combination of original hero value(s)
-    // and deep copies of changed form model values
-    const saveInformacionBasica: InformacionBasicaModel = {
-        id: formModel.id,
-        id_usuario: formModel.id_usuario,
-        empresa:formModel.empresa,
-        cif: formModel.cif,
-        ambito: formModel.ambito,
-        convenio: formModel.convenio,
-        domicilio: formModel.domicilio,
-        web: formModel.web,
-        personas: formModel.personas,
-        telefono: formModel.telefono,
-        horario: formModel.horario,
-        email: formModel.email,
-        dia: formModel.dia,
-        mes: formModel.mes,
-        anyo: formModel.anyo,
-        preg_1: formModel.preg_1,    
-        preg_3: formModel.preg_3,
-        preg_5: formModel.preg_5,
-        preg_6: formModel.preg_6,
-        preg_19: formModel.preg_19,
-        preg_20: formModel.preg_20,
-        preg_21: formModel.preg_21,
-        preg_22: formModel.preg_22,
-        preg_23: formModel.preg_23, 
-        preg_2_tabla_2: secretLairsDeepCopy
-    };
+
+        const misdatosusuario : datosUserModel = formModel.user;
+        const datacuestionario : dataModel = formModel.data;
+        const saveInformacionBasica: InformacionBasicaModel = {
+            user : misdatosusuario,  
+            data:   datacuestionario,
+            _token: formModel._token,
+            totalCuest : formModel.totalCuest,
+            respondidasCuest : formModel.respondidasCuest,
+            totalSeccion : formModel.totalSeccion,
+            respondidasSeccion : formModel.respondidasSeccion,
+            preg_2_tabla_2: secretLairsDeepCopy
+        };
     return saveInformacionBasica;
   }
+
+
+
+ datepickerOpts = {
+        autoclose: true,
+        todayBtn: 'linked',
+        todayHighlight: true,
+        assumeNearbyYear: true,
+        format: 'dd/mm/yyyy',
+        placeholder: 'Fecha',
+        language: 'es',
+        locale: 'es'
+    }
 
 }

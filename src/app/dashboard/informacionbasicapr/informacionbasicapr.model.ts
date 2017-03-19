@@ -1,5 +1,29 @@
 export class InformacionBasicaPrModel{
-        public user: datosUser[];
+        public user: datosUserModel;
+        public data: dataModel;
+        public preg_25_tabla_2: CentroActividad[];         
+        public preg_40_tabla_4: TipodeMovimiento[];
+        public _token: string;
+        public totalCuest: number;
+        public respondidasCuest: number;
+        public totalSeccion: number;
+        public respondidasSeccion: number;
+}
+
+export class CentroActividad{
+        centro: string = '';
+        actividad: string ='';
+}
+
+export class TipodeMovimiento{
+        tipo_movimiento : string='';
+        fecha: string = '';
+        mujeres: string ='';
+        hombres: string ='';
+}
+
+
+export class dataModel{
         public preg_24: string;//public desarrollaact: string;       
         public preg_26: string;//public denominacion: string;
         public preg_28: string;//public mujeres: number;
@@ -17,27 +41,29 @@ export class InformacionBasicaPrModel{
         public preg_42: string; 
         public preg_43: string; 
         public preg_44: string;     
-        public preg_2_tabla_2: CentroActividad[];         
-        public preg_40_tabla_4: TipodeMovimiento[];
+        constructor(){
+            this.preg_24='',
+            this.preg_26='',
+           this.preg_28='',
+           this.preg_29='',
+           this.preg_31='',
+           this.preg_32='',
+           this.preg_33='',
+           this.preg_34='',
+           this.preg_35='',
+           this.preg_36='',
+           this.preg_37='',
+           this.preg_38='',
+           this.preg_39='',
+           this.preg_41='',
+           this.preg_42='',
+           this.preg_43='',
+           this.preg_44=''
+        }   
 }
 
-export class CentroActividad{
-        centro: string = '';
-        actividad: string ='';
-}
 
-export class DenominacionMujeresHombres{
-        denominacion: string = '';
-        mujeres: string ='';
-        hombres: string ='';
-}
-export class TipodeMovimiento{
-        fecha: string = '';
-        mujeres: string ='';
-        hombres: string ='';
-}
-
-export class datosUser{
+export class datosUserModel{
         public user_id : number;
         public empresa: string;
         public cif: string;
@@ -55,4 +81,26 @@ export class datosUser{
         public dia: string;
         public mes: string;
         public anyo: string;
+        public created_at: string;
+        constructor(){
+           this.user_id = 0,
+           this.ambito='',
+           this.anyo='',
+           this.cif='',
+           this.convenio='',
+           this.dia = '',
+           this.domicilio='',
+           this.email ='',
+           this.empresa='',
+           this.horarios='',
+           this.mes='',
+           this.num_centros='',
+           this.num_comunidades='',
+           this.personas = '',
+           this.sector = '',
+           this.telefonos='',
+           this.user_id = 0,
+           this.web = '',
+           this.created_at = ''
+        }
 }

@@ -10,6 +10,9 @@ import { TooltipModule } from 'ng2-bootstrap';
 
 import { InformacionBasicaComponent } from './informacionbasica.component';
 
+import 'ng2-datetime/src/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js';
+import 'ng2-datetime/src/vendor/bootstrap-timepicker/bootstrap-timepicker.min.js';
+import { NKDatetimeModule } from 'ng2-datetime/ng2-datetime';
 
 /*import { InformacionBasicaService } from './informacionbasica.service';*/
 
@@ -20,6 +23,7 @@ export const routes = [
 @NgModule({
   imports: [ CommonModule, 
             FormsModule,
+            NKDatetimeModule,
             ReactiveFormsModule, 
             TooltipModule.forRoot(),
             RouterModule.forChild(routes) ],

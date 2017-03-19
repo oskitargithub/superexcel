@@ -1,0 +1,581 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Clasificación profesional II</li>
+</ol>
+<h1 class="page-title">TIPO <span class="fw-semi-bold">DE CONTRATACIÓN</span></h1>
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="widget" widget>
+            <div class="widget-body">
+                <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <legend><strong>Tipos de relaciones contractuales</strong></legend>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Tipo de relación contractual</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_14_tabla_3">
+                                <div *ngFor="let datos of preg_14_tabla_3.controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="denominacion" disabled tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ifForm.controls.preg_14_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_14_tabla_3.value[i].hombres*1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_14_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_14_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_14_tabla_3) }}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+                    </div>
+
+
+
+                    <div class="section" style="margin-top:40px">
+                        <p>En el caso que haber realizado contrataciones eventuales, rellene la siguiente tabla</p>
+                        <fieldset>
+                            <legend><strong>Personas contratadas a término definido / eventuales</strong></legend>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Tipo de Contrato Temporal</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_15_tabla_3">
+                                <div *ngFor="let datos of preg_15_tabla_3.controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="denominacion" disabled tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ifForm.controls.preg_15_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_15_tabla_3.value[i].hombres*1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_15_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_15_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_15_tabla_3) }}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="section" style="margin-top:40px">
+
+                        <fieldset>
+                            <legend><strong>ORGANIZACIÓN TIEMPO DE TRABAJO</strong></legend>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Organización</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_16_tabla_3">
+                                <div *ngFor="let datos of preg_16_tabla_3.controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="denominacion" disabled tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ifForm.controls.preg_16_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_16_tabla_3.value[i].hombres*1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_16_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_16_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_16_tabla_3) }}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+                    </div>
+
+
+
+
+                    <div class="section" style="margin-top:40px">
+
+                        <fieldset>
+                            <legend><strong>ANALISIS DE LA ANTIGÜEDAD</strong></legend>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Años de antigüedad </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_17_tabla_3">
+                                <div *ngFor="let datos of preg_17_tabla_3.controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="denominacion" disabled tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ifForm.controls.preg_17_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_17_tabla_3.value[i].hombres*1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_17_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_17_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_17_tabla_3) }}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="section" style="margin-top:40px">
+
+                        <fieldset>
+                            <legend><strong>Distribución de la plantilla por Horas Semanales de trabajo</strong></legend>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Nº DE HORAS </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_18_tabla_3">
+                                <div *ngFor="let datos of preg_18_tabla_3.controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="denominacion" disabled tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ifForm.controls.preg_18_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_18_tabla_3.value[i].hombres*1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_18_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_18_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_18_tabla_3) }}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+                    </div>
+
+
+
+                    <div class="section" style="margin-top:40px">
+                        <p>En el caso de que haya personas que desarrollen su trabajo a turnos, especifique el tipo de turno</p>
+                        <fieldset>
+                            <legend><strong>Distribución de la plantilla por Turnos de trabajoDistribución de la plantilla por Turnos de trabajo</strong></legend>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Turnos </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_19_tabla_3">
+                                <div *ngFor="let datos of preg_19_tabla_3.controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="denominacion" tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ifForm.controls.preg_19_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_19_tabla_3.value[i].hombres*1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span *ngIf="preg_19_tabla_3.controls.length > 1">
+                                        <button type="button"(click)="removeFila(ifForm.controls.preg_19_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <button (click)="addFila(ifForm.controls.preg_19_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Turnos</button>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_19_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_19_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_19_tabla_3) }}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+                    </div>
+
+
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="offset-md-4 col-md-7 ">
+                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                <button type="button" class="btn btn-inverse">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
