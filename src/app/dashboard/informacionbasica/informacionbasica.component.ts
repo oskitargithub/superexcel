@@ -158,7 +158,8 @@ getTotal(){
 				response => {
                         
                         //this.ifForm = this.fb.group(response); 
-                        this.token = this.ifForm.get("_token").value;
+                        this.token = response._token;
+                        console.log("pillao token"+ this.token);
                         this.ifForm.setControl('user',this.fb.group(response.user));
                         this.ifForm.setControl('data',this.fb.group(response.data));                                       
 						this.setCentroActividad(response.preg_2_tabla_2);   

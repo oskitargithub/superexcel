@@ -14,6 +14,10 @@ export class ClasProfesional1Model{
     public preg_11_tabla_3: Tabla3Model[];
     public preg_12_tabla_3: Tabla3Model[];
     public preg_13_tabla_3: Tabla3Model[];
+    constructor(){
+        this.id=0,
+        this.user_id = 0
+    }
 }
 
 export class Tabla3Model{
@@ -22,8 +26,8 @@ export class Tabla3Model{
         hombres: string = '';
 }
 export class dataModel{
-    public preg_5: string;//public mujeres: number;
-    public preg_6: string;//public hombres: number;
+    public preg_5: any;//public mujeres: number;
+    public preg_6: any;//public hombres: number;
     public preg_7: string; //La organización, ¿tiene contratadas a personas con diversidad funcional o algún tipo de discapacidad?
     constructor(){
         this.preg_5 = '',

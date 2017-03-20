@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Http, Response, Headers} from "@angular/http";
+import {Http, Response, Headers,RequestOptions,RequestMethod} from "@angular/http";
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -30,13 +30,19 @@ export class InformacionBasicaService{
     }
     
     edit(informacionbasica: InformacionBasicaModel, tokenjaume: string){
+        console.log("tokenjaume"+tokenjaume);
         let mitoken = JSON.parse(localStorage.getItem('fditoken')); 
         //informacionbasica = informacionbasica.push({"fditoken":mitoken.token})        
         let json = JSON.stringify(informacionbasica);
 		let params = "_token="+tokenjaume+"&data="+json;
-		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded', 'X-CSRF-TOKEN': tokenjaume, 'X-XSRF-TOKEN': tokenjaume});
+		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded', 'X-CSRF-TOKEN': tokenjaume});
+        let opciones = new RequestOptions({
+            headers: headers,
+            /*withCredentials: true            */
+        });
+        
 
 		return this._http.post(this.config.apilaravel + "cuestionario/seccion", 
-				params, {headers: headers}).map(res => res.json());
+				params, opciones).map(res => res.json());
     }
 }
