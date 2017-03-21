@@ -21,9 +21,9 @@ export class ClasProfesional1Model{
 }
 
 export class Tabla3Model{
-        denominacion: string = '';
-        mujeres: string = '';
-        hombres: string = '';
+        denominacion: any = '';
+        mujeres: any = 0;
+        hombres: any = 0;
 }
 export class dataModel{
     public preg_5: any;//public mujeres: number;

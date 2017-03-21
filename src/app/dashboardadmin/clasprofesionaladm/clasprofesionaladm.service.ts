@@ -15,8 +15,15 @@ export class ClasProfesionalAdmService {
   
  getClasProfesional(){
     var respuesta = {"status":"success","total":24,"respondidas":0,"id":2, "user_id":2,
-    "data":{"preg_5":"30","preg_6":"15", "preg_7":""},
-    "preg_3_tabla_3":[ { "denominacion": "dpto1", "mujeres": "15", "hombres": "4" }],
+    "data":{"preg_5":30,"preg_6":15, "preg_7":""},
+    "preg_3_tabla_3":[ 
+        { "denominacion": "dpto1", "mujeres": "15", "hombres": "4" },
+        { "denominacion": "dpto2", "mujeres": "5", "hombres": "4" },
+        { "denominacion": "dpto1", "mujeres": "4", "hombres": "5" },
+        { "denominacion": "dpto1", "mujeres": "2", "hombres": "2" },
+        { "denominacion": "dpto1", "mujeres": "2", "hombres": "4" },
+        { "denominacion": "dpto1", "mujeres": "2", "hombres": "2" }
+    ],
     "preg_4_tabla_3":[ 
       { "denominacion": "Menos de 20", "mujeres": "15", "hombres": "3" },
       { "denominacion": "Entre 20 y 29", "mujeres": "", "hombres": "8" },
