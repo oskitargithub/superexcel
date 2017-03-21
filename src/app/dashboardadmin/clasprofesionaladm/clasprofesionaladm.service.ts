@@ -19,10 +19,10 @@ export class ClasProfesionalAdmService {
     "preg_3_tabla_3":[ 
         { "denominacion": "dpto1", "mujeres": "15", "hombres": "4" },
         { "denominacion": "dpto2", "mujeres": "5", "hombres": "4" },
-        { "denominacion": "dpto1", "mujeres": "4", "hombres": "5" },
-        { "denominacion": "dpto1", "mujeres": "2", "hombres": "2" },
-        { "denominacion": "dpto1", "mujeres": "2", "hombres": "4" },
-        { "denominacion": "dpto1", "mujeres": "2", "hombres": "2" }
+        { "denominacion": "dpto3", "mujeres": "4", "hombres": "5" },
+        { "denominacion": "dpto4", "mujeres": "2", "hombres": "2" },
+        { "denominacion": "dpto5", "mujeres": "2", "hombres": "4" },
+        { "denominacion": "dpto6", "mujeres": "2", "hombres": "2" }
     ],
     "preg_4_tabla_3":[ 
       { "denominacion": "Menos de 20", "mujeres": "15", "hombres": "3" },

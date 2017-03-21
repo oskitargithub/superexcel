@@ -48,14 +48,14 @@ export class DashboardAdmin implements OnInit {
       this.config = config.getConfig();   
       this.creaFormUsuario(); 
 
-      this.domSharedStylesHost = injector.get(__platform_browser_private__.DomSharedStylesHost);
+    /**  this.domSharedStylesHost = injector.get(__platform_browser_private__.DomSharedStylesHost);
     this.domSharedStylesHost.__onStylesAdded__ = this.domSharedStylesHost.onStylesAdded;
     this.domSharedStylesHost.onStylesAdded = (additions) => {
       const style = additions[0];
       if (!style || !style.trim().startsWith('.select2-container')) {
         this.domSharedStylesHost.__onStylesAdded__(additions);
       }
-    };
+    };*/
   }
  
   creaFormUsuario(){

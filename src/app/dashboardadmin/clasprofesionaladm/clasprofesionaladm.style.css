@@ -1,2 +1,7 @@
 table th {font-size:0.8rem;}
 table td {font-size:0.9rem;}
+
+.panel.customClass {
+  background-color: #5bc0de;
+  color: #fff;
+}

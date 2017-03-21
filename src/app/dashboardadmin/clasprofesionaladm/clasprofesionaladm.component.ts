@@ -163,21 +163,6 @@ export class ClasProfesionalAdmComponent implements OnInit {
   ) {
     this.clasprofesional1 = new ClasProfesional1Model();
     this.getClasProfesional();
-
-
-    //
-    // This is a hack on angular style loader to prevent ng2-select2 from adding its styles.
-    // They are hard-coded into the component, so there are no other way to get rid of them
-    //
-    this.domSharedStylesHost = injector.get(__platform_browser_private__.DomSharedStylesHost);
-    this.domSharedStylesHost.__onStylesAdded__ = this.domSharedStylesHost.onStylesAdded;
-    this.domSharedStylesHost.onStylesAdded = (additions) => {
-      const style = additions[0];
-      if (!style || !style.trim().startsWith('.select2-container')) {
-        this.domSharedStylesHost.__onStylesAdded__(additions);
-      }
-    };
-
   }
 
 

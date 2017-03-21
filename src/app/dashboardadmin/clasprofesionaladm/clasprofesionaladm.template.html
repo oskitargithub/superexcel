@@ -4,33 +4,14 @@
 </ol>
 <h1 class="page-title">Estructura <span class="fw-semi-bold">Organizacional</span></h1>
 
-
 <accordion [closeOthers]="true" class="mb-lg show" id="accordion">
     <accordion-group isOpen="true">
         <div accordion-heading>
-            Collapsible Group Item
+            Distribución de la plantilla por sexo
             <i class="fa fa-angle-down float-xs-right"></i>
         </div>
         <div>
-          Get base styles and flexible support for collapsible components like accordions and navigation.
-          Using the collapse plugin, we built a simple accordion by extending the panel component.
-        </div>
-      </accordion-group>
-      <accordion-group>
-        <div accordion-heading>
-            Collapsible Group Item 2
-            <i class="fa fa-angle-down float-xs-right"></i>
-        </div>
-        <div>
-          Get base styles and flexible support for collapsible components like accordions and navigation.
-          Using the collapse plugin, we built a simple accordion by extending the panel component.
-        </div>
-      </accordion-group>
-</accordion>
-
-
-
-<div class="col-lg-12">
+          <div class="col-lg-12">
     <section class="widget" widget>
         <div class="widget-body">
 
@@ -41,11 +22,11 @@
                         <table class="table table-bordered table-sm">
                             <thead>
                                 <tr>
-                                    <th>Personas Empleadas Total </th>
-                                    <th> Mujeres </th>
-                                    <th>%Mujeres </th>
+                                    <th>Personas Empleadas Total</th>
+                                    <th>Mujeres </th>
+                                    <th>% Mujeres </th>
                                     <th>Hombres </th>
-                                    <th>%Hombres </th>
+                                    <th>% Hombres </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,7 +47,7 @@
                             </h5>
                         </header>
                         <div class="widget-body">
-                            <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" height="60px"></canvas>
+                            <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" height="100px"></canvas>
                         </div>
                     </section>
                 </div>
@@ -74,12 +55,15 @@
         </div>
     </section>
 </div>
-
-
-
-
-
-<div class="col-lg-12">
+        </div>
+      </accordion-group>
+      <accordion-group>
+        <div accordion-heading>
+            Distribución de la plantilla por Departamentos Servicios y/o Unidades Funcionales
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+          <div class="col-lg-12">
     <section class="widget" widget>
         <div class="widget-body">
 
@@ -114,9 +98,9 @@
                                     <td class="text-md-center">{{item.hombres}}</td>
                                     <td class="text-md-center">{{getHombresDelTotal(item, clasprofesional1.preg_3_tabla_3) | percent:'1.0-0'}}</td>
                                     <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_3_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_3_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_3_tabla_3) + getHombresAbs(item, clasprofesional1.preg_3_tabla_3)}}
+                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_3_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_3_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{(getMujeresAbs(item, clasprofesional1.preg_3_tabla_3) + getHombresAbs(item, clasprofesional1.preg_3_tabla_3))| number : '1.2-2'}}
                                     </td>
                                     <td class="text-md-center">{{getPorcMujeresAbs(item,clasprofesional1.preg_3_tabla_3) | percent:'1.0-0' }}</td>
                                     <td class="text-md-center">{{getPorcHombresAbs(item,clasprofesional1.preg_3_tabla_3) | percent:'1.0-0' }}</td>
@@ -153,15 +137,18 @@
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
     </section>
 </div>
-
-<!-- Puestos de Jefatura -->
+        </div>
+      </accordion-group>
+      <accordion-group>
+        <div accordion-heading>
+            Puestos de Jefatura (Jefaturas de Departamento)
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+          <!-- Puestos de Jefatura -->
 <div class="col-lg-12">
     <section class="widget" widget>
         <div class="widget-body">
@@ -196,9 +183,9 @@
                                     <td class="text-md-center">{{item.hombres}}</td>
                                     <td class="text-md-center">{{getHombresDelTotal(item, clasprofesional1.preg_5_tabla_3) | percent:'1.0-0'}}</td>
                                     <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_5_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_5_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_5_tabla_3) + getHombresAbs(item, clasprofesional1.preg_5_tabla_3)}}
+                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_5_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_5_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{(getMujeresAbs(item, clasprofesional1.preg_5_tabla_3) + getHombresAbs(item, clasprofesional1.preg_5_tabla_3))| number : '1.2-2'}}
                                     </td>
                                    <td class="text-md-center">{{getPorcMujeresAbs(item,clasprofesional1.preg_5_tabla_3) | percent:'1.0-0' }}</td>
                                     <td class="text-md-center">{{getPorcHombresAbs(item,clasprofesional1.preg_5_tabla_3) | percent:'1.0-0' }}</td>
@@ -242,9 +229,15 @@
     </section>
 </div>
 <!-- Fin Puestos de Jefatura -->
-
-
-<!-- Puestos de Coordinación / Supervisión -->
+        </div>
+      </accordion-group>
+      <accordion-group>
+        <div accordion-heading>
+            Puestos de Coordinación / Supervisión
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+          <!-- Puestos de Coordinación / Supervisión -->
 <div class="col-lg-12">
     <section class="widget" widget>
         <div class="widget-body">
@@ -279,9 +272,9 @@
                                     <td class="text-md-center">{{item.hombres}}</td>
                                     <td class="text-md-center">{{getHombresDelTotal(item, clasprofesional1.preg_6_tabla_3) | percent:'1.0-0'}}</td>
                                     <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_6_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_6_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_6_tabla_3) + getHombresAbs(item, clasprofesional1.preg_6_tabla_3)}}
+                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_6_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_6_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{(getMujeresAbs(item, clasprofesional1.preg_6_tabla_3) + getHombresAbs(item, clasprofesional1.preg_6_tabla_3))| number : '1.2-2'}}
                                     </td>
                                     <td class="text-md-center">{{getPorcMujeresAbs(item,clasprofesional1.preg_6_tabla_3) | percent:'1.0-0' }}</td>
                                     <td class="text-md-center">{{getPorcHombresAbs(item,clasprofesional1.preg_6_tabla_3) | percent:'1.0-0' }}</td>
@@ -325,10 +318,15 @@
     </section>
 </div>
 <!-- Fin Puestos de Coordinación / Supervisión -->
-
-
-
-<!-- Órganos Rectores -->
+        </div>
+      </accordion-group>
+      <accordion-group>
+        <div accordion-heading>
+            Órganos Rectores
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+          <!-- Órganos Rectores -->
 <div class="col-lg-12">
     <section class="widget" widget>
         <div class="widget-body">
@@ -363,9 +361,9 @@
                                     <td class="text-md-center">{{item.hombres}}</td>
                                     <td class="text-md-center">{{getHombresDelTotal(item, clasprofesional1.preg_7_tabla_3) | percent:'1.0-0'}}</td>
                                     <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_7_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_7_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_7_tabla_3) + getHombresAbs(item, clasprofesional1.preg_7_tabla_3)}}
+                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_7_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_7_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{(getMujeresAbs(item, clasprofesional1.preg_7_tabla_3) + getHombresAbs(item, clasprofesional1.preg_7_tabla_3))| number : '1.2-2'}}
                                     </td>
                                     <td class="text-md-center">{{getPorcMujeresAbs(item,clasprofesional1.preg_7_tabla_3) | percent:'1.0-0' }}</td>
                                     <td class="text-md-center">{{getPorcHombresAbs(item,clasprofesional1.preg_7_tabla_3) | percent:'1.0-0' }}</td>
@@ -409,11 +407,15 @@
     </section>
 </div>
 <!-- Fin Órganos Rectores -->
-
-
-
-
-<!-- Órganos Asesores -->
+        </div>
+      </accordion-group>
+      <accordion-group>
+        <div accordion-heading>
+            Órganos Asesores
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+          <!-- Órganos Asesores -->
 <div class="col-lg-12">
     <section class="widget" widget>
         <div class="widget-body">
@@ -448,9 +450,9 @@
                                     <td class="text-md-center">{{item.hombres}}</td>
                                     <td class="text-md-center">{{getHombresDelTotal(item, clasprofesional1.preg_8_tabla_3) | percent:'1.0-0'}}</td>
                                     <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_8_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_8_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_8_tabla_3) + getHombresAbs(item, clasprofesional1.preg_8_tabla_3)}}
+                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_8_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_8_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{(getMujeresAbs(item, clasprofesional1.preg_8_tabla_3) + getHombresAbs(item, clasprofesional1.preg_8_tabla_3))| number : '1.2-2'}}
                                     </td>
                                     <td class="text-md-center">{{getPorcMujeresAbs(item,clasprofesional1.preg_8_tabla_3) | percent:'1.0-0' }}</td>
                                     <td class="text-md-center">{{getPorcHombresAbs(item,clasprofesional1.preg_8_tabla_3) | percent:'1.0-0' }}</td>
@@ -494,10 +496,15 @@
     </section>
 </div>
 <!-- Fin Órganos Asesores -->
-
-
-
-<!-- Grupos Profesionales Técnico -->
+        </div>
+      </accordion-group>
+      <accordion-group>
+        <div accordion-heading>
+            Grupos Profesionales Técnico
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+          <!-- Grupos Profesionales Técnico -->
 <div class="col-lg-12">
     <section class="widget" widget>
         <div class="widget-body">
@@ -532,9 +539,9 @@
                                     <td class="text-md-center">{{item.hombres}}</td>
                                     <td class="text-md-center">{{getHombresDelTotal(item, clasprofesional1.preg_9_tabla_3) | percent:'1.0-0'}}</td>
                                     <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_9_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_9_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_9_tabla_3) + getHombresAbs(item, clasprofesional1.preg_9_tabla_3)}}
+                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_9_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_9_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{(getMujeresAbs(item, clasprofesional1.preg_9_tabla_3) + getHombresAbs(item, clasprofesional1.preg_9_tabla_3))| number : '1.2-2'}}
                                     </td>
                                     <td class="text-md-center">{{getPorcMujeresAbs(item,clasprofesional1.preg_9_tabla_3) | percent:'1.0-0' }}</td>
                                     <td class="text-md-center">{{getPorcHombresAbs(item,clasprofesional1.preg_9_tabla_3) | percent:'1.0-0' }}</td>
@@ -578,10 +585,15 @@
     </section>
 </div>
 <!-- Fin Grupos Profesionales Técnico -->
-
-
-
-<!-- Grupos profesionales Administrativos -->
+        </div>
+      </accordion-group>
+      <accordion-group>
+        <div accordion-heading>
+            Grupos profesionales Administrativos
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+          <!-- Grupos profesionales Administrativos -->
 <div class="col-lg-12">
     <section class="widget" widget>
         <div class="widget-body">
@@ -616,9 +628,9 @@
                                     <td class="text-md-center">{{item.hombres}}</td>
                                     <td class="text-md-center">{{getHombresDelTotal(item, clasprofesional1.preg_10_tabla_3) | percent:'1.0-0'}}</td>
                                     <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_10_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_10_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_10_tabla_3) + getHombresAbs(item, clasprofesional1.preg_10_tabla_3)}}
+                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_10_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_10_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{(getMujeresAbs(item, clasprofesional1.preg_10_tabla_3) + getHombresAbs(item, clasprofesional1.preg_10_tabla_3))| number : '1.2-2'}}
                                     </td>
                                     <td class="text-md-center">{{getPorcMujeresAbs(item,clasprofesional1.preg_10_tabla_3) | percent:'1.0-0' }}</td>
                                     <td class="text-md-center">{{getPorcHombresAbs(item,clasprofesional1.preg_10_tabla_3) | percent:'1.0-0' }}</td>
@@ -662,10 +674,15 @@
     </section>
 </div>
 <!-- Fin Grupos profesionales Administrativos -->
-
-
-
-<!-- Grupos profesionales no cualificados -->
+        </div>
+      </accordion-group>
+      <accordion-group>
+        <div accordion-heading>
+            Grupos profesionales no cualificados
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+          <!-- Grupos profesionales no cualificados -->
 <div class="col-lg-12">
     <section class="widget" widget>
         <div class="widget-body">
@@ -700,9 +717,9 @@
                                     <td class="text-md-center">{{item.hombres}}</td>
                                     <td class="text-md-center">{{getHombresDelTotal(item, clasprofesional1.preg_11_tabla_3) | percent:'1.0-0'}}</td>
                                     <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_11_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_11_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_11_tabla_3) + getHombresAbs(item, clasprofesional1.preg_11_tabla_3)}}
+                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_11_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_11_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{(getMujeresAbs(item, clasprofesional1.preg_11_tabla_3) + getHombresAbs(item, clasprofesional1.preg_11_tabla_3))| number : '1.2-2'}}
                                     </td>
                                     <td class="text-md-center">{{getPorcMujeresAbs(item,clasprofesional1.preg_11_tabla_3) | percent:'1.0-0' }}</td>
                                     <td class="text-md-center">{{getPorcHombresAbs(item,clasprofesional1.preg_11_tabla_3) | percent:'1.0-0' }}</td>
@@ -746,10 +763,15 @@
     </section>
 </div>
 <!-- Fin Grupos profesionales no cualificados -->
-
-
-
-<!-- Grupos Cuerpos y fuerzas de seguridad -->
+        </div>
+      </accordion-group>
+      <accordion-group>
+        <div accordion-heading>
+            Cuerpos y fuerzas de seguridad
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+          <!-- Grupos Cuerpos y fuerzas de seguridad -->
 <div class="col-lg-12">
     <section class="widget" widget>
         <div class="widget-body">
@@ -784,9 +806,9 @@
                                     <td class="text-md-center">{{item.hombres}}</td>
                                     <td class="text-md-center">{{getHombresDelTotal(item, clasprofesional1.preg_12_tabla_3) | percent:'1.0-0'}}</td>
                                     <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_12_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_12_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_12_tabla_3) + getHombresAbs(item, clasprofesional1.preg_12_tabla_3)}}
+                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_12_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_12_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{(getMujeresAbs(item, clasprofesional1.preg_12_tabla_3) + getHombresAbs(item, clasprofesional1.preg_12_tabla_3))}}
                                     </td>
                                     <td class="text-md-center">{{getPorcMujeresAbs(item,clasprofesional1.preg_12_tabla_3) | percent:'1.0-0' }}</td>
                                     <td class="text-md-center">{{getPorcHombresAbs(item,clasprofesional1.preg_12_tabla_3) | percent:'1.0-0' }}</td>
@@ -830,10 +852,15 @@
     </section>
 </div>
 <!-- Fin Cuerpos y fuerzas de seguridad -->
-
-
-
-<!-- Grupos Distribución Categoría Agente de Policía -->
+        </div>
+      </accordion-group>
+      <accordion-group>
+        <div accordion-heading>
+            Distribución Categoría Agente de Policía
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+          <!-- Grupos Distribución Categoría Agente de Policía -->
 <div class="col-lg-12">
     <section class="widget" widget>
         <div class="widget-body">
@@ -868,9 +895,9 @@
                                     <td class="text-md-center">{{item.hombres}}</td>
                                     <td class="text-md-center">{{getHombresDelTotal(item, clasprofesional1.preg_13_tabla_3) | percent:'1.0-0'}}</td>
                                     <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_13_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_13_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_13_tabla_3) + getHombresAbs(item, clasprofesional1.preg_13_tabla_3)}}
+                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_13_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_13_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{(getMujeresAbs(item, clasprofesional1.preg_13_tabla_3) + getHombresAbs(item, clasprofesional1.preg_13_tabla_3))| number : '1.2-2'}}
                                     </td>
                                     <td class="text-md-center">{{getPorcMujeresAbs(item,clasprofesional1.preg_13_tabla_3) | percent:'1.0-0' }}</td>
                                     <td class="text-md-center">{{getPorcHombresAbs(item,clasprofesional1.preg_13_tabla_3) | percent:'1.0-0' }}</td>
@@ -914,10 +941,15 @@
     </section>
 </div>
 <!-- Fin Distribución Categoría Agente de Policía -->
-
-
-
-<!-- PLANTILLA POR EDADES -->
+        </div>
+      </accordion-group>
+      <accordion-group>
+        <div accordion-heading>
+            PLANTILLA POR EDADES
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+          <!-- PLANTILLA POR EDADES -->
 <div class="col-lg-12">
     <section class="widget" widget>
         <div class="widget-body">
@@ -952,9 +984,9 @@
                                     <td class="text-md-center">{{item.hombres}}</td>
                                     <td class="text-md-center">{{getHombresDelTotal(item, clasprofesional1.preg_4_tabla_3) | percent:'1.0-0'}}</td>
                                     <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_4_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_4_tabla_3)}}</td>
-                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_4_tabla_3) + getHombresAbs(item, clasprofesional1.preg_4_tabla_3)}}
+                                    <td class="text-md-center">{{getMujeresAbs(item, clasprofesional1.preg_4_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{getHombresAbs(item, clasprofesional1.preg_4_tabla_3)| number : '1.2-2'}}</td>
+                                    <td class="text-md-center">{{(getMujeresAbs(item, clasprofesional1.preg_4_tabla_3) + getHombresAbs(item, clasprofesional1.preg_4_tabla_3))| number : '1.2-2'}}
                                     </td>
                                     <td class="text-md-center">{{getPorcMujeresAbs(item,clasprofesional1.preg_4_tabla_3) | percent:'1.0-0' }}</td>
                                     <td class="text-md-center">{{getPorcHombresAbs(item,clasprofesional1.preg_4_tabla_3) | percent:'1.0-0' }}</td>
@@ -1008,3 +1040,6 @@
     </section>
 </div>
 <!-- Fin PLANTILLA POR EDADES -->
+        </div>
+      </accordion-group>
+</accordion>
