@@ -130,8 +130,7 @@ $app->post("/dimePerfil", function($request, $response, $args) use($db, $app) {
         $json = $request->getParam("json");//$request->post("json");
 		$data = json_decode($json, true);
 		$perfil = $data["permisos"];
-		$token = $data["fditoken"];
-		$mitipocuest = 0; //estoy en adm
+		$token = $data["fditoken"];		
         if(!isset($data["usuario"])){
             $result = array(
 				"status" => "error",
@@ -145,8 +144,8 @@ $app->post("/dimePerfil", function($request, $response, $args) use($db, $app) {
 		$usuario = $db->query($query);
 		if ($usuario->num_rows == 1) {
             $asoc = $usuario->fetch_assoc();
-			if($asoc["perfil"] == $perfil){				
-				if($mitipocuest != 0)
+			if($asoc["perfil"] == $perfil){								
+				if($perfil != "ADM")
 					$result = array("success" => true, "tipocuest"=>1);
 				else
 					$result = array("success" => true);

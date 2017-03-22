@@ -1,0 +1,554 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Tipo de Contrato</li>
+</ol>
+<h1 class="page-title">Tipo de <span class="fw-semi-bold">Contrato</span></h1>
+
+<accordion [closeOthers]="true" class="mb-lg show" id="accordion">
+    <accordion-group isOpen="true">
+        <div accordion-heading>
+            Tipo de relación contractual
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <fieldset>
+                                    <legend><strong>Tipo de relación contractual</strong></legend>
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Tipo de relación</th>
+                                                <th class="text-md-center">Mujeres</th>
+                                                <th class="text-md-center">% Mujeres</th>
+                                                <th class="text-md-center">Hombres</th>
+                                                <th class="text-md-center">% Hombres</th>
+                                                <th class="text-md-center">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of modelo.preg_14_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.denominacion}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{getMujeresDelTotal(item, modelo.preg_14_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{getHombresDelTotal(item, modelo.preg_14_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-md-right" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">{{getTotalMujeres(modelo.preg_14_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{getSumaMujeresDelTotal(modelo.preg_14_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">{{getTotalHombres(modelo.preg_14_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{getSumaHombresDelTotal(modelo.preg_14_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">{{getTotalHombresMujeres(modelo.preg_14_tabla_3)}}</th>                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-5 offset-md-1">
+                                <section class="widget" widget>
+                                    <header>
+                                        <h5>
+                                            Tipo de relación contractual
+                                        </h5>
+                                    </header>
+                                    <div class="widget-body">
+                                        <canvas baseChart [datasets]="barChartData1" [labels]="barChartLabels1" [chartType]="barChartType" height="120px"></canvas>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+    <accordion-group>
+        <div accordion-heading>
+            Personas contratadas a término definido / eventuales
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Personas contratadas a término definido / eventuales</strong>
+                                    </legend>
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Tipo de contrato</th>
+                                                <th class="text-md-center">Mujeres</th>
+                                                <th class="text-md-center">% Mujeres</th>
+                                                <th class="text-md-center">Hombres</th>
+                                                <th class="text-md-center">% Hombres</th>
+                                                <th class="text-md-center">Total Empleados</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of modelo.preg_15_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.denominacion}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{getMujeresDelTotal(item, modelo.preg_15_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{getHombresDelTotal(item, modelo.preg_15_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
+                                                <td class="text-md-center">{{getMujeresAbs(item, modelo.preg_15_tabla_3)}}</td>
+                                                <td class="text-md-center">{{getHombresAbs(item, modelo.preg_15_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(getMujeresAbs(item, modelo.preg_15_tabla_3) + getHombresAbs(item,
+                                                    modelo.preg_15_tabla_3))}}
+                                                </td>
+                                                <td class="text-md-center">{{getPorcMujeresAbs(item,modelo.preg_15_tabla_3) | percent:'1.0-0'
+                                                    }}</td>
+                                                <td class="text-md-center">{{getPorcHombresAbs(item,modelo.preg_15_tabla_3) | percent:'1.0-0'
+                                                    }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{getTotalMujeres(modelo.preg_15_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{getTotalHombres(modelo.preg_15_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{getTotalHombresMujeres(modelo.preg_15_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row" colspan="5"></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Tipo de contrato temporal  de la plantilla personas contratadas a término definido</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <canvas baseChart [datasets]="barChartData2" [labels]="barChartLabels2" [chartType]="barChartType" height="120px"></canvas>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+    
+    <accordion-group>
+        <div accordion-heading>
+           Organización del tiempo de trabajo
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+             <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Organización del tiempo de trabajo</strong>
+                                    </legend>
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Tipo de jornada</th>
+                                                <th class="text-md-center">Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>                                                
+                                                <th class="text-md-center">Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of modelo.preg_16_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.denominacion}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{getMujeresDeFila(item, modelo.preg_16_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{getMujeresAbs(item, modelo.preg_16_tabla_3)}}</td>
+                                                 <td class="text-md-center">{{getPorcMujeresAbs(item,modelo.preg_16_tabla_3) | percent:'1.0-0'}}</td>
+
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{getHombresDeFila(item, modelo.preg_16_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{getHombresAbs(item, modelo.preg_16_tabla_3)}}</td>
+                                                <td class="text-md-center">{{getPorcHombresAbs(item,modelo.preg_16_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{(getTotalAbs(item, modelo.preg_16_tabla_3))}}
+                                                </td>
+                                               
+                                                
+                                            </tr>
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">{{getTotalMujeres(modelo.preg_16_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{getSumaMujeresDelTotal(modelo.preg_16_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{getTotalHombres(modelo.preg_16_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{getSumaHombresDelTotal(modelo.preg_16_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{getTotalHombresMujeres(modelo.preg_16_tabla_3)}}</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Comparativa según el tipo de jornada</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <canvas baseChart [datasets]="barChartData3" [labels]="barChartLabels3" [chartType]="barChartType" height="120px"></canvas>
+                                </div>
+                            </div>                            
+                       
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Comparativa por tipo de contrato según tipo de Jornada (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                   <canvas baseChart [datasets]="barChartData4" [labels]="barChartLabels4" [chartType]="barChartType" height="120px"></canvas>
+                                </div>
+                            </div>                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Tipo de contrato según tipo de Jornada Mujeres</h5>
+                                </header>
+                                <div class="widget-body">
+                                     <canvas baseChart [datasets]="lineChartData1" [labels]="lineChartLabels1" [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Tipo de contrato según tipo de Jornada Hombres</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <canvas baseChart [datasets]="lineChartData2" [labels]="lineChartLabels2" [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+    <accordion-group>
+        <div accordion-heading>
+           Análisis de la antigüedad
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+              <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Análisis de la antigüedad</strong>
+                                    </legend>
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Años de antigüedad</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>                                                
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of modelo.preg_17_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.denominacion}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{getMujeresDeFila(item, modelo.preg_17_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{getMujeresAbs(item, modelo.preg_17_tabla_3)}}</td>
+                                                 <td class="text-md-center">{{getPorcMujeresAbs(item,modelo.preg_17_tabla_3) | percent:'1.0-0'}}</td>
+
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{getHombresDeFila(item, modelo.preg_17_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{getHombresAbs(item, modelo.preg_17_tabla_3)}}</td>
+                                                <td class="text-md-center">{{getPorcHombresAbs(item,modelo.preg_17_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{(getTotalAbs(item, modelo.preg_17_tabla_3))}}</td>
+                                               
+                                                
+                                            </tr>
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">{{getTotalMujeres(modelo.preg_17_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{getSumaMujeresDelTotal(modelo.preg_17_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{getTotalHombres(modelo.preg_17_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{getSumaHombresDelTotal(modelo.preg_17_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{getTotalHombresMujeres(modelo.preg_17_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Distribución de la plantilla por antigüedad Comparativa hombres y mujeres</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <canvas baseChart [datasets]="barChartData5" [labels]="barChartLabels5" [chartType]="barChartType" height="120px"></canvas>
+                                </div>
+                            </div>                            
+                       
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Distribución de la plantilla por antigüedad Comparativa hombres y mujeres (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                   <canvas baseChart [datasets]="barChartData6" [labels]="barChartLabels6" [chartType]="barChartType" height="120px"></canvas>
+                                </div>
+                            </div>                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Comparativo de Antigüedad -  Mujeres</h5>
+                                </header>
+                                <div class="widget-body">
+                                     <canvas baseChart [datasets]="lineChartData3" [labels]="lineChartLabels3" [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Comparativo de Antigüedad - Hombres</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <canvas baseChart [datasets]="lineChartData4" [labels]="lineChartLabels4" [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+    <accordion-group>
+        <div accordion-heading>
+           Horas Dedicadas al trabajo	
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+             <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Horas Dedicadas al trabajo	</strong>
+                                    </legend>
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Horas dedicadas</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>                                                
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of modelo.preg_18_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.denominacion}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{getMujeresDeFila(item, modelo.preg_18_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{getMujeresAbs(item, modelo.preg_18_tabla_3)}}</td>
+                                                 <td class="text-md-center">{{getPorcMujeresAbs(item,modelo.preg_18_tabla_3) | percent:'1.0-0'}}</td>
+
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{getHombresDeFila(item, modelo.preg_18_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{getHombresAbs(item, modelo.preg_18_tabla_3)}}</td>
+                                                <td class="text-md-center">{{getPorcHombresAbs(item,modelo.preg_18_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{(getTotalAbs(item, modelo.preg_18_tabla_3))}}
+                                                </td>
+                                               
+                                                
+                                            </tr>
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">{{getTotalMujeres(modelo.preg_18_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{getSumaMujeresDelTotal(modelo.preg_18_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{getTotalHombres(modelo.preg_18_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{getSumaHombresDelTotal(modelo.preg_18_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{getTotalHombresMujeres(modelo.preg_18_tabla_3)}}</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Comparativo Jornada laboral</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <canvas baseChart [datasets]="barChartData7" [labels]="barChartLabels7" [chartType]="barChartType" height="120px"></canvas>
+                                </div>
+                            </div>                            
+                       
+                                                
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Horas dedicadas al Trabajo - Mujeres</h5>
+                                </header>
+                                <div class="widget-body">
+                                     <canvas baseChart [data]="doughnutChartData1" [labels]="doughnutChartLabels1" [chartType]="doughnutChartType" height="60px"></canvas>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Horas dedicadas al Trabajo - Hombres</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <canvas baseChart [data]="doughnutChartData2" [labels]="doughnutChartLabels2" [chartType]="doughnutChartType" height="60px"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+    <accordion-group>
+        <div accordion-heading>
+           Turnos
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+              <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Turnos	</strong>
+                                    </legend>
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Horas dedicadas</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>                                                
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of modelo.preg_19_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.denominacion}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{getMujeresDeFila(item, modelo.preg_19_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{getMujeresAbs(item, modelo.preg_19_tabla_3)}}</td>
+                                                 <td class="text-md-center">{{getPorcMujeresAbs(item,modelo.preg_19_tabla_3) | percent:'1.0-0'}}</td>
+
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{getHombresDeFila(item, modelo.preg_19_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{getHombresAbs(item, modelo.preg_19_tabla_3)}}</td>
+                                                <td class="text-md-center">{{getPorcHombresAbs(item,modelo.preg_19_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{(getTotalAbs(item, modelo.preg_19_tabla_3))}}
+                                                </td>
+                                               
+                                                
+                                            </tr>
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">{{getTotalMujeres(modelo.preg_19_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{getSumaMujeresDelTotal(modelo.preg_19_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{getTotalHombres(modelo.preg_19_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{getSumaHombresDelTotal(modelo.preg_19_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{getTotalHombresMujeres(modelo.preg_19_tabla_3)}}</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Comparativo por número de turnos</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <canvas baseChart [datasets]="barChartData9" [labels]="barChartLabels9" [chartType]="barChartType" height="120px"></canvas>
+                                </div>
+                            </div>                            
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Comparativo por número de turnos (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <canvas baseChart [datasets]="barChartData10" [labels]="barChartLabels10" [chartType]="barChartType" height="120px"></canvas>
+                                </div>
+                            </div>     
+                                                
+                        </div>                        
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+</accordion>

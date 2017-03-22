@@ -303,14 +303,14 @@ export class ClasProfesionalAdmComponent implements OnInit {
   getMujeresAbs(elemento: Tabla3Model, tabla: Tabla3Model[]) {
     let salida = ((elemento.mujeres * 1) * this.getTotalHombresMujeres(tabla)) / this.getTotalMujeres(tabla);
     if (!isNaN(salida))
-      return salida;
+      return Math.round(salida);
     else
       return 0;
   }
   getHombresAbs(elemento: Tabla3Model, tabla: Tabla3Model[]) {
     let salida = ((elemento.hombres * 1) * this.getTotalHombresMujeres(tabla)) / this.getTotalHombres(tabla);
     if (!isNaN(salida))
-      return salida;
+      return Math.round(salida);
     else
       return 0;
   }

@@ -8,10 +8,14 @@ export class ClasProfesional2Model{
     public preg_17_tabla_3: Tabla3Model[];
     public preg_18_tabla_3: Tabla3Model[];
     public preg_19_tabla_3: Tabla3Model[];
+    constructor(){
+        this.id=0,
+        this.user_id = 0
+    }
 }
 
 export class Tabla3Model{
         denominacion: string = '';
-        mujeres: string = '';
-        hombres: string = '';
+        mujeres: any = '';
+        hombres: any = '';
 }

@@ -14,6 +14,7 @@
         <i class="toggle fa fa-angle-down"></i>
       </a>
       <ul id="sidebar-dashboard" class="collapse">
+        <li>tipocuest {{authService.tipocuest}}</li>
         <li><a [routerLink]=" ['dashboard'] ">Dashboard</a></li>
         <li><a [routerLink]=" ['widgets'] ">Widgets</a></li>
         <li><a [routerLink]=" ['introduccion'] ">Introducción</a></li>
@@ -51,7 +52,7 @@
         <!-- rutas y enlaces para amin cuestionarios tipo=1 que son de empresa pública -->  
           <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['infoencuestapb'] ">Inicio</a></li>      
           <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['clasificacionprofesionaladm'] ">1 Clasificación Profesional</a></li>
-          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Tipo de Contrato</a></li>
+          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['tipodecontratoadm'] ">Tipo de Contrato</a></li>
           <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Estructura Salarial</a></li>
           <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Bajas e Incorporaciones</a></li>
           <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Conciliacion Familiar</a></li>
