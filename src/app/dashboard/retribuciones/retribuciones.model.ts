@@ -8,17 +8,37 @@ export class RetribucionesModel{
     public preg_53_tabla_6: Tabla6Model[];
     public preg_54_tabla_6: Tabla6Model[];
     public preg_55_tabla_6: Tabla6Model[];
+    public preg_56_tabla_6: Tabla6Model[];
+
+
+    public preg_60_tabla_5: Tabla6Model[];
+    public preg_61_tabla_5: Tabla6Model[];
+    public preg_62_tabla_5: Tabla6Model[];
+    public preg_63_tabla_5: Tabla6Model[];
+    public preg_64_tabla_5: Tabla6Model[];
+    public preg_65_tabla_5: Tabla6Model[];
+    public preg_66_tabla_5: Tabla6Model[];
+    public preg_67_tabla_5: Tabla6Model[];
+    public preg_68_tabla_5: Tabla6Model[];
+
+
     constructor(){
         this.id=0,
         this.user_id = 0
     }
 }
-
+export class Tabla5Model{
+        denominacion: string = '';
+        mujeres1: any = '';
+        hombres1: any = '';        
+        mujeres2: any = '';
+        hombres2: any = '';
+}
 export class Tabla6Model{
         denominacion1: string = '';
-        mujeres1: any = '';
-        hombres1: any = '';
         denominacion2: string = '';
+        mujeres1: any = '';
+        hombres1: any = '';        
         mujeres2: any = '';
         hombres2: any = '';
 }
