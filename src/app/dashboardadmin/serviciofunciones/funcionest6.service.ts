@@ -7,6 +7,21 @@ export class FuncionesT6Service {
     constructor() {
         /** Vacío */
     }
+    getSumaFila1(elemento: Tabla6Model) {
+        let salida = (elemento.hombres1 * 1) + (elemento.mujeres1 * 1);
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+    getSumaFila2(elemento: Tabla6Model) {
+        let salida = (elemento.hombres2 * 1) + (elemento.mujeres2 * 1);
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+    
     getTotalHombresMujeres1(elemento: Tabla6Model[]) {
         let totalm = elemento.map(c => c.mujeres1).reduce((sum, current) => (sum * 1) + (current * 1));
         let totalh = elemento.map(c => c.hombres1).reduce((sum, current) => (sum * 1) + (current * 1));
