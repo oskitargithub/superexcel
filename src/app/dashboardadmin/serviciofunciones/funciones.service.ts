@@ -200,12 +200,16 @@ export class FuncionesService {
             data2m.push(Math.round(mujeres2 * 100));
             data2h.push(Math.round(hombres2 * 100));
             label1.push(elemento.denominacion);
-            label2.push(elemento.denominacion);
+            if(label2!=null){
+                label2.push(elemento.denominacion);
+            }
         });
         grafica1.push({ data: datam, label: "Mujeres %" });
         grafica1.push({ data: datah, label: "Hombres %" });
-        grafica2.push({ data: data2m, label: "Mujeres %" });
-        grafica2.push({ data: data2h, label: "Hombres %" });
+        if(grafica2 != null){
+            grafica2.push({ data: data2m, label: "Mujeres %" });
+            grafica2.push({ data: data2h, label: "Hombres %" });
+        }
     }
 
     asignaPorcentajesGrafLineal(tabla: Tabla3Model[], grafica1: any, label1: any, grafica2: any, label2: any) {

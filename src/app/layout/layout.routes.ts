@@ -32,6 +32,7 @@ const routes: Routes = [
     { path: 'clasificacionprofesionaladm', loadChildren: '../dashboardadmin/clasprofesionaladm/clasprofesionaladm.module#ClasProfesionalAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'tipodecontratoadm', loadChildren: '../dashboardadmin/tipodecontratoadm/tipodecontratoadm.module#TipoDeContratoAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'retribucionesadm', loadChildren: '../dashboardadmin/retribucionesadm/retribucionesadm.module#RetribucionesAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'retribucionesadm2', loadChildren: '../dashboardadmin/retribucionesadm2/retribucionesadm2.module#RetribucionesAdm2Module', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
   ]},
   { path: 'login', loadChildren: '../login/login.module#LoginModule'}
 ];

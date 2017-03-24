@@ -87,6 +87,7 @@ export class RetribucionesAdmService {
             "preg_66_tabla_5": [],
             "preg_67_tabla_5": [],
             "preg_68_tabla_5": [],
+            "preg_69_tabla_5": []
         }
         return Observable.of(respuesta);
     }
