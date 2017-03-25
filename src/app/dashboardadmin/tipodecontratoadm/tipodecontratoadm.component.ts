@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
-import { __platform_browser_private__ } from '@angular/platform-browser';
+
 
 import { TipoDeContratoAdmService } from './tipodecontratoadm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';

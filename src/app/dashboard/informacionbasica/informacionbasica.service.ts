@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 
 import {InformacionBasicaModel} from './informacionbasica.model';
 
-
+import {DatePipe} from "@angular/common";
 import { AppConfig } from '../../app.config';
 
 
@@ -22,8 +22,16 @@ export class InformacionBasicaService{
 		let headers = '';
         return this._http.get(this.config.apilaravel + "cuestionario/seccion/2").map(res =>{
             let headers = res.headers;
-            console.log(headers);
-            return(res.json());
+            let miobjeto = res.json();
+
+            let fechacrea = miobjeto.user.created_at;
+            var datePipe = new DatePipe("es");
+            if (fechacrea.length>1){
+                miobjeto.user.created_at = datePipe.transform(fechacrea, 'yyyy-MM-dd');
+                console.log("ea");
+            }
+            console.log(res.json().user.created_at);
+            return(miobjeto);
         });
         /*return this._http.post(this.config.api + "informacionbasica.php/getinformacionbasica", 
 				params, {headers: headers}).map(res => res.json());*/

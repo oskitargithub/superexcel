@@ -7,8 +7,12 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InformacionBasicaModel, CentroActividad, datosUserModel, dataModel } from './informacionbasica.model';
 import { InformacionBasicaService } from "./informacionbasica.service";
 
+
+import * as moment from 'moment';
+
 declare var jQuery: any;
 declare var Messenger: any;
+
 
 @Component({
     selector: 'informacionbasica',
@@ -38,6 +42,8 @@ export class InformacionBasicaComponent implements OnInit {
     public dynamic: number;
     public type: string;
 
+    public midatePickeropt: any;
+
     constructor(
         private fb: FormBuilder,
         private informacionbasicaservice: InformacionBasicaService,
@@ -48,8 +54,9 @@ export class InformacionBasicaComponent implements OnInit {
         this.totalSeccion = 0;
         this.createForm();
         this.getInformacionBasica();
+        this.midatePickeropt =new Date();
+        console.log(this.midatePickeropt);
     }
-
 
     valorBarraProgreso() {
         this.respondidasSeccion = 18;
@@ -130,6 +137,7 @@ export class InformacionBasicaComponent implements OnInit {
 
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
+        moment.locale('es');
     }
 
     get user(): FormArray {
@@ -171,6 +179,7 @@ export class InformacionBasicaComponent implements OnInit {
                 //this.ifForm = this.fb.group(response); 
                 this.token = response._token;
                 console.log("pillao token" + this.token);
+                console.log(response.user);
                 this.ifForm.setControl('user', this.fb.group(response.user));
                 this.ifForm.setControl('data', this.fb.group(response.data));
                 this.setCentroActividad(response.preg_2_tabla_2);

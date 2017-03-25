@@ -5,11 +5,11 @@ import { CommonModule }  from '@angular/common';
 import { FormsModule,ReactiveFormsModule  }    from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ng2-bootstrap';
-import { RetribucionesComponent } from './retribuciones.component';
+import { Retribuciones2Component } from './retribuciones2.component';
 
 
 export const routes = [
-  { path: '', component: RetribucionesComponent, pathMatch: 'full' }
+  { path: '', component: Retribuciones2Component, pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -18,8 +18,8 @@ export const routes = [
             ReactiveFormsModule, 
             TooltipModule.forRoot(),
             RouterModule.forChild(routes) ],
-  declarations: [ RetribucionesComponent ]
+  declarations: [ Retribuciones2Component ]
 })
-export class RetribucionesModule {
+export class Retribuciones2Module {
   static routes = routes;
 }

@@ -52,7 +52,7 @@ export class datosUserModel{
         public email: string;
         public num_centros: string;
         public num_comunidades:string;
-        public created_at: string;
+        public created_at: any;
         public dia: string;
         public mes: string;
         public anyo: string;

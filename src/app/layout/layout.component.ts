@@ -11,7 +11,6 @@ declare var Hammer: any;
   templateUrl: './layout.template.html',
   host: {
     '[class.nav-static]' : 'config.state["nav-static"]',
-    '[class.chat-sidebar-opened]' : 'chatOpened',
     '[class.app]' : 'true',
     id: 'app'
   }

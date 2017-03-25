@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Http, Response, Headers} from "@angular/http";
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-
+import {DatePipe} from "@angular/common";
 import {InformacionBasicaPrModel} from './informacionbasicapr.model';
 
 
@@ -23,7 +23,19 @@ export class InformacionBasicaPrService{
 		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
         
         
-        return this._http.get(this.config.apilaravel + "cuestionario/seccion/20").map(res => res.json());
+        return this._http.get(this.config.apilaravel + "cuestionario/seccion/20").map(res => {
+            let headers = res.headers;
+            let miobjeto = res.json();
+
+            let fechacrea = miobjeto.user.created_at;
+            var datePipe = new DatePipe("es");
+            if (fechacrea.length>1){
+                miobjeto.user.created_at = datePipe.transform(fechacrea, 'yyyy-MM-dd');
+                console.log("ea");
+            }
+            console.log(res.json().user.created_at);
+            return(miobjeto);
+        });
         /*return this._http.post(this.config.api + "informacionbasica.php/getinformacionbasica", 
 				params, {headers: headers}).map(res => res.json());*/
     }

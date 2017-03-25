@@ -13,7 +13,7 @@ const routes: Routes = [
     { path: 'clasificacionprofesional1', loadChildren: '../dashboard/clasprofesional1/clasprofesional1.module#ClasProfesional1Module', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'clasificacionprofesional2', loadChildren: '../dashboard/clasprofesional2/clasprofesional2.module#ClasProfesional2Module', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'retribuciones', loadChildren: '../dashboard/retribuciones/retribuciones.module#RetribucionesModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
-    
+    { path: 'retribuciones2', loadChildren: '../dashboard/retribuciones2/retribuciones2.module#Retribuciones2Module', canActivate: [AuthGuard], data:{ roles:['USER'] } },
 
 ]},
   { path: 'admin', component: Layout, children: [
