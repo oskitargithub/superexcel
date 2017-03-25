@@ -13,7 +13,9 @@ declare var Messenger: any;
 @Component({
   selector: 'retribucionesadm',
   templateUrl: './retribucionesadm.template.html',
-  styleUrls: ['retribucionesadm.style.css', '../../forms/elements/elements.style.scss', '../../ui-elements/notifications/notifications.style.scss'],
+  styleUrls: ['retribucionesadm.style.css',
+  '../../scss/elements.style.scss', 
+  '../../scss/notifications.style.scss'],
   providers: [RetribucionesAdmService, FuncionesT6Service],
   encapsulation: ViewEncapsulation.None,
 })

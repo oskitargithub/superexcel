@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
-import { __platform_browser_private__ } from '@angular/platform-browser';
+/*import { __platform_browser_private__ } from '@angular/platform-browser';*/
 
 import { RetribucionesAdm2Service } from './retribucionesadm2.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
@@ -14,7 +14,9 @@ declare var Messenger: any;
 @Component({
   selector: 'retribucionesadm2',
   templateUrl: './retribucionesadm2.template.html',
-  styleUrls: ['retribucionesadm2.style.css', '../../forms/elements/elements.style.scss', '../../ui-elements/notifications/notifications.style.scss'],
+  styleUrls: ['retribucionesadm2.style.css',
+  '../../scss/elements.style.scss', 
+  '../../scss/notifications.style.scss'],
   providers: [RetribucionesAdm2Service, FuncionesT5Service,FuncionesService],
   encapsulation: ViewEncapsulation.None,
 })

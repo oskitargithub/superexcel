@@ -19,7 +19,7 @@
           <input class="form-control form-control-sm" id="table-search-input" [(ngModel)]="searchText" type="text" placeholder="Buscar por Usuario">
         </div>
       </div>
-      <table class="table table-striped table-hover" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="10">
+      <table class="table table-hover" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="10">
         <thead>
         <tr>
           <th>
@@ -60,7 +60,7 @@
           <td class="hidden-sm-down">{{person.fecha_ini}}</td>
           <td class="hidden-sm-down">{{person.fecha_fin}}</td>
           <td>
-            <div class="bg-gray-lighter progress-bar mt-xs">
+            <div class="buttons">
               <!-- <progress class="progress progress-sm progress-{{person.status.type}}" value="100" max="100" [ngStyle]="{ 'width': person.status.progress}"></progress> -->
                <button class="btn btn-inverse btn-xs mb-xs" role="button" (click)="onSelect(person)">
                   <i class="glyphicon glyphicon-list-alt text-info"></i>

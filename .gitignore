@@ -17,7 +17,6 @@ src/app/grid
 src/app/inbox
 src/app/maps
 src/app/profile
-src/app/scss
 src/app/tables
 src/app/ui-elements
 src/app/widgets

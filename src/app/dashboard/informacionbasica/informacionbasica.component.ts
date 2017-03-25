@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
-import { __platform_browser_private__ } from '@angular/platform-browser';
+/*import { __platform_browser_private__ } from '@angular/platform-browser';*/
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
@@ -13,7 +13,9 @@ declare var Messenger: any;
 @Component({
     selector: 'informacionbasica',
     templateUrl: './informacionbasica.template.html',
-    styleUrls: ['../../forms/elements/elements.style.scss', '../../ui-elements/notifications/notifications.style.scss'],
+    styleUrls: [
+        '../../scss/elements.style.scss',
+        '../../scss/notifications.style.scss'],
     providers: [InformacionBasicaService],
     encapsulation: ViewEncapsulation.None,
 })
@@ -40,30 +42,15 @@ export class InformacionBasicaComponent implements OnInit {
         private fb: FormBuilder,
         private informacionbasicaservice: InformacionBasicaService,
         injector: Injector
-    ) {        
+    ) {
         this.dynamic = 20;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
         this.getInformacionBasica();
-
-
-        //
-        // This is a hack on angular style loader to prevent ng2-select2 from adding its styles.
-        // They are hard-coded into the component, so there are no other way to get rid of them
-        //
-        /*    this.domSharedStylesHost = injector.get(__platform_browser_private__.DomSharedStylesHost);
-            this.domSharedStylesHost.__onStylesAdded__ = this.domSharedStylesHost.onStylesAdded;
-            this.domSharedStylesHost.onStylesAdded = (additions) => {
-                const style = additions[0];
-                if (!style || !style.trim().startsWith('.select2-container')) {
-                        this.domSharedStylesHost.__onStylesAdded__(additions);
-                }
-            };
-        */
     }
 
-    
+
     valorBarraProgreso() {
         this.respondidasSeccion = 18;
         this.totalSeccion = 20;
@@ -143,11 +130,6 @@ export class InformacionBasicaComponent implements OnInit {
 
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
-
-        //jQuery('#markdown-editor').markdown();
-        //jQuery('.js-slider').slider();
-        //jQuery('#colorpicker').colorpicker(this.colorOptions);
-        //jQuery('.selectpicker').selectpicker();
     }
 
     get user(): FormArray {

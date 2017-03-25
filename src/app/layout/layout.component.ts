@@ -1,10 +1,9 @@
 import { Component, ViewEncapsulation, ElementRef } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { AppConfig } from '../app.config';
 
 declare var jQuery: any;
 declare var Hammer: any;
-declare var Raphael: any;
 
 @Component({
   selector: 'layout',
@@ -24,12 +23,10 @@ export class Layout {
   el: ElementRef;
   router: Router;
   chatOpened: boolean = false;
- 
 
   constructor(config: AppConfig,
               el: ElementRef,
               router: Router) {
-    Raphael.prototype.safari = function(): any { return; };
     this.el = el;
     this.config = config.getConfig();
     this.configFn = config;
@@ -163,7 +160,7 @@ export class Layout {
   }
 
   ngOnInit(): void {
-    
+
     if (localStorage.getItem('nav-static') === 'true') {
       this.config.state['nav-static'] = true;
     }
@@ -171,17 +168,8 @@ export class Layout {
     let $el = jQuery(this.el.nativeElement);
     this.$sidebar = $el.find('[sidebar]');
 
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        setTimeout(() => {
-          this.collapseNavIfSmallScreen();
-          window.scrollTo(0, 0);
-
-          $el.find('a[href="#"]').on('click', (e) => {
-            e.preventDefault();
-          });
-        });
-      }
+    $el.find('a[href="#"]').on('click', (e) => {
+      e.preventDefault();
     });
 
     this.$sidebar.on('mouseenter', this._sidebarMouseEnter.bind(this));

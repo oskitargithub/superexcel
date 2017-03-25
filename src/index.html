@@ -54,8 +54,7 @@
 
   <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
   <!-- Webpack Dev Server reload -->
-  <script src="http://<%= htmlWebpackPlugin.options.metadata.host %>:<%= htmlWebpackPlugin.options.metadata.port %>/webpack-dev-server.js"></script>
- <!--// <script src="/webpack-dev-server.js"></script>-->
+  <script src="/webpack-dev-server.js"></script>
   <% } %>
 
 

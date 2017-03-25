@@ -13,7 +13,9 @@ declare var Messenger: any;
 @Component({
   selector: 'tipodecontratoadm',
   templateUrl: './tipodecontratoadm.template.html',
-  styleUrls: ['tipodecontratoadm.style.css', '../../forms/elements/elements.style.scss', '../../ui-elements/notifications/notifications.style.scss'],
+  styleUrls: ['tipodecontratoadm.style.css', 
+  '../../scss/elements.style.scss', 
+  '../../scss/notifications.style.scss'],
   providers: [TipoDeContratoAdmService, FuncionesService],
   encapsulation: ViewEncapsulation.None,
 })

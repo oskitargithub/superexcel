@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
-import { __platform_browser_private__ } from '@angular/platform-browser';
 import { AppConfig } from '../app.config';
 import { Router} from '@angular/router';
 import {DashBoardAdminModel, UserAdminModel} from './dashboardadmin.model';
@@ -47,15 +46,6 @@ export class DashboardAdmin implements OnInit {
   {
       this.config = config.getConfig();   
       this.creaFormUsuario(); 
-
-    /**  this.domSharedStylesHost = injector.get(__platform_browser_private__.DomSharedStylesHost);
-    this.domSharedStylesHost.__onStylesAdded__ = this.domSharedStylesHost.onStylesAdded;
-    this.domSharedStylesHost.onStylesAdded = (additions) => {
-      const style = additions[0];
-      if (!style || !style.trim().startsWith('.select2-container')) {
-        this.domSharedStylesHost.__onStylesAdded__(additions);
-      }
-    };*/
   }
  
   creaFormUsuario(){

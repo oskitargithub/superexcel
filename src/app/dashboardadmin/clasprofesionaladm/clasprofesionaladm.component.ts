@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
-import { __platform_browser_private__ } from '@angular/platform-browser';
 
 import { ClasProfesionalAdmService } from './clasprofesionaladm.service';
 import { ClasProfesional1Model, dataModel, Tabla3Model } from '../../dashboard/clasprofesional1/ClasProfesional1.model';
@@ -12,7 +11,9 @@ declare var Messenger: any;
 @Component({
   selector: 'clasprofesionaladm',
   templateUrl: './clasprofesionaladm.template.html',
-  styleUrls: ['clasprofesionaladm.style.css', '../../forms/elements/elements.style.scss', '../../ui-elements/notifications/notifications.style.scss'],
+  styleUrls: ['clasprofesionaladm.style.css', 
+  '../../scss/elements.style.scss', 
+  '../../scss/notifications.style.scss'],
   providers: [ClasProfesionalAdmService],
   encapsulation: ViewEncapsulation.None,
 })

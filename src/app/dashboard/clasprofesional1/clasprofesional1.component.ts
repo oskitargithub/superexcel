@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
-import { __platform_browser_private__ } from '@angular/platform-browser';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ClasProfesional1Service } from './ClasProfesional1.service';
@@ -12,7 +11,9 @@ declare var Messenger: any;
 @Component({
     selector: 'clasprofesional',
     templateUrl: './clasprofesional1.template.html',
-    styleUrls: ['../../forms/elements/elements.style.scss', '../../ui-elements/notifications/notifications.style.scss'],
+    styleUrls: [
+        '../../scss/elements.style.scss',
+        '../../scss/notifications.style.scss'],
     providers: [ClasProfesional1Service],
     encapsulation: ViewEncapsulation.None,
 })
@@ -34,21 +35,6 @@ export class ClasProfesional1Component implements OnInit {
     ) {
         this.createForm();
         this.getClasProfesional1();
-
-
-        //
-        // This is a hack on angular style loader to prevent ng2-select2 from adding its styles.
-        // They are hard-coded into the component, so there are no other way to get rid of them
-        //
-        this.domSharedStylesHost = injector.get(__platform_browser_private__.DomSharedStylesHost);
-        this.domSharedStylesHost.__onStylesAdded__ = this.domSharedStylesHost.onStylesAdded;
-        this.domSharedStylesHost.onStylesAdded = (additions) => {
-            const style = additions[0];
-            if (!style || !style.trim().startsWith('.select2-container')) {
-                this.domSharedStylesHost.__onStylesAdded__(additions);
-            }
-        };
-
     }
 
     getClasProfesional1() {

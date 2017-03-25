@@ -10,53 +10,22 @@ declare var jQuery: any;
 })
 export class Graficas1AdminComponent implements OnInit {
     
-    sparklineCompositeData: Array<any>;
-    sparklineCompositeOptions: Array<any>;
-    sparklinePieData: Array<any>;
-    sparklinePieOptions: any;
+    
     public datos:string = "datos";
 
     constructor(private Graficas1AdminService: Graficas1AdminService) {    
     }
 
-    ngOnInit() {  
-        this.sparklineCompositeData = [];
-        
-        this.sparklinePieData = []; 
-        this.sparklineCompositeOptions = [{
-        width: '99%',
-        fillColor: '#ddd',
-        height: '100px',
-        lineColor: 'transparent',
-        spotColor: '#c0d0f0',
-        minSpotColor: null,
-        maxSpotColor: null,
-        highlightSpotColor: '#ddd',
-        highlightLineColor: '#ddd'
-        }, {
-        lineColor: 'transparent',
-        spotColor: '#c0d0f0',
-        fillColor: 'rgba(192, 208, 240, 0.76)',
-        minSpotColor: null,
-        maxSpotColor: null,
-        highlightSpotColor: '#ddd',
-        highlightLineColor: '#ddd'
-        }];
-        this.sparklinePieOptions = {
-            type: 'pie',
-            width: '100px',
-            height: '100px',
-            sliceColors: ['#F5CB7B', '#FAEEE5', '#f0f0f0']
-        };
+    ngOnInit() {          
         this.Graficas1AdminService.getDatos()
         .subscribe(
             result => {
                     this.datos = result; 
-                    this.sparklineCompositeData = [
+                    /*this.sparklineCompositeData = [
                     [2, 4, 6, 2, 7, 5, 3, 7, 8, 3, 6],
                     [5, 3, 7, 8, 3, 6, 2, 4, 6, 2, 7]
                     ];
-                    this.sparklinePieData = [2, 4, 6];
+                    this.sparklinePieData = [2, 4, 6];*/
                    
                 console.log("Mostrando datos");  
                     console.log(this.datos);

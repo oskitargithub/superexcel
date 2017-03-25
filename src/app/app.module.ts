@@ -1,7 +1,6 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import module
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
@@ -25,7 +24,7 @@ import { ErrorComponent } from './error/error.component';
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
-  AppConfig
+  AppConfig,
 ];
 
 type StoreType = {
@@ -53,7 +52,7 @@ type StoreType = {
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
-    AuthGuard,AuthService
+     AuthGuard,AuthService
   ]
 })
 export class AppModule {

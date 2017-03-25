@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Home</li>
-    <li class="breadcrumb-item active">Información Básica <button type="button" class="btn btn-sm btn-primary" (click)="valorBarraProgreso()">Randomize</button></li>
+    <li class="breadcrumb-item active">Información Básica </li>
 </ol>
 
 
@@ -117,11 +117,12 @@
 
                                 <h4>Fecha de cumplimentación</h4>
                                 <div class="form-group row">
-                                    <!-- <datetime  [timepicker]="false" formControlName="num_comunidades" tooltip="Fecha" title="Fecha" placeholder="Fecha"  
-                                [datepicker]="datepickerOpts"></datetime>-->
+                                    
 
-                                    <label class="col-md-3  col-form-label text-md-right" for="dia">Día</label>
-                                    <div class="col-md-12 ">
+                                   <div class="col-md-12 ">
+                                      <input formControlName="created_at" tooltip="Fecha" title="Fecha" placeholder="Fecha" ng2-datetime-picker />
+                                        <!-- <datetime  [timepicker]="false" formControlName="num_comunidades" tooltip="Fecha" title="Fecha" placeholder="Fecha"  
+                                [datepicker]="datepickerOpts"></datetime>-->
                                         <!-- <input type="text" class="form-control" formControlName="created_at" tooltip="Día" placeholder="Día" />
                                     <datetime  [timepicker]="false" (locale)="es" formControlName="created_at" tooltip="Fecha" title="Fecha" placeholder="Fecha"  [datepicker]="datepickerOpts"></datetime>
                                    
@@ -130,15 +131,7 @@
 
                                     </div>
 
-                                    <label class="col-md-1  col-form-label text-md-right" for="mes">Mes</label>
-                                    <div class="col-md-1 ">
-                                        <input type="text" class="form-control" formControlName="mes" tooltip="Mes" placeholder="Mes" />
-                                    </div>
-
-                                    <label class="col-md-1  col-form-label text-md-right" for="anyo">Año</label>
-                                    <div class="col-md-1 ">
-                                        <input type="text" class="form-control" formControlName="anyo" tooltip="Año" placeholder="Año" />
-                                    </div>
+                                    
                                 </div>
 
                             </fieldset>
