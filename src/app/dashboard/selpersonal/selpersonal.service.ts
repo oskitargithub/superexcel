@@ -19,15 +19,21 @@ export class SelPersonalService {
                     "preg_7":"S","preg_8":"","preg_9":"","preg_10":"","preg_11":"","preg_12":"","preg_12txt":"",
                     "preg_13txt":"",
                     "preg_14":"S","preg_15":"","preg_16":"","preg_17":"","preg_18":"","preg_19":"","preg_20":"","preg_20txt":"",
-                    "preg_21":"S","preg_22":"","preg_22txt":"","preg_23txt":"",
-                    },                  
+                    "preg_21":"S","preg_22":"","preg_22txt":"","preg_23txt":"","preg_24txt":"","preg_25":"","preg_26":"","preg_27":"","preg_28":"","preg_29":"",
+                    "preg_30":"", "preg_31":"","preg_32":"","preg_33":"","preg_34":"","preg_35":"","preg_36":""
+                },                  
             "preg_100_tabla_2": [
                 { "criterio": "Sexo femenino", "influencia": "1" },
                 { "criterio": "Edad entre 25 y 40 años", "influencia": "3" },
                 { "criterio": "Estado Civil de casada/o", "influencia": "2" },
                 { "criterio": "Aspecto físico agradable", "influencia": "" },
             ],
-
+            "preg_100_tabla_3": [
+                { "definicion":"Sexo", "criterio": "Si", "grupo": "eaaaaa" },
+                 { "definicion":"Edad", "criterio": "", "grupo": "" },
+                { "definicion":"Estado Civil", "criterio": "", "grupo": "" },
+                 { "definicion":"Aspecto Físico", "criterio": "", "grupo": "" },
+            ],
         }
         return Observable.of(respuesta);
     }

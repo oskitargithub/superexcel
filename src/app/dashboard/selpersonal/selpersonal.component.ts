@@ -3,7 +3,7 @@ import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { SelPersonalService } from './selpersonal.service';
-import { SelPersonalModel, CriterioTipoInflu, dataModel } from './selpersonal.model';
+import { SelPersonalModel, CriterioTipoInflu,CriterioGrupo, dataModel } from './selpersonal.model';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -68,7 +68,8 @@ export class SelPersonalComponent implements OnInit {
         console.log("creando formulario");
         this.ifForm = this.fb.group({
             data: this.fb.group(new dataModel()),
-            preg100_tabla2: this.fb.array([]),
+            preg_100_tabla_2: this.fb.array([]),
+            preg_100_tabla_3: this.fb.array([]),
         });
         console.log("fin creando formulario");
     }
@@ -82,6 +83,12 @@ export class SelPersonalComponent implements OnInit {
     };
 
     setPregunta(tabla: CriterioTipoInflu[], nombretabla:string) {
+        const addressFGs = tabla.map(datos => this.fb.group(datos));
+        const addressFormArray = this.fb.array(addressFGs);
+        this.ifForm.setControl(nombretabla, addressFormArray);
+    }
+
+     setPregunta2(tabla: CriterioGrupo[], nombretabla:string) {
         const addressFGs = tabla.map(datos => this.fb.group(datos));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
@@ -104,7 +111,8 @@ export class SelPersonalComponent implements OnInit {
             response => {
                 console.log("datos formu"); 
                 this.ifForm.setControl('data', this.fb.group(response.data));               
-                this.setPregunta(response.preg_100_tabla_2,'preg_100_tabla2');
+                this.setPregunta(response.preg_100_tabla_2,'preg_100_tabla_2');
+                this.setPregunta2(response.preg_100_tabla_3,'preg_100_tabla_3');
                 this.status = response.status;
                 if (this.status !== "success") {
                     if (this.status == "tokenerror") {

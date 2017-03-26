@@ -16,19 +16,19 @@
                             <fieldset>
                                 <legend><strong>Factores</strong></legend>
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-2">
+                                    <div class="col-md-2 offset-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_1" type="checkbox" formControlName="preg_1" />
                                             <label for="preg_1">Sustitución otras/os trabajadoras/es</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_2" type="checkbox" formControlName="preg_2" />
                                             <label for="preg_2">Inicio nuevas actividades/prestación  nuevos servicios a la ciudadanía</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_3" type="checkbox" formControlName="preg_3" />
                                             <label for="preg_3">Subvenciones o incentivos de fomento al empleo</label>
@@ -36,19 +36,19 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-2">
+                                    <div class="col-md-2 offset-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_4" type="checkbox" formControlName="preg_4" />
                                             <label for="preg_4">Exigencias productivas coyunturales</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_5" type="checkbox" formControlName="preg_5" />
                                             <label for="preg_5">Desarrollo de campañas estacionales que hacen necesaria la incorporación de personal</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_6" type="checkbox" formControlName="preg_6" />
                                             <label for="preg_6">Otros (indicar): (Por ejemplo: jubilaciones, introducción de nuevas tecnologías, administración digital,..)</label>
@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-2 offset-md-8">
+                                    <div class="col-md-2 offset-md-6">
                                         <input [readonly]="!getValorElemento('data.preg_6')" type="text" class="form-control" formControlName="preg_6txt" tooltip="Otros"
                                             placeholder="Otros" />
                                     </div>
@@ -71,50 +71,53 @@
                             <fieldset>
                                 <legend><strong>Estrategias</strong></legend>
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-2">
+                                    <div class="col-md-2 offset-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_7" type="checkbox" formControlName="preg_7" />
                                             <label for="preg_7">Bolsas de trabajo, bolsas de empleo</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_8" type="checkbox" formControlName="preg_8" />
                                             <label for="preg_8">Recurso a empresas de selección de personal o ETT</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_9" type="checkbox" formControlName="preg_9" />
                                             <label for="preg_9">Publicidad en medios de comunicación y gestión directa por el rea de recursos humanos de la <strong>propia organización</strong></label>
                                         </div>
                                     </div>
+                                     <div class="w-100"></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-2">
+                                    <div class="col-md-2 offset-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_10" type="checkbox" formControlName="preg_10" />
                                             <label for="preg_10">Recurso a servicios públicos de Empleo</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_11" type="checkbox" formControlName="preg_11" />
                                             <label for="preg_11">Convocatoria pública de empleo</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_12" type="checkbox" formControlName="preg_12" />
                                             <label for="preg_12">Otros (indicar):</label>
                                         </div>
                                     </div>
+                                     <div class="w-100"></div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-2 offset-md-8">
+                                    <div class="col-md-4 offset-md-6">
                                         <input [readonly]="!getValorElemento('data.preg_12')" type="text" class="form-control" formControlName="preg_12txt" tooltip="Otros"
                                             placeholder="Otros" />
                                     </div>
+                                     <div class="w-100"></div>
                                 </div>
                             </fieldset>
                         </div>
@@ -199,8 +202,7 @@
                             </fieldset>
                         </div>
                     </div>
-                    <div formArrayName="preg_100_tabla2">
-                    </div>
+                    
 
                 </div>
             </section>
@@ -220,7 +222,7 @@
                             <fieldset>
                                 <legend>Factores determinantes de la apertura de un proceso de selección y contratación</legend>
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-2">
+                                    <div class="col-md-5 offset-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_21" type="checkbox" formControlName="preg_21" />
                                             <label for="preg_21">Los criterios de selección de caracter profesional........</label>
@@ -232,33 +234,195 @@
                                             <label for="preg_22">La organización dispone de RPT</label>
                                         </div>
                                     </div>
+                                   
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-5">
+                                    <div class="col-md-3 offset-md-7">
                                         <input [readonly]="!getValorElemento('data.preg_22')" type="text" class="form-control" formControlName="preg_22txt" tooltip="RPT"
                                             placeholder="RPT" />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 offset-md-2">
-                                         <label class="col-form-label text-md-right" for="preg_23txt">
+                                        <label class="col-form-label text-md-left" for="preg_23txt">
                                         a) Mencione los criterios profesionales de aplicación general, en su caso, a todos los grupos, categorías y puestos de trabajo:
                                         </label>
                                     </div>
-                                    <div class="col-md-8 offset-md-2">                                       
-                                         <textarea rows="3" class="autogrow form-control transition-height" id="preg_23txt" formControlName="preg_23txt" autosize
-                                            placeholder="Criterios"></textarea>
+                                    <div class="w-100"></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_23txt" formControlName="preg_23txt" autosize
+                                            placeholder="Criterios aplicación general"></textarea>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <label class="col-form-label text-md-left" for="preg_23txt">
+                                        b) Menciones los criterios profesionales específicos, de aplicación sólo a ciertos grupos, categorías y puestos de trabajo (con indicación de a qué grupos, categorías o puestos se asocian):
+                                        </label>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_24txt" formControlName="preg_24txt" autosize
+                                            placeholder="Criterios aplicación a ciertos grupos"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:40px">
+
+                                    <div class="col-md-8 offset-md-2">
+                                        <div class="abc-checkbox abc-checkbox-primary">
+                                            <input id="preg_25" type="checkbox" formControlName="preg_25" />
+                                            <label for="preg_25">La organización no dispone de criterios de selección profesionales formalizados y/o documentados</label>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                 <div class="form-group row">
+                                        <div class="col-md-6 offset-md-2">
+                                           <strong> Identificación de los criterios de selección PERSONALES (aunque se apliquen de manera no formalizada)</strong>
+                                        </div>
+                                        <div class="w-100"></div>
+                                        <div class="col-md-6 offset-md-2">
+                                            ¿En el caso de realizar entrevistas personales en el proceso selectivo, aplica la organización criterios de selección de carácter PERSONAL?
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="abc-radio">
+                                                <input type="radio" name="preg_26" id="preg26si" formControlName="preg_26" value="si">
+                                                <label for="preg26si">Si</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="abc-radio">
+                                                <input type="radio" name="preg_26" id="preg26no" formControlName="preg_26" value="no">
+                                                <label for="preg26no">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     <div class="form-group row">
+                                         <div class="col-md-6 offset-md-2">
+                                            <p>En caso afirmativo, identifíquense en los listados siguientes.</p>
+                                         </div>
+                                         <div class="col-md-6 offset-md-2">
+                                           <strong>CRITERIOS  DE  SELECCIÓN  PERSONALES  con  carácter  general  (para cualquier grupo profesional, categoría o puesto de trabajo)</strong>
+                                        </div>
+                                        <div class="w-100"></div>
+                                        <div class="col-md-2 offset-md-2">
+                                            <div class="abc-checkbox abc-checkbox-primary">
+                                            <input id="preg_27" type="checkbox" formControlName="preg_27" />
+                                            <label for="preg_27">Sexo</label>
+                                            </div>
+                                            <div class="abc-checkbox abc-checkbox-primary">
+                                            <input id="preg_28" type="checkbox" formControlName="preg_28" />
+                                            <label for="preg_28">Edad</label>
+                                            </div>
+                                            <div class="abc-checkbox abc-checkbox-primary">
+                                            <input id="preg_29" type="checkbox" formControlName="preg_29" />
+                                            <label for="preg_29">Estado Civil</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="abc-checkbox abc-checkbox-primary">
+                                            <input id="preg_30" type="checkbox" formControlName="preg_30" />
+                                            <label for="preg_30">Asertividad</label>
+                                            </div>
+                                            <div class="abc-checkbox abc-checkbox-primary">
+                                            <input id="preg_31" type="checkbox" formControlName="preg_31" />
+                                            <label for="preg_31">Experiencia</label>
+                                            </div>
+                                            <div class="abc-checkbox abc-checkbox-primary">
+                                            <input id="preg_32" type="checkbox" formControlName="preg_32" />
+                                            <label for="preg_32">Iniciativa</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="abc-checkbox abc-checkbox-primary">
+                                            <input id="preg_33" type="checkbox" formControlName="preg_33" />
+                                            <label for="preg_33">Disponibilidad de tiempo extra para dedicarlo a la organización (si se le requiriera)</label>
+                                            </div>
+                                            <div class="abc-checkbox abc-checkbox-primary">
+                                            <input id="preg_34" type="checkbox" formControlName="preg_34" />
+                                            <label for="preg_34">Disponibilidad de recursos técnicos para el teletrabajo en el domicilio</label>
+                                            </div>
+                                            <div class="abc-checkbox abc-checkbox-primary">
+                                            <input id="preg_35" type="checkbox" formControlName="preg_35" />
+                                            <label for="preg_35">Otros (indicar)</label>
+                                            </div>
+                                        </div>
+                                         <div class="w-100"></div>
+                                     </div>
+
+                                     
+                                     
                             </fieldset>
+                            
                         </div>
+                    </div>
+                    
+                        <div class="section" style="margin-top:40px">
+                    <fieldset>
+                                <div class="form-group row" style="margin-top:40px" formGroupName="data">
+                                         <div class="col-md-6 offset-md-2">
+                                           <strong> ¿Aplica la organización criterios de selección de carácter PERSONAL aplicados de manera particular a alguna categoría o puesto?</strong>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="abc-radio">
+                                                <input type="radio" name="preg_36" id="preg36si" formControlName="preg_36" value="si">
+                                                <label for="preg26si">Si</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="abc-radio">
+                                                <input type="radio" name="preg_36" id="preg26no" formControlName="preg_36" value="no">
+                                                <label for="preg36no">No</label>
+                                            </div>
+                                        </div>
+                                        <div class="w-100"></div>
+                                         <div class="col-md-6 offset-md-2">
+                                            <p>En caso afirmativo, identifíquense en los listados siguientes.</p>
+                                         </div>
+                                     </div>
+                                <div formArrayName="preg_100_tabla_3">
+                                        <div *ngFor="let datos of getPregunta('preg_100_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                            <div class="row">
+                                                <div class="form-group">
+                                         <label class="col-md-2  col-form-label text-md-right">{{ifForm.controls.preg_100_tabla_3.value[i].definicion}}</label>
+                                        <div class="col-md-1 ">
+                                            <div class="abc-radio">
+                                                <input type="radio" name="criterio" id="criteriosi" formControlName="criterio" value="si">
+                                                <label for="criteriosi">Si</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="abc-radio">
+                                                <input type="radio" name="criterio" id="criteriono" formControlName="criterio" value="no">
+                                                <label for="criteriono">No</label>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                     </div>
+                                                <div class="col-md-8 ">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control" formControlName="grupo" tooltip="GRUPOS/CATEGORÍAS PROFESIONALES" placeholder="GRUPOS/CATEGORÍAS PROFESIONALES" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                            </div>
+                                        </div>
+
+                                    </div>
+                            </fieldset>
+                        
                     </div>
                 </div>
             </section>
         </div>
     </div>
 
-
+<div formArrayName="preg_100_tabla_2"></div>
 
 
 </form>

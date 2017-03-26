@@ -3,8 +3,8 @@ export class SelPersonalModel {
     public id: number;
     public user_id: number;
     public data: dataModel;
-    public preg_100_tabla2: CriterioTipoInflu[];
-
+    public preg_100_tabla_2: CriterioTipoInflu[];
+    public preg_100_tabla_3: CriterioGrupo[];
     constructor() {
         this.id = 0,
             this.user_id = 0
@@ -14,6 +14,12 @@ export class SelPersonalModel {
 export class CriterioTipoInflu {
     criterio: string = '';
     influencia: any = '';
+}
+
+export class CriterioGrupo {
+    definicion: string = '';
+    criterio: string = '';
+    grupo: any = '';
 }
 
 export class dataModel {
