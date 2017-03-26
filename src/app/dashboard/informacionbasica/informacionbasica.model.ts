@@ -1,7 +1,7 @@
 export class InformacionBasicaModel{
         public user: datosUserModel;
         public data: dataModel;
-        public preg_2_tabla_2: CentroActividad[]
+        public preg_2_tabla_2: CentroActividad[];
         public _token: string;
         public totalCuest: number;
         public respondidasCuest: number;

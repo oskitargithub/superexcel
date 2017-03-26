@@ -46,7 +46,7 @@ export class InformacionBasicaComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private informacionbasicaservice: InformacionBasicaService,
+        private servicio: InformacionBasicaService,
         injector: Injector
     ) {
         this.dynamic = 20;
@@ -89,7 +89,7 @@ export class InformacionBasicaComponent implements OnInit {
 
         this.submitted = true;
         console.log("formulario enviado");
-        this.informacionbasicaservice.edit(this.informacionbasica, this.token)
+        this.servicio.edit(this.informacionbasica, this.token)
             .subscribe(
             response => {
                 //this.informacionbasica = response.data;
@@ -172,7 +172,7 @@ export class InformacionBasicaComponent implements OnInit {
 
 
     getInformacionBasica() {
-        this.informacionbasicaservice.getInformacionBasica()
+        this.servicio.getDatosModelo()
             .subscribe(
             response => {
 
@@ -247,18 +247,4 @@ export class InformacionBasicaComponent implements OnInit {
         };
         return saveInformacionBasica;
     }
-
-
-
-    datepickerOpts = {
-        autoclose: true,
-        todayBtn: 'linked',
-        todayHighlight: true,
-        assumeNearbyYear: true,
-        format: 'dd/mm/yyyy',
-        placeholder: 'Fecha',
-        language: 'es',
-        locale: 'es'
-    }
-
 }

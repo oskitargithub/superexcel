@@ -16,7 +16,7 @@ export class InformacionBasicaService{
          this.config = config.getConfig(); //me traigo la configuración para saber la url de la api
     }
 
-    getInformacionBasica(){
+    getDatosModelo(){
         let mitoken = JSON.parse(localStorage.getItem('fditoken'));        
         let json = JSON.stringify({fditoken: mitoken.token});        
 		let headers = '';

@@ -2,7 +2,28 @@
     <li class="breadcrumb-item">Home</li>
     <li class="breadcrumb-item active">Clasificación profesional I</li>
 </ol>
-<h1 class="page-title">Estructura <span class="fw-semi-bold">Organizacional</span></h1>
+
+<div class="row">
+  <div class="col-md-8"><h1 class="page-title">Estructura <span class="fw-semi-bold">Organizacional</span></h1></div>
+  <div class="col-md-4">
+      <div class="row progress-stats">
+          <div class="col-md-9 col-xs-12">
+            <p class="description deemphasize">Progreso de la pestaña</p>
+            <div class="bg-white progress-bar">              
+            <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic}"></progress>
+
+            
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-12 text-xs-center">
+                                <span class="status rounded rounded-lg bg-body-light">
+                                    <small><span number-animate>{{(respondidasSeccion*100)/totalSeccion}}</span>%</small>
+                                </span>
+          </div>
+        </div>
+  </div>
+</div>
+
 <div class="row">
     <div class="col-lg-12">
         <section class="widget" widget>
@@ -74,7 +95,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_4_tabla_3">
-                                <div *ngFor="let dptos of preg_4_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let dptos of getPregunta('preg_4_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -163,7 +184,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_3_tabla_3">
-                                <div *ngFor="let dptos of preg_3_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let dptos of getPregunta('preg_3_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -194,7 +215,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span *ngIf="preg_3_tabla_3.controls.length > 1">
+                                        <span *ngIf="getPregunta('preg_3_tabla_3').controls.length > 1">
                                         <button type="button"(click)="removeFila(ifForm.controls.preg_3_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                                         </span>
 
@@ -258,7 +279,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_5_tabla_3">
-                                <div *ngFor="let dptos of preg_5_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let dptos of getPregunta('preg_5_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -289,7 +310,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span *ngIf="preg_5_tabla_3.controls.length > 1">
+                                        <span *ngIf="getPregunta('preg_5_tabla_3').controls.length > 1">
                                         <button type="button"(click)="removeFila(ifForm.controls.preg_5_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                                         </span>
 
@@ -354,7 +375,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_6_tabla_3">
-                                <div *ngFor="let dptos of preg_6_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let dptos of getPregunta('preg_6_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -385,7 +406,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span *ngIf="preg_6_tabla_3.controls.length > 1">
+                                        <span *ngIf="getPregunta('preg_6_tabla_3').controls.length > 1">
                                         <button type="button"(click)="removeFila(ifForm.controls.preg_6_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                                         </span>
 
@@ -449,7 +470,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_7_tabla_3">
-                                <div *ngFor="let dptos of preg_7_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let dptos of getPregunta('preg_7_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -480,7 +501,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span *ngIf="preg_7_tabla_3.controls.length > 1">
+                                        <span *ngIf="getPregunta('preg_7_tabla_3').controls.length > 1">
                                         <button type="button"(click)="removeFila(ifForm.controls.preg_7_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                                         </span>
 
@@ -545,7 +566,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_8_tabla_3">
-                                <div *ngFor="let dptos of preg_8_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let dptos of getPregunta('preg_8_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -576,7 +597,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span *ngIf="preg_8_tabla_3.controls.length > 1">
+                                        <span *ngIf="getPregunta('preg_8_tabla_3').controls.length > 1">
                                         <button type="button"(click)="removeFila(ifForm.controls.preg_8_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                                         </span>
 
@@ -642,7 +663,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_9_tabla_3">
-                                <div *ngFor="let dptos of preg_9_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let dptos of getPregunta('preg_9_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -673,7 +694,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span *ngIf="preg_9_tabla_3.controls.length > 1">
+                                        <span *ngIf="getPregunta('preg_9_tabla_3').controls.length > 1">
                                         <button type="button"(click)="removeFila(ifForm.controls.preg_9_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                                         </span>
 
@@ -737,7 +758,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_10_tabla_3">
-                                <div *ngFor="let dptos of preg_10_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let dptos of getPregunta('preg_10_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -768,7 +789,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span *ngIf="preg_10_tabla_3.controls.length > 1">
+                                        <span *ngIf="getPregunta('preg_10_tabla_3').controls.length > 1">
                                         <button type="button"(click)="removeFila(ifForm.controls.preg_10_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                                         </span>
 
@@ -831,7 +852,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_11_tabla_3">
-                                <div *ngFor="let dptos of preg_11_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let dptos of getPregunta('preg_11_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -862,7 +883,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span *ngIf="preg_11_tabla_3.controls.length > 1">
+                                        <span *ngIf="getPregunta('preg_11_tabla_3').controls.length > 1">
                                         <button type="button"(click)="removeFila(ifForm.controls.preg_11_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                                         </span>
 
@@ -926,7 +947,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_12_tabla_3">
-                                <div *ngFor="let dptos of preg_12_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let dptos of getPregunta('preg_12_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -957,7 +978,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span *ngIf="preg_12_tabla_3.controls.length > 1">
+                                        <span *ngIf="getPregunta('preg_12_tabla_3').controls.length > 1">
                                         <button type="button"(click)="removeFila(ifForm.controls.preg_12_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                                         </span>
 
@@ -1021,7 +1042,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_13_tabla_3">
-                                <div *ngFor="let dptos of preg_13_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let dptos of getPregunta('preg_13_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -1052,7 +1073,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span *ngIf="preg_13_tabla_3.controls.length > 1">
+                                        <span *ngIf="getPregunta('preg_13_tabla_3').controls.length > 1">
                                         <button type="button"(click)="removeFila(ifForm.controls.preg_13_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                                         </span>
 

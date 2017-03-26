@@ -27,36 +27,62 @@ export class ClasProfesional1Component implements OnInit {
     public clasprofesional1: ClasProfesional1Model;
     public errorMessage: string;
     public status: string;
+    public respondidasSeccion: any;
+    public totalSeccion: any;
+    public valorbarra: number;
+    public tipobarra: string;
 
     constructor(
         private fb: FormBuilder,
-        private clasprofesional1service: ClasProfesional1Service,
+        private servicio: ClasProfesional1Service,
         injector: Injector
     ) {
         this.createForm();
-        this.getClasProfesional1();
+        this.getDatosModelo();
     }
 
-    getClasProfesional1() {
-        this.clasprofesional1service.getClasProfesional1()
+    setBarraProgreso() {
+        let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+        let type: string;
+
+        if (value < 25) {
+            type = 'danger';
+        } else if (value < 50) {
+            type = 'warning';
+        } else if (value < 75) {
+            type = 'info';
+        } else {
+            type = 'success';
+
+        }
+        this.valorbarra = value;
+        this.tipobarra = type;
+    }
+    
+
+    getDatosModelo() {
+        this.servicio.getDatosModelo()
             .subscribe(
             response => {
                 console.log("datos formu");
                 this.ifForm.setControl('data', this.fb.group(response.data));
                 console.log("datos preg3");
-                this.setTablaDpto(response.preg_3_tabla_3);
-                this.setTablaEdad(response.preg_4_tabla_3);
-                this.setTablaJefaturas(response.preg_5_tabla_3);
-                this.setTablaCoord(response.preg_6_tabla_3);
-                this.setTablaRector(response.preg_7_tabla_3);
-                this.setTablaAsesor(response.preg_8_tabla_3);
-                this.setTablaProfTec(response.preg_9_tabla_3);
-                this.setTablaProfAdm(response.preg_10_tabla_3);
-                this.setTablaProfNoCual(response.preg_11_tabla_3);
-                this.setTablaProfSeg(response.preg_12_tabla_3);
-                this.setTablaProfPol(response.preg_13_tabla_3);
-
-
+                
+                this.setPregunta(response.preg_3_tabla_3,'preg_3_tabla_3');
+                this.setPregunta(response.preg_4_tabla_3,'preg_4_tabla_3');
+                this.setPregunta(response.preg_5_tabla_3,'preg_5_tabla_3');
+                this.setPregunta(response.preg_6_tabla_3,'preg_6_tabla_3');
+                this.setPregunta(response.preg_7_tabla_3,'preg_7_tabla_3');
+                this.setPregunta(response.preg_8_tabla_3,'preg_8_tabla_3');
+                this.setPregunta(response.preg_9_tabla_3,'preg_9_tabla_3');
+                this.setPregunta(response.preg_10_tabla_3,'preg_10_tabla_3');
+                this.setPregunta(response.preg_11_tabla_3,'preg_11_tabla_3');
+                this.setPregunta(response.preg_12_tabla_3,'preg_12_tabla_3');
+                this.setPregunta(response.preg_13_tabla_3,'preg_13_tabla_3');
+                
+                this.respondidasSeccion = response.respondidasSeccion;
+                this.totalSeccion = response.totalSeccion;
+                this.setBarraProgreso();
 
 
 
@@ -132,44 +158,17 @@ export class ClasProfesional1Component implements OnInit {
         Messenger.options = { theme: 'air' };
     }
 
-    get data(): FormArray {
-        return this.ifForm.get('data') as FormArray;
-    };
 
-    get preg_3_tabla_3(): FormArray {
-        return this.ifForm.get('preg_3_tabla_3') as FormArray;
-    };
-    get preg_4_tabla_3(): FormArray {
-        return this.ifForm.get('preg_4_tabla_3') as FormArray;
-    };
-    get preg_5_tabla_3(): FormArray {
-        return this.ifForm.get('preg_5_tabla_3') as FormArray;
-    };
-    get preg_6_tabla_3(): FormArray {
-        return this.ifForm.get('preg_6_tabla_3') as FormArray;
-    };
-    get preg_7_tabla_3(): FormArray {
-        return this.ifForm.get('preg_7_tabla_3') as FormArray;
-    };
-    get preg_8_tabla_3(): FormArray {
-        return this.ifForm.get('preg_8_tabla_3') as FormArray;
-    };
-    get preg_9_tabla_3(): FormArray {
-        return this.ifForm.get('preg_9_tabla_3') as FormArray;
-    };
-    get preg_10_tabla_3(): FormArray {
-        return this.ifForm.get('preg_10_tabla_3') as FormArray;
-    };
-    get preg_11_tabla_3(): FormArray {
-        return this.ifForm.get('preg_11_tabla_3') as FormArray;
-    };
-    get preg_12_tabla_3(): FormArray {
-        return this.ifForm.get('preg_12_tabla_3') as FormArray;
-    };
-    get preg_13_tabla_3(): FormArray {
-        return this.ifForm.get('preg_13_tabla_3') as FormArray;
-    };
 
+    setPregunta(tabla: Tabla3Model[], nombretabla:string) {
+        const addressFGs = tabla.map(datos => this.fb.group(datos));
+        const addressFormArray = this.fb.array(addressFGs);
+        this.ifForm.setControl(nombretabla, addressFormArray);
+    }
+
+    getPregunta (pregunta:string): FormArray {
+        return this.ifForm.get(pregunta) as FormArray;
+    };
 
     addFila(elemento: FormArray) {
         elemento.push(this.fb.group(new Tabla3Model()));
@@ -178,63 +177,10 @@ export class ClasProfesional1Component implements OnInit {
         elemento.removeAt(i);
     }
 
-    setTablaDpto(preg_3_tabla_3: Tabla3Model[]) {
-        const addressFGs = preg_3_tabla_3.map(dptos => this.fb.group(dptos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl('preg_3_tabla_3', addressFormArray);
-    }
-    setTablaEdad(preg_4_tabla_3: Tabla3Model[]) {
-        const addressFGs = preg_4_tabla_3.map(edad => this.fb.group(edad));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl('preg_4_tabla_3', addressFormArray);
-    }
 
-
-    setTablaJefaturas(preg_5_tabla_3: Tabla3Model[]) {
-        const addressFGs = preg_5_tabla_3.map(dptos => this.fb.group(dptos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl('preg_5_tabla_3', addressFormArray);
-    }
-    setTablaCoord(preg_6_tabla_3: Tabla3Model[]) {
-        const addressFGs = preg_6_tabla_3.map(dptos => this.fb.group(dptos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl('preg_6_tabla_3', addressFormArray);
-    }
-    setTablaRector(preg_7_tabla_3: Tabla3Model[]) {
-        const addressFGs = preg_7_tabla_3.map(dptos => this.fb.group(dptos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl('preg_7_tabla_3', addressFormArray);
-    }
-    setTablaAsesor(preg_8_tabla_3: Tabla3Model[]) {
-        const addressFGs = preg_8_tabla_3.map(dptos => this.fb.group(dptos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl('preg_8_tabla_3', addressFormArray);
-    }
-    setTablaProfTec(preg_9_tabla_3: Tabla3Model[]) {
-        const addressFGs = preg_9_tabla_3.map(dptos => this.fb.group(dptos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl('preg_9_tabla_3', addressFormArray);
-    }
-    setTablaProfAdm(preg_10_tabla_3: Tabla3Model[]) {
-        const addressFGs = preg_10_tabla_3.map(dptos => this.fb.group(dptos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl('preg_10_tabla_3', addressFormArray);
-    }
-    setTablaProfNoCual(preg_11_tabla_3: Tabla3Model[]) {
-        const addressFGs = preg_11_tabla_3.map(dptos => this.fb.group(dptos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl('preg_11_tabla_3', addressFormArray);
-    }
-    setTablaProfSeg(preg_12_tabla_3: Tabla3Model[]) {
-        const addressFGs = preg_12_tabla_3.map(dptos => this.fb.group(dptos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl('preg_12_tabla_3', addressFormArray);
-    }
-    setTablaProfPol(preg_13_tabla_3: Tabla3Model[]) {
-        const addressFGs = preg_13_tabla_3.map(dptos => this.fb.group(dptos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl('preg_13_tabla_3', addressFormArray);
-    }
+    get data(): FormArray {
+        return this.ifForm.get('data') as FormArray;
+    };
 
     onSubmit() {
         this.clasprofesional1 = this.preparaParaGuardar();

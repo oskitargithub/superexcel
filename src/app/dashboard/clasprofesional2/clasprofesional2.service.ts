@@ -18,7 +18,7 @@ export class ClasProfesional2Service {
                .map(res => res.json());
   }
 
- getClasProfesional2(){
+ getDatosModelo(){
     var respuesta = {"status":"success","total":24,"respondidas":0,
     "data":{"user_id":2,"nombre":"Personal","apellidos":"de l''ajuntament"},
     "preg_14_tabla_3":[ 

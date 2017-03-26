@@ -18,8 +18,9 @@ export class ClasProfesional1Service {
                .map(res => res.json());
   }
 
- getClasProfesional1(){
+ getDatosModelo(){
     var respuesta = {"status":"success","total":24,"respondidas":0,
+    "respondidasCuest":0,"respondidasSeccion":9,"totalCuest":12,"totalSeccion":12,
     "data":{"user_id":2,"nombre":"Personal","apellidos":"de l''ajuntament","preg_5":1,"preg_6":5, "preg_7":null},
     "preg_3_tabla_3":[ { "denominacion": "wewe", "mujeres": "2", "hombres": "3" }],
     "preg_4_tabla_3":[ 

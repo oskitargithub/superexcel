@@ -14,7 +14,7 @@ const routes: Routes = [
     { path: 'clasificacionprofesional2', loadChildren: '../dashboard/clasprofesional2/clasprofesional2.module#ClasProfesional2Module', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'retribuciones', loadChildren: '../dashboard/retribuciones/retribuciones.module#RetribucionesModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'retribuciones2', loadChildren: '../dashboard/retribuciones2/retribuciones2.module#Retribuciones2Module', canActivate: [AuthGuard], data:{ roles:['USER'] } },
-
+    { path: 'selpersonal', loadChildren: '../dashboard/selpersonal/selpersonal.module#SelPersonalModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
 ]},
   { path: 'admin', component: Layout, children: [
     { path: 'dashboardadmin', loadChildren: '../dashboardadmin/dashboardadmin.module#DashboardAdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},

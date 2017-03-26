@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_14_tabla_3">
-                                <div *ngFor="let datos of preg_14_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let datos of getPregunta('preg_14_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -125,7 +125,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_15_tabla_3">
-                                <div *ngFor="let datos of preg_15_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let datos of getPregunta('preg_15_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -221,7 +221,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_16_tabla_3">
-                                <div *ngFor="let datos of preg_16_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let datos of getPregunta('preg_16_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -312,7 +312,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_17_tabla_3">
-                                <div *ngFor="let datos of preg_17_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let datos of getPregunta('preg_17_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -411,7 +411,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_18_tabla_3">
-                                <div *ngFor="let datos of preg_18_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let datos of getPregunta('preg_18_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -501,7 +501,7 @@
                                 </div>
                             </div>
                             <div formArrayName="preg_19_tabla_3">
-                                <div *ngFor="let datos of preg_19_tabla_3.controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let datos of getPregunta('preg_19_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-2 ">
@@ -532,7 +532,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span *ngIf="preg_19_tabla_3.controls.length > 1">
+                                        <span *ngIf="getPregunta('preg_19_tabla_3').controls.length > 1">
                                         <button type="button"(click)="removeFila(ifForm.controls.preg_19_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                                         </span>
                                     </div>
