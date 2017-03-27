@@ -2,7 +2,34 @@
     <li class="breadcrumb-item">Home</li>
     <li class="breadcrumb-item active">Acceso al empleo</li>
 </ol>
-<h1 class="page-title">Selección de <span class="fw-semi-bold">Personal</span></h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="page-title">Selección de <span class="fw-semi-bold">Personal</span></h1>
+    </div>
+    <div class="col-md-4">
+        <div class="row progress-stats">
+            <div class="col-md-9 col-xs-12">
+                <p class="description deemphasize">Progreso de la pestaña</p>
+                <div class="bg-white progress-bar">
+                    <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic}"></progress>
+
+
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 text-xs-center">
+                <span class="status rounded rounded-lg bg-body-light">
+                                    <small><span number-animate>{{(respondidasSeccion*100)/totalSeccion}}</span>%</small>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
     <div class="row">
         <div class="col-lg-12">
@@ -89,7 +116,7 @@
                                             <label for="preg_9">Publicidad en medios de comunicación y gestión directa por el rea de recursos humanos de la <strong>propia organización</strong></label>
                                         </div>
                                     </div>
-                                     <div class="w-100"></div>
+                                    <div class="w-100"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2 offset-md-2">
@@ -110,14 +137,14 @@
                                             <label for="preg_12">Otros (indicar):</label>
                                         </div>
                                     </div>
-                                     <div class="w-100"></div>
+                                    <div class="w-100"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4 offset-md-6">
                                         <input [readonly]="!getValorElemento('data.preg_12')" type="text" class="form-control" formControlName="preg_12txt" tooltip="Otros"
                                             placeholder="Otros" />
                                     </div>
-                                     <div class="w-100"></div>
+                                    <div class="w-100"></div>
                                 </div>
                             </fieldset>
                         </div>
@@ -145,13 +172,13 @@
                                 <legend><strong>Métodos</strong></legend>
 
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-2">
+                                    <div class="col-md-4 offset-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_14" type="checkbox" formControlName="preg_14" />
                                             <label for="preg_14">Realización de pruebas selectivas/exámenes de oposición</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-5">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_15" type="checkbox" formControlName="preg_15" />
                                             <label for="preg_15">Los métodos de selección se dejan a criterio de una empresa especializada</label>
@@ -159,13 +186,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-2">
+                                    <div class="col-md-4 offset-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_16" type="checkbox" formControlName="preg_16" />
                                             <label for="preg_16">Concurso de méritos</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-5">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_17" type="checkbox" formControlName="preg_17" />
                                             <label for="preg_17">Concurso de ideas</label>
@@ -173,13 +200,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-2">
+                                    <div class="col-md-4 offset-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_18" type="checkbox" formControlName="preg_18" />
                                             <label for="preg_18">Entrevista personal</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_20" type="checkbox" formControlName="preg_20" />
                                             <label for="preg_20">Otros (indicar):</label>
@@ -187,14 +214,14 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-2">
+                                    <div class="col-md-4 offset-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_19" type="checkbox" formControlName="preg_19" />
                                             <label for="preg_19">Referencias externas de otras entidades empleadoras (Servef, etc)</label>
                                         </div>
 
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 offset-md-1">
                                         <input [readonly]="!getValorElemento('data.preg_20')" type="text" class="form-control" formControlName="preg_20txt" tooltip="Otros"
                                             placeholder="Otros" />
                                     </div>
@@ -202,7 +229,7 @@
                             </fieldset>
                         </div>
                     </div>
-                    
+
 
                 </div>
             </section>
@@ -225,16 +252,16 @@
                                     <div class="col-md-5 offset-md-2">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_21" type="checkbox" formControlName="preg_21" />
-                                            <label for="preg_21">Los criterios de selección de caracter profesional........</label>
+                                            <label for="preg_21">Los criterios de selección de carácter profesional para cada grupo, categoría o puesto de trabajo aparecen especificados en el Convenio Colectivo aplicable o en un acuerdo colectivo específico</label>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_22" type="checkbox" formControlName="preg_22" />
-                                            <label for="preg_22">La organización dispone de RPT</label>
+                                            <label for="preg_22">La organización dispone de RPT (Relación de Puestos de Trabajo) aprobada desde:</label>
                                         </div>
                                     </div>
-                                   
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3 offset-md-7">
@@ -273,17 +300,22 @@
                                             <input id="preg_25" type="checkbox" formControlName="preg_25" />
                                             <label for="preg_25">La organización no dispone de criterios de selección profesionales formalizados y/o documentados</label>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                 </div>
-                                 <div class="form-group row">
-                                        <div class="col-md-6 offset-md-2">
-                                           <strong> Identificación de los criterios de selección PERSONALES (aunque se apliquen de manera no formalizada)</strong>
+                                <div style="margin-top:40px">
+                                    <div class="row">
+                                        <div class="col-md-10 offset-md-2">
+                                            <strong> Identificación de los criterios de selección PERSONALES (aunque se apliquen de manera no formalizada)</strong>
                                         </div>
-                                        <div class="w-100"></div>
-                                        <div class="col-md-6 offset-md-2">
-                                            ¿En el caso de realizar entrevistas personales en el proceso selectivo, aplica la organización criterios de selección de carácter PERSONAL?
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10 offset-md-2">
+                                            ¿En el caso de realizar entrevistas personales en el proceso selectivo, aplica la organización criterios de selección de
+                                            carácter PERSONAL?
                                         </div>
-                                        <div class="col-md-1 ">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1 offset-md-2">
                                             <div class="abc-radio">
                                                 <input type="radio" name="preg_26" id="preg26si" formControlName="preg_26" value="si">
                                                 <label for="preg26si">Si</label>
@@ -296,133 +328,369 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                     <div class="form-group row">
-                                         <div class="col-md-6 offset-md-2">
-                                            <p>En caso afirmativo, identifíquense en los listados siguientes.</p>
-                                         </div>
-                                         <div class="col-md-6 offset-md-2">
-                                           <strong>CRITERIOS  DE  SELECCIÓN  PERSONALES  con  carácter  general  (para cualquier grupo profesional, categoría o puesto de trabajo)</strong>
-                                        </div>
-                                        <div class="w-100"></div>
-                                        <div class="col-md-2 offset-md-2">
-                                            <div class="abc-checkbox abc-checkbox-primary">
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-2">
+                                        <p>En caso afirmativo, identifíquense en los listados siguientes.</p>
+                                    </div>
+                                    <div class="col-md-6 offset-md-2">
+                                        <strong>CRITERIOS  DE  SELECCIÓN  PERSONALES  con  carácter  general  (para cualquier grupo profesional, categoría o puesto de trabajo)</strong>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col-md-2 offset-md-2">
+                                        <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_27" type="checkbox" formControlName="preg_27" />
                                             <label for="preg_27">Sexo</label>
-                                            </div>
-                                            <div class="abc-checkbox abc-checkbox-primary">
+                                        </div>
+                                        <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_28" type="checkbox" formControlName="preg_28" />
                                             <label for="preg_28">Edad</label>
-                                            </div>
-                                            <div class="abc-checkbox abc-checkbox-primary">
+                                        </div>
+                                        <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_29" type="checkbox" formControlName="preg_29" />
                                             <label for="preg_29">Estado Civil</label>
-                                            </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="abc-checkbox abc-checkbox-primary">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_30" type="checkbox" formControlName="preg_30" />
                                             <label for="preg_30">Asertividad</label>
-                                            </div>
-                                            <div class="abc-checkbox abc-checkbox-primary">
+                                        </div>
+                                        <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_31" type="checkbox" formControlName="preg_31" />
                                             <label for="preg_31">Experiencia</label>
-                                            </div>
-                                            <div class="abc-checkbox abc-checkbox-primary">
+                                        </div>
+                                        <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_32" type="checkbox" formControlName="preg_32" />
                                             <label for="preg_32">Iniciativa</label>
-                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="abc-checkbox abc-checkbox-primary">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_33" type="checkbox" formControlName="preg_33" />
                                             <label for="preg_33">Disponibilidad de tiempo extra para dedicarlo a la organización (si se le requiriera)</label>
-                                            </div>
-                                            <div class="abc-checkbox abc-checkbox-primary">
+                                        </div>
+                                        <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_34" type="checkbox" formControlName="preg_34" />
                                             <label for="preg_34">Disponibilidad de recursos técnicos para el teletrabajo en el domicilio</label>
-                                            </div>
-                                            <div class="abc-checkbox abc-checkbox-primary">
+                                        </div>
+                                        <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_35" type="checkbox" formControlName="preg_35" />
                                             <label for="preg_35">Otros (indicar)</label>
-                                            </div>
                                         </div>
-                                         <div class="w-100"></div>
-                                     </div>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col-md-2 offset-md-7">
+                                        <input [readonly]="!getValorElemento('data.preg_35')" type="text" class="form-control" formControlName="preg_35txt" tooltip="Otros"
+                                            placeholder="Otros" />
+                                    </div>
+                                </div>
 
-                                     
-                                     
+
+
                             </fieldset>
-                            
+
                         </div>
                     </div>
-                    
-                        <div class="section" style="margin-top:40px">
-                    <fieldset>
-                                <div class="form-group row" style="margin-top:40px" formGroupName="data">
-                                         <div class="col-md-6 offset-md-2">
-                                           <strong> ¿Aplica la organización criterios de selección de carácter PERSONAL aplicados de manera particular a alguna categoría o puesto?</strong>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="abc-radio">
-                                                <input type="radio" name="preg_36" id="preg36si" formControlName="preg_36" value="si">
-                                                <label for="preg26si">Si</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="abc-radio">
-                                                <input type="radio" name="preg_36" id="preg26no" formControlName="preg_36" value="no">
-                                                <label for="preg36no">No</label>
-                                            </div>
-                                        </div>
-                                        <div class="w-100"></div>
-                                         <div class="col-md-6 offset-md-2">
-                                            <p>En caso afirmativo, identifíquense en los listados siguientes.</p>
-                                         </div>
-                                     </div>
-                                <div formArrayName="preg_100_tabla_3">
-                                        <div *ngFor="let datos of getPregunta('preg_100_tabla_3').controls; let i=index" [formGroupName]="i">
 
-                                            <div class="row">
-                                                <div class="form-group">
-                                         <label class="col-md-2  col-form-label text-md-right">{{ifForm.controls.preg_100_tabla_3.value[i].definicion}}</label>
-                                        <div class="col-md-1 ">
-                                            <div class="abc-radio">
-                                                <input type="radio" name="criterio" id="criteriosi" formControlName="criterio" value="si">
-                                                <label for="criteriosi">Si</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="abc-radio">
-                                                <input type="radio" name="criterio" id="criteriono" formControlName="criterio" value="no">
-                                                <label for="criteriono">No</label>
-                                            </div>
-                                        </div>
-                                        
-                                        
-                                     </div>
-                                                <div class="col-md-8 ">
-                                                    <div class="form-group">
-                                                        <div class="input-group">
-                                                            <input class="form-control" formControlName="grupo" tooltip="GRUPOS/CATEGORÍAS PROFESIONALES" placeholder="GRUPOS/CATEGORÍAS PROFESIONALES" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                                
-                                            </div>
-                                        </div>
-
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <div formGroupName="data">
+                                <div class="row">
+                                    <div class="col-md-10 offset-md-2">
+                                        <strong> ¿Aplica la organización criterios de selección de carácter PERSONAL aplicados de manera particular a alguna categoría o puesto?</strong>
                                     </div>
-                            </fieldset>
-                        
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 offset-md-2">
+                                        <div class="abc-radio">
+                                            <input type="radio" name="preg_36" id="preg36si" formControlName="preg_36" value="si">
+                                            <label for="preg36si">Si</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 ">
+                                        <div class="abc-radio">
+                                            <input type="radio" name="preg_36" id="preg36no" formControlName="preg_36" value="no">
+                                            <label for="preg36no">No</label>
+                                        </div>
+                                    </div>
+                                    <div class="w-100"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 offset-md-2">
+                                        <p>En caso afirmativo, identifíquense en los listados siguientes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_100_tabla_3">
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">Criterio</div>
+                                    <div class="col-md-6">GRUPOS/CATEGORÍAS PROFESIONALES</div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_100_tabla_3').controls; let i=index" [formGroupName]="i">
+                                    <div class="row">
+                                        <div class="col-md-2 offset-md-2">
+                                            <div class="abc-checkbox abc-checkbox-primary">
+                                                <input id="criterio" type="checkbox" formControlName="criterio" />
+                                                <label for="criterio">{{ifForm.controls.preg_100_tabla_3.value[i].definicion}}</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 ">
+                                            <div class="input-group">
+                                                <input class="form-control" formControlName="grupo" tooltip="GRUPOS/CATEGORÍAS PROFESIONALES" placeholder="GRUPOS/CATEGORÍAS PROFESIONALES"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
                     </div>
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <p><strong>GESTIÓN DEL PROCESO DE SELECCIÓN DE PERSONAL Y TOMA DE DECISIONES</strong></p>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <label for="preg_37txt">Enumera las fases del proceso de selección</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_37txt" formControlName="preg_37txt" autosize
+                                            placeholder="Enumera las fases del proceso de selección"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <label for="preg_38txt">Enumera los órganos implicados en el proceso de selección</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_38txt" formControlName="preg_38txt" autosize
+                                            placeholder="Enumera los órganos implicados en el proceso de selección"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <label for="preg_39txt">Mencione el órgano u órganos a quienes corresponde la decisión final sobre la selección del personal y su incorporación a la organización</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_39txt" formControlName="preg_39txt" autosize
+                                            placeholder="Mencione el órgano u órganos a quienes corresponde la decisión final sobre la selección del personal y su incorporación a la organización"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <p>Marque "Sí" o "No" a las siguientes preguntas</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10 offset-md-2">
+                                        <strong>¿Se realizan publicaciones internas de las vacantes disponibles en la organización?</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 offset-md-2">
+                                        <div class="abc-radio">
+                                            <input type="radio" name="preg_40" id="preg_40si" formControlName="preg_40" value="si">
+                                            <label for="preg_40si">Si</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 ">
+                                        <div class="abc-radio">
+                                            <input type="radio" name="preg_40" id="preg_40no" formControlName="preg_40" value="no">
+                                            <label for="preg_40no">No</label>
+                                        </div>
+                                    </div>
+                                    <div class="w-100"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <label for="preg_40txt">En caso afirmativo, menciones qué sistema se realiza para realizar la publicación:</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea [readonly]="getValorElemento('data.preg_40')!='si'" rows="3" class="autogrow form-control transition-height" id="preg_40txt"
+                                            formControlName="preg_40txt" autosize placeholder="Menciones qué sistema se realiza para realizar la publicación"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-10 offset-md-2">
+                                        <strong>¿Observa barreras internas, externas o sectoriales para la incorporación de mujeres en la organización?</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 offset-md-2">
+                                        <div class="abc-radio">
+                                            <input type="radio" name="preg_41" id="preg_41si" formControlName="preg_41" value="si">
+                                            <label for="preg_41si">Si</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 ">
+                                        <div class="abc-radio">
+                                            <input type="radio" name="preg_41" id="preg_41no" formControlName="preg_41" value="no">
+                                            <label for="preg_41no">No</label>
+                                        </div>
+                                    </div>
+                                    <div class="w-100"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <label for="preg_41txt">En caso afirmativo por favor indique en qué sectores y categorías</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea [readonly]="getValorElemento('data.preg_41')!='si'" rows="3" class="autogrow form-control transition-height" id="preg_41txt"
+                                            formControlName="preg_41txt" autosize placeholder="Sectores y categorías"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-10 offset-md-2">
+                                        <strong>¿Observa que existan servicios o puestos en la organización que estén especialmente masculinizados (mayoría de hombres)?</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1 offset-md-2">
+                                        <div class="abc-radio">
+                                            <input type="radio" name="preg_42" id="preg_42si" formControlName="preg_42" value="si">
+                                            <label for="preg_42si">Si</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 ">
+                                        <div class="abc-radio">
+                                            <input type="radio" name="preg_42" id="preg_42no" formControlName="preg_42" value="no">
+                                            <label for="preg_42no">No</label>
+                                        </div>
+                                    </div>
+                                    <div class="w-100"></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <label for="preg_42txt">En caso afirmativo indique qué tipo de puestos y las razones que lo provocan</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea [readonly]="getValorElemento('data.preg_42')!='si'" rows="3" class="autogrow form-control transition-height" id="preg_42txt"
+                                            formControlName="preg_42txt" autosize placeholder="Tipo de puestos y las razones que lo provocan"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+
+
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <legend><strong>Teniendo en cuenta los siguientes criterios, marque el nivel de influencia que cada uno de estos tiene en el proceso de selección de la organización.</strong></legend>
+
+                            <div formArrayName="preg_100_tabla_2">
+
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        Criterio
+                                    </div>
+                                    <div class="col-md-3 text-md-center">
+                                        Tipo de influencia
+                                    </div>
+
+
+
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_100_tabla_2').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" [readonly]="i<26" formControlName="criterio" tooltip="Criterio" placeholder="Criterio" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="abc-radio">
+                                                    <input type="radio" name="influencia" id="preg_43si" formControlName="influencia" value="positivo">
+                                                    <label for="preg_43si">Positivo</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="abc-radio">
+                                                    <input type="radio" name="influencia" id="preg_43no" formControlName="influencia" value="negativo">
+                                                    <label for="preg_43no">Negativo</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <div class="abc-radio">
+                                                    <input type="radio" name="influencia" id="preg_43nose" formControlName="influencia" value="indiferente">
+                                                    <label for="preg_43nose">Indiferente</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-1 ">
+                                            <span *ngIf="i > 25">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_100_tabla_2, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila(ifForm.controls.preg_100_tabla_2)" type="button" class="btn btn-success btn-xs mb-xs">Añade Criterio</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+
+
+
+
+
+
+
+
                 </div>
             </section>
         </div>
     </div>
 
-<div formArrayName="preg_100_tabla_2"></div>
+
 
 
 </form>

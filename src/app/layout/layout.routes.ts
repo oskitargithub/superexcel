@@ -15,6 +15,8 @@ const routes: Routes = [
     { path: 'retribuciones', loadChildren: '../dashboard/retribuciones/retribuciones.module#RetribucionesModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'retribuciones2', loadChildren: '../dashboard/retribuciones2/retribuciones2.module#Retribuciones2Module', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'selpersonal', loadChildren: '../dashboard/selpersonal/selpersonal.module#SelPersonalModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
+    { path: 'bajaseincorp', loadChildren: '../dashboard/bajaseincorp/bajaseincorp.module#BajasEIncorpModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
+    { path: 'conciliacion', loadChildren: '../dashboard/conciliacion/conciliacion.module#ConciliacionModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
 ]},
   { path: 'admin', component: Layout, children: [
     { path: 'dashboardadmin', loadChildren: '../dashboardadmin/dashboardadmin.module#DashboardAdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
@@ -22,6 +24,7 @@ const routes: Routes = [
     { path: 'tipodecontratoadm', loadChildren: '../dashboardadmin/tipodecontratoadm/tipodecontratoadm.module#TipoDeContratoAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'retribucionesadm', loadChildren: '../dashboardadmin/retribucionesadm/retribucionesadm.module#RetribucionesAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'retribucionesadm2', loadChildren: '../dashboardadmin/retribucionesadm2/retribucionesadm2.module#RetribucionesAdm2Module', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'bajaseincorpadm', loadChildren: '../dashboardadmin/bajaseincorpadm/bajaseincorpadm.module#BajasEIncorpAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
   /* 
   { path: 'infoencuestapb', loadChildren: '../dashboardadmin/graficas1admin/graficas1admin.module#Graficas1AdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'infoencuestapr', loadChildren: '../dashboardadmin/graficas1admin/graficas1admin.module#Graficas1AdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},

@@ -15,6 +15,7 @@ export class RetribucionesService {
     getDatosModelo() {
         var respuesta = {
             "status": "success", "total": 24, "respondidas": 0, "id": 2, "user_id": 2,
+            "respondidasCuest":0,"respondidasSeccion":9,"totalCuest":12,"totalSeccion":12,
             "preg_49_tabla_6": [
                 { "denominacion1": "Menos de 7.200 €", "mujeres1": "2", "hombres1": "1", "mujeres2": "3", "hombres2": "4", "denominacion2": "Menos de 7.200 €" }
             ],

@@ -4,6 +4,13 @@ export class Tabla3Model{
         hombres: any = '';
 }
 
+export class Tabla4Model{
+        denominacion1: string = '';
+        denominacion2: string = '';
+        mujeres: any = '';
+        hombres: any = '';
+}
+
 export class Tabla5Model{
         denominacion: string = '';
         mujeres1: any = '';

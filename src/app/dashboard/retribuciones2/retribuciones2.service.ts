@@ -14,7 +14,8 @@ export class Retribuciones2Service {
 
     getDatosModelo() {
         var respuesta = {
-            "status": "success", "total": 24, "respondidas": 0, "id": 2, "user_id": 2,                      
+            "status": "success", "total": 24, "respondidas": 0, "id": 2, "user_id": 2,     
+            "respondidasCuest":0,"respondidasSeccion":9,"totalCuest":12,"totalSeccion":12,                 
             "preg_60_tabla_5": [{ "denominacion": "", "mujeres1": "", "hombres1": "", "mujeres2": "", "hombres2": "" }],
             "preg_61_tabla_5": [{ "denominacion": "", "mujeres1": "", "hombres1": "", "mujeres2": "", "hombres2": "" }],
             "preg_62_tabla_5": [{ "denominacion": "", "mujeres1": "", "hombres1": "", "mujeres2": "", "hombres2": "" }],

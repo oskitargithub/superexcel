@@ -25,12 +25,21 @@ export class Retribuciones2Component implements OnInit {
   public modelo: Retribuciones2Model;
   public errorMessage: string;
   public status: string;
+  public respondidasSeccion: any;
+    public totalSeccion: any;
+    public max: number = 100;
+    public showWarning: boolean;
+    public dynamic: number;
+    public type: string;
 
   constructor(
     private fb: FormBuilder,
     private servicio: Retribuciones2Service,
     injector: Injector
   ) {
+      this.dynamic = 20;
+        this.respondidasSeccion = 0;
+        this.totalSeccion = 0;
     this.createForm();
     this.modelo = new Retribuciones2Model();
     this.getDatosModelo();
@@ -40,7 +49,25 @@ export class Retribuciones2Component implements OnInit {
     Messenger.options = { theme: 'air' };
   }
 
+valorBarraProgreso() {
+        this.respondidasSeccion = 18;
+        this.totalSeccion = 20;
+        let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+        let type: string;
 
+        if (value < 25) {
+            type = 'danger';
+        } else if (value < 50) {
+            type = 'warning';
+        } else if (value < 75) {
+            type = 'info';
+        } else {
+            type = 'success';
+
+        }
+        this.dynamic = value;
+        this.type = type;
+    }
 
   createForm() {
         console.log("creando formulario");
@@ -97,6 +124,12 @@ export class Retribuciones2Component implements OnInit {
                 this.setPregunta3(response.preg_67_tabla_3,'preg_67_tabla_3');
                 
                 this.setPregunta(response.preg_69_tabla_5,'preg_69_tabla_5');
+
+                this.respondidasSeccion = response.respondidasSeccion;
+                this.totalSeccion = response.totalSeccion;
+                this.valorBarraProgreso();
+
+                
                 this.status = response.status;
                 if (this.status !== "success") {
                     if (this.status == "tokenerror") {

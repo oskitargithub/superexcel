@@ -25,12 +25,21 @@ export class RetribucionesComponent implements OnInit {
   public modelo: RetribucionesModel;
   public errorMessage: string;
   public status: string;
+  public respondidasSeccion: any;
+    public totalSeccion: any;
+    public max: number = 100;
+    public showWarning: boolean;
+    public dynamic: number;
+    public type: string;
 
   constructor(
     private fb: FormBuilder,
     private servicio: RetribucionesService,
     injector: Injector
   ) {
+      this.dynamic = 20;
+        this.respondidasSeccion = 0;
+        this.totalSeccion = 0;
     this.createForm();
     this.modelo = new RetribucionesModel();
     this.getDatosModelo();
@@ -39,7 +48,25 @@ export class RetribucionesComponent implements OnInit {
   ngOnInit(): void {
     Messenger.options = { theme: 'air' };
   }
+  valorBarraProgreso() {
+        this.respondidasSeccion = 18;
+        this.totalSeccion = 20;
+        let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+        let type: string;
 
+        if (value < 25) {
+            type = 'danger';
+        } else if (value < 50) {
+            type = 'warning';
+        } else if (value < 75) {
+            type = 'info';
+        } else {
+            type = 'success';
+
+        }
+        this.dynamic = value;
+        this.type = type;
+    }
 
 
   createForm() {
@@ -77,6 +104,11 @@ export class RetribucionesComponent implements OnInit {
                 this.setPregunta(response.preg_53_tabla_6,'preg_53_tabla_6');
                 this.setPregunta(response.preg_54_tabla_6,'preg_54_tabla_6');
                 this.setPregunta(response.preg_55_tabla_6,'preg_55_tabla_6');
+
+                this.respondidasSeccion = response.respondidasSeccion;
+                this.totalSeccion = response.totalSeccion;
+                this.valorBarraProgreso();
+
                 this.status = response.status;
                 if (this.status !== "success") {
                     if (this.status == "tokenerror") {

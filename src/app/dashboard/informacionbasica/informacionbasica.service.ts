@@ -26,7 +26,7 @@ export class InformacionBasicaService{
 
             let fechacrea = miobjeto.user.created_at;
             var datePipe = new DatePipe("es");
-            if (fechacrea.length>1){
+            if (fechacrea!=null && fechacrea.length>1){
                 miobjeto.user.created_at = datePipe.transform(fechacrea, 'yyyy-MM-dd');
                 console.log("ea");
             }

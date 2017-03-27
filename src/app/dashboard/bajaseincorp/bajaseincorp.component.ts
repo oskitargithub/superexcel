@@ -1,34 +1,33 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
-import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { SelPersonalService } from './selpersonal.service';
-import { SelPersonalModel, CriterioTipoInflu,CriterioGrupo, dataModel } from './selpersonal.model';
+import { BajasEIncorpService } from './bajaseincorp.service';
+import { BajasEIncorpModel, Tabla5Model, Tabla4Model, Tabla3Model } from './bajaseincorp.model';
 
 declare var jQuery: any;
 declare var Messenger: any;
 
+
 @Component({
-    selector: 'selpersonal',
-    templateUrl: './selpersonal.template.html',
+    selector: 'bajaseincorp',
+    templateUrl: './bajaseincorp.template.html',
     styleUrls: [
-        'selpersonal.style.css',
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
-    providers: [SelPersonalService],
+    providers: [BajasEIncorpService],
     encapsulation: ViewEncapsulation.None,
 })
-export class SelPersonalComponent implements OnInit {
+export class BajasEIncorpComponent implements OnInit {
     injector: Injector;
-    domSharedStylesHost: any;
     colorOptions: Object = { color: '#f0b518' };
     submitted = false;
     ifForm: FormGroup;
-    public modelo: SelPersonalModel;
+    public modelo: BajasEIncorpModel;
     public errorMessage: string;
     public status: string;
     public respondidasSeccion: any;
     public totalSeccion: any;
+
     public max: number = 100;
     public showWarning: boolean;
     public dynamic: number;
@@ -36,13 +35,14 @@ export class SelPersonalComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private servicio: SelPersonalService,
+        private servicio: BajasEIncorpService,
         injector: Injector
     ) {
         this.dynamic = 20;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
+        this.modelo = new BajasEIncorpModel();
         this.getDatosModelo();
     }
 
@@ -73,53 +73,64 @@ export class SelPersonalComponent implements OnInit {
     createForm() {
         console.log("creando formulario");
         this.ifForm = this.fb.group({
-            data: this.fb.group(new dataModel()),
-            preg_100_tabla_2: this.fb.array([]),
-            preg_100_tabla_3: this.fb.array([]),
+            preg_1_tabla_3: this.fb.array([]),
+            preg_2_tabla_5: this.fb.array([]),
+            preg_3_tabla_3: this.fb.array([]),
+            preg_4_tabla_3: this.fb.array([]),
+            preg_5_tabla_4: this.fb.array([]),
+            preg_6_tabla_3: this.fb.array([]),
         });
         console.log("fin creando formulario");
     }
 
-    getValorElemento(elemento : string){        
-        return this.ifForm.get(elemento).value;
+    getTotalMujeres(elemento: FormArray) {
+        return elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
     }
-    
-    getPregunta (pregunta:string): FormArray {
+    getTotalHombres(elemento: FormArray) {
+        return elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+    }
+    getTotalTotal(elemento: FormArray) {
+        let hombres = elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+        let mujeres = elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+        return (hombres * 1 + mujeres * 1);
+    }
+
+    setPregunta5(tabla: Tabla5Model[], nombretabla: string) {
+        const addressFGs = tabla.map(datos => this.fb.group(datos));
+        const addressFormArray = this.fb.array(addressFGs);
+        this.ifForm.setControl(nombretabla, addressFormArray);
+    }
+
+    setPregunta4(tabla: Tabla4Model[], nombretabla: string) {
+        const addressFGs = tabla.map(datos => this.fb.group(datos));
+        const addressFormArray = this.fb.array(addressFGs);
+        this.ifForm.setControl(nombretabla, addressFormArray);
+    }
+    setPregunta3(tabla: Tabla3Model[], nombretabla: string) {
+        const addressFGs = tabla.map(datos => this.fb.group(datos));
+        const addressFormArray = this.fb.array(addressFGs);
+        this.ifForm.setControl(nombretabla, addressFormArray);
+    }
+
+    getPregunta(pregunta: string): FormArray {
         return this.ifForm.get(pregunta) as FormArray;
     };
-
-    setPregunta(tabla: CriterioTipoInflu[], nombretabla:string) {
-        const addressFGs = tabla.map(datos => this.fb.group(datos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl(nombretabla, addressFormArray);
+    addFila3(elemento: FormArray) {
+        elemento.push(this.fb.group(new Tabla3Model()));
     }
-
-     setPregunta2(tabla: CriterioGrupo[], nombretabla:string) {
-        const addressFGs = tabla.map(datos => this.fb.group(datos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl(nombretabla, addressFormArray);
-    }
-
-    addFila(elemento: FormArray) {
-        elemento.push(this.fb.group(new CriterioTipoInflu()));
-    }
-   
-    
     removeFila(elemento: FormArray, i: number) {
         elemento.removeAt(i);
     }
-    get data(): FormArray {
-        return this.ifForm.get('data') as FormArray;
-    };
-
-
-    getDatosModelo(){
-      this.servicio.getDatosModelo().subscribe(
+    getDatosModelo() {
+        this.servicio.getDatosModelo().subscribe(
             response => {
-                console.log("datos formu"); 
-                this.ifForm.setControl('data', this.fb.group(response.data));               
-                this.setPregunta(response.preg_100_tabla_2,'preg_100_tabla_2');
-                this.setPregunta2(response.preg_100_tabla_3,'preg_100_tabla_3');
+                console.log("datos formu");
+                this.setPregunta3(response.preg_1_tabla_3, 'preg_1_tabla_3');
+                this.setPregunta5(response.preg_2_tabla_5, 'preg_2_tabla_5');
+                this.setPregunta3(response.preg_3_tabla_3, 'preg_3_tabla_3');
+                this.setPregunta3(response.preg_4_tabla_3, 'preg_4_tabla_3');
+                this.setPregunta4(response.preg_5_tabla_4, 'preg_5_tabla_4');
+                this.setPregunta3(response.preg_6_tabla_3, 'preg_6_tabla_3');
 
                 this.respondidasSeccion = response.respondidasSeccion;
                 this.totalSeccion = response.totalSeccion;
@@ -163,4 +174,5 @@ export class SelPersonalComponent implements OnInit {
                 }
             });
     }
+
 }

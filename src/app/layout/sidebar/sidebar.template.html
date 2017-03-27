@@ -22,9 +22,9 @@
         <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['retribuciones'] ">Retribuciones</a></li>
         <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['retribuciones2'] ">Retribuciones2</a></li>
         <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['selpersonal'] ">Acceso al Empleo</a></li>
-        <!-- <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Incorporaciones y Bajas</a></li>
-        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Conciliacion Familiar</a></li>
-        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Formación</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['bajaseincorp'] ">Incorporaciones y Bajas</a></li>
+        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['conciliacion'] ">Conciliacion Familiar</a></li>
+        <!-- <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Formación</a></li>
         <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Promoción y Carrera Profesional</a></li>
         <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Salud Laboral y PRL</a></li>
         <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Acoso Sexual y por razon de Sexo</a></li>
@@ -54,9 +54,9 @@
           <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['tipodecontratoadm'] ">Tipo de Contrato</a></li>
           <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['retribucionesadm'] ">Estructura Salarial</a></li>
           <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['retribucionesadm2'] ">Estructura Salarial 2</a></li>
-         <!--  <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Bajas e Incorporaciones</a></li>
-          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Conciliacion Familiar</a></li>
-          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Formación</a></li>
+          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['bajaseincorpadm'] ">Bajas e Incorporaciones</a></li>
+          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['conciliacionadm'] ">Conciliacion Familiar</a></li>
+          <!-- <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Formación</a></li>
           <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Promoción y Carrera Profesional</a></li>
           <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Acoso por Razón de Sexo</a></li>
           <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Representación Plantilla</a></li>

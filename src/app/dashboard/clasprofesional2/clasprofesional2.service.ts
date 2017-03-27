@@ -20,6 +20,7 @@ export class ClasProfesional2Service {
 
  getDatosModelo(){
     var respuesta = {"status":"success","total":24,"respondidas":0,
+    "respondidasCuest":0,"respondidasSeccion":9,"totalCuest":12,"totalSeccion":12,
     "data":{"user_id":2,"nombre":"Personal","apellidos":"de l''ajuntament"},
     "preg_14_tabla_3":[ 
       { "denominacion": "Funcionariado de carrera", "mujeres": "2", "hombres": "3" },

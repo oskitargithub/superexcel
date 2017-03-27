@@ -27,15 +27,46 @@ export class ClasProfesional2Component implements OnInit {
     public clasprofesional2: ClasProfesional2Model;
     public errorMessage: string;
     public status: string;
+    public respondidasSeccion: any;
+    public totalSeccion: any;
+    public max: number = 100;
+    public showWarning: boolean;
+    public dynamic: number;
+    public type: string;
 
     constructor(
         private fb: FormBuilder,
         private servicio: ClasProfesional2Service,
         injector: Injector
     ) {
+        this.dynamic = 20;
+        this.respondidasSeccion = 0;
+        this.totalSeccion = 0;
         this.createForm();
         this.getClasProfesional2();
     }
+
+    valorBarraProgreso() {
+        this.respondidasSeccion = 18;
+        this.totalSeccion = 20;
+        let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+        let type: string;
+
+        if (value < 25) {
+            type = 'danger';
+        } else if (value < 50) {
+            type = 'warning';
+        } else if (value < 75) {
+            type = 'info';
+        } else {
+            type = 'success';
+
+        }
+        this.dynamic = value;
+        this.type = type;
+    }
+
+
     getClasProfesional2() {
         this.servicio.getDatosModelo()
             .subscribe(
@@ -50,6 +81,9 @@ export class ClasProfesional2Component implements OnInit {
                 this.setPregunta(response.preg_18_tabla_3,'preg_18_tabla_3');
                 this.setPregunta(response.preg_19_tabla_3,'preg_19_tabla_3');
 
+                this.respondidasSeccion = response.respondidasSeccion;
+                this.totalSeccion = response.totalSeccion;
+                this.valorBarraProgreso();
 
                 this.status = response.status;
                 if (this.status !== "success") {

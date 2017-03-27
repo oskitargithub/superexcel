@@ -1,0 +1,133 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Conciliación</li>
+</ol>
+
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="page-title">Conciliación <span class="fw-semi-bold">Trabajo Familia</span></h1>
+    </div>
+    <div class="col-md-4">
+        <div class="row progress-stats">
+            <div class="col-md-9 col-xs-12">
+                <p class="description deemphasize">Progreso de la pestaña</p>
+                <div class="bg-white progress-bar">
+                    <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic}"></progress>
+
+
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 text-xs-center">
+                <span class="status rounded rounded-lg bg-body-light">
+                                    <small><span number-animate>{{(respondidasSeccion*100)/totalSeccion}}</span>%</small>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="widget" widget>
+            <div class="widget-body">
+                <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
+                    <div class="section" style="margin-top:40px">
+                        <p>Teniendo en cuenta la actuación de la organización en materia de conciliación de a vida laboral y
+                            familiar, marque las estrategias que la organización lleva a cabo.</p>
+                        <fieldset>
+                            <legend><strong>Estrategias</strong></legend>               
+                            <div formArrayName="preg_0_tabla_2">
+                                <div *ngFor="let datos of getPregunta('preg_0_tabla_2').controls; let i=index" [formGroupName]="i">
+                                    <div class="row">
+                                        <div class="col-md-3 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" [readonly]="i<4" formControlName="denominacion" tooltip="Estrategia" placeholder="Estrategia"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="display-inline-block checkbox-ios">
+                                                <label for="{{'valorsi_' + i}}"  class="switch">
+                                                    <input type="checkbox" class="ios" id="{{'valorsi_' + i}}" formControlName="valor"><i></i>
+                                                </label>
+                                                {{ifForm.controls.preg_0_tabla_2.value[i].valor}}
+                                            </div>
+                                            <!-- 
+                                            <label class="radio-inline">
+                                                <input type="radio" id="{{'valorsi_' + i}}" value="si"
+                                                    formControlName="valor">Si
+                                            </label>
+                                            
+                                             <div class="abc-radio">
+                                                <input type="radio"  id="{{'valorsi_' + i}}" formControlName="valor" value="true">
+                                                <label for="valorsi">Si</label>
+                                            </div>-->
+                                             
+                                        </div>
+                                        <div class="col-md-2">
+                                            <!-- <div class="abc-radio">
+                                                <input type="radio"  id="{{'valorno_' + i}}" formControlName="valor" value="false">
+                                                <label for="valorno">No</label>
+                                            </div>
+                                            <label class="radio-inline">
+                                                <input type="radio" id="{{'valorno_' + i}}" value="no"
+                                                    formControlName="valor">No
+                                            </label>-->
+                                        </div>
+                                        <div class="col-md-1">
+                                            <span *ngIf="i > 3">
+                                                <button type="button"(click)="removeFila(ifForm.controls.preg_0_tabla_2, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" form>
+                                    {{ifForm.value.preg_0_tabla_2 | json }}
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila2(ifForm.controls.preg_0_tabla_2)" type="button" class="btn btn-success btn-xs mb-xs">Añade Estrategia</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row"  formGroupName="data">
+                                    <div class="col-md-6">
+                                        <p>La organización se preocupa por divulgación de los mecanismos de conciliación (legales y dispuestos por la organización)</p>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="abc-radio">
+                                            <input type="radio" name="preg_1" id="preg_1si" formControlName="preg_1" value="si">
+                                            <label for="preg_1si">Si</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 ">
+                                        <div class="abc-radio">
+                                            <input type="radio" name="preg_1" id="preg_1no" formControlName="preg_1" value="no">
+                                            <label for="preg_1no">No</label>
+                                        </div>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col-md-6">
+                                        <p>En caso afirmativo, breve descripción del método divulgativo</p>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col-md-8">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_1')!='si'" class="autogrow form-control transition-height" id="preg_2" formControlName="preg_2" autosize
+                                            placeholder="Descripción del método divulgativo"></textarea>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col-md-6">
+                                        <p>En caso afirmativo, indicar personas destinatarias</p>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col-md-8">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_1')!='si'" class="autogrow form-control transition-height" id="preg_3" formControlName="preg_3" autosize
+                                            placeholder="Personas destinatarias"></textarea>
+                                    </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
