@@ -42,50 +42,62 @@
                                 en la organización</p>
                             <fieldset>
                                 <legend><strong>Factores</strong></legend>
-                                <div class="row">
-                                    <div class="col-md-2 offset-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
+                                <div class="col-md-10 offset-md-2">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <md-checkbox formControlName="preg_1">Sustitución otras/os trabajadoras/es</md-checkbox>
+                                            <!--<div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_1" type="checkbox" formControlName="preg_1" />
                                             <label for="preg_1">Sustitución otras/os trabajadoras/es</label>
+                                        </div>-->
                                         </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
+                                        <div class="col-md-6">
+                                            <md-checkbox formControlName="preg_2">Inicio nuevas actividades/prestación nuevos servicios a la ciudadanía</md-checkbox>
+                                            <!-- <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_2" type="checkbox" formControlName="preg_2" />
                                             <label for="preg_2">Inicio nuevas actividades/prestación  nuevos servicios a la ciudadanía</label>
+                                        </div>-->
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <md-checkbox formControlName="preg_3">Subvenciones o incentivos de fomento al empleo</md-checkbox>
+                                            <!-- <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_3" type="checkbox" formControlName="preg_3" />
                                             <label for="preg_3">Subvenciones o incentivos de fomento al empleo</label>
+                                        </div>-->
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 offset-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
+
+                                        <div class="col-md-6">
+                                            <md-checkbox formControlName="preg_4">Exigencias productivas coyunturales</md-checkbox>
+                                            <!-- <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_4" type="checkbox" formControlName="preg_4" />
                                             <label for="preg_4">Exigencias productivas coyunturales</label>
+                                        </div>-->
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <md-checkbox formControlName="preg_5">Desarrollo de campañas estacionales que hacen necesaria la incorporación de personal</md-checkbox>
+                                            <!--  <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_5" type="checkbox" formControlName="preg_5" />
                                             <label for="preg_5">Desarrollo de campañas estacionales que hacen necesaria la incorporación de personal</label>
+                                        </div> -->
                                         </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
+                                        <div class="col-md-6">
+                                            <md-checkbox formControlName="preg_6">Otros (indicar): (Por ejemplo: jubilaciones, introducción de nuevas tecnologías,
+                                                administración digital,..)</md-checkbox>
+                                            <!-- <div class="abc-checkbox abc-checkbox-primary">
                                             <input id="preg_6" type="checkbox" formControlName="preg_6" />
                                             <label for="preg_6">Otros (indicar): (Por ejemplo: jubilaciones, introducción de nuevas tecnologías, administración digital,..)</label>
+                                        </div>-->
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 offset-md-6">
-                                        <input [readonly]="!getValorElemento('data.preg_6')" type="text" class="form-control" formControlName="preg_6txt" tooltip="Otros"
-                                            placeholder="Otros" />
+                                    <div class="row">
+                                        <div class="col-md-6 offset-md-6">
+                                            <input [readonly]="!getValorElemento('data.preg_6')" type="text" class="form-control" formControlName="preg_6txt" tooltip="Otros"
+                                                placeholder="Otros" />
+                                        </div>
                                     </div>
                                 </div>
                             </fieldset>
@@ -97,54 +109,39 @@
                                 realización de procesos de selección</p>
                             <fieldset>
                                 <legend><strong>Estrategias</strong></legend>
-                                <div class="row">
-                                    <div class="col-md-2 offset-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_7" type="checkbox" formControlName="preg_7" />
-                                            <label for="preg_7">Bolsas de trabajo, bolsas de empleo</label>
+                                <div class="col-md-10 offset-md-2">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <md-checkbox formControlName="preg_7">Bolsas de trabajo, bolsas de empleo</md-checkbox>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <md-checkbox formControlName="preg_8">Recurso a empresas de selección de personal o ETT</md-checkbox>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_8" type="checkbox" formControlName="preg_8" />
-                                            <label for="preg_8">Recurso a empresas de selección de personal o ETT</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <md-checkbox formControlName="preg_9">
+                                                Publicidad en medios de comunicación y gestión directa por el rea de recursos humanos de la <strong>propia organización</strong></md-checkbox>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <md-checkbox formControlName="preg_10">Recurso a servicios públicos de Empleo</md-checkbox>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_9" type="checkbox" formControlName="preg_9" />
-                                            <label for="preg_9">Publicidad en medios de comunicación y gestión directa por el rea de recursos humanos de la <strong>propia organización</strong></label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <md-checkbox formControlName="preg_11">Convocatoria pública de empleo</md-checkbox>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <md-checkbox formControlName="preg_12">Otros (indicar):</md-checkbox>
                                         </div>
                                     </div>
-                                    <div class="w-100"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 offset-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_10" type="checkbox" formControlName="preg_10" />
-                                            <label for="preg_10">Recurso a servicios públicos de Empleo</label>
+                                    <div class="row">
+                                        <div class="col-md-6 offset-md-6">
+                                            <input [readonly]="!getValorElemento('data.preg_12')" type="text" class="form-control" formControlName="preg_12txt" tooltip="Otros"
+                                                placeholder="Otros" />
                                         </div>
+                                        <div class="w-100"></div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_11" type="checkbox" formControlName="preg_11" />
-                                            <label for="preg_11">Convocatoria pública de empleo</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_12" type="checkbox" formControlName="preg_12" />
-                                            <label for="preg_12">Otros (indicar):</label>
-                                        </div>
-                                    </div>
-                                    <div class="w-100"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 offset-md-6">
-                                        <input [readonly]="!getValorElemento('data.preg_12')" type="text" class="form-control" formControlName="preg_12txt" tooltip="Otros"
-                                            placeholder="Otros" />
-                                    </div>
-                                    <div class="w-100"></div>
                                 </div>
                             </fieldset>
                         </div>
@@ -315,18 +312,13 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-1 offset-md-2">
-                                            <div class="abc-radio">
-                                                <input type="radio" name="preg_26" id="preg26si" formControlName="preg_26" value="si">
-                                                <label for="preg26si">Si</label>
-                                            </div>
+                                        <div class="col-md-2 offset-md-2">
+                                            <md-radio-group formControlName="preg_26">
+                                                <md-radio-button value="si">Si</md-radio-button>
+                                                <md-radio-button value="no">No</md-radio-button>
+                                            </md-radio-group>
                                         </div>
-                                        <div class="col-md-1 ">
-                                            <div class="abc-radio">
-                                                <input type="radio" name="preg_26" id="preg26no" formControlName="preg_26" value="no">
-                                                <label for="preg26no">No</label>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
 
@@ -403,18 +395,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-1 offset-md-2">
-                                        <div class="abc-radio">
-                                            <input type="radio" name="preg_36" id="preg36si" formControlName="preg_36" value="si">
-                                            <label for="preg36si">Si</label>
-                                        </div>
+                                    <div class="col-md-2 offset-md-2">
+                                        <md-radio-group formControlName="preg_36">
+                                            <md-radio-button value="si">Si</md-radio-button>
+                                            <md-radio-button value="no">No</md-radio-button>
+                                        </md-radio-group>
                                     </div>
-                                    <div class="col-md-1 ">
-                                        <div class="abc-radio">
-                                            <input type="radio" name="preg_36" id="preg36no" formControlName="preg_36" value="no">
-                                            <label for="preg36no">No</label>
-                                        </div>
-                                    </div>
+
                                     <div class="w-100"></div>
                                 </div>
                                 <div class="row">
@@ -502,18 +489,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-1 offset-md-2">
-                                        <div class="abc-radio">
-                                            <input type="radio" name="preg_40" id="preg_40si" formControlName="preg_40" value="si">
-                                            <label for="preg_40si">Si</label>
-                                        </div>
+                                    <div class="col-md-2 offset-md-2">
+                                        <md-radio-group formControlName="preg_40">
+                                            <md-radio-button value="si">Si</md-radio-button>
+                                            <md-radio-button value="no">No</md-radio-button>
+                                        </md-radio-group>
                                     </div>
-                                    <div class="col-md-1 ">
-                                        <div class="abc-radio">
-                                            <input type="radio" name="preg_40" id="preg_40no" formControlName="preg_40" value="no">
-                                            <label for="preg_40no">No</label>
-                                        </div>
-                                    </div>
+
                                     <div class="w-100"></div>
                                 </div>
 
@@ -537,17 +519,11 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-1 offset-md-2">
-                                        <div class="abc-radio">
-                                            <input type="radio" name="preg_41" id="preg_41si" formControlName="preg_41" value="si">
-                                            <label for="preg_41si">Si</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1 ">
-                                        <div class="abc-radio">
-                                            <input type="radio" name="preg_41" id="preg_41no" formControlName="preg_41" value="no">
-                                            <label for="preg_41no">No</label>
-                                        </div>
+                                    <div class="col-md-2 offset-md-2">
+                                        <md-radio-group formControlName="preg_41">
+                                            <md-radio-button value="si">Si</md-radio-button>
+                                            <md-radio-button value="no">No</md-radio-button>
+                                        </md-radio-group>
                                     </div>
                                     <div class="w-100"></div>
                                 </div>
@@ -571,18 +547,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-1 offset-md-2">
-                                        <div class="abc-radio">
-                                            <input type="radio" name="preg_42" id="preg_42si" formControlName="preg_42" value="si">
-                                            <label for="preg_42si">Si</label>
-                                        </div>
+                                    <div class="col-md-2 offset-md-2">
+                                        <md-radio-group formControlName="preg_42">
+                                            <md-radio-button value="si">Si</md-radio-button>
+                                            <md-radio-button value="no">No</md-radio-button>
+                                        </md-radio-group>
                                     </div>
-                                    <div class="col-md-1 ">
-                                        <div class="abc-radio">
-                                            <input type="radio" name="preg_42" id="preg_42no" formControlName="preg_42" value="no">
-                                            <label for="preg_42no">No</label>
-                                        </div>
-                                    </div>
+
                                     <div class="w-100"></div>
                                 </div>
 
@@ -632,33 +603,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="abc-radio">
-                                                    <input type="radio" name="influencia" id="preg_43si" formControlName="influencia" value="positivo">
-                                                    <label for="preg_43si">Positivo</label>
-                                                </div>
-                                            </div>
+                                        <div clas="col-md-3">
+                                            <md-radio-group formControlName="influencia">
+                                                <md-radio-button value="1">Positivo</md-radio-button>
+                                                <md-radio-button value="2">Negativo</md-radio-button>
+                                                <md-radio-button value="3">indiferente</md-radio-button>
+                                            </md-radio-group>
                                         </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="abc-radio">
-                                                    <input type="radio" name="influencia" id="preg_43no" formControlName="influencia" value="negativo">
-                                                    <label for="preg_43no">Negativo</label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <div class="abc-radio">
-                                                    <input type="radio" name="influencia" id="preg_43nose" formControlName="influencia" value="indiferente">
-                                                    <label for="preg_43nose">Indiferente</label>
-                                                </div>
-                                            </div>
-                                        </div>
-
 
                                         <div class="col-md-1 ">
                                             <span *ngIf="i > 25">

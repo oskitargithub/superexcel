@@ -55,3 +55,9 @@ export class Tabla2Model {
     denominacion: any = '';
     valor: any = 0;    
 }
+
+export class TablaRaraModel{
+    denominacion: any = '';
+    valor: any = 0;   
+    otro: any = null;
+}

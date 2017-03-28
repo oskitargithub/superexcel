@@ -6,6 +6,7 @@ import { FormsModule,ReactiveFormsModule  }    from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ng2-bootstrap';
 import { ConciliacionComponent } from './conciliacion.component';
+import { MdRadioModule, MdUniqueSelectionDispatcher } from '@angular2-material/radio';
 
 
 export const routes = [
@@ -15,11 +16,14 @@ export const routes = [
 @NgModule({
   imports: [ CommonModule, 
             FormsModule,
-            ReactiveFormsModule, 
+            ReactiveFormsModule,  
+            MdRadioModule,           
             TooltipModule.forRoot(),
             RouterModule.forChild(routes) ],
+  providers: [MdUniqueSelectionDispatcher],
   declarations: [ ConciliacionComponent ]
 })
 export class ConciliacionModule {
   static routes = routes;
+  
 }

@@ -16,6 +16,8 @@ import { DatepickerModule } from 'ng2-bootstrap';
 
 import { MomentModule } from 'angular2-moment';
 
+import { MdRadioModule, MdUniqueSelectionDispatcher } from '@angular2-material/radio';
+import { MdCheckboxModule } from '@angular2-material/checkbox';
 /*import { InformacionBasicaService } from './informacionbasica.service';*/
 
 export const routes = [
@@ -27,11 +29,13 @@ export const routes = [
     FormsModule,
     ReactiveFormsModule,
     MomentModule,
+    MdRadioModule,
+    MdCheckboxModule,
     DatepickerModule.forRoot(),
     TooltipModule.forRoot(),
     RouterModule.forChild(routes)],
   declarations: [InformacionBasicaComponent],
-  providers: [ /*InformacionBasicaService*/]
+  providers: [ MdUniqueSelectionDispatcher /*InformacionBasicaService*/]
 })
 export class InformacionBasicaModule {
   static routes = routes;

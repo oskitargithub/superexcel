@@ -11,6 +11,7 @@
 @import "../../../node_modules/select2/src/scss/core";
 @import "../../../node_modules/select2-bootstrap-theme/src/select2-bootstrap";
 
+
 /**
  * Bootstrap Colorpicker
  * setting correct urls
@@ -510,3 +511,33 @@ html[dir="rtl"] .select2-search input {
 .fileinput .input-group-addon {
   border-right: 1px solid $btn-secondary-border;
 }
+
+
+
+/**
+ * Cambios de color
+ * para radiobuttons
+ * de angular material
+ */
+ .md-radio-checked .md-radio-inner-circle{
+     background-color: dodgerblue;
+ }
+ .md-radio-checked .md-radio-outer-circle{
+    border-color:  dodgerblue;
+}
+
+
+
+.md-radio-checked .md-radio-label .md-radio-container .md-radio-outer-circle{
+    border-color:  dodgerblue;
+    transition: border-color ease 280ms;
+}
+.md-radio-focused .md-radio-label .md-radio-container .md-ink-ripple { 
+    opacity: 1; 
+background-color: rgba(30, 144, 255, 0.5)
+}
+
+/* fin Angular material */
+
+
+

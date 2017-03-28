@@ -68,17 +68,17 @@ export class ClasProfesional1Component implements OnInit {
                 this.ifForm.setControl('data', this.fb.group(response.data));
                 console.log("datos preg3");
                 
-                this.setPregunta(response.preg_3_tabla_3,'preg_3_tabla_3');
-                this.setPregunta(response.preg_4_tabla_3,'preg_4_tabla_3');
-                this.setPregunta(response.preg_5_tabla_3,'preg_5_tabla_3');
-                this.setPregunta(response.preg_6_tabla_3,'preg_6_tabla_3');
-                this.setPregunta(response.preg_7_tabla_3,'preg_7_tabla_3');
-                this.setPregunta(response.preg_8_tabla_3,'preg_8_tabla_3');
-                this.setPregunta(response.preg_9_tabla_3,'preg_9_tabla_3');
-                this.setPregunta(response.preg_10_tabla_3,'preg_10_tabla_3');
-                this.setPregunta(response.preg_11_tabla_3,'preg_11_tabla_3');
-                this.setPregunta(response.preg_12_tabla_3,'preg_12_tabla_3');
-                this.setPregunta(response.preg_13_tabla_3,'preg_13_tabla_3');
+                this.setPregunta(response.preg_48_tabla_3,'preg_48_tabla_3');
+                this.setPregunta(response.preg_49_tabla_3,'preg_49_tabla_3');
+                this.setPregunta(response.preg_54_tabla_3,'preg_54_tabla_3');
+                this.setPregunta(response.preg_55_tabla_3,'preg_55_tabla_3');
+                this.setPregunta(response.preg_56_tabla_3,'preg_56_tabla_3');
+                this.setPregunta(response.preg_57_tabla_3,'preg_57_tabla_3');
+                this.setPregunta(response.preg_59_tabla_3,'preg_59_tabla_3');
+                this.setPregunta(response.preg_60_tabla_3,'preg_60_tabla_3');
+                this.setPregunta(response.preg_61_tabla_3,'preg_61_tabla_3');
+                this.setPregunta(response.preg_62_tabla_3,'preg_62_tabla_3');
+                this.setPregunta(response.preg_63_tabla_3,'preg_63_tabla_3');
                 
                 this.respondidasSeccion = response.respondidasSeccion;
                 this.totalSeccion = response.totalSeccion;
@@ -183,12 +183,12 @@ export class ClasProfesional1Component implements OnInit {
     };
 
     onSubmit() {
-        this.clasprofesional1 = this.preparaParaGuardar();
+        //this.clasprofesional1 = this.preparaParaGuardar();
         console.log(this.clasprofesional1);
 
     }
 
-    preparaParaGuardar(): ClasProfesional1Model {
+    /*preparaParaGuardar(): ClasProfesional1Model {
         const formModel = this.ifForm.value;
         const preg3Copy: Tabla3Model[] = formModel.preg_3_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
         const preg4Copy: Tabla3Model[] = formModel.preg_4_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
@@ -221,7 +221,7 @@ export class ClasProfesional1Component implements OnInit {
             preg_13_tabla_3: preg13Copy,
         };
         return saveClasProfesional1;
-    }
+    }*/
 
 
 

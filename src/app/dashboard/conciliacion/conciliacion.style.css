@@ -1,7 +1,3 @@
-.autogrow {
-  overflow: hidden;
-  resize: none;
-}
  .md-radio-checked .md-radio-inner-circle{
      background-color: dodgerblue;
  }

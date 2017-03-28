@@ -3,17 +3,17 @@ export class ClasProfesional1Model{
     public id: number;
     public user_id : number;
     public data: dataModel;
-    public preg_3_tabla_3: Tabla3Model[];
-    public preg_4_tabla_3: Tabla3Model[];
-    public preg_5_tabla_3: Tabla3Model[];
-    public preg_6_tabla_3: Tabla3Model[];
-    public preg_7_tabla_3: Tabla3Model[];
-    public preg_8_tabla_3: Tabla3Model[];
-    public preg_9_tabla_3: Tabla3Model[];
-    public preg_10_tabla_3: Tabla3Model[];
-    public preg_11_tabla_3: Tabla3Model[];
-    public preg_12_tabla_3: Tabla3Model[];
-    public preg_13_tabla_3: Tabla3Model[];
+    public preg_48_tabla_3: Tabla3Model[];
+    public preg_49_tabla_3: Tabla3Model[];
+    public preg_54_tabla_3: Tabla3Model[];
+    public preg_55_tabla_3: Tabla3Model[];
+    public preg_56_tabla_3: Tabla3Model[];
+    public preg_57_tabla_3: Tabla3Model[];
+    public preg_59_tabla_3: Tabla3Model[];
+    public preg_60_tabla_3: Tabla3Model[];
+    public preg_61_tabla_3: Tabla3Model[];
+    public preg_62_tabla_3: Tabla3Model[];
+    public preg_63_tabla_3: Tabla3Model[];
     constructor(){
         this.id=0,
         this.user_id = 0
@@ -21,17 +21,20 @@ export class ClasProfesional1Model{
 }
 
 export class Tabla3Model{
-        denominacion: any = '';
+        texto: any = '';
+        respuesta: any = '';
         mujeres: any = 0;
         hombres: any = 0;
 }
 export class dataModel{
-    public preg_5: any;//public mujeres: number;
-    public preg_6: any;//public hombres: number;
-    public preg_7: string; //La organización, ¿tiene contratadas a personas con diversidad funcional o algún tipo de discapacidad?
-    constructor(){
+    public preg_46: any;
+    public preg_47: any;
+    public preg_50: any;
+    public preg_52: any;
+    public preg_53: any;
+    /*constructor(){
         this.preg_5 = '',
         this.preg_6 = '',
         this.preg_7=''
-    }
+    }*/
 }

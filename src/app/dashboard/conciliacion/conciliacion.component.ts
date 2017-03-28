@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ConciliacionService } from './conciliacion.service';
-import { ConciliacionModel, Tabla2Model, Tabla3Model } from './conciliacion.model';
+import { ConciliacionModel, Tabla2Model, Tabla3Model,TablaRaraModel } from './conciliacion.model';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -11,9 +11,10 @@ declare var Messenger: any;
 @Component({
     selector: 'conciliacion',
     templateUrl: './conciliacion.template.html',
-    styleUrls: [
-        '../../scss/elements.style.scss',
-        '../../scss/notifications.style.scss'],
+    styleUrls: [        
+        '../../scss/notifications.style.scss',
+        '../../scss/elements.style.scss'
+    ],
     providers: [ConciliacionService],
     encapsulation: ViewEncapsulation.None,
 })
@@ -32,6 +33,12 @@ export class ConciliacionComponent implements OnInit {
     public showWarning: boolean;
     public dynamic: number;
     public type: string;
+
+    rememberMe: boolean = false;
+    sortBy: string = "date";
+    orderBy: string[] = ["rating", "comments"];
+
+
 
     constructor(
         private fb: FormBuilder,
@@ -84,8 +91,14 @@ export class ConciliacionComponent implements OnInit {
             preg_9_tabla_3: this.fb.array([]),
             preg_10_tabla_3: this.fb.array([]),
             preg_0_tabla_2: this.fb.array([]),
+
+            preg_rara: this.fb.array([]),
         });
         console.log("fin creando formulario");
+    }
+
+    getValorElemento(elemento : string){        
+        return this.ifForm.get(elemento).value;
     }
 
     getTotalMujeres(elemento: FormArray) {
@@ -100,9 +113,13 @@ export class ConciliacionComponent implements OnInit {
         return (hombres * 1 + mujeres * 1);
     }
 
-    
+    setPregunta(tabla: any[], nombretabla: string) {
+        const addressFGs = tabla.map(datos => this.fb.group(datos));
+        const addressFormArray = this.fb.array(addressFGs);
+        this.ifForm.setControl(nombretabla, addressFormArray);
+    }
 
-    setPregunta2(tabla: Tabla2Model[], nombretabla: string) {
+    /*setPregunta2(tabla: Tabla2Model[], nombretabla: string) {
         const addressFGs = tabla.map(datos => this.fb.group(datos));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
@@ -111,7 +128,11 @@ export class ConciliacionComponent implements OnInit {
         const addressFGs = tabla.map(datos => this.fb.group(datos));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
-    }
+    }*/
+
+
+
+
 
     getPregunta(pregunta: string): FormArray {
         return this.ifForm.get(pregunta) as FormArray;
@@ -130,18 +151,20 @@ export class ConciliacionComponent implements OnInit {
             response => {
                 console.log("datos formu");
                 this.ifForm.setControl('data', this.fb.group(response.data));
-                this.setPregunta3(response.preg_1_tabla_3, 'preg_1_tabla_3');
-                this.setPregunta3(response.preg_2_tabla_3, 'preg_2_tabla_3');
-                this.setPregunta3(response.preg_3_tabla_3, 'preg_3_tabla_3');
-                this.setPregunta3(response.preg_4_tabla_3, 'preg_4_tabla_3');
-                this.setPregunta3(response.preg_5_tabla_3, 'preg_5_tabla_3');
-                this.setPregunta3(response.preg_6_tabla_3, 'preg_6_tabla_3');
-                this.setPregunta3(response.preg_7_tabla_3, 'preg_6_tabla_3');
-                this.setPregunta3(response.preg_8_tabla_3, 'preg_6_tabla_3');
-                this.setPregunta3(response.preg_9_tabla_3, 'preg_6_tabla_3');
-                this.setPregunta3(response.preg_10_tabla_3, 'preg_6_tabla_3');
+                this.setPregunta(response.preg_1_tabla_3, 'preg_1_tabla_3');
+                this.setPregunta(response.preg_2_tabla_3, 'preg_2_tabla_3');
+                this.setPregunta(response.preg_3_tabla_3, 'preg_3_tabla_3');
+                this.setPregunta(response.preg_4_tabla_3, 'preg_4_tabla_3');
+                this.setPregunta(response.preg_5_tabla_3, 'preg_5_tabla_3');
+                this.setPregunta(response.preg_6_tabla_3, 'preg_6_tabla_3');
+                this.setPregunta(response.preg_7_tabla_3, 'preg_7_tabla_3');
+                this.setPregunta(response.preg_8_tabla_3, 'preg_8_tabla_3');
+                this.setPregunta(response.preg_9_tabla_3, 'preg_9_tabla_3');
+                this.setPregunta(response.preg_10_tabla_3, 'preg_10_tabla_3');
 
-                this.setPregunta2(response.preg_0_tabla_2, 'preg_0_tabla_2');
+                this.setPregunta(response.preg_0_tabla_2, 'preg_0_tabla_2');
+
+                this.setPregunta(response.preg_rara,'preg_rara');
 
                 this.respondidasSeccion = response.respondidasSeccion;
                 this.totalSeccion = response.totalSeccion;

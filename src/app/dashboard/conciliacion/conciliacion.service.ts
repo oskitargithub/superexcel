@@ -22,7 +22,7 @@ export class ConciliacionService {
         var respuesta = {
             "status": "success", "total": 24, "respondidas": 0,
             "respondidasCuest": 0, "respondidasSeccion": 9, "totalCuest": 12, "totalSeccion": 12,
-            "data": { "user_id": 2,"preg_1":"si","preg_2":"","preg_3":"","preg_4":"","preg_5":"","preg_6":"","preg_7":"","preg_8":""  },
+            "data": { "user_id": 2,"preg_1":"si","preg_2":"","preg_3":"","preg_4":"","preg_5":"","preg_6":"","preg_7":"","preg_8":"","preg_9":"","preg_10":"" ,"preg_11":"","preg_12":""  },
             "preg_0_tabla_2": [
                 { "denominacion": "1", "valor": "true"},
                 { "denominacion": "2", "valor": "false"},
@@ -30,8 +30,8 @@ export class ConciliacionService {
                 { "denominacion": "4", "valor": "true"},
             ],
             "preg_1_tabla_3": [
-                { "denominacion": "", "mujeres": "2", "hombres": "3" },
-                { "denominacion": "", "mujeres": "2", "hombres": "3" },
+                { "denominacion": "Personas empleadas con hijos e hijas a cargo", "mujeres": "2", "hombres": "3" },
+                { "denominacion": "Personas  empleadas  con  otros  familiares  o personas dependientes a cargo", "mujeres": "2", "hombres": "3" },
             ],
             "preg_2_tabla_3": [
                 { "denominacion": "", "mujeres": "2", "hombres": "3" },
@@ -96,6 +96,11 @@ export class ConciliacionService {
             "preg_10_tabla_3": [
                 { "denominacion": "", "mujeres": "2", "hombres": "3" }
             ],
+            "preg_rara":[
+                {"denominacion": "pregunta 1", "valor": "true"},
+                {"denominacion": "pregunta 2", "valor": "false"},
+                {"denominacion": "pregunta 3", "valor": "true", "otro": "Perico de los palotes"}
+            ]
         };
         return Observable.of(respuesta);
     }
