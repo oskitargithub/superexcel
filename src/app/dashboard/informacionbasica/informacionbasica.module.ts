@@ -18,7 +18,7 @@ import { MomentModule } from 'angular2-moment';
 
 import { MdRadioModule, MdUniqueSelectionDispatcher } from '@angular2-material/radio';
 import { MdCheckboxModule } from '@angular2-material/checkbox';
-/*import { InformacionBasicaService } from './informacionbasica.service';*/
+
 
 export const routes = [
   { path: '', component: InformacionBasicaComponent, pathMatch: 'full' }
@@ -35,7 +35,7 @@ export const routes = [
     TooltipModule.forRoot(),
     RouterModule.forChild(routes)],
   declarations: [InformacionBasicaComponent],
-  providers: [ MdUniqueSelectionDispatcher /*InformacionBasicaService*/]
+  providers: [ MdUniqueSelectionDispatcher]
 })
 export class InformacionBasicaModule {
   static routes = routes;

@@ -171,7 +171,7 @@ export class ClasProfesionalAdmComponent implements OnInit {
 
 
   getClasProfesional() {
-    this.clasprofesionalservice.getClasProfesional()
+    this.clasprofesionalservice.getDatosModelo()
       .subscribe(
       response => {
         console.log("datos formu");
@@ -228,20 +228,20 @@ export class ClasProfesionalAdmComponent implements OnInit {
 
   asignaDatosGraficas() {
     /** Asignamos los datos para las gráficas */
-    this.asignaPorcentajes(this.clasprofesional1.preg_3_tabla_3, this.barChartData, this.barChartData2, this.barChartLabels, this.barChartLabels2);
-    this.asignaPorcentajes(this.clasprofesional1.preg_5_tabla_3, this.barChartData3, this.barChartData4, this.barChartLabels3, this.barChartLabels4);
-    this.asignaPorcentajes(this.clasprofesional1.preg_6_tabla_3, this.barChartData5, this.barChartData6, this.barChartLabels5, this.barChartLabels6);
-    this.asignaPorcentajes(this.clasprofesional1.preg_7_tabla_3, this.barChartData7, this.barChartData8, this.barChartLabels7, this.barChartLabels8);
-    this.asignaPorcentajes(this.clasprofesional1.preg_8_tabla_3, this.barChartData9, this.barChartData10, this.barChartLabels9, this.barChartLabels10);
-    this.asignaPorcentajes(this.clasprofesional1.preg_9_tabla_3, this.barChartData11, this.barChartData12, this.barChartLabels11, this.barChartLabels12);
-    this.asignaPorcentajes(this.clasprofesional1.preg_10_tabla_3, this.barChartData13, this.barChartData14, this.barChartLabels13, this.barChartLabels14);
-    this.asignaPorcentajes(this.clasprofesional1.preg_11_tabla_3, this.barChartData15, this.barChartData16, this.barChartLabels15, this.barChartLabels16);
-    this.asignaPorcentajes(this.clasprofesional1.preg_12_tabla_3, this.barChartData17, this.barChartData18, this.barChartLabels17, this.barChartLabels18);
-    this.asignaPorcentajes(this.clasprofesional1.preg_13_tabla_3, this.barChartData19, this.barChartData20, this.barChartLabels19, this.barChartLabels20);
+    this.asignaPorcentajes(this.clasprofesional1.preg_48_tabla_3, this.barChartData, this.barChartData2, this.barChartLabels, this.barChartLabels2);
+    this.asignaPorcentajes(this.clasprofesional1.preg_54_tabla_3, this.barChartData3, this.barChartData4, this.barChartLabels3, this.barChartLabels4);
+    this.asignaPorcentajes(this.clasprofesional1.preg_55_tabla_3, this.barChartData5, this.barChartData6, this.barChartLabels5, this.barChartLabels6);
+    this.asignaPorcentajes(this.clasprofesional1.preg_56_tabla_3, this.barChartData7, this.barChartData8, this.barChartLabels7, this.barChartLabels8);
+    this.asignaPorcentajes(this.clasprofesional1.preg_57_tabla_3, this.barChartData9, this.barChartData10, this.barChartLabels9, this.barChartLabels10);
+    this.asignaPorcentajes(this.clasprofesional1.preg_59_tabla_3, this.barChartData11, this.barChartData12, this.barChartLabels11, this.barChartLabels12);
+    this.asignaPorcentajes(this.clasprofesional1.preg_60_tabla_3, this.barChartData13, this.barChartData14, this.barChartLabels13, this.barChartLabels14);
+    this.asignaPorcentajes(this.clasprofesional1.preg_61_tabla_3, this.barChartData15, this.barChartData16, this.barChartLabels15, this.barChartLabels16);
+    this.asignaPorcentajes(this.clasprofesional1.preg_62_tabla_3, this.barChartData17, this.barChartData18, this.barChartLabels17, this.barChartLabels18);
+    this.asignaPorcentajes(this.clasprofesional1.preg_63_tabla_3, this.barChartData19, this.barChartData20, this.barChartLabels19, this.barChartLabels20);
 
-    this.asignaPorcentajes(this.clasprofesional1.preg_4_tabla_3, this.barChartData21, null, this.barChartLabels21, null);
+    this.asignaPorcentajes(this.clasprofesional1.preg_49_tabla_3, this.barChartData21, null, this.barChartLabels21, null);
 
-    this.asignaPorcentajeDonutHMPlantilla(this.clasprofesional1.preg_4_tabla_3,this.doughnutChartData2,this.doughnutChartData3,this.doughnutChartLabels2,this.doughnutChartLabels3 );
+    this.asignaPorcentajeDonutHMPlantilla(this.clasprofesional1.preg_49_tabla_3,this.doughnutChartData2,this.doughnutChartData3,this.doughnutChartLabels2,this.doughnutChartLabels3 );
   }
 
   asignaPorcentajeDonutHMPlantilla(elemento: Tabla3Model[], grafica1: any,grafica2: any, label1: any, label2: any){
@@ -250,8 +250,8 @@ export class ClasProfesionalAdmComponent implements OnInit {
       let porcentajeh = Math.round((element.hombres * 1) / this.getTotalHombresMujeres(elemento) * 100);
       grafica1.push(porcentajem);
       grafica2.push(porcentajeh);
-      label1.push('% ' + element.denominacion);
-      label2.push('% ' + element.denominacion);
+      label1.push('% ' + element.texto);
+      label2.push('% ' + element.texto);
     });
   }
 
@@ -273,9 +273,9 @@ export class ClasProfesionalAdmComponent implements OnInit {
       datah.push(porcentajeh);
       data2m.push(porcentaje2m);
       data2h.push(porcentaje2h);
-      label1.push(element.denominacion);
+      label1.push(element.texto);
       if(label2!= null)
-        label2.push(element.denominacion);
+        label2.push(element.texto);
     });
     grafica1.push({ data: datam, label: "Mujeres %" });
     grafica1.push({ data: datah, label: "Hombres %" });
@@ -347,25 +347,25 @@ export class ClasProfesionalAdmComponent implements OnInit {
 
 
   getTotalCompoPlantilla() {
-    return (this.clasprofesional1.data.preg_5 * 1 + this.clasprofesional1.data.preg_6 * 1);
+    return (this.clasprofesional1.data.preg_46 * 1 + this.clasprofesional1.data.preg_47 * 1);
   }
   getMujeresPlantilla() {
-    return (this.clasprofesional1.data.preg_5 * 1);
+    return (this.clasprofesional1.data.preg_46 * 1);
   }
   getMujeresPlantillaPorcentaje() {
-    return ((this.clasprofesional1.data.preg_5 * 1) * 100 / (this.clasprofesional1.data.preg_5 * 1 + this.clasprofesional1.data.preg_6 * 1));
+    return ((this.clasprofesional1.data.preg_46 * 1) * 100 / (this.clasprofesional1.data.preg_46 * 1 + this.clasprofesional1.data.preg_47 * 1));
   }
   getHombresPlantilla() {
-    return (this.clasprofesional1.data.preg_6 * 1);
+    return (this.clasprofesional1.data.preg_47 * 1);
   }
   getHombresPlantillaPorcentaje() {
-    return (this.clasprofesional1.data.preg_6 * 1) * 100 / (this.clasprofesional1.data.preg_5 * 1 + this.clasprofesional1.data.preg_6 * 1);
+    return (this.clasprofesional1.data.preg_47 * 1) * 100 / (this.clasprofesional1.data.preg_46 * 1 + this.clasprofesional1.data.preg_47 * 1);
   }
 
 
   /*
   getTotalMujeres(){
-      return this.preg_3_tabla_3.value.map(c=>c.mujeres).reduce((sum,current) => (sum*1)+(current*1));
+      return this.preg_48_tabla_3.value.map(c=>c.mujeres).reduce((sum,current) => (sum*1)+(current*1));
   }*/
 
 

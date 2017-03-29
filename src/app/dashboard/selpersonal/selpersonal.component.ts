@@ -3,7 +3,7 @@ import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { SelPersonalService } from './selpersonal.service';
-import { SelPersonalModel, CriterioTipoInflu,CriterioGrupo, dataModel } from './selpersonal.model';
+import { SelPersonalModel, TablaCheckbox,CriterioTipoInflu , dataModel } from './selpersonal.model';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -39,7 +39,7 @@ export class SelPersonalComponent implements OnInit {
         private servicio: SelPersonalService,
         injector: Injector
     ) {
-        this.dynamic = 20;
+        this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
@@ -49,11 +49,18 @@ export class SelPersonalComponent implements OnInit {
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
     }
+    getValorBarra() {
+        if (this.respondidasSeccion == 0)
+            return 0;
+        else {
+            let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+            return value;
+        }
+    }
+
 
     valorBarraProgreso() {
-        this.respondidasSeccion = 18;
-        this.totalSeccion = 20;
-        let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+        let value = this.getValorBarra();
         let type: string;
 
         if (value < 25) {
@@ -70,41 +77,37 @@ export class SelPersonalComponent implements OnInit {
         this.type = type;
     }
 
-    createForm() {
-        console.log("creando formulario");
-        this.ifForm = this.fb.group({
-            data: this.fb.group(new dataModel()),
-            preg_100_tabla_2: this.fb.array([]),
-            preg_100_tabla_3: this.fb.array([]),
-        });
-        console.log("fin creando formulario");
+    createForm() {        
+        this.ifForm = this.fb.group({   
+            data: this.fb.group(new dataModel()),         
+            preg_87: this.fb.array([]),
+            preg_88: this.fb.array([]),
+            preg_90: this.fb.array([]),
+            preg_95: this.fb.array([]),
+            preg_101: this.fb.array([]),
+            preg_103: this.fb.array([]),
+            preg_117_tabla_2: this.fb.array([]),
+        });        
     }
 
-    getValorElemento(elemento : string){        
+    getValorElemento(elemento: string) {
         return this.ifForm.get(elemento).value;
     }
-    
-    getPregunta (pregunta:string): FormArray {
+
+    getPregunta(pregunta: string): FormArray {
         return this.ifForm.get(pregunta) as FormArray;
     };
 
-    setPregunta(tabla: CriterioTipoInflu[], nombretabla:string) {
+    setPregunta(tabla: any, nombretabla: string) {
         const addressFGs = tabla.map(datos => this.fb.group(datos));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
-    }
-
-     setPregunta2(tabla: CriterioGrupo[], nombretabla:string) {
-        const addressFGs = tabla.map(datos => this.fb.group(datos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl(nombretabla, addressFormArray);
-    }
+    }   
 
     addFila(elemento: FormArray) {
         elemento.push(this.fb.group(new CriterioTipoInflu()));
     }
-   
-    
+
     removeFila(elemento: FormArray, i: number) {
         elemento.removeAt(i);
     }
@@ -113,14 +116,18 @@ export class SelPersonalComponent implements OnInit {
     };
 
 
-    getDatosModelo(){
-      this.servicio.getDatosModelo().subscribe(
+    getDatosModelo() {
+        this.servicio.getDatosModelo().subscribe(
             response => {
-                console.log("datos formu"); 
-                this.ifForm.setControl('data', this.fb.group(response.data));               
-                this.setPregunta(response.preg_100_tabla_2,'preg_100_tabla_2');
-                this.setPregunta2(response.preg_100_tabla_3,'preg_100_tabla_3');
-
+                this.ifForm.setControl('data', this.fb.group(response.data));   
+                this.setPregunta(response.preg_87, 'preg_87');
+                this.setPregunta(response.preg_88, 'preg_88');
+                this.setPregunta(response.preg_90, 'preg_90');
+                this.setPregunta(response.preg_95, 'preg_95');
+                this.setPregunta(response.preg_101, 'preg_101');
+                this.setPregunta(response.preg_103, 'preg_103');
+                this.setPregunta(response.preg_117_tabla_2, 'preg_117_tabla_2');
+               
                 this.respondidasSeccion = response.respondidasSeccion;
                 this.totalSeccion = response.totalSeccion;
                 this.valorBarraProgreso();

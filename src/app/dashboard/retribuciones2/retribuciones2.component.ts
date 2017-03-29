@@ -9,50 +9,58 @@ declare var Messenger: any;
 
 
 @Component({
-  selector: 'retribuciones2',
-  templateUrl: './retribuciones2.template.html',
-  styleUrls: [
-    '../../scss/elements.style.scss',
-    '../../scss/notifications.style.scss'],
-  providers: [Retribuciones2Service],
-  encapsulation: ViewEncapsulation.None,
+    selector: 'retribuciones2',
+    templateUrl: './retribuciones2.template.html',
+    styleUrls: [
+        '../../scss/elements.style.scss',
+        '../../scss/notifications.style.scss'],
+    providers: [Retribuciones2Service],
+    encapsulation: ViewEncapsulation.None,
 })
 export class Retribuciones2Component implements OnInit {
-  injector: Injector;
-  colorOptions: Object = { color: '#f0b518' };
-  submitted = false;
-  ifForm: FormGroup;
-  public modelo: Retribuciones2Model;
-  public errorMessage: string;
-  public status: string;
-  public respondidasSeccion: any;
+    injector: Injector;
+    colorOptions: Object = { color: '#f0b518' };
+    submitted = false;
+    ifForm: FormGroup;
+    public modelo: Retribuciones2Model;
+    public errorMessage: string;
+    public status: string;
+    public respondidasSeccion: any;
     public totalSeccion: any;
     public max: number = 100;
     public showWarning: boolean;
     public dynamic: number;
     public type: string;
 
-  constructor(
-    private fb: FormBuilder,
-    private servicio: Retribuciones2Service,
-    injector: Injector
-  ) {
-      this.dynamic = 20;
+    constructor(
+        private fb: FormBuilder,
+        private servicio: Retribuciones2Service,
+        injector: Injector
+    ) {
+        this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
-    this.createForm();
-    this.modelo = new Retribuciones2Model();
-    this.getDatosModelo();
-  }
+        this.createForm();
+        this.modelo = new Retribuciones2Model();
+        this.getDatosModelo();
+    }
 
-  ngOnInit(): void {
-    Messenger.options = { theme: 'air' };
-  }
+    ngOnInit(): void {
+        Messenger.options = { theme: 'air' };
+    }
 
-valorBarraProgreso() {
-        this.respondidasSeccion = 18;
-        this.totalSeccion = 20;
-        let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+    getValorBarra() {
+        if (this.respondidasSeccion == 0)
+            return 0;
+        else {
+            let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+            return value;
+        }
+    }
+
+
+    valorBarraProgreso() {
+        let value = this.getValorBarra();
         let type: string;
 
         if (value < 25) {
@@ -69,35 +77,27 @@ valorBarraProgreso() {
         this.type = type;
     }
 
-  createForm() {
-        console.log("creando formulario");
+    createForm() {
         this.ifForm = this.fb.group({
-            preg_60_tabla_5: this.fb.array([]),
-            preg_61_tabla_5: this.fb.array([]),
-            preg_62_tabla_5: this.fb.array([]),
-            preg_63_tabla_5: this.fb.array([]),
-            preg_64_tabla_5: this.fb.array([]),
-            preg_65_tabla_5: this.fb.array([]),
-            preg_66_tabla_5: this.fb.array([]),            
-            preg_68_tabla_5: this.fb.array([]),            
-            preg_67_tabla_3: this.fb.array([]),
+            preg_77_tabla_5: this.fb.array([]),
+            preg_78_tabla_5: this.fb.array([]),
+            preg_79_tabla_5: this.fb.array([]),
+            preg_80_tabla_5: this.fb.array([]),
+            preg_81_tabla_5: this.fb.array([]),            
+            preg_83_tabla_5: this.fb.array([]),
+            preg_84_tabla_5: this.fb.array([]),
+            preg_85_tabla_5: this.fb.array([]),
+            preg_86_tabla_3: this.fb.array([]),
         });
-        console.log("fin creando formulario");
     }
 
-    setPregunta(tabla: Tabla5Model[], nombretabla:string) {
+    setPregunta(tabla: any, nombretabla: string) {
         const addressFGs = tabla.map(datos => this.fb.group(datos));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
     }
 
-    setPregunta3(tabla: Tabla3Model[], nombretabla:string) {
-        const addressFGs = tabla.map(datos => this.fb.group(datos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl(nombretabla, addressFormArray);
-    }
-
-    getPregunta (pregunta:string): FormArray {
+    getPregunta(pregunta: string): FormArray {
         return this.ifForm.get(pregunta) as FormArray;
     };
     addFila(elemento: FormArray) {
@@ -109,27 +109,24 @@ valorBarraProgreso() {
     removeFila(elemento: FormArray, i: number) {
         elemento.removeAt(i);
     }
-    getDatosModelo(){
-      this.servicio.getDatosModelo().subscribe(
+    getDatosModelo() {
+        this.servicio.getDatosModelo().subscribe(
             response => {
-                console.log("datos formu");                
-                this.setPregunta(response.preg_60_tabla_5,'preg_60_tabla_5');
-                this.setPregunta(response.preg_61_tabla_5,'preg_61_tabla_5');
-                this.setPregunta(response.preg_62_tabla_5,'preg_62_tabla_5');
-                this.setPregunta(response.preg_63_tabla_5,'preg_63_tabla_5');
-                this.setPregunta(response.preg_64_tabla_5,'preg_64_tabla_5');
-                this.setPregunta(response.preg_65_tabla_5,'preg_65_tabla_5');
-                this.setPregunta(response.preg_66_tabla_5,'preg_66_tabla_5');
-                this.setPregunta(response.preg_68_tabla_5,'preg_68_tabla_5');
-                this.setPregunta3(response.preg_67_tabla_3,'preg_67_tabla_3');
-                
-                this.setPregunta(response.preg_69_tabla_5,'preg_69_tabla_5');
+                this.setPregunta(response.preg_77_tabla_5, 'preg_77_tabla_5');
+                this.setPregunta(response.preg_78_tabla_5, 'preg_78_tabla_5');
+                this.setPregunta(response.preg_79_tabla_5, 'preg_79_tabla_5');
+                this.setPregunta(response.preg_80_tabla_5, 'preg_80_tabla_5');
+                this.setPregunta(response.preg_81_tabla_5, 'preg_81_tabla_5');                
+                this.setPregunta(response.preg_83_tabla_5, 'preg_83_tabla_5');
+                this.setPregunta(response.preg_84_tabla_5, 'preg_84_tabla_5');
+                this.setPregunta(response.preg_85_tabla_5, 'preg_85_tabla_5');
+                this.setPregunta(response.preg_86_tabla_3, 'preg_86_tabla_3');
 
                 this.respondidasSeccion = response.respondidasSeccion;
                 this.totalSeccion = response.totalSeccion;
                 this.valorBarraProgreso();
 
-                
+
                 this.status = response.status;
                 if (this.status !== "success") {
                     if (this.status == "tokenerror") {

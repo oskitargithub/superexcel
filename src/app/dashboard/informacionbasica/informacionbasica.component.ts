@@ -1,15 +1,9 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
-/*import { __platform_browser_private__ } from '@angular/platform-browser';*/
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-
 import { InformacionBasicaModel, CentroActividad, datosUserModel, dataModel } from './informacionbasica.model';
 import { InformacionBasicaService } from "./informacionbasica.service";
-
-
 import * as moment from 'moment';
-
 declare var jQuery: any;
 declare var Messenger: any;
 
@@ -49,7 +43,7 @@ export class InformacionBasicaComponent implements OnInit {
         private servicio: InformacionBasicaService,
         injector: Injector
     ) {
-        this.dynamic = 20;
+        this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
@@ -58,10 +52,19 @@ export class InformacionBasicaComponent implements OnInit {
         console.log(this.midatePickeropt);
     }
 
-    valorBarraProgreso() {
-        this.respondidasSeccion = 18;
-        this.totalSeccion = 20;
-        let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+
+    getValorBarra(){
+        if(this.respondidasSeccion==0)
+            return 0;
+        else{
+            let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+            return value;
+        }
+    }
+
+
+    valorBarraProgreso() {        
+        let value = this.getValorBarra();
         let type: string;
 
         if (value < 25) {

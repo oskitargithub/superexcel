@@ -4,24 +4,26 @@
 </ol>
 
 <div class="row">
-  <div class="col-md-8"><h1 class="page-title">Retribuciones <span class="fw-semi-bold">Salariales 2</span></h1></div>
-  <div class="col-md-4">
-      <div class="row progress-stats">
-          <div class="col-md-9 col-xs-12">
-            <p class="description deemphasize">Progreso de la pestaña</p>
-            <div class="bg-white progress-bar">              
-            <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic}"></progress>
+    <div class="col-md-8">
+        <h1 class="page-title">Retribuciones <span class="fw-semi-bold">Salariales 2</span></h1>
+    </div>
+    <div class="col-md-4">
+        <div class="row progress-stats">
+            <div class="col-md-9 col-xs-12">
+                <p class="description deemphasize">Progreso de la pestaña</p>
+                <div class="bg-white progress-bar">
+                    <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic}"></progress>
 
-            
+
+                </div>
             </div>
-          </div>
-          <div class="col-md-3 col-xs-12 text-xs-center">
-                                <span class="status rounded rounded-lg bg-body-light">
-                                    <small><span number-animate>{{(respondidasSeccion*100)/totalSeccion}}</span>%</small>
-                                </span>
-          </div>
+            <div class="col-md-3 col-xs-12 text-xs-center">
+                <span class="status rounded rounded-lg bg-body-light">
+                                     <small><span number-animate>{{getValorBarra()}}</span>%</small>
+                </span>
+            </div>
         </div>
-  </div>
+    </div>
 </div>
 
 
@@ -36,16 +38,18 @@
         <section class="widget" widget>
             <div class="widget-body">
                 <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
-                     <!-- Banda0 -->
+                    <!-- Banda0 -->
                     <div class="section" style="margin-top:40px">
-                        <p>A continuación encontrará una serie de tablas donde deberá especificar por cargo cuantas personas desagregadas por sexo reciben un determinado salario.   En caso que requiera cambiar alguna categoría por favor contacte con nosotras.</p>
-                            
+                        <p>A continuación encontrará una serie de tablas donde deberá especificar por cargo cuantas personas
+                            desagregadas por sexo reciben un determinado salario. En caso que requiera cambiar alguna categoría
+                            por favor contacte con nosotras.</p>
+
                         <fieldset>
                             <legend><strong>BANDA SALARIAL   Menos de 7.200 € </strong></legend>
-                            
-                            <div formArrayName="preg_68_tabla_5">
+
+                            <div formArrayName="preg_85_tabla_5">
                                 <div class="row">
-                                    
+
                                     <div class="col-md-2 offset-md-4 text-md-center">
                                         <strong> Sin compensaciones</strong>
                                     </div>
@@ -54,9 +58,9 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                  
+
                                     <div class="col-md-2 offset-md-2 text-md-center">
-                                         Denominación del cargo
+                                        Denominación del cargo
                                     </div>
                                     <div class="col-md-1 text-md-center">
                                         Mujeres
@@ -64,730 +68,21 @@
                                     <div class="col-md-1 text-md-center">
                                         Hombres
                                     </div>
-                                     
+
                                     <div class="col-md-1 offset-md-1 text-md-center">
                                         Mujeres
                                     </div>
                                     <div class="col-md-1 text-md-center">
                                         Hombres
                                     </div>
-                                </div>                                
-                                <div *ngFor="let datos of getPregunta('preg_68_tabla_5').controls; let i=index" [formGroupName]="i">
-                                    
-                                    <div class="row">                                       
-                                        <div class="col-md-2 offset-md-2 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="denominacion" tooltip="Denominación" placeholder="Denominación"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres1" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres1" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-1 offset-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                         <span *ngIf="getPregunta('preg_68_tabla_5').length > 1">
-                                     <button type="button"(click)="removeFila(ifForm.controls.preg_68_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
-                                        </span>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-2 offset-md-2">
-                                        <button (click)="addFila(ifForm.controls.preg_68_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button> 
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
+                                <div *ngFor="let datos of getPregunta('preg_85_tabla_5').controls; let i=index" [formGroupName]="i">
 
-                    <!-- Banda1 -->
-                    <div class="section" style="margin-top:40px">
-                        <fieldset>
-                            <legend><strong>BANDA SALARIAL   Entre 7.201 y 12000 € </strong></legend>
-                            
-                            <div formArrayName="preg_60_tabla_5">
-                                <div class="row">
-                                    
-                                    <div class="col-md-2 offset-md-4 text-md-center">
-                                        <strong> Sin compensaciones</strong>
-                                    </div>
-                                    <div class="col-md-2 offset-md-1 text-md-center">
-                                        <strong> Con compensaciones</strong>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                  
-                                    <div class="col-md-2 offset-md-2 text-md-center">
-                                         Denominación del cargo
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                     
-                                    <div class="col-md-1 offset-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                </div>                                
-                                <div *ngFor="let datos of getPregunta('preg_60_tabla_5').controls; let i=index" [formGroupName]="i">
-                                    
-                                    <div class="row">                                       
+                                    <div class="row">
                                         <div class="col-md-2 offset-md-2 ">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input class="form-control" formControlName="denominacion" tooltip="Denominación" placeholder="Denominación"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres1" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres1" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-1 offset-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                         <span *ngIf="getPregunta('preg_60_tabla_5').length > 1">
-                                     <button type="button"(click)="removeFila(ifForm.controls.preg_60_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
-                                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 offset-md-2">
-                                        <button (click)="addFila(ifForm.controls.preg_60_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button> 
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-
-                    <!-- Banda2 -->
-                    <div class="section" style="margin-top:40px">
-                        <fieldset>
-                            <legend><strong>BANDA SALARIAL   Entre 12001 y 14000 €</strong></legend>
-                            
-                            <div formArrayName="preg_61_tabla_5">
-                                <div class="row">
-                                    
-                                    <div class="col-md-2 offset-md-4 text-md-center">
-                                        <strong> Sin compensaciones</strong>
-                                    </div>
-                                    <div class="col-md-2 offset-md-1 text-md-center">
-                                        <strong> Con compensaciones</strong>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                  
-                                    <div class="col-md-2 offset-md-2 text-md-center">
-                                         Denominación del cargo
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                     
-                                    <div class="col-md-1 offset-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                </div>                                
-                                <div *ngFor="let datos of getPregunta('preg_61_tabla_5').controls; let i=index" [formGroupName]="i">
-                                    
-                                    <div class="row">                                       
-                                        <div class="col-md-2 offset-md-2 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="denominacion" tooltip="Denominación" placeholder="Denominación"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres1" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres1" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-1 offset-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                         <span *ngIf="getPregunta('preg_61_tabla_5').length > 1">
-                                     <button type="button"(click)="removeFila(ifForm.controls.preg_61_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
-                                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 offset-md-2">
-                                        <button (click)="addFila(ifForm.controls.preg_61_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button> 
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-
-                    <!-- Banda3 -->
-                    <div class="section" style="margin-top:40px">
-                        <fieldset>
-                            <legend><strong>BANDA SALARIAL   Entre 14001 y 18000 € </strong></legend>
-                            
-                            <div formArrayName="preg_62_tabla_5">
-                                <div class="row">
-                                    
-                                    <div class="col-md-2 offset-md-4 text-md-center">
-                                        <strong> Sin compensaciones</strong>
-                                    </div>
-                                    <div class="col-md-2 offset-md-1 text-md-center">
-                                        <strong> Con compensaciones</strong>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                  
-                                    <div class="col-md-2 offset-md-2 text-md-center">
-                                         Denominación del cargo
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                     
-                                    <div class="col-md-1 offset-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                </div>                                
-                                <div *ngFor="let datos of getPregunta('preg_62_tabla_5').controls; let i=index" [formGroupName]="i">
-                                    
-                                    <div class="row">                                       
-                                        <div class="col-md-2 offset-md-2 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="denominacion" tooltip="Denominación" placeholder="Denominación"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres1" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres1" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-1 offset-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                         <span *ngIf="getPregunta('preg_62_tabla_5').length > 1">
-                                     <button type="button"(click)="removeFila(ifForm.controls.preg_62_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
-                                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 offset-md-2">
-                                        <button (click)="addFila(ifForm.controls.preg_62_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button> 
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-
-                     <!-- Banda4 -->
-                    <div class="section" style="margin-top:40px">
-                        <fieldset>
-                            <legend><strong>BANDA SALARIAL  Entre 18001 y 24000 €</strong></legend>
-                            
-                            <div formArrayName="preg_63_tabla_5">
-                                <div class="row">
-                                    
-                                    <div class="col-md-2 offset-md-4 text-md-center">
-                                        <strong> Sin compensaciones</strong>
-                                    </div>
-                                    <div class="col-md-2 offset-md-1 text-md-center">
-                                        <strong> Con compensaciones</strong>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                  
-                                    <div class="col-md-2 offset-md-2 text-md-center">
-                                         Denominación del cargo
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                     
-                                    <div class="col-md-1 offset-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                </div>                                
-                                <div *ngFor="let datos of getPregunta('preg_63_tabla_5').controls; let i=index" [formGroupName]="i">
-                                    
-                                    <div class="row">                                       
-                                        <div class="col-md-2 offset-md-2 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="denominacion" tooltip="Denominación" placeholder="Denominación"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres1" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres1" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-1 offset-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                         <span *ngIf="getPregunta('preg_63_tabla_5').length > 1">
-                                     <button type="button"(click)="removeFila(ifForm.controls.preg_63_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
-                                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 offset-md-2">
-                                        <button (click)="addFila(ifForm.controls.preg_63_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button> 
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-
-                     <!-- Banda5 -->
-                    <div class="section" style="margin-top:40px">
-                        <fieldset>
-                            <legend><strong>BANDA SALARIAL   Entre 24001 y 30000 €</strong></legend>
-                            
-                            <div formArrayName="preg_64_tabla_5">
-                                <div class="row">
-                                    
-                                    <div class="col-md-2 offset-md-4 text-md-center">
-                                        <strong> Sin compensaciones</strong>
-                                    </div>
-                                    <div class="col-md-2 offset-md-1 text-md-center">
-                                        <strong> Con compensaciones</strong>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                  
-                                    <div class="col-md-2 offset-md-2 text-md-center">
-                                         Denominación del cargo
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                     
-                                    <div class="col-md-1 offset-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                </div>                                
-                                <div *ngFor="let datos of getPregunta('preg_64_tabla_5').controls; let i=index" [formGroupName]="i">
-                                    
-                                    <div class="row">                                       
-                                        <div class="col-md-2 offset-md-2 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="denominacion" tooltip="Denominación" placeholder="Denominación"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres1" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres1" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-1 offset-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                         <span *ngIf="getPregunta('preg_64_tabla_5').length > 1">
-                                     <button type="button"(click)="removeFila(ifForm.controls.preg_64_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
-                                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 offset-md-2">
-                                        <button (click)="addFila(ifForm.controls.preg_64_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button> 
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-
-                    <!-- Banda6 -->
-                    <div class="section" style="margin-top:40px">
-                        <fieldset>
-                            <legend><strong>BANDA SALARIAL   Entre 30001 y 36000 €</strong></legend>
-                            
-                            <div formArrayName="preg_65_tabla_5">
-                                <div class="row">
-                                    
-                                    <div class="col-md-2 offset-md-4 text-md-center">
-                                        <strong> Sin compensaciones</strong>
-                                    </div>
-                                    <div class="col-md-2 offset-md-1 text-md-center">
-                                        <strong> Con compensaciones</strong>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                  
-                                    <div class="col-md-2 offset-md-2 text-md-center">
-                                         Denominación del cargo
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                     
-                                    <div class="col-md-1 offset-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                </div>                                
-                                <div *ngFor="let datos of getPregunta('preg_65_tabla_5').controls; let i=index" [formGroupName]="i">
-                                    
-                                    <div class="row">                                       
-                                        <div class="col-md-2 offset-md-2 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="denominacion" tooltip="Denominación" placeholder="Denominación"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres1" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres1" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-1 offset-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                         <span *ngIf="getPregunta('preg_65_tabla_5').length > 1">
-                                     <button type="button"(click)="removeFila(ifForm.controls.preg_65_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
-                                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 offset-md-2">
-                                        <button (click)="addFila(ifForm.controls.preg_65_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button> 
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-
-                    <!-- Banda7 -->
-                    <div class="section" style="margin-top:40px">
-                        <fieldset>
-                            <legend><strong>BANDA SALARIAL    Más de 36000 € </strong></legend>
-                            
-                            <div formArrayName="preg_66_tabla_5">
-                                <div class="row">
-                                    
-                                    <div class="col-md-2 offset-md-4 text-md-center">
-                                        <strong> Sin compensaciones</strong>
-                                    </div>
-                                    <div class="col-md-2 offset-md-1 text-md-center">
-                                        <strong> Con compensaciones</strong>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                  
-                                    <div class="col-md-2 offset-md-2 text-md-center">
-                                         Denominación del cargo
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                     
-                                    <div class="col-md-1 offset-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                </div>                                
-                                <div *ngFor="let datos of getPregunta('preg_66_tabla_5').controls; let i=index" [formGroupName]="i">
-                                    
-                                    <div class="row">                                       
-                                        <div class="col-md-2 offset-md-2 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="denominacion" tooltip="Denominación" placeholder="Denominación"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres1" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres1" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-1 offset-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1 ">
-                                         <span *ngIf="getPregunta('preg_66_tabla_5').length > 1">
-                                     <button type="button"(click)="removeFila(ifForm.controls.preg_66_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
-                                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 offset-md-2">
-                                        <button (click)="addFila(ifForm.controls.preg_66_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button> 
-                                    </div>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-
-                    <!-- compensaciones -->
-                    <div class="section" style="margin-top:40px">
-                        <p>A continuación encontrará una tabla donde podrá especificar respecto de las <strong>compensaciones extrasalariales</strong>,  el número de horas extraordinarias realizadas, la Productividad, u otros complementos extrasalariales</p>
-                        <fieldset>
-                            <legend><strong>Compensaciones Extrasalariales</strong></legend>
-                            
-                            <div formArrayName="preg_67_tabla_3">
-                                
-                                <div class="row">
-                                  
-                                    <div class="col-md-2 offset-md-2 text-md-center">
-                                         Tipo de compensación
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Mujeres
-                                    </div>
-                                    <div class="col-md-1 text-md-center">
-                                        Hombres
-                                    </div>
-                                     
-                                    
-                                </div>                                
-                                <div *ngFor="let datos of getPregunta('preg_67_tabla_3').controls; let i=index" [formGroupName]="i">
-                                    
-                                    <div class="row">                                       
-                                        <div class="col-md-2 offset-md-2 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" [readonly]="i<2" formControlName="denominacion" tooltip="Denominación" placeholder="Denominación"
-                                                    />
+                                                    <input class="form-control" formControlName="texto" tooltip="Denominación" placeholder="Denominación" />
                                                 </div>
                                             </div>
                                         </div>
@@ -805,24 +100,732 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        
+
+                                        <div class="col-md-1 offset-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-md-1 ">
-                                         <span *ngIf="i > 1">
-                                     <button type="button"(click)="removeFila(ifForm.controls.preg_67_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <span *ngIf="getPregunta('preg_85_tabla_5').length > 1">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_85_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
                                         </span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2 offset-md-2">
-                                        <button (click)="addFila3(ifForm.controls.preg_67_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Complemento</button> 
+                                        <button (click)="addFila(ifForm.controls.preg_85_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button>
                                     </div>
                                 </div>
                             </div>
                         </fieldset>
                     </div>
 
+                    <!-- Banda1 -->
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <legend><strong>BANDA SALARIAL   Entre 7.201 y 12000 € </strong></legend>
+
+                            <div formArrayName="preg_77_tabla_5">
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-4 text-md-center">
+                                        <strong> Sin compensaciones</strong>
+                                    </div>
+                                    <div class="col-md-2 offset-md-1 text-md-center">
+                                        <strong> Con compensaciones</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        Denominación del cargo
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+
+                                    <div class="col-md-1 offset-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_77_tabla_5').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-1 offset-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <span *ngIf="getPregunta('preg_77_tabla_5').length > 1">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_77_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila(ifForm.controls.preg_77_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- Banda2 -->
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <legend><strong>BANDA SALARIAL   Entre 12001 y 14000 €</strong></legend>
+
+                            <div formArrayName="preg_78_tabla_5">
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-4 text-md-center">
+                                        <strong> Sin compensaciones</strong>
+                                    </div>
+                                    <div class="col-md-2 offset-md-1 text-md-center">
+                                        <strong> Con compensaciones</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        Denominación del cargo
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+
+                                    <div class="col-md-1 offset-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_78_tabla_5').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-1 offset-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <span *ngIf="getPregunta('preg_78_tabla_5').length > 1">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_78_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila(ifForm.controls.preg_78_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- Banda3 -->
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <legend><strong>BANDA SALARIAL   Entre 14001 y 18000 € </strong></legend>
+
+                            <div formArrayName="preg_79_tabla_5">
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-4 text-md-center">
+                                        <strong> Sin compensaciones</strong>
+                                    </div>
+                                    <div class="col-md-2 offset-md-1 text-md-center">
+                                        <strong> Con compensaciones</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        Denominación del cargo
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+
+                                    <div class="col-md-1 offset-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_79_tabla_5').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-1 offset-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <span *ngIf="getPregunta('preg_79_tabla_5').length > 1">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_79_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila(ifForm.controls.preg_79_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- Banda4 -->
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <legend><strong>BANDA SALARIAL  Entre 18001 y 24000 €</strong></legend>
+
+                            <div formArrayName="preg_80_tabla_5">
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-4 text-md-center">
+                                        <strong> Sin compensaciones</strong>
+                                    </div>
+                                    <div class="col-md-2 offset-md-1 text-md-center">
+                                        <strong> Con compensaciones</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        Denominación del cargo
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+
+                                    <div class="col-md-1 offset-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_80_tabla_5').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-1 offset-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <span *ngIf="getPregunta('preg_80_tabla_5').length > 1">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_80_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila(ifForm.controls.preg_80_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- Banda5 -->
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <legend><strong>BANDA SALARIAL   Entre 24001 y 30000 €</strong></legend>
+
+                            <div formArrayName="preg_81_tabla_5">
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-4 text-md-center">
+                                        <strong> Sin compensaciones</strong>
+                                    </div>
+                                    <div class="col-md-2 offset-md-1 text-md-center">
+                                        <strong> Con compensaciones</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        Denominación del cargo
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+
+                                    <div class="col-md-1 offset-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_81_tabla_5').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-1 offset-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <span *ngIf="getPregunta('preg_81_tabla_5').length > 1">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_81_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila(ifForm.controls.preg_81_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- Banda6 -->
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <legend><strong>BANDA SALARIAL   Entre 30001 y 36000 €</strong></legend>
+
+                            <div formArrayName="preg_83_tabla_5">
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-4 text-md-center">
+                                        <strong> Sin compensaciones</strong>
+                                    </div>
+                                    <div class="col-md-2 offset-md-1 text-md-center">
+                                        <strong> Con compensaciones</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        Denominación del cargo
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+
+                                    <div class="col-md-1 offset-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_83_tabla_5').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-1 offset-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <span *ngIf="getPregunta('preg_83_tabla_5').length > 1">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_83_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila(ifForm.controls.preg_83_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- Banda7 -->
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <legend><strong>BANDA SALARIAL    Más de 36000 € </strong></legend>
+
+                            <div formArrayName="preg_84_tabla_5">
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-4 text-md-center">
+                                        <strong> Sin compensaciones</strong>
+                                    </div>
+                                    <div class="col-md-2 offset-md-1 text-md-center">
+                                        <strong> Con compensaciones</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        Denominación del cargo
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+
+                                    <div class="col-md-1 offset-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_84_tabla_5').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-1 offset-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <span *ngIf="getPregunta('preg_84_tabla_5').length > 1">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_84_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila(ifForm.controls.preg_84_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Denominación</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- compensaciones -->
+                    <div class="section" style="margin-top:40px">
+                        <p>A continuación encontrará una tabla donde podrá especificar respecto de las <strong>compensaciones extrasalariales</strong>,
+                            el número de horas extraordinarias realizadas, la Productividad, u otros complementos extrasalariales</p>
+                        <fieldset>
+                            <legend><strong>Compensaciones Extrasalariales</strong></legend>
+
+                            <div formArrayName="preg_86_tabla_3">
+
+                                <div class="row">
+
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        Tipo de compensación
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+
+
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_86_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" [readonly]="i<2" formControlName="texto" tooltip="Denominación" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-1 ">
+                                            <span *ngIf="i > 1">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_86_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila3(ifForm.controls.preg_86_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Complemento</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-actions" style="margin-top:40px">
+                        <div class="row">
+                            <div class="offset-md-4 col-md-7 ">
+                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                <button type="button" class="btn btn-inverse">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </section>

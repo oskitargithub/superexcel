@@ -11,12 +11,7 @@ export class ClasProfesional1Service {
 	constructor(private _http: Http,config: AppConfig){
          this.config = config.getConfig(); //me traigo la configuración para saber la url de la api
     }
-
-  getDatos(){
-      return this._http
-               .get(this.config.api + 'probando.php')
-               .map(res => res.json());
-  }
+  
  getDatosModelo(){    
    return this._http.get(this.config.apilaravel + "cuestionario/seccion/3").map(res =>{
             let headers = res.headers;

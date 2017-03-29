@@ -37,12 +37,24 @@ export class ClasProfesional1Component implements OnInit {
         private servicio: ClasProfesional1Service,
         injector: Injector
     ) {
+        this.valorbarra = 0;
+        this.respondidasSeccion = 0;
+        this.totalSeccion = 0;
         this.createForm();
         this.getDatosModelo();
     }
 
+    getValorBarra(){
+        if(this.respondidasSeccion==0)
+            return 0;
+        else{
+            let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+            return value;
+        }
+    }
+
     setBarraProgreso() {
-        let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+        let value = this.getValorBarra();
         let type: string;
 
         if (value < 25) {
@@ -58,33 +70,28 @@ export class ClasProfesional1Component implements OnInit {
         this.valorbarra = value;
         this.tipobarra = type;
     }
-    
+
 
     getDatosModelo() {
         this.servicio.getDatosModelo()
             .subscribe(
-            response => {
-                console.log("datos formu");
+            response => {                
                 this.ifForm.setControl('data', this.fb.group(response.data));
-                console.log("datos preg3");
-                
-                this.setPregunta(response.preg_48_tabla_3,'preg_48_tabla_3');
-                this.setPregunta(response.preg_49_tabla_3,'preg_49_tabla_3');
-                this.setPregunta(response.preg_54_tabla_3,'preg_54_tabla_3');
-                this.setPregunta(response.preg_55_tabla_3,'preg_55_tabla_3');
-                this.setPregunta(response.preg_56_tabla_3,'preg_56_tabla_3');
-                this.setPregunta(response.preg_57_tabla_3,'preg_57_tabla_3');
-                this.setPregunta(response.preg_59_tabla_3,'preg_59_tabla_3');
-                this.setPregunta(response.preg_60_tabla_3,'preg_60_tabla_3');
-                this.setPregunta(response.preg_61_tabla_3,'preg_61_tabla_3');
-                this.setPregunta(response.preg_62_tabla_3,'preg_62_tabla_3');
-                this.setPregunta(response.preg_63_tabla_3,'preg_63_tabla_3');
-                
+                this.setPregunta(response.preg_48_tabla_3, 'preg_48_tabla_3');
+                this.setPregunta(response.preg_49_tabla_3, 'preg_49_tabla_3');
+                this.setPregunta(response.preg_54_tabla_3, 'preg_54_tabla_3');
+                this.setPregunta(response.preg_55_tabla_3, 'preg_55_tabla_3');
+                this.setPregunta(response.preg_56_tabla_3, 'preg_56_tabla_3');
+                this.setPregunta(response.preg_57_tabla_3, 'preg_57_tabla_3');
+                this.setPregunta(response.preg_59_tabla_3, 'preg_59_tabla_3');
+                this.setPregunta(response.preg_60_tabla_3, 'preg_60_tabla_3');
+                this.setPregunta(response.preg_61_tabla_3, 'preg_61_tabla_3');
+                this.setPregunta(response.preg_62_tabla_3, 'preg_62_tabla_3');
+                this.setPregunta(response.preg_63_tabla_3, 'preg_63_tabla_3');
+
                 this.respondidasSeccion = response.respondidasSeccion;
                 this.totalSeccion = response.totalSeccion;
                 this.setBarraProgreso();
-
-
 
                 this.status = response.status;
                 if (this.status !== "success") {
@@ -127,19 +134,19 @@ export class ClasProfesional1Component implements OnInit {
 
 
     getTotalMujeres(elemento: FormArray) {
-        return elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+        return elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1),0);
     }
     getTotalHombres(elemento: FormArray) {
-        return elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+        return elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1),0);
     }
     getTotalTotal(elemento: FormArray) {
-        let hombres = elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
-        let mujeres = elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+        let hombres = elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1),0);
+        let mujeres = elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1),0);
         return (hombres * 1 + mujeres * 1);
     }
 
     getTotalCompo() {
-        return (this.ifForm.get('data.preg_5').value * 1 + this.ifForm.get('data.preg_6').value * 1);
+        return (this.ifForm.get('data.preg_46').value * 1 + this.ifForm.get('data.preg_47').value * 1);
     }
     /*
     getTotalMujeres(){
@@ -147,12 +154,20 @@ export class ClasProfesional1Component implements OnInit {
     }*/
 
     createForm() {
-        console.log("creando formulario");
         this.ifForm = this.fb.group({
             data: this.fb.group(new dataModel()),
-            preg_3_tabla_3: this.fb.array([])
-        });
-        console.log("fin creando formulario");
+            preg_48_tabla_3: this.fb.array([]),
+            preg_49_tabla_3: this.fb.array([]),
+            preg_54_tabla_3: this.fb.array([]),
+            preg_55_tabla_3: this.fb.array([]),
+            preg_56_tabla_3: this.fb.array([]),
+            preg_57_tabla_3: this.fb.array([]),
+            preg_59_tabla_3: this.fb.array([]),
+            preg_60_tabla_3: this.fb.array([]),
+            preg_61_tabla_3: this.fb.array([]),
+            preg_62_tabla_3: this.fb.array([]),
+            preg_63_tabla_3: this.fb.array([]),
+        });        
     }
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
@@ -160,13 +175,13 @@ export class ClasProfesional1Component implements OnInit {
 
 
 
-    setPregunta(tabla: Tabla3Model[], nombretabla:string) {
+    setPregunta(tabla: Tabla3Model[], nombretabla: string) {
         const addressFGs = tabla.map(datos => this.fb.group(datos));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
     }
 
-    getPregunta (pregunta:string): FormArray {
+    getPregunta(pregunta: string): FormArray {
         return this.ifForm.get(pregunta) as FormArray;
     };
 
@@ -192,8 +207,8 @@ export class ClasProfesional1Component implements OnInit {
         const formModel = this.ifForm.value;
         const preg3Copy: Tabla3Model[] = formModel.preg_3_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
         const preg4Copy: Tabla3Model[] = formModel.preg_4_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg5Copy: Tabla3Model[] = formModel.preg_5_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg6Copy: Tabla3Model[] = formModel.preg_6_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
+        const preg5Copy: Tabla3Model[] = formModel.preg_46_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
+        const preg6Copy: Tabla3Model[] = formModel.preg_47_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
         const preg7Copy: Tabla3Model[] = formModel.preg_7_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
         const preg8Copy: Tabla3Model[] = formModel.preg_8_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
         const preg9Copy: Tabla3Model[] = formModel.preg_9_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
@@ -210,8 +225,8 @@ export class ClasProfesional1Component implements OnInit {
             data: datacuestionario,
             preg_3_tabla_3: preg3Copy,
             preg_4_tabla_3: preg4Copy,
-            preg_5_tabla_3: preg5Copy,
-            preg_6_tabla_3: preg6Copy,
+            preg_46_tabla_3: preg5Copy,
+            preg_46_tabla_3: preg6Copy,
             preg_7_tabla_3: preg7Copy,
             preg_8_tabla_3: preg8Copy,
             preg_9_tabla_3: preg9Copy,

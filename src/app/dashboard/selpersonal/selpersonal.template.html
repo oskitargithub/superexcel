@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-3 col-xs-12 text-xs-center">
                 <span class="status rounded rounded-lg bg-body-light">
-                                    <small><span number-animate>{{(respondidasSeccion*100)/totalSeccion}}</span>%</small>
+                                    <small><span number-animate>{{getValorBarra()}}</span>%</small>
                 </span>
             </div>
         </div>
@@ -36,196 +36,86 @@
             <section class="widget" widget>
                 <div class="widget-body">
 
-                    <div formGroupName="data">
-                        <div class="section" style="margin-top:40px">
-                            <p>Marque cuales son los factores determinantes de la apertura de un proceso de selección y contratación
-                                en la organización</p>
-                            <fieldset>
-                                <legend><strong>Factores</strong></legend>
-                                <div class="col-md-10 offset-md-2">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <md-checkbox formControlName="preg_1">Sustitución otras/os trabajadoras/es</md-checkbox>
-                                            <!--<div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_1" type="checkbox" formControlName="preg_1" />
-                                            <label for="preg_1">Sustitución otras/os trabajadoras/es</label>
-                                        </div>-->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <md-checkbox formControlName="preg_2">Inicio nuevas actividades/prestación nuevos servicios a la ciudadanía</md-checkbox>
-                                            <!-- <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_2" type="checkbox" formControlName="preg_2" />
-                                            <label for="preg_2">Inicio nuevas actividades/prestación  nuevos servicios a la ciudadanía</label>
-                                        </div>-->
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <md-checkbox formControlName="preg_3">Subvenciones o incentivos de fomento al empleo</md-checkbox>
-                                            <!-- <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_3" type="checkbox" formControlName="preg_3" />
-                                            <label for="preg_3">Subvenciones o incentivos de fomento al empleo</label>
-                                        </div>-->
-                                        </div>
 
-                                        <div class="col-md-6">
-                                            <md-checkbox formControlName="preg_4">Exigencias productivas coyunturales</md-checkbox>
-                                            <!-- <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_4" type="checkbox" formControlName="preg_4" />
-                                            <label for="preg_4">Exigencias productivas coyunturales</label>
-                                        </div>-->
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <md-checkbox formControlName="preg_5">Desarrollo de campañas estacionales que hacen necesaria la incorporación de personal</md-checkbox>
-                                            <!--  <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_5" type="checkbox" formControlName="preg_5" />
-                                            <label for="preg_5">Desarrollo de campañas estacionales que hacen necesaria la incorporación de personal</label>
-                                        </div> -->
-                                        </div>
-                                        <div class="col-md-6">
-                                            <md-checkbox formControlName="preg_6">Otros (indicar): (Por ejemplo: jubilaciones, introducción de nuevas tecnologías,
-                                                administración digital,..)</md-checkbox>
-                                            <!-- <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_6" type="checkbox" formControlName="preg_6" />
-                                            <label for="preg_6">Otros (indicar): (Por ejemplo: jubilaciones, introducción de nuevas tecnologías, administración digital,..)</label>
-                                        </div>-->
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 offset-md-6">
-                                            <input [readonly]="!getValorElemento('data.preg_6')" type="text" class="form-control" formControlName="preg_6txt" tooltip="Otros"
+                    <div class="section" style="margin-top:40px" formArrayName="preg_87">
+                        <p>Marque cuales son los factores determinantes de la apertura de un proceso de selección y contratación
+                            en la organización</p>
+                        <fieldset>
+                            <legend><strong>Factores</strong></legend>
+                            <div class="col-md-10 offset-md-2">
+                                <div class="row">
+                                    <div *ngFor="let datos of getPregunta('preg_87').controls; let i=index" [formGroupName]="i" class="col-md-6">
+                                        <md-checkbox formControlName="valor1">
+                                            {{ifForm.controls.preg_87.value[i].texto}}
+                                        </md-checkbox>
+                                        <div class="col-md-6" *ngIf="i==5">
+                                            <input [readonly]="!ifForm.controls.preg_87.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
                                                 placeholder="Otros" />
                                         </div>
                                     </div>
                                 </div>
-                            </fieldset>
-                        </div>
-
-
-                        <div class="section" style="margin-top:40px">
-                            <p>Cual de las siguientes estrategias de reclutamiento son utilizada por la organización para la
-                                realización de procesos de selección</p>
-                            <fieldset>
-                                <legend><strong>Estrategias</strong></legend>
-                                <div class="col-md-10 offset-md-2">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <md-checkbox formControlName="preg_7">Bolsas de trabajo, bolsas de empleo</md-checkbox>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <md-checkbox formControlName="preg_8">Recurso a empresas de selección de personal o ETT</md-checkbox>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <md-checkbox formControlName="preg_9">
-                                                Publicidad en medios de comunicación y gestión directa por el rea de recursos humanos de la <strong>propia organización</strong></md-checkbox>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <md-checkbox formControlName="preg_10">Recurso a servicios públicos de Empleo</md-checkbox>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <md-checkbox formControlName="preg_11">Convocatoria pública de empleo</md-checkbox>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <md-checkbox formControlName="preg_12">Otros (indicar):</md-checkbox>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 offset-md-6">
-                                            <input [readonly]="!getValorElemento('data.preg_12')" type="text" class="form-control" formControlName="preg_12txt" tooltip="Otros"
-                                                placeholder="Otros" />
-                                        </div>
-                                        <div class="w-100"></div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-
-
-                        <div class="section" style="margin-top:40px">
-                            <p>Determinación del perfil de los puestos de trabajo</p>
-                            <fieldset>
-                                <legend><strong>Indicar el procedimiento y  órgano/s implicado/s en el mismo</strong></legend>
-
-                                <div class="row">
-                                    <div class="col-md-8 offset-md-2">
-
-                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_13txt" formControlName="preg_13txt" autosize
-                                            placeholder="Procedimiento y órgano"></textarea>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
-
-
-                        <div class="section" style="margin-top:40px">
-                            <p>Métodos de selección utilizados</p>
-                            <fieldset>
-                                <legend><strong>Métodos</strong></legend>
-
-                                <div class="row">
-                                    <div class="col-md-4 offset-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_14" type="checkbox" formControlName="preg_14" />
-                                            <label for="preg_14">Realización de pruebas selectivas/exámenes de oposición</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_15" type="checkbox" formControlName="preg_15" />
-                                            <label for="preg_15">Los métodos de selección se dejan a criterio de una empresa especializada</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 offset-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_16" type="checkbox" formControlName="preg_16" />
-                                            <label for="preg_16">Concurso de méritos</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_17" type="checkbox" formControlName="preg_17" />
-                                            <label for="preg_17">Concurso de ideas</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 offset-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_18" type="checkbox" formControlName="preg_18" />
-                                            <label for="preg_18">Entrevista personal</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_20" type="checkbox" formControlName="preg_20" />
-                                            <label for="preg_20">Otros (indicar):</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 offset-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_19" type="checkbox" formControlName="preg_19" />
-                                            <label for="preg_19">Referencias externas de otras entidades empleadoras (Servef, etc)</label>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-3 offset-md-1">
-                                        <input [readonly]="!getValorElemento('data.preg_20')" type="text" class="form-control" formControlName="preg_20txt" tooltip="Otros"
-                                            placeholder="Otros" />
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </div>
+                            </div>
+                        </fieldset>
                     </div>
+
+
+                    <div class="section" style="margin-top:40px" formArrayName="preg_88">
+                        <p>Cual de las siguientes estrategias de reclutamiento son utilizada por la organización para la realización
+                            de procesos de selección</p>
+                        <fieldset>
+                            <legend><strong>Estrategias</strong></legend>
+                            <div class="col-md-10 offset-md-2">
+                                <div class="row">
+                                    <div *ngFor="let datos of getPregunta('preg_88').controls; let i=index" [formGroupName]="i" class="col-md-6">
+                                        <md-checkbox formControlName="valor1">
+                                            {{ifForm.controls.preg_88.value[i].texto}}
+                                        </md-checkbox>
+                                        <div class="col-md-6" *ngIf="i==5">
+                                            <input [readonly]="!ifForm.controls.preg_88.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
+                                                placeholder="Otros" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <p>Determinación del perfil de los puestos de trabajo</p>
+                        <fieldset>
+                            <legend><strong>Indicar el procedimiento y  órgano/s implicado/s en el mismo</strong></legend>
+
+                            <div class="row">
+                                <div class="col-md-8 offset-md-2">
+
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_13txt" formControlName="preg_89" autosize placeholder="Procedimiento y órgano"></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+                    <div class="section" style="margin-top:40px" formArrayName="preg_90">
+                        <p>Métodos de selección utilizados</p>
+                        <fieldset>
+                            <legend><strong>Métodos</strong></legend>
+                            <div class="col-md-10 offset-md-2">
+                                <div class="row">
+                                    <div *ngFor="let datos of getPregunta('preg_90').controls; let i=index" [formGroupName]="i" class="col-md-6">
+                                        <md-checkbox formControlName="valor1">
+                                            {{ifForm.controls.preg_90.value[i].texto}}
+                                        </md-checkbox>
+                                        <div class="col-md-6" *ngIf="i==6">
+                                            <input [readonly]="!ifForm.controls.preg_90.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
+                                                placeholder="Otros" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
 
 
                 </div>
@@ -239,9 +129,29 @@
         <div class="col-lg-12">
             <section class="widget" widget>
                 <div class="widget-body">
+                    <div class="section" style="margin-top:40px" formArrayName="preg_95">
+                        <p><strong> INFORMACIÓN CUALITATIVA. INGRESO EN LA ORGANIZACIÓN</strong></p>
+                        <fieldset>
+                            <legend>Factores determinantes de la apertura de un proceso de selección y contratación</legend>
+                            <div class="col-md-10 offset-md-2">
+                                <div class="row">
+                                    <div *ngFor="let datos of getPregunta('preg_95').controls; let i=index" [formGroupName]="i" class="col-md-10">
+                                        <md-checkbox formControlName="valor1">
+                                            {{ifForm.controls.preg_95.value[i].texto}}
+                                        </md-checkbox>
+                                        <div class="col-md-6" *ngIf="i==1">
+                                            <input [readonly]="!ifForm.controls.preg_95.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
+                                                placeholder="Otros" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                   
 
-                    <div formGroupName="data">
-                        <div class="section" style="margin-top:40px">
+                    <!-- 
+                        <div class="section" style="margin-top:40px" formGroupName="data">
                             <p><strong> INFORMACIÓN CUALITATIVA. INGRESO EN LA ORGANIZACIÓN</strong></p>
                             <fieldset>
                                 <legend>Factores determinantes de la apertura de un proceso de selección y contratación</legend>
@@ -321,71 +231,33 @@
 
                                     </div>
                                 </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-6 offset-md-2">
-                                        <p>En caso afirmativo, identifíquense en los listados siguientes.</p>
-                                    </div>
-                                    <div class="col-md-6 offset-md-2">
-                                        <strong>CRITERIOS  DE  SELECCIÓN  PERSONALES  con  carácter  general  (para cualquier grupo profesional, categoría o puesto de trabajo)</strong>
-                                    </div>
-                                    <div class="w-100"></div>
-                                    <div class="col-md-2 offset-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_27" type="checkbox" formControlName="preg_27" />
-                                            <label for="preg_27">Sexo</label>
+                            </fieldset>
+                        </div>
+                    -->
+                    <p>En caso afirmativo, identifíquense en los listados siguientes.</p>
+                    <div class="section" style="margin-top:40px" formArrayName="preg_101">
+                        <fieldset>
+                            <legend><strong>CRITERIOS  DE  SELECCIÓN  PERSONALES  con  carácter  general  (para cualquier grupo profesional, categoría o puesto de trabajo)</strong></legend>
+                            <div class="col-md-10 offset-md-2">
+                                <div class="row">
+                                    <div *ngFor="let datos of getPregunta('preg_101').controls; let i=index" [formGroupName]="i" class="col-md-4">
+                                        <md-checkbox formControlName="valor1">
+                                            {{ifForm.controls.preg_101.value[i].texto}}
+                                        </md-checkbox>
+                                        <div class="col-md-6" *ngIf="i==20">
+                                            <input [readonly]="!ifForm.controls.preg_101.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
+                                                placeholder="Otros" />
                                         </div>
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_28" type="checkbox" formControlName="preg_28" />
-                                            <label for="preg_28">Edad</label>
-                                        </div>
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_29" type="checkbox" formControlName="preg_29" />
-                                            <label for="preg_29">Estado Civil</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_30" type="checkbox" formControlName="preg_30" />
-                                            <label for="preg_30">Asertividad</label>
-                                        </div>
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_31" type="checkbox" formControlName="preg_31" />
-                                            <label for="preg_31">Experiencia</label>
-                                        </div>
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_32" type="checkbox" formControlName="preg_32" />
-                                            <label for="preg_32">Iniciativa</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_33" type="checkbox" formControlName="preg_33" />
-                                            <label for="preg_33">Disponibilidad de tiempo extra para dedicarlo a la organización (si se le requiriera)</label>
-                                        </div>
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_34" type="checkbox" formControlName="preg_34" />
-                                            <label for="preg_34">Disponibilidad de recursos técnicos para el teletrabajo en el domicilio</label>
-                                        </div>
-                                        <div class="abc-checkbox abc-checkbox-primary">
-                                            <input id="preg_35" type="checkbox" formControlName="preg_35" />
-                                            <label for="preg_35">Otros (indicar)</label>
-                                        </div>
-                                    </div>
-                                    <div class="w-100"></div>
-                                    <div class="col-md-2 offset-md-7">
-                                        <input [readonly]="!getValorElemento('data.preg_35')" type="text" class="form-control" formControlName="preg_35txt" tooltip="Otros"
-                                            placeholder="Otros" />
                                     </div>
                                 </div>
+                            </div>
 
 
+                        </fieldset>
 
-                            </fieldset>
-
-                        </div>
                     </div>
 
+                    <!-- 
                     <div class="section" style="margin-top:40px">
                         <fieldset>
                             <div formGroupName="data">
@@ -573,69 +445,55 @@
                     </div>
 
 
+-->
 
-
-                    <div class="section" style="margin-top:40px">
+                    <div class="section" style="margin-top:40px" formArrayName="preg_117_tabla_2">
                         <fieldset>
                             <legend><strong>Teniendo en cuenta los siguientes criterios, marque el nivel de influencia que cada uno de estos tiene en el proceso de selección de la organización.</strong></legend>
+                            <div class="row">
 
-                            <div formArrayName="preg_100_tabla_2">
+                                <div class="col-md-4 offset-md-2 text-md-center">
+                                    Criterio
+                                </div>
+                                <div class="col-md-3 text-md-center">
+                                    Tipo de influencia
+                                </div>
+
+
+
+                            </div>
+                            <div *ngFor="let datos of getPregunta('preg_117_tabla_2').controls; let i=index" [formGroupName]="i">
 
                                 <div class="row">
-
-                                    <div class="col-md-2 offset-md-2 text-md-center">
-                                        Criterio
-                                    </div>
-                                    <div class="col-md-3 text-md-center">
-                                        Tipo de influencia
-                                    </div>
-
-
-
-                                </div>
-                                <div *ngFor="let datos of getPregunta('preg_100_tabla_2').controls; let i=index" [formGroupName]="i">
-
-                                    <div class="row">
-                                        <div class="col-md-2 offset-md-2 ">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input class="form-control" [readonly]="i<26" formControlName="criterio" tooltip="Criterio" placeholder="Criterio" />
-                                                </div>
+                                    <div class="col-md-4 offset-md-2 ">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" [readonly]="i<20" formControlName="criterio" tooltip="Criterio" placeholder="Criterio" />
                                             </div>
                                         </div>
-                                        <div clas="col-md-3">
-                                            <md-radio-group formControlName="influencia">
-                                                <md-radio-button value="1">Positivo</md-radio-button>
-                                                <md-radio-button value="2">Negativo</md-radio-button>
-                                                <md-radio-button value="3">indiferente</md-radio-button>
-                                            </md-radio-group>
-                                        </div>
+                                    </div>
+                                    <div clas="col-md-3">
+                                        <md-radio-group formControlName="tipoInfluencia">
+                                            <md-radio-button value="1">Positivo</md-radio-button>
+                                            <md-radio-button value="2">Negativo</md-radio-button>
+                                            <md-radio-button value="3">indiferente</md-radio-button>
+                                        </md-radio-group>
+                                    </div>
 
-                                        <div class="col-md-1 ">
-                                            <span *ngIf="i > 25">
-                                     <button type="button"(click)="removeFila(ifForm.controls.preg_100_tabla_2, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                    <div class="col-md-1 ">
+                                        <span *ngIf="i > 19">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_117_tabla_2, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
                                         </span>
-                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-2 offset-md-2">
-                                        <button (click)="addFila(ifForm.controls.preg_100_tabla_2)" type="button" class="btn btn-success btn-xs mb-xs">Añade Criterio</button>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 offset-md-2">
+                                    <button (click)="addFila(ifForm.controls.preg_117_tabla_2)" type="button" class="btn btn-success btn-xs mb-xs">Añade Criterio</button>
                                 </div>
                             </div>
                         </fieldset>
                     </div>
-
-
-
-
-
-
-
-
-
-
                 </div>
             </section>
         </div>

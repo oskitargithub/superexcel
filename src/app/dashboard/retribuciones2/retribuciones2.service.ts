@@ -13,24 +13,10 @@ export class Retribuciones2Service {
     }
 
     getDatosModelo() {
-        var respuesta = {
-            "status": "success", "total": 24, "respondidas": 0, "id": 2, "user_id": 2,     
-            "respondidasCuest":0,"respondidasSeccion":9,"totalCuest":12,"totalSeccion":12,                 
-            "preg_60_tabla_5": [{ "denominacion": "", "mujeres1": "", "hombres1": "", "mujeres2": "", "hombres2": "" }],
-            "preg_61_tabla_5": [{ "denominacion": "", "mujeres1": "", "hombres1": "", "mujeres2": "", "hombres2": "" }],
-            "preg_62_tabla_5": [{ "denominacion": "", "mujeres1": "", "hombres1": "", "mujeres2": "", "hombres2": "" }],
-            "preg_63_tabla_5": [{ "denominacion": "", "mujeres1": "", "hombres1": "", "mujeres2": "", "hombres2": "" }],
-            "preg_64_tabla_5": [{ "denominacion": "", "mujeres1": "", "hombres1": "", "mujeres2": "", "hombres2": "" }],
-            "preg_65_tabla_5": [{ "denominacion": "", "mujeres1": "", "hombres1": "", "mujeres2": "", "hombres2": "" }],
-            "preg_66_tabla_5": [{ "denominacion": "", "mujeres1": "", "hombres1": "", "mujeres2": "", "hombres2": "" }],
-            "preg_67_tabla_5": [{ "denominacion": "", "mujeres1": "", "hombres1": "", "mujeres2": "", "hombres2": "" }],
-            "preg_68_tabla_5": [{ "denominacion": "", "mujeres1": "", "hombres1": "", "mujeres2": "", "hombres2": "" }],
-            "preg_69_tabla_5": [{ "denominacion": "", "mujeres1": "", "hombres1": "", "mujeres2": "", "hombres2": "" }],
-            "preg_67_tabla_3": [
-                { "denominacion": "Horas extraordinarias", "mujeres": "", "hombres": "" },
-                { "denominacion": "Productividad", "mujeres": "", "hombres": "" },
-                ]
-        }
-        return Observable.of(respuesta);
+        return this._http.get(this.config.apilaravel + "cuestionario/seccion/5").map(res => {
+            let headers = res.headers;
+            let miobjeto = res.json();
+            return (miobjeto);
+        });
     }
 }

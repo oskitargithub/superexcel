@@ -22,7 +22,7 @@ export class ClasProfesional1Model{
 
 export class Tabla3Model{
         texto: any = '';
-        respuesta: any = '';
+        respuesta: number = 0;
         mujeres: any = 0;
         hombres: any = 0;
 }
@@ -32,9 +32,11 @@ export class dataModel{
     public preg_50: any;
     public preg_52: any;
     public preg_53: any;
-    /*constructor(){
-        this.preg_5 = '',
-        this.preg_6 = '',
-        this.preg_7=''
-    }*/
+    constructor(){
+        this.preg_46 = '',
+        this.preg_47 = '',
+        this.preg_50='',
+        this.preg_52='',
+        this.preg_53=''
+    }
 }

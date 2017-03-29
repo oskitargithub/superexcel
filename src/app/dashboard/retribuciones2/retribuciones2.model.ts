@@ -1,18 +1,22 @@
 export class Retribuciones2Model{
-
     public id: number;
-    public user_id : number;
-    public preg_60_tabla_5: Tabla5Model[];
-    public preg_61_tabla_5: Tabla5Model[];
-    public preg_62_tabla_5: Tabla5Model[];
-    public preg_63_tabla_5: Tabla5Model[];
-    public preg_64_tabla_5: Tabla5Model[];
-    public preg_65_tabla_5: Tabla5Model[];
-    public preg_66_tabla_5: Tabla5Model[];    
-    public preg_68_tabla_5: Tabla5Model[];
-
-    public preg_67_tabla_3: Tabla3Model[];
-
+    public user_id : number;    
+    public preg_70_tabla_5: Tabla5Model[];
+    public preg_71_tabla_5: Tabla5Model[];
+    public preg_72_tabla_5: Tabla5Model[];
+    public preg_73_tabla_5: Tabla5Model[];
+    public preg_74_tabla_5: Tabla5Model[];
+    public preg_75_tabla_5: Tabla5Model[];
+    public preg_76_tabla_5: Tabla5Model[];
+    public preg_77_tabla_5: Tabla5Model[];
+    public preg_78_tabla_5: Tabla5Model[];
+    public preg_79_tabla_5: Tabla5Model[];
+    public preg_80_tabla_5: Tabla5Model[];
+    public preg_81_tabla_5: Tabla5Model[];    
+    public preg_83_tabla_5: Tabla5Model[];
+    public preg_84_tabla_5: Tabla5Model[];
+    public preg_85_tabla_5: Tabla5Model[];
+    public preg_86_tabla_3: Tabla3Model[];
 
     constructor(){
         this.id=0,
@@ -20,15 +24,19 @@ export class Retribuciones2Model{
     }
 }
 
+
 export class Tabla3Model{
-        denominacion: any = '';
+        respuesta: number = 0;
+        texto: any = '';
         mujeres: any = 0;
         hombres: any = 0;
 }
+
 export class Tabla5Model{
-        denominacion: string = '';
-        mujeres1: any = '';
-        hombres1: any = '';        
+        respuesta: number = 0;
+        texto: string = '';
+        mujeres: any = '';
+        hombres: any = '';        
         mujeres2: any = '';
         hombres2: any = '';
 }

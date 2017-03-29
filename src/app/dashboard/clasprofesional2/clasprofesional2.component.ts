@@ -39,17 +39,25 @@ export class ClasProfesional2Component implements OnInit {
         private servicio: ClasProfesional2Service,
         injector: Injector
     ) {
-        this.dynamic = 20;
+        this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
         this.getClasProfesional2();
     }
 
-    valorBarraProgreso() {
-        this.respondidasSeccion = 18;
-        this.totalSeccion = 20;
-        let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+    getValorBarra(){
+        if(this.respondidasSeccion==0)
+            return 0;
+        else{
+            let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+            return value;
+        }
+    }
+
+
+    valorBarraProgreso() {        
+        let value = this.getValorBarra();
         let type: string;
 
         if (value < 25) {
@@ -70,16 +78,13 @@ export class ClasProfesional2Component implements OnInit {
     getClasProfesional2() {
         this.servicio.getDatosModelo()
             .subscribe(
-            response => {
-                console.log("datos formu");
-                this.ifForm.setControl('data', this.fb.group(response.data));
-                console.log("datos preg3");
-                this.setPregunta(response.preg_14_tabla_3,'preg_14_tabla_3');
-                this.setPregunta(response.preg_15_tabla_3,'preg_15_tabla_3');
-                this.setPregunta(response.preg_16_tabla_3,'preg_16_tabla_3');
-                this.setPregunta(response.preg_17_tabla_3,'preg_17_tabla_3');
-                this.setPregunta(response.preg_18_tabla_3,'preg_18_tabla_3');
-                this.setPregunta(response.preg_19_tabla_3,'preg_19_tabla_3');
+            response => {                
+                this.setPregunta(response.preg_64_tabla_3,'preg_64_tabla_3');
+                this.setPregunta(response.preg_65_tabla_3,'preg_65_tabla_3');
+                this.setPregunta(response.preg_66_tabla_3,'preg_66_tabla_3');
+                this.setPregunta(response.preg_67_tabla_3,'preg_67_tabla_3');
+                this.setPregunta(response.preg_68_tabla_3,'preg_68_tabla_3');
+                this.setPregunta(response.preg_69_tabla_3,'preg_69_tabla_3');
 
                 this.respondidasSeccion = response.respondidasSeccion;
                 this.totalSeccion = response.totalSeccion;
@@ -126,21 +131,26 @@ export class ClasProfesional2Component implements OnInit {
 
 
     getTotalMujeres(elemento: FormArray) {
-        return elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+        return elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1),0);
     }
     getTotalHombres(elemento: FormArray) {
-        return elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+        return elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1),0);
     }
     getTotalTotal(elemento: FormArray) {
-        let hombres = elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
-        let mujeres = elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+        let hombres = elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1),0);
+        let mujeres = elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1),0);
         return (hombres * 1 + mujeres * 1);
     }
 
     createForm() {
         console.log("creando formulario");
         this.ifForm = this.fb.group({
-            preg_14_tabla_3: this.fb.array([])
+            preg_64_tabla_3: this.fb.array([]),
+            preg_65_tabla_3: this.fb.array([]),
+            preg_66_tabla_3: this.fb.array([]),
+            preg_67_tabla_3: this.fb.array([]),
+            preg_68_tabla_3: this.fb.array([]),
+            preg_69_tabla_3: this.fb.array([])
         });
         console.log("fin creando formulario");
     }
@@ -175,11 +185,11 @@ export class ClasProfesional2Component implements OnInit {
 
 
     onSubmit() {
-        this.clasprofesional2 = this.preparaParaGuardar();
+        //this.clasprofesional2 = this.preparaParaGuardar();
         console.log(this.clasprofesional2);
 
     }
-    preparaParaGuardar(): ClasProfesional2Model {
+    /*preparaParaGuardar(): ClasProfesional2Model {
         const formModel = this.ifForm.value;
         const preg14Copy: Tabla3Model[] = formModel.preg_14_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
         const preg15Copy: Tabla3Model[] = formModel.preg_15_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
@@ -200,5 +210,5 @@ export class ClasProfesional2Component implements OnInit {
             preg_19_tabla_3: preg19Copy
         };
         return saveClasProfesional2;
-    }
+    }*/
 }
