@@ -163,15 +163,15 @@ export class TipoDeContratoAdmComponent implements OnInit {
 
   asignaDatosGraficas() {
     /** Asignamos los datos para las gráficas */
-    this.funciones.asignaPorcentajes(this.modelo.preg_14_tabla_3, this.barChartData1, null, this.barChartLabels1, null);
-    this.funciones.asignaPorcentajes(this.modelo.preg_15_tabla_3, this.barChartData2, null, this.barChartLabels2, null);
-    this.funciones.asignaPorcentajesPorTipo(this.modelo.preg_16_tabla_3, this.barChartData3, this.barChartLabels3, this.barChartData4, this.barChartLabels4);
-    this.funciones.asignaPorcentajesGrafLineal(this.modelo.preg_16_tabla_3, this.lineChartData1, this.lineChartLabels1, this.lineChartData2, this.lineChartLabels2);
-    this.funciones.asignaPorcentajesPorTipo(this.modelo.preg_17_tabla_3, this.barChartData5, this.barChartLabels5, this.barChartData6, this.barChartLabels6);
-    this.funciones.asignaPorcentajesGrafLineal(this.modelo.preg_17_tabla_3, this.lineChartData3, this.lineChartLabels3, this.lineChartData4, this.lineChartLabels4);
-    this.funciones.asignaPorcentajes(this.modelo.preg_18_tabla_3, this.barChartData7, null, this.barChartLabels7, null);
-    this.funciones.asignaPorcentajeDonutHMPlantilla(this.modelo.preg_18_tabla_3, this.doughnutChartData1, this.doughnutChartData2, this.doughnutChartLabels1, this.doughnutChartLabels2);
-    this.funciones.asignaPorcentajes(this.modelo.preg_19_tabla_3, this.barChartData9, this.barChartData10, this.barChartLabels9, this.barChartLabels10);
+    this.funciones.asignaPorcentajes(this.modelo.preg_64_tabla_3, this.barChartData1, null, this.barChartLabels1, null);
+    this.funciones.asignaPorcentajes(this.modelo.preg_65_tabla_3, this.barChartData2, null, this.barChartLabels2, null);
+    this.funciones.asignaPorcentajesPorTipo(this.modelo.preg_66_tabla_3, this.barChartData3, this.barChartLabels3, this.barChartData4, this.barChartLabels4);
+    this.funciones.asignaPorcentajesGrafLineal(this.modelo.preg_66_tabla_3, this.lineChartData1, this.lineChartLabels1, this.lineChartData2, this.lineChartLabels2);
+    this.funciones.asignaPorcentajesPorTipo(this.modelo.preg_67_tabla_3, this.barChartData5, this.barChartLabels5, this.barChartData6, this.barChartLabels6);
+    this.funciones.asignaPorcentajesGrafLineal(this.modelo.preg_67_tabla_3, this.lineChartData3, this.lineChartLabels3, this.lineChartData4, this.lineChartLabels4);
+    this.funciones.asignaPorcentajes(this.modelo.preg_68_tabla_3, this.barChartData7, null, this.barChartLabels7, null);
+    this.funciones.asignaPorcentajeDonutHMPlantilla(this.modelo.preg_68_tabla_3, this.doughnutChartData1, this.doughnutChartData2, this.doughnutChartLabels1, this.doughnutChartLabels2);
+    this.funciones.asignaPorcentajes(this.modelo.preg_69_tabla_3, this.barChartData9, this.barChartData10, this.barChartLabels9, this.barChartLabels10);
   }
 
   

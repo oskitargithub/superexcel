@@ -11,7 +11,14 @@ export class RetribucionesAdm2Service {
     constructor(private _http: Http, config: AppConfig) {
         this.config = config.getConfig(); //me traigo la configuración para saber la url de la api
     }
-
+    getDatosModelo() {
+        return this._http.get(this.config.apilaravel + "cuestionario/seccion/5").map(res => {
+            let headers = res.headers;
+            let miobjeto = res.json();
+            return (miobjeto);
+        });
+    }
+    /*
     getDatosModelo() {
         var respuesta = {
             "status": "success", "total": 24, "respondidas": 0, "id": 2, "user_id": 2,          
@@ -64,5 +71,5 @@ export class RetribucionesAdm2Service {
             ]
         }
         return Observable.of(respuesta);
-    }
+    }*/
 }

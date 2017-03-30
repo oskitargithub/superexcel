@@ -13,6 +13,14 @@ export class RetribucionesAdmService {
     }
 
     getDatosModelo() {
+        return this._http.get(this.config.apilaravel + "cuestionario/seccion/5").map(res => {
+            let headers = res.headers;
+            let miobjeto = res.json();
+            return (miobjeto);
+        });
+    }
+/*
+    getDatosModelo() {
         var respuesta = {
             "status": "success", "total": 24, "respondidas": 0, "id": 2, "user_id": 2,
             "preg_49_tabla_6": [
@@ -89,4 +97,5 @@ export class RetribucionesAdmService {
         }
         return Observable.of(respuesta);
     }
+    */
 }

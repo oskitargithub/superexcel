@@ -104,7 +104,7 @@ export class BajasEIncorpAdmComponent implements OnInit {
       .subscribe(
       response => {
         /** Asignamos las tablas */
-        this.modelo = response;
+        //this.modelo = response;
         /** Asignamos los datos para las gráficas */
         this.asignaDatosGraficas();
 

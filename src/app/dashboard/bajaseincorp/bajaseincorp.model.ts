@@ -25,7 +25,7 @@ export class datosModel {
 }
 
 export class Tabla3Model {
-        denominacion: any = '';
+        texto: any = '';
         mujeres: any = 0;
         hombres: any = 0;
 }
@@ -36,10 +36,10 @@ export class Tabla4Model {
         mujeres: any = 0;
         hombres: any = 0;
 }
-export class Tabla5Model {
-        denominacion: string = '';
-        mujeres1: any = '';
-        hombres1: any = '';
+export class Tabla5Model{
+        texto: string = '';
+        mujeres: any = '';
+        hombres: any = '';        
         mujeres2: any = '';
         hombres2: any = '';
 }

@@ -3,8 +3,8 @@ import { Select2OptionData } from 'ng2-select2';
 
 
 import { RetribucionesAdmService } from './retribucionesadm.service';
-import { FuncionesT6Service } from '../serviciofunciones/funcionest6.service';
-import { RetribucionesModel, Tabla5Model, Tabla6Model } from '../../dashboard/retribuciones/retribuciones.model';
+import { FuncionesT5Service } from '../serviciofunciones/funcionest5.service';
+import { RetribucionesModel, Tabla5Model } from '../../dashboard/retribuciones/retribuciones.model';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -16,7 +16,7 @@ declare var Messenger: any;
   styleUrls: ['retribucionesadm.style.css',
   '../../scss/elements.style.scss', 
   '../../scss/notifications.style.scss'],
-  providers: [RetribucionesAdmService, FuncionesT6Service],
+  providers: [RetribucionesAdmService, FuncionesT5Service],
   encapsulation: ViewEncapsulation.None,
 })
 export class RetribucionesAdmComponent implements OnInit {
@@ -202,7 +202,7 @@ export class RetribucionesAdmComponent implements OnInit {
 
   constructor(
     private servicio: RetribucionesAdmService,
-    public funciones: FuncionesT6Service,
+    public funciones: FuncionesT5Service,
     injector: Injector
   ) {
     this.modelo = new RetribucionesModel();
@@ -270,46 +270,46 @@ export class RetribucionesAdmComponent implements OnInit {
     /** Asignamos los datos para las gráficas */
 
     /**Gráficas retribuciones total */
-    this.funciones.asignaPorcentajeDonutHMPlantilla1(this.modelo.preg_49_tabla_6, this.doughnutChartData1, this.doughnutChartData2, this.doughnutChartLabels1, this.doughnutChartLabels2);
-    this.funciones.asignaPorcentajeDonutHMPlantilla2(this.modelo.preg_49_tabla_6, this.doughnutChartData3, this.doughnutChartData4, this.doughnutChartLabels3, this.doughnutChartLabels4);
-    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_49_tabla_6, this.barChartData1, this.barChartLabels1, this.barChartData2, this.barChartLabels2);
-    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_49_tabla_6, this.barChartData3, this.barChartLabels3, this.barChartData4, this.barChartLabels4);
+    this.funciones.asignaPorcentajeDonutHMPlantilla1(this.modelo.preg_70_tabla_5, this.doughnutChartData1, this.doughnutChartData2, this.doughnutChartLabels1, this.doughnutChartLabels2);
+    this.funciones.asignaPorcentajeDonutHMPlantilla2(this.modelo.preg_70_tabla_5, this.doughnutChartData3, this.doughnutChartData4, this.doughnutChartLabels3, this.doughnutChartLabels4);
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_70_tabla_5, this.barChartData1, this.barChartLabels1, this.barChartData2, this.barChartLabels2);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_70_tabla_5, this.barChartData3, this.barChartLabels3, this.barChartData4, this.barChartLabels4);
 
     /**Gráficas retribuciones A1 */
-    this.funciones.asignaPorcentajeDonutHMPlantilla1(this.modelo.preg_50_tabla_6,this.doughnutChartData5,this.doughnutChartData6,this.doughnutChartLabels5,this.doughnutChartLabels6);
-    this.funciones.asignaPorcentajeDonutHMPlantilla2(this.modelo.preg_50_tabla_6, this.doughnutChartData7, this.doughnutChartData8, this.doughnutChartLabels7, this.doughnutChartLabels8);
-    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_50_tabla_6, this.barChartData5, this.barChartLabels5, this.barChartData6, this.barChartLabels6);
-    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_50_tabla_6, this.barChartData7, this.barChartLabels7, this.barChartData8, this.barChartLabels8);
+    this.funciones.asignaPorcentajeDonutHMPlantilla1(this.modelo.preg_71_tabla_5,this.doughnutChartData5,this.doughnutChartData6,this.doughnutChartLabels5,this.doughnutChartLabels6);
+    this.funciones.asignaPorcentajeDonutHMPlantilla2(this.modelo.preg_71_tabla_5, this.doughnutChartData7, this.doughnutChartData8, this.doughnutChartLabels7, this.doughnutChartLabels8);
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_71_tabla_5, this.barChartData5, this.barChartLabels5, this.barChartData6, this.barChartLabels6);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_71_tabla_5, this.barChartData7, this.barChartLabels7, this.barChartData8, this.barChartLabels8);
 
     /**Gráficas retribuciones A2 */
-    this.funciones.asignaPorcentajeDonutHMPlantilla1(this.modelo.preg_51_tabla_6,this.doughnutChartData9,this.doughnutChartData10,this.doughnutChartLabels9,this.doughnutChartLabels10);
-    this.funciones.asignaPorcentajeDonutHMPlantilla2(this.modelo.preg_51_tabla_6, this.doughnutChartData11, this.doughnutChartData12, this.doughnutChartLabels11, this.doughnutChartLabels12);
-    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_51_tabla_6, this.barChartData9, this.barChartLabels9, this.barChartData10, this.barChartLabels10);
-    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_51_tabla_6, this.barChartData11, this.barChartLabels11, this.barChartData12, this.barChartLabels12);
+    this.funciones.asignaPorcentajeDonutHMPlantilla1(this.modelo.preg_72_tabla_5,this.doughnutChartData9,this.doughnutChartData10,this.doughnutChartLabels9,this.doughnutChartLabels10);
+    this.funciones.asignaPorcentajeDonutHMPlantilla2(this.modelo.preg_72_tabla_5, this.doughnutChartData11, this.doughnutChartData12, this.doughnutChartLabels11, this.doughnutChartLabels12);
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_72_tabla_5, this.barChartData9, this.barChartLabels9, this.barChartData10, this.barChartLabels10);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_72_tabla_5, this.barChartData11, this.barChartLabels11, this.barChartData12, this.barChartLabels12);
 
     /**Gráficas retribuciones B */
-    this.funciones.asignaPorcentajeDonutHMPlantilla1(this.modelo.preg_52_tabla_6,this.doughnutChartData13,this.doughnutChartData14,this.doughnutChartLabels13,this.doughnutChartLabels14);
-    this.funciones.asignaPorcentajeDonutHMPlantilla2(this.modelo.preg_52_tabla_6, this.doughnutChartData15, this.doughnutChartData16, this.doughnutChartLabels15, this.doughnutChartLabels16);
-    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_52_tabla_6, this.barChartData13, this.barChartLabels13, this.barChartData14, this.barChartLabels14);
-    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_52_tabla_6, this.barChartData15, this.barChartLabels15, this.barChartData16, this.barChartLabels16);
+    this.funciones.asignaPorcentajeDonutHMPlantilla1(this.modelo.preg_73_tabla_5,this.doughnutChartData13,this.doughnutChartData14,this.doughnutChartLabels13,this.doughnutChartLabels14);
+    this.funciones.asignaPorcentajeDonutHMPlantilla2(this.modelo.preg_73_tabla_5, this.doughnutChartData15, this.doughnutChartData16, this.doughnutChartLabels15, this.doughnutChartLabels16);
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_73_tabla_5, this.barChartData13, this.barChartLabels13, this.barChartData14, this.barChartLabels14);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_73_tabla_5, this.barChartData15, this.barChartLabels15, this.barChartData16, this.barChartLabels16);
 
     /**Gráficas retribuciones C1 */
-    this.funciones.asignaPorcentajeDonutHMPlantilla1(this.modelo.preg_53_tabla_6,this.doughnutChartData17,this.doughnutChartData18,this.doughnutChartLabels17,this.doughnutChartLabels18);
-    this.funciones.asignaPorcentajeDonutHMPlantilla2(this.modelo.preg_53_tabla_6, this.doughnutChartData19, this.doughnutChartData20, this.doughnutChartLabels19, this.doughnutChartLabels20);
-    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_53_tabla_6, this.barChartData17, this.barChartLabels17, this.barChartData18, this.barChartLabels18);
-    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_53_tabla_6, this.barChartData19, this.barChartLabels19, this.barChartData20, this.barChartLabels20);
+    this.funciones.asignaPorcentajeDonutHMPlantilla1(this.modelo.preg_74_tabla_5,this.doughnutChartData17,this.doughnutChartData18,this.doughnutChartLabels17,this.doughnutChartLabels18);
+    this.funciones.asignaPorcentajeDonutHMPlantilla2(this.modelo.preg_74_tabla_5, this.doughnutChartData19, this.doughnutChartData20, this.doughnutChartLabels19, this.doughnutChartLabels20);
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_74_tabla_5, this.barChartData17, this.barChartLabels17, this.barChartData18, this.barChartLabels18);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_74_tabla_5, this.barChartData19, this.barChartLabels19, this.barChartData20, this.barChartLabels20);
 
     /**Gráficas retribuciones C2 */
-    this.funciones.asignaPorcentajeDonutHMPlantilla1(this.modelo.preg_54_tabla_6,this.doughnutChartData21,this.doughnutChartData22,this.doughnutChartLabels21,this.doughnutChartLabels22);
-    this.funciones.asignaPorcentajeDonutHMPlantilla2(this.modelo.preg_54_tabla_6, this.doughnutChartData23, this.doughnutChartData24, this.doughnutChartLabels23, this.doughnutChartLabels24);
-    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_54_tabla_6, this.barChartData21, this.barChartLabels21, this.barChartData22, this.barChartLabels22);
-    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_54_tabla_6, this.barChartData23, this.barChartLabels23, this.barChartData24, this.barChartLabels24);
+    this.funciones.asignaPorcentajeDonutHMPlantilla1(this.modelo.preg_75_tabla_5,this.doughnutChartData21,this.doughnutChartData22,this.doughnutChartLabels21,this.doughnutChartLabels22);
+    this.funciones.asignaPorcentajeDonutHMPlantilla2(this.modelo.preg_75_tabla_5, this.doughnutChartData23, this.doughnutChartData24, this.doughnutChartLabels23, this.doughnutChartLabels24);
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_75_tabla_5, this.barChartData21, this.barChartLabels21, this.barChartData22, this.barChartLabels22);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_75_tabla_5, this.barChartData23, this.barChartLabels23, this.barChartData24, this.barChartLabels24);
 
     /**Gráficas retribuciones E */
-    this.funciones.asignaPorcentajeDonutHMPlantilla1(this.modelo.preg_55_tabla_6,this.doughnutChartData25,this.doughnutChartData26,this.doughnutChartLabels25,this.doughnutChartLabels26);
-    this.funciones.asignaPorcentajeDonutHMPlantilla2(this.modelo.preg_55_tabla_6, this.doughnutChartData27, this.doughnutChartData28, this.doughnutChartLabels27, this.doughnutChartLabels28);
-    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_55_tabla_6, this.barChartData25, this.barChartLabels25, this.barChartData26, this.barChartLabels26);
-    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_55_tabla_6, this.barChartData27, this.barChartLabels27, this.barChartData28, this.barChartLabels28);
+    this.funciones.asignaPorcentajeDonutHMPlantilla1(this.modelo.preg_76_tabla_5,this.doughnutChartData25,this.doughnutChartData26,this.doughnutChartLabels25,this.doughnutChartLabels26);
+    this.funciones.asignaPorcentajeDonutHMPlantilla2(this.modelo.preg_76_tabla_5, this.doughnutChartData27, this.doughnutChartData28, this.doughnutChartLabels27, this.doughnutChartLabels28);
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_76_tabla_5, this.barChartData25, this.barChartLabels25, this.barChartData26, this.barChartLabels26);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_76_tabla_5, this.barChartData27, this.barChartLabels27, this.barChartData28, this.barChartLabels28);
   }
 
 

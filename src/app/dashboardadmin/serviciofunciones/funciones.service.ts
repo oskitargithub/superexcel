@@ -150,8 +150,8 @@ export class FuncionesService {
             let porcentajeh = Math.round(this.getHombresDeFila(element, elemento) * 100);
             grafica1.push(porcentajem);
             grafica2.push(porcentajeh);
-            label1.push('% ' + element.denominacion);
-            label2.push('% ' + element.denominacion);
+            label1.push('% ' + element.texto);
+            label2.push('% ' + element.texto);
         });
     }
 
@@ -173,9 +173,9 @@ export class FuncionesService {
             datah.push(porcentajeh);
             data2m.push(porcentaje2m);
             data2h.push(porcentaje2h);
-            label1.push(element.denominacion);
+            label1.push(element.texto);
             if (label2 != null)
-                label2.push(element.denominacion);
+                label2.push(element.texto);
         });
         grafica1.push({ data: datam, label: "Mujeres %" });
         grafica1.push({ data: datah, label: "Hombres %" });
@@ -199,9 +199,9 @@ export class FuncionesService {
             datah.push(Math.round(hombres * 100));
             data2m.push(Math.round(mujeres2 * 100));
             data2h.push(Math.round(hombres2 * 100));
-            label1.push(elemento.denominacion);
+            label1.push(elemento.texto);
             if(label2!=null){
-                label2.push(elemento.denominacion);
+                label2.push(elemento.texto);
             }
         });
         grafica1.push({ data: datam, label: "Mujeres %" });
@@ -220,8 +220,8 @@ export class FuncionesService {
             let hombres = this.getHombresDeFila(elemento, tabla);
             datam.push(Math.round(mujeres * 100));
             datah.push(Math.round(hombres * 100));
-            label1.push(elemento.denominacion);
-            label2.push(elemento.denominacion);
+            label1.push(elemento.texto);
+            label2.push(elemento.texto);
         });
         grafica1.push({ data: datam, label: "%" }, { data: [], label: '' });
         grafica2.push({ data: [], label: '' }, { data: datah, label: "%" });

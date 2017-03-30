@@ -282,7 +282,7 @@ export class FuncionesT6Service {
     }
   }
 
-  asignaPorcentajeDonutHMPlantilla1(elemento: Tabla6Model[], grafica1: any, grafica2: any, label1: any, label2: any) {
+  asignaPorcentajeDonutHMPlantilla1(elemento: any, grafica1: any, grafica2: any, label1: any, label2: any) {
         elemento.forEach(element => {
             let porcentajem = Math.round(this.getMujeresDeFila1(element, elemento) * 100);
             let porcentajeh = Math.round(this.getHombresDeFila1(element, elemento) * 100);
@@ -292,7 +292,7 @@ export class FuncionesT6Service {
             label2.push('% ' + element.denominacion1);
         });
     }
-    asignaPorcentajeDonutHMPlantilla2(elemento: Tabla6Model[], grafica1: any, grafica2: any, label1: any, label2: any) {
+    asignaPorcentajeDonutHMPlantilla2(elemento: any, grafica1: any, grafica2: any, label1: any, label2: any) {
         elemento.forEach(element => {
             let porcentajem = Math.round(this.getMujeresDeFila2(element, elemento) * 100);
             let porcentajeh = Math.round(this.getHombresDeFila2(element, elemento) * 100);
@@ -302,7 +302,7 @@ export class FuncionesT6Service {
             label2.push('% ' + element.denominacion2);
         });
     }
-    asignaPorcentajesPorTipo1(tabla: Tabla6Model[], grafica1: any, label1: any, grafica2: any, label2: any) {
+    asignaPorcentajesPorTipo1(tabla: any, grafica1: any, label1: any, grafica2: any, label2: any) {
         let datam = [];
         let datah = [];
         let data2m = [];
@@ -324,7 +324,7 @@ export class FuncionesT6Service {
         grafica2.push({ data: data2m, label: "Mujeres %" });
         grafica2.push({ data: data2h, label: "Hombres %" });
     }
-    asignaPorcentajesPorTipo2(tabla: Tabla6Model[], grafica1: any, label1: any, grafica2: any, label2: any) {
+    asignaPorcentajesPorTipo2(tabla: any, grafica1: any, label1: any, grafica2: any, label2: any) {
         let datam = [];
         let datah = [];
         let data2m = [];

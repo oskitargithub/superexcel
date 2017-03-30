@@ -1,7 +1,4 @@
 export class ClasProfesional1Model{
-
-    public id: number;
-    public user_id : number;
     public data: dataModel;
     public preg_48_tabla_3: Tabla3Model[];
     public preg_49_tabla_3: Tabla3Model[];
@@ -14,15 +11,12 @@ export class ClasProfesional1Model{
     public preg_61_tabla_3: Tabla3Model[];
     public preg_62_tabla_3: Tabla3Model[];
     public preg_63_tabla_3: Tabla3Model[];
-    constructor(){
-        this.id=0,
-        this.user_id = 0
-    }
+    
 }
 
 export class Tabla3Model{
         texto: any = '';
-        respuesta: number = 0;
+        respuesta: any;
         mujeres: any = 0;
         hombres: any = 0;
 }

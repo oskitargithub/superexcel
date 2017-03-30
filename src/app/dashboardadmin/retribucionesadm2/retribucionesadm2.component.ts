@@ -5,7 +5,7 @@ import { Select2OptionData } from 'ng2-select2';
 import { RetribucionesAdm2Service } from './retribucionesadm2.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
 import { FuncionesT5Service } from '../serviciofunciones/funcionest5.service';
-import { RetribucionesModel, Tabla5Model, Tabla6Model } from '../../dashboard/retribuciones/retribuciones.model';
+import { RetribucionesModel, Tabla5Model } from '../../dashboard/retribuciones/retribuciones.model';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -150,6 +150,19 @@ export class RetribucionesAdm2Component implements OnInit {
   public barChartLegend29: boolean = true;
   public barChartData29: any[] = [];
 
+  public barChartLabels30: string[] = [];
+  public barChartLegend30: boolean = true;
+  public barChartData30: any[] = [];
+  public barChartLabels31: string[] = [];
+  public barChartLegend31: boolean = true;
+  public barChartData31: any[] = [];
+  public barChartLabels32: string[] = [];
+  public barChartLegend32: boolean = true;
+  public barChartData32: any[] = [];
+  public barChartLabels33: string[] = [];
+  public barChartLegend33: boolean = true;
+  public barChartData33: any[] = [];
+
 
   constructor(
     private servicio: RetribucionesAdm2Service,
@@ -220,36 +233,40 @@ export class RetribucionesAdm2Component implements OnInit {
 
   asignaDatosGraficas() {
     /** Asignamos los datos para las gráficas */
+    /**Gráficas -7200 */
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_85_tabla_5, this.barChartData30, this.barChartLabels30, this.barChartData31, this.barChartLabels31);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_85_tabla_5, this.barChartData32, this.barChartLabels32, this.barChartData33, this.barChartLabels33);
+
     /**Gráficas 7001 y 12000 */
-    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_60_tabla_5, this.barChartData1, this.barChartLabels1, this.barChartData2, this.barChartLabels2);
-    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_60_tabla_5, this.barChartData3, this.barChartLabels3, this.barChartData4, this.barChartLabels4);
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_77_tabla_5, this.barChartData1, this.barChartLabels1, this.barChartData2, this.barChartLabels2);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_77_tabla_5, this.barChartData3, this.barChartLabels3, this.barChartData4, this.barChartLabels4);
 
     /**Gráficas 12001 y 14000 */
-    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_61_tabla_5, this.barChartData5, this.barChartLabels5, this.barChartData6, this.barChartLabels6);
-    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_61_tabla_5, this.barChartData7, this.barChartLabels7, this.barChartData8, this.barChartLabels8);
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_78_tabla_5, this.barChartData5, this.barChartLabels5, this.barChartData6, this.barChartLabels6);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_78_tabla_5, this.barChartData7, this.barChartLabels7, this.barChartData8, this.barChartLabels8);
 
     /**Gráficas 14001 y 18000 */
-    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_62_tabla_5, this.barChartData9, this.barChartLabels9, this.barChartData10, this.barChartLabels10);
-    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_62_tabla_5, this.barChartData11, this.barChartLabels11, this.barChartData12, this.barChartLabels12);
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_79_tabla_5, this.barChartData9, this.barChartLabels9, this.barChartData10, this.barChartLabels10);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_79_tabla_5, this.barChartData11, this.barChartLabels11, this.barChartData12, this.barChartLabels12);
 
     /**Gráficas 18001 y 24000 */
-    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_63_tabla_5, this.barChartData13, this.barChartLabels13, this.barChartData14, this.barChartLabels14);
-    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_63_tabla_5, this.barChartData15, this.barChartLabels15, this.barChartData16, this.barChartLabels16);
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_80_tabla_5, this.barChartData13, this.barChartLabels13, this.barChartData14, this.barChartLabels14);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_80_tabla_5, this.barChartData15, this.barChartLabels15, this.barChartData16, this.barChartLabels16);
 
     /**Gráficas 24001 y 30000 */
-    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_64_tabla_5, this.barChartData17, this.barChartLabels17, this.barChartData18, this.barChartLabels18);
-    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_64_tabla_5, this.barChartData19, this.barChartLabels19, this.barChartData20, this.barChartLabels20);
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_81_tabla_5, this.barChartData17, this.barChartLabels17, this.barChartData18, this.barChartLabels18);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_81_tabla_5, this.barChartData19, this.barChartLabels19, this.barChartData20, this.barChartLabels20);
 
     /**Gráficas 30001 y 36000 */
-    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_65_tabla_5, this.barChartData21, this.barChartLabels21, this.barChartData22, this.barChartLabels22);
-    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_65_tabla_5, this.barChartData23, this.barChartLabels23, this.barChartData24, this.barChartLabels24);
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_83_tabla_5, this.barChartData21, this.barChartLabels21, this.barChartData22, this.barChartLabels22);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_83_tabla_5, this.barChartData23, this.barChartLabels23, this.barChartData24, this.barChartLabels24);
 
     /**Gráficas Más de 36000 */
-    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_66_tabla_5, this.barChartData25, this.barChartLabels25, this.barChartData26, this.barChartLabels26);
-    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_66_tabla_5, this.barChartData27, this.barChartLabels27, this.barChartData28, this.barChartLabels28);
+    this.funciones.asignaPorcentajesPorTipo1(this.modelo.preg_84_tabla_5, this.barChartData25, this.barChartLabels25, this.barChartData26, this.barChartLabels26);
+    this.funciones.asignaPorcentajesPorTipo2(this.modelo.preg_84_tabla_5, this.barChartData27, this.barChartLabels27, this.barChartData28, this.barChartLabels28);
 
     /**Gráficas Compensaciones extrasalariales */
-    this.funcionest3.asignaPorcentajesPorTipo(this.modelo.preg_67_tabla_3, this.barChartData29, this.barChartLabels29, null, null);
+    this.funcionest3.asignaPorcentajesPorTipo(this.modelo.preg_86_tabla_3, this.barChartData29, this.barChartLabels29, null, null);
   }
 
 
