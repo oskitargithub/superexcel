@@ -45,11 +45,11 @@
         <i class="toggle fa fa-angle-down"></i>
       </a>
       <ul id="sidebar-dashboardadmin" class="collapse">
-        <li><a [routerLink]=" ['dashboardadmin'] "><i class="glyphicon glyphicon-tree-conifer"></i>Dashboard Admin</a></li>
+        <li><a [routerLink]=" ['dashboardadmin'] ">Dashboard Admin</a></li>
         
         
         <!-- rutas y enlaces para amin cuestionarios tipo=1 que son de empresa pública -->  
-          <!-- <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['infoencuestapb'] ">Inicio</a></li>  -->    
+          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['infoencuestapb'] ">Inicio</a></li>
           <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['clasificacionprofesionaladm'] ">1 Clasificación Profesional</a></li>
           <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['tipodecontratoadm'] ">Tipo de Contrato</a></li>
           <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" ['retribucionesadm'] ">Estructura Salarial</a></li>

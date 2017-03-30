@@ -3,7 +3,7 @@ import { Tabla5Model } from './funciones.model';
 
 @Injectable()
 export class FuncionesT5Service {
-    
+
     constructor() {
         /** Vacío */
     }
@@ -21,28 +21,58 @@ export class FuncionesT5Service {
         else
             return 0;
     }
-    
+
     getTotalHombresMujeres1(elemento: Tabla5Model[]) {
-        let totalm = elemento.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
-        let totalh = elemento.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
-        return (totalh * 1 + totalm * 1);
+        if (elemento != null) {
+            let totalm = elemento.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+            let totalh = elemento.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+            return (totalh * 1 + totalm * 1);
+        }
+        else {
+            return 0;
+        }
     }
     getTotalHombresMujeres2(elemento: Tabla5Model[]) {
-        let totalm = elemento.map(c => c.mujeres2).reduce((sum, current) => (sum * 1) + (current * 1));
-        let totalh = elemento.map(c => c.hombres2).reduce((sum, current) => (sum * 1) + (current * 1));
-        return (totalh * 1 + totalm * 1);
+        if (elemento != null) {
+            let totalm = elemento.map(c => c.mujeres2).reduce((sum, current) => (sum * 1) + (current * 1));
+            let totalh = elemento.map(c => c.hombres2).reduce((sum, current) => (sum * 1) + (current * 1));
+            return (totalh * 1 + totalm * 1);
+        }
+        else {
+            return 0;
+        }
     }
     getTotalMujeres1(elemento: Tabla5Model[]) {
-        return elemento.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+        if (elemento != null) {
+            return elemento.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+        }
+        else {
+            return 0;
+        }
     }
     getTotalMujeres2(elemento: Tabla5Model[]) {
-        return elemento.map(c => c.mujeres2).reduce((sum, current) => (sum * 1) + (current * 1));
+        if (elemento != null) {
+            return elemento.map(c => c.mujeres2).reduce((sum, current) => (sum * 1) + (current * 1));
+        }
+        else {
+            return 0;
+        }
     }
     getTotalHombres1(elemento: Tabla5Model[]) {
-        return elemento.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+        if (elemento != null) {
+            return elemento.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+        }
+        else {
+            return 0;
+        }
     }
     getTotalHombres2(elemento: Tabla5Model[]) {
-        return elemento.map(c => c.hombres2).reduce((sum, current) => (sum * 1) + (current * 1));
+        if (elemento != null) {
+            return elemento.map(c => c.hombres2).reduce((sum, current) => (sum * 1) + (current * 1));
+        }
+        else {
+            return 0;
+        }
     }
     getMujeresDelTotal1(elemento: Tabla5Model, tabla: Tabla5Model[]) {
         let salida = (elemento.mujeres * 1) / (this.getTotalHombresMujeres1(tabla));
@@ -72,14 +102,14 @@ export class FuncionesT5Service {
         else
             return 0;
     }
-    getMujeresDeFila1(elemento: Tabla5Model, tabla: Tabla5Model[]){
+    getMujeresDeFila1(elemento: Tabla5Model, tabla: Tabla5Model[]) {
         let salida = (elemento.mujeres * 1) / ((elemento.mujeres * 1) + (elemento.hombres * 1));
         if (!isNaN(salida))
             return salida;
         else
             return 0;
     }
-    getMujeresDeFila2(elemento: Tabla5Model, tabla: Tabla5Model[]){
+    getMujeresDeFila2(elemento: Tabla5Model, tabla: Tabla5Model[]) {
         let salida = (elemento.mujeres2 * 1) / ((elemento.mujeres2 * 1) + (elemento.hombres2 * 1));
         if (!isNaN(salida))
             return salida;
@@ -178,9 +208,11 @@ export class FuncionesT5Service {
     getSumaMujeresDelTotal1(tabla: Tabla5Model[]) {
         /**suma de elementos de getMujeresDelTotal */
         let salida = 0;
-        tabla.forEach(elemento => {
-            salida = salida + this.getMujeresDelTotal1(elemento, tabla);
-        });
+        if (tabla != null) {
+            tabla.forEach(elemento => {
+                salida = salida + this.getMujeresDelTotal1(elemento, tabla);
+            });
+        }
         if (!isNaN(salida))
             return salida;
         else
@@ -189,9 +221,11 @@ export class FuncionesT5Service {
     getSumaMujeresDelTotal2(tabla: Tabla5Model[]) {
         /**suma de elementos de getMujeresDelTotal */
         let salida = 0;
-        tabla.forEach(elemento => {
-            salida = salida + this.getMujeresDelTotal2(elemento, tabla);
-        });
+        if (tabla != null) {
+            tabla.forEach(elemento => {
+                salida = salida + this.getMujeresDelTotal2(elemento, tabla);
+            });
+        }
         if (!isNaN(salida))
             return salida;
         else
@@ -201,9 +235,11 @@ export class FuncionesT5Service {
     getSumaHombresDelTotal1(tabla: Tabla5Model[]) {
         /**suma de elementos de getMujeresDelTotal */
         let salida = 0;
-        tabla.forEach(elemento => {
-            salida = salida + this.getHombresDelTotal1(elemento, tabla);
-        });
+        if (tabla != null) {
+            tabla.forEach(elemento => {
+                salida = salida + this.getHombresDelTotal1(elemento, tabla);
+            });
+        }
         if (!isNaN(salida))
             return salida;
         else
@@ -212,9 +248,11 @@ export class FuncionesT5Service {
     getSumaHombresDelTotal2(tabla: Tabla5Model[]) {
         /**suma de elementos de getMujeresDelTotal */
         let salida = 0;
-        tabla.forEach(elemento => {
-            salida = salida + this.getHombresDelTotal2(elemento, tabla);
-        });
+        if (tabla != null) {
+            tabla.forEach(elemento => {
+                salida = salida + this.getHombresDelTotal2(elemento, tabla);
+            });
+        }
         if (!isNaN(salida))
             return salida;
         else
@@ -223,66 +261,66 @@ export class FuncionesT5Service {
 
 
     asignaPorcentajes1(elemento: Tabla5Model[], grafica1: any, grafica2: any, label1: any, label2: any) {
-    let datam = [];
-    let datah = [];
-    let data2m = [];
-    let data2h = [];
-    elemento.forEach(element => {
-      let porcentajem = Math.round((element.mujeres * 1) / this.getTotalHombresMujeres1(elemento) * 100);
-      let porcentajeh = Math.round((element.hombres * 1) / this.getTotalHombresMujeres1(elemento) * 100);
+        let datam = [];
+        let datah = [];
+        let data2m = [];
+        let data2h = [];
+        elemento.forEach(element => {
+            let porcentajem = Math.round((element.mujeres * 1) / this.getTotalHombresMujeres1(elemento) * 100);
+            let porcentajeh = Math.round((element.hombres * 1) / this.getTotalHombresMujeres1(elemento) * 100);
 
-      let mujabs = ((element.mujeres * 1) * this.getTotalHombresMujeres1(elemento)) / this.getTotalMujeres1(elemento);
-      let homabs = ((element.hombres * 1) * this.getTotalHombresMujeres1(elemento)) / this.getTotalHombres1(elemento);
-      let porcentaje2m = Math.round(mujabs / (mujabs + homabs) * 100);
-      let porcentaje2h = Math.round(homabs / (mujabs + homabs) * 100);
+            let mujabs = ((element.mujeres * 1) * this.getTotalHombresMujeres1(elemento)) / this.getTotalMujeres1(elemento);
+            let homabs = ((element.hombres * 1) * this.getTotalHombresMujeres1(elemento)) / this.getTotalHombres1(elemento);
+            let porcentaje2m = Math.round(mujabs / (mujabs + homabs) * 100);
+            let porcentaje2h = Math.round(homabs / (mujabs + homabs) * 100);
 
-      datam.push(porcentajem);
-      datah.push(porcentajeh);
-      data2m.push(porcentaje2m);
-      data2h.push(porcentaje2h);
-      label1.push(element.texto);
-      if (label2 != null)
-        label2.push(element.texto);
-    });
-    grafica1.push({ data: datam, label: "Mujeres %" });
-    grafica1.push({ data: datah, label: "Hombres %" });
-    if (grafica2 != null) {
-      grafica2.push({ data: data2m, label: "Mujeres %" });
-      grafica2.push({ data: data2h, label: "Hombres %" });
+            datam.push(porcentajem);
+            datah.push(porcentajeh);
+            data2m.push(porcentaje2m);
+            data2h.push(porcentaje2h);
+            label1.push(element.texto);
+            if (label2 != null)
+                label2.push(element.texto);
+        });
+        grafica1.push({ data: datam, label: "Mujeres %" });
+        grafica1.push({ data: datah, label: "Hombres %" });
+        if (grafica2 != null) {
+            grafica2.push({ data: data2m, label: "Mujeres %" });
+            grafica2.push({ data: data2h, label: "Hombres %" });
+        }
     }
-  }
 
-  asignaPorcentajes2(elemento: Tabla5Model[], grafica1: any, grafica2: any, label1: any, label2: any) {
-    let datam = [];
-    let datah = [];
-    let data2m = [];
-    let data2h = [];
-    elemento.forEach(element => {
-      let porcentajem = Math.round((element.mujeres2 * 1) / this.getTotalHombresMujeres2(elemento) * 100);
-      let porcentajeh = Math.round((element.hombres2 * 1) / this.getTotalHombresMujeres2(elemento) * 100);
+    asignaPorcentajes2(elemento: Tabla5Model[], grafica1: any, grafica2: any, label1: any, label2: any) {
+        let datam = [];
+        let datah = [];
+        let data2m = [];
+        let data2h = [];
+        elemento.forEach(element => {
+            let porcentajem = Math.round((element.mujeres2 * 1) / this.getTotalHombresMujeres2(elemento) * 100);
+            let porcentajeh = Math.round((element.hombres2 * 1) / this.getTotalHombresMujeres2(elemento) * 100);
 
-      let mujabs = ((element.mujeres2 * 1) * this.getTotalHombresMujeres2(elemento)) / this.getTotalMujeres2(elemento);
-      let homabs = ((element.hombres2 * 1) * this.getTotalHombresMujeres2(elemento)) / this.getTotalHombres2(elemento);
-      let porcentaje2m = Math.round(mujabs / (mujabs + homabs) * 100);
-      let porcentaje2h = Math.round(homabs / (mujabs + homabs) * 100);
+            let mujabs = ((element.mujeres2 * 1) * this.getTotalHombresMujeres2(elemento)) / this.getTotalMujeres2(elemento);
+            let homabs = ((element.hombres2 * 1) * this.getTotalHombresMujeres2(elemento)) / this.getTotalHombres2(elemento);
+            let porcentaje2m = Math.round(mujabs / (mujabs + homabs) * 100);
+            let porcentaje2h = Math.round(homabs / (mujabs + homabs) * 100);
 
-      datam.push(porcentajem);
-      datah.push(porcentajeh);
-      data2m.push(porcentaje2m);
-      data2h.push(porcentaje2h);
-      label1.push(element.texto);
-      if (label2 != null)
-        label2.push(element.texto);
-    });
-    grafica1.push({ data: datam, label: "Mujeres %" });
-    grafica1.push({ data: datah, label: "Hombres %" });
-    if (grafica2 != null) {
-      grafica2.push({ data: data2m, label: "Mujeres %" });
-      grafica2.push({ data: data2h, label: "Hombres %" });
+            datam.push(porcentajem);
+            datah.push(porcentajeh);
+            data2m.push(porcentaje2m);
+            data2h.push(porcentaje2h);
+            label1.push(element.texto);
+            if (label2 != null)
+                label2.push(element.texto);
+        });
+        grafica1.push({ data: datam, label: "Mujeres %" });
+        grafica1.push({ data: datah, label: "Hombres %" });
+        if (grafica2 != null) {
+            grafica2.push({ data: data2m, label: "Mujeres %" });
+            grafica2.push({ data: data2h, label: "Hombres %" });
+        }
     }
-  }
 
-  asignaPorcentajeDonutHMPlantilla1(elemento: Tabla5Model[], grafica1: any, grafica2: any, label1: any, label2: any) {
+    asignaPorcentajeDonutHMPlantilla1(elemento: Tabla5Model[], grafica1: any, grafica2: any, label1: any, label2: any) {
         elemento.forEach(element => {
             let porcentajem = Math.round(this.getMujeresDeFila1(element, elemento) * 100);
             let porcentajeh = Math.round(this.getHombresDeFila1(element, elemento) * 100);
@@ -347,5 +385,5 @@ export class FuncionesT5Service {
         grafica2.push({ data: data2h, label: "Hombres %" });
     }
 
-    
+
 }

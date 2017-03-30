@@ -42,8 +42,26 @@ export class ClasProfesional2Component implements OnInit {
         this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
-        this.createForm();
+        this.createForm();        
+    }
+
+    
+    ngOnInit(): void {
+        Messenger.options = { theme: 'air' };
         this.getClasProfesional2();
+    }
+
+    createForm() {
+        console.log("creando formulario");
+        this.ifForm = this.fb.group({
+            preg_64_tabla_3: this.fb.array([]),
+            preg_65_tabla_3: this.fb.array([]),
+            preg_66_tabla_3: this.fb.array([]),
+            preg_67_tabla_3: this.fb.array([]),
+            preg_68_tabla_3: this.fb.array([]),
+            preg_69_tabla_3: this.fb.array([])
+        });
+        console.log("fin creando formulario");
     }
 
     getValorBarra(){
@@ -142,21 +160,7 @@ export class ClasProfesional2Component implements OnInit {
         return (hombres * 1 + mujeres * 1);
     }
 
-    createForm() {
-        console.log("creando formulario");
-        this.ifForm = this.fb.group({
-            preg_64_tabla_3: this.fb.array([]),
-            preg_65_tabla_3: this.fb.array([]),
-            preg_66_tabla_3: this.fb.array([]),
-            preg_67_tabla_3: this.fb.array([]),
-            preg_68_tabla_3: this.fb.array([]),
-            preg_69_tabla_3: this.fb.array([])
-        });
-        console.log("fin creando formulario");
-    }
-    ngOnInit(): void {
-        Messenger.options = { theme: 'air' };
-    }
+    
 
     get data(): FormArray {
         return this.ifForm.get('data') as FormArray;

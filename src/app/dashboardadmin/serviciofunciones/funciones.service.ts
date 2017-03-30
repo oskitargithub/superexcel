@@ -8,21 +8,35 @@ export class FuncionesService {
     }
 
 
-    getTotalHombresMujeres(elemento: Tabla3Model[]) {
-        let totalm = elemento.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
-        let totalh = elemento.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
-        return (totalh * 1 + totalm * 1);
+      getTotalHombresMujeres(elemento: Tabla3Model[]) {
+    if (elemento != null) {
+      let totalm = elemento.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+      let totalh = elemento.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+      return (totalh * 1 + totalm * 1);
     }
-
-
-    getTotalMujeres(elemento: Tabla3Model[]) {
-        return elemento.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+    else {
+      return 0;
     }
+  }
 
 
-    getTotalHombres(elemento: Tabla3Model[]) {
-        return elemento.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+      getTotalMujeres(elemento: Tabla3Model[]) {
+    if (elemento != null) {
+      return elemento.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
     }
+    else {
+      return 0;
+    }
+  }
+
+  getTotalHombres(elemento: Tabla3Model[]) {
+    if (elemento != null) {
+      return elemento.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+    }
+    else {
+      return 0;
+    }
+  }
 
     getMujeresDelTotal(elemento: Tabla3Model, tabla: Tabla3Model[]) {
         let salida = (elemento.mujeres * 1) / (this.getTotalHombresMujeres(tabla));
@@ -74,9 +88,11 @@ export class FuncionesService {
     getSumaMujeresDelTotal(tabla: Tabla3Model[]) {
         /**suma de elementos de getMujeresDelTotal */
         let salida = 0;
-        tabla.forEach(elemento => {
-            salida = salida + this.getMujeresDelTotal(elemento, tabla);
-        });
+        if(tabla != null){
+            tabla.forEach(elemento => {
+                salida = salida + this.getMujeresDelTotal(elemento, tabla);
+            });
+        }
         if (!isNaN(salida))
             return salida;
         else
@@ -86,9 +102,11 @@ export class FuncionesService {
     getSumaHombresDelTotal(tabla: Tabla3Model[]) {
         /**suma de elementos de getMujeresDelTotal */
         let salida = 0;
+        if(tabla != null){
         tabla.forEach(elemento => {
             salida = salida + this.getHombresDelTotal(elemento, tabla);
         });
+        }
         if (!isNaN(salida))
             return salida;
         else

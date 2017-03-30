@@ -3,8 +3,7 @@ import { Select2OptionData } from 'ng2-select2';
 import { BajasEIncorpAdmService } from './bajaseincorpadm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
 import { FuncionesT5Service } from '../serviciofunciones/funcionest5.service';
-import { FuncionesT4Service } from '../serviciofunciones/funcionest4.service';
-import { BajasEIncorpModel, Tabla5Model, Tabla4Model, Tabla3Model } from '../../dashboard/bajaseincorp/bajaseincorp.model';
+import { BajasEIncorpModel, Tabla5Model, Tabla3Model } from '../../dashboard/bajaseincorp/bajaseincorp.model';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -14,9 +13,9 @@ declare var Messenger: any;
   selector: 'bajaseincorpadm',
   templateUrl: './bajaseincorpadm.template.html',
   styleUrls: ['bajaseincorpadm.style.css',
-  '../../scss/elements.style.scss', 
-  '../../scss/notifications.style.scss'],
-  providers: [BajasEIncorpAdmService, FuncionesT5Service,FuncionesT4Service,FuncionesService],
+    '../../scss/elements.style.scss',
+    '../../scss/notifications.style.scss'],
+  providers: [BajasEIncorpAdmService, FuncionesT5Service, FuncionesService],
   encapsulation: ViewEncapsulation.None,
 })
 export class BajasEIncorpAdmComponent implements OnInit {
@@ -42,70 +41,60 @@ export class BajasEIncorpAdmComponent implements OnInit {
   public lineChartData2: Array<any> = [];
 
 
-  public barChartLabels1: string[] = [];
-  public barChartLegend1: boolean = true;
-  public barChartData1: any[] = [];
-  public barChartLabels2: string[] = [];
-  public barChartLegend2: boolean = true;
-  public barChartData2: any[] = [];
+  public barChartLabels1: string[] = [''];
+  public barChartData1: any[] = [{ data: [], label: '' }];
+  public barChartLabels2: string[] = [''];
+  public barChartData2: any[] = [{ data: [], label: '' }];
 
-  public barChartLabels3: string[] = [];
-  public barChartLegend3: boolean = true;
-  public barChartData3: any[] = [];
-  public barChartLabels4: string[] = [];
-  public barChartLegend4: boolean = true;
-  public barChartData4: any[] = [];
+  public barChartLabels3: string[] = [''];
+  public barChartData3: any[] = [{ data: [], label: '' }];
+  public barChartLabels4: string[] = [''];
+  public barChartData4: any[] = [{ data: [], label: '' }];
 
-  public barChartLabels5: string[] = [];
-  public barChartLegend5: boolean = true;
-  public barChartData5: any[] = [];
-  public barChartLabels6: string[] = [];
-  public barChartLegend6: boolean = true;
-  public barChartData6: any[] = [];
+  public barChartLabels5: string[] = [''];
+  public barChartData5: any[] = [{ data: [], label: '' }];
+  public barChartLabels6: string[] = [''];
+  public barChartData6: any[] = [{ data: [], label: '' }];
 
-  public barChartLabels7: string[] = [];
-  public barChartLegend7: boolean = true;
-  public barChartData7: any[] = [];
-  public barChartLabels8: string[] = [];
-  public barChartLegend8: boolean = true;
-  public barChartData8: any[] = [];
+  public barChartLabels7: string[] = [''];
+  public barChartData7: any[] = [{ data: [], label: '' }];
+  public barChartLabels8: string[] = [''];
+  public barChartData8: any[] = [{ data: [], label: '' }];
 
-  public barChartLabels9: string[] = [];
-  public barChartLegend9: boolean = true;
-  public barChartData9: any[] = [];
-  public barChartLabels10: string[] = [];
-  public barChartLegend10: boolean = true;
-  public barChartData10: any[] = [];
+  public barChartLabels9: string[] = [''];
+  public barChartData9: any[] = [{ data: [], label: '' }];
+  public barChartLabels10: string[] = [''];
+  public barChartData10: any[] = [{ data: [], label: '' }];
 
-  public barChartLabels11: string[] = [];
-  public barChartLegend11: boolean = true;
-  public barChartData11: any[] = [];
-  public barChartLabels12: string[] = [];
-  public barChartLegend12: boolean = true;
-  public barChartData12: any[] = [];
+  public barChartLabels11: string[] = [''];
+  public barChartData11: any[] = [{ data: [], label: '' }];
+  public barChartLabels12: string[] = [''];
+  public barChartData12: any[] = [{ data: [], label: '' }];
 
-  
+  public datosGrafica1 = [];
+  public datosGrafica2 = [];
+  public labelGrafica1 = [];
+  public labelGrafica2 = [];
+
+
   constructor(
     private servicio: BajasEIncorpAdmService,
     public funciones: FuncionesService,
     public funcionest5: FuncionesT5Service,
-    public funcionest4: FuncionesT4Service,
     injector: Injector
   ) {
     this.modelo = new BajasEIncorpModel();
-    this.getDatosModelo();
+    
   }
   ngOnInit(): void {
     Messenger.options = { theme: 'air' };
+    this.getDatosModelo();
   }
 
   getDatosModelo() {
     this.servicio.getDatosModelo()
       .subscribe(
       response => {
-        /** Asignamos las tablas */
-        //this.modelo = response;
-        /** Asignamos los datos para las gráficas */
         this.asignaDatosGraficas();
 
         this.status = response.status;
@@ -148,12 +137,124 @@ export class BajasEIncorpAdmComponent implements OnInit {
   }
 
   asignaDatosGraficas() {
-      this.funciones.asignaPorcentajesPorTipo(this.modelo.preg_1_tabla_3, this.barChartData1, this.barChartLabels1, this.barChartData2, this.barChartLabels2);
-      this.funcionest5.asignaPorcentajesPorTipo1(this.modelo.preg_2_tabla_5, this.barChartData3, this.barChartLabels3, this.barChartData4, this.barChartLabels4);
-      this.funciones.asignaPorcentajesPorTipo(this.modelo.preg_3_tabla_3, this.barChartData5, this.barChartLabels5, this.barChartData6, this.barChartLabels6);
-      this.funciones.asignaPorcentajesPorTipo(this.modelo.preg_4_tabla_3, this.barChartData7, this.barChartLabels7, this.barChartData8, this.barChartLabels8);
-      this.funciones.asignaPorcentajesGrafLineal(this.modelo.preg_4_tabla_3, this.lineChartData1, this.lineChartLabels1, this.lineChartData2, this.lineChartLabels2);
-      this.funcionest4.asignaPorcentajesPorTipo(this.modelo.preg_5_tabla_4, this.barChartData9, this.barChartLabels9, this.barChartData10, this.barChartLabels10);
-      this.funciones.asignaPorcentajesPorTipo(this.modelo.preg_6_tabla_3, this.barChartData11, this.barChartLabels11, this.barChartData12, this.barChartLabels12);
+    this.asignaPorcentajesPorTipo(this.modelo.preg_120_tabla_3);
+    this.barChartLabels1 = this.labelGrafica1;
+    this.barChartData1 = this.datosGrafica1;
+    this.barChartData2 = this.datosGrafica2;
+    this.barChartLabels2 = this.labelGrafica2;
+
+    this.asignaPorcentajesPorTipo1(this.modelo.preg_121_tabla_5);
+    this.barChartLabels3 = this.labelGrafica1;
+    this.barChartData3 = this.datosGrafica1;
+    this.barChartData4 = this.datosGrafica2;
+    this.barChartLabels4 = this.labelGrafica2;
+
+    this.asignaPorcentajesPorTipo(this.modelo.preg_122_tabla_3);
+    this.barChartLabels5 = this.labelGrafica1;
+    this.barChartData5 = this.datosGrafica1;
+    this.barChartData6 = this.datosGrafica2;
+    this.barChartLabels6 = this.labelGrafica2;
+
+    this.asignaPorcentajesPorTipo(this.modelo.preg_123_tabla_3);
+    this.barChartLabels7 = this.labelGrafica1;
+    this.barChartData7 = this.datosGrafica1;
+    this.barChartData8 = this.datosGrafica2;
+    this.barChartLabels8 = this.labelGrafica2;
+
+    this.asignaPorcentajesGrafLineal(this.modelo.preg_123_tabla_3);
+    this.lineChartData1 = this.labelGrafica1;
+    this.lineChartLabels1 = this.datosGrafica1;
+    this.lineChartData2 = this.datosGrafica2;
+    this.lineChartLabels2 = this.labelGrafica2;
+
+    this.asignaPorcentajesPorTipo(this.modelo.preg_124_tabla_3);
+    this.barChartLabels9 = this.labelGrafica1;
+    this.barChartData9 = this.datosGrafica1;
+    this.barChartData10 = this.datosGrafica2;
+    this.barChartLabels10 = this.labelGrafica2;
+
+    this.asignaPorcentajesPorTipo(this.modelo.preg_125_tabla_3);
+    this.barChartLabels11 = this.labelGrafica1;
+    this.barChartData11 = this.datosGrafica1;
+    this.barChartData12 = this.datosGrafica2;
+    this.barChartLabels12 = this.labelGrafica2;
+  }
+
+  reinicializaDatosGrafica() {
+    this.labelGrafica1 = [];
+    this.labelGrafica2 = [];
+    this.datosGrafica1 = [];
+    this.datosGrafica2 = [];
+  }
+
+  asignaPorcentajesPorTipo(tabla: any) {
+    this.reinicializaDatosGrafica();
+    let datam = [];
+    let datah = [];
+    let data2m = [];
+    let data2h = [];
+    if (tabla != null) {
+      tabla.forEach(elemento => {
+        let mujeres = this.funciones.getMujeresDeFila(elemento, tabla);
+        let hombres = this.funciones.getHombresDeFila(elemento, tabla);
+        let mujeres2 = this.funciones.getPorcMujeresAbs(elemento, tabla);
+        let hombres2 = this.funciones.getPorcHombresAbs(elemento, tabla);
+        datam.push(Math.round(mujeres * 100));
+        datah.push(Math.round(hombres * 100));
+        data2m.push(Math.round(mujeres2 * 100));
+        data2h.push(Math.round(hombres2 * 100));
+        this.labelGrafica1.push(elemento.texto);
+        this.labelGrafica2.push(elemento.texto);
+
+      });
+      this.datosGrafica1.push({ data: datam, label: "Mujeres %" });
+      this.datosGrafica1.push({ data: datah, label: "Hombres %" });
+      this.datosGrafica2.push({ data: data2m, label: "Mujeres %" });
+      this.datosGrafica2.push({ data: data2h, label: "Hombres %" });
+    }
+  }
+
+  asignaPorcentajesPorTipo1(tabla: any[]) {
+    this.reinicializaDatosGrafica();
+    let datam = [];
+    let datah = [];
+    let data2m = [];
+    let data2h = [];
+    if (tabla != null) {
+      tabla.forEach(elemento => {
+        let mujeres = this.funcionest5.getMujeresDeFila1(elemento, tabla);
+        let hombres = this.funcionest5.getHombresDeFila1(elemento, tabla);
+        let mujeres2 = this.funcionest5.getPorcMujeresAbs1(elemento, tabla);
+        let hombres2 = this.funcionest5.getPorcHombresAbs1(elemento, tabla);
+        datam.push(Math.round(mujeres * 100));
+        datah.push(Math.round(hombres * 100));
+        data2m.push(Math.round(mujeres2 * 100));
+        data2h.push(Math.round(hombres2 * 100));
+        this.labelGrafica1.push(elemento.texto);
+        this.labelGrafica2.push(elemento.texto);
+      });
+      this.datosGrafica1.push({ data: datam, label: "Mujeres %" });
+      this.datosGrafica1.push({ data: datah, label: "Hombres %" });
+      this.datosGrafica2.push({ data: data2m, label: "Mujeres %" });
+      this.datosGrafica2.push({ data: data2h, label: "Hombres %" });
+    }
+  }
+
+  asignaPorcentajesGrafLineal(tabla: any[]) {
+    this.reinicializaDatosGrafica();
+    let datam = [];
+    let datah = [];
+    if (tabla != null) {
+      tabla.forEach(elemento => {
+        let mujeres = this.funciones.getMujeresDeFila(elemento, tabla);
+        let hombres = this.funciones.getHombresDeFila(elemento, tabla);
+        datam.push(Math.round(mujeres * 100));
+        datah.push(Math.round(hombres * 100));
+        this.labelGrafica1.push(elemento.texto);
+        this.labelGrafica2.push(elemento.texto);
+      });
+      this.datosGrafica1.push({ data: datam, label: "%" }, { data: [], label: '' });
+      this.datosGrafica2.push({ data: [], label: '' }, { data: datah, label: "%" });
+    }
   }
 }

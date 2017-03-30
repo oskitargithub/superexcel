@@ -41,8 +41,31 @@ export class ClasProfesional1Component implements OnInit {
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
+        
+    }
+
+    ngOnInit(): void {
+        Messenger.options = { theme: 'air' };
         this.getDatosModelo();
     }
+
+    createForm() {
+        this.ifForm = this.fb.group({
+            data: this.fb.group(new dataModel()),
+            preg_48_tabla_3: this.fb.array([]),
+            preg_49_tabla_3: this.fb.array([]),
+            preg_54_tabla_3: this.fb.array([]),
+            preg_55_tabla_3: this.fb.array([]),
+            preg_56_tabla_3: this.fb.array([]),
+            preg_57_tabla_3: this.fb.array([]),
+            preg_59_tabla_3: this.fb.array([]),
+            preg_60_tabla_3: this.fb.array([]),
+            preg_61_tabla_3: this.fb.array([]),
+            preg_62_tabla_3: this.fb.array([]),
+            preg_63_tabla_3: this.fb.array([]),
+        });        
+    }
+
 
     getValorBarra(){
         if(this.respondidasSeccion==0)
@@ -153,25 +176,8 @@ export class ClasProfesional1Component implements OnInit {
         return this.preg_3_tabla_3.value.map(c=>c.mujeres).reduce((sum,current) => (sum*1)+(current*1));
     }*/
 
-    createForm() {
-        this.ifForm = this.fb.group({
-            data: this.fb.group(new dataModel()),
-            preg_48_tabla_3: this.fb.array([]),
-            preg_49_tabla_3: this.fb.array([]),
-            preg_54_tabla_3: this.fb.array([]),
-            preg_55_tabla_3: this.fb.array([]),
-            preg_56_tabla_3: this.fb.array([]),
-            preg_57_tabla_3: this.fb.array([]),
-            preg_59_tabla_3: this.fb.array([]),
-            preg_60_tabla_3: this.fb.array([]),
-            preg_61_tabla_3: this.fb.array([]),
-            preg_62_tabla_3: this.fb.array([]),
-            preg_63_tabla_3: this.fb.array([]),
-        });        
-    }
-    ngOnInit(): void {
-        Messenger.options = { theme: 'air' };
-    }
+    
+    
 
 
 

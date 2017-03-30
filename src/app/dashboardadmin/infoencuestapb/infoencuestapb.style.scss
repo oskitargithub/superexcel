@@ -1,0 +1,220 @@
+@import "../../../../node_modules/metrojs/release/MetroJs.Full/MetroJs";
+@import "../../scss/variables";
+@import "../../../../node_modules/bootstrap/scss/_variables";
+@import "../../../../node_modules/bootstrap/scss/mixins";
+
+.mt-negative-lg {
+  margin-top: -2.1rem;
+}
+
+.widget-icon {
+    opacity: .5;
+    font-size: 42px;
+}
+
+/***********************/
+/*      Live Tiles     */
+/***********************/
+
+.live-tile,
+.list-tile,
+.copy-tile,
+.tile-strip .flip-list > li{
+  height: auto;
+  width: 100%;
+  margin: 0;
+  color: inherit;
+
+  &.fade{
+    opacity: 1;
+  }
+}
+
+.live-tile p,
+.list-tile p,
+.copy-tile p {
+  padding: 0;
+}
+
+.live-tile p,
+.list-tile p,
+.copy-tile p,
+.live-tile .face,
+.list-tile .face,
+.copy-tile .face{
+  /* let .h* classes work! */
+  &.h1 { font-size: $font-size-h1; }
+  &.h2 { font-size: $font-size-h2; }
+  &.h3 { font-size: $font-size-h3; }
+  &.h4 { font-size: $font-size-h4; }
+  &.h5 { font-size: $font-size-h5; }
+  &.h6 { font-size: $font-size-h6; }
+
+  $font-sizes: $font-size-h1, $font-size-h2, $font-size-h3, $font-size-h4, $font-size-h5, $font-size-h6;
+  $i: 1;
+  @each $font-size in $font-sizes{
+    &.value#{$i}{ font-size: $font-size; }
+    $i: $i + 1;
+  }
+}
+
+
+
+
+
+
+
+
+/***********************************/
+/**           Post User           **/
+/***********************************/
+
+.post-user{
+  position: relative;
+  @include clearfix();
+
+  img{
+    border: 3px solid white;
+  }
+}
+
+/***********************************/
+/**           Profile             **/
+/***********************************/
+
+.user-profile {
+  .label {
+    padding: 5px;
+  }
+}
+
+.post-user-profile {
+  margin-top: -75px;
+
+  .contacts {
+    display: block;
+    margin-top: 25px;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 0;
+    text-align: center;
+
+    > li {
+      display: block;
+      padding-left: 16em;
+      line-height: 2.2;
+      list-style: none;
+      text-align: left;
+      margin: 0 10px;
+
+      @include media-breakpoint-up(lg){
+        width: 150px;
+        white-space: nowrap;
+      }
+
+      > a {
+        color: lighten($text-color, 30%);
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+          color: $text-color;
+        }
+      }
+    }
+
+    .fa {
+      font-size: $font-size-lg;
+      vertical-align: middle;
+    }
+  }
+}
+
+.stats-row-profile {
+  .stat-item {
+    border-left: 0;
+    padding-left: 15px;
+    text-align: center;
+
+    @include media-breakpoint-up(lg){
+      padding-right: 0;
+    }
+
+    .value {
+      font-size: 28px;
+      font-weight: $font-weight-base;
+    }
+  }
+}
+
+.activities{
+  h3 {
+    margin-left: 20px
+  }
+}
+.event{
+  .activities &{
+    margin-top: $line-height-computed;
+    width: 100%;
+  }
+}
+
+.event{
+  background: $white;
+  border-radius: $border-radius;
+  padding: 20px 20px 0;
+  position: relative;
+
+  .post-comments{
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
+  > footer{
+    margin: 20px -20px 0;
+    padding: 10px 20px;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    background-color: #f3f3f3;
+
+    @include clearfix();
+
+    .thumb{
+      margin-left: 10px;
+    }
+  }
+
+
+}
+
+.event-heading{
+  margin: 0 0 2px;
+  font-weight: $font-weight-semi-bold;
+  > a {
+    text-decoration: none;
+    color: #7ca9dd;
+  }
+  > small{
+    font-weight: $font-weight-semi-bold;
+    > a{
+      text-decoration: none;
+      color: $text-muted;
+    }
+  }
+}
+
+.event-map{
+  display: block;
+  height: 200px;
+  margin: 0 -20px -20px;
+  overflow: visible !important;
+}
+
+.event-image{
+  margin: 0 -20px -20px;
+  max-height: 260px;
+  overflow: hidden;
+  > img{
+    max-width: 100%;
+  }
+}

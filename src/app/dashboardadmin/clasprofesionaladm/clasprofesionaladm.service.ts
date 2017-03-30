@@ -17,5 +17,5 @@ export class ClasProfesionalAdmService {
              let miobjeto = res.json();
              return(miobjeto);
          });
-  }
+  }  
 }

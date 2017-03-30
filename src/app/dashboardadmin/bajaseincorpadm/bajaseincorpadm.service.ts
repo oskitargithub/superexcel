@@ -18,64 +18,187 @@ export class BajasEIncorpAdmService {
                .map(res => res.json());
   }
 
- getDatosModelo(){
-    var respuesta = {"status":"success","respondidasCuest":0,"respondidasSeccion":9,"totalCuest":12,"totalSeccion":12,
-    "data":{"id":1,"user_id":2},
-    "preg_1_tabla_3":[ 
-        { "texto": "Dimisión de la trabajadora o del trabajador", "mujeres": "2", "hombres": "3" },
-        { "texto": "Fin contrato / No renovación de contrato temporal", "mujeres": "2", "hombres": "3" },
-        { "texto": "Despido disciplinario", "mujeres": "2", "hombres": "3" },
-        { "texto": "Extinción durante período de prueba", "mujeres": "2", "hombres": "3" },
-        { "texto": "Jubilación", "mujeres": "2", "hombres": "3" },
-        { "texto": "Cese por personas a cargo", "mujeres": "4", "hombres": "3" },
-        { "texto": "Defunción", "mujeres": "", "hombres": "" },
-    ],
-    "preg_2_tabla_5": [
-        { "texto": "Año 2015", "mujeres1": "2", "hombres1": "3", "mujeres2": "", "hombres2": "" },
-        { "texto": "Año 2016", "mujeres1": "4", "hombres1": "2", "mujeres2": "", "hombres2": "" },
-        { "texto": "Año 2017", "mujeres1": "7", "hombres1": "1", "mujeres2": "", "hombres2": "" },
-    ],
-    "preg_3_tabla_3":[ 
-        { "texto": "Temporal a tiempo parcial", "mujeres": "2", "hombres": "3" },
-        { "texto": "Temporal a tiempo completo", "mujeres": "2", "hombres": "3" },
-        { "texto": "Fijo discontinuo", "mujeres": "2", "hombres": "3" },
-        { "texto": "Plaza consolidada / funcionariado a tiempo parcial", "mujeres": "2", "hombres": "3" },
-        { "texto": "Plaza consolidada / funcionariado a tiempo completo", "mujeres": "2", "hombres": "3" },
-        { "texto": "Prácticas o Formación", "mujeres": "2", "hombres": "3" },
-        { "texto": "Interinidad", "mujeres": "2", "hombres": "3" },
-    ],
-    "preg_4_tabla_3":[{"texto": "supercatego1", "mujeres": "15", "hombres": "10"},
-        {"texto": "supercatego2", "mujeres": "25", "hombres": "20"},
-        {"texto": "supercatego3", "mujeres": "5", "hombres": "10"},
-     ],
-    "preg_5_tabla_4":[
-        {"denominacion1": "Jubilación","denominacion2": "", "mujeres": "1", "hombres": "2"},
-        {"denominacion1": "Jubilación Anticipada","denominacion2": "", "mujeres": "3", "hombres": "4"},
-        {"denominacion1": "Despido","denominacion2": "Menor de 20 años", "mujeres": "5", "hombres": "6"},
-        {"denominacion1": "Despido","denominacion2": "20-29", "mujeres": "7", "hombres": "8"},
-        {"denominacion1": "Despido","denominacion2": "30-45", "mujeres": "9", "hombres": "10"},
-        {"denominacion1": "Despido","denominacion2": "46 y más", "mujeres": "11", "hombres": "12"},
-        {"denominacion1": "Fin Contrato","denominacion2": "Menor de 20 años", "mujeres": "", "hombres": ""},
-        {"denominacion1": "Fin Contrato","denominacion2": "20-29", "mujeres": "", "hombres": ""},
-        {"denominacion1": "Fin Contrato","denominacion2": "30-45", "mujeres": "", "hombres": ""},
-        {"denominacion1": "Fin Contrato","denominacion2": "46 y más", "mujeres": "", "hombres": ""},
-        {"denominacion1": "Dimisión / Cese voluntario","denominacion2": "Menor de 20 años", "mujeres": "", "hombres": ""},
-        {"denominacion1": "Dimisión / Cese voluntario","denominacion2": "20-29", "mujeres": "", "hombres": ""},
-        {"denominacion1": "Dimisión / Cese voluntario","denominacion2": "30-45", "mujeres": "", "hombres": ""},
-        {"denominacion1": "Dimisión / Cese voluntario","denominacion2": "46 y más", "mujeres": "", "hombres": ""},
-        {"denominacion1": "Cese por personas a cargo","denominacion2": "Menor de 20 años", "mujeres": "", "hombres": ""},
-        {"denominacion1": "Cese por personas a cargo","denominacion2": "20-29", "mujeres": "", "hombres": ""},
-        {"denominacion1": "Cese por personas a cargo","denominacion2": "30-45", "mujeres": "", "hombres": ""},
-        {"denominacion1": "Cese por personas a cargo","denominacion2": "46 y más", "mujeres": "", "hombres": ""},
-    ],
-    "preg_6_tabla_3":[
-        {"texto": "IT (no previa a la maternidad)", "mujeres": "", "hombres": ""},
-        {"texto": "Accidente de trabajo", "mujeres": "", "hombres": ""},
-        {"texto": "IT por riesgo durante embarazo / lactancia", "mujeres": "", "hombres": ""}
-    ],
-  };
-   return Observable.of(respuesta);
- }
+ getDatosModelo() {
+        var respuesta = {
+            "status": "success",
+            "totalCuest": 83,
+            "respondidasCuest": 0,
+            "totalSeccion": 6,
+            "respondidasSeccion": 0,
+            "data": null,
+            "preg_120_tabla_3": [
+                {
+                    "respuesta": 210,
+                    "texto": "Dimisi\u00f3n de la trabajadora o del trabajador",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 211,
+                    "texto": "Fin contrato \/ No renovaci\u00f3n de contrato temporal ",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 212,
+                    "texto": "Despido disciplinario",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 213,
+                    "texto": "Extinci\u00f3n durante per\u00edodo de prueba",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 214,
+                    "texto": "Jubilaci\u00f3n",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 215,
+                    "texto": "Cese por personas a cargo",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 216,
+                    "texto": "Defunci\u00f3n",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 217,
+                    "texto": "Otra (especificar):",
+                    "mujeres": "",
+                    "hombres": ""
+                }
+            ],
+            "preg_121_tabla_5": [
+                {
+                    "respuesta": 218,
+                    "texto": "A\u00f1o 2015",
+                    "mujeres": "",
+                    "hombres": "",
+                    "mujeres2": "",
+                    "hombres2": ""
+                },
+                {
+                    "respuesta": 219,
+                    "texto": "A\u00f1o 2016",
+                    "mujeres": "",
+                    "hombres": "",
+                    "mujeres2": "",
+                    "hombres2": ""
+                },
+                {
+                    "respuesta": 220,
+                    "texto": "A\u00f1o 2017",
+                    "mujeres": "",
+                    "hombres": "",
+                    "mujeres2": "",
+                    "hombres2": ""
+                }
+            ],
+            "preg_122_tabla_3": [
+                {
+                    "respuesta": 221,
+                    "texto": "Temporal a tiempo parcial",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 222,
+                    "texto": "Temporal a tiempo completo",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 223,
+                    "texto": "Fijo discontinuo",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 224,
+                    "texto": "Plaza consolidada \/ funcionariado a tiempo parcial",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 225,
+                    "texto": "Plaza consolidada \/ funcionariado a tiempo completo",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 226,
+                    "texto": "Pr\u00e1cticas o Formaci\u00f3n",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 227,
+                    "texto": "Interinidad",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 228,
+                    "texto": "Otros (especificar):",
+                    "mujeres": "",
+                    "hombres": ""
+                }
+            ],
+            "preg_123_tabla_3": [
+                {
+                    "respuesta": "",
+                    "texto": "",
+                    "mujeres": "",
+                    "hombres": ""
+                }
+            ],
+            "preg_124_tabla_3": [
+                {
+                    "respuesta": "",
+                    "texto": "",
+                    "mujeres": "",
+                    "hombres": ""
+                }
+            ],
+            "preg_125_tabla_3": [
+                {
+                    "respuesta": 250,
+                    "texto": "IT (no previa a la maternidad)",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 251,
+                    "texto": "Accidente de trabajo",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 252,
+                    "texto": "IT por riesgo durante embarazo \/ lactancia",
+                    "mujeres": "",
+                    "hombres": ""
+                },
+                {
+                    "respuesta": 253,
+                    "texto": "Otro (especificar)",
+                    "mujeres": "",
+                    "hombres": ""
+                }
+            ],
+            "url": "http:\/\/jaumeportatil\/superexcel\/api\/cuestionario\/seccion",
+            "title": "Testing cuestionario\/seccion"
+        };
+        return Observable.of(respuesta);
+    }
 
  
 }

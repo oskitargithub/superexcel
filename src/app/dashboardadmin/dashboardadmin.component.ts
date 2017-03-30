@@ -153,6 +153,7 @@ export class DashboardAdmin implements OnInit {
   onSelect(persona: DashBoardAdminModel){
     console.log("seleccionado usuario");
     this.AuthService.tipocuest = persona.cuest;
+    this.AuthService.usucuest = persona.id;
     console.log(persona);
     let redirect = '';
     if(persona.cuest == 1){

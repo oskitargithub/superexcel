@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { BajasEIncorpService } from './bajaseincorp.service';
-import { BajasEIncorpModel, Tabla5Model, Tabla4Model, Tabla3Model } from './bajaseincorp.model';
+import { BajasEIncorpModel, Tabla5Model, Tabla3Model } from './bajaseincorp.model';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -43,11 +43,12 @@ export class BajasEIncorpComponent implements OnInit {
         this.totalSeccion = 0;
         this.createForm();
         this.modelo = new BajasEIncorpModel();
-        this.getDatosModelo();
+        
     }
 
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
+        this.getDatosModelo();
     }
 
     valorBarraProgreso() {
@@ -71,16 +72,14 @@ export class BajasEIncorpComponent implements OnInit {
     }
 
     createForm() {
-        console.log("creando formulario");
         this.ifForm = this.fb.group({
-            preg_1_tabla_3: this.fb.array([]),
-            preg_2_tabla_5: this.fb.array([]),
-            preg_3_tabla_3: this.fb.array([]),
-            preg_4_tabla_3: this.fb.array([]),
-            preg_5_tabla_4: this.fb.array([]),
-            preg_6_tabla_3: this.fb.array([]),
-        });
-        console.log("fin creando formulario");
+            preg_120_tabla_3: this.fb.array([]),
+            preg_121_tabla_5: this.fb.array([]),
+            preg_122_tabla_3: this.fb.array([]),
+            preg_123_tabla_3: this.fb.array([]),
+            preg_124_tabla_3: this.fb.array([]),
+            preg_125_tabla_3: this.fb.array([]),            
+        });        
     }
 
     getTotalMujeres(elemento: FormArray) {
@@ -95,18 +94,8 @@ export class BajasEIncorpComponent implements OnInit {
         return (hombres * 1 + mujeres * 1);
     }
 
-    setPregunta5(tabla: Tabla5Model[], nombretabla: string) {
-        const addressFGs = tabla.map(datos => this.fb.group(datos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl(nombretabla, addressFormArray);
-    }
-
-    setPregunta4(tabla: Tabla4Model[], nombretabla: string) {
-        const addressFGs = tabla.map(datos => this.fb.group(datos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl(nombretabla, addressFormArray);
-    }
-    setPregunta3(tabla: Tabla3Model[], nombretabla: string) {
+    
+    setPregunta(tabla: any[], nombretabla: string) {
         const addressFGs = tabla.map(datos => this.fb.group(datos));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
@@ -124,13 +113,12 @@ export class BajasEIncorpComponent implements OnInit {
     getDatosModelo() {
         this.servicio.getDatosModelo().subscribe(
             response => {
-                console.log("datos formu");
-                this.setPregunta3(response.preg_1_tabla_3, 'preg_1_tabla_3');
-                this.setPregunta5(response.preg_2_tabla_5, 'preg_2_tabla_5');
-                this.setPregunta3(response.preg_3_tabla_3, 'preg_3_tabla_3');
-                this.setPregunta3(response.preg_4_tabla_3, 'preg_4_tabla_3');
-                this.setPregunta4(response.preg_5_tabla_4, 'preg_5_tabla_4');
-                this.setPregunta3(response.preg_6_tabla_3, 'preg_6_tabla_3');
+                this.setPregunta(response.preg_120_tabla_3, 'preg_120_tabla_3');
+                this.setPregunta(response.preg_121_tabla_5, 'preg_121_tabla_5');
+                this.setPregunta(response.preg_122_tabla_3, 'preg_122_tabla_3');
+                this.setPregunta(response.preg_123_tabla_3, 'preg_123_tabla_3');
+                this.setPregunta(response.preg_124_tabla_3, 'preg_124_tabla_3');
+                this.setPregunta(response.preg_125_tabla_3, 'preg_125_tabla_3');
 
                 this.respondidasSeccion = response.respondidasSeccion;
                 this.totalSeccion = response.totalSeccion;

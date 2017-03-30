@@ -25,9 +25,9 @@ const routes: Routes = [
     { path: 'retribucionesadm', loadChildren: '../dashboardadmin/retribucionesadm/retribucionesadm.module#RetribucionesAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'retribucionesadm2', loadChildren: '../dashboardadmin/retribucionesadm2/retribucionesadm2.module#RetribucionesAdm2Module', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'bajaseincorpadm', loadChildren: '../dashboardadmin/bajaseincorpadm/bajaseincorpadm.module#BajasEIncorpAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
-  /* 
-  { path: 'infoencuestapb', loadChildren: '../dashboardadmin/graficas1admin/graficas1admin.module#Graficas1AdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
-    { path: 'infoencuestapr', loadChildren: '../dashboardadmin/graficas1admin/graficas1admin.module#Graficas1AdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+  
+    { path: 'infoencuestapb', loadChildren: '../dashboardadmin/infoencuestapb/infoencuestapb.module#InfoEncuestaPBModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+  /*   { path: 'infoencuestapr', loadChildren: '../dashboardadmin/graficas1admin/graficas1admin.module#Graficas1AdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
      
     { path: 'graficas1', loadChildren: '../dashboardadmin/graficas1admin/graficas1admin.module#Graficas1AdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
   */
