@@ -24,7 +24,7 @@ export class ClasProfesional1Component implements OnInit {
     submitted = false;
     ifForm: FormGroup;
 
-    public clasprofesional1: ClasProfesional1Model;
+    public modelo: ClasProfesional1Model;
     public errorMessage: string;
     public status: string;
     public respondidasSeccion: any;
@@ -98,7 +98,9 @@ export class ClasProfesional1Component implements OnInit {
     getDatosModelo() {
         this.servicio.getDatosModelo()
             .subscribe(
-            response => {                
+            response => {            
+                 console.log("servicio.getDatosModelo");       
+                console.log(response.data);     
                 this.ifForm.setControl('data', this.fb.group(response.data));
                 this.setPregunta(response.preg_48_tabla_3, 'preg_48_tabla_3');
                 this.setPregunta(response.preg_49_tabla_3, 'preg_49_tabla_3');
@@ -205,7 +207,7 @@ export class ClasProfesional1Component implements OnInit {
 
     onSubmit() {
         //this.clasprofesional1 = this.preparaParaGuardar();
-        console.log(this.clasprofesional1);
+        console.log(this.modelo);
 
     }
 

@@ -88,7 +88,7 @@
                                     <h5>Baja en la organización en los dos últimos años</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [datasets]="barChartData1" [labels]="barChartLabels1" [chartType]="barChartType" height="120px"></canvas>
+                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData1" [labels]="barChartLabels1" [chartType]="barChartType" height="120px"></canvas>                                   
                                 </div>
                             </div>
 
@@ -97,7 +97,7 @@
                                     <h5>Baja en la organización en los dos últimos años (Proporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [datasets]="barChartData2" [labels]="barChartLabels2" [chartType]="barChartType" height="120px"></canvas>
+                                   <canvas baseChart [datasets]="barChartData2" [labels]="barChartLabels2" [chartType]="barChartType" height="120px"></canvas> 
                                 </div>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
             </div>
         </div>
     </accordion-group>
-    <accordion-group>
+     <accordion-group>
         <div accordion-heading>
             Incorporaciones
             <i class="fa fa-angle-down float-xs-right"></i>

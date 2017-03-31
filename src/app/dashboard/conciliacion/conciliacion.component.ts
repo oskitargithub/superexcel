@@ -1,8 +1,9 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
+import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ConciliacionService } from './conciliacion.service';
-import { ConciliacionModel, Tabla2Model, Tabla3Model,TablaRaraModel } from './conciliacion.model';
+import { ConciliacionModel, Tabla2Model, Tabla3Model,datosModel } from './conciliacion.model';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -49,17 +50,18 @@ export class ConciliacionComponent implements OnInit {
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
+        
         this.modelo = new ConciliacionModel();
-        this.getDatosModelo();
+        
+        
     }
 
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
+        this.getDatosModelo();
     }
 
     valorBarraProgreso() {
-        this.respondidasSeccion = 18;
-        this.totalSeccion = 20;
         let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
         let type: string;
 
@@ -80,6 +82,7 @@ export class ConciliacionComponent implements OnInit {
     createForm() {
         console.log("creando formulario");
         this.ifForm = this.fb.group({
+            data: this.fb.group(new datosModel()),  
             preg_1_tabla_3: this.fb.array([]),
             preg_2_tabla_3: this.fb.array([]),
             preg_3_tabla_3: this.fb.array([]),
@@ -87,13 +90,9 @@ export class ConciliacionComponent implements OnInit {
             preg_5_tabla_3: this.fb.array([]),
             preg_6_tabla_3: this.fb.array([]),
             preg_7_tabla_3: this.fb.array([]),
-            preg_8_tabla_3: this.fb.array([]),
-            preg_9_tabla_3: this.fb.array([]),
-            preg_10_tabla_3: this.fb.array([]),
+            preg_8_tabla_3: this.fb.array([]),            
             preg_0_tabla_2: this.fb.array([]),
-
-            preg_rara: this.fb.array([]),
-        });
+        });        
         console.log("fin creando formulario");
     }
 
@@ -102,7 +101,10 @@ export class ConciliacionComponent implements OnInit {
     }
 
     getTotalMujeres(elemento: FormArray) {
-        return elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+        if(elemento!= null)
+            return elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+        else
+            return 0;
     }
     getTotalHombres(elemento: FormArray) {
         return elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
@@ -113,26 +115,11 @@ export class ConciliacionComponent implements OnInit {
         return (hombres * 1 + mujeres * 1);
     }
 
-    setPregunta(tabla: any[], nombretabla: string) {
+    setPregunta(tabla:  Tabla3Model[], nombretabla: string) {
         const addressFGs = tabla.map(datos => this.fb.group(datos));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
     }
-
-    /*setPregunta2(tabla: Tabla2Model[], nombretabla: string) {
-        const addressFGs = tabla.map(datos => this.fb.group(datos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl(nombretabla, addressFormArray);
-    }
-    setPregunta3(tabla: Tabla3Model[], nombretabla: string) {
-        const addressFGs = tabla.map(datos => this.fb.group(datos));
-        const addressFormArray = this.fb.array(addressFGs);
-        this.ifForm.setControl(nombretabla, addressFormArray);
-    }*/
-
-
-
-
 
     getPregunta(pregunta: string): FormArray {
         return this.ifForm.get(pregunta) as FormArray;
@@ -148,8 +135,9 @@ export class ConciliacionComponent implements OnInit {
     }
     getDatosModelo() {
         this.servicio.getDatosModelo().subscribe(
-            response => {
-                console.log("datos formu");
+            response => {       
+                console.log("servicio.getDatosModelo");       
+                console.log(response.data);                             
                 this.ifForm.setControl('data', this.fb.group(response.data));
                 this.setPregunta(response.preg_1_tabla_3, 'preg_1_tabla_3');
                 this.setPregunta(response.preg_2_tabla_3, 'preg_2_tabla_3');
@@ -158,13 +146,11 @@ export class ConciliacionComponent implements OnInit {
                 this.setPregunta(response.preg_5_tabla_3, 'preg_5_tabla_3');
                 this.setPregunta(response.preg_6_tabla_3, 'preg_6_tabla_3');
                 this.setPregunta(response.preg_7_tabla_3, 'preg_7_tabla_3');
-                this.setPregunta(response.preg_8_tabla_3, 'preg_8_tabla_3');
-                this.setPregunta(response.preg_9_tabla_3, 'preg_9_tabla_3');
-                this.setPregunta(response.preg_10_tabla_3, 'preg_10_tabla_3');
+                this.setPregunta(response.preg_8_tabla_3, 'preg_8_tabla_3');             
 
                 this.setPregunta(response.preg_0_tabla_2, 'preg_0_tabla_2');
 
-                this.setPregunta(response.preg_rara,'preg_rara');
+                
 
                 this.respondidasSeccion = response.respondidasSeccion;
                 this.totalSeccion = response.totalSeccion;

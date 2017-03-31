@@ -49,12 +49,13 @@ export class ClasProfesionalAdmComponent implements OnInit {
 
 
   public barChartType: string = 'bar';
+  public barChartLegend: boolean = true;
 
   /** Gráficas Distribución de la plantilla */
   public barChartOptions: any = { scaleShowVerticalLines: false, responsive: true };
-  public barChartLabels: string[] = [''];
-  public barChartLegend: boolean = true;
-  public barChartData: any[] = [{ data: [], label: '' }]; 
+  
+  public barChartLabels: string[] = [''];  
+  public barChartData: any[] = [{ data: [], label: '' }];   
   public barChartLabels2: string[] = ['ui1'];
   public barChartLegend2: boolean = true;
   public barChartData2: any[] = [{ data: [], label: '' }];
@@ -151,7 +152,10 @@ export class ClasProfesionalAdmComponent implements OnInit {
     this.modelo.data = new dataModel();
   }
 
-
+  ngOnInit(): void {
+    Messenger.options = { theme: 'air' };
+    this.getDatosModelo();
+  }
 
   getDatosModelo() {
     this.servicio.getDatosModelo()
@@ -375,10 +379,7 @@ export class ClasProfesionalAdmComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
-    Messenger.options = { theme: 'air' };
-    this.getDatosModelo();
-  }
+  
 
 
 
