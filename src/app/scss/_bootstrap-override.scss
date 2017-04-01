@@ -30,6 +30,10 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
+.h4, .h5, .h6, h4, h5, h6 {
+  margin-top: 10px;
+}
+
 //
 // cards
 // --------------------------------------------------
@@ -160,6 +164,7 @@ small, .small {
 
 
 .form-control {
+  font-family: $font-family-sans-serif;
   font-weight: $font-weight-normal;
   padding: $padding-base-vertical $padding-base-horizontal;
   @include box-shadow(none);
@@ -194,13 +199,6 @@ label {
   font-weight: $font-weight-normal;
 }
 
-.help-block{
-  margin-top: 5px;
-  font-size: $font-size-smaller;
-  color: $text-muted;
-  display: block;
-}
-
 legend {
   display: block;
   width: 100%;
@@ -220,6 +218,10 @@ legend {
   .input-group-addon{
     line-height: inherit;
   }
+}
+
+.input-group-btn {
+  flex-direction: row;
 }
 
 .input-group-addon{
@@ -278,13 +280,34 @@ legend {
   border-radius: $border-radius;
 }
 
+.form-actions{
+  margin: $line-height-computed 0 0;
+  padding: $line-height-computed;
+  background-color: #f5f5f5;
+
+  .form-horizontal & .row{
+    margin-left: ($grid-gutter-width/-2) - 20px;
+    margin-right: ($grid-gutter-width/-2) - 20px;
+
+  }
+}
+
 
 // Checkboxes and radios
 //
 
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  position: absolute;
+  margin-top: .25rem;
+  // margin-top: 4px \9;
+  margin-left: -1.25rem;
+}
+
 .radio,
 .checkbox {
-  padding-left: 20px;
 
   label {
     margin-bottom: 5px;
@@ -299,10 +322,10 @@ legend {
 .table td > .abc-checkbox,
 .table th > .abc-checkbox{
   position: relative;
-  top: -8px;
   margin-top: 0;
   margin-bottom: 0;
   margin-right: -16px;
+  padding-left: 20px;
 }
 
 .table > thead > tr > th {
@@ -391,9 +414,75 @@ legend {
 //
 // Navs
 // --------------------------------------------------
+//
+// Navs
+// --------------------------------------------------
 .nav-item .nav-link {
   position: relative;
   cursor: pointer;
+}
+
+.nav-pills .nav-link {
+  border-radius: 0;
+}
+
+.nav-pills .nav-item + .nav-item {
+  margin-left: 0;
+}
+
+.nav-tabs {
+  & .nav-item+.nav-item { margin-left: 0}
+  border-bottom: none;
+  background-color: $gray-semi-lighter;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+  > .nav-item {
+    margin-bottom: -2px;
+    > .nav-link {
+      padding: 12px 18px;
+      border: none;
+      color: $text-muted;
+
+      .label {
+        margin-bottom: -2px;
+      }
+
+      @include transition(color .15s ease-in-out);
+      &:hover {
+        background-color: transparent;
+        color: $text-color;
+      }
+    }
+
+    .nav-link.open {
+      &,
+      &:hover,
+      &:focus{
+        background-color: $nav-tabs-active-link-hover-bg;
+        color: $nav-tabs-active-link-hover-color;
+      }
+    }
+
+    .nav-link.active {
+      &,
+      &:hover,
+      &:focus {
+        background-color: $nav-tabs-active-link-hover-bg;
+        color: $nav-tabs-active-link-hover-color;
+        border: none;
+        @include box-shadow(1px 1px 2px #ccc);
+      }
+    }
+  }
+}
+
+.tab-content {
+  position: relative;
+  z-index: 1;
+  background-color: $white;
+  > .tab-pane {
+    padding: $line-height-computed*2 $line-height-computed*2;
+  }
 }
 
 //
@@ -574,15 +663,12 @@ legend {
     padding-bottom: 0;
   }
 }
-
-.breadcrumb>li+li::before {
-  content: ">";
-}
 //
 // Buttons
 // --------------------------------------------------
 
 .btn {
+  font-family: $font-family-sans-serif;
   .glyphicon {
     top: 3px;
   }
@@ -636,6 +722,125 @@ legend {
   }
 }
 
+//
+// Panels
+// --------------------------------------------------
+
+// Base class
+.panel {
+  margin-bottom: $line-height-computed;
+  background-color: $panel-bg;
+  border: none;
+}
+
+// Panel contents
+.panel-body {
+  padding: $panel-body-padding;
+  @include clearfix;
+}
+
+// Optional heading
+.panel-heading {
+  padding: 13px 15px;
+  border-bottom: 1px solid transparent;
+  @include border-top-radius(($border-radius));
+
+  > .dropdown .dropdown-toggle {
+    color: inherit;
+  }
+}
+
+
+accordion-group .panel-title a.accordion-toggle i {
+  transform: rotate(180deg);
+  transition: transform 0.35s ease;
+}
+
+accordion-group.panel-open .panel-title a.accordion-toggle i {
+  transform: rotate(0deg);
+  transition: transform 0.35s ease;
+}
+
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: $font-size-base;
+  color: inherit;
+
+  > a,
+  > small,
+  > .small,
+  > small > a,
+  > .small > a {
+    color: inherit;
+    display: block;
+  }
+
+  > a:focus {
+    outline: none;
+  }
+}
+
+small, .small {
+  font-size: 85%;
+}
+
+// Collapsable panels (aka, accordion)
+//
+// Wrap a series of panels in `.panel-group` to turn them into an accordion with
+// the help of our collapse JavaScript plugin.
+
+.panel-group {
+  margin-bottom: $line-height-computed;
+
+  // Tighten up margin so it's only between panels
+  .panel {
+    margin-bottom: 0;
+    border-radius: $border-radius;
+  }
+
+  accordion-group.panel-open .panel-title a {
+    &,
+    & i {
+      opacity: 1;
+    }
+  }
+
+  accordion-group .panel-title a {
+    &,
+    & i {
+      opacity: 0.6;
+    }
+
+    &:hover,
+    &:hover i {
+      opacity: 1;
+    }
+  }
+
+  accordion-group + accordion-group {
+    .panel {
+      margin-top: 5px;
+    }
+  }
+
+  .panel-heading {
+    border-bottom: 0;
+
+    + .panel-collapse > .panel-body,
+    + .panel-collapse > .list-group {
+      border-top: 1px solid $list-group-border-color;
+    }
+
+  }
+}
+
+
+// Contextual variations
+.panel-default {
+  @include panel-variant($panel-default-border, $panel-default-text, $panel-default-heading-bg, $panel-default-border);
+}
+
 
 //
 // Labels
@@ -654,6 +859,10 @@ legend {
 .btn-toolbar{
   margin-top: $line-height-computed/2;
   margin-bottom: $line-height-computed/2;
+
+  .btn {
+    margin-left: $line-height-computed/2;
+  }
 }
 
 //
@@ -661,13 +870,12 @@ legend {
 // --------------------------------------------------
 
 .js-progress-animate {
-  transition: width 0.6s ease;
+  transition: width 0.6s ease !important;
 }
 
 .progress{
   @include box-shadow(none);
   transition: width 0.6s ease;
-  height: 1.3rem;
 }
 
 .progress-bar{
@@ -686,15 +894,15 @@ legend {
 }
 
 
-.progress-bar-gray {
+.bg-bar-gray {
   background-color: $gray;
 }
 
-.progress-bar-gray-light {
+.bg-bar-gray-light {
   background-color: $gray-light;
 }
 
-.progress-primary {
+.bg-primary {
   background-color: $brand-primary;
 }
 
@@ -741,10 +949,19 @@ legend {
   }
 }
 
+a.list-group-item, button.list-group-item {
+  width: 100%;
+  color: #555;
+  text-align: inherit;
+}
 
 //
 // Tooltips
 // --------------------------------------------------
+
+.tooltip.in {
+  opacity: 1;
+}
 
 .tooltip-inner{
   @include border-radius(3px);
@@ -800,6 +1017,18 @@ legend {
     .sidebar{
       z-index: -1;
     }
+  }
+}
+
+.modal-backdrop.fade.in {
+    opacity: 0.5;
+}
+
+.modal.fade.in {
+  opacity: 1;
+
+  .modal-dialog {
+    transform: translate(0, 0);
   }
 }
 
@@ -1038,7 +1267,13 @@ pre {
 // Badges
 // --------------------------------------------------
 
+.badge {
+  font-size: $font-size-sm;
+}
 
-.badge.badge-pill {
-  font-size: 100%;
+//
+// Close
+// ----------------
+.close {
+  opacity: .2;
 }

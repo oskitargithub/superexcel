@@ -9,7 +9,7 @@ declare let jQuery: any;
 })
 export class Navbar implements OnInit {
   @Output() toggleSidebarEvent: EventEmitter<any> = new EventEmitter();
-  @Output() toggleChatEvent: EventEmitter<any> = new EventEmitter();
+
   $el: any;
   config: any;
   router: Router;
@@ -25,16 +25,14 @@ export class Navbar implements OnInit {
     this.toggleSidebarEvent.emit(state);
   }
 
-  toggleChat(): void {
-    this.toggleChatEvent.emit(null);
-  }
+  
 
   onDashboardSearch(f): void {
     this.router.navigate(['/app', 'extra', 'search'], { queryParams: { search: f.value.search } });
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('fditoken')!= null ) {
+     if (localStorage.getItem('fditoken')!= null ) {
       let mitoken = JSON.parse(localStorage.getItem('fditoken')); 
       console.log(mitoken.perfil);
       if(mitoken.perfil == "ADM"){

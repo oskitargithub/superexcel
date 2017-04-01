@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { AuthGuard }                from './auth/auth-guard.service';
 import { AuthService }                from './auth/auth.service';
-
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -23,7 +22,7 @@ import { ErrorComponent } from './error/error.component';
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
-  AppConfig,
+  AppConfig
 ];
 
 type StoreType = {

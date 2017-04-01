@@ -27,18 +27,15 @@ export class BajasEIncorpComponent implements OnInit {
     public status: string;
     public respondidasSeccion: any;
     public totalSeccion: any;
-
-    public max: number = 100;
-    public showWarning: boolean;
-    public dynamic: number;
-    public type: string;
+    public valorbarra: number;
+    public tipobarra: string;
 
     constructor(
         private fb: FormBuilder,
         private servicio: BajasEIncorpService,
         injector: Injector
     ) {
-        this.dynamic = 20;
+        this.valorbarra = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
@@ -51,10 +48,17 @@ export class BajasEIncorpComponent implements OnInit {
         this.getDatosModelo();
     }
 
-    valorBarraProgreso() {
-        this.respondidasSeccion = 18;
-        this.totalSeccion = 20;
-        let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+    getValorBarra(){
+        if(this.respondidasSeccion==0)
+            return 0;
+        else{
+            let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+            return value;
+        }
+    }
+
+    setBarraProgreso() {
+        let value = this.getValorBarra();
         let type: string;
 
         if (value < 25) {
@@ -67,8 +71,8 @@ export class BajasEIncorpComponent implements OnInit {
             type = 'success';
 
         }
-        this.dynamic = value;
-        this.type = type;
+        this.valorbarra = value;
+        this.tipobarra = type;
     }
 
     createForm() {
@@ -131,9 +135,9 @@ export class BajasEIncorpComponent implements OnInit {
                 this.setPregunta(response.preg_124_tabla_3, 'preg_124_tabla_3');
                 this.setPregunta(response.preg_125_tabla_3, 'preg_125_tabla_3');
 
-                this.respondidasSeccion = response.respondidasSeccion;
+                 this.respondidasSeccion = response.respondidasSeccion;
                 this.totalSeccion = response.totalSeccion;
-                this.valorBarraProgreso();
+                this.setBarraProgreso();
 
                 this.status = response.status;
                 if (this.status !== "success") {

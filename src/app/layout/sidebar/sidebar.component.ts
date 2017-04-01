@@ -3,11 +3,9 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 import { AppConfig } from '../../app.config';
 
-
-import { Observable } from 'rxjs/Observable';
 import { AuthService }      from '../../auth/auth.service';
 
-declare var jQuery: any;
+declare let jQuery: any;
 
 @Component({
   selector: '[sidebar]',
@@ -26,10 +24,7 @@ export class Sidebar implements OnInit {
     this.config = config.getConfig();
     this.router = router;
     this.location = location;
-    console.log("cargando menus"+authService.tipocuest);
   }
-
-
 
   initSidebarScroll(): void {
     let $sidebarContent = this.$el.find('.js-sidebar-content');
@@ -66,7 +61,6 @@ export class Sidebar implements OnInit {
   }
 
   ngOnInit(): void {
-    
     jQuery(window).on('sn:resize', this.initSidebarScroll.bind(this));
     this.initSidebarScroll();
 

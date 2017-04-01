@@ -2,6 +2,22 @@ import { Routes, RouterModule }  from '@angular/router';
 import { Layout } from './layout.component';
 import { AuthGuard } from '../auth/auth-guard.service';
 // noinspection TypeScriptValidateTypes
+/*const routes: Routes = [
+  { path: '', component: Layout, children: [
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: 'dashboard', loadChildren: '../dashboard/dashboard.module#DashboardModule' },
+    { path: 'inbox', loadChildren: '../inbox/inbox.module#InboxModule' },
+    { path: 'charts', loadChildren: '../charts/charts.module#ChartsModule' },
+    { path: 'profile', loadChildren: '../profile/profile.module#ProfileModule' },
+    { path: 'forms', loadChildren: '../forms/forms.module#FormModule' },
+    { path: 'ui', loadChildren: '../ui-elements/ui-elements.module#UiElementsModule' },
+    { path: 'extra', loadChildren: '../extra/extra.module#ExtraModule' },
+    { path: 'tables', loadChildren: '../tables/tables.module#TablesModule' },
+    { path: 'maps', loadChildren: '../maps/maps.module#MapsModule' },
+    { path: 'grid', loadChildren: '../grid/grid.module#GridModule' },
+    { path: 'widgets', loadChildren: '../widgets/widgets.module#WidgetsModule' },
+  ]}
+];*/
 const routes: Routes = [
   { path: '', component: Layout, children: [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivateChild: [AuthGuard], data:{ roles:['USER'] } },
@@ -19,7 +35,7 @@ const routes: Routes = [
     { path: 'conciliacion', loadChildren: '../dashboard/conciliacion/conciliacion.module#ConciliacionModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'formacion', loadChildren: '../dashboard/formacion/formacion.module#FormacionModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
 ]},
-  { path: 'admin', component: Layout, children: [
+   { path: 'admin', component: Layout, children: [
     { path: 'dashboardadmin', loadChildren: '../dashboardadmin/dashboardadmin.module#DashboardAdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'infoencuestapb', loadChildren: '../dashboardadmin/infoencuestapb/infoencuestapb.module#InfoEncuestaPBModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'clasificacionprofesionaladm', loadChildren: '../dashboardadmin/clasprofesionaladm/clasprofesionaladm.module#ClasProfesionalAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
@@ -28,11 +44,6 @@ const routes: Routes = [
     { path: 'retribucionesadm2', loadChildren: '../dashboardadmin/retribucionesadm2/retribucionesadm2.module#RetribucionesAdm2Module', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'bajaseincorpadm', loadChildren: '../dashboardadmin/bajaseincorpadm/bajaseincorpadm.module#BajasEIncorpAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'conciliacionadm', loadChildren: '../dashboardadmin/conciliacionadm/conciliacionadm.module#ConciliacionAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
-    
-  /*   { path: 'infoencuestapr', loadChildren: '../dashboardadmin/graficas1admin/graficas1admin.module#Graficas1AdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
-     
-    { path: 'graficas1', loadChildren: '../dashboardadmin/graficas1admin/graficas1admin.module#Graficas1AdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
-  */
   ]},
   { path: 'login', loadChildren: '../login/login.module#LoginModule'}
 ];
