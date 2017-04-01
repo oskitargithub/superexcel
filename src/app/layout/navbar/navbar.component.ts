@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, ElementRef, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppConfig } from '../../app.config';
-declare var jQuery: any;
+declare let jQuery: any;
 
 @Component({
   selector: '[navbar]',
@@ -34,7 +34,6 @@ export class Navbar implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("oninit");
     if (localStorage.getItem('fditoken')!= null ) {
       let mitoken = JSON.parse(localStorage.getItem('fditoken')); 
       console.log(mitoken.perfil);

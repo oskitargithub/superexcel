@@ -2,8 +2,8 @@ import { Component, ViewEncapsulation, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppConfig } from '../app.config';
 
-declare var jQuery: any;
-declare var Hammer: any;
+declare let jQuery: any;
+declare let Hammer: any;
 
 @Component({
   selector: 'layout',
@@ -11,6 +11,7 @@ declare var Hammer: any;
   templateUrl: './layout.template.html',
   host: {
     '[class.nav-static]' : 'config.state["nav-static"]',
+    '[class.chat-sidebar-opened]' : 'chatOpened',
     '[class.app]' : 'true',
     id: 'app'
   }
@@ -51,8 +52,8 @@ export class Layout {
         '.list-group-item:first-child:not(.js-notification-added)')
         .addClass('active js-notification-added')
         .find('.fa-circle')
-        .after('<span class="badge tag-danger ' +
-          'pull-right animated bounceInDown">3</span>');
+        .before('<span class="badge badge-danger badge-pill ' +
+          'flex-last animated bounceInDown">3</span>');
     }, 1000);
   }
 

@@ -13,14 +13,13 @@ export class ConciliacionService {
     }
 
     getDatosModelo() {
-        return this._http.get(this.config.api + 'probando2.php').map(res =>{
+        return this._http.get(this.config.apilaravel + "cuestionario/seccion/8").map(res => {
             let headers = res.headers;
             let miobjeto = res.json();
-            return(miobjeto);
+            return (miobjeto);
         });
-        
     }
-
+/*
     getDatosModelo2(){
         let resultado = {
   "status": "success",
@@ -336,5 +335,5 @@ export class ConciliacionService {
 }
 
 return Observable.of(resultado);
-    }
+    }*/
 }

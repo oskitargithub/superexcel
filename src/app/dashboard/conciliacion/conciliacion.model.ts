@@ -5,15 +5,15 @@ export class ConciliacionModel {
     public respondidasCuest: number;
     public totalSeccion: number;
     public respondidasSeccion: number;
-    public preg_1_tabla_3: Tabla3Model[];
-    public preg_2_tabla_3: Tabla3Model[];
-    public preg_3_tabla_3: Tabla3Model[];
-    public preg_4_tabla_3: Tabla3Model[];
-    public preg_5_tabla_3: Tabla3Model[];
-    public preg_6_tabla_3: Tabla3Model[];
-    public preg_7_tabla_3: Tabla3Model[];
-    public preg_8_tabla_3: Tabla3Model[];
-    public preg_0_tabla_2: Tabla2Model[];
+    public preg_140_tabla_3: Tabla3Model[];
+    public preg_142_tabla_3: Tabla3Model[];
+    public preg_143_tabla_3: Tabla3Model[];
+    public preg_146_tabla_3: Tabla3Model[];
+    public preg_147_tabla_3: Tabla3Model[];
+    public preg_148_tabla_3: Tabla3Model[];
+    public preg_150_tabla_3: Tabla3Model[];
+    public preg_152_tabla_3: Tabla3Model[];
+    public preg_130_tabla_2: Tabla2Model[];
     constructor(){
         this.data = new datosModel();
     }
@@ -23,49 +23,45 @@ export class ConciliacionModel {
 export class datosModel {
     public user_id: number;
     public id: number;
-    public preg_1: any;
-    public preg_2: any;
-    public preg_3: any;
-    public preg_4: any;
-    public preg_5: any;
-    public preg_6: any;
-    public preg_7: any;
-    public preg_8: any;
-    public preg_9: any;
-    public preg_10: any;
-    public preg_11: any;
-    public preg_12: any;
+    public preg_131: any;
+    public preg_132: any;
+    public preg_133: any;
+    public preg_134: any;
+    public preg_135: any;
+    public preg_136: any;
+    public preg_138: any;
+    public preg_139: any;
+    public preg_154: any;
+    public preg_155: any;
+    public preg_157: any;
+    public preg_158: any;
     constructor() {
         this.id = 0,
         this.user_id = 0,
-        this.preg_1 = '',
-        this.preg_2 = '',
-        this.preg_3 = '',
-        this.preg_4 = '',
-        this.preg_5 = '',
-        this.preg_6 = '',
-        this.preg_7 = '',
-        this.preg_8 = '',
-         this.preg_9 = '',
-        this.preg_10 = '',
-        this.preg_11 = '',
-        this.preg_12 = ''
+        this.preg_131 = '',
+        this.preg_132 = '',
+        this.preg_133 = '',
+        this.preg_134 = '',
+        this.preg_135 = '',
+        this.preg_136 = '',
+        this.preg_138 = '',
+        this.preg_139 = '',
+        this.preg_154 = '',
+        this.preg_155 = '',
+        this.preg_157 = '',
+        this.preg_158 = ''
     }
 } 
 
 export class Tabla3Model {
-    denominacion: any = '';
+    texto: any = '';
     mujeres: any = 0;
     hombres: any = 0;
+    respuesta: any = 0;  
 }
 
 export class Tabla2Model {
-    denominacion: any = '';
-    valor: any = 0;    
-}
-
-export class TablaRaraModel{
-    denominacion: any = '';
-    valor: any = 0;   
-    otro: any = null;
+    texto1: any = '';
+    texto2: any = '';
+    respuesta: any = 0;    
 }

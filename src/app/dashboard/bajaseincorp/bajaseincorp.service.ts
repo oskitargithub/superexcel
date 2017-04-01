@@ -19,6 +19,14 @@ export class BajasEIncorpService {
     }
 
     getDatosModelo() {
+        return this._http.get(this.config.apilaravel + "cuestionario/seccion/7").map(res => {
+            let headers = res.headers;
+            let miobjeto = res.json();
+            return (miobjeto);
+        });
+    }
+    /*
+    getDatosModelo() {
         var respuesta = {
             "status": "success",
             "totalCuest": 83,
@@ -199,6 +207,6 @@ export class BajasEIncorpService {
         };
         return Observable.of(respuesta);
     }
-
+    */
 
 }

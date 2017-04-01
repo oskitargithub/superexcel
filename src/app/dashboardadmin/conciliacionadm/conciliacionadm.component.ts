@@ -141,113 +141,67 @@ export class ConciliacionAdmComponent implements OnInit {
   }
 
   asignaDatosGraficas() {
-    this.asignaPorcentajesPorTipo(this.modelo.preg_1_tabla_3);
+    this.asignaPorcentajesPorTipo(this.modelo.preg_140_tabla_3);
     this.barChartLabels1 = this.labelGrafica1;
     this.barChartData1 = this.datosGrafica1;    
     this.barChartData2 = this.datosGrafica2;
     this.barChartLabels2 = this.labelGrafica2;
 
-    this.asignaPorcentajesPorTipo(this.modelo.preg_2_tabla_3);
+    this.asignaPorcentajesPorTipo(this.modelo.preg_142_tabla_3);
     this.barChartLabels3 = this.labelGrafica1;
     this.barChartData3 = this.datosGrafica1;    
     this.barChartData4 = this.datosGrafica2;
     this.barChartLabels4 = this.labelGrafica2;
 
-    this.asignaPorcentajesPorTipo(this.modelo.preg_3_tabla_3);
+    this.asignaPorcentajesPorTipo(this.modelo.preg_143_tabla_3);
     this.barChartLabels5 = this.labelGrafica1;
     this.barChartData5 = this.datosGrafica1;    
     this.barChartData6 = this.datosGrafica2;
     this.barChartLabels6 = this.labelGrafica2;
 
-    this.asignaPorcentajesPorTipo(this.modelo.preg_4_tabla_3);
+    this.asignaPorcentajesPorTipo(this.modelo.preg_146_tabla_3);
     this.barChartLabels7 = this.labelGrafica1;
     this.barChartData7 = this.datosGrafica1;    
     this.barChartData8 = this.datosGrafica2;
     this.barChartLabels8 = this.labelGrafica2;
 
-    this.asignaPorcentajesPorTipo(this.modelo.preg_5_tabla_3);
+    this.asignaPorcentajesPorTipo(this.modelo.preg_147_tabla_3);
     this.barChartLabels9 = this.labelGrafica1;
     this.barChartData9 = this.datosGrafica1;    
     this.barChartData10 = this.datosGrafica2;
     this.barChartLabels10 = this.labelGrafica2;
 
-    this.asignaPorcentajesPorTipo(this.modelo.preg_6_tabla_3);
+    this.asignaPorcentajesPorTipo(this.modelo.preg_148_tabla_3);
     this.barChartLabels11 = this.labelGrafica1;
     this.barChartData11 = this.datosGrafica1;    
     this.barChartData12 = this.datosGrafica2;
     this.barChartLabels12 = this.labelGrafica2;
 
-    this.asignaPorcentajesPorTipo(this.modelo.preg_7_tabla_3);
+    this.asignaPorcentajesPorTipo(this.modelo.preg_150_tabla_3);
     this.barChartLabels13 = this.labelGrafica1;
     this.barChartData13 = this.datosGrafica1;    
     this.barChartData14 = this.datosGrafica2;
     this.barChartLabels14 = this.labelGrafica2;
 
-    this.asignaPorcentajesPorTipo(this.modelo.preg_8_tabla_3);
+    this.asignaPorcentajesPorTipo(this.modelo.preg_152_tabla_3);
     this.barChartLabels15 = this.labelGrafica1;
     this.barChartData15 = this.datosGrafica1;    
     this.barChartData16 = this.datosGrafica2;
     this.barChartLabels16 = this.labelGrafica2;
 
-    this.asignaPorcentajesDoughnutChart(this.modelo.data.preg_9 ,this.modelo.data.preg_10, "“NORMALIZACIÓN” DE LA VIDA PROFESIONAL TRAS LA ATENCIÓN DE OBLIGACIONES FAMILIARES");
+    this.asignaPorcentajesDoughnutChart(this.modelo.data.preg_154 ,this.modelo.data.preg_155, "“NORMALIZACIÓN” DE LA VIDA PROFESIONAL TRAS LA ATENCIÓN DE OBLIGACIONES FAMILIARES");
     this.doughnutChartData1 = this.datosGrafica1;
     this.doughnutChartLabels1 = this.labelGrafica1;
     
 
-    this.asignaPorcentajesDoughnutChart(this.modelo.data.preg_11 ,this.modelo.data.preg_12, "¿Cuántos trabajadores/as han sido padres y madres en el último año? Especificar la cantidad por sexo.");
+    this.asignaPorcentajesDoughnutChart(this.modelo.data.preg_157 ,this.modelo.data.preg_158, "¿Cuántos trabajadores/as han sido padres y madres en el último año? Especificar la cantidad por sexo.");
     this.doughnutChartData2 = this.datosGrafica1;
     this.doughnutChartLabels2 = this.labelGrafica1;
-    /*
-    this.asignaPorcentajesPorTipo1(this.modelo.preg_121_tabla_5);
-    this.barChartLabels3 = this.labelGrafica1;
-    this.barChartData3 = this.datosGrafica1;
-    this.barChartData4 = this.datosGrafica2;
-    this.barChartLabels4 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo(this.modelo.preg_122_tabla_3);
-    this.barChartLabels5 = this.labelGrafica1;
-    this.barChartData5 = this.datosGrafica1;
-    this.barChartData6 = this.datosGrafica2;
-    this.barChartLabels6 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo(this.modelo.preg_123_tabla_3);
-    this.barChartLabels7 = this.labelGrafica1;
-    this.barChartData7 = this.datosGrafica1;
-    this.barChartData8 = this.datosGrafica2;
-    this.barChartLabels8 = this.labelGrafica2;
-
-    this.asignaPorcentajesGrafLineal(this.modelo.preg_123_tabla_3);
-    this.lineChartData1 = this.datosGrafica1;
-    this.lineChartLabels1 = this.labelGrafica1;
-    this.lineChartData2 = this.datosGrafica2;
-    this.lineChartLabels2 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo(this.modelo.preg_124_tabla_3);
-    this.barChartLabels9 = this.labelGrafica1;
-    this.barChartData9 = this.datosGrafica1;
-    this.barChartData10 = this.datosGrafica2;
-    this.barChartLabels10 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo(this.modelo.preg_125_tabla_3);
-    this.barChartLabels11 = this.labelGrafica1;
-    this.barChartData11 = this.datosGrafica1;
-    this.barChartData12 = this.datosGrafica2;
-    this.barChartLabels12 = this.labelGrafica2;*/
+    
     
   }
 
-  getMadres1(){
-      return this.modelo.data.preg_9;
-  }
-  getPadres1(){
-      return this.modelo.data.preg_10;
-  }
-  getMadres2(){
-      return this.modelo.data.preg_11;
-  }
-  getPadres2(){
-      return this.modelo.data.preg_12;
-  }
+  
 
   reinicializaDatosGrafica() {
     this.labelGrafica1 = [];

@@ -43,7 +43,7 @@ export class BajasEIncorpComponent implements OnInit {
         this.totalSeccion = 0;
         this.createForm();
         this.modelo = new BajasEIncorpModel();
-        
+
     }
 
     ngOnInit(): void {
@@ -78,23 +78,34 @@ export class BajasEIncorpComponent implements OnInit {
             preg_122_tabla_3: this.fb.array([]),
             preg_123_tabla_3: this.fb.array([]),
             preg_124_tabla_3: this.fb.array([]),
-            preg_125_tabla_3: this.fb.array([]),            
-        });        
+            preg_125_tabla_3: this.fb.array([]),
+        });
     }
 
     getTotalMujeres(elemento: FormArray) {
-        return elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+        if (elemento != null && elemento.value.length > 0)
+            return elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+        else
+            return 0;
     }
     getTotalHombres(elemento: FormArray) {
-        return elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+        if (elemento != null && elemento.value.length > 0)
+            return elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+        else
+            return 0;
     }
     getTotalTotal(elemento: FormArray) {
-        let hombres = elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
-        let mujeres = elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
-        return (hombres * 1 + mujeres * 1);
+        if (elemento != null && elemento.value.length > 0) {
+            let hombres = elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+            let mujeres = elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+            return (hombres * 1 + mujeres * 1);
+        }
+        else {
+            return 0;
+        }
     }
 
-    
+
     setPregunta(tabla: any[], nombretabla: string) {
         const addressFGs = tabla.map(datos => this.fb.group(datos));
         const addressFormArray = this.fb.array(addressFGs);

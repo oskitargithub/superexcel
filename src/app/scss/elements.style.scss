@@ -1,15 +1,9 @@
-@import "../../../node_modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker";
 @import "../../../node_modules/bootstrap-markdown/css/bootstrap-markdown.min";
 @import "../../../node_modules/bootstrap-select/dist/css/bootstrap-select";
-@import "../../../node_modules/jasny-bootstrap/dist/css/jasny-bootstrap";
-@import "../../../node_modules/dropzone/dist/dropzone";
 @import "../scss/variables";
 @import "../scss/mixins";
 @import "../../../node_modules/bootstrap/scss/_variables";
 @import "../../../node_modules/bootstrap/scss/mixins";
-@import "../scss/select2-variables";
-@import "../../../node_modules/select2/src/scss/core";
-@import "../../../node_modules/select2-bootstrap-theme/src/select2-bootstrap";
 
 /**
  * Bootstrap Colorpicker
@@ -476,13 +470,7 @@ html[dir="rtl"] .select2-search input {
       }
 
       // Nuke hover/focus effects
-      @include hover-focus {
-        text-decoration: none;
-        cursor: $cursor-disabled;
-        background-color: transparent;
-        background-image: none; // Remove CSS gradient
-        @include reset-filter();
-      }
+     
     }
   }
 }

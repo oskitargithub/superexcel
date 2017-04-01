@@ -1,6 +1,10 @@
 /***********************/
 /*        Layout       */
 /***********************/
+html {
+  font-size: $font-size-root;
+}
+
 app, .app {
   height: 100%;
   display: block;
@@ -234,7 +238,7 @@ app, .app {
       transform: rotate(90deg);
     }
 
-    .tag{
+    .badge{
       float: right;
       line-height: 8px;
       margin-top: 7px;
@@ -812,11 +816,11 @@ app, .app {
     .fa-circle{
       font-size: 11px;
       line-height: 37px;
+      margin-left: auto;
     }
 
     .badge{
-      margin-top: 9px;
-      margin-right: 6px;
+      margin-left: auto;
       padding: 3px 5px;
     }
   }
@@ -899,7 +903,6 @@ app, .app {
     font-size: $font-size-sm;
 
     .thumb-xs{
-      vertical-align: -9px;
       margin-right: 5px;
     }
   }

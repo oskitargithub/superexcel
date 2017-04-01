@@ -5,7 +5,7 @@ declare let jQuery: any;
 @Injectable()
 export class AppConfig {
   config = {
-    name: 'FDI',
+    name: 'fdi',
     title: 'FORMULARIO DE DIAGNÓSTICO DE IGUALDAD -- Equality Momentum',
     version: '1.0.0',
     api: 'http://localhost/superexcel/api/',

@@ -1,10 +1,9 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
-
 import { AuthGuard }                from './auth/auth-guard.service';
 import { AuthService }                from './auth/auth.service';
 
@@ -45,7 +44,6 @@ type StoreType = {
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
