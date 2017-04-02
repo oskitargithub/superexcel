@@ -110,7 +110,10 @@ export class FormacionComponent implements OnInit {
       this.servicio.getDatosModelo().subscribe(
             response => {
                 console.log("datos formu"); 
-                this.ifForm.setControl('data', this.fb.group(response.data));               
+                this.ifForm.setControl('data', this.fb.group(response.data));   
+                /*Object.getOwnPropertyNames(response.data).map((key: string) => 
+                     this.ifForm.controls['data'].controls[key].setValue(response.data[key])
+                );  */           
                 this.setPregunta(response.preg_1_tabla_3,'preg_1_tabla_3');
                 this.setPregunta(response.preg_2_tabla_3,'preg_2_tabla_3');
 
@@ -155,5 +158,18 @@ export class FormacionComponent implements OnInit {
 
                 }
             });
+    }
+
+    getTotalMujeres(elemento: FormArray) {
+        if (elemento != null && elemento.value.length > 0)
+            return elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+        else
+            return 0;
+    }
+    getTotalHombres(elemento: FormArray) {
+        if (elemento != null && elemento.value.length > 0)
+            return elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+        else
+            return 0;
     }
 }

@@ -42,6 +42,7 @@ export class SelPersonalComponent implements OnInit {
         this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
+        this.modelo = new SelPersonalModel();       
         this.createForm();
         this.getDatosModelo();
     }
@@ -77,9 +78,10 @@ export class SelPersonalComponent implements OnInit {
         this.type = type;
     }
 
-    createForm() {        
+    createForm() {     
+        console.log("creando formulario");   
         this.ifForm = this.fb.group({   
-            data: this.fb.group(new dataModel()),         
+            data: this.fb.group(this.modelo.data),                  
             preg_87: this.fb.array([]),
             preg_88: this.fb.array([]),
             preg_90: this.fb.array([]),
@@ -87,7 +89,8 @@ export class SelPersonalComponent implements OnInit {
             preg_101: this.fb.array([]),
             preg_103: this.fb.array([]),
             preg_117_tabla_2: this.fb.array([]),
-        });        
+        }); 
+             
     }
 
     getValorElemento(elemento: string) {
@@ -104,6 +107,7 @@ export class SelPersonalComponent implements OnInit {
         this.ifForm.setControl(nombretabla, addressFormArray);
     }   
 
+    
     addFila(elemento: FormArray) {
         elemento.push(this.fb.group(new CriterioTipoInflu()));
     }
@@ -118,8 +122,10 @@ export class SelPersonalComponent implements OnInit {
 
     getDatosModelo() {
         this.servicio.getDatosModelo().subscribe(
-            response => {
-                this.ifForm.setControl('data', this.fb.group(response.data));   
+            response => {               
+                Object.getOwnPropertyNames(response.data).map((key: string) => 
+                     this.ifForm.controls['data'].controls[key].setValue(response.data[key])
+                );    
                 this.setPregunta(response.preg_87, 'preg_87');
                 this.setPregunta(response.preg_88, 'preg_88');
                 this.setPregunta(response.preg_90, 'preg_90');

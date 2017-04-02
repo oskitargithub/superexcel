@@ -4,22 +4,767 @@
 </ol>
 
 <div class="row">
-  <div class="col-md-8"><h1 class="page-title">Actuaciones de la organización en materia de <span class="fw-semi-bold">Promoción y Carrera Profesional</span></h1></div>
-  <div class="col-md-4">
-      <div class="row progress-stats">
-          <div class="col-md-9 col-xs-12">
-            <p class="description deemphasize">Progreso de la pestaña</p>
-            <div class="bg-white progress-bar">              
-            <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic}"></progress>
-
-            
+    <div class="col-md-8">
+        <h1 class="page-title">Promoción y <span class="fw-semi-bold">Carrera Profesional</span></h1>
+    </div>
+    <div class="col-md-4">
+        <div class="row progress-stats">
+            <div class="col-md-9 col-xs-12">
+                <div class="bg-white progress progress-sm">
+                    <div progress-animate class="progress-bar bg-primary progress-sm" style="width: 18%;" data-width="18%"></div>
+                </div>
             </div>
-          </div>
-          <div class="col-md-3 col-xs-12 text-xs-center">
-                                <span class="status rounded rounded-lg bg-body-light">
+            <div class="col-md-9 col-xs-12">
+                <p class="description deemphasize">Progreso de la pestaña</p>
+                <div class="bg-white progress-bar">
+                    <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic}"></progress>
+
+
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 text-xs-center">
+                <span class="status rounded rounded-lg bg-body-light">
                                     <small><span number-animate>{{(respondidasSeccion*100)/totalSeccion}}</span>%</small>
-                                </span>
-          </div>
+                </span>
+            </div>
         </div>
-  </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="widget" widget>
+            <div class="widget-body">
+                <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <legend>ACTUACIONES DE LA ORGANIZACIÓN EN MATERIA DE PROMOCIÓN Y CARRERA PROFESIONAL</legend>
+                            <div class="form-group row">
+                                <div class="col-md-4 offset-md-2">
+                                    <label for="preg_1">
+                                        La organización cuenta con un plan de carrera definido?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_1">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+
+                                <div class="col-md-6 offset-md-2">
+                                    <p>En caso afirmativo</p>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_2">A) Indique para qué categorías</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_1')!='si'" class="autogrow form-control transition-height" id="preg_2"
+                                        formControlName="preg_2" autosize placeholder="Categorías"></textarea>
+                                </div>
+                                <div class="w-100"></div>
+
+                                <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_3">B) Indicar para qué niveles jerárquicos</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_1')!='si'" class="autogrow form-control transition-height" id="preg_3"
+                                        formControlName="preg_3" autosize placeholder="Niveles jerárquicos"></textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-4 offset-md-2">
+                                    <label for="preg_4">
+                                        Dispone la organización de  sistemas  de  evaluación  del  personal  de acuerdo a la promoción interna?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_4">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+
+                                <div class="col-md-6 offset-md-2">
+                                    <p>En caso afirmativo</p>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_5">Describa brevemente de los criterios utilizados</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_4')!='si'" class="autogrow form-control transition-height" id="preg_5"
+                                        formControlName="preg_5" autosize placeholder="Criterios utilizados"></textarea>
+                                </div>
+                                <div class="w-100"></div>
+
+                                <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_6">Describa brevemente de la metodología empleada</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_4')!='si'" class="autogrow form-control transition-height" id="preg_6"
+                                        formControlName="preg_6" autosize placeholder="Metodología empleada"></textarea>
+                                </div>
+
+                                <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_7">Describa brevemente el procedimiento utilizado</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_4')!='si'" class="autogrow form-control transition-height" id="preg_7"
+                                        formControlName="preg_7" autosize placeholder="Procedimiento utilizado"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-8 offset-md-2">
+                                    <label for="preg_8">
+                                     Mencione los órgano/s a quien/es corresponde la decisión final sobre la promoción del personal.
+                                    </label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_8" formControlName="preg_8" autosize placeholder="Mencione los órgano/s a quien/es corresponde la decisión final sobre la promoción del personal"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-4 offset-md-2">
+                                    <label for="preg_9">
+                                        ¿Se ha puesto en marcha alguna acción para incentivar la promoción de las mujeres en la organización?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_9">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+
+                                <div class="col-md-6 offset-md-2">
+                                    <p>En caso afirmativo</p>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_10">Detalle brevemente en qué consisten</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_9')!='si'" class="autogrow form-control transition-height" id="preg_10"
+                                        formControlName="preg_10" autosize placeholder="Detalle brevemente en qué consisten"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-4 offset-md-2">
+                                    <label for="preg_11">
+                                        ¿Considera que las responsabilidades familiares pudieran influir en la promoción dentro de la organización?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_11">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+
+                                <div class="col-md-6 offset-md-2">
+                                    <p>En caso afirmativo</p>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_12">¿Influye de igual manera en hombres y en mujeres?¿Por qué razones?</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_11')!='si'" class="autogrow form-control transition-height" id="preg_12"
+                                        formControlName="preg_12" autosize placeholder="¿Influye de igual manera en hombres y en mujeres?¿Por qué razones?"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-4 offset-md-2">
+                                    <label for="preg_13">
+                                        ¿Es habitual la promoción ligada a la movilidad geográfica?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_13">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+
+                                <div class="col-md-6 offset-md-2">
+                                    <p>En caso afirmativo</p>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_14">Indique por favor en que tipos de cargos se presenta</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_13')!='si'" class="autogrow form-control transition-height" id="preg_14"
+                                        formControlName="preg_14" autosize placeholder="Indique por favor en que tipos de cargos se presenta"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-4 offset-md-2">
+                                    <label for="preg_15">
+                                        La organización cuenta con algún tipo de incentivo para la promoción de mujeres
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_15">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+
+                                <div class="col-md-6 offset-md-2">
+                                    <p>En caso afirmativo</p>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_16">Indique por favor cuales son los incentivos utilizados</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_15')!='si'" class="autogrow form-control transition-height" id="preg_16"
+                                        formControlName="preg_16" autosize placeholder="Indique por favor cuales son los incentivos utilizados"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-4 offset-md-2">
+                                    <label for="preg_17">
+                                       Previsión de programas formativos orientados directamente a la promoción interna
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_17">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+
+                                <div class="col-md-6 offset-md-2">
+                                    <p>En caso afirmativo</p>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_18">Indicar qué categorías y niveles jerárquicos</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_17')!='si'" class="autogrow form-control transition-height" id="preg_18"
+                                        formControlName="preg_18" autosize placeholder="Indicar qué categorías y niveles jerárquicos"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-4 offset-md-2">
+                                    <label for="preg_19">
+                                      La organización realiza campañas de publicidad de las vacantes para promoción interna?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_19">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+
+                                <div class="col-md-6 offset-md-2">
+                                    <p>En caso afirmativo</p>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_20">Indicar mecanismo/s de publicidad utilizado/s</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_19')!='si'" class="autogrow form-control transition-height" id="preg_20"
+                                        formControlName="preg_20" autosize placeholder="Indicar mecanismo/s de publicidad utilizado/s"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-4 offset-md-2">
+                                    <label for="preg_21">
+                                      La organización reconoce los períodos suspensivos a efectos de la promoción?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_21">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+                    </div>
+                    <div class="section">
+                        <fieldset>
+                            <div formArrayName="preg_1_tabla_5">
+                                <div class="row">
+                                    <div class="col-md-6 offset-md-2">
+                                        <p>En caso afirmativo</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <label for="preg_1_tabla_2">Indicar cuáles (márquense sólo los que procedan).</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 offset-md-2 text-md-center">
+                                        Grupos Profesionales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Maternidad
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Paternidad
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Excedencia cuidado hijos/as
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Excedencia cuidado otros/as familiares
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_1_tabla_5').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-3 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto1" tooltip="Grupos Profesionales" placeholder="Grupos Profesionales" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 text-md-center">
+                                            <md-checkbox formControlName="texto2"></md-checkbox>
+                                        </div>
+                                        <div class="col-md-1 text-md-center">
+                                            <md-checkbox formControlName="texto3"></md-checkbox>
+                                        </div>
+                                        <div class="col-md-2 text-md-center">
+                                            <md-checkbox formControlName="texto4"></md-checkbox>
+                                        </div>
+                                        <div class="col-md-2 text-md-center">
+                                            <md-checkbox formControlName="texto5"></md-checkbox>
+                                        </div>
+                                        <div class="col-md-1 text-md-center">
+                                            <span *ngIf="i > 1">
+                                            <button type="button" (click)="removeFila(ifForm.controls.preg_1_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila5(ifForm.controls.preg_1_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Grupo P.</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <div formArrayName="preg_2_tabla_5">
+                                <div class="row">
+                                    <div class="col-md-3 offset-md-2 text-md-center">
+                                        Grupos Profesionales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Permiso por Riesgo durante el Embarazo
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Permiso por Riesgo durante la Lactancia
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Bajas por enfermedad derivada del embarazo
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Baja por enfermedad derivada del parto
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_2_tabla_5').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-3 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto1" tooltip="Grupos Profesionales" placeholder="Grupos Profesionales" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 text-md-center">
+                                            <md-checkbox formControlName="texto2"></md-checkbox>
+                                        </div>
+                                        <div class="col-md-1 text-md-center">
+                                            <md-checkbox formControlName="texto3"></md-checkbox>
+                                        </div>
+                                        <div class="col-md-2 text-md-center">
+                                            <md-checkbox formControlName="texto4"></md-checkbox>
+                                        </div>
+                                        <div class="col-md-2 text-md-center">
+                                            <md-checkbox formControlName="texto5"></md-checkbox>
+                                        </div>
+                                        <div class="col-md-1 text-md-center">
+                                            <span *ngIf="i > 1">
+                                            <button type="button" (click)="removeFila(ifForm.controls.preg_2_tabla_5, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila5(ifForm.controls.preg_2_tabla_5)" type="button" class="btn btn-success btn-xs mb-xs">Añade Grupo P.</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <legend>ACTUACIONES DE LA ORGANIZACIÓN EN MATERIA DE CALIDAD Y ESTABILIDAD EN EL EMPLEO</legend>
+                            <div class="form-group row">
+                                <div class="col-md-4 offset-md-2">
+                                    <label for="preg_22">
+                                        Existencia  de  posibilidades  de  transformación  de  contrato  a tiempo parcial en tiempo completo
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_22">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+
+                                <div class="col-md-6 offset-md-2">
+                                    <p>En caso afirmativo</p>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_23">Indicar Publicidad y requisitos</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_22')!='si'" class="autogrow form-control transition-height" id="preg_23"
+                                        formControlName="preg_23" autosize placeholder="Publicidad y requisitos"></textarea>
+                                </div>
+                                <div class="w-100"></div>
+
+                                <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_24">Explicar brevemente procedimiento</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_22')!='si'" class="autogrow form-control transition-height" id="preg_24"
+                                        formControlName="preg_24" autosize placeholder="Explicar brevemente procedimiento"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-4 offset-md-2">
+                                    <label for="preg_25">
+                                       Existencia  de  posibilidades  de  transformación  de  contrato temporal en indefinido
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_25">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+
+                                <div class="col-md-6 offset-md-2">
+                                    <p>En caso afirmativo</p>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_26">Indique el procedimiento utilizado por la organización y cuales son los requisitos</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_25')!='si'" class="autogrow form-control transition-height" id="preg_26"
+                                        formControlName="preg_26" autosize placeholder="Procedimiento utilizado por la organización y cuales son los requisitos"></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <div formArrayName="preg_3_tabla_3">
+                                <div class="row">
+                                    <div class="col-md-3 offset-md-2 text-md-center">
+                                        Promoción
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_3_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-3 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" readonly formControlName="texto" tooltip="Promoción" placeholder="Promoción" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <div formArrayName="preg_4_tabla_3">
+                                <div class="row">
+                                    <div class="col-md-3 offset-md-2 text-md-center">
+                                        ASCENSOS POR CARGOS
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_4_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-3 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="ASCENSOS POR CARGOS " placeholder="ASCENSOS POR CARGOS " />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <span *ngIf="getPregunta('preg_4_tabla_3').controls.length > 1">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_4_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila3(ifForm.controls.preg_4_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Ascenso</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <div formArrayName="preg_5_tabla_3">
+                                <div class="row">
+                                    <div class="col-md-3 offset-md-2 text-md-center">
+                                        Ascensos por categorías profesionales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_5_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-3 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="Ascensos por categorías profesionales " placeholder="Ascensos por categorías profesionales"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <span *ngIf="getPregunta('preg_5_tabla_3').controls.length > 1">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_5_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila3(ifForm.controls.preg_5_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Ascenso</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <div formArrayName="preg_6_tabla_3">
+                                <div class="row">
+                                    <div class="col-md-3 offset-md-2 text-md-center">
+                                        CALIDAD EN EL EMPLEO
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_6_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-3 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" readonly formControlName="texto" tooltip="CALIDAD EN EL EMPLEO" placeholder="CALIDAD EN EL EMPLEO"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <div formArrayName="preg_7_tabla_3">
+                                <div class="row">
+                                    <div class="col-md-3 offset-md-2 text-md-center">
+                                        TIPO DE PROMOCIÓN
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_5_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-3 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="TIPO DE PROMOCIÓN " placeholder="TIPO DE PROMOCIÓN" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <div class="col-md-8 offset-md-2">
+                                De acuerdo con las promociones que se presentaron el en último año en la organización diligencie la siguiente tabla
+                            </div>
+                            <div formArrayName="preg_8_tabla_3">
+                                <div class="row">
+                                    <div class="col-md-5 offset-md-2 text-md-center">PROMOCIONES ÚLTIMO AÑO</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 offset-md-2 text-md-center">
+                                        Promociones por categorías profesionales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_8_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-3 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="Promociones por categorías profesionales " placeholder="Promociones por categorías profesionales"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <span *ngIf="getPregunta('preg_8_tabla_3').controls.length > 1">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_8_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button> 
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila3(ifForm.controls.preg_8_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Ascenso</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
 </div>

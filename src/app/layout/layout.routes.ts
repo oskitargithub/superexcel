@@ -34,6 +34,7 @@ const routes: Routes = [
     { path: 'bajaseincorp', loadChildren: '../dashboard/bajaseincorp/bajaseincorp.module#BajasEIncorpModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'conciliacion', loadChildren: '../dashboard/conciliacion/conciliacion.module#ConciliacionModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'formacion', loadChildren: '../dashboard/formacion/formacion.module#FormacionModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
+    { path: 'promocarrera', loadChildren: '../dashboard/promocarrera/promocarrera.module#PromoCarreraModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
 ]},
    { path: 'admin', component: Layout, children: [
     { path: 'dashboardadmin', loadChildren: '../dashboardadmin/dashboardadmin.module#DashboardAdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},

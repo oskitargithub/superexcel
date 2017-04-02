@@ -7,6 +7,7 @@ export class PromoCarreraModel{
     public preg_2_tabla_3: Tabla3Model[];
     public preg_3_tabla_3: Tabla3Model[];
     public preg_4_tabla_3: Tabla3Model[];
+    public preg_5_tabla_3: Tabla3Model[];
 
     constructor(){
         this.id=0,
@@ -15,9 +16,22 @@ export class PromoCarreraModel{
 }
 
 export class Tabla3Model{
-        denominacion: any = '';
+        texto: any = '';
         mujeres: any = 0;
         hombres: any = 0;
+}
+export class Tabla2Model {
+    texto1: any = '';
+    texto2: any = '';
+    respuesta: any = 0;    
+}
+export class Tabla5Model {
+    texto1: any = '';
+    texto2: any = '';
+    texto3: any = '';
+    texto4: any = '';
+    texto5: any = '';
+    respuesta: any = 0;    
 }
 export class dataModel{
     public preg_1: any;
@@ -39,6 +53,8 @@ export class dataModel{
     public preg_17: any; 
     public preg_18: any; 
     public preg_19: any; 
+    public preg_20: any; 
+    public preg_21: any; 
     constructor(){
         this.preg_5 = '',
         this.preg_6 = '',

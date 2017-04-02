@@ -95,7 +95,7 @@ export class InformacionBasicaComponent implements OnInit {
         this.servicio.edit(this.informacionbasica, this.token)
             .subscribe(
             response => {
-                //this.informacionbasica = response.data;
+                this.informacionbasica = response.data;
                 this.status = response.status;
                 if (this.status !== "success") {
                     Messenger().post({
@@ -154,6 +154,10 @@ export class InformacionBasicaComponent implements OnInit {
     getTotal() {
         return (this.ifForm.get('data.preg_5').value * 1 + this.ifForm.get('data.preg_6').value * 1);
     }
+    
+    getPregunta (pregunta:string): FormArray {
+        return this.ifForm.get(pregunta) as FormArray;
+    };
 
     setCentroActividad(preg_2_tabla_2: CentroActividad[]) {
         const addressFGs = preg_2_tabla_2.map(centroact => this.fb.group(centroact));
@@ -185,6 +189,7 @@ export class InformacionBasicaComponent implements OnInit {
                 console.log(response.user);
                 this.ifForm.setControl('user', this.fb.group(response.user));
                 this.ifForm.setControl('data', this.fb.group(response.data));
+                
                 this.setCentroActividad(response.preg_2_tabla_2);
 
                 this.respondidasSeccion = response.respondidasSeccion;

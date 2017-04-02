@@ -101,7 +101,10 @@ export class ClasProfesional1Component implements OnInit {
             response => {            
                  console.log("servicio.getDatosModelo");       
                 console.log(response.data);     
-                this.ifForm.setControl('data', this.fb.group(response.data));
+                //this.ifForm.setControl('data', this.fb.group(response.data));
+                Object.getOwnPropertyNames(response.data).map((key: string) => 
+                     this.ifForm.controls['data'].controls[key].setValue(response.data[key])
+                ); 
                 this.setPregunta(response.preg_48_tabla_3, 'preg_48_tabla_3');
                 this.setPregunta(response.preg_49_tabla_3, 'preg_49_tabla_3');
                 this.setPregunta(response.preg_54_tabla_3, 'preg_54_tabla_3');

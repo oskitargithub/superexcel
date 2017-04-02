@@ -6,7 +6,8 @@ export class SelPersonalModel {
     
     constructor() {
         this.id = 0,
-            this.user_id = 0
+        this.user_id = 0,
+        this.data = new dataModel();
     }
 }
 
@@ -24,22 +25,24 @@ export class TablaCheckbox {
 }
 
 export class dataModel {
-    preg_89: any = '';
-    preg_96: any = '';
-    preg_97: any = '';
-    preg_98: any = '';
-    preg_100: any = '';
-    preg_102: any = '';
-    preg_104: any = '';
-    preg_105: any = '';
-    preg_106: any = '';
-    preg_111: any = '';
-    preg_112: any = '';
-    preg_113: any = '';
-    preg_114: any = '';
-    preg_115: any = '';
-    preg_116: any = '';
-    
+    public preg_89: any = '';
+    public preg_96: any = '';
+    public preg_97: any = '';
+    public preg_98: any = '';
+    public preg_100: any = '';
+    public preg_102: any = '';
+    public preg_104: any = '';
+    public preg_105: any = '';
+    public preg_106: any = '';
+    public preg_111: any = '';
+    public preg_112: any = '';
+    public preg_113: any = '';
+    public preg_114: any = '';
+    public preg_115: any = '';
+    public preg_116: any = '';
+    constructor() {
+        this.preg_100 = '';
+    }
 }
 
 

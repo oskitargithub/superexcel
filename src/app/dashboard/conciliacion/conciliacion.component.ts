@@ -146,7 +146,10 @@ export class ConciliacionComponent implements OnInit {
             response => {
                 console.log("servicio.getDatosModelo");
                 console.log(response.data);
-                this.ifForm.setControl('data', this.fb.group(response.data));
+                //this.ifForm.setControl('data', this.fb.group(response.data));
+                Object.getOwnPropertyNames(response.data).map((key: string) => 
+                     this.ifForm.controls['data'].controls[key].setValue(response.data[key])
+                ); 
                 this.setPregunta(response.preg_140_tabla_3, 'preg_140_tabla_3');
                 this.setPregunta(response.preg_142_tabla_3, 'preg_142_tabla_3');
                 this.setPregunta(response.preg_143_tabla_3, 'preg_143_tabla_3');

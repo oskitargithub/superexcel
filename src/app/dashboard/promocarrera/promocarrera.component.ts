@@ -3,7 +3,7 @@ import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { PromoCarreraService } from './promocarrera.service';
-import { PromoCarreraModel, Tabla3Model } from './promocarrera.model';
+import { PromoCarreraModel, Tabla3Model, Tabla2Model,Tabla5Model,dataModel } from './promocarrera.model';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -38,7 +38,7 @@ export class PromoCarreraComponent implements OnInit {
         private servicio: PromoCarreraService,
         injector: Injector
     ) {
-        this.dynamic = 20;
+        this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
@@ -49,9 +49,7 @@ export class PromoCarreraComponent implements OnInit {
         Messenger.options = { theme: 'air' };
     }
 
-    valorBarraProgreso() {
-        this.respondidasSeccion = 18;
-        this.totalSeccion = 20;
+    valorBarraProgreso() {        
         let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
         let type: string;
 
@@ -72,9 +70,15 @@ export class PromoCarreraComponent implements OnInit {
     createForm() {
         console.log("creando formulario");
         this.ifForm = this.fb.group({
-            //data: this.fb.group(new dataModel()),
-            preg_1_tabla_3: this.fb.array([]),
-            preg_2_tabla_3: this.fb.array([]),
+            data: this.fb.group(new dataModel()),
+            preg_1_tabla_2: this.fb.array([]),
+            preg_2_tabla_5: this.fb.array([]),
+            preg_3_tabla_3: this.fb.array([]),
+            preg_4_tabla_3: this.fb.array([]),
+            preg_5_tabla_3: this.fb.array([]),
+            preg_6_tabla_3: this.fb.array([]),
+            preg_7_tabla_3: this.fb.array([]),
+            preg_8_tabla_3: this.fb.array([]),
         });
         console.log("fin creando formulario");
     }
@@ -87,7 +91,7 @@ export class PromoCarreraComponent implements OnInit {
         return this.ifForm.get(pregunta) as FormArray;
     };
 
-    setPregunta(tabla: any, nombretabla:string) {
+    setPregunta(tabla: any[], nombretabla:string) {
         const addressFGs = tabla.map(datos => this.fb.group(datos));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
@@ -95,8 +99,14 @@ export class PromoCarreraComponent implements OnInit {
 
     
 
-    addFila(elemento: FormArray) {
+    addFila3(elemento: FormArray) {
         elemento.push(this.fb.group(new Tabla3Model()));
+    }
+    addFila2(elemento: FormArray) {
+        elemento.push(this.fb.group(new Tabla2Model()));
+    }
+    addFila5(elemento: FormArray) {
+        elemento.push(this.fb.group(new Tabla5Model()));
     }
    
     
@@ -112,9 +122,18 @@ export class PromoCarreraComponent implements OnInit {
       this.servicio.getDatosModelo().subscribe(
             response => {
                 console.log("datos formu"); 
-                //this.ifForm.setControl('data', this.fb.group(response.data));               
-                this.setPregunta(response.preg_1_tabla_3,'preg_1_tabla_3');
-                this.setPregunta(response.preg_2_tabla_3,'preg_2_tabla_3');
+                this.ifForm.setControl('data', this.fb.group(response.data));    
+                 /*Object.getOwnPropertyNames(response.data).map((key: string) => 
+                     this.ifForm.controls['data'].controls[key].setValue(response.data[key])
+                );  */                  
+                this.setPregunta(response.preg_1_tabla_5,'preg_1_tabla_5');
+                this.setPregunta(response.preg_2_tabla_5,'preg_2_tabla_5');
+                this.setPregunta(response.preg_3_tabla_3,'preg_3_tabla_3');
+                this.setPregunta(response.preg_4_tabla_3,'preg_4_tabla_3');
+                this.setPregunta(response.preg_5_tabla_3,'preg_5_tabla_3');
+                this.setPregunta(response.preg_6_tabla_3,'preg_6_tabla_3');
+                this.setPregunta(response.preg_7_tabla_3,'preg_7_tabla_3');
+                this.setPregunta(response.preg_8_tabla_3,'preg_8_tabla_3');
 
                 this.respondidasSeccion = response.respondidasSeccion;
                 this.totalSeccion = response.totalSeccion;
