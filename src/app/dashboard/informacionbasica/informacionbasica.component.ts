@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
+import { Router,
+         NavigationExtras } from '@angular/router';
 import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InformacionBasicaModel, CentroActividad, datosUserModel, dataModel } from './informacionbasica.model';
@@ -11,7 +13,7 @@ declare var Messenger: any;
 @Component({
     selector: 'informacionbasica',
     templateUrl: './informacionbasica.template.html',
-    styleUrls: [
+    styleUrls: [ './informacionbasica.css',
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
     providers: [InformacionBasicaService],
@@ -41,6 +43,7 @@ export class InformacionBasicaComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private servicio: InformacionBasicaService,
+        private router: Router,
         injector: Injector
     ) {
         this.dynamic = 0;
@@ -84,18 +87,9 @@ export class InformacionBasicaComponent implements OnInit {
 
     onSubmit2() {
         this.informacionbasica = this.preparaParaGuardar();
-        console.log(this.informacionbasica);
-
-    }
-    onSubmit(model: InformacionBasicaModel) {
-        this.informacionbasica = this.preparaParaGuardar();
-
-        this.submitted = true;
-        console.log("formulario enviado");
         this.servicio.edit(this.informacionbasica, this.token)
             .subscribe(
-            response => {
-                this.informacionbasica = response.data;
+            response => {                
                 this.status = response.status;
                 if (this.status !== "success") {
                     Messenger().post({
@@ -105,6 +99,7 @@ export class InformacionBasicaComponent implements OnInit {
                     });
                 }
                 else {
+                    this.router.navigate(["/app/clasificacionprofesional1"]);
                     Messenger().post({
                         message: 'Los datos han sido guardados correctamente',
                         type: 'success',
@@ -125,12 +120,61 @@ export class InformacionBasicaComponent implements OnInit {
 
                 }
             });
+
+    }
+    onSubmit(model: InformacionBasicaModel) {
+        console.log(this.ifForm.dirty);
+        console.log(this.ifForm.valid);
+        if (this.ifForm.dirty && this.ifForm.valid) {
+        this.informacionbasica = this.preparaParaGuardar();
+
+        this.submitted = true;
+        console.log("formulario enviado");
+        this.servicio.edit(this.informacionbasica, this.token)
+            .subscribe(
+            response => {
+                
+                this.status = response.status;
+                if (this.status !== "success") {
+                    Messenger().post({
+                        message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+                }
+                else {
+                    this.informacionbasica = response.data;
+                    Messenger().post({
+                        message: 'Los datos han sido guardados correctamente',
+                        type: 'success',
+                        showCloseButton: true
+                    });
+                }
+
+            },
+            error => {
+                this.errorMessage = <any>error;
+                if (this.errorMessage !== null) {
+
+                    Messenger().post({
+                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+
+                }
+            });
+        }
     }
 
     createForm() {
         this.ifForm = this.fb.group({
-            user: this.fb.group(new datosUserModel()),
-            data: this.fb.group(new dataModel()),
+            user: this.fb.group(new datosUserModel()),            
+            //data: this.fb.group(new dataModel()),
+            data:this.fb.group(new dataModel(),
+            {
+                'preg_5':['',Validators.required]
+            }),
             preg_2_tabla_2: this.fb.array([]),
             _token: ''
         });

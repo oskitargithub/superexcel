@@ -576,8 +576,8 @@
                     <div class="form-actions" style="margin-top:40px">
                         <div class="row">
                             <div class="offset-md-4 col-md-7 ">
-                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                                <button type="button" class="btn btn-inverse">Cancelar</button>
+                                <button type="button" (click)="onSubmit(false)" class="btn btn-primary">Guardar cambios</button>
+                                <button type="button" (click)="onSubmit(true)" class="btn btn-success">Guardar y Continuar</button>
                             </div>
                         </div>
                     </div>

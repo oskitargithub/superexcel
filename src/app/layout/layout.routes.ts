@@ -21,6 +21,7 @@ import { AuthGuard } from '../auth/auth-guard.service';
 const routes: Routes = [
   { path: '', component: Layout, children: [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivateChild: [AuthGuard], data:{ roles:['USER'] } },
+    { path: 'profile', loadChildren: '../profile/profile.module#ProfileModule', canActivateChild: [AuthGuard], data:{ roles:['USER'] }},
     { path: 'dashboard', loadChildren: '../dashboard/dashboard.module#DashboardModule', canActivate: [AuthGuard], data:{ roles:['USER'] }},
     { path: 'introduccion', loadChildren: '../dashboard/introduccion/introduccion.module#IntroduccionModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'informacionbasica', loadChildren: '../dashboard/informacionbasica/informacionbasica.module#InformacionBasicaModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
@@ -38,9 +39,12 @@ const routes: Routes = [
     { path: 'prll', loadChildren: '../dashboard/prll/prll.module#PRLLModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'acospr', loadChildren: '../dashboard/acospr/acospr.module#AcosPRModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'rrpp', loadChildren: '../dashboard/rrpp/rrpp.module#RRPPModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
+    { path: 'comunicacion', loadChildren: '../dashboard/comunicacion/comunicacion.module#ComunicacionModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
 ]},
    { path: 'admin', component: Layout, children: [
-    { path: 'dashboardadmin', loadChildren: '../dashboardadmin/dashboardadmin.module#DashboardAdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+     { path: '', redirectTo: 'dashboardadmin', pathMatch: 'full', canActivateChild: [AuthGuard], data:{ roles:['ADM'] } },
+     { path: 'dashboardadmin', loadChildren: '../dashboardadmin/dashboardadmin.module#DashboardAdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'profileadm', loadChildren: '../profile/profile.module#ProfileModule', canActivateChild: [AuthGuard], data:{ roles:['ADM'] }},    
     { path: 'infoencuestapb', loadChildren: '../dashboardadmin/infoencuestapb/infoencuestapb.module#InfoEncuestaPBModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'clasificacionprofesionaladm', loadChildren: '../dashboardadmin/clasprofesionaladm/clasprofesionaladm.module#ClasProfesionalAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'tipodecontratoadm', loadChildren: '../dashboardadmin/tipodecontratoadm/tipodecontratoadm.module#TipoDeContratoAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},

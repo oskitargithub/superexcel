@@ -20,5 +20,11 @@ export class ClasProfesional1Service {
         });
  }
 
- 
+ setDatosModelo(){    
+   return this._http.get(this.config.apilaravel + "cuestionario/seccion/3").map(res =>{
+            let headers = res.headers;
+            let miobjeto = res.json();
+            return(miobjeto);
+        });
+ }
 }

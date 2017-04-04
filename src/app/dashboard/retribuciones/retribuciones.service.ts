@@ -19,4 +19,12 @@ export class RetribucionesService {
             return (miobjeto);
         });
     }
+
+    setDatosModelo() {
+        return this._http.get(this.config.apilaravel + "cuestionario/seccion/5").map(res => {
+            let headers = res.headers;
+            let miobjeto = res.json();
+            return (miobjeto);
+        });
+    }
 }

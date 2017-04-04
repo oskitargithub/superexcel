@@ -216,10 +216,10 @@ app, .app {
 
 .sidebar-nav{
   padding: 10px 0;
-  font-size: 14px;
+  font-size: 12px;
 
   @media (min-width: map_get($grid-breakpoints, lg)) and (min-height: $screen-lg-height), (max-width: map_get($grid-breakpoints, md) - 1px){
-    font-size: 16px;
+    font-size: 14px;
   }
 
   li a{

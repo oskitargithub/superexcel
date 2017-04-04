@@ -1,7 +1,8 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Router,
+         NavigationExtras } from '@angular/router';
 import { ClasProfesional2Service } from './ClasProfesional2.service';
 import { ClasProfesional2Model, Tabla3Model } from './ClasProfesional2.model';
 
@@ -34,7 +35,7 @@ export class ClasProfesional2Component implements OnInit {
     public dynamic: number;
     public type: string;
 
-    constructor(
+    constructor(private router: Router,
         private fb: FormBuilder,
         private servicio: ClasProfesional2Service,
         injector: Injector
@@ -188,31 +189,55 @@ export class ClasProfesional2Component implements OnInit {
     
 
 
-    onSubmit() {
-        //this.clasprofesional2 = this.preparaParaGuardar();
-        console.log(this.clasprofesional2);
+    onSubmit(redir:boolean) {
+        this.clasprofesional2 = this.preparaParaGuardar();
+        this.servicio.setDatosModelo()
+            .subscribe(
+            response => {                
+                this.status = response.status;
+                if (this.status !== "success") {
+                    Messenger().post({
+                        message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+                }
+                else {
+                    if(redir){
+                        this.router.navigate(["/app/retribuciones"]);
+                    }
+                    Messenger().post({
+                        message: 'Los datos han sido guardados correctamente',
+                        type: 'success',
+                        showCloseButton: true
+                    });
+                }
 
+            },
+            error => {
+                this.errorMessage = <any>error;
+                if (this.errorMessage !== null) {
+
+                    Messenger().post({
+                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+
+                }
+            });
     }
-    /*preparaParaGuardar(): ClasProfesional2Model {
+
+    preparaParaGuardar(): ClasProfesional2Model {
         const formModel = this.ifForm.value;
-        const preg14Copy: Tabla3Model[] = formModel.preg_14_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg15Copy: Tabla3Model[] = formModel.preg_15_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg16Copy: Tabla3Model[] = formModel.preg_16_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg17Copy: Tabla3Model[] = formModel.preg_17_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg18Copy: Tabla3Model[] = formModel.preg_18_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg19Copy: Tabla3Model[] = formModel.preg_19_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-
-
         const saveClasProfesional2: ClasProfesional2Model = {
-            user_id: 0,
-            id: 1,
-            preg_14_tabla_3: preg14Copy,
-            preg_15_tabla_3: preg15Copy,
-            preg_16_tabla_3: preg16Copy,
-            preg_17_tabla_3: preg17Copy,
-            preg_18_tabla_3: preg18Copy,
-            preg_19_tabla_3: preg19Copy
+            preg_64_tabla_3: formModel.preg_64_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_65_tabla_3: formModel.preg_65_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_66_tabla_3: formModel.preg_66_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_67_tabla_3: formModel.preg_67_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_68_tabla_3: formModel.preg_68_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_69_tabla_3: formModel.preg_69_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
         };
         return saveClasProfesional2;
-    }*/
+    }
 }

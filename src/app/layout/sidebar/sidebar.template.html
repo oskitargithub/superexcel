@@ -1,29 +1,26 @@
 <div class="js-sidebar-content">
   <header class="logo hidden-sm-down">
-    <a href="index.html" title="FORMULARIO DE DIAGNÓSTICO DE IGUALDAD"><img class="rounded-circle" src="assets/img/icono.jpg" alt="Equality Momentum" title="Equality Momentum"> {{config.name}}</a>
+    <a *ngIf="perfil=='USER'" [routerLink]=" ['/app/'] " title="FORMULARIO DE DIAGNÓSTICO DE IGUALDAD"><img class="rounded-circle" src="assets/img/icono.jpg" alt="Equality Momentum" title="Equality Momentum"> {{config.name}}</a>
+    <a *ngIf="perfil=='ADM'" [routerLink]=" ['/app/admin'] " title="FORMULARIO DE DIAGNÓSTICO DE IGUALDAD"><img class="rounded-circle" src="assets/img/icono.jpg" alt="Equality Momentum" title="Equality Momentum"> {{config.name}}</a>
   </header>
   <!-- main notification links are placed inside of .sidebar-nav -->
   <ul class="sidebar-nav" *ngIf="perfil=='USER'">
-    <li *ngIf="authService.tipocuest=='1'">
-      <a [routerLink]=" ['informacionbasica'] ">
-        <span class="icon">
-            <i class="glyphicon glyphicon-stats"></i>
-          </span> Información Básica
-      </a>
-    </li>
-    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['clasificacionprofesional1'] ">Clasificación Prof. I</a></li>
-    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['clasificacionprofesional2'] ">Clasificación Prof. II</a></li>
-    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['retribuciones'] ">Retribuciones I</a></li>
-    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['retribuciones2'] ">Retribuciones II</a></li>
-    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['selpersonal'] ">Acceso al Empleo</a></li>
-    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['bajaseincorp'] ">Incorporaciones y Bajas</a></li>
-    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['conciliacion'] ">Conciliacion Familiar</a></li>
-    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['formacion'] ">Formación</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['dashboard'] " title="Inicio"><span class="icon"><i class="fa fa-desktop"></i></span>Inicio</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['introduccion'] " title="Introducción">Introducción</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['informacionbasica'] "><span class="icon"><i class="glyphicon glyphicon-stats"></i></span>Información Básica</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['clasificacionprofesional1'] " title="Clasificación Profesional I">Clasificación Prof. I</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['clasificacionprofesional2'] " title="Clasificación Profesional II">Clasificación Prof. II</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['retribuciones'] " title="Retribuciones I">Retribuciones I</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['retribuciones2'] " title="Retribuciones II">Retribuciones II</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['selpersonal'] " title="Acceso al Empleo">Acceso al Empleo</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['bajaseincorp'] " title="Incorporaciones y Bajas">Incorporaciones/Bajas</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['conciliacion'] " title="Conciliacion Familiar">Conciliacion Familiar</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['formacion'] " title="Formación">Formación</a></li>
     <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['promocarrera'] " title="Promoción y Carrera Profesional">Promoción y C.P.</a></li>
-    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['prll'] ">Salud Laboral y PRLL</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['prll'] "title="Salud Laboral y Prevención de Riesgos Laborales">Salud Laboral y PRLL</a></li>
     <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['acospr'] " title="Acoso Sexual y por razon de Sexo">Acoso Sexual...</a></li>
     <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['rrpp'] " title="Representación de Personal">Rep. de Personal</a></li>
-    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['comunicacion'] ">Comunicación</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['comunicacion']" title="Comunicación">Comunicación</a></li>
     
   </ul>
   <ul class="sidebar-nav" id="sidebar-dashboardadmin" *ngIf="perfil=='ADM'">

@@ -209,45 +209,46 @@ export class ClasProfesional1Component implements OnInit {
     };
 
     onSubmit() {
-        //this.clasprofesional1 = this.preparaParaGuardar();
+        this.modelo = this.preparaParaGuardar();
         console.log(this.modelo);
-
+    }
+    onSubmit2() {
+        this.modelo = this.preparaParaGuardar();
+        console.log(this.modelo);
     }
 
-    /*preparaParaGuardar(): ClasProfesional1Model {
+    preparaParaGuardar(): ClasProfesional1Model {
         const formModel = this.ifForm.value;
-        const preg3Copy: Tabla3Model[] = formModel.preg_3_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg4Copy: Tabla3Model[] = formModel.preg_4_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg5Copy: Tabla3Model[] = formModel.preg_46_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg6Copy: Tabla3Model[] = formModel.preg_47_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg7Copy: Tabla3Model[] = formModel.preg_7_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg8Copy: Tabla3Model[] = formModel.preg_8_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg9Copy: Tabla3Model[] = formModel.preg_9_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg10Copy: Tabla3Model[] = formModel.preg_10_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg11Copy: Tabla3Model[] = formModel.preg_11_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg12Copy: Tabla3Model[] = formModel.preg_12_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
-        const preg13Copy: Tabla3Model[] = formModel.preg_13_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
+        const preg_48_tabla_3Copy: Tabla3Model[] = formModel.preg_48_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
+        const preg_49_tabla_3Copy: Tabla3Model[] = formModel.preg_49_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
+        const preg_54_tabla_3Copy: Tabla3Model[] = formModel.preg_54_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
+        const preg_55_tabla_3Copy: Tabla3Model[] = formModel.preg_55_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
+        const preg_56_tabla_3Copy: Tabla3Model[] = formModel.preg_56_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
+        const preg_57_tabla_3Copy: Tabla3Model[] = formModel.preg_57_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
+        const preg_59_tabla_3Copy: Tabla3Model[] = formModel.preg_59_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
+        const preg_60_tabla_3Copy: Tabla3Model[] = formModel.preg_60_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
+        const preg_61_tabla_3Copy: Tabla3Model[] = formModel.preg_61_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
+        const preg_62_tabla_3Copy: Tabla3Model[] = formModel.preg_62_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
+        const preg_63_tabla_3Copy: Tabla3Model[] = formModel.preg_63_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos));
 
 
         const datacuestionario: dataModel = formModel.data;
         const saveClasProfesional1: ClasProfesional1Model = {
-            user_id: 0,
-            id: 1,
             data: datacuestionario,
-            preg_3_tabla_3: preg3Copy,
-            preg_4_tabla_3: preg4Copy,
-            preg_46_tabla_3: preg5Copy,
-            preg_46_tabla_3: preg6Copy,
-            preg_7_tabla_3: preg7Copy,
-            preg_8_tabla_3: preg8Copy,
-            preg_9_tabla_3: preg9Copy,
-            preg_10_tabla_3: preg10Copy,
-            preg_11_tabla_3: preg11Copy,
-            preg_12_tabla_3: preg12Copy,
-            preg_13_tabla_3: preg13Copy,
+            preg_48_tabla_3: preg_48_tabla_3Copy,
+            preg_49_tabla_3: preg_49_tabla_3Copy,
+            preg_54_tabla_3: preg_54_tabla_3Copy,
+            preg_55_tabla_3: preg_55_tabla_3Copy,
+            preg_56_tabla_3: preg_56_tabla_3Copy,
+            preg_57_tabla_3: preg_57_tabla_3Copy,
+            preg_59_tabla_3: preg_59_tabla_3Copy,
+            preg_60_tabla_3: preg_60_tabla_3Copy,
+            preg_61_tabla_3: preg_61_tabla_3Copy,
+            preg_62_tabla_3: preg_62_tabla_3Copy,
+            preg_63_tabla_3: preg_63_tabla_3Copy,
         };
         return saveClasProfesional1;
-    }*/
+    }
 
 
 

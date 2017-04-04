@@ -139,7 +139,7 @@ export class FormacionComponent implements OnInit {
                     this.setPregunta(response.preg_2_tabla_3, 'preg_2_tabla_3');
                     this.setPregunta(response.preg_3_tabla_3, 'preg_3_tabla_3');
                     this.setPregunta(response.preg_4_tabla_3, 'preg_4_tabla_3');
-                    this.setPregunta(response.preg_5_tabla_3, 'preg_5_tabla_3');
+                    
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
                     this.valorBarraProgreso();
