@@ -11,26 +11,19 @@ export class FormacionService {
     constructor(private _http: Http, config: AppConfig) {
         this.config = config.getConfig(); //me traigo la configuración para saber la url de la api
     }
+    /*getDatosModelo() {
+        return this._http.get(this.config.apilaravel + "cuestionario/seccion/9").map(res => {
+            let headers = res.headers;
+            let miobjeto = res.json();
+            return (miobjeto);
+        });
+    }*/
+
     getDatosModelo() {
-        var respuesta = {
-            "status": "success", "total": 24, "respondidas": 0,
-            "respondidasCuest": 0, "respondidasSeccion": 9, "totalCuest": 12, "totalSeccion": 12,
-            "data": { "user_id": 2, "preg_1": "", "preg_2": "", "preg_3": "", "preg_4": "", "preg_5": "", "preg_6": "", "preg_7": "", "preg_8": "", "preg_9": "", "preg_10": "", "preg_11": "",
-             "preg_12": "", "preg_13": "", "preg_14": "", "preg_15": "", "preg_16": "", "preg_17": "", "preg_18": "" , "preg_19": "", "preg_20": "" , "preg_21": "",
-             "preg_22": "", "preg_23": "", "preg_24": "", "preg_25": "", "preg_26": "", "preg_27": "", "preg_28": "" , "preg_29": "", "preg_30": "", "preg_31": ""},
-            "preg_1_tabla_3": [
-                { "texto": " Personas beneficiadas de formación interna", "mujeres": "", "hombres": "" },
-                { "texto": " Personas beneficiadas de formación externa", "mujeres": "", "hombres": "" },
-            ],
-            "preg_2_tabla_3": [
-                { "texto": "A1", "mujeres": "", "hombres": "" },
-                { "texto": "A2", "mujeres": "", "hombres": "" },
-                { "texto": "B", "mujeres": "", "hombres": "" },
-                { "texto": "C1", "mujeres": "", "hombres": "" },
-                { "texto": "C2", "mujeres": "", "hombres": "" },
-                { "texto": "E", "mujeres": "", "hombres": "" },
-            ],
-        };
-        return Observable.of(respuesta);
+        return this._http.get(this.config.api + "cuestionario9.php").map(res => {
+            let headers = res.headers;
+            let miobjeto = res.json();
+            return (miobjeto);
+        });
     }
 }

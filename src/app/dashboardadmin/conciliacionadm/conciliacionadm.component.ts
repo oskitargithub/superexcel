@@ -98,8 +98,7 @@ export class ConciliacionAdmComponent implements OnInit {
     this.servicio.getDatosModelo()
       .subscribe(
       response => {
-        this.modelo = response;
-        this.asignaDatosGraficas();
+        
 
         this.status = response.status;
         if (this.status !== "success") {
@@ -119,6 +118,8 @@ export class ConciliacionAdmComponent implements OnInit {
           }
         }
         else {
+          this.modelo = response;
+        this.asignaDatosGraficas();
           Messenger().post({
             message: 'Los datos han sido cargados correctamente',
             type: 'success',

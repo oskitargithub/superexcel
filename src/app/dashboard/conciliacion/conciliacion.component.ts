@@ -147,25 +147,7 @@ export class ConciliacionComponent implements OnInit {
                 console.log("servicio.getDatosModelo");
                 console.log(response.data);
                 //this.ifForm.setControl('data', this.fb.group(response.data));
-                Object.getOwnPropertyNames(response.data).map((key: string) => 
-                     this.ifForm.controls['data'].controls[key].setValue(response.data[key])
-                ); 
-                this.setPregunta(response.preg_140_tabla_3, 'preg_140_tabla_3');
-                this.setPregunta(response.preg_142_tabla_3, 'preg_142_tabla_3');
-                this.setPregunta(response.preg_143_tabla_3, 'preg_143_tabla_3');
-                this.setPregunta(response.preg_146_tabla_3, 'preg_146_tabla_3');
-                this.setPregunta(response.preg_147_tabla_3, 'preg_147_tabla_3');
-                this.setPregunta(response.preg_148_tabla_3, 'preg_148_tabla_3');
-                this.setPregunta(response.preg_150_tabla_3, 'preg_150_tabla_3');
-                this.setPregunta(response.preg_152_tabla_3, 'preg_152_tabla_3');
 
-                this.setPregunta(response.preg_130_tabla_2, 'preg_130_tabla_2');
-
-
-
-                this.respondidasSeccion = response.respondidasSeccion;
-                this.totalSeccion = response.totalSeccion;
-                this.valorBarraProgreso();
 
                 this.status = response.status;
                 if (this.status !== "success") {
@@ -185,6 +167,21 @@ export class ConciliacionComponent implements OnInit {
                     }
                 }
                 else {
+                    Object.getOwnPropertyNames(response.data).map((key: string) =>
+                        (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
+                    );
+                    this.setPregunta(response.preg_140_tabla_3, 'preg_140_tabla_3');
+                    this.setPregunta(response.preg_142_tabla_3, 'preg_142_tabla_3');
+                    this.setPregunta(response.preg_143_tabla_3, 'preg_143_tabla_3');
+                    this.setPregunta(response.preg_146_tabla_3, 'preg_146_tabla_3');
+                    this.setPregunta(response.preg_147_tabla_3, 'preg_147_tabla_3');
+                    this.setPregunta(response.preg_148_tabla_3, 'preg_148_tabla_3');
+                    this.setPregunta(response.preg_150_tabla_3, 'preg_150_tabla_3');
+                    this.setPregunta(response.preg_152_tabla_3, 'preg_152_tabla_3');
+                    this.setPregunta(response.preg_130_tabla_2, 'preg_130_tabla_2');
+                    this.respondidasSeccion = response.respondidasSeccion;
+                    this.totalSeccion = response.totalSeccion;
+                    this.valorBarraProgreso();
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',

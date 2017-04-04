@@ -3,7 +3,9 @@ import { BajasEIncorpAdmService } from './bajaseincorpadm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
 import { FuncionesT5Service } from '../serviciofunciones/funcionest5.service';
 import { BajasEIncorpModel, Tabla5Model, Tabla3Model } from '../../dashboard/bajaseincorp/bajaseincorp.model';
-
+import { AppConfig } from '../../app.config';
+import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 declare var jQuery: any;
 declare var Messenger: any;
 
@@ -18,12 +20,15 @@ declare var Messenger: any;
   encapsulation: ViewEncapsulation.None,
 })
 export class BajasEIncorpAdmComponent implements OnInit {
+  config: any;
   injector: Injector;    
   submitted = false;
   public modelo: BajasEIncorpModel;
   public errorMessage: string;
   public status: string;
 
+ 
+//{ Declaracion de variables de gráficas
   public barChartType: string = 'bar';
   public barChartOptions: any = { scaleShowVerticalLines: false, responsive: true };
 
@@ -73,14 +78,24 @@ export class BajasEIncorpAdmComponent implements OnInit {
   public datosGrafica2 = [];
   public labelGrafica1 = [];
   public labelGrafica2 = [];
+//}
+ 
 
 
-  constructor(
+ 
+  constructor(config: AppConfig,
+   private AuthService: AuthService,
     private servicio: BajasEIncorpAdmService,
+    public router: Router,
     public funciones: FuncionesService,
     public funcionest5: FuncionesT5Service,
     injector: Injector
   ) {
+    this.config = config.getConfig();
+        if (this.AuthService.usucuest == 0) {
+            let redirect = this.config.urladmin;
+            this.router.navigate([redirect]);
+        }
     this.modelo = new BajasEIncorpModel();
     
   }
@@ -93,8 +108,7 @@ export class BajasEIncorpAdmComponent implements OnInit {
     this.servicio.getDatosModelo()
       .subscribe(
       response => {
-        this.modelo = response;
-        this.asignaDatosGraficas();
+        
 
         this.status = response.status;
         if (this.status !== "success") {
@@ -114,6 +128,8 @@ export class BajasEIncorpAdmComponent implements OnInit {
           }
         }
         else {
+          this.modelo = response;
+        this.asignaDatosGraficas();
           Messenger().post({
             message: 'Los datos han sido cargados correctamente',
             type: 'success',

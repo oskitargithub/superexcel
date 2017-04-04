@@ -38,6 +38,7 @@ export class AuthService {
               return response.json().success});*/
     return this._http.post(this.config.api + "login.php/isLogged2", params, {headers: headers})
       .map(res => {
+        console.log("Asignamos rol:" + roles[0]);
         this.perfilauth = roles[0];
         if(res.json().tipocuest!=null)
           this.tipocuest= res.json().tipocuest;

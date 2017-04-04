@@ -3,7 +3,7 @@
     <a href="index.html" title="FORMULARIO DE DIAGNÓSTICO DE IGUALDAD"><img class="rounded-circle" src="assets/img/icono.jpg" alt="Equality Momentum" title="Equality Momentum"> {{config.name}}</a>
   </header>
   <!-- main notification links are placed inside of .sidebar-nav -->
-  <ul class="sidebar-nav">
+  <ul class="sidebar-nav" *ngIf="perfil=='USER'">
     <li *ngIf="authService.tipocuest=='1'">
       <a [routerLink]=" ['informacionbasica'] ">
         <span class="icon">
@@ -19,30 +19,30 @@
     <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['bajaseincorp'] ">Incorporaciones y Bajas</a></li>
     <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['conciliacion'] ">Conciliacion Familiar</a></li>
     <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['formacion'] ">Formación</a></li>
-    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['promocarrera'] ">Promoción y CP.</a></li>
-    <!-- <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Promoción y Carrera Profesional</a></li>
-        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Salud Laboral y PRL</a></li>
-        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Acoso Sexual y por razon de Sexo</a></li>
-        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Representación de Personal</a></li>
-        <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" [''] ">Comunicación</a></li>
-        -->
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['promocarrera'] " title="Promoción y Carrera Profesional">Promoción y C.P.</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['prll'] ">Salud Laboral y PRLL</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['acospr'] " title="Acoso Sexual y por razon de Sexo">Acoso Sexual...</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['rrpp'] " title="Representación de Personal">Rep. de Personal</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['comunicacion'] ">Comunicación</a></li>
+    
   </ul>
-  <ul id="sidebar-dashboardadmin" class="collapse" *ngIf="authService.perfilauth=='ADM'">
-    <li><a [routerLink]=" ['dashboardadmin'] ">Dashboard Admin</a></li>
+  <ul class="sidebar-nav" id="sidebar-dashboardadmin" *ngIf="perfil=='ADM'">
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['dashboardadmin'] ">Dashboard Admin</a></li>
     <!-- rutas y enlaces para amin cuestionarios tipo=1 que son de empresa pública -->
-    <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'"><a [routerLink]=" ['infoencuestapb'] ">Inicio</a></li>
-    <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'"><a [routerLink]=" ['clasificacionprofesionaladm'] ">Clasificación Profesional</a></li>
-    <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'"><a [routerLink]=" ['tipodecontratoadm'] ">Tipo de Contrato</a></li>
-    <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'"><a [routerLink]=" ['retribucionesadm'] ">Estructura Salarial</a></li>
-    <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'"><a [routerLink]=" ['retribucionesadm2'] ">Estructura Salarial 2</a></li>
-    <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'"><a [routerLink]=" ['bajaseincorpadm'] ">Bajas e Incorporaciones</a></li>
-    <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'"><a [routerLink]=" ['conciliacionadm'] ">Conciliacion Familiar</a></li>
-    <!-- <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Formación</a></li>
-          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Promoción y Carrera Profesional</a></li>
-          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Acoso por Razón de Sexo</a></li>
-          <li *ngIf="authService.tipocuest=='1' && authService.perfilauth=='ADM'" ><a [routerLink]=" [''] ">Representación Plantilla</a></li>
-        -->
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['infoencuestapb'] ">Inicio</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['clasificacionprofesionaladm'] ">Clasificación Profesional</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['tipodecontratoadm'] ">Tipo de Contrato</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['retribucionesadm'] ">Estructura Salarial</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['retribucionesadm2'] ">Estructura Salarial 2</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['bajaseincorpadm'] ">Bajas e Incorporaciones</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['conciliacionadm'] ">Conciliacion Familiar</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['formacionadm'] ">Formación</a></li>
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['promocarreraadm']" title="Promoción y Carrera Profesional">Promoción y C.P.</a></li>
+    <li *ngIf="authService.tipocuest=='1'" ><a [routerLink]=" ['acospradm'] ">Acoso</a></li>
+    <li *ngIf="authService.tipocuest=='1'" ><a [routerLink]=" ['rrppadm'] ">Representación Plantilla</a></li>   
     <!-- fin enlaces empresa pública -->
+
+    
     <!-- rutas y enlaces para amin cuestionarios tipo=1 que son de empresa privada -->
     <li *ngIf="authService.tipocuest=='2' && authService.perfilauth=='ADM'"><a [routerLink]=" ['infoencuestapr'] ">Inicio</a></li>
     <li *ngIf="authService.tipocuest=='2' && authService.perfilauth=='ADM'"><a [routerLink]=" [''] ">2 Clasificación Profesional</a></li>

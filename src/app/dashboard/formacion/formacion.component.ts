@@ -38,7 +38,7 @@ export class FormacionComponent implements OnInit {
         private servicio: FormacionService,
         injector: Injector
     ) {
-        this.dynamic = 20;
+        this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
@@ -70,34 +70,37 @@ export class FormacionComponent implements OnInit {
     createForm() {
         console.log("creando formulario");
         this.ifForm = this.fb.group({
-            data: this.fb.group(new FormacionModel()),
+            data: this.fb.group(new datosModel()),
             preg_1_tabla_3: this.fb.array([]),
             preg_2_tabla_3: this.fb.array([]),
+            preg_3_tabla_3: this.fb.array([]),
+            preg_4_tabla_3: this.fb.array([]),
+            preg_5_tabla_3: this.fb.array([]),
         });
         console.log("fin creando formulario");
     }
 
-    getValorElemento(elemento : string){        
+    getValorElemento(elemento: string) {
         return this.ifForm.get(elemento).value;
     }
-    
-    getPregunta (pregunta:string): FormArray {
+
+    getPregunta(pregunta: string): FormArray {
         return this.ifForm.get(pregunta) as FormArray;
     };
 
-    setPregunta(tabla: any, nombretabla:string) {
+    setPregunta(tabla: any, nombretabla: string) {
         const addressFGs = tabla.map(datos => this.fb.group(datos));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
     }
 
-    
+
 
     addFila(elemento: FormArray) {
         elemento.push(this.fb.group(new Tabla3Model()));
     }
-   
-    
+
+
     removeFila(elemento: FormArray, i: number) {
         elemento.removeAt(i);
     }
@@ -106,21 +109,9 @@ export class FormacionComponent implements OnInit {
     };
 
 
-    getDatosModelo(){
-      this.servicio.getDatosModelo().subscribe(
+    getDatosModelo() {
+        this.servicio.getDatosModelo().subscribe(
             response => {
-                console.log("datos formu"); 
-                this.ifForm.setControl('data', this.fb.group(response.data));   
-                /*Object.getOwnPropertyNames(response.data).map((key: string) => 
-                     this.ifForm.controls['data'].controls[key].setValue(response.data[key])
-                );  */           
-                this.setPregunta(response.preg_1_tabla_3,'preg_1_tabla_3');
-                this.setPregunta(response.preg_2_tabla_3,'preg_2_tabla_3');
-
-                this.respondidasSeccion = response.respondidasSeccion;
-                this.totalSeccion = response.totalSeccion;
-                this.valorBarraProgreso();
-
                 this.status = response.status;
                 if (this.status !== "success") {
                     if (this.status == "tokenerror") {
@@ -139,6 +130,19 @@ export class FormacionComponent implements OnInit {
                     }
                 }
                 else {
+                    console.log("datos formu");
+                    //this.ifForm.setControl('data', this.fb.group(response.data));
+                    Object.getOwnPropertyNames(response.data).map((key: string) => 
+                     (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
+                    ); 
+                    this.setPregunta(response.preg_1_tabla_3, 'preg_1_tabla_3');
+                    this.setPregunta(response.preg_2_tabla_3, 'preg_2_tabla_3');
+                    this.setPregunta(response.preg_3_tabla_3, 'preg_3_tabla_3');
+                    this.setPregunta(response.preg_4_tabla_3, 'preg_4_tabla_3');
+                    this.setPregunta(response.preg_5_tabla_3, 'preg_5_tabla_3');
+                    this.respondidasSeccion = response.respondidasSeccion;
+                    this.totalSeccion = response.totalSeccion;
+                    this.valorBarraProgreso();
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',

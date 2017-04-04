@@ -24,6 +24,7 @@ export class Sidebar implements OnInit {
     this.config = config.getConfig();
     this.router = router;
     this.location = location;
+    this.perfil = authService.perfilauth;    
   }
 
   initSidebarScroll(): void {

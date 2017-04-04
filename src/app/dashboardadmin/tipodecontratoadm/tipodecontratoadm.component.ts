@@ -6,6 +6,10 @@ import { TipoDeContratoAdmService } from './tipodecontratoadm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
 import { ClasProfesional2Model, Tabla3Model } from '../../dashboard/clasprofesional2/ClasProfesional2.model';
 
+import { AppConfig } from '../../app.config';
+import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
+
 declare var jQuery: any;
 declare var Messenger: any;
 
@@ -24,6 +28,7 @@ export class TipoDeContratoAdmComponent implements OnInit {
   domSharedStylesHost: any;
   colorOptions: Object = { color: '#f0b518' };
   submitted = false;
+  config: any;
 
   public modelo: ClasProfesional2Model;
   public errorMessage: string;
@@ -98,15 +103,28 @@ export class TipoDeContratoAdmComponent implements OnInit {
   constructor(
     private servicio: TipoDeContratoAdmService,
     public funciones: FuncionesService,
+    config: AppConfig,
+        private AuthService: AuthService,
+        public router: Router,
     injector: Injector
   ) {
+    console.log("paso1");
+    this.config = config.getConfig();
+        if (this.AuthService.usucuest == 0) {
+          console.log("paso2");
+            let redirect = this.config.urladmin;
+            this.router.navigate([redirect]);
+        }
+        console.log("paso3");
     this.modelo = new ClasProfesional2Model();
 
   }
-
+ 
   ngOnInit(): void {
-    Messenger.options = { theme: 'air' };
-    this.getDatosModelo();
+    Messenger.options = { theme: 'air' }; 
+    if (this.AuthService.usucuest != 0) {         
+      this.getDatosModelo();
+    }
   }
 
   reinicializaDatosGrafica() {
@@ -117,6 +135,7 @@ export class TipoDeContratoAdmComponent implements OnInit {
   }
 
   getDatosModelo() {
+    console.log("trayendo datos modelo");
     this.servicio.getDatosModelo()
       .subscribe(
       response => {

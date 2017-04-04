@@ -6,7 +6,7 @@ import { FormsModule,ReactiveFormsModule  }    from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ng2-bootstrap';
 import { PRLLComponent } from './prll.component';
-
+import { MdRadioModule, MdUniqueSelectionDispatcher } from '@angular2-material/radio';
 
 export const routes = [
   { path: '', component: PRLLComponent, pathMatch: 'full' }
@@ -16,9 +16,11 @@ export const routes = [
   imports: [ CommonModule, 
             FormsModule,
             ReactiveFormsModule, 
+            MdRadioModule,
             TooltipModule.forRoot(),
             RouterModule.forChild(routes) ],
-  declarations: [ PRLLComponent ]
+  declarations: [ PRLLComponent ],
+  providers: [MdUniqueSelectionDispatcher]
 })
 export class PRLLModule {
   static routes = routes;

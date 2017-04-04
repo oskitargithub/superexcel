@@ -3,7 +3,7 @@ import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { PromoCarreraService } from './promocarrera.service';
-import { PromoCarreraModel, Tabla3Model, Tabla2Model,Tabla5Model,dataModel } from './promocarrera.model';
+import { PromoCarreraModel, Tabla3Model, Tabla2Model, Tabla5Model, dataModel } from './promocarrera.model';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -49,7 +49,7 @@ export class PromoCarreraComponent implements OnInit {
         Messenger.options = { theme: 'air' };
     }
 
-    valorBarraProgreso() {        
+    valorBarraProgreso() {
         let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
         let type: string;
 
@@ -71,7 +71,7 @@ export class PromoCarreraComponent implements OnInit {
         console.log("creando formulario");
         this.ifForm = this.fb.group({
             data: this.fb.group(new dataModel()),
-            preg_1_tabla_2: this.fb.array([]),
+            preg_1_tabla_5: this.fb.array([]),
             preg_2_tabla_5: this.fb.array([]),
             preg_3_tabla_3: this.fb.array([]),
             preg_4_tabla_3: this.fb.array([]),
@@ -83,21 +83,21 @@ export class PromoCarreraComponent implements OnInit {
         console.log("fin creando formulario");
     }
 
-    getValorElemento(elemento : string){        
+    getValorElemento(elemento: string) {
         return this.ifForm.get(elemento).value;
     }
-    
-    getPregunta (pregunta:string): FormArray {
+
+    getPregunta(pregunta: string): FormArray {
         return this.ifForm.get(pregunta) as FormArray;
     };
 
-    setPregunta(tabla: any[], nombretabla:string) {
+    setPregunta(tabla: any[], nombretabla: string) {
         const addressFGs = tabla.map(datos => this.fb.group(datos));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
     }
 
-    
+
 
     addFila3(elemento: FormArray) {
         elemento.push(this.fb.group(new Tabla3Model()));
@@ -108,8 +108,8 @@ export class PromoCarreraComponent implements OnInit {
     addFila5(elemento: FormArray) {
         elemento.push(this.fb.group(new Tabla5Model()));
     }
-   
-    
+
+
     removeFila(elemento: FormArray, i: number) {
         elemento.removeAt(i);
     }
@@ -118,26 +118,11 @@ export class PromoCarreraComponent implements OnInit {
     };
 
 
-    getDatosModelo(){
-      this.servicio.getDatosModelo().subscribe(
+    getDatosModelo() {
+        this.servicio.getDatosModelo().subscribe(
             response => {
-                console.log("datos formu"); 
-                this.ifForm.setControl('data', this.fb.group(response.data));    
-                 /*Object.getOwnPropertyNames(response.data).map((key: string) => 
-                     this.ifForm.controls['data'].controls[key].setValue(response.data[key])
-                );  */                  
-                this.setPregunta(response.preg_1_tabla_5,'preg_1_tabla_5');
-                this.setPregunta(response.preg_2_tabla_5,'preg_2_tabla_5');
-                this.setPregunta(response.preg_3_tabla_3,'preg_3_tabla_3');
-                this.setPregunta(response.preg_4_tabla_3,'preg_4_tabla_3');
-                this.setPregunta(response.preg_5_tabla_3,'preg_5_tabla_3');
-                this.setPregunta(response.preg_6_tabla_3,'preg_6_tabla_3');
-                this.setPregunta(response.preg_7_tabla_3,'preg_7_tabla_3');
-                this.setPregunta(response.preg_8_tabla_3,'preg_8_tabla_3');
+                console.log("datos formu");
 
-                this.respondidasSeccion = response.respondidasSeccion;
-                this.totalSeccion = response.totalSeccion;
-                this.valorBarraProgreso();
 
                 this.status = response.status;
                 if (this.status !== "success") {
@@ -157,6 +142,21 @@ export class PromoCarreraComponent implements OnInit {
                     }
                 }
                 else {
+                    Object.getOwnPropertyNames(response.data).map((key: string) =>
+                        (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
+                    );
+                    this.setPregunta(response.preg_1_tabla_5, 'preg_1_tabla_5');
+                    this.setPregunta(response.preg_2_tabla_5, 'preg_2_tabla_5');
+                    this.setPregunta(response.preg_3_tabla_3, 'preg_3_tabla_3');
+                    this.setPregunta(response.preg_4_tabla_3, 'preg_4_tabla_3');
+                    this.setPregunta(response.preg_5_tabla_3, 'preg_5_tabla_3');
+                    this.setPregunta(response.preg_6_tabla_3, 'preg_6_tabla_3');
+                    this.setPregunta(response.preg_7_tabla_3, 'preg_7_tabla_3');
+                    this.setPregunta(response.preg_8_tabla_3, 'preg_8_tabla_3');
+
+                    this.respondidasSeccion = response.respondidasSeccion;
+                    this.totalSeccion = response.totalSeccion;
+                    this.valorBarraProgreso();
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',

@@ -35,6 +35,9 @@ const routes: Routes = [
     { path: 'conciliacion', loadChildren: '../dashboard/conciliacion/conciliacion.module#ConciliacionModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'formacion', loadChildren: '../dashboard/formacion/formacion.module#FormacionModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'promocarrera', loadChildren: '../dashboard/promocarrera/promocarrera.module#PromoCarreraModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
+    { path: 'prll', loadChildren: '../dashboard/prll/prll.module#PRLLModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
+    { path: 'acospr', loadChildren: '../dashboard/acospr/acospr.module#AcosPRModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
+    { path: 'rrpp', loadChildren: '../dashboard/rrpp/rrpp.module#RRPPModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
 ]},
    { path: 'admin', component: Layout, children: [
     { path: 'dashboardadmin', loadChildren: '../dashboardadmin/dashboardadmin.module#DashboardAdminModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
@@ -45,6 +48,10 @@ const routes: Routes = [
     { path: 'retribucionesadm2', loadChildren: '../dashboardadmin/retribucionesadm2/retribucionesadm2.module#RetribucionesAdm2Module', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'bajaseincorpadm', loadChildren: '../dashboardadmin/bajaseincorpadm/bajaseincorpadm.module#BajasEIncorpAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'conciliacionadm', loadChildren: '../dashboardadmin/conciliacionadm/conciliacionadm.module#ConciliacionAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'formacionadm', loadChildren: '../dashboardadmin/formacionadm/formacionadm.module#FormacionAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'promocarreraadm', loadChildren: '../dashboardadmin/promocarreraadm/promocarreraadm.module#PromoCarreraAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'acospradm', loadChildren: '../dashboardadmin/acospradm/acospradm.module#AcosPRAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'rrppadm', loadChildren: '../dashboardadmin/rrppadm/rrppadm.module#RRPPAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
   ]},
   { path: 'login', loadChildren: '../login/login.module#LoginModule'}
 ];

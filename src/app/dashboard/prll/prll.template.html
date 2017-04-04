@@ -1,0 +1,343 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Salud Laboral y Prevención de riesgos laborales ligados al sexo</li>
+</ol>
+
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="page-title">Actuaciones de la organización en materia de <span class="fw-semi-bold">Prevención de riesgos laborales ligados al sexo</span></h1>
+    </div>
+    <div class="col-md-4">
+        <div class="row progress-stats">
+            <div class="col-md-9 col-xs-12">
+                <div class="bg-white progress progress-sm">
+                    <div progress-animate class="progress-bar bg-primary progress-sm" style="width: 18%;" data-width="18%"></div>
+                </div>
+            </div>
+            <div class="col-md-9 col-xs-12">
+                <p class="description deemphasize">Progreso de la pestaña</p>
+                <div class="bg-white progress-bar">
+                    <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic}"></progress>
+
+
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 text-xs-center">
+                <span class="status rounded rounded-lg bg-body-light">
+                                    <small><span number-animate>{{(respondidasSeccion*100)/totalSeccion}}</span>%</small>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="widget" widget>
+            <div class="widget-body">
+                <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <div class="col-md-7 offset-md-2" style="margin-top:40px">
+                                <p>¿Han sido constituidas las siguientes estructuras en la organización?</p>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_1">
+                                       El Comité de Seguridad y Salud
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_1">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_2">
+                                      La Comisión Antiacoso
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_2">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="col-md-7 offset-md-2" style="margin-top:40px">
+                                <p>De acuerdo a las acciones que la organización desarrolla responda las siguientes preguntas</p>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_3">
+                                      La EVALUACIÓN de los riesgos laborales comprende los riesgos vinculados al sexo de las personas trabajadoras
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_3">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_4">
+                                      El PLAN DE PREVENCIÓN comprende medidas de prevención y protección para  eliminar/reducir  los  riesgos  ligados  al  sexo  de  las personas trabajadoras
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_4">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <legend>ACTUACIONES DE LA ORGANIZACIÓN EN MATERIA DE PREVENCIÓN DE RIESGOS LABORALES RELACIONADOS CON
+                                EL EMBARAZO, POTSPARTO Y LACTANCIA DE LAS TRABAJADORAS</legend>
+
+                            <div class="row">
+                                <div class="col-md-7 offset-md-2 text-md-center">
+                                    MEDIDAS SOBRE EL FACTOR TÉCNICO
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    Nº de casos
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 offset-md-2">
+                                    <label for="preg_5">
+                                      ¿Se ha adaptado técnicamente algún puesto de trabajo por razón de riesgo durante el embarazo?
+                                    </label>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                    <md-radio-group formControlName="preg_5">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="form-control" formControlName="preg_6" tooltip="Nº de casos" placeholder="Nº de casos" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-5 offset-md-2">
+                                    <label for="preg_7">
+                                      ¿Se ha adaptado técnicamente algún puesto de trabajo por razón de riesgo durante la lactancia?
+                                    </label>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                    <md-radio-group formControlName="preg_7">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="form-control" formControlName="preg_8" tooltip="Nº de casos" placeholder="Nº de casos" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 offset-md-2">
+                                    <label for="preg_9">
+                                      ¿Se ha reducido el tiempo de trabajo a alguna trabajadora por razón de riesgo durante el embarazo o por riesgo durante la lactancia?
+                                    </label>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                    <md-radio-group formControlName="preg_9">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="form-control" formControlName="preg_10" tooltip="Nº de casos" placeholder="Nº de casos" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 offset-md-2">
+                                    <label for="preg_11">
+                                     ¿Se ha suprimido el trabajo nocturno o a turnos a alguna trabajadora por razón de riesgo durante el embarazo o por riesgo durante la lactancia ¿Se ha reducido el tiempo de trabajo a alguna trabajadora por razón de riesgo durante el embarazo o por riesgo durante la lactancia?
+                                    </label>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                    <md-radio-group formControlName="preg_11">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="form-control" formControlName="preg_12" tooltip="Nº de casos" placeholder="Nº de casos" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-md-7 offset-md-2 text-md-center">
+                                    MEDIDAS ORGANIZATIVAS (MOVILIDAD FUNCIONAL )
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    Nº de puestos
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 offset-md-2">
+                                    <label for="preg_13">
+                                      ¿Se han identificado puestos de trabajo exentos de riesgo para el embarazo?
+                                    </label>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                    <md-radio-group formControlName="preg_13">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="form-control" formControlName="preg_14" tooltip="Nº de puestos" placeholder="Nº de puestos" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                           
+                             <div class="row">
+                                <div class="col-md-8 offset-md-2"><label for="preg_15">En caso afirmativo, indicar cuáles</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_15" formControlName="preg_15" autosize placeholder="Puestos de trabajo exentos de riesgo para el embarazo"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top:40px">
+                                <div class="col-md-5 offset-md-2">
+                                    <label for="preg_16">
+                                      ¿Se han identificado puestos de trabajo exentos de riesgo para la lactancia?
+                                    </label>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                    <md-radio-group formControlName="preg_16">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="form-control" formControlName="preg_17" tooltip="Nº de puestos" placeholder="Nº de puestos" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                             <div class="row">
+                                <div class="col-md-8 offset-md-2"><label for="preg_18">En caso afirmativo, indicar cuáles</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_18" formControlName="preg_18" autosize placeholder="Puestos de trabajo exentos de riesgo para la lactancia"></textarea>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-md-7 offset-md-2 text-md-center">
+                                    MEDIDAS LÍMITE: SUSPENSIÓN DEL CONTRATO DE TRABAJO
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    Casos
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 offset-md-2">
+                                    <label for="preg_19">
+                                      ¿Se han concedido permisos disfrutados por riesgo durante el embarazo?
+                                    </label>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                    <md-radio-group formControlName="preg_19">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="form-control" formControlName="preg_20" tooltip="Casos" placeholder="Casos" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-md-7 offset-md-2 text-md-center">
+                                    MEDIDAS de MEJORA con respecto a la LEY
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    Nº de mejoras
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 offset-md-2">
+                                    <label for="preg_21">
+                                     ¿Existen medidas relativas a esta materia que supongan una mejora a lo que establece la ley o el convenio colectivo?
+                                    </label>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                    <md-radio-group formControlName="preg_21">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="form-control" formControlName="preg_22" tooltip="Nº de mejoras" placeholder="Nº de mejoras" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 offset-md-2"><label for="preg_23">En caso afirmativo, indicar cuáles</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_23" formControlName="preg_23" autosize placeholder="Mejora a lo que establece la ley o el convenio colectivo"></textarea>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

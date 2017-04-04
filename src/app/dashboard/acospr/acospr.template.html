@@ -1,0 +1,587 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Acoso Sexual y por razón de sexo</li>
+</ol>
+
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="page-title">Actuaciones de la organización en materia de <span class="fw-semi-bold">Acoso Sexual</span></h1>
+    </div>
+    <div class="col-md-4">
+        <div class="row progress-stats">
+            <div class="col-md-9 col-xs-12">
+                <div class="bg-white progress progress-sm">
+                    <div progress-animate class="progress-bar bg-primary progress-sm" style="width: 18%;" data-width="18%"></div>
+                </div>
+            </div>
+            <div class="col-md-9 col-xs-12">
+                <p class="description deemphasize">Progreso de la pestaña</p>
+                <div class="bg-white progress-bar">
+                    <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic}"></progress>
+
+
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 text-xs-center">
+                <span class="status rounded rounded-lg bg-body-light">
+                                    <small><span number-animate>{{(respondidasSeccion*100)/totalSeccion}}</span>%</small>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="widget" widget>
+            <div class="widget-body">
+                <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <div class="col-md-7 offset-md-2" style="margin-top:40px">
+                                <p>Teniendo en cuenta las medidas de prevención del acoso sexual de la compañía responda las
+                                    siguientes preguntas:</p>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_1">
+                                      El acoso sexual, ¿se ha incluido en la evaluación de los riesgos de los puestos de trabajo?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_1">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_2">
+                                     La organización ejecuta medidas formativas/informativas y de sensibilización dirigidas a la plantilla en general.
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_2">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+
+                                <div class="col-md-8 offset-md-2"><label for="preg_3">En caso afirmativo, indicar cuáles</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_3" formControlName="preg_3" autosize placeholder="Medidas formativas/informativas y de sensibilización dirigidas a la plantilla en general"></textarea>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_4">
+                                      La organización ejecuta medidas formativas/informativas y de sensibilización dirigidas a la representación del personal.
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_4">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_5">En caso afirmativo, indicar cuáles</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_5" formControlName="preg_5" autosize placeholder="Medidas formativas/informativas y de sensibilización dirigidas a la representación del personal"></textarea>
+                                </div>
+                            </div>
+
+
+                            <!---->
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_6">
+                                     Se han establecido formalmente sistemas de garantía para evitar los efectos del acoso sexual en la promoción, carrera profesional  y  ascensos,  u  otras  circunstancias?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_6">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_7">En caso afirmativo, por favor describa brevemente</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_7" formControlName="preg_7" autosize placeholder="Sistemas de garantía para evitar los efectos del acoso sexual en la promoción, carrera profesional  y  ascensos,  u  otras  circunstancias"></textarea>
+                                </div>
+                            </div>
+
+
+                            <!---->
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_8">
+                                     Actualmente la organización cuenta con medidas y/o procedimientos para denunciar el Acoso Sexual?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_8">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_9">En caso afirmativo, indicar cuáles</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_9" formControlName="preg_9" autosize placeholder="Medidas y/o procedimientos para denunciar el Acoso Sexual"></textarea>
+                                </div>
+                            </div>
+
+
+                            <!---->
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_10">
+                                      La organización cuenta con medidas y/o protocolos de intervención para la solución de los conflictos derivados por el Acoso Sexual?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_10">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_11">En caso afirmativo, indicar cuáles</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_11" formControlName="preg_11" autosize placeholder="Protocolos de intervención para la solución de los conflictos derivados por el Acoso Sexual"></textarea>
+                                </div>
+                            </div>
+
+
+                            <!---->
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_12">
+                                      ¿La organización ha adoptado formalmente medidas para la solución de los conflictos derivados de las situaciones de acoso sexual?.
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_12">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_13">En caso afirmativo, por favor describa brevemente</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_13" formControlName="preg_13" autosize placeholder="Medidas para la solución de los conflictos derivados de las situaciones de acoso sexual"></textarea>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <div class="col-md-7 offset-md-2" style="margin-top:40px">
+                                <p>Teniendo en cuenta las medidas previstas para la asistencia a las víctimas de acoso sexual
+                                    responda las siguientes preguntas:</p>
+                            </div>
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_14">
+                                     ¿Se  ha  previsto  algún  procedimiento  de  tratamiento psicológico y de rehabilitación para las víctimas, o ayudas económicas para ello?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_14">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <div class="col-md-7 offset-md-2" style="margin-top:40px">
+                                <p>De acuerdo a las medidas disciplinarias contra la autoría del acoso responda las siguientes
+                                    preguntas:
+                                </p>
+                            </div>
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_15">
+                                     ¿Se ha aplicado alguna vez como medida disciplinaria  el despido por razón de una situación de acoso sexual de algún miembro de la organización?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_15">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_16">
+                                     ¿Se ha aplicado alguna vez como medida disciplinaria  la movilización geográfica por razón de una situación de acoso sexual de algún miembro de la organización?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_16">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_17">
+                                   ¿Se ha aplicado alguna vez como medida disciplinaria la amonestación (verbal o escrita) por razón de una situación de acoso sexual  a algún miembro de la organización?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_17">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_18">
+                                     ¿Se ha aplicado alguna vez otro  tipo de medida disciplinaria  por razón de una situación de acoso sexual  a algún miembro de la organización?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_18">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <div class="col-md-7 offset-md-2" style="margin-top:40px">
+                                <p>Teniendo en cuenta las actuaciones de la organización en materia de acoso por razón sexo
+                                    responda las siguientes preguntas</p>
+                            </div>
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_19">
+                                     ¿Se ha incluido el acoso  por razón de sexo en la evaluación de los riesgos de los puestos de trabajo?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_19">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_20">
+                                  ¿La organización ha desarrollado medidas formativas/informativas y de sensibilización dirigidas a la plantilla en general?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_20">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_21">En caso afirmativo, indicar cuáles</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_21" formControlName="preg_21" autosize placeholder="Medidas formativas/informativas y de sensibilización dirigidas a la plantilla en general"></textarea>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_22">
+                                 ¿La organización ha desarrollado medidas formativas/informativas y de sensibilización dirigidas a la representación del personal?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_22">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_23">En caso afirmativo, indicar cuáles</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_23" formControlName="preg_23" autosize placeholder="Medidas formativas/informativas y de sensibilización dirigidas a la representación del personal"></textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_24">
+                                  ¿La organización ha desarrollado medidas formativas/informativas y de sensibilización dirigidas al personal político y/o técnico?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_24">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_25">En caso afirmativo, indicar cuáles</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_25" formControlName="preg_25" autosize placeholder="Medidas formativas/informativas y de sensibilización dirigidas al personal político y/o técnico"></textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_26">
+                                  ¿Se han establecido acciones preventivas específicas para la prevención del acoso por razón de sexo, orientación sexual o identidad de género, como por ejemplo un Código Buenas Prácticas?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_26">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_27">En caso afirmativo, describa brevemente</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_27" formControlName="preg_27" autosize placeholder="Acciones preventivas"></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_28">
+                                 ¿Se han establecido formalmente sistemas de garantía para evitar los efectos del acoso  por razón de sexo en la promoción, carrera profesional  y  ascensos,  u  otras   circunstancias?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_28">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_29">En caso afirmativo, describa brevemente</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_29" formControlName="preg_29" autosize placeholder="Sistemas de garantía"></textarea>
+                                </div>
+                            </div>
+
+
+
+                        </fieldset>
+                    </div>
+
+
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <div class="col-md-7 offset-md-2" style="margin-top:40px">
+                                <p>Teniendo en cuenta las medidas o procedimientos de las denuncias del Acoso por Razón de Sexo
+                                    responda las siguientes preguntas:</p>
+                            </div>
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_30">
+                                    ¿Se  han  adoptado  formalmente  medidas  o  procedimientos para la denuncia  de  las situaciones de acoso por razón de sexo, orientación sexual o identidad de género?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_30">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_31">En caso afirmativo, describa brevemente</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_31" formControlName="preg_31" autosize placeholder="Procedimientos para la denuncia"></textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_32">
+                                 ¿Se han adoptado formalmente medidas para la solución de los conflictos derivados de las situaciones de acoso por razón de sexo?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_32">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_33">En caso afirmativo, indicar cuáles</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_33" formControlName="preg_33" autosize placeholder="Medidas para la solución de los conflictos"></textarea>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+                    </div>
+
+
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <div class="col-md-7 offset-md-2" style="margin-top:40px">
+                                <p>Teniendo en cuenta las medidas previstas para la asistencia a las víctimas de acoso por razón
+                                    de sexo responda las siguientes preguntas:</p>
+                            </div>
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_34">
+                                    ¿Se  ha  previsto  algún  procedimiento  de  tratamiento psicológico y de rehabilitación para las víctimas, o ayudas económicas para ello?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_34">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_35">En caso afirmativo, describa brevemente</label></div>
+                                <div class="col-md-8 offset-md-2">
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_35" formControlName="preg_35" autosize placeholder="Procedimiento  de  tratamiento psicológico y de rehabilitación para las víctimas, o ayudas económicas para ello"></textarea>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+                    </div>
+
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <div class="col-md-7 offset-md-2" style="margin-top:40px">
+                                <p>Teniendo en cuenta las medidas disciplinarias contra la autoría del acoso responda las siguientes
+                                    preguntas:</p>
+                            </div>
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_36">
+                                    ¿Se ha aplicado alguna vez como medida disciplinaria el despido por razón de una situación de acoso por razón de sexo?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_36">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_37">
+                                    ¿Se ha aplicado alguna vez como medida disciplinaria la movilización geográfica por razón de una situación de acoso por razón de sexo?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_37">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_38">
+                                   ¿Se ha aplicado alguna vez como medida disciplinaria la amonestación (verbal o escrita) por razón de una situación de acoso por razón de sexo, orientación sexual o identidad de género?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_38">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="margin-top:40px">
+                                <div class="col-md-7 offset-md-2">
+                                    <label for="preg_39">
+                                    ¿Se ha aplicado alguna vez otra medida disciplinaria por razón de una situación de acoso por razón de sexo, orientación sexual o identidad de género?
+                                    </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_39">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+                    </div>
+
+
+                     <div class="section" style="margin-top:40px" formArrayName="preg_1_tabla_3">
+                        <fieldset>
+                            <div class="col-md-7 offset-md-2" style="margin-top:40px">
+                                <p>Teniendo en cuenta el número de casos que se han presentado en la organización, diligencie la siguiente tabla.</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-7 offset-md-2 text-md-center">
+                                     INDICADORES CUANTITATIVOS
+                                </div>
+                            </div>
+                            <div class="row">
+                                                <div class="col-md-5 offset-md-2 text-md-center">
+                                                    NÚMERO DE RECLAMACIONES (INFORMALES O FORMALES) PRESENTADAS EN MATERIA DE ACOSO
+                                                </div>
+                                                <div class="col-md-1 text-md-center">
+                                                    Nº Mujeres
+                                                </div>
+                                                <div class="col-md-1 text-md-center">
+                                                    Nº Hombres
+                                                </div>
+                                            </div>
+                                            <div *ngFor="let datos of getPregunta('preg_1_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                                <div class="row">
+                                                    <div class="col-md-5 offset-md-2 ">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input class="form-control" readonly formControlName="texto"  tooltip="NÚMERO DE RECLAMACIONES" placeholder="NÚMERO DE RECLAMACIONES"
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1 ">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1 ">
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                        </fieldset>
+                     </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,24 +1,25 @@
 export class PromoCarreraModel{
-
-    public id: number;
-    public user_id : number;
+    public status: string;    
+    public totalCuest: number;
+    public respondidasCuest: number;
+    public totalSeccion: number;
+    public respondidasSeccion: number;    
     public data: dataModel;
     public preg_1_tabla_3: Tabla3Model[];
     public preg_2_tabla_3: Tabla3Model[];
     public preg_3_tabla_3: Tabla3Model[];
     public preg_4_tabla_3: Tabla3Model[];
     public preg_5_tabla_3: Tabla3Model[];
-
-    constructor(){
-        this.id=0,
-        this.user_id = 0
-    }
+    public preg_6_tabla_3: Tabla3Model[];
+    public preg_7_tabla_3: Tabla3Model[];
+    public preg_8_tabla_3: Tabla3Model[];
 }
 
 export class Tabla3Model{
         texto: any = '';
         mujeres: any = 0;
         hombres: any = 0;
+        respuesta: any = 0;  
 }
 export class Tabla2Model {
     texto1: any = '';
@@ -34,6 +35,7 @@ export class Tabla5Model {
     respuesta: any = 0;    
 }
 export class dataModel{
+    public user_id: number;    
     public preg_1: any;
     public preg_2: any;
     public preg_3: any; 
@@ -55,9 +57,38 @@ export class dataModel{
     public preg_19: any; 
     public preg_20: any; 
     public preg_21: any; 
+    public preg_22: any;
+    public preg_23: any;
+    public preg_24: any;
+    public preg_25: any;
+    public preg_26: any;
     constructor(){
+        this.user_id = 0,
+        this.preg_1 = '',
+        this.preg_2 = '',
+        this.preg_3 = '',
+        this.preg_4 = '',
         this.preg_5 = '',
         this.preg_6 = '',
-        this.preg_7=''
+        this.preg_7 = '',
+        this.preg_8 = '',
+        this.preg_9 = '',
+        this.preg_10 = '',
+        this.preg_11 = '',
+        this.preg_12 = '',
+        this.preg_13 = '',
+        this.preg_14 = '',
+        this.preg_15 = '',
+        this.preg_16 = '',
+        this.preg_17 = '',
+        this.preg_18 = '',
+        this.preg_19 = '',
+        this.preg_20 = '',
+        this.preg_21 = '',
+        this.preg_22 = '',
+        this.preg_23 = '',
+        this.preg_24 = '',
+        this.preg_25 = '',
+        this.preg_26 = ''
     }
 }

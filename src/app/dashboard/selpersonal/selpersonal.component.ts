@@ -124,7 +124,7 @@ export class SelPersonalComponent implements OnInit {
         this.servicio.getDatosModelo().subscribe(
             response => {               
                 Object.getOwnPropertyNames(response.data).map((key: string) => 
-                     this.ifForm.controls['data'].controls[key].setValue(response.data[key])
+                     (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
                 );    
                 this.setPregunta(response.preg_87, 'preg_87');
                 this.setPregunta(response.preg_88, 'preg_88');

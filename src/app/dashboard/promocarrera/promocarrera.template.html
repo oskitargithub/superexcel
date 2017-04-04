@@ -658,6 +658,9 @@
 
                     <div class="section" style="margin-top:40px">
                         <fieldset>
+                            <div class="col-md-8 offset-md-2">
+                                De acuerdo con las promociones que se presentaron el en último año en la organización diligencie la siguiente tabla
+                            </div>
                             <div formArrayName="preg_7_tabla_3">
                                 <div class="row">
                                     <div class="col-md-3 offset-md-2 text-md-center">
@@ -670,7 +673,7 @@
                                         Hombres
                                     </div>
                                 </div>
-                                <div *ngFor="let datos of getPregunta('preg_5_tabla_3').controls; let i=index" [formGroupName]="i">
+                                <div *ngFor="let datos of getPregunta('preg_7_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
                                         <div class="col-md-3 offset-md-2 ">
@@ -704,9 +707,7 @@
 
                     <div class="section" style="margin-top:40px">
                         <fieldset>
-                            <div class="col-md-8 offset-md-2">
-                                De acuerdo con las promociones que se presentaron el en último año en la organización diligencie la siguiente tabla
-                            </div>
+                            
                             <div formArrayName="preg_8_tabla_3">
                                 <div class="row">
                                     <div class="col-md-5 offset-md-2 text-md-center">PROMOCIONES ÚLTIMO AÑO</div>
@@ -756,7 +757,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2 offset-md-2">
-                                        <button (click)="addFila3(ifForm.controls.preg_8_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Ascenso</button>
+                                        <button (click)="addFila3(ifForm.controls.preg_8_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Promoción</button>
                                     </div>
                                 </div>
                             </div>
