@@ -1,6 +1,8 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
-import { Router,
-         NavigationExtras } from '@angular/router';
+import {
+    Router,
+    NavigationExtras
+} from '@angular/router';
 import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InformacionBasicaModel, CentroActividad, datosUserModel, dataModel } from './informacionbasica.model';
@@ -13,7 +15,7 @@ declare var Messenger: any;
 @Component({
     selector: 'informacionbasica',
     templateUrl: './informacionbasica.template.html',
-    styleUrls: [ './informacionbasica.css',
+    styleUrls: ['./informacionbasica.css',
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
     providers: [InformacionBasicaService],
@@ -49,24 +51,22 @@ export class InformacionBasicaComponent implements OnInit {
         this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
-        this.createForm();
-        this.getInformacionBasica();
-        this.midatePickeropt =new Date();
-        console.log(this.midatePickeropt);
+        this.informacionbasica = new InformacionBasicaModel();
+
     }
 
 
-    getValorBarra(){
-        if(this.respondidasSeccion==0)
+    getValorBarra() {
+        if (this.respondidasSeccion == 0)
             return 0;
-        else{
+        else {
             let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
             return value;
         }
     }
 
 
-    valorBarraProgreso() {        
+    valorBarraProgreso() {
         let value = this.getValorBarra();
         let type: string;
 
@@ -89,7 +89,7 @@ export class InformacionBasicaComponent implements OnInit {
         this.informacionbasica = this.preparaParaGuardar();
         this.servicio.edit(this.informacionbasica, this.token)
             .subscribe(
-            response => {                
+            response => {
                 this.status = response.status;
                 if (this.status !== "success") {
                     Messenger().post({
@@ -126,58 +126,63 @@ export class InformacionBasicaComponent implements OnInit {
         console.log(this.ifForm.dirty);
         console.log(this.ifForm.valid);
         if (this.ifForm.dirty && this.ifForm.valid) {
-        this.informacionbasica = this.preparaParaGuardar();
+            this.informacionbasica = this.preparaParaGuardar();
 
-        this.submitted = true;
-        console.log("formulario enviado");
-        this.servicio.edit(this.informacionbasica, this.token)
-            .subscribe(
-            response => {
-                
-                this.status = response.status;
-                if (this.status !== "success") {
-                    Messenger().post({
-                        message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
-                        type: 'error',
-                        showCloseButton: true
-                    });
-                }
-                else {
-                    this.informacionbasica = response.data;
-                    Messenger().post({
-                        message: 'Los datos han sido guardados correctamente',
-                        type: 'success',
-                        showCloseButton: true
-                    });
-                }
+            this.submitted = true;
+            console.log("formulario enviado");
+            this.servicio.edit(this.informacionbasica, this.token)
+                .subscribe(
+                response => {
 
-            },
-            error => {
-                this.errorMessage = <any>error;
-                if (this.errorMessage !== null) {
+                    this.status = response.status;
+                    if (this.status !== "success") {
+                        Messenger().post({
+                            message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
+                            type: 'error',
+                            showCloseButton: true
+                        });
+                    }
+                    else {
+                        this.informacionbasica = response.data;
+                        Messenger().post({
+                            message: 'Los datos han sido guardados correctamente',
+                            type: 'success',
+                            showCloseButton: true
+                        });
+                    }
 
-                    Messenger().post({
-                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
-                        type: 'error',
-                        showCloseButton: true
-                    });
+                },
+                error => {
+                    this.errorMessage = <any>error;
+                    if (this.errorMessage !== null) {
 
-                }
-            });
+                        Messenger().post({
+                            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                            type: 'error',
+                            showCloseButton: true
+                        });
+
+                    }
+                });
+        }
+        else{
+            Messenger().post({
+                            message: 'Ha ocurrido un error guardando los datos.' + this.formErrors,
+                            type: 'error',
+                            showCloseButton: true
+                        });
         }
     }
 
     createForm() {
         this.ifForm = this.fb.group({
-            user: this.fb.group(new datosUserModel()),            
-            //data: this.fb.group(new dataModel()),
-            data:this.fb.group(new dataModel(),
-            {
-                'preg_5':['',Validators.required]
-            }),
+            user: this.fb.group(new datosUserModel()),
+            data: this.fb.group(new dataModel()),
             preg_2_tabla_2: this.fb.array([]),
             _token: ''
         });
+        console.log("ifform");
+        console.log(this.ifForm.controls.data);
     }
 
 
@@ -185,6 +190,11 @@ export class InformacionBasicaComponent implements OnInit {
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
         moment.locale('es');
+        this.createForm();
+        this.getInformacionBasica();
+        this.midatePickeropt = new Date();
+        console.log(this.midatePickeropt);
+
     }
 
     get user(): FormArray {
@@ -198,8 +208,8 @@ export class InformacionBasicaComponent implements OnInit {
     getTotal() {
         return (this.ifForm.get('data.preg_5').value * 1 + this.ifForm.get('data.preg_6').value * 1);
     }
-    
-    getPregunta (pregunta:string): FormArray {
+
+    getPregunta(pregunta: string): FormArray {
         return this.ifForm.get(pregunta) as FormArray;
     };
 
@@ -221,25 +231,52 @@ export class InformacionBasicaComponent implements OnInit {
         this.preg_2_tabla_2.removeAt(i);
     }
 
+    addValidaciones() {
+        this.ifForm.get('data.preg_5').setValidators([Validators.required, Validators.minLength(1)]);
+        this.ifForm.valueChanges.subscribe(data => this.onValueChanged(data));
+        this.onValueChanged();
+    }
+    onValueChanged(data?: any) {
+        console.log("onValueChanged");
+        if (!this.ifForm) { return; }
+        const form = this.ifForm;
+
+        for (const field in this.formErrors) {
+            // clear previous error message (if any)
+            this.formErrors[field] = '';
+            console.log(field);
+            const control = form.get(field);
+            console.log("control");
+            console.log(control);
+            if (control && control.dirty && !control.valid) {
+                console.log("elemento malino");
+                const messages = this.validationMessages[field];
+                for (const key in control.errors) {
+                    this.formErrors[field] += messages[key] + ' ';
+                }
+            }
+        }
+        console.log("formErrors");
+        console.log(this.formErrors);
+    }
+    formErrors = {
+        'data.preg_5': '',
+        'data.preg_6': ''
+    };
+    validationMessages: any = {
+        'data.preg_5': {
+            'required': 'El campo ÓRGANO DE TOMA DE DECISIONES/Mujeres es obligatorio.',
+            'minlength': 'Name must be at least 4 characters long.'
+        },
+        'data.preg_6': {
+            'required': 'El campo ÓRGANO DE TOMA DE DECISIONESHombres es obligatorio.',
+        }
+    };
 
     getInformacionBasica() {
         this.servicio.getDatosModelo()
             .subscribe(
             response => {
-
-                //this.ifForm = this.fb.group(response); 
-                this.token = response._token;
-                console.log("pillao token" + this.token);
-                console.log(response.user);
-                this.ifForm.setControl('user', this.fb.group(response.user));
-                this.ifForm.setControl('data', this.fb.group(response.data));
-                
-                this.setCentroActividad(response.preg_2_tabla_2);
-
-                this.respondidasSeccion = response.respondidasSeccion;
-                this.totalSeccion = response.totalSeccion;
-                this.valorBarraProgreso();
-                console.log("respondidas" + this.respondidasSeccion + " y total" + this.totalSeccion);
                 this.status = response.status;
                 if (this.status !== "success") {
                     if (this.status == "tokenerror") {
@@ -258,6 +295,24 @@ export class InformacionBasicaComponent implements OnInit {
                     }
                 }
                 else {
+                    //this.ifForm = this.fb.group(response); 
+                    this.token = response._token;
+                    console.log("pillao token" + this.token);
+                    console.log(response.user);
+                    this.ifForm.setControl('user', this.fb.group(response.user));
+                    this.ifForm.setControl('data', this.fb.group(response.data));
+                    this.addValidaciones();
+
+                    this.setCentroActividad(response.preg_2_tabla_2);
+
+                    this.respondidasSeccion = response.respondidasSeccion;
+                    this.totalSeccion = response.totalSeccion;
+                    this.valorBarraProgreso();
+                    console.log("respondidas" + this.respondidasSeccion + " y total" + this.totalSeccion);
+
+
+                    
+
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',

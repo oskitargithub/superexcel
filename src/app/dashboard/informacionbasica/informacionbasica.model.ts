@@ -7,6 +7,9 @@ export class InformacionBasicaModel{
         public respondidasCuest: number;
         public totalSeccion: number;
         public respondidasSeccion: number;
+        constructor(){
+                this.data = new dataModel();
+        }
 }
 
 export class CentroActividad{
