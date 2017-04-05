@@ -7,6 +7,9 @@ import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InformacionBasicaModel, CentroActividad, datosUserModel, dataModel } from './informacionbasica.model';
 import { InformacionBasicaService } from "./informacionbasica.service";
+import { CustomValidators } from 'ng2-validation';
+import { DashBoardFormErrorsService} from '../dashboard.formerrors.service';
+
 import * as moment from 'moment';
 declare var jQuery: any;
 declare var Messenger: any;
@@ -18,7 +21,7 @@ declare var Messenger: any;
     styleUrls: ['./informacionbasica.css',
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
-    providers: [InformacionBasicaService],
+    providers: [InformacionBasicaService, DashBoardFormErrorsService],
     encapsulation: ViewEncapsulation.None,
 })
 export class InformacionBasicaComponent implements OnInit {
@@ -46,6 +49,7 @@ export class InformacionBasicaComponent implements OnInit {
         private fb: FormBuilder,
         private servicio: InformacionBasicaService,
         private router: Router,
+        private serviceErrores : DashBoardFormErrorsService,
         injector: Injector
     ) {
         this.dynamic = 0;
@@ -166,8 +170,10 @@ export class InformacionBasicaComponent implements OnInit {
                 });
         }
         else{
+            let listaerrores = '';            
+            Object.getOwnPropertyNames(this.serviceErrores.objetoErrores).map((key: string) => listaerrores+=this.serviceErrores.objetoErrores[key]+'<br/>');            
             Messenger().post({
-                            message: 'Ha ocurrido un error guardando los datos.' + this.formErrors,
+                            message: 'Ha ocurrido un error guardando los datos.' + listaerrores,
                             type: 'error',
                             showCloseButton: true
                         });
@@ -181,8 +187,7 @@ export class InformacionBasicaComponent implements OnInit {
             preg_2_tabla_2: this.fb.array([]),
             _token: ''
         });
-        console.log("ifform");
-        console.log(this.ifForm.controls.data);
+        console.log("ifform");        
     }
 
 
@@ -232,46 +237,66 @@ export class InformacionBasicaComponent implements OnInit {
     }
 
     addValidaciones() {
-        this.ifForm.get('data.preg_5').setValidators([Validators.required, Validators.minLength(1)]);
-        this.ifForm.valueChanges.subscribe(data => this.onValueChanged(data));
-        this.onValueChanged();
+        this.ifForm.get('data.preg_5').setValidators([CustomValidators.number]);
+        this.ifForm.get('data.preg_6').setValidators([CustomValidators.number]);
+        this.ifForm.get('user.email').setValidators([Validators.required, Validators.minLength(1),CustomValidators.email]);
+        
+        this.serviceErrores.mensajesValidacion = this.setMensajesValidacion();
+        this.serviceErrores.objetoErrores = this.setObjetoErrores();
+        
+        this.ifForm.valueChanges.subscribe(data => this.serviceErrores.onValueChanged(this.ifForm,data));
+        this.serviceErrores.onValueChanged(this.ifForm);
     }
-    onValueChanged(data?: any) {
-        console.log("onValueChanged");
-        if (!this.ifForm) { return; }
-        const form = this.ifForm;
+    // onValueChanged(data?: any) {
+    //     console.log("onValueChanged");
+    //     if (!this.ifForm) { return; }
+    //     const form = this.ifForm;
 
-        for (const field in this.formErrors) {
-            // clear previous error message (if any)
-            this.formErrors[field] = '';
-            console.log(field);
-            const control = form.get(field);
-            console.log("control");
-            console.log(control);
-            if (control && control.dirty && !control.valid) {
-                console.log("elemento malino");
-                const messages = this.validationMessages[field];
-                for (const key in control.errors) {
-                    this.formErrors[field] += messages[key] + ' ';
-                }
+    //     for (const field in this.formErrors) {
+    //         // clear previous error message (if any)
+    //         this.formErrors[field] = '';
+    //         console.log(field);
+    //         const control = form.get(field);
+    //         console.log("control");
+    //         console.log(control);
+    //         if (control && control.dirty && !control.valid) {
+    //             console.log("elemento malino");
+    //             const messages = this.validationMessages[field];
+    //             for (const key in control.errors) {
+    //                 this.formErrors[field] += messages[key] + ' ';
+    //             }
+    //         }
+    //     }
+    //     console.log("formErrors");
+    //     console.log(this.formErrors);
+    // }
+
+    setMensajesValidacion(){
+        return {
+            'data.preg_5': {
+                'number': 'El campo debe ser numérico.'
+            },
+            'data.preg_6': {
+                'number': 'El campo debe ser numérico.'
+            },
+            'user.email': {
+                'required': 'El campo email es obligatorio.',
+                'email': 'El formato email es incorrecto'
             }
-        }
-        console.log("formErrors");
-        console.log(this.formErrors);
+        };
     }
-    formErrors = {
-        'data.preg_5': '',
-        'data.preg_6': ''
-    };
-    validationMessages: any = {
-        'data.preg_5': {
-            'required': 'El campo ÓRGANO DE TOMA DE DECISIONES/Mujeres es obligatorio.',
-            'minlength': 'Name must be at least 4 characters long.'
-        },
-        'data.preg_6': {
-            'required': 'El campo ÓRGANO DE TOMA DE DECISIONESHombres es obligatorio.',
-        }
-    };
+
+
+    setObjetoErrores() {
+        return {
+            'data.preg_5': '',
+            'data.preg_6': '',
+            'user.email': ''
+        };
+    }
+
+
+    
 
     getInformacionBasica() {
         this.servicio.getDatosModelo()

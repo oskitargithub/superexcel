@@ -9,6 +9,7 @@ export class InformacionBasicaModel{
         public respondidasSeccion: number;
         constructor(){
                 this.data = new dataModel();
+                this.user = new datosUserModel();
         }
 }
 
