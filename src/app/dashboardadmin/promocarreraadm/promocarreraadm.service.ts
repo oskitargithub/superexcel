@@ -12,15 +12,8 @@ export class PromoCarreraAdmService {
         this.config = config.getConfig(); //me traigo la configuración para saber la url de la api
     }
 
-    /*getDatosModelo() {
-        return this._http.get(this.config.apilaravel + "cuestionario/seccion/10").map(res => {
-            let headers = res.headers;
-            let miobjeto = res.json();
-            return (miobjeto);
-        });
-    }*/
     getDatosModelo() {
-        return this._http.get(this.config.api + "cuestionario10.php").map(res => {
+        return this._http.get(this.config.apilaravel + "cuestionario/seccion/10").map(res => {
             let headers = res.headers;
             let miobjeto = res.json();
             return (miobjeto);

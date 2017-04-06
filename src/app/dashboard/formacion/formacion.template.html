@@ -35,7 +35,7 @@
                             <p>Dispone la organización de un PLAN DE FORMACIÓN dirigido a todo o parte del personal?</p>
                         </div>
                         <div class="col-md-2">
-                            <md-radio-group formControlName="preg_1">
+                            <md-radio-group formControlName="preg_160">
                                 <md-radio-button value="si">Si</md-radio-button>
                                 <md-radio-button value="no">No</md-radio-button>
                             </md-radio-group>
@@ -44,48 +44,28 @@
                         <div class="col-md-6 offset-md-2">
                             <p>En caso afirmativo</p>
                         </div>
-                        <div class="col-md-8 offset-md-2"><label for="preg_2">A) Especifique los OBJETIVOS del Plan Formativo y a quien se dirige</label></div>
+                        <div class="col-md-8 offset-md-2"><label for="preg_162">A) Especifique los OBJETIVOS del Plan Formativo y a quien se dirige</label></div>
                         <div class="col-md-8 offset-md-2">
-                            <textarea rows="3" [readonly]="getValorElemento('data.preg_1')!='si'" class="autogrow form-control transition-height" id="preg_2"
-                                formControlName="preg_2" autosize placeholder="OBJETIVOS del Plan Formativo y a quien se dirige"></textarea>
+                            <textarea rows="3" [readonly]="getValorElemento('data.preg_160')!='si'" class="autogrow form-control transition-height" id="preg_162"
+                                formControlName="preg_162" autosize placeholder="OBJETIVOS del Plan Formativo y a quien se dirige"></textarea>
                         </div>
                         <div class="w-100"></div>
 
-                        <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_3">B) Mencione las personas responsables del plan formativo tanto en la fase de diseño como de ejecución del mismo (indíquese su posición dentro de la organización)</label></div>
+                        <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_163">B) Mencione las personas responsables del plan formativo tanto en la fase de diseño como de ejecución del mismo (indíquese su posición dentro de la organización)</label></div>
                         <div class="col-md-8 offset-md-2">
-                            <textarea rows="3" [readonly]="getValorElemento('data.preg_1')!='si'" class="autogrow form-control transition-height" id="preg_3"
-                                formControlName="preg_3" autosize placeholder="Personas responsables del plan formativo"></textarea>
+                            <textarea rows="3" [readonly]="getValorElemento('data.preg_160')!='si'" class="autogrow form-control transition-height" id="preg_163"
+                                formControlName="preg_163" autosize placeholder="Personas responsables del plan formativo"></textarea>
                         </div>
                     </div>
 
-                    <div class="form-group row" style="margin-top:40px" formGroupName="data">
-                        <div class="col-md-5 offset-md-2">
-                            <p>Disfruta su organización de convenios especiales con otras organizaciones o administraciones
-                                para que el personal pueda realizar formación?</p>
-                        </div>
-                        <div class="col-md-2">
-                            <md-radio-group formControlName="preg_4">
-                                <md-radio-button value="si">Si</md-radio-button>
-                                <md-radio-button value="no">No</md-radio-button>
-                            </md-radio-group>
-                        </div>
-                        <div class="w-100"></div>
-                        <div class="col-md-6 offset-md-2">
-                            <p>En caso afirmativo</p>
-                        </div>
-                        <div class="col-md-8 offset-md-2"><label for="preg_5">Especifique las organizaciones con quien mantiene convenios o acuerdo para la formación</label></div>
-                        <div class="col-md-8 offset-md-2">
-                            <textarea rows="3" [readonly]="getValorElemento('data.preg_4')!='si'" class="autogrow form-control transition-height" id="preg_5"
-                                formControlName="preg_5" autosize placeholder="Organizaciones con quien mantiene convenios o acuerdo para la formación"></textarea>
-                        </div>
-                    </div>
+
 
                     <div class="form-group row" style="margin-top:40px" formGroupName="data">
                         <div class="col-md-5 offset-md-2">
                             <p>Dispone la organización de mecanismos de detección de necesidades formativas?</p>
                         </div>
                         <div class="col-md-2">
-                            <md-radio-group formControlName="preg_6">
+                            <md-radio-group formControlName="preg_164">
                                 <md-radio-button value="si">Si</md-radio-button>
                                 <md-radio-button value="no">No</md-radio-button>
                             </md-radio-group>
@@ -94,32 +74,55 @@
                         <div class="col-md-6 offset-md-2">
                             <p>En caso afirmativo</p>
                         </div>
-                        <div class="col-md-8 offset-md-2"><label for="preg_7">Indíquense cuáles</label></div>
+                        <div class="col-md-8 offset-md-2"><label for="preg_165">Indíquense cuáles</label></div>
                         <div class="col-md-8 offset-md-2">
-                            <textarea rows="3" [readonly]="getValorElemento('data.preg_6')!='si'" class="autogrow form-control transition-height" id="preg_7"
-                                formControlName="preg_7" autosize placeholder="Indíquense cuáles"></textarea>
+                            <textarea rows="3" [readonly]="getValorElemento('data.preg_164')!='si'" class="autogrow form-control transition-height" id="preg_165"
+                                formControlName="preg_165" autosize placeholder="Indíquense cuáles"></textarea>
                         </div>
                         <div class="w-100"></div>
-
-                        <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_10">En caso de existir oferta formativa, defínanse brevemente líneas esenciales</label></div>
+                    </div>
+                    <div class="form-group row" style="margin-top:40px" formGroupName="data">
+                        <div class="col-md-5 offset-md-2">
+                            <p>Disfruta su organización de convenios especiales con otras organizaciones o administraciones
+                                para que el personal pueda realizar formación?</p>
+                        </div>
+                        <div class="col-md-2">
+                            <md-radio-group formControlName="preg_166">
+                                <md-radio-button value="si">Si</md-radio-button>
+                                <md-radio-button value="no">No</md-radio-button>
+                            </md-radio-group>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6 offset-md-2">
+                            <p>En caso afirmativo</p>
+                        </div>
+                        <div class="col-md-8 offset-md-2"><label for="preg_167">Especifique las organizaciones con quien mantiene convenios o acuerdo para la formación</label></div>
                         <div class="col-md-8 offset-md-2">
-                            <textarea rows="3" [readonly]="getValorElemento('data.preg_6')!='si'" class="autogrow form-control transition-height" id="preg_10"
+                            <textarea rows="3" [readonly]="getValorElemento('data.preg_166')!='si'" class="autogrow form-control transition-height" id="preg_167"
+                                formControlName="preg_167" autosize placeholder="Organizaciones con quien mantiene convenios o acuerdo para la formación"></textarea>
+                        </div>
+                        <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_168">Mencione cuales son los criterios de selección de las personas destinatarias  de la oferta formativa</label></div>
+                        <div class="col-md-8 offset-md-2">
+                            <textarea rows="3" [readonly]="getValorElemento('data.preg_167')!='si'" class="autogrow form-control transition-height" id="preg_168"
+                                formControlName="preg_168" autosize placeholder="Criterios de selección"></textarea>
+                        </div>
+                    </div>
+
+                    <!--<div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_10">En caso de existir oferta formativa, defínanse brevemente líneas esenciales</label></div>
+                        <div class="col-md-8 offset-md-2">
+                            <textarea rows="3" [readonly]="getValorElemento('data.preg_164')!='si'" class="autogrow form-control transition-height" id="preg_10"
                                 formControlName="preg_10" autosize placeholder="Defínanse brevemente líneas esenciales"></textarea>
                         </div>
 
-                        <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_11">Menciones cuales son los criterios de selección de las personas destinatarias  de la oferta formativa</label></div>
-                        <div class="col-md-8 offset-md-2">
-                            <textarea rows="3" [readonly]="getValorElemento('data.preg_6')!='si'" class="autogrow form-control transition-height" id="preg_11"
-                                formControlName="preg_11" autosize placeholder="Criterios de selección"></textarea>
-                        </div>
-                    </div>
+                        
+                    </div>-->
 
                     <div class="form-group row" style="margin-top:40px" formGroupName="data">
                         <div class="col-md-5 offset-md-2">
                             <label for="preg_12">La formación que realiza la organización es obligatoria o voluntaria</label>
                         </div>
                         <div class="col-md-2">
-                            <md-radio-group formControlName="preg_12">
+                            <md-radio-group formControlName="preg_169">
                                 <md-radio-button value="si">Si</md-radio-button>
                                 <md-radio-button value="no">No</md-radio-button>
                             </md-radio-group>
@@ -128,10 +131,10 @@
                         <div class="col-md-6 offset-md-2">
                             <p>En caso afirmativo</p>
                         </div>
-                        <div class="col-md-8 offset-md-2"><label for="preg_13">Especifique si hubiera diferentes tipos</label></div>
+                        <div class="col-md-8 offset-md-2"><label for="preg_170">Especifique si hubiera diferentes tipos</label></div>
                         <div class="col-md-8 offset-md-2">
-                            <textarea rows="3" [readonly]="getValorElemento('data.preg_12')!='si'" class="autogrow form-control transition-height" id="preg_13"
-                                formControlName="preg_13" autosize placeholder="Especifique si hubiera diferentes tipos"></textarea>
+                            <textarea rows="3" [readonly]="getValorElemento('data.preg_169')!='si'" class="autogrow form-control transition-height" id="preg_170"
+                                formControlName="preg_170" autosize placeholder="Especifique si hubiera diferentes tipos"></textarea>
                         </div>
                     </div>
 
@@ -142,7 +145,7 @@
                                 <p>Marque la frecuencia con la que participan las mujeres</p>
                             </div>
                             <div class="col-md-1 offset-md-2" formGroupName="data">
-                                <md-radio-group formControlName="preg_14">
+                                <md-radio-group formControlName="preg_171">
                                     <md-radio-button value="4">Mayoritariamente</md-radio-button>
                                     <md-radio-button value="3">Generalmente</md-radio-button>
                                     <md-radio-button value="2">A veces</md-radio-button>
@@ -161,7 +164,7 @@
                                         <p>Existe previsión/provisión de ayudas o beneficios para la formación externa</p>
                                     </div>
                                     <div class="col-md-2">
-                                        <md-radio-group formControlName="preg_15">
+                                        <md-radio-group formControlName="preg_173">
                                             <md-radio-button value="si">Si</md-radio-button>
                                             <md-radio-button value="no">No</md-radio-button>
                                         </md-radio-group>
@@ -171,46 +174,46 @@
                                     <p>En caso afirmativo indique cuantas personas se benefician de esa formación</p>
                                 </div>
 
-                                <div class="section" formArrayName="preg_1_tabla_3">
-                                    <fieldset>                                        
-                                            <div class="row">
-                                                <div class="col-md-3 offset-md-2 text-md-center">
+                                <div class="section" formArrayName="preg_174_tabla_3">
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="col-md-3 offset-md-2 text-md-center">
 
+                                            </div>
+                                            <div class="col-md-1 text-md-center">
+                                                Nº Mujeres
+                                            </div>
+                                            <div class="col-md-1 text-md-center">
+                                                Nº Hombres
+                                            </div>
+                                        </div>
+                                        <div *ngFor="let datos of getPregunta('preg_174_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                            <div class="row" *ngIf="i==0">
+                                                <div class="col-md-3 offset-md-2 ">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control" readonly value="Cuantas personas se benefician de esa formación" tooltip="Ayudas o beneficios para la formación externa"
+                                                                placeholder="Ayudas o beneficios para la formación externa" />
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-1 text-md-center">
-                                                    Nº Mujeres
+                                                <div class="col-md-1 ">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-1 text-md-center">
-                                                    Nº Hombres
+                                                <div class="col-md-1 ">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div *ngFor="let datos of getPregunta('preg_1_tabla_3').controls; let i=index" [formGroupName]="i">
-
-                                                <div class="row" *ngIf="i==0">
-                                                    <div class="col-md-3 offset-md-2 ">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input class="form-control" readonly value="Cuantas personas se benefician de esa formación" tooltip="Ayudas o beneficios para la formación externa" placeholder="Ayudas o beneficios para la formación externa"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-1 ">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-1 ">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>                                        
+                                        </div>
                                     </fieldset>
                                 </div>
 
@@ -220,98 +223,89 @@
                                         <p>¿Existe formación para el personal en materia de Igualdad de género?</p>
                                     </div>
                                     <div class="col-md-2">
-                                        <md-radio-group formControlName="preg_18">
+                                        <md-radio-group formControlName="preg_177">
                                             <md-radio-button value="si">Si</md-radio-button>
                                             <md-radio-button value="no">No</md-radio-button>
                                         </md-radio-group>
                                     </div>
                                 </div>
 
-                                <div class="form-group row" formGroupName="data">
-                                    <div class="col-md-4 offset-md-2">
-                                        <p>¿Existe formación para el personal en materia de Igualdad de oportunidades?</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <md-radio-group formControlName="preg_19">
-                                            <md-radio-button value="si">Si</md-radio-button>
-                                            <md-radio-button value="no">No</md-radio-button>
-                                        </md-radio-group>
-                                    </div>
-                                </div>
+
                                 <div class="col-md-9 offset-md-2">
-                                        <p>En caso afirmativo </p>
-                                    </div>
-                                 <div class="section" formArrayName="preg_1_tabla_3">
-                                    <fieldset>                                        
-                                            <div class="row">
-                                                <div class="col-md-3 offset-md-2 text-md-center">                                                    			
+                                    <p>En caso afirmativo </p>
+                                </div>
+                                <div class="section" formArrayName="preg_174_tabla_3">
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="col-md-3 offset-md-2 text-md-center">
+                                            </div>
+                                            <div class="col-md-1 text-md-center">
+                                                Nº Mujeres
+                                            </div>
+                                            <div class="col-md-1 text-md-center">
+                                                Nº Hombres
+                                            </div>
+                                        </div>
+                                        <div *ngFor="let datos of getPregunta('preg_174_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                            <div class="row" *ngIf="i==1">
+                                                <div class="col-md-3 offset-md-2 ">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control" readonly value="Cuantas personas se benefician de esa formación" tooltip="formación para el personal en materia de Igualdad de oportunidades"
+                                                                placeholder="formación para el personal en materia de Igualdad de oportunidades"
+                                                            />
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-1 text-md-center">
-                                                    Nº Mujeres
+                                                <div class="col-md-1 ">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-1 text-md-center">
-                                                    Nº Hombres
+                                                <div class="col-md-1 ">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div *ngFor="let datos of getPregunta('preg_1_tabla_3').controls; let i=index" [formGroupName]="i">
-
-                                                <div class="row" *ngIf="i==1">
-                                                    <div class="col-md-3 offset-md-2 ">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input class="form-control" readonly value="Cuantas personas se benefician de esa formación" tooltip="formación para el personal en materia de Igualdad de oportunidades" placeholder="formación para el personal en materia de Igualdad de oportunidades"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-1 ">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-1 ">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>                                        
+                                        </div>
                                     </fieldset>
                                 </div>
                                 <div class="form-group row" formGroupName="data">
-                                    
+
                                     <div class="col-md-4 offset-md-2">
-                                        <label for="preg_20">B) Indicar su carácter obligatorio o voluntario para el personal</label>
+                                        <label for="preg_179">A) Indicar su carácter obligatorio o voluntario para el personal</label>
                                     </div>
                                     <div class="col-md-2">
-                                        <md-radio-group formControlName="preg_20">
+                                        <md-radio-group formControlName="preg_179">
                                             <md-radio-button value="si">Voluntaria</md-radio-button>
                                             <md-radio-button value="no">Obligatoria</md-radio-button>
                                         </md-radio-group>
                                     </div>
-                                    <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_21">C) Indicar esquema de CONTENIDOS</label></div>
+                                    <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_180">B) Indicar esquema de CONTENIDOS</label></div>
                                     <div class="col-md-8 offset-md-2">
-                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_21" formControlName="preg_21" autosize placeholder="Indicar esquema de CONTENIDOS"></textarea>
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_180" formControlName="preg_180" autosize placeholder="Indicar esquema de CONTENIDOS"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-group row" formGroupName="data">
-                                    <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_22">Mencione las estrategias de difusión de los planes de formación realizado en la organización</label></div>
+                                    <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_181">Mencione las estrategias de difusión de los planes de formación realizado en la organización</label></div>
                                     <div class="col-md-8 offset-md-2">
-                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_22" formControlName="preg_22" autosize placeholder="Mencione las estrategias de difusión de los planes de formación realizado en la organización"></textarea>
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_181" formControlName="preg_181" autosize placeholder="Mencione las estrategias de difusión de los planes de formación realizado en la organización"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-group row" formGroupName="data">
                                     <div class="col-md-4 offset-md-2">
-                                        <label for="preg_23">¿Cualquier persona puede asistir a cursos impartido en el Plan de Formación de la compañía, o en los de otras administraciones con quienes colaboran?</label>
+                                        <label for="preg_182">¿Puede solicitar el personal la asistencia a cualquier curso impartido en el Plan de Formación de la organización o de otras admones? </label>
                                     </div>
                                     <div class="col-md-2">
-                                        <md-radio-group formControlName="preg_23">
+                                        <md-radio-group formControlName="preg_182">
                                             <md-radio-button value="si">Si</md-radio-button>
                                             <md-radio-button value="no">No</md-radio-button>
                                         </md-radio-group>
@@ -319,25 +313,110 @@
                                 </div>
 
                                 <div class="form-group row" formGroupName="data">
-                                    <div class="col-md-4 offset-md-2">
-                                        <label for="preg_24">De acuerdo a los lugares en los que realizan las formaciones en la organización responda las siguientes preguntas teniendo en cuenta la frecuencia en que se hacen en terminada situaciones:</label>
+                                    <div class="col-md-8 offset-md-2">
+                                        <label>De acuerdo a los lugares en los que realizan las formaciones en la organización responda las siguientes preguntas teniendo en cuenta la frecuencia en que se hacen en terminada situaciones:</label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <label for="preg_184">En el lugar de trabajo</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <md-radio-group formControlName="preg_184">
+                                                <md-radio-button value="1">Siempre</md-radio-button>
+                                                <md-radio-button value="2">Casi siempre</md-radio-button>
+                                                <md-radio-button value="3">Nunca</md-radio-button>
+                                                <md-radio-button value="4">A veces</md-radio-button>
+                                            </md-radio-group>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <label for="preg_185">Fuera del lugar de trabajo</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <md-radio-group formControlName="preg_185">
+                                                <md-radio-button value="1">Siempre</md-radio-button>
+                                                <md-radio-button value="2">Casi siempre</md-radio-button>
+                                                <md-radio-button value="3">Nunca</md-radio-button>
+                                                <md-radio-button value="4">A veces</md-radio-button>
+                                            </md-radio-group>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <label for="preg_186">Online o Semipresencial</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <md-radio-group formControlName="preg_186">
+                                                <md-radio-button value="1">Siempre</md-radio-button>
+                                                <md-radio-button value="2">Casi siempre</md-radio-button>
+                                                <md-radio-button value="3">Nunca</md-radio-button>
+                                                <md-radio-button value="4">A veces</md-radio-button>
+                                            </md-radio-group>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <label for="preg_187">En jornada laboral</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <md-radio-group formControlName="preg_187">
+                                                <md-radio-button value="1">Siempre</md-radio-button>
+                                                <md-radio-button value="2">Casi siempre</md-radio-button>
+                                                <md-radio-button value="3">Nunca</md-radio-button>
+                                                <md-radio-button value="4">A veces</md-radio-button>
+                                            </md-radio-group>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <label for="preg_188">Fuera de la jornada laboral</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <md-radio-group formControlName="preg_188">
+                                                <md-radio-button value="1">Siempre</md-radio-button>
+                                                <md-radio-button value="2">Casi siempre</md-radio-button>
+                                                <md-radio-button value="3">Nunca</md-radio-button>
+                                                <md-radio-button value="4">A veces</md-radio-button>
+                                            </md-radio-group>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group row" formGroupName="data">
-                                    <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_25">En caso en que la organización realice cursos de formación fuera del horario laboral mencione de que tipo son y a que miembros de la organización van dirigidos</label></div>
+                                    <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_190">En caso en que la organización realice cursos de formación fuera del horario laboral mencione de que tipo son y a que miembros de la organización van dirigidos</label></div>
                                     <div class="col-md-8 offset-md-2">
-                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_25" formControlName="preg_25" autosize placeholder="Mencione de que tipo son y a que miembros de la organización van dirigidos"></textarea>
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_190" formControlName="preg_190" autosize placeholder="Mencione de que tipo son y a que miembros de la organización van dirigidos"></textarea>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group row" style="margin-top:40px" formGroupName="data">
                                 <div class="col-md-5 offset-md-2">
-                                    <label for="preg_26"> ¿Se ofrecen facilidades o compensaciones si los cursos se ofrecen fuera del horario laboral?</label>
+                                    <label for="preg_191"> ¿Se ofrecen facilidades o compensaciones si los cursos se ofrecen fuera del horario laboral?</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <md-radio-group formControlName="preg_26">
+                                    <md-radio-group formControlName="preg_191">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
@@ -346,10 +425,10 @@
                                 <div class="col-md-6 offset-md-2">
                                     <p>En caso afirmativo</p>
                                 </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_27">¿De qué tipo?</label></div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_192">¿De qué tipo?</label></div>
                                 <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_26')!='si'" class="autogrow form-control transition-height" id="preg_26"
-                                        formControlName="preg_27" autosize placeholder="Tipo"></textarea>
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_191')!='si'" class="autogrow form-control transition-height" id="preg_192"
+                                        formControlName="preg_192" autosize placeholder="Tipo"></textarea>
                                 </div>
                             </div>
 
@@ -358,7 +437,7 @@
                                     <label for="preg_28"> ¿Se ofrece la posibilidad de recibir formación que no esté directamente relacionada con el puesto de trabajo?</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <md-radio-group formControlName="preg_28">
+                                    <md-radio-group formControlName="preg_193">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
@@ -367,17 +446,17 @@
                                 <div class="col-md-6 offset-md-2">
                                     <p>En caso afirmativo</p>
                                 </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_29">¿Esta posibilidad está abierta a toda la plantilla?</label></div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_194">¿Esta posibilidad está abierta a toda la plantilla?</label></div>
                                 <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_28')!='si'" class="autogrow form-control transition-height" id="preg_29"
-                                        formControlName="preg_29" autosize placeholder="¿Esta posibilidad está abierta a toda la plantilla?"></textarea>
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_193')!='si'" class="autogrow form-control transition-height" id="preg_194"
+                                        formControlName="preg_194" autosize placeholder="¿Esta posibilidad está abierta a toda la plantilla?"></textarea>
                                 </div>
                             </div>
 
                             <div class="col-md-9 offset-md-2">
                                 <p>En caso afirmativo indique cuantas personas se benefician de esa formación</p>
                             </div>
-                            <div class="section" formArrayName="preg_2_tabla_3">
+                            <div class="section" formArrayName="preg_195_tabla_3">
                                 <fieldset>
                                     <div class="row">
                                         <div class="col-md-3 offset-md-2 text-md-center">
@@ -390,7 +469,7 @@
                                             Nº Hombres
                                         </div>
                                     </div>
-                                    <div *ngFor="let datos of getPregunta('preg_2_tabla_3').controls; let i=index" [formGroupName]="i">
+                                    <div *ngFor="let datos of getPregunta('preg_195_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                         <div class="row">
                                             <div class="col-md-3 offset-md-2 ">
@@ -423,7 +502,7 @@
                         </fieldset>
                     </div>
 
-                    <div class="section" style="margin-top:40px" formArrayName="preg_3_tabla_3">
+                    <div class="section" style="margin-top:40px" formArrayName="preg_199_tabla_3">
                         <fieldset>
                             <legend>Teniendo en cuenta la situación de la organización complete la siguiente información:</legend>
                             <div class="row">
@@ -438,7 +517,7 @@
                                     Nº Hombres
                                 </div>
                             </div>
-                            <div *ngFor="let datos of getPregunta('preg_3_tabla_3').controls; let i=index" [formGroupName]="i">
+                            <div *ngFor="let datos of getPregunta('preg_199_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                 <div class="row">
                                     <div class="col-md-3 offset-md-2 ">
@@ -475,14 +554,14 @@
                                 <div class="col-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-center">
-                                            {{getTotalMujeres(ifForm.controls.preg_3_tabla_3)}}
+                                            {{getTotalMujeres(ifForm.controls.preg_199_tabla_3)}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-center">
-                                            {{getTotalHombres(ifForm.controls.preg_3_tabla_3)}}
+                                            {{getTotalHombres(ifForm.controls.preg_199_tabla_3)}}
                                         </div>
                                     </div>
                                 </div>
@@ -492,7 +571,7 @@
                     </div>
 
 
-                    <div class="section" style="margin-top:40px" formArrayName="preg_4_tabla_3">
+                    <div class="section" style="margin-top:40px" formArrayName="preg_200_tabla_3">
                         <fieldset>
                             <legend>Número de personas beneficiarias según grupo o categoría profesional</legend>
                             <div class="row">
@@ -507,7 +586,7 @@
                                     Nº Hombres
                                 </div>
                             </div>
-                            <div *ngFor="let datos of getPregunta('preg_4_tabla_3').controls; let i=index" [formGroupName]="i">
+                            <div *ngFor="let datos of getPregunta('preg_200_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                 <div class="row">
                                     <div class="col-md-3 offset-md-2 ">
@@ -544,14 +623,14 @@
                                 <div class="col-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-center">
-                                            {{getTotalMujeres(ifForm.controls.preg_4_tabla_3)}}
+                                            {{getTotalMujeres(ifForm.controls.preg_200_tabla_3)}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-center">
-                                            {{getTotalHombres(ifForm.controls.preg_4_tabla_3)}}
+                                            {{getTotalHombres(ifForm.controls.preg_200_tabla_3)}}
                                         </div>
                                     </div>
                                 </div>

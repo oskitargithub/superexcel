@@ -37,7 +37,7 @@ export class InformacionBasicaService{
 				params, {headers: headers}).map(res => res.json());*/
     }
     
-    edit(informacionbasica: InformacionBasicaModel, tokenjaume: string){
+    setDatosModelo(informacionbasica: InformacionBasicaModel, tokenjaume: string){
         console.log("tokenjaume"+tokenjaume);
         let mitoken = JSON.parse(localStorage.getItem('fditoken')); 
         //informacionbasica = informacionbasica.push({"fditoken":mitoken.token})        

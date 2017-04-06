@@ -38,33 +38,33 @@
                                     </thead>
                                     <tbody>
                                         <!-- Banda 2 -->
-                                        <tr *ngFor="let item of modelo.preg_5_tabla_3; let i=index">
+                                        <tr *ngFor="let item of modelo.preg_242_tabla_3; let i=index">
                                             <td class="text-md-center">{{item.texto}}</td>
                                             <td class="text-md-center">{{item.mujeres}}</td>
-                                            <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_5_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_242_tabla_3) | percent:'1.0-0'}}</td>
                                             <td class="text-md-center">{{item.hombres}}</td>
-                                            <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_5_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_242_tabla_3) | percent:'1.0-0'}}</td>
                                             <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
-                                            <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_5_tabla_3)}}</td>
-                                            <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_5_tabla_3)}}</td>
-                                            <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_5_tabla_3))}}</td>
-                                            <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_5_tabla_3) | percent:'1.0-0'}}</td>
-                                            <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_5_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_242_tabla_3)}}</td>
+                                            <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_242_tabla_3)}}</td>
+                                            <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_242_tabla_3))}}</td>
+                                            <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_242_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_242_tabla_3) | percent:'1.0-0'}}</td>
                                         </tr>
 
                                         <!-- Totales -->
                                         <tr>
                                             <th class="text-md-center" scope="row">Total</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalMujeres(modelo.preg_5_tabla_3)}}
+                                                {{funciones.getTotalMujeres(modelo.preg_242_tabla_3)}}
                                             </th>
-                                            <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_5_tabla_3) | percent:'1.0-0'}}</th>
+                                            <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_242_tabla_3) | percent:'1.0-0'}}</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalHombres(modelo.preg_5_tabla_3)}}
+                                                {{funciones.getTotalHombres(modelo.preg_242_tabla_3)}}
                                             </th>
-                                            <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_5_tabla_3) | percent:'1.0-0'}}</th>
+                                            <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_242_tabla_3) | percent:'1.0-0'}}</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalHombresMujeres(modelo.preg_5_tabla_3)}}
+                                                {{funciones.getTotalHombresMujeres(modelo.preg_242_tabla_3)}}
 
                                             </th>
                                             <th class="text-md-center" scope="row"></th>
@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <header>
-                                <h5>Relación de Ascensos por categorías profesionalespor género</h5>
+                                <h5>Relación de Ascensos por categorías profesionales por género</h5>
                             </header>
                             <div class="widget-body">
                                 <canvas baseChart [options]="barChartOptions" [datasets]="barChartData1" [labels]="barChartLabels1" [chartType]="barChartType"
@@ -93,7 +93,7 @@
 
                         <div class="col-md-6">
                             <header>
-                                <h5>Relación de Ascensos por categorías profesionalespor género (Proporcionado)</h5>
+                                <h5>Relación de Ascensos por categorías profesionales por género (Proporcionado)</h5>
                             </header>
                             <div class="widget-body">
                                 <canvas baseChart [options]="barChartOptions" [datasets]="barChartData2" [labels]="barChartLabels2" [chartType]="barChartType"
@@ -139,33 +139,33 @@
                                     </thead>
                                     <tbody>
                                         <!-- Banda 2 -->
-                                        <tr *ngFor="let item of modelo.preg_7_tabla_3; let i=index">
+                                        <tr *ngFor="let item of modelo.preg_244_tabla_3; let i=index">
                                             <td class="text-md-center">{{item.texto}}</td>
                                             <td class="text-md-center">{{item.mujeres}}</td>
-                                            <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_7_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_244_tabla_3) | percent:'1.0-0'}}</td>
                                             <td class="text-md-center">{{item.hombres}}</td>
-                                            <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_7_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_244_tabla_3) | percent:'1.0-0'}}</td>
                                             <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
-                                            <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_7_tabla_3)}}</td>
-                                            <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_7_tabla_3)}}</td>
-                                            <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_7_tabla_3))}}</td>
-                                            <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_7_tabla_3) | percent:'1.0-0'}}</td>
-                                            <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_7_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_244_tabla_3)}}</td>
+                                            <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_244_tabla_3)}}</td>
+                                            <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_244_tabla_3))}}</td>
+                                            <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_244_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_244_tabla_3) | percent:'1.0-0'}}</td>
                                         </tr>
 
                                         <!-- Totales -->
                                         <tr>
                                             <th class="text-md-center" scope="row">Total</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalMujeres(modelo.preg_7_tabla_3)}}
+                                                {{funciones.getTotalMujeres(modelo.preg_244_tabla_3)}}
                                             </th>
-                                            <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_7_tabla_3) | percent:'1.0-0'}}</th>
+                                            <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_244_tabla_3) | percent:'1.0-0'}}</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalHombres(modelo.preg_7_tabla_3)}}
+                                                {{funciones.getTotalHombres(modelo.preg_244_tabla_3)}}
                                             </th>
-                                            <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_7_tabla_3) | percent:'1.0-0'}}</th>
+                                            <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_244_tabla_3) | percent:'1.0-0'}}</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalHombresMujeres(modelo.preg_7_tabla_3)}}
+                                                {{funciones.getTotalHombresMujeres(modelo.preg_244_tabla_3)}}
 
                                             </th>
                                             <th class="text-md-center" scope="row"></th>
@@ -248,33 +248,33 @@
                                     </thead>
                                     <tbody>
                                         <!-- Banda 2 -->
-                                        <tr *ngFor="let item of modelo.preg_3_tabla_3; let i=index">
+                                        <tr *ngFor="let item of modelo.preg_240_tabla_3; let i=index">
                                             <td class="text-md-center">{{item.texto}}</td>
                                             <td class="text-md-center">{{item.mujeres}}</td>
-                                            <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_3_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_240_tabla_3) | percent:'1.0-0'}}</td>
                                             <td class="text-md-center">{{item.hombres}}</td>
-                                            <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_3_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_240_tabla_3) | percent:'1.0-0'}}</td>
                                             <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
-                                            <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_3_tabla_3)}}</td>
-                                            <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_3_tabla_3)}}</td>
-                                            <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_3_tabla_3))}}</td>
-                                            <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_3_tabla_3) | percent:'1.0-0'}}</td>
-                                            <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_3_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_240_tabla_3)}}</td>
+                                            <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_240_tabla_3)}}</td>
+                                            <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_240_tabla_3))}}</td>
+                                            <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_240_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_240_tabla_3) | percent:'1.0-0'}}</td>
                                         </tr>
 
                                         <!-- Totales -->
                                         <tr>
                                             <th class="text-md-center" scope="row">Total</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalMujeres(modelo.preg_3_tabla_3)}}
+                                                {{funciones.getTotalMujeres(modelo.preg_240_tabla_3)}}
                                             </th>
-                                            <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_3_tabla_3) | percent:'1.0-0'}}</th>
+                                            <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_240_tabla_3) | percent:'1.0-0'}}</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalHombres(modelo.preg_3_tabla_3)}}
+                                                {{funciones.getTotalHombres(modelo.preg_240_tabla_3)}}
                                             </th>
-                                            <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_3_tabla_3) | percent:'1.0-0'}}</th>
+                                            <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_240_tabla_3) | percent:'1.0-0'}}</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalHombresMujeres(modelo.preg_3_tabla_3)}}
+                                                {{funciones.getTotalHombresMujeres(modelo.preg_240_tabla_3)}}
 
                                             </th>
                                             <th class="text-md-center" scope="row"></th>
@@ -349,33 +349,33 @@
                                     </thead>
                                     <tbody>
                                         <!-- Banda 2 -->
-                                        <tr *ngFor="let item of modelo.preg_4_tabla_3; let i=index">
+                                        <tr *ngFor="let item of modelo.preg_241_tabla_3; let i=index">
                                             <td class="text-md-center">{{item.texto}}</td>
                                             <td class="text-md-center">{{item.mujeres}}</td>
-                                            <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_4_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_241_tabla_3) | percent:'1.0-0'}}</td>
                                             <td class="text-md-center">{{item.hombres}}</td>
-                                            <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_4_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_241_tabla_3) | percent:'1.0-0'}}</td>
                                             <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
-                                            <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_4_tabla_3)}}</td>
-                                            <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_4_tabla_3)}}</td>
-                                            <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_4_tabla_3))}}</td>
-                                            <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_4_tabla_3) | percent:'1.0-0'}}</td>
-                                            <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_4_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_241_tabla_3)}}</td>
+                                            <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_241_tabla_3)}}</td>
+                                            <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_241_tabla_3))}}</td>
+                                            <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_241_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_241_tabla_3) | percent:'1.0-0'}}</td>
                                         </tr>
 
                                         <!-- Totales -->
                                         <tr>
                                             <th class="text-md-center" scope="row">Total</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalMujeres(modelo.preg_4_tabla_3)}}
+                                                {{funciones.getTotalMujeres(modelo.preg_241_tabla_3)}}
                                             </th>
-                                            <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_4_tabla_3) | percent:'1.0-0'}}</th>
+                                            <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_241_tabla_3) | percent:'1.0-0'}}</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalHombres(modelo.preg_4_tabla_3)}}
+                                                {{funciones.getTotalHombres(modelo.preg_241_tabla_3)}}
                                             </th>
-                                            <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_4_tabla_3) | percent:'1.0-0'}}</th>
+                                            <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_241_tabla_3) | percent:'1.0-0'}}</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalHombresMujeres(modelo.preg_4_tabla_3)}}
+                                                {{funciones.getTotalHombresMujeres(modelo.preg_241_tabla_3)}}
 
                                             </th>
                                             <th class="text-md-center" scope="row"></th>
@@ -450,33 +450,33 @@
                                     </thead>
                                     <tbody>
                                         <!-- Banda 2 -->
-                                        <tr *ngFor="let item of modelo.preg_6_tabla_3; let i=index">
+                                        <tr *ngFor="let item of modelo.preg_243_tabla_3; let i=index">
                                             <td class="text-md-center">{{item.texto}}</td>
                                             <td class="text-md-center">{{item.mujeres}}</td>
-                                            <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_6_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_243_tabla_3) | percent:'1.0-0'}}</td>
                                             <td class="text-md-center">{{item.hombres}}</td>
-                                            <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_6_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_243_tabla_3) | percent:'1.0-0'}}</td>
                                             <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
-                                            <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_6_tabla_3)}}</td>
-                                            <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_6_tabla_3)}}</td>
-                                            <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_6_tabla_3))}}</td>
-                                            <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_6_tabla_3) | percent:'1.0-0'}}</td>
-                                            <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_6_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_243_tabla_3)}}</td>
+                                            <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_243_tabla_3)}}</td>
+                                            <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_243_tabla_3))}}</td>
+                                            <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_243_tabla_3) | percent:'1.0-0'}}</td>
+                                            <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_243_tabla_3) | percent:'1.0-0'}}</td>
                                         </tr>
 
                                         <!-- Totales -->
                                         <tr>
                                             <th class="text-md-center" scope="row">Total</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalMujeres(modelo.preg_6_tabla_3)}}
+                                                {{funciones.getTotalMujeres(modelo.preg_243_tabla_3)}}
                                             </th>
-                                            <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_6_tabla_3) | percent:'1.0-0'}}</th>
+                                            <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_243_tabla_3) | percent:'1.0-0'}}</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalHombres(modelo.preg_6_tabla_3)}}
+                                                {{funciones.getTotalHombres(modelo.preg_243_tabla_3)}}
                                             </th>
-                                            <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_6_tabla_3) | percent:'1.0-0'}}</th>
+                                            <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_243_tabla_3) | percent:'1.0-0'}}</th>
                                             <th class="text-md-center" scope="row">
-                                                {{funciones.getTotalHombresMujeres(modelo.preg_6_tabla_3)}}
+                                                {{funciones.getTotalHombresMujeres(modelo.preg_243_tabla_3)}}
 
                                             </th>
                                             <th class="text-md-center" scope="row"></th>

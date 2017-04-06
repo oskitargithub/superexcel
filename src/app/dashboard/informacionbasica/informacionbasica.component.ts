@@ -8,7 +8,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InformacionBasicaModel, CentroActividad, datosUserModel, dataModel } from './informacionbasica.model';
 import { InformacionBasicaService } from "./informacionbasica.service";
 import { CustomValidators } from 'ng2-validation';
-import { DashBoardFormErrorsService} from '../dashboard.formerrors.service';
+import { DashBoardFormErrorsService } from '../dashboard.formerrors.service';
 
 import * as moment from 'moment';
 declare var jQuery: any;
@@ -49,7 +49,7 @@ export class InformacionBasicaComponent implements OnInit {
         private fb: FormBuilder,
         private servicio: InformacionBasicaService,
         private router: Router,
-        private serviceErrores : DashBoardFormErrorsService,
+        private serviceErrores: DashBoardFormErrorsService,
         injector: Injector
     ) {
         this.dynamic = 0;
@@ -89,9 +89,9 @@ export class InformacionBasicaComponent implements OnInit {
     }
 
 
-    onSubmit2() {
+    onSubmit(redirigir: boolean) {
         this.informacionbasica = this.preparaParaGuardar();
-        this.servicio.edit(this.informacionbasica, this.token)
+        this.servicio.setDatosModelo(this.informacionbasica, this.token)
             .subscribe(
             response => {
                 this.status = response.status;
@@ -103,7 +103,9 @@ export class InformacionBasicaComponent implements OnInit {
                     });
                 }
                 else {
-                    this.router.navigate(["/app/clasificacionprofesional1"]);
+                    if (redirigir) {
+                        this.router.navigate(["/app/clasificacionprofesional1"]);
+                    }
                     Messenger().post({
                         message: 'Los datos han sido guardados correctamente',
                         type: 'success',
@@ -124,61 +126,8 @@ export class InformacionBasicaComponent implements OnInit {
 
                 }
             });
-
     }
-    onSubmit(model: InformacionBasicaModel) {
-        console.log(this.ifForm.dirty);
-        console.log(this.ifForm.valid);
-        if (this.ifForm.dirty && this.ifForm.valid) {
-            this.informacionbasica = this.preparaParaGuardar();
 
-            this.submitted = true;
-            console.log("formulario enviado");
-            this.servicio.edit(this.informacionbasica, this.token)
-                .subscribe(
-                response => {
-
-                    this.status = response.status;
-                    if (this.status !== "success") {
-                        Messenger().post({
-                            message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
-                            type: 'error',
-                            showCloseButton: true
-                        });
-                    }
-                    else {
-                        this.informacionbasica = response.data;
-                        Messenger().post({
-                            message: 'Los datos han sido guardados correctamente',
-                            type: 'success',
-                            showCloseButton: true
-                        });
-                    }
-
-                },
-                error => {
-                    this.errorMessage = <any>error;
-                    if (this.errorMessage !== null) {
-
-                        Messenger().post({
-                            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
-                            type: 'error',
-                            showCloseButton: true
-                        });
-
-                    }
-                });
-        }
-        else{
-            let listaerrores = '';            
-            Object.getOwnPropertyNames(this.serviceErrores.objetoErrores).map((key: string) => listaerrores+=this.serviceErrores.objetoErrores[key]+'<br/>');            
-            Messenger().post({
-                            message: 'Ha ocurrido un error guardando los datos.' + listaerrores,
-                            type: 'error',
-                            showCloseButton: true
-                        });
-        }
-    }
 
     createForm() {
         this.ifForm = this.fb.group({
@@ -187,7 +136,7 @@ export class InformacionBasicaComponent implements OnInit {
             preg_2_tabla_2: this.fb.array([]),
             _token: ''
         });
-        console.log("ifform");        
+        console.log("ifform");
     }
 
 
@@ -239,39 +188,11 @@ export class InformacionBasicaComponent implements OnInit {
     addValidaciones() {
         this.ifForm.get('data.preg_5').setValidators([CustomValidators.number]);
         this.ifForm.get('data.preg_6').setValidators([CustomValidators.number]);
-        this.ifForm.get('user.email').setValidators([Validators.required, Validators.minLength(1),CustomValidators.email]);
-        
-        this.serviceErrores.mensajesValidacion = this.setMensajesValidacion();
-        this.serviceErrores.objetoErrores = this.setObjetoErrores();
-        
-        this.ifForm.valueChanges.subscribe(data => this.serviceErrores.onValueChanged(this.ifForm,data));
-        this.serviceErrores.onValueChanged(this.ifForm);
+        this.ifForm.get('user.email').setValidators([Validators.required, Validators.minLength(1), CustomValidators.email]);
     }
-    // onValueChanged(data?: any) {
-    //     console.log("onValueChanged");
-    //     if (!this.ifForm) { return; }
-    //     const form = this.ifForm;
 
-    //     for (const field in this.formErrors) {
-    //         // clear previous error message (if any)
-    //         this.formErrors[field] = '';
-    //         console.log(field);
-    //         const control = form.get(field);
-    //         console.log("control");
-    //         console.log(control);
-    //         if (control && control.dirty && !control.valid) {
-    //             console.log("elemento malino");
-    //             const messages = this.validationMessages[field];
-    //             for (const key in control.errors) {
-    //                 this.formErrors[field] += messages[key] + ' ';
-    //             }
-    //         }
-    //     }
-    //     console.log("formErrors");
-    //     console.log(this.formErrors);
-    // }
 
-    setMensajesValidacion(){
+    setMensajesValidacion() {
         return {
             'data.preg_5': {
                 'number': 'El campo debe ser numérico.'
@@ -286,17 +207,6 @@ export class InformacionBasicaComponent implements OnInit {
         };
     }
 
-
-    setObjetoErrores() {
-        return {
-            'data.preg_5': '',
-            'data.preg_6': '',
-            'user.email': ''
-        };
-    }
-
-
-    
 
     getInformacionBasica() {
         this.servicio.getDatosModelo()
@@ -336,7 +246,7 @@ export class InformacionBasicaComponent implements OnInit {
                     console.log("respondidas" + this.respondidasSeccion + " y total" + this.totalSeccion);
 
 
-                    
+
 
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',

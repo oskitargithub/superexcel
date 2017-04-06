@@ -39,16 +39,18 @@
                                 <label class="col-md-1  col-form-label text-md-right" for="preg_46">Mujeres</label>
                                 <div class="col-md-1 ">
                                     <input type="text" class="form-control" formControlName="preg_46" tooltip="Mujeres" placeholder="Mujeres" />
-                                    <div class="alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_46'].errors?.number">{{serviceErrores.objetoErrores['data.preg_46']}}</div>
+                                    <div class="alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_46'].errors?.number">
+                                        {{serviceErrores.objetoErrores['numerico']}}
+                                    </div>
                                 </div>
 
                                 <label class="col-md-1  col-form-label text-md-right" for="preg_47">Hombres</label>
                                 <div class="col-md-1 ">
                                     <input type="text" class="form-control" formControlName="preg_47" tooltip="Hombres" placeholder="Hombres" />
-                                    <div class="alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_47'].errors?.number">{{serviceErrores.objetoErrores['data.preg_47']}}</div>
+                                    <div class="alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_47'].errors?.number">{{serviceErrores.objetoErrores['numerico']}}</div>
                                 </div>
                                 <label class="col-md-1  col-form-label text-md-right" for="total">Total</label>
-                                <div class="col-md-2 ">
+                                <div class="col-md-2 col-form-label">
                                     {{getTotalCompo()}}
 
                                 </div>
@@ -109,7 +111,7 @@
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_49_tabla_3']).controls[i].controls['mujeres'].errors?.number">
-                                                    {{serviceErrores.objetoErrores['preg_49_tabla_3.mujeres']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -118,11 +120,14 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_49_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2 ">
                                             <div class="form-group">
-                                                <div class="input-group">
+                                                <div class="input-group col-form-label">
                                                     {{ifForm.controls.preg_49_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_49_tabla_3.value[i].hombres*1 }}
                                                 </div>
                                             </div>
@@ -200,6 +205,9 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_48_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2 ">
@@ -207,11 +215,14 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_48_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-1">
                                             <div class="form-group">
-                                                <div class="input-group">
+                                                <div class="input-group col-form-label">
                                                     {{ifForm.controls.preg_48_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_48_tabla_3.value[i].hombres*1 }}
                                                 </div>
                                             </div>
@@ -299,6 +310,9 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_54_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2 ">
@@ -306,11 +320,14 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_54_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-1 ">
                                             <div class="form-group">
-                                                <div class="input-group">
+                                                <div class="input-group col-form-label">
                                                     {{ifForm.controls.preg_54_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_54_tabla_3.value[i].hombres*1 }}
                                                 </div>
                                             </div>
@@ -399,6 +416,9 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_55_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2 ">
@@ -406,11 +426,14 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_55_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-1">
                                             <div class="form-group">
-                                                <div class="input-group">
+                                                <div class="input-group col-form-label">
                                                     {{ifForm.controls.preg_55_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_55_tabla_3.value[i].hombres*1 }}
                                                 </div>
                                             </div>
@@ -498,6 +521,9 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_56_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2 ">
@@ -505,11 +531,14 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_56_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-1">
                                             <div class="form-group">
-                                                <div class="input-group">
+                                                <div class="input-group col-form-label">
                                                     {{ifForm.controls.preg_56_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_56_tabla_3.value[i].hombres*1 }}
                                                 </div>
                                             </div>
@@ -598,6 +627,9 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_57_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2 ">
@@ -605,11 +637,14 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_57_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-1">
                                             <div class="form-group">
-                                                <div class="input-group">
+                                                <div class="input-group col-form-label">
                                                     {{ifForm.controls.preg_57_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_57_tabla_3.value[i].hombres*1 }}
                                                 </div>
                                             </div>
@@ -699,6 +734,9 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_59_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2 ">
@@ -706,11 +744,14 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_59_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-1 ">
                                             <div class="form-group">
-                                                <div class="input-group">
+                                                <div class="input-group col-form-label">
                                                     {{ifForm.controls.preg_59_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_59_tabla_3.value[i].hombres*1 }}
                                                 </div>
                                             </div>
@@ -798,6 +839,9 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_60_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2 ">
@@ -805,11 +849,14 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_60_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-1">
                                             <div class="form-group">
-                                                <div class="input-group">
+                                                <div class="input-group col-form-label">
                                                     {{ifForm.controls.preg_60_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_60_tabla_3.value[i].hombres*1 }}
                                                 </div>
                                             </div>
@@ -896,6 +943,9 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_61_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2 ">
@@ -903,11 +953,14 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_61_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-1">
                                             <div class="form-group">
-                                                <div class="input-group">
+                                                <div class="input-group col-form-label">
                                                     {{ifForm.controls.preg_61_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_61_tabla_3.value[i].hombres*1 }}
                                                 </div>
                                             </div>
@@ -995,6 +1048,9 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_62_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2 ">
@@ -1002,11 +1058,14 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_62_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-1 ">
                                             <div class="form-group">
-                                                <div class="input-group">
+                                                <div class="input-group col-form-label">
                                                     {{ifForm.controls.preg_62_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_62_tabla_3.value[i].hombres*1 }}
                                                 </div>
                                             </div>
@@ -1094,6 +1153,9 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_63_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2 ">
@@ -1101,11 +1163,14 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_63_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-1">
                                             <div class="form-group">
-                                                <div class="input-group">
+                                                <div class="input-group col-form-label">
                                                     {{ifForm.controls.preg_63_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_63_tabla_3.value[i].hombres*1 }}
                                                 </div>
                                             </div>
@@ -1154,8 +1219,8 @@
                     <div class="form-actions" style="margin-top:40px">
                         <div class="row">
                             <div class="offset-md-4 col-md-7 ">
-                                <button [disabled]="!ifForm.valid" type="submit" class="btn btn-primary">Guardar cambios</button>
-                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit2()" class="btn btn-success">Guardar y Continuar</button>     
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(false)" class="btn btn-primary">Guardar cambios</button>
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(true)" class="btn btn-success">Guardar y Continuar</button>
                             </div>
                         </div>
                     </div>

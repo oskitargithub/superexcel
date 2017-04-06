@@ -1,10 +1,11 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router,
-         NavigationExtras } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { ClasProfesional2Service } from './ClasProfesional2.service';
 import { ClasProfesional2Model, Tabla3Model } from './ClasProfesional2.model';
+import { CustomValidators } from 'ng2-validation';
+import { DashBoardFormErrorsService } from '../dashboard.formerrors.service';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -15,7 +16,7 @@ declare var Messenger: any;
     styleUrls: [
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
-    providers: [ClasProfesional2Service],
+    providers: [ClasProfesional2Service, DashBoardFormErrorsService],
     encapsulation: ViewEncapsulation.None,
 })
 export class ClasProfesional2Component implements OnInit {
@@ -25,7 +26,7 @@ export class ClasProfesional2Component implements OnInit {
     submitted = false;
     ifForm: FormGroup;
 
-    public clasprofesional2: ClasProfesional2Model;
+    public modelo: ClasProfesional2Model;
     public errorMessage: string;
     public status: string;
     public respondidasSeccion: any;
@@ -38,18 +39,19 @@ export class ClasProfesional2Component implements OnInit {
     constructor(private router: Router,
         private fb: FormBuilder,
         private servicio: ClasProfesional2Service,
+        private serviceErrores: DashBoardFormErrorsService,
         injector: Injector
     ) {
         this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
-        this.createForm();        
+        this.createForm();
     }
 
-    
+
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
-        this.getClasProfesional2();
+        this.getDatosModelo();
     }
 
     createForm() {
@@ -65,17 +67,17 @@ export class ClasProfesional2Component implements OnInit {
         console.log("fin creando formulario");
     }
 
-    getValorBarra(){
-        if(this.respondidasSeccion==0)
+    getValorBarra() {
+        if (this.respondidasSeccion == 0)
             return 0;
-        else{
+        else {
             let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
             return value;
         }
     }
 
 
-    valorBarraProgreso() {        
+    valorBarraProgreso() {
         let value = this.getValorBarra();
         let type: string;
 
@@ -94,21 +96,10 @@ export class ClasProfesional2Component implements OnInit {
     }
 
 
-    getClasProfesional2() {
+    getDatosModelo() {
         this.servicio.getDatosModelo()
             .subscribe(
-            response => {                
-                this.setPregunta(response.preg_64_tabla_3,'preg_64_tabla_3');
-                this.setPregunta(response.preg_65_tabla_3,'preg_65_tabla_3');
-                this.setPregunta(response.preg_66_tabla_3,'preg_66_tabla_3');
-                this.setPregunta(response.preg_67_tabla_3,'preg_67_tabla_3');
-                this.setPregunta(response.preg_68_tabla_3,'preg_68_tabla_3');
-                this.setPregunta(response.preg_69_tabla_3,'preg_69_tabla_3');
-
-                this.respondidasSeccion = response.respondidasSeccion;
-                this.totalSeccion = response.totalSeccion;
-                this.valorBarraProgreso();
-
+            response => {
                 this.status = response.status;
                 if (this.status !== "success") {
                     if (this.status == "tokenerror") {
@@ -127,6 +118,15 @@ export class ClasProfesional2Component implements OnInit {
                     }
                 }
                 else {
+                    this.setPregunta(response.preg_64_tabla_3, 'preg_64_tabla_3');
+                    this.setPregunta(response.preg_65_tabla_3, 'preg_65_tabla_3');
+                    this.setPregunta(response.preg_66_tabla_3, 'preg_66_tabla_3');
+                    this.setPregunta(response.preg_67_tabla_3, 'preg_67_tabla_3');
+                    this.setPregunta(response.preg_68_tabla_3, 'preg_68_tabla_3');
+                    this.setPregunta(response.preg_69_tabla_3, 'preg_69_tabla_3');
+                    this.respondidasSeccion = response.respondidasSeccion;
+                    this.totalSeccion = response.totalSeccion;
+                    this.valorBarraProgreso();
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',
@@ -150,50 +150,61 @@ export class ClasProfesional2Component implements OnInit {
 
 
     getTotalMujeres(elemento: FormArray) {
-        return elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1),0);
+        return elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1), 0);
     }
     getTotalHombres(elemento: FormArray) {
-        return elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1),0);
+        return elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1), 0);
     }
     getTotalTotal(elemento: FormArray) {
-        let hombres = elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1),0);
-        let mujeres = elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1),0);
+        let hombres = elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1), 0);
+        let mujeres = elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1), 0);
         return (hombres * 1 + mujeres * 1);
     }
 
-    
+
 
     get data(): FormArray {
         return this.ifForm.get('data') as FormArray;
     };
 
-    
 
-    setPregunta(tabla: Tabla3Model[], nombretabla:string) {
-        const addressFGs = tabla.map(datos => this.fb.group(datos));
+
+    setPregunta(tabla: Tabla3Model[], nombretabla: string) {
+        const addressFGs = tabla.map(datos => 
+            this.fb.group({            
+                texto: [datos.texto],
+                respuesta:[datos.respuesta],
+                mujeres: [datos.mujeres,CustomValidators.number],
+                hombres:[datos.hombres,CustomValidators.number]        
+        }));   
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
     }
 
-    getPregunta (pregunta:string): FormArray {
+    getPregunta(pregunta: string): FormArray {
         return this.ifForm.get(pregunta) as FormArray;
     };
-    addFila(elemento: FormArray) {
-        elemento.push(this.fb.group(new Tabla3Model()));
+    addFila(elemento: FormArray){
+         elemento.push(this.fb.group({            
+                texto: [''],
+                respuesta:[''],
+                mujeres: ['',CustomValidators.number],
+                hombres:['',CustomValidators.number]        
+        }));
     }
     removeFila(elemento: FormArray, i: number) {
         elemento.removeAt(i);
     }
 
 
-    
 
 
-    onSubmit(redir:boolean) {
-        this.clasprofesional2 = this.preparaParaGuardar();
-        this.servicio.setDatosModelo()
+
+    onSubmit(redirigir: boolean) {
+        this.modelo = this.preparaParaGuardar();
+        this.servicio.setDatosModelo(this.modelo)
             .subscribe(
-            response => {                
+            response => {
                 this.status = response.status;
                 if (this.status !== "success") {
                     Messenger().post({
@@ -203,7 +214,7 @@ export class ClasProfesional2Component implements OnInit {
                     });
                 }
                 else {
-                    if(redir){
+                    if (redirigir) {
                         this.router.navigate(["/app/retribuciones"]);
                     }
                     Messenger().post({

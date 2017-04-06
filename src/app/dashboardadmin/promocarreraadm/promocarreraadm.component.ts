@@ -132,34 +132,34 @@ export class PromoCarreraAdmComponent implements OnInit {
     }
 
     asignaDatosGraficas() {
-        this.asignaPorcentajesPorTipo(this.modelo.preg_5_tabla_3);
+        this.asignaPorcentajesPorTipo(this.modelo.preg_242_tabla_3);
         this.barChartLabels1 = this.labelGrafica1;
         this.barChartData1 = this.datosGrafica1;
         this.barChartData2 = this.datosGrafica2;
         this.barChartLabels2 = this.labelGrafica2;
-        this.asignaPorcentajesPorTipo(this.modelo.preg_7_tabla_3);
+        this.asignaPorcentajesPorTipo(this.modelo.preg_244_tabla_3);
         this.barChartLabels3 = this.labelGrafica1;
         this.barChartData3 = this.datosGrafica1;
         this.barChartData4 = this.datosGrafica2;
         this.barChartLabels4 = this.labelGrafica2;
 
-        let totalmuj = Math.round(this.funciones.getSumaMujeresDelTotal(this.modelo.preg_7_tabla_3)*100);
-        let totalhom = Math.round(this.funciones.getSumaHombresDelTotal(this.modelo.preg_7_tabla_3)*100);
+        let totalmuj = Math.round(this.funciones.getSumaMujeresDelTotal(this.modelo.preg_244_tabla_3)*100);
+        let totalhom = Math.round(this.funciones.getSumaHombresDelTotal(this.modelo.preg_244_tabla_3)*100);
         this.doughnutChartData1 = [totalmuj, totalhom];
 
-        this.asignaPorcentajesPorTipo(this.modelo.preg_3_tabla_3);
+        this.asignaPorcentajesPorTipo(this.modelo.preg_240_tabla_3);
         this.barChartLabels5 = this.labelGrafica1;
         this.barChartData5 = this.datosGrafica1;
         this.barChartData6 = this.datosGrafica2;
         this.barChartLabels6 = this.labelGrafica2;
 
-        this.asignaPorcentajesPorTipo(this.modelo.preg_4_tabla_3);
+        this.asignaPorcentajesPorTipo(this.modelo.preg_241_tabla_3);
         this.barChartLabels7 = this.labelGrafica1;
         this.barChartData7 = this.datosGrafica1;
         this.barChartData8 = this.datosGrafica2;
         this.barChartLabels8 = this.labelGrafica2;
 
-        this.asignaPorcentajesPorTipo(this.modelo.preg_6_tabla_3);
+        this.asignaPorcentajesPorTipo(this.modelo.preg_243_tabla_3);
         this.barChartLabels9 = this.labelGrafica1;
         this.barChartData9 = this.datosGrafica1;
         this.barChartData10 = this.datosGrafica2;

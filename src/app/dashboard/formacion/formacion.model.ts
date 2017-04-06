@@ -5,10 +5,19 @@ export class FormacionModel {
     public respondidasCuest: number;
     public totalSeccion: number;
     public respondidasSeccion: number;
-    public preg_1_tabla_3 : Tabla3Model;
-    public preg_2_tabla_3 : Tabla3Model;
-    public preg_3_tabla_3 : Tabla3Model;
-    public preg_4_tabla_3 : Tabla3Model;
+    public preg_174_tabla_3 : Tabla3Model;
+    public preg_195_tabla_3 : Tabla3Model;
+    public preg_199_tabla_3 : Tabla3Model;
+    public preg_200_tabla_3 : Tabla3Model;
+
+    public preg_169: any;
+    public preg_171: any;
+    public preg_179: any;
+    public preg_184: any;
+    public preg_185: any;
+    public preg_186: any;
+    public preg_187: any;
+    public preg_188: any;
    constructor(){
         this.data = new datosModel();
     }
@@ -21,67 +30,53 @@ export class Tabla3Model{
         hombres: any = 0;
 }
 
+export class Tabla2Model{
+        texto: any = '';
+        respuesta: any;
+        valor1: any = '';
+}
+
 export class datosModel {
     public user_id: number;    
-    public preg_1: any;
-    public preg_2: any;
-    public preg_3: any; 
-    public preg_4: any;
-    public preg_5: any;
-    public preg_6: any; 
-    public preg_7: any;
-    public preg_8: any;
-    public preg_9: any; 
-    public preg_10: any; 
-    public preg_11: any; 
-    public preg_12: any; 
-    public preg_13: any; 
-    public preg_14: any; 
-    public preg_15: any; 
-    public preg_16: any; 
-    public preg_17: any; 
-    public preg_18: any; 
-    public preg_19: any; 
-    public preg_20: any; 
-    public preg_21: any; 
-    public preg_22: any; 
-    public preg_23: any; 
-    public preg_24: any; 
-    public preg_25: any; 
-    public preg_26: any; 
-    public preg_27: any; 
-    public preg_28: any; 
-    public preg_29: any; 
+    public preg_160: any;
+    public preg_162: any;
+    public preg_163: any; 
+    public preg_164: any;
+    public preg_165: any;
+    public preg_166: any; 
+    public preg_167: any;
+    public preg_168: any;    
+    public preg_170: any; 
+    public preg_173: any; 
+    public preg_177: any; 
+    public preg_180: any; 
+    public preg_181: any; 
+    public preg_182: any; 
+    public preg_190: any; 
+    public preg_191: any; 
+    public preg_192: any; 
+    public preg_193: any; 
+    public preg_194: any; 
     constructor() {
         this.user_id = 0,
-        this.preg_1 = '',
-        this.preg_2 = '',
-        this.preg_3 = '',
-        this.preg_4 = '',
-        this.preg_5 = '',
-        this.preg_6 = '',
-        this.preg_7 = '',
-        this.preg_8 = '',
-        this.preg_9 = '',
-        this.preg_10 = '',
-        this.preg_11 = '',
-        this.preg_12 = '',
-        this.preg_13 = '',
-        this.preg_14 = '',
-        this.preg_15 = '',
-        this.preg_16 = '',
-        this.preg_17 = '',
-        this.preg_18 = '',
-        this.preg_19 = '',
-        this.preg_20 = '',
-        this.preg_21 = '',
-        this.preg_22 = '',
-        this.preg_23 = '',
-        this.preg_24 = '',
-        this.preg_25 = '',
-        this.preg_26 = '',
-        this.preg_27 = '',
-        this.preg_28 = '',
-        this.preg_29 = ''
+        this.preg_160 = '',
+        this.preg_162 = '',
+        this.preg_163 = '',
+        this.preg_164 = '',
+        this.preg_165 = '',
+        this.preg_166 = '',
+        this.preg_167 = '',
+        this.preg_168 = '',
+        this.preg_170 = '',
+        this.preg_173 = '',
+        this.preg_177 = '',
+        this.preg_180 = '',
+        this.preg_181 = '',
+        this.preg_182 = '',
+        this.preg_190 = '',
+        this.preg_191 = '',
+        this.preg_192 = '',
+        this.preg_193 = '',
+        this.preg_194 = ''
     }
 }

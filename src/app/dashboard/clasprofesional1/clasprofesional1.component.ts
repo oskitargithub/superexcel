@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -37,6 +38,7 @@ export class ClasProfesional1Component implements OnInit {
     
 
     constructor(
+        private router: Router,
         private fb: FormBuilder,
         private servicio: ClasProfesional1Service,
         private serviceErrores: DashBoardFormErrorsService,
@@ -69,29 +71,7 @@ export class ClasProfesional1Component implements OnInit {
             preg_62_tabla_3: this.fb.array([]),
             preg_63_tabla_3: this.fb.array([]),
         });
-    }
-
-    iniTabla3(){
-        return this.fb.group({
-            texto: [],
-            respuesta:[],
-            mujeres: ['',CustomValidators.number],
-            hombres:['',CustomValidators.number]
-        })
-    }
-
-    Tabla3Validator(){
-        (control: FormArray): {[key: string]: boolean} => {
-        const mujeres = control.get('mujeres');
-        console.log("mirando mujeres");
-        if(mujeres!=null){
-            console.log("con valor"+mujeres.value);
-            return isNaN(mujeres.value) ? null : { nomatch: true };
-        }
-        else return null;
-        };
-    }
-
+    }   
 
     getValorBarra() {
         if (this.respondidasSeccion == 0)
@@ -189,39 +169,10 @@ export class ClasProfesional1Component implements OnInit {
     addValidaciones() {
         this.ifForm.get('data.preg_46').setValidators([CustomValidators.number]);
         this.ifForm.get('data.preg_47').setValidators([CustomValidators.number]);
-        //this.serviceErrores.mensajesValidacion = this.setMensajesValidacion();
-        //this.serviceErrores.objetoErrores = this.setObjetoErrores();
-        console.log(this.serviceErrores.objetoErrores);
-        this.ifForm.valueChanges.subscribe(data => this.serviceErrores.onValueChanged(this.ifForm, data));
-        this.serviceErrores.onValueChanged(this.ifForm);
-        
     }
-    setMensajesValidacion() {
-        return {
-            'data.preg_46': {
-                'number': 'El campo debe ser numérico.'
-            },
-            'data.preg_47': {
-                'number': 'El campo debe ser numérico.'
-            },
-            'preg_49_tabla_3.mujeres':{
-                'number': 'El campo debe ser numérico.'
-            },
-            'preg_49_tabla_3.hombres':{
-                'number': 'El campo debe ser numérico.'
-            }
-        };
-    }
+    
 
-
-    setObjetoErrores() {
-        return {
-            'data.preg_46': '',
-            'data.preg_47': '',
-            'preg_49_tabla_3.mujeres': '',
-            'preg_49_tabla_3.hombres': ''
-        };
-    }
+  
 
 
     getTotalMujeres(elemento: FormArray) {
@@ -240,27 +191,16 @@ export class ClasProfesional1Component implements OnInit {
         return (this.ifForm.get('data.preg_46').value * 1 + this.ifForm.get('data.preg_47').value * 1);
     }
 
-    addObjetoErrores(datos: string){
-        this.serviceErrores.objetoErrores[datos]='';
-    }
-
-     
+   
 
     setPregunta(tabla: Tabla3Model[], nombretabla: string) {
         const addressFGs = tabla.map(datos => 
             this.fb.group({            
-                texto: [],
-                respuesta:[],
-                mujeres: ['',CustomValidators.number],
-                hombres:['',CustomValidators.number]        
-        }));
-        Object.getOwnPropertyNames(tabla).map((key: any) =>{
-            if (!isNaN(key)){
-                this.addObjetoErrores(nombretabla+".controls["+key+"].mujeres"),
-                this.addObjetoErrores(nombretabla+".controls["+key+"].hombres")          
-            }
-        }
-        );
+                texto: [datos.texto],
+                respuesta:[datos.respuesta],
+                mujeres: [datos.mujeres,CustomValidators.number],
+                hombres:[datos.hombres,CustomValidators.number]        
+        }));        
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
     }
@@ -269,8 +209,13 @@ export class ClasProfesional1Component implements OnInit {
         return this.ifForm.get(pregunta) as FormArray;
     };
 
-    addFila(elemento: FormArray) {
-        elemento.push(this.fb.group(new Tabla3Model()));
+    addFila(elemento: FormArray){
+         elemento.push(this.fb.group({            
+                texto: [''],
+                respuesta:[''],
+                mujeres: ['',CustomValidators.number],
+                hombres:['',CustomValidators.number]        
+        }));
     }
     removeFila(elemento: FormArray, i: number) {
         elemento.removeAt(i);
@@ -281,14 +226,45 @@ export class ClasProfesional1Component implements OnInit {
         return this.ifForm.get('data') as FormArray;
     };
 
-    onSubmit() {
+    onSubmit(redirigir: boolean) {
         this.modelo = this.preparaParaGuardar();
-        console.log(this.modelo);
+        this.servicio.setDatosModelo(this.modelo)
+            .subscribe(
+            response => {
+                this.status = response.status;
+                if (this.status !== "success") {
+                    Messenger().post({
+                        message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+                }
+                else {
+                    if (redirigir) {
+                        this.router.navigate(["/app/clasificacionprofesional2"]);
+                    }
+                    Messenger().post({
+                        message: 'Los datos han sido guardados correctamente',
+                        type: 'success',
+                        showCloseButton: true
+                    });
+                }
+
+            },
+            error => {
+                this.errorMessage = <any>error;
+                if (this.errorMessage !== null) {
+
+                    Messenger().post({
+                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+
+                }
+            });
     }
-    onSubmit2() {
-        this.modelo = this.preparaParaGuardar();
-        console.log(this.modelo);
-    }
+   
 
     preparaParaGuardar(): ClasProfesional1Model {
         const formModel = this.ifForm.value;

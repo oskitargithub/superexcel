@@ -5,14 +5,14 @@ export class PromoCarreraModel{
     public totalSeccion: number;
     public respondidasSeccion: number;    
     public data: dataModel;
-    public preg_1_tabla_3: Tabla3Model[];
-    public preg_2_tabla_3: Tabla3Model[];
-    public preg_3_tabla_3: Tabla3Model[];
-    public preg_4_tabla_3: Tabla3Model[];
-    public preg_5_tabla_3: Tabla3Model[];
-    public preg_6_tabla_3: Tabla3Model[];
-    public preg_7_tabla_3: Tabla3Model[];
-    public preg_8_tabla_3: Tabla3Model[];
+    public preg_233_tabla_6: Tabla3Model[];
+    public preg_234_tabla_6: Tabla3Model[];
+    public preg_240_tabla_3: Tabla3Model[];
+    public preg_241_tabla_3: Tabla3Model[];
+    public preg_242_tabla_3: Tabla3Model[];
+    public preg_243_tabla_3: Tabla3Model[];
+    public preg_244_tabla_3: Tabla3Model[];
+    public preg_245_tabla_3: Tabla3Model[];
 }
 
 export class Tabla3Model{
@@ -26,7 +26,7 @@ export class Tabla2Model {
     texto2: any = '';
     respuesta: any = 0;    
 }
-export class Tabla5Model {
+export class Tabla6Model {
     texto1: any = '';
     texto2: any = '';
     texto3: any = '';
@@ -36,59 +36,59 @@ export class Tabla5Model {
 }
 export class dataModel{
     public user_id: number;    
-    public preg_1: any;
-    public preg_2: any;
-    public preg_3: any; 
-    public preg_4: any;
-    public preg_5: any;
-    public preg_6: any; 
-    public preg_7: any;
-    public preg_8: any;
-    public preg_9: any; 
-    public preg_10: any; 
-    public preg_11: any; 
-    public preg_12: any; 
-    public preg_13: any; 
-    public preg_14: any; 
-    public preg_15: any; 
-    public preg_16: any; 
-    public preg_17: any; 
-    public preg_18: any; 
-    public preg_19: any; 
-    public preg_20: any; 
-    public preg_21: any; 
-    public preg_22: any;
-    public preg_23: any;
-    public preg_24: any;
-    public preg_25: any;
-    public preg_26: any;
+    public preg_210: any;
+    public preg_212: any;
+    public preg_213: any; 
+    public preg_214: any;
+    public preg_215: any;
+    public preg_216: any; 
+    public preg_217: any;
+    public preg_218: any;
+    public preg_219: any; 
+    public preg_220: any; 
+    public preg_221: any; 
+    public preg_222: any; 
+    public preg_223: any; 
+    public preg_224: any; 
+    public preg_225: any; 
+    public preg_226: any; 
+    public preg_227: any; 
+    public preg_228: any; 
+    public preg_229: any; 
+    public preg_230: any; 
+    public preg_231: any; 
+    public preg_235: any;
+    public preg_236: any;
+    public preg_237: any;
+    public preg_238: any;
+    public preg_239: any;
     constructor(){
         this.user_id = 0,
-        this.preg_1 = '',
-        this.preg_2 = '',
-        this.preg_3 = '',
-        this.preg_4 = '',
-        this.preg_5 = '',
-        this.preg_6 = '',
-        this.preg_7 = '',
-        this.preg_8 = '',
-        this.preg_9 = '',
-        this.preg_10 = '',
-        this.preg_11 = '',
-        this.preg_12 = '',
-        this.preg_13 = '',
-        this.preg_14 = '',
-        this.preg_15 = '',
-        this.preg_16 = '',
-        this.preg_17 = '',
-        this.preg_18 = '',
-        this.preg_19 = '',
-        this.preg_20 = '',
-        this.preg_21 = '',
-        this.preg_22 = '',
-        this.preg_23 = '',
-        this.preg_24 = '',
-        this.preg_25 = '',
-        this.preg_26 = ''
+        this.preg_210 = '',
+        this.preg_212 = '',
+        this.preg_213 = '',
+        this.preg_214 = '',
+        this.preg_215 = '',
+        this.preg_216 = '',
+        this.preg_217 = '',
+        this.preg_218 = '',
+        this.preg_219 = '',
+        this.preg_220 = '',
+        this.preg_221 = '',
+        this.preg_222 = '',
+        this.preg_223 = '',
+        this.preg_224 = '',
+        this.preg_225 = '',
+        this.preg_226 = '',
+        this.preg_227 = '',
+        this.preg_228 = '',
+        this.preg_229 = '',
+        this.preg_230 = '',
+        this.preg_231 = '',
+        this.preg_235 = '',
+        this.preg_236 = '',
+        this.preg_237 = '',
+        this.preg_238 = '',
+        this.preg_239 = ''
     }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions, RequestMethod } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { AppConfig } from '../../app.config';
@@ -12,19 +12,25 @@ export class PromoCarreraService {
         this.config = config.getConfig(); //me traigo la configuración para saber la url de la api
     }
 
-    /*getDatosModelo() {
+    getDatosModelo() {
         return this._http.get(this.config.apilaravel + "cuestionario/seccion/10").map(res => {
             let headers = res.headers;
             let miobjeto = res.json();
             return (miobjeto);
         });
-    }*/
-
-    getDatosModelo() {
-        return this._http.get(this.config.api + "cuestionario10.php").map(res => {
-            let headers = res.headers;
-            let miobjeto = res.json();
-            return (miobjeto);
-        });
     }
+    setDatosModelo(modelo: any) {
+    let mitoken = JSON.parse(localStorage.getItem('fditoken'));
+    let json = JSON.stringify(modelo);
+    let params = "data=" + json;
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    let opciones = new RequestOptions({
+      headers: headers,
+      /*withCredentials: true            */
+    });
+    return this._http.post(this.config.apilaravel + "cuestionario/seccion/10",
+      params, opciones).map(res => res.json());
+
+  }
+
 }

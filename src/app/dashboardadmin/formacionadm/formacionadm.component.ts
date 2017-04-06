@@ -129,29 +129,29 @@ export class FormacionAdmComponent implements OnInit {
 
     asignaDatosGraficas() {
         this.doughnutChartData = [Math.round(this.getMujeresPlantillaPorcentaje()), Math.round(this.getHombresPlantillaPorcentaje())];
-        this.asignaPorcentajesPorTipo(this.modelo.preg_3_tabla_3);
+        this.asignaPorcentajesPorTipo(this.modelo.preg_199_tabla_3);
         this.barChartLabels1 = this.labelGrafica1;
         this.barChartData1 = this.datosGrafica1;
         this.barChartData2 = this.datosGrafica2;
         this.barChartLabels2 = this.labelGrafica2;
-        this.asignaPorcentajesPorTipo(this.modelo.preg_4_tabla_3);
+        this.asignaPorcentajesPorTipo(this.modelo.preg_200_tabla_3);
         this.barChartLabels3 = this.labelGrafica1;
         this.barChartData3 = this.datosGrafica1;
         this.barChartData4 = this.datosGrafica2;
         this.barChartLabels4 = this.labelGrafica2;
 
-        this.asignaPorcentajesPorTipo(this.modelo.preg_1_tabla_3);
+        this.asignaPorcentajesPorTipo(this.modelo.preg_174_tabla_3);
         this.barChartLabels5 = this.labelGrafica1;
         this.barChartData5 = this.datosGrafica1;
         this.barChartData6 = this.datosGrafica2;
         this.barChartLabels6 = this.labelGrafica2;
-        this.asignaPorcentajesGrafica(this.modelo.preg_1_tabla_3);
+        this.asignaPorcentajesGrafica(this.modelo.preg_174_tabla_3);
         this.barChartLabels7 = this.labelGrafica1;
         this.barChartData7 = this.datosGrafica1;
         this.barChartData8 = this.datosGrafica2;
         this.barChartLabels8 = this.labelGrafica2;
 
-        this.asignaPorcentajesPorTipo(this.modelo.preg_2_tabla_3);
+        this.asignaPorcentajesPorTipo(this.modelo.preg_195_tabla_3);
         this.barChartLabels9 = this.labelGrafica1;
         this.barChartData9 = this.datosGrafica1;
         this.barChartData10 = this.datosGrafica2;
@@ -226,21 +226,21 @@ export class FormacionAdmComponent implements OnInit {
   }
 
     getTotalCompoPlantilla() {
-        let salida = this.modelo.data.preg_1 * 1 + this.modelo.data.preg_2 * 1;
+        let salida = this.modelo.preg_174_tabla_3.mujeres * 1 + this.modelo.preg_174_tabla_3.hombres * 1;
         if (!isNaN(salida))
             return salida;
         else
             return 0;
     }
     getMujeresPlantilla() {
-        let salida = this.modelo.data.preg_1 * 1;
+        let salida = this.modelo.preg_174_tabla_3.mujeres * 1;
         if (!isNaN(salida))
             return salida;
         else
             return 0;
     }
     getMujeresPlantillaPorcentaje() {
-        let salida = (this.modelo.data.preg_1 * 1) * 100 / ((this.modelo.data.preg_1 * 1 + this.modelo.data.preg_2 * 1));
+        let salida = (this.modelo.preg_174_tabla_3.mujeres * 1) * 100 / ((this.modelo.preg_174_tabla_3.mujeres * 1 + this.modelo.preg_174_tabla_3.hombres * 1));
         if (!isNaN(salida))
             return salida;
         else
@@ -248,7 +248,7 @@ export class FormacionAdmComponent implements OnInit {
     }
 
     getHombresPlantilla() {
-        let salida = this.modelo.data.preg_2 * 1;
+        let salida = this.modelo.preg_174_tabla_3.hombres * 1;
         if (!isNaN(salida))
             return salida;
         else
@@ -256,7 +256,7 @@ export class FormacionAdmComponent implements OnInit {
     }
 
     getHombresPlantillaPorcentaje() {
-        let salida = (this.modelo.data.preg_2 * 1) * 100 / ((this.modelo.data.preg_1 * 1) + (this.modelo.data.preg_2 * 1));
+        let salida = (this.modelo.preg_174_tabla_3.hombres * 1) * 100 / ((this.modelo.preg_174_tabla_3.mujeres * 1) + (this.modelo.preg_174_tabla_3.hombres * 1));
         if (!isNaN(salida))
             return salida;
         else

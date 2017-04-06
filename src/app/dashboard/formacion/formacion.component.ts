@@ -3,7 +3,10 @@ import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FormacionService } from './formacion.service';
-import { FormacionModel, datosModel, Tabla3Model } from './formacion.model';
+import { FormacionModel, datosModel, Tabla3Model,Tabla2Model } from './formacion.model';
+
+import { CustomValidators } from 'ng2-validation';
+import { DashBoardFormErrorsService } from '../dashboard.formerrors.service';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -14,7 +17,7 @@ declare var Messenger: any;
     styleUrls: [
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
-    providers: [FormacionService],
+    providers: [FormacionService,DashBoardFormErrorsService],
     encapsulation: ViewEncapsulation.None,
 })
 export class FormacionComponent implements OnInit {
@@ -36,17 +39,19 @@ export class FormacionComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private servicio: FormacionService,
+        private serviceErrores: DashBoardFormErrorsService,
         injector: Injector
     ) {
         this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
-        this.getDatosModelo();
+        
     }
 
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
+        this.getDatosModelo();
     }
 
     valorBarraProgreso() {
@@ -71,11 +76,18 @@ export class FormacionComponent implements OnInit {
         console.log("creando formulario");
         this.ifForm = this.fb.group({
             data: this.fb.group(new datosModel()),
-            preg_1_tabla_3: this.fb.array([]),
-            preg_2_tabla_3: this.fb.array([]),
-            preg_3_tabla_3: this.fb.array([]),
-            preg_4_tabla_3: this.fb.array([]),
-            preg_5_tabla_3: this.fb.array([]),
+            preg_174_tabla_3: this.fb.array([]),
+            preg_195_tabla_3: this.fb.array([]),
+            preg_199_tabla_3: this.fb.array([]),
+            preg_200_tabla_3: this.fb.array([]),
+            preg_169:this.fb.array([]),
+            preg_171:this.fb.array([]),
+            preg_179:this.fb.array([]),
+            preg_184:this.fb.array([]),
+            preg_185:this.fb.array([]),
+            preg_186:this.fb.array([]),
+            preg_187:this.fb.array([]),
+            preg_188:this.fb.array([])
         });
         console.log("fin creando formulario");
     }
@@ -89,6 +101,17 @@ export class FormacionComponent implements OnInit {
     };
 
     setPregunta(tabla: any, nombretabla: string) {
+        const addressFGs = tabla.map(datos => 
+            this.fb.group({            
+                texto: [datos.texto],
+                respuesta:[datos.respuesta],
+                mujeres: [datos.mujeres,CustomValidators.number],
+                hombres:[datos.hombres,CustomValidators.number]        
+        }));
+        const addressFormArray = this.fb.array(addressFGs);
+        this.ifForm.setControl(nombretabla, addressFormArray);
+    }
+    setPregunta2(tabla: any, nombretabla: string) {
         const addressFGs = tabla.map(datos => this.fb.group(datos));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
@@ -135,10 +158,19 @@ export class FormacionComponent implements OnInit {
                     Object.getOwnPropertyNames(response.data).map((key: string) => 
                      (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
                     ); 
-                    this.setPregunta(response.preg_1_tabla_3, 'preg_1_tabla_3');
-                    this.setPregunta(response.preg_2_tabla_3, 'preg_2_tabla_3');
-                    this.setPregunta(response.preg_3_tabla_3, 'preg_3_tabla_3');
-                    this.setPregunta(response.preg_4_tabla_3, 'preg_4_tabla_3');
+                    this.setPregunta(response.preg_174_tabla_3, 'preg_174_tabla_3');
+                    this.setPregunta(response.preg_195_tabla_3, 'preg_195_tabla_3');
+                    this.setPregunta(response.preg_199_tabla_3, 'preg_199_tabla_3');
+                    this.setPregunta(response.preg_200_tabla_3, 'preg_200_tabla_3');
+
+                    this.setPregunta2(response.preg_169, 'preg_169');
+                    this.setPregunta2(response.preg_171, 'preg_171');
+                    this.setPregunta2(response.preg_179, 'preg_179');
+                    this.setPregunta2(response.preg_184, 'preg_184');
+                    this.setPregunta2(response.preg_185, 'preg_185');
+                    this.setPregunta2(response.preg_186, 'preg_186');
+                    this.setPregunta2(response.preg_187, 'preg_187');
+                    this.setPregunta2(response.preg_188, 'preg_188');
                     
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
