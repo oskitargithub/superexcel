@@ -10,7 +10,7 @@ import { SearchPipe } from './pipes/search-pipe';
 import { AlertModule, TooltipModule } from 'ng2-bootstrap';
 
 import 'messenger/build/js/messenger.js';
-
+import 'parsleyjs';
 
 export const routes = [
   { path: '', component: DashboardAdmin, pathMatch: 'full' }

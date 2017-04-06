@@ -27,6 +27,6 @@ export class DashBoardAdminService{
         let json = JSON.stringify({fditoken: mitoken.token});
         let params = "json="+json;
 		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
-        return this._http.get(this.config.apilaravel + "gestion/usuario/"+usuario.id).map(res => res.json());
+        return this._http.get(this.config.apilaravel + "gestion/usuario/"+usuario.user).map(res => res.json());
     }
 }
