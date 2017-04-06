@@ -5,8 +5,8 @@
   </header>
   <!-- main notification links are placed inside of .sidebar-nav -->
   <ul class="sidebar-nav" *ngIf="perfil=='USER'">
-    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['dashboard'] " title="Inicio"><span class="icon"><i class="fa fa-desktop"></i></span>Inicio</a></li>
-    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['introduccion'] " title="Introducción">Introducción</a></li>
+    <!-- <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['dashboard'] " title="Inicio"><span class="icon"><i class="fa fa-desktop"></i></span>Inicio</a></li> -->
+    <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['introduccion'] " title="Introducción"><span class="icon"><i class="fa fa-desktop"></i></span>Introducción</a></li>
     <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['informacionbasica'] "><span class="icon"><i class="glyphicon glyphicon-stats"></i></span>Información Básica</a></li>
     <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['clasificacionprofesional1'] " title="Clasificación Profesional I">Clasificación Prof. I</a></li>
     <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['clasificacionprofesional2'] " title="Clasificación Profesional II">Clasificación Prof. II</a></li>

@@ -1,8 +1,10 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Router, NavigationExtras } from '@angular/router';
 import { RetribucionesService } from './retribuciones.service';
 import { RetribucionesModel, Tabla5Model } from './retribuciones.model';
+import { CustomValidators } from 'ng2-validation';
+import { DashBoardFormErrorsService } from '../dashboard.formerrors.service';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -14,7 +16,7 @@ declare var Messenger: any;
     styleUrls: [
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
-    providers: [RetribucionesService],
+    providers: [RetribucionesService, DashBoardFormErrorsService],
     encapsulation: ViewEncapsulation.None,
 })
 export class RetribucionesComponent implements OnInit {
@@ -32,9 +34,10 @@ export class RetribucionesComponent implements OnInit {
     public dynamic: number;
     public type: string;
 
-    constructor(
+    constructor(private router: Router,
         private fb: FormBuilder,
         private servicio: RetribucionesService,
+        private serviceErrores: DashBoardFormErrorsService,
         injector: Injector
     ) {
         this.dynamic = 0;
@@ -77,9 +80,9 @@ export class RetribucionesComponent implements OnInit {
     }
 
 
-    createForm() {        
+    createForm() {
         this.ifForm = this.fb.group({
-            preg_70_tabla_5: this.fb.array([]),            
+            preg_70_tabla_5: this.fb.array([]),
             preg_71_tabla_5: this.fb.array([]),
             preg_72_tabla_5: this.fb.array([]),
             preg_73_tabla_5: this.fb.array([]),
@@ -90,7 +93,15 @@ export class RetribucionesComponent implements OnInit {
     }
 
     setPregunta(tabla: Tabla5Model[], nombretabla: string) {
-        const addressFGs = tabla.map(datos => this.fb.group(datos));
+        const addressFGs = tabla.map(datos =>
+            this.fb.group({
+                texto: [datos.texto],
+                respuesta: [datos.respuesta],
+                mujeres: [datos.mujeres, CustomValidators.number],
+                hombres: [datos.hombres, CustomValidators.number],
+                mujeres2: [datos.mujeres2, CustomValidators.number],
+                hombres2: [datos.hombres2, CustomValidators.number]
+            }));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
     }
@@ -101,18 +112,8 @@ export class RetribucionesComponent implements OnInit {
 
     getDatosModelo() {
         this.servicio.getDatosModelo().subscribe(
-            response => {                
-                this.setPregunta(response.preg_70_tabla_5, 'preg_70_tabla_5');
-                this.setPregunta(response.preg_71_tabla_5, 'preg_71_tabla_5');
-                this.setPregunta(response.preg_72_tabla_5, 'preg_72_tabla_5');
-                this.setPregunta(response.preg_73_tabla_5, 'preg_73_tabla_5');
-                this.setPregunta(response.preg_74_tabla_5, 'preg_74_tabla_5');
-                this.setPregunta(response.preg_75_tabla_5, 'preg_75_tabla_5');
-                this.setPregunta(response.preg_76_tabla_5, 'preg_76_tabla_5');
+            response => {
 
-                this.respondidasSeccion = response.respondidasSeccion;
-                this.totalSeccion = response.totalSeccion;
-                this.valorBarraProgreso();
 
                 this.status = response.status;
                 if (this.status !== "success") {
@@ -132,6 +133,17 @@ export class RetribucionesComponent implements OnInit {
                     }
                 }
                 else {
+                    this.setPregunta(response.preg_70_tabla_5, 'preg_70_tabla_5');
+                    this.setPregunta(response.preg_71_tabla_5, 'preg_71_tabla_5');
+                    this.setPregunta(response.preg_72_tabla_5, 'preg_72_tabla_5');
+                    this.setPregunta(response.preg_73_tabla_5, 'preg_73_tabla_5');
+                    this.setPregunta(response.preg_74_tabla_5, 'preg_74_tabla_5');
+                    this.setPregunta(response.preg_75_tabla_5, 'preg_75_tabla_5');
+                    this.setPregunta(response.preg_76_tabla_5, 'preg_76_tabla_5');
+
+                    this.respondidasSeccion = response.respondidasSeccion;
+                    this.totalSeccion = response.totalSeccion;
+                    this.valorBarraProgreso();
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',
@@ -153,4 +165,56 @@ export class RetribucionesComponent implements OnInit {
             });
     }
 
+    onSubmit(redirigir: boolean) {
+        this.modelo = this.preparaParaGuardar();
+        this.servicio.setDatosModelo(this.modelo)
+            .subscribe(
+            response => {
+                this.status = response.status;
+                if (this.status !== "success") {
+                    Messenger().post({
+                        message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+                }
+                else {
+                    if (redirigir) {
+                        this.router.navigate(["/app/retribuciones2"]);
+                    }
+                    Messenger().post({
+                        message: 'Los datos han sido guardados correctamente',
+                        type: 'success',
+                        showCloseButton: true
+                    });
+                }
+
+            },
+            error => {
+                this.errorMessage = <any>error;
+                if (this.errorMessage !== null) {
+
+                    Messenger().post({
+                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+
+                }
+            });
+    }
+
+    preparaParaGuardar(): RetribucionesModel {
+        const formModel = this.ifForm.value;
+        const saveModelo: any = {
+            preg_70_tabla_5: formModel.preg_70_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+            preg_71_tabla_5: formModel.preg_71_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+            preg_72_tabla_5: formModel.preg_72_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+            preg_73_tabla_5: formModel.preg_73_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+            preg_74_tabla_5: formModel.preg_74_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+            preg_75_tabla_5: formModel.preg_75_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+            preg_76_tabla_5: formModel.preg_76_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+        };
+        return saveModelo;
+    }
 }
