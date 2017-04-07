@@ -18,8 +18,8 @@
                 <div class="form-group">
                   <!-- <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Username"> -->
                   <input type="text" id="usuario" class="form-control" [(ngModel)]="authuser.usuario" name="usuario" #usuario="ngModel" required
-                    tooltip="Usuario" placeholder="Usuario/Email" />
-                </div>
+                    tooltip="Usuario" placeholder="Usuario/Email"  email />
+                </div>                
                 <div class="form-group">
                   <input type="text" id="password" class="form-control" [(ngModel)]="authuser.password" name="password" #usuario="ngModel"
                     tooltip="Password" type="password" required placeholder="Nuevo Password" />
@@ -95,5 +95,6 @@
   </main>
   <footer class="page-footer">
     2017 &copy; Formulario Diagnóstico Igualdad. Equality Momentum
+    {{mihash}}
   </footer>
 </div>

@@ -1,10 +1,11 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Router, NavigationExtras } from '@angular/router';
 import { PRLLService } from './prll.service';
 import { PRLLModel, dataModel } from './prll.model';
-
+import { CustomValidators } from 'ng2-validation';
+import { DashBoardFormErrorsService } from '../dashboard.formerrors.service';
 declare var jQuery: any;
 declare var Messenger: any;
 
@@ -14,7 +15,7 @@ declare var Messenger: any;
     styleUrls: [
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
-    providers: [PRLLService],
+    providers: [PRLLService,DashBoardFormErrorsService],
     encapsulation: ViewEncapsulation.None,
 })
 export class PRLLComponent implements OnInit {
@@ -33,20 +34,21 @@ export class PRLLComponent implements OnInit {
     public dynamic: number;
     public type: string;
 
-    constructor(
+    constructor(private router: Router,
         private fb: FormBuilder,
         private servicio: PRLLService,
+        private serviceErrores: DashBoardFormErrorsService,
         injector: Injector
     ) {
         this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
-        this.createForm();
-        this.getDatosModelo();
+        this.createForm();        
     }
 
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
+        this.getDatosModelo();
     }
 
     valorBarraProgreso() {
@@ -80,7 +82,12 @@ export class PRLLComponent implements OnInit {
         return this.ifForm.get(elemento).value;
     }
     
-   
+   addValidaciones() {
+        /*this.ifForm.get('data.preg_154').setValidators([CustomValidators.number]);
+        this.ifForm.get('data.preg_155').setValidators([CustomValidators.number]);
+        this.ifForm.get('data.preg_157').setValidators([CustomValidators.number]);
+        this.ifForm.get('data.preg_158').setValidators([CustomValidators.number]); */     
+    }
     
 
     getDatosModelo(){
@@ -108,6 +115,7 @@ export class PRLLComponent implements OnInit {
                     Object.getOwnPropertyNames(response.data).map((key: string) =>
                         (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
                     );
+                    this.addValidaciones();
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
                     this.valorBarraProgreso();
@@ -117,6 +125,45 @@ export class PRLLComponent implements OnInit {
                         showCloseButton: true
                     });
                 }
+            },
+            error => {
+                this.errorMessage = <any>error;
+                if (this.errorMessage !== null) {
+
+                    Messenger().post({
+                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+
+                }
+            });
+    }
+
+    onSubmit(redirigir: boolean) {
+        this.modelo = this.ifForm.value;
+        this.servicio.setDatosModelo(this.modelo)
+            .subscribe(
+            response => {
+                this.status = response.status;
+                if (this.status !== "success") {
+                    Messenger().post({
+                        message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+                }
+                else {
+                    if (redirigir) {
+                        this.router.navigate(["/app/acospr"]);
+                    }
+                    Messenger().post({
+                        message: 'Los datos han sido guardados correctamente',
+                        type: 'success',
+                        showCloseButton: true
+                    });
+                }
+
             },
             error => {
                 this.errorMessage = <any>error;

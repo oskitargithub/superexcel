@@ -298,8 +298,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 offset-md-2">
-                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_104" formControlName="preg_104" autosize
-                                            placeholder="Enumera las fases del proceso de selección"></textarea>
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_104" formControlName="preg_104" autosize placeholder="Enumera las fases del proceso de selección"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -311,8 +310,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 offset-md-2">
-                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_105" formControlName="preg_105" autosize
-                                            placeholder="Enumera los órganos implicados en el proceso de selección"></textarea>
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_105" formControlName="preg_105" autosize placeholder="Enumera los órganos implicados en el proceso de selección"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -324,8 +322,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8 offset-md-2">
-                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_106" formControlName="preg_106" autosize
-                                            placeholder="Mencione el órgano u órganos a quienes corresponde la decisión final sobre la selección del personal y su incorporación a la organización"></textarea>
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_106" formControlName="preg_106" autosize placeholder="Mencione el órgano u órganos a quienes corresponde la decisión final sobre la selección del personal y su incorporación a la organización"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -425,13 +422,13 @@
                                 </div>
                             </div>
 
-                            
+
                         </fieldset>
 
                     </div>
 
 
-                 
+
                     <div class="section" style="margin-top:40px" formArrayName="preg_117_tabla_2">
                         <fieldset>
                             <legend><strong>Teniendo en cuenta los siguientes criterios, marque el nivel de influencia que cada uno de estos tiene en el proceso de selección de la organización.</strong></legend>
@@ -484,7 +481,14 @@
         </div>
     </div>
 
-
+   <div class="form-actions" style="margin-top:40px">
+                        <div class="row">
+                            <div class="offset-md-4 col-md-7 ">
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(false)" class="btn btn-primary">Guardar cambios</button>
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(true)" class="btn btn-success">Guardar y Continuar</button>
+                            </div>
+                        </div>
+                    </div>
 
 
 </form>

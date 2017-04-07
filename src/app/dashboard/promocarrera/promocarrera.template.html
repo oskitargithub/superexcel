@@ -710,9 +710,7 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="texto" tooltip="TIPO DE PROMOCIÓN " placeholder="TIPO DE PROMOCIÓN" />
                                                 </div>
-                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_244_tabla_3']).controls[i].controls['mujeres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                         <div class="col-md-1 ">
@@ -720,7 +718,7 @@
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
-                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_244_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                  <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_244_tabla_3']).controls[i].controls['mujeres'].errors?.number">
                                                      {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
@@ -729,6 +727,9 @@
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_244_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>

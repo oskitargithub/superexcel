@@ -1,10 +1,9 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Router, NavigationExtras } from '@angular/router';
 import { FormacionService } from './formacion.service';
 import { FormacionModel, datosModel, Tabla3Model,Tabla2Model } from './formacion.model';
-
 import { CustomValidators } from 'ng2-validation';
 import { DashBoardFormErrorsService } from '../dashboard.formerrors.service';
 
@@ -36,7 +35,7 @@ export class FormacionComponent implements OnInit {
     public dynamic: number;
     public type: string;
 
-    constructor(
+    constructor(private router: Router,
         private fb: FormBuilder,
         private servicio: FormacionService,
         private serviceErrores: DashBoardFormErrorsService,
@@ -79,15 +78,7 @@ export class FormacionComponent implements OnInit {
             preg_174_tabla_3: this.fb.array([]),
             preg_195_tabla_3: this.fb.array([]),
             preg_199_tabla_3: this.fb.array([]),
-            preg_200_tabla_3: this.fb.array([]),
-            preg_169:this.fb.array([]),
-            preg_171:this.fb.array([]),
-            preg_179:this.fb.array([]),
-            preg_184:this.fb.array([]),
-            preg_185:this.fb.array([]),
-            preg_186:this.fb.array([]),
-            preg_187:this.fb.array([]),
-            preg_188:this.fb.array([])
+            preg_200_tabla_3: this.fb.array([])
         });
         console.log("fin creando formulario");
     }
@@ -117,21 +108,11 @@ export class FormacionComponent implements OnInit {
         this.ifForm.setControl(nombretabla, addressFormArray);
     }
 
-
-
-    addFila(elemento: FormArray) {
-        elemento.push(this.fb.group(new Tabla3Model()));
-    }
-
-
-    removeFila(elemento: FormArray, i: number) {
-        elemento.removeAt(i);
-    }
     get data(): FormArray {
         return this.ifForm.get('data') as FormArray;
     };
 
-
+    
     getDatosModelo() {
         this.servicio.getDatosModelo().subscribe(
             response => {
@@ -162,19 +143,9 @@ export class FormacionComponent implements OnInit {
                     this.setPregunta(response.preg_195_tabla_3, 'preg_195_tabla_3');
                     this.setPregunta(response.preg_199_tabla_3, 'preg_199_tabla_3');
                     this.setPregunta(response.preg_200_tabla_3, 'preg_200_tabla_3');
-
-                    this.setPregunta2(response.preg_169, 'preg_169');
-                    this.setPregunta2(response.preg_171, 'preg_171');
-                    this.setPregunta2(response.preg_179, 'preg_179');
-                    this.setPregunta2(response.preg_184, 'preg_184');
-                    this.setPregunta2(response.preg_185, 'preg_185');
-                    this.setPregunta2(response.preg_186, 'preg_186');
-                    this.setPregunta2(response.preg_187, 'preg_187');
-                    this.setPregunta2(response.preg_188, 'preg_188');
-                    
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
-                    this.valorBarraProgreso();
+                    this.valorBarraProgreso();                    
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',
@@ -207,5 +178,56 @@ export class FormacionComponent implements OnInit {
             return elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
         else
             return 0;
+    }
+
+    onSubmit(redirigir: boolean) {
+        this.modelo = this.preparaParaGuardar();
+        this.servicio.setDatosModelo(this.modelo)
+            .subscribe(
+            response => {
+                this.status = response.status;
+                if (this.status !== "success") {
+                    Messenger().post({
+                        message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+                }
+                else {
+                    if (redirigir) {
+                        this.router.navigate(["/app/promocarrera"]);
+                    }
+                    Messenger().post({
+                        message: 'Los datos han sido guardados correctamente',
+                        type: 'success',
+                        showCloseButton: true
+                    });
+                }
+
+            },
+            error => {
+                this.errorMessage = <any>error;
+                if (this.errorMessage !== null) {
+
+                    Messenger().post({
+                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+
+                }
+            });
+    }
+
+    preparaParaGuardar(): FormacionModel {
+        const formModel = this.ifForm.value;
+        const saveModelo: any = {
+            data: formModel.data,
+            preg_174_tabla_3: formModel.preg_174_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_195_tabla_3: formModel.preg_195_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_199_tabla_3: formModel.preg_199_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_200_tabla_3: formModel.preg_200_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos))
+        };
+        return saveModelo;
     }
 }

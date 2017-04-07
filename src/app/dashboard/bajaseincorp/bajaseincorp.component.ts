@@ -1,9 +1,10 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Router, NavigationExtras } from '@angular/router';
 import { BajasEIncorpService } from './bajaseincorp.service';
 import { BajasEIncorpModel, Tabla5Model, Tabla3Model } from './bajaseincorp.model';
-
+import { CustomValidators } from 'ng2-validation';
+import { DashBoardFormErrorsService } from '../dashboard.formerrors.service';
 declare var jQuery: any;
 declare var Messenger: any;
 
@@ -14,7 +15,7 @@ declare var Messenger: any;
     styleUrls: [
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
-    providers: [BajasEIncorpService],
+    providers: [BajasEIncorpService, DashBoardFormErrorsService],
     encapsulation: ViewEncapsulation.None,
 })
 export class BajasEIncorpComponent implements OnInit {
@@ -30,9 +31,10 @@ export class BajasEIncorpComponent implements OnInit {
     public valorbarra: number;
     public tipobarra: string;
 
-    constructor(
+    constructor(private router: Router,
         private fb: FormBuilder,
         private servicio: BajasEIncorpService,
+        private serviceErrores: DashBoardFormErrorsService,
         injector: Injector
     ) {
         this.valorbarra = 0;
@@ -48,10 +50,10 @@ export class BajasEIncorpComponent implements OnInit {
         this.getDatosModelo();
     }
 
-    getValorBarra(){
-        if(this.respondidasSeccion==0)
+    getValorBarra() {
+        if (this.respondidasSeccion == 0)
             return 0;
-        else{
+        else {
             let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
             return value;
         }
@@ -111,7 +113,26 @@ export class BajasEIncorpComponent implements OnInit {
 
 
     setPregunta(tabla: any[], nombretabla: string) {
-        const addressFGs = tabla.map(datos => this.fb.group(datos));
+        const addressFGs = tabla.map(datos =>
+            this.fb.group({
+                texto: [datos.texto],
+                respuesta: [datos.respuesta],
+                mujeres: [datos.mujeres, CustomValidators.number],
+                hombres: [datos.hombres, CustomValidators.number]
+            }));
+        const addressFormArray = this.fb.array(addressFGs);
+        this.ifForm.setControl(nombretabla, addressFormArray);
+    }
+    setPregunta5(tabla: any[], nombretabla: string) {
+        const addressFGs = tabla.map(datos =>
+            this.fb.group({
+                texto: [datos.texto],
+                respuesta: [datos.respuesta],
+                mujeres: [datos.mujeres, CustomValidators.number],
+                hombres: [datos.hombres, CustomValidators.number],
+                mujeres2: [datos.mujeres2, CustomValidators.number],
+                hombres2: [datos.hombres2, CustomValidators.number]
+            }));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
     }
@@ -120,7 +141,12 @@ export class BajasEIncorpComponent implements OnInit {
         return this.ifForm.get(pregunta) as FormArray;
     };
     addFila3(elemento: FormArray) {
-        elemento.push(this.fb.group(new Tabla3Model()));
+        elemento.push(this.fb.group({            
+                texto: [''],
+                respuesta:[''],
+                mujeres: ['',CustomValidators.number],
+                hombres:['',CustomValidators.number]        
+        }));
     }
     removeFila(elemento: FormArray, i: number) {
         elemento.removeAt(i);
@@ -128,17 +154,6 @@ export class BajasEIncorpComponent implements OnInit {
     getDatosModelo() {
         this.servicio.getDatosModelo().subscribe(
             response => {
-                this.setPregunta(response.preg_120_tabla_3, 'preg_120_tabla_3');
-                this.setPregunta(response.preg_121_tabla_5, 'preg_121_tabla_5');
-                this.setPregunta(response.preg_122_tabla_3, 'preg_122_tabla_3');
-                this.setPregunta(response.preg_123_tabla_3, 'preg_123_tabla_3');
-                this.setPregunta(response.preg_124_tabla_3, 'preg_124_tabla_3');
-                this.setPregunta(response.preg_125_tabla_3, 'preg_125_tabla_3');
-
-                 this.respondidasSeccion = response.respondidasSeccion;
-                this.totalSeccion = response.totalSeccion;
-                this.setBarraProgreso();
-
                 this.status = response.status;
                 if (this.status !== "success") {
                     if (this.status == "tokenerror") {
@@ -157,6 +172,16 @@ export class BajasEIncorpComponent implements OnInit {
                     }
                 }
                 else {
+                    this.setPregunta(response.preg_120_tabla_3, 'preg_120_tabla_3');
+                    this.setPregunta5(response.preg_121_tabla_5, 'preg_121_tabla_5');
+                    this.setPregunta(response.preg_122_tabla_3, 'preg_122_tabla_3');
+                    this.setPregunta(response.preg_123_tabla_3, 'preg_123_tabla_3');
+                    this.setPregunta(response.preg_124_tabla_3, 'preg_124_tabla_3');
+                    this.setPregunta(response.preg_125_tabla_3, 'preg_125_tabla_3');
+
+                    this.respondidasSeccion = response.respondidasSeccion;
+                    this.totalSeccion = response.totalSeccion;
+                    this.setBarraProgreso();
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',
@@ -176,6 +201,59 @@ export class BajasEIncorpComponent implements OnInit {
 
                 }
             });
+    }
+
+    onSubmit(redirigir: boolean) {
+        this.modelo = this.preparaParaGuardar();
+        this.servicio.setDatosModelo(this.modelo)
+            .subscribe(
+            response => {
+                this.status = response.status;
+                if (this.status !== "success") {
+                    Messenger().post({
+                        message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+                }
+                else {
+                    if (redirigir) {
+                        this.router.navigate(["/app/conciliacion"]);
+                    }
+                    Messenger().post({
+                        message: 'Los datos han sido guardados correctamente',
+                        type: 'success',
+                        showCloseButton: true
+                    });
+                }
+
+            },
+            error => {
+                this.errorMessage = <any>error;
+                if (this.errorMessage !== null) {
+
+                    Messenger().post({
+                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+
+                }
+            });
+    }
+
+    preparaParaGuardar(): BajasEIncorpModel {
+        const formModel = this.ifForm.value;
+        const saveModelo: any = {
+            preg_120_tabla_3: formModel.preg_120_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_121_tabla_5: formModel.preg_121_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+            preg_122_tabla_3: formModel.preg_122_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_123_tabla_3: formModel.preg_123_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_124_tabla_3: formModel.preg_124_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_125_tabla_3: formModel.preg_125_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_126_tabla_3: formModel.preg_126_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+        };
+        return saveModelo;
     }
 
 }

@@ -1,9 +1,9 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Router, NavigationExtras } from '@angular/router';
 import { SelPersonalService } from './selpersonal.service';
-import { SelPersonalModel, TablaCheckbox,CriterioTipoInflu , dataModel } from './selpersonal.model';
+import { SelPersonalModel, TablaCheckbox, CriterioTipoInflu, dataModel } from './selpersonal.model';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -34,7 +34,7 @@ export class SelPersonalComponent implements OnInit {
     public dynamic: number;
     public type: string;
 
-    constructor(
+    constructor(private router: Router,
         private fb: FormBuilder,
         private servicio: SelPersonalService,
         injector: Injector
@@ -42,7 +42,7 @@ export class SelPersonalComponent implements OnInit {
         this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
-        this.modelo = new SelPersonalModel();       
+        this.modelo = new SelPersonalModel();
         this.createForm();
         this.getDatosModelo();
     }
@@ -78,10 +78,10 @@ export class SelPersonalComponent implements OnInit {
         this.type = type;
     }
 
-    createForm() {     
-        console.log("creando formulario");   
-        this.ifForm = this.fb.group({   
-            data: this.fb.group(this.modelo.data),                  
+    createForm() {
+        console.log("creando formulario");
+        this.ifForm = this.fb.group({
+            data: this.fb.group(this.modelo.data),
             preg_87: this.fb.array([]),
             preg_88: this.fb.array([]),
             preg_90: this.fb.array([]),
@@ -89,8 +89,8 @@ export class SelPersonalComponent implements OnInit {
             preg_101: this.fb.array([]),
             preg_103: this.fb.array([]),
             preg_117_tabla_2: this.fb.array([]),
-        }); 
-             
+        });
+
     }
 
     getValorElemento(elemento: string) {
@@ -105,9 +105,9 @@ export class SelPersonalComponent implements OnInit {
         const addressFGs = tabla.map(datos => this.fb.group(datos));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
-    }   
+    }
 
-    
+
     addFila(elemento: FormArray) {
         elemento.push(this.fb.group(new CriterioTipoInflu()));
     }
@@ -122,10 +122,10 @@ export class SelPersonalComponent implements OnInit {
 
     getDatosModelo() {
         this.servicio.getDatosModelo().subscribe(
-            response => {               
-                Object.getOwnPropertyNames(response.data).map((key: string) => 
-                     (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
-                );    
+            response => {
+                Object.getOwnPropertyNames(response.data).map((key: string) =>
+                    (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
+                );
                 this.setPregunta(response.preg_87, 'preg_87');
                 this.setPregunta(response.preg_88, 'preg_88');
                 this.setPregunta(response.preg_90, 'preg_90');
@@ -133,7 +133,7 @@ export class SelPersonalComponent implements OnInit {
                 this.setPregunta(response.preg_101, 'preg_101');
                 this.setPregunta(response.preg_103, 'preg_103');
                 this.setPregunta(response.preg_117_tabla_2, 'preg_117_tabla_2');
-               
+
                 this.respondidasSeccion = response.respondidasSeccion;
                 this.totalSeccion = response.totalSeccion;
                 this.valorBarraProgreso();
@@ -176,4 +176,59 @@ export class SelPersonalComponent implements OnInit {
                 }
             });
     }
+
+    onSubmit(redirigir: boolean) {
+        this.modelo = this.preparaParaGuardar();
+        this.servicio.setDatosModelo(this.modelo)
+            .subscribe(
+            response => {
+                this.status = response.status;
+                if (this.status !== "success") {
+                    Messenger().post({
+                        message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+                }
+                else {
+                    if (redirigir) {
+                        this.router.navigate(["/app/bajaseincorp"]);
+                    }
+                    Messenger().post({
+                        message: 'Los datos han sido guardados correctamente',
+                        type: 'success',
+                        showCloseButton: true
+                    });
+                }
+
+            },
+            error => {
+                this.errorMessage = <any>error;
+                if (this.errorMessage !== null) {
+
+                    Messenger().post({
+                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+
+                }
+            });
+    }
+
+    preparaParaGuardar() {
+        const formModel = this.ifForm.value;
+        const saveModelo: any = {
+            data: formModel.data,
+            preg_87: formModel.preg_87.map((datos: any) => Object.assign({}, datos)),
+            preg_88: formModel.preg_88.map((datos: any) => Object.assign({}, datos)),
+            preg_90: formModel.preg_90.map((datos: any) => Object.assign({}, datos)),
+            preg_95: formModel.preg_95.map((datos: any) => Object.assign({}, datos)),
+            preg_101: formModel.preg_101.map((datos: any) => Object.assign({}, datos)),
+            preg_103: formModel.preg_103.map((datos: any) => Object.assign({}, datos)),
+            preg_117_tabla_2: formModel.preg_117_tabla_2.map((datos: any) => Object.assign({}, datos))
+        };
+        return saveModelo;
+    }
+
 }

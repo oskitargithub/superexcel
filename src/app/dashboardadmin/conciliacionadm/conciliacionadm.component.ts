@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { ConciliacionAdmService } from './conciliacionadm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
-import { ConciliacionModel, Tabla3Model } from '../../dashboard/conciliacion/conciliacion.model';
+import { ConciliacionModel,datosModel, Tabla3Model } from '../../dashboard/conciliacion/conciliacion.model';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -87,6 +87,7 @@ export class ConciliacionAdmComponent implements OnInit {
     injector: Injector
   ) {
     this.modelo = new ConciliacionModel();
+    this.modelo.data = new datosModel();
     
   }
   ngOnInit(): void {

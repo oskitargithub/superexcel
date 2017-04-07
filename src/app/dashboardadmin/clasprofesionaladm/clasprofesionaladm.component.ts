@@ -49,6 +49,7 @@ export class ClasProfesionalAdmComponent implements OnInit {
 
 
   public barChartType: string = 'bar';
+  public barChartType2: string = 'horizontalBar';
   public barChartLegend: boolean = true;
 
   /** Gráficas Distribución de la plantilla */

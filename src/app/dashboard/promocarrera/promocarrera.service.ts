@@ -20,17 +20,17 @@ export class PromoCarreraService {
         });
     }
     setDatosModelo(modelo: any) {
-    let mitoken = JSON.parse(localStorage.getItem('fditoken'));
-    let json = JSON.stringify(modelo);
-    let params = "data=" + json;
-    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-    let opciones = new RequestOptions({
-      headers: headers,
-      /*withCredentials: true            */
-    });
-    return this._http.post(this.config.apilaravel + "cuestionario/seccion/10",
-      params, opciones).map(res => res.json());
+        let mitoken = JSON.parse(localStorage.getItem('fditoken'));
+        let json = JSON.stringify(modelo);
+        let params = "data=" + json;
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        let opciones = new RequestOptions({
+            headers: headers,
+            /*withCredentials: true            */
+        });
+        return this._http.post(this.config.apilaravel + "cuestionario/seccion/10",
+            params, opciones).map(res => res.json());
 
-  }
+    }
 
 }

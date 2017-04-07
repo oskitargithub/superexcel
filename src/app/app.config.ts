@@ -10,7 +10,7 @@ export class AppConfig {
     version: '1.0.0',
     api: 'http://localhost/superexcel/api/',
     apilaravel: 'http://localhost/superexcel-be/public/api/',
-    urluser: '/app/dashboard',
+    urluser: '/app/',
     urladmin: '/app/admin/dashboardadmin',
     urlpestanapublic: '/app/admin/infoencuestapb',
     urlpestanaprivate:'/app/admin/infoencuestapr',

@@ -43,12 +43,12 @@ export class Retribuciones2Component implements OnInit {
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
-        this.modelo = new Retribuciones2Model();
-        this.getDatosModelo();
+        this.modelo = new Retribuciones2Model();        
     }
 
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
+        this.getDatosModelo();
     }
 
     getValorBarra() {

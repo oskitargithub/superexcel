@@ -1,11 +1,14 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router,
          NavigationExtras } from '@angular/router';
-
+import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { AuthService }      from '../auth/auth.service';
 import {AuthModel}  from '../auth/auth.model';
 import { AppConfig } from '../app.config';
+import { CustomValidators } from 'ng2-validation';
+import { DashBoardFormErrorsService } from '../dashboard/dashboard.formerrors.service';
 declare var Messenger: any;
+
 
 @Component({
   selector: 'login',
@@ -24,6 +27,9 @@ export class Login implements OnInit {
     public status: string;
     config: any;
     public visiblelogin = true;
+    public mihash : any;
+    public misalt : any;
+    
     
     constructor(public authService: AuthService, public router: Router,config: AppConfig) { this.config = config.getConfig(); }
     
@@ -32,6 +38,7 @@ export class Login implements OnInit {
       this.authuser = new AuthModel("","","","","","",0);
       localStorage.removeItem('fditoken');
       console.log("nginit");
+     
   }
 
 

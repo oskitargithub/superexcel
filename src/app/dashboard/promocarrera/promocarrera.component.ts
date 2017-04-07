@@ -4,7 +4,6 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
 import { PromoCarreraService } from './promocarrera.service';
 import { PromoCarreraModel, Tabla3Model, Tabla2Model, Tabla6Model, dataModel } from './promocarrera.model';
-
 import { CustomValidators } from 'ng2-validation';
 import { DashBoardFormErrorsService } from '../dashboard.formerrors.service';
 
@@ -45,12 +44,12 @@ export class PromoCarreraComponent implements OnInit {
         this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
-        this.createForm();
-        this.getDatosModelo();
+        this.createForm();        
     }
 
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
+        this.getDatosModelo();
     }
 
     valorBarraProgreso() {

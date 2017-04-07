@@ -203,12 +203,18 @@
                                                         <div class="input-group">
                                                             <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                         </div>
+                                                        <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_174_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                            {{serviceErrores.objetoErrores['numerico']}}
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 ">
                                                     <div class="form-group">
                                                         <div class="input-group">
                                                             <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                        </div>
+                                                        <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_174_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                            {{serviceErrores.objetoErrores['numerico']}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -263,6 +269,9 @@
                                                         <div class="input-group">
                                                             <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                         </div>
+                                                        <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_174_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                            {{serviceErrores.objetoErrores['numerico']}}
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 ">
@@ -270,13 +279,16 @@
                                                         <div class="input-group">
                                                             <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                         </div>
+                                                        <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_174_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                            {{serviceErrores.objetoErrores['numerico']}}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </fieldset>
                                 </div>
-                                <div class="form-group row" formGroupName="data">
+                                <div style="margin-top:40px" class="form-group row" formGroupName="data">
 
                                     <div class="col-md-4 offset-md-2">
                                         <label for="preg_179">A) Indicar su carácter obligatorio o voluntario para el personal</label>
@@ -312,9 +324,11 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row" formGroupName="data">
-                                    <div class="col-md-8 offset-md-2">
-                                        <label>De acuerdo a los lugares en los que realizan las formaciones en la organización responda las siguientes preguntas teniendo en cuenta la frecuencia en que se hacen en terminada situaciones:</label>
+                                <div class="form-group" formGroupName="data">
+                                    <div class="row">
+                                        <div class="col-md-8 offset-md-2">
+                                            <label>De acuerdo a los lugares en los que realizan las formaciones en la organización responda las siguientes preguntas teniendo en cuenta la frecuencia en que se hacen en terminada situaciones:</label>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4 offset-md-2 ">
@@ -485,12 +499,18 @@
                                                     <div class="input-group">
                                                         <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                     </div>
+                                                    <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_195_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                        {{serviceErrores.objetoErrores['numerico']}}
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-1 ">
                                                 <div class="form-group">
                                                     <div class="input-group">
                                                         <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                    </div>
+                                                    <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_195_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                        {{serviceErrores.objetoErrores['numerico']}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -532,12 +552,18 @@
                                             <div class="input-group">
                                                 <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                             </div>
+                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_199_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                {{serviceErrores.objetoErrores['numerico']}}
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-1 ">
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                            </div>
+                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_199_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                {{serviceErrores.objetoErrores['numerico']}}
                                             </div>
                                         </div>
                                     </div>
@@ -601,12 +627,18 @@
                                             <div class="input-group">
                                                 <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                             </div>
+                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_200_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                {{serviceErrores.objetoErrores['numerico']}}
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-1 ">
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                            </div>
+                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_200_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                {{serviceErrores.objetoErrores['numerico']}}
                                             </div>
                                         </div>
                                     </div>
@@ -637,6 +669,14 @@
 
                             </div>
                         </fieldset>
+                    </div>
+                    <div class="form-actions" style="margin-top:40px">
+                        <div class="row">
+                            <div class="offset-md-4 col-md-7 ">
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(false)" class="btn btn-primary">Guardar cambios</button>
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(true)" class="btn btn-success">Guardar y Continuar</button>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
