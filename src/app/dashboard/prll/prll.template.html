@@ -42,12 +42,12 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-7 offset-md-2">
-                                    <label for="preg_1">
+                                    <label for="preg_251">
                                        El Comité de Seguridad y Salud
                                     </label>
                                 </div>
                                 <div class="col-md-2">
-                                    <md-radio-group formControlName="preg_1">
+                                    <md-radio-group formControlName="preg_251">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
@@ -55,12 +55,12 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-7 offset-md-2">
-                                    <label for="preg_2">
+                                    <label for="preg_252">
                                       La Comisión Antiacoso
                                     </label>
                                 </div>
                                 <div class="col-md-2">
-                                    <md-radio-group formControlName="preg_2">
+                                    <md-radio-group formControlName="preg_252">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
@@ -71,12 +71,12 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-7 offset-md-2">
-                                    <label for="preg_3">
+                                    <label for="preg_254">
                                       La EVALUACIÓN de los riesgos laborales comprende los riesgos vinculados al sexo de las personas trabajadoras
                                     </label>
                                 </div>
                                 <div class="col-md-2">
-                                    <md-radio-group formControlName="preg_3">
+                                    <md-radio-group formControlName="preg_254">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
@@ -84,12 +84,12 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-7 offset-md-2">
-                                    <label for="preg_4">
+                                    <label for="preg_255">
                                       El PLAN DE PREVENCIÓN comprende medidas de prevención y protección para  eliminar/reducir  los  riesgos  ligados  al  sexo  de  las personas trabajadoras
                                     </label>
                                 </div>
                                 <div class="col-md-2">
-                                    <md-radio-group formControlName="preg_4">
+                                    <md-radio-group formControlName="preg_255">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
@@ -113,12 +113,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-5 offset-md-2">
-                                    <label for="preg_5">
+                                    <label for="preg_257">
                                       ¿Se ha adaptado técnicamente algún puesto de trabajo por razón de riesgo durante el embarazo?
                                     </label>
                                 </div>
                                 <div class="col-md-2 text-md-center">
-                                    <md-radio-group formControlName="preg_5">
+                                    <md-radio-group formControlName="preg_257">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
@@ -126,20 +126,23 @@
                                 <div class="col-md-1 text-md-center">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input class="form-control" formControlName="preg_6" tooltip="Nº de casos" placeholder="Nº de casos" />
+                                            <input class="form-control" formControlName="preg_258" tooltip="Nº de casos" placeholder="Nº de casos" />
                                         </div>
                                     </div>
+                                    <div class="col-md-1 alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_258'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-5 offset-md-2">
-                                    <label for="preg_7">
+                                    <label for="preg_259">
                                       ¿Se ha adaptado técnicamente algún puesto de trabajo por razón de riesgo durante la lactancia?
                                     </label>
                                 </div>
                                 <div class="col-md-2 text-md-center">
-                                    <md-radio-group formControlName="preg_7">
+                                    <md-radio-group formControlName="preg_259">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
@@ -147,19 +150,22 @@
                                 <div class="col-md-1 text-md-center">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input class="form-control" formControlName="preg_8" tooltip="Nº de casos" placeholder="Nº de casos" />
+                                            <input class="form-control" formControlName="preg_260" tooltip="Nº de casos" placeholder="Nº de casos" />
                                         </div>
                                     </div>
+                                    <div class="col-md-1 alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_260'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-5 offset-md-2">
-                                    <label for="preg_9">
+                                    <label for="preg_261">
                                       ¿Se ha reducido el tiempo de trabajo a alguna trabajadora por razón de riesgo durante el embarazo o por riesgo durante la lactancia?
                                     </label>
                                 </div>
                                 <div class="col-md-2 text-md-center">
-                                    <md-radio-group formControlName="preg_9">
+                                    <md-radio-group formControlName="preg_261">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
@@ -167,19 +173,22 @@
                                 <div class="col-md-1 text-md-center">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input class="form-control" formControlName="preg_10" tooltip="Nº de casos" placeholder="Nº de casos" />
+                                            <input class="form-control" formControlName="preg_262" tooltip="Nº de casos" placeholder="Nº de casos" />
                                         </div>
                                     </div>
+                                    <div class="col-md-1 alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_262'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-5 offset-md-2">
-                                    <label for="preg_11">
+                                    <label for="preg_263">
                                      ¿Se ha suprimido el trabajo nocturno o a turnos a alguna trabajadora por razón de riesgo durante el embarazo o por riesgo durante la lactancia ¿Se ha reducido el tiempo de trabajo a alguna trabajadora por razón de riesgo durante el embarazo o por riesgo durante la lactancia?
                                     </label>
                                 </div>
                                 <div class="col-md-2 text-md-center">
-                                    <md-radio-group formControlName="preg_11">
+                                    <md-radio-group formControlName="preg_263">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
@@ -187,9 +196,12 @@
                                 <div class="col-md-1 text-md-center">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input class="form-control" formControlName="preg_12" tooltip="Nº de casos" placeholder="Nº de casos" />
+                                            <input class="form-control" formControlName="preg_264" tooltip="Nº de casos" placeholder="Nº de casos" />
                                         </div>
                                     </div>
+                                    <div class="col-md-1 alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_264'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                 </div>
                             </div>
 
@@ -208,12 +220,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-5 offset-md-2">
-                                    <label for="preg_13">
+                                    <label for="preg_271">
                                       ¿Se han identificado puestos de trabajo exentos de riesgo para el embarazo?
                                     </label>
                                 </div>
                                 <div class="col-md-2 text-md-center">
-                                    <md-radio-group formControlName="preg_13">
+                                    <md-radio-group formControlName="preg_271">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
@@ -221,26 +233,29 @@
                                 <div class="col-md-1 text-md-center">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input class="form-control" formControlName="preg_14" tooltip="Nº de puestos" placeholder="Nº de puestos" />
+                                            <input class="form-control" formControlName="preg_272" tooltip="Nº de puestos" placeholder="Nº de puestos" />
                                         </div>
                                     </div>
+                                    <div class="col-md-1 alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_272'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                 </div>
                             </div>                           
                              <div class="row">
-                                <div class="col-md-8 offset-md-2"><label for="preg_15">En caso afirmativo, indicar cuáles</label></div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_273">En caso afirmativo, indicar cuáles</label></div>
                                 <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_15" formControlName="preg_15" autosize placeholder="Puestos de trabajo exentos de riesgo para el embarazo"></textarea>
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_273" formControlName="preg_273" autosize placeholder="Puestos de trabajo exentos de riesgo para el embarazo"></textarea>
                                 </div>
                             </div>
 
                             <div class="row" style="margin-top:40px">
                                 <div class="col-md-5 offset-md-2">
-                                    <label for="preg_16">
+                                    <label for="preg_274">
                                       ¿Se han identificado puestos de trabajo exentos de riesgo para la lactancia?
                                     </label>
                                 </div>
                                 <div class="col-md-2 text-md-center">
-                                    <md-radio-group formControlName="preg_16">
+                                    <md-radio-group formControlName="preg_274">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
@@ -248,15 +263,18 @@
                                 <div class="col-md-1 text-md-center">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input class="form-control" formControlName="preg_17" tooltip="Nº de puestos" placeholder="Nº de puestos" />
+                                            <input class="form-control" formControlName="preg_275" tooltip="Nº de puestos" placeholder="Nº de puestos" />
                                         </div>
                                     </div>
+                                    <div class="col-md-1 alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_275'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                 </div>
                             </div>                            
                              <div class="row">
                                 <div class="col-md-8 offset-md-2"><label for="preg_18">En caso afirmativo, indicar cuáles</label></div>
                                 <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_18" formControlName="preg_18" autosize placeholder="Puestos de trabajo exentos de riesgo para la lactancia"></textarea>
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_276" formControlName="preg_276" autosize placeholder="Puestos de trabajo exentos de riesgo para la lactancia"></textarea>
                                 </div>
                             </div>
 
@@ -275,12 +293,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-5 offset-md-2">
-                                    <label for="preg_19">
+                                    <label for="preg_281">
                                       ¿Se han concedido permisos disfrutados por riesgo durante el embarazo?
                                     </label>
                                 </div>
                                 <div class="col-md-2 text-md-center">
-                                    <md-radio-group formControlName="preg_19">
+                                    <md-radio-group formControlName="preg_281">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
@@ -288,10 +306,14 @@
                                 <div class="col-md-1 text-md-center">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input class="form-control" formControlName="preg_20" tooltip="Casos" placeholder="Casos" />
+                                            <input class="form-control" formControlName="preg_282" tooltip="Casos" placeholder="Casos" />
                                         </div>
                                     </div>
+                                    
                                 </div>
+                                <div class="col-md-1 alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_282'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                             </div>
 
                         </fieldset>
@@ -309,12 +331,12 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-5 offset-md-2">
-                                    <label for="preg_21">
+                                    <label for="preg_286">
                                      ¿Existen medidas relativas a esta materia que supongan una mejora a lo que establece la ley o el convenio colectivo?
                                     </label>
                                 </div>
                                 <div class="col-md-2 text-md-center">
-                                    <md-radio-group formControlName="preg_21">
+                                    <md-radio-group formControlName="preg_286">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
@@ -322,15 +344,18 @@
                                 <div class="col-md-1 text-md-center">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input class="form-control" formControlName="preg_22" tooltip="Nº de mejoras" placeholder="Nº de mejoras" />
+                                            <input class="form-control" formControlName="preg_287" tooltip="Nº de mejoras" placeholder="Nº de mejoras" />
                                         </div>
                                     </div>
+                                    <div class="col-md-1 alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_287'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-8 offset-md-2"><label for="preg_23">En caso afirmativo, indicar cuáles</label></div>
                                 <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_23" formControlName="preg_23" autosize placeholder="Mejora a lo que establece la ley o el convenio colectivo"></textarea>
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_288" formControlName="preg_288" autosize placeholder="Mejora a lo que establece la ley o el convenio colectivo"></textarea>
                                 </div>
                             </div>
 

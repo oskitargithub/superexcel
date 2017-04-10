@@ -89,8 +89,8 @@ export class ComunicacionComponent implements OnInit {
         console.log("creando formulario");
         this.ifForm = this.fb.group({
             data: this.fb.group(new dataModel()),
-            preg_200: this.fb.array([]),
-            preg_201: this.fb.array([]),
+            preg_355: this.fb.array([]),
+            preg_356: this.fb.array([]),
         });
         console.log("fin creando formulario");
     }
@@ -134,8 +134,8 @@ export class ComunicacionComponent implements OnInit {
                     Object.getOwnPropertyNames(response.data).map((key: string) =>
                         (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
                     );                    
-                    this.setPregunta(response.preg_200, 'preg_200');
-                    this.setPregunta(response.preg_201, 'preg_201');
+                    this.setPregunta(response.preg_355, 'preg_355');
+                    this.setPregunta(response.preg_356, 'preg_356');
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
                     this.valorBarraProgreso();

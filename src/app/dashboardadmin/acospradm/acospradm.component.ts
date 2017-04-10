@@ -104,8 +104,8 @@ export class AcosPRAdmComponent implements OnInit {
     }
 
     asignaDatosGraficas() {
-        let totalmuj = Math.round(this.funciones.getSumaMujeresDelTotal(this.modelo.preg_1_tabla_3)*100);
-        let totalhom = Math.round(this.funciones.getSumaHombresDelTotal(this.modelo.preg_1_tabla_3)*100);
+        let totalmuj = Math.round(this.funciones.getSumaMujeresDelTotal(this.modelo.preg_346_tabla_3)*100);
+        let totalhom = Math.round(this.funciones.getSumaHombresDelTotal(this.modelo.preg_346_tabla_3)*100);
         this.doughnutChartData = [totalmuj, totalhom];
     }
 }

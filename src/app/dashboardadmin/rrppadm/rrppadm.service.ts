@@ -12,15 +12,8 @@ export class RRPPAdmService {
         this.config = config.getConfig(); //me traigo la configuración para saber la url de la api
     }
 
-    /*getDatosModelo() {
-        return this._http.get(this.config.apilaravel + "cuestionario/seccion/10").map(res => {
-            let headers = res.headers;
-            let miobjeto = res.json();
-            return (miobjeto);
-        });
-    }*/
     getDatosModelo() {
-        return this._http.get(this.config.api + "cuestionario13.php").map(res => {
+        return this._http.get(this.config.apilaravel + "cuestionario/seccion/13").map(res => {
             let headers = res.headers;
             let miobjeto = res.json();
             return (miobjeto);

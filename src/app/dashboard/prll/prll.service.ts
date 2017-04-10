@@ -13,7 +13,7 @@ export class PRLLService {
     }
 
     getDatosModelo() {
-        return this._http.get(this.config.api + "cuestionario11.php").map(res => {
+        return this._http.get(this.config.apilaravel + "cuestionario/seccion/11").map(res => {
             let headers = res.headers;
             let miobjeto = res.json();
             return (miobjeto);
@@ -28,7 +28,7 @@ export class PRLLService {
             headers: headers,
             /*withCredentials: true            */
         });
-        return this._http.post(this.config.apilaravel + "cuestionario/seccion/10",
+        return this._http.post(this.config.apilaravel + "cuestionario/seccion/11",
             params, opciones).map(res => res.json());
 
     }

@@ -1,64 +1,64 @@
-export class PRLLModel{
-public status: string;    
+export class PRLLModel {
+    public status: string;
     public totalCuest: number;
     public respondidasCuest: number;
     public totalSeccion: number;
-    public respondidasSeccion: number;    
+    public respondidasSeccion: number;
     public data: dataModel;
-    constructor(){
+    constructor() {
         this.data = new dataModel();
-    }   
+    }
 }
 
-export class dataModel{
+export class dataModel {
     public user_id: number;
-    public preg_1: any;
-    public preg_2: any;
-    public preg_3: any; 
-    public preg_4: any;
-    public preg_5: any;
-    public preg_6: any; 
-    public preg_7: any;
-    public preg_8: any;
-    public preg_9: any; 
-    public preg_10: any; 
-    public preg_11: any; 
-    public preg_12: any; 
-    public preg_13: any; 
-    public preg_14: any; 
-    public preg_15: any; 
-    public preg_16: any; 
-    public preg_17: any; 
-    public preg_18: any; 
-    public preg_19: any; 
-    public preg_20: any; 
-    public preg_21: any; 
-    public preg_22: any; 
-    public preg_23: any;     
-    constructor(){
+    public preg_251: any;
+    public preg_252: any;
+    public preg_254: any;
+    public preg_255: any;
+    public preg_257: any;
+    public preg_258: any;
+    public preg_259: any;
+    public preg_260: any;
+    public preg_261: any;
+    public preg_262: any;
+    public preg_263: any;
+    public preg_264: any;
+    public preg_271: any;
+    public preg_272: any;
+    public preg_273: any;
+    public preg_274: any;
+    public preg_275: any;
+    public preg_276: any;
+    public preg_281: any;
+    public preg_282: any;
+    public preg_286: any;
+    public preg_287: any;
+    public preg_288: any;
+    constructor() {
         this.user_id = 0,
-        this.preg_1 = '',
-        this.preg_2 = '',
-        this.preg_3 = '',
-        this.preg_4 = '',
-        this.preg_5 = '',
-        this.preg_6 = '',
-        this.preg_7 = '',
-        this.preg_8 = '',
-        this.preg_9 = '',
-        this.preg_10 = '',
-        this.preg_11 = '',
-        this.preg_12 = '',
-        this.preg_13 = '',
-        this.preg_14 = '',
-        this.preg_15 = '',
-        this.preg_16 = '',
-        this.preg_17 = '',
-        this.preg_18 = '',
-        this.preg_19 = '',
-        this.preg_20 = '',
-        this.preg_21 = '',
-        this.preg_22 = '',
-        this.preg_23 = ''
+            this.preg_251 = '',
+            this.preg_252 = '',
+            this.preg_254 = '',
+            this.preg_255 = '',
+            this.preg_257 = '',
+            this.preg_258 = '',
+            this.preg_259 = '',
+            this.preg_260 = '',
+            this.preg_261 = '',
+            this.preg_262 = '',
+            this.preg_263 = '',
+            this.preg_264 = '',
+            this.preg_271 = '',
+            this.preg_272 = '',
+            this.preg_273 = '',
+            this.preg_274 = '',
+            this.preg_275 = '',
+            this.preg_276 = '',
+            this.preg_281 = '',
+            this.preg_282 = '',
+            this.preg_286 = '',
+            this.preg_287 = '',
+            this.preg_288 = ''
     }
 }

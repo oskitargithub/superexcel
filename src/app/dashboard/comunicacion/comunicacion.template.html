@@ -38,18 +38,18 @@
                 <div class="widget-body">
 
 
-                    <div class="section" style="margin-top:40px" formArrayName="preg_200">
+                    <div class="section" style="margin-top:40px" formArrayName="preg_355">
                         <p>Indique cuáles son los canales de comunicación interna que se utilizan habitualmente en su organización</p>
                         <fieldset>
                             <legend><strong>Canales comunicación interna</strong></legend>
                             <div class="col-md-10 offset-md-2">
                                 <div class="row">
-                                    <div *ngFor="let datos of getPregunta('preg_200').controls; let i=index" [formGroupName]="i" class="col-md-6">
+                                    <div *ngFor="let datos of getPregunta('preg_355').controls; let i=index" [formGroupName]="i" class="col-md-6">
                                         <md-checkbox formControlName="valor1">
-                                            {{ifForm.controls.preg_200.value[i].texto}}
+                                            {{ifForm.controls.preg_355.value[i].texto}}
                                         </md-checkbox>
                                         <div class="col-md-6" *ngIf="i==14">
-                                            <input [readonly]="!ifForm.controls.preg_200.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
+                                            <input [readonly]="!ifForm.controls.preg_355.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
                                                 placeholder="Otros" />
                                         </div>
                                     </div>
@@ -57,7 +57,7 @@
                             </div>
                         </fieldset>
                     </div>
-                    <div class="section" style="margin-top:40px" formArrayName="preg_201">
+                    <div class="section" style="margin-top:40px" formArrayName="preg_356">
                         <p>Indique cuáles son los canales de comunicación externa que se utilizan habitualmente en su organización</p>
                         <fieldset>
                             <legend><strong>Canales comunicación externa</strong></legend>
@@ -66,7 +66,7 @@
                                 <div class="col-md-4 offset-md-2">Tipo de canal</div>
                                 <div class="col-md-4">Especificación del canal</div>
                             </div>
-                            <div *ngFor="let datos of getPregunta('preg_201').controls; let i=index" [formGroupName]="i">
+                            <div *ngFor="let datos of getPregunta('preg_356').controls; let i=index" [formGroupName]="i">
                                 <div class="row">
                                     <div class="col-md-4 offset-md-2">
                                         <div class="form-group">
@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <md-checkbox formControlName="valor1">
-                                            {{ifForm.controls.preg_201.value[i].texto}}
+                                            {{ifForm.controls.preg_356.value[i].texto}}
                                         </md-checkbox>
 
                                     </div>
@@ -91,23 +91,23 @@
                         <fieldset>
                             <div class="form-group row">
                                 <div class="col-md-7 offset-md-2">
-                                    <label for="preg_1">
+                                    <label for="preg_360">
                                       ¿Se ha realizado con anterioridad en la compañía alguna campaña de comunicación o sensibilización de algún tema específico?
                                     </label>
                                 </div>
                                 <div class="col-md-2">
-                                    <md-radio-group formControlName="preg_1">
+                                    <md-radio-group formControlName="preg_360">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_2">En caso afirmativo, ¿En que temática?</label></div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_361">En caso afirmativo, ¿En que temática?</label></div>
                                 <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_2" formControlName="preg_2" autosize placeholder="Temáticas"></textarea>
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_361" formControlName="preg_361" autosize placeholder="Temáticas"></textarea>
                                 </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_3">En caso afirmativo, ¿Influye de igual manera en hombres y en mujeres?¿Por qué razones?</label></div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_362">En caso afirmativo, ¿Influye de igual manera en hombres y en mujeres?¿Por qué razones?</label></div>
                                 <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_3" formControlName="preg_3" autosize placeholder="Razones"></textarea>
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_362" formControlName="preg_362" autosize placeholder="Razones"></textarea>
                                 </div>
                             </div>
                         </fieldset>
@@ -117,19 +117,19 @@
                         <fieldset>
                             <div class="form-group row">
                                 <div class="col-md-7 offset-md-2">
-                                    <label for="preg_4">
+                                    <label for="preg_363">
                                       ¿Considera que tanto la imagen interna como externa de la organización transmite los valores de igualdad de oportunidades entre hombres y mujeres?
                                     </label>
                                 </div>
                                 <div class="col-md-2">
-                                    <md-radio-group formControlName="preg_4">
+                                    <md-radio-group formControlName="preg_363">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_5">En caso afirmativo, mencione por qué?</label></div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_364">En caso afirmativo, mencione por qué?</label></div>
                                 <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_5" formControlName="preg_5" autosize placeholder="Describe"></textarea>
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_364" formControlName="preg_364" autosize placeholder="Describe"></textarea>
                                 </div>                                
                             </div>
                         </fieldset>
@@ -139,19 +139,19 @@
                         <fieldset>
                             <div class="form-group row">
                                 <div class="col-md-7 offset-md-2">
-                                    <label for="preg_6">
+                                    <label for="preg_365">
                                       ¿Existe algún canal de comunicación entre el personal y la organización?
                                     </label>
                                 </div>
                                 <div class="col-md-2">
-                                    <md-radio-group formControlName="preg_6">
+                                    <md-radio-group formControlName="preg_365">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_7">En caso afirmativo indique que canales</label></div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_366">En caso afirmativo indique que canales</label></div>
                                 <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_7" formControlName="preg_7" autosize placeholder="Canales"></textarea>
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_366" formControlName="preg_366" autosize placeholder="Canales"></textarea>
                                 </div>                                
                             </div>
                         </fieldset>
@@ -161,21 +161,21 @@
                         <fieldset>
                             <div class="form-group row">
                                 <div class="col-md-7 offset-md-2">
-                                    <label for="preg_8">
+                                    <label for="preg_367">
                                       Y ¿con qué frecuencia lo utiliza las trabajadoras y trabajadores?
                                     </label>
                                 </div>
                                 <div class="col-md-8 offset-md-2">
-                                    <md-radio-group formControlName="preg_8">
+                                    <md-radio-group formControlName="preg_367">
                                         <md-radio-button value="1">Nunca</md-radio-button>
                                         <md-radio-button value="2">Rara vez</md-radio-button>
                                         <md-radio-button value="3">A menudo</md-radio-button>
                                         <md-radio-button value="4">Siempre</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_9">A que cree que se debe la respuesta anterior?</label></div>
+                                <div class="col-md-8 offset-md-2"><label for="preg_368">A que cree que se debe la respuesta anterior?</label></div>
                                 <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_9" formControlName="preg_9" autosize placeholder="Frecuencia"></textarea>
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_368" formControlName="preg_368" autosize placeholder="Frecuencia"></textarea>
                                 </div>                                
                             </div>
                         </fieldset>

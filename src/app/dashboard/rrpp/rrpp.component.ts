@@ -1,9 +1,11 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Router, NavigationExtras } from '@angular/router';
 import { RRPPService } from './rrpp.service';
 import { RRPPModel, Tabla3Model } from './rrpp.model';
+import { CustomValidators } from 'ng2-validation';
+import { DashBoardFormErrorsService } from '../dashboard.formerrors.service';
 
 declare var jQuery: any;
 declare var Messenger: any;
@@ -14,7 +16,7 @@ declare var Messenger: any;
     styleUrls: [
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
-    providers: [RRPPService],
+    providers: [RRPPService,DashBoardFormErrorsService],
     encapsulation: ViewEncapsulation.None,
 })
 export class RRPPComponent implements OnInit {
@@ -33,20 +35,22 @@ export class RRPPComponent implements OnInit {
     public dynamic: number;
     public type: string;
 
-    constructor(
+    constructor(private router: Router,
         private fb: FormBuilder,
         private servicio:RRPPService,
+        private serviceErrores: DashBoardFormErrorsService,
         injector: Injector
     ) {
         this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
-        this.getDatosModelo();
+        
     }
 
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
+        this.getDatosModelo();
     }
 
     valorBarraProgreso() {
@@ -70,8 +74,8 @@ export class RRPPComponent implements OnInit {
     createForm() {
         console.log("creando formulario");
         this.ifForm = this.fb.group({
-            preg_1_tabla_3: this.fb.array([]),
-            preg_2_tabla_3: this.fb.array([])
+            preg_351_tabla_3: this.fb.array([]),
+            preg_352_tabla_3: this.fb.array([])
             
         });
         console.log("fin creando formulario");
@@ -86,7 +90,13 @@ export class RRPPComponent implements OnInit {
     };
 
     setPregunta(tabla: any, nombretabla: string) {
-        const addressFGs = tabla.map(datos => this.fb.group(datos));
+        const addressFGs = tabla.map(datos => 
+            this.fb.group({            
+                texto: [datos.texto],
+                respuesta:[datos.respuesta],
+                mujeres: [datos.mujeres,CustomValidators.number],
+                hombres:[datos.hombres,CustomValidators.number]        
+        }));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
     }
@@ -96,7 +106,12 @@ export class RRPPComponent implements OnInit {
     };
     
     addFila(elemento: FormArray) {
-        elemento.push(this.fb.group(new Tabla3Model()));
+        elemento.push(this.fb.group({            
+                texto: [''],
+                respuesta:[''],
+                mujeres: ['',CustomValidators.number],
+                hombres:['',CustomValidators.number]        
+        }));
     }
     removeFila(elemento: FormArray, i: number) {
         elemento.removeAt(i);
@@ -138,8 +153,8 @@ export class RRPPComponent implements OnInit {
                     }
                 }
                 else {                    
-                    this.setPregunta(response.preg_1_tabla_3, 'preg_1_tabla_3');
-                    this.setPregunta(response.preg_2_tabla_3, 'preg_2_tabla_3');
+                    this.setPregunta(response.preg_351_tabla_3, 'preg_351_tabla_3');
+                    this.setPregunta(response.preg_352_tabla_3, 'preg_352_tabla_3');
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
                     this.valorBarraProgreso();
@@ -162,5 +177,54 @@ export class RRPPComponent implements OnInit {
 
                 }
             });
+    }
+
+    onSubmit(redirigir: boolean) {
+        this.modelo = this.preparaParaGuardar();
+        this.servicio.setDatosModelo(this.modelo)
+            .subscribe(
+            response => {
+                this.status = response.status;
+                if (this.status !== "success") {
+                    Messenger().post({
+                        message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+                }
+                else {
+                    if (redirigir) {
+                        this.router.navigate(["/app/clasificacionprofesional2"]);
+                    }
+                    Messenger().post({
+                        message: 'Los datos han sido guardados correctamente',
+                        type: 'success',
+                        showCloseButton: true
+                    });
+                }
+
+            },
+            error => {
+                this.errorMessage = <any>error;
+                if (this.errorMessage !== null) {
+
+                    Messenger().post({
+                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+
+                }
+            });
+    }
+   
+
+    preparaParaGuardar(): RRPPModel {
+        const formModel = this.ifForm.value;
+        const saveRRPP: any = {        
+            preg_351_tabla_3: formModel.preg_351_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_352_tabla_3: formModel.preg_352_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos))
+        };
+        return saveRRPP;
     }
 }

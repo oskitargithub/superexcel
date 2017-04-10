@@ -83,10 +83,14 @@ export class PRLLComponent implements OnInit {
     }
     
    addValidaciones() {
-        /*this.ifForm.get('data.preg_154').setValidators([CustomValidators.number]);
-        this.ifForm.get('data.preg_155').setValidators([CustomValidators.number]);
-        this.ifForm.get('data.preg_157').setValidators([CustomValidators.number]);
-        this.ifForm.get('data.preg_158').setValidators([CustomValidators.number]); */     
+        this.ifForm.get('data.preg_258').setValidators([CustomValidators.number]);
+        this.ifForm.get('data.preg_260').setValidators([CustomValidators.number]);
+        this.ifForm.get('data.preg_262').setValidators([CustomValidators.number]);
+        this.ifForm.get('data.preg_264').setValidators([CustomValidators.number]); 
+        this.ifForm.get('data.preg_272').setValidators([CustomValidators.number]);
+        this.ifForm.get('data.preg_275').setValidators([CustomValidators.number]);
+        this.ifForm.get('data.preg_282').setValidators([CustomValidators.number]);
+        this.ifForm.get('data.preg_287').setValidators([CustomValidators.number]);
     }
     
 

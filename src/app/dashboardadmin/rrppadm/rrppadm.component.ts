@@ -113,12 +113,12 @@ export class RRPPAdmComponent implements OnInit {
     }
 
     asignaDatosGraficas() {
-        this.asignaPorcentajesPorTipo(this.modelo.preg_1_tabla_3);
+        this.asignaPorcentajesPorTipo(this.modelo.preg_351_tabla_3);
         this.barChartLabels1 = this.labelGrafica1;
         this.barChartData1 = this.datosGrafica1;
         this.barChartData2 = this.datosGrafica2;
         this.barChartLabels2 = this.labelGrafica2;
-        this.asignaPorcentajesPorTipo(this.modelo.preg_2_tabla_3);
+        this.asignaPorcentajesPorTipo(this.modelo.preg_352_tabla_3);
         this.barChartLabels3 = this.labelGrafica1;
         this.barChartData3 = this.datosGrafica1;
         this.barChartData4 = this.datosGrafica2;

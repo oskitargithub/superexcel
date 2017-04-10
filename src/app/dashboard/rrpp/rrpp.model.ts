@@ -4,8 +4,8 @@ export class RRPPModel {
     public respondidasCuest: number;
     public totalSeccion: number;
     public respondidasSeccion: number;
-    public preg_1_tabla_3: Tabla3Model[];
-    public preg_2_tabla_3: Tabla3Model[];
+    public preg_351_tabla_3: Tabla3Model[];
+    public preg_352_tabla_3: Tabla3Model[];
 
 }
 
