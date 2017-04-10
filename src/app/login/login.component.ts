@@ -38,12 +38,19 @@ export class Login implements OnInit {
       this.authuser = new AuthModel("","","","","","",0);
       localStorage.removeItem('fditoken');
       console.log("nginit");
+      this.authService.getToken().subscribe(
+          response => {
+              this.authuser.token = response.data;
+              console.log("token asig"+this.authuser.token);
+              localStorage.setItem('token',this.authuser.token);
+          }
+      )
      
   }
 
 
   VerRecuerdaPassword(){
-      this.authuser.password="";
+      this.authuser.clave="";
       this.visiblelogin = false;
   }
   VerLogin(){
@@ -82,7 +89,7 @@ export class Login implements OnInit {
                                     showCloseButton: true
                                 });
                                 this.authuser.usuario="";
-                                this.authuser.password="";
+                                this.authuser.clave="";
                             
                         }
 				},
@@ -127,8 +134,10 @@ export class Login implements OnInit {
 						}
                         else{  
                             this.authService.isLoggedIn = true;  
-                            this.authuser = response.data;
-                            this.authService.tipocuest = this.authuser.tipocuest;
+                            let datosjau = response.data[0];
+                            //this.authuser.usuario = datosjau.user;
+                             this.authuser.perfil = "USER";
+                            this.authService.tipocuest = datosjau.cuest;//this.authuser.tipocuest;
                             console.log(this.authuser);
                             localStorage.setItem('fditoken', JSON.stringify({ "token": this.authuser.token, "usuario": this.authuser.usuario, "perfil": this.authuser.perfil }));                             
                             //let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '';
