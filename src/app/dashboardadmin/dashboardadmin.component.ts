@@ -150,12 +150,14 @@ export class DashboardAdmin implements OnInit {
   }
 
 
-  onSelect(persona: DashBoardAdminModel){
+  onSelect(persona: DashBoardAdminModel){ 
     console.log("seleccionado usuario");
     this.AuthService.tipocuest = persona.cuest;
     this.AuthService.usucuest = persona.user;
-    console.log(persona);
+    console.log("tipocuest");
+    console.log(this.AuthService.tipocuest);
     let redirect = '';
+    localStorage.setItem('usuariocuest',persona.user.toString());
     if(persona.cuest == 1){
       redirect = this.config.urlpestanapublic;
     }

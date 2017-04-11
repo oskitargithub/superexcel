@@ -47,8 +47,6 @@ export class InfoEncuestaPBComponent implements OnInit {
         this.servicio.getDatosModelo(this.AuthService.usucuest)
             .subscribe(
             response => {
-                this.modelo = response.data;
-
                 this.status = response.status;
                 if (this.status !== "success") {
                     if (this.status == "tokenerror") {
@@ -67,6 +65,7 @@ export class InfoEncuestaPBComponent implements OnInit {
                     }
                 }
                 else {
+                    this.modelo = response.data;
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',

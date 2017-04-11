@@ -35,7 +35,7 @@ export class Login implements OnInit {
     
     ngOnInit(): void {
       Messenger.options = { theme: 'air' };
-      this.authuser = new AuthModel("","","","","","",0);
+      this.authuser = new AuthModel("","","","","","","",0);
       localStorage.removeItem('fditoken');
       console.log("nginit");
       this.authService.getToken().subscribe(
@@ -96,7 +96,7 @@ export class Login implements OnInit {
 				error => {
 					this.errorMessage = <any>error;
 					if(this.errorMessage !== null){
-                                          
+                        console.log(error);                  
                         Messenger().post({
                             message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
                             type: 'error',
@@ -136,10 +136,11 @@ export class Login implements OnInit {
                             this.authService.isLoggedIn = true;  
                             let datosjau = response.data[0];
                             //this.authuser.usuario = datosjau.user;
-                             this.authuser.perfil = "USER";
+                             this.authuser.perfil = datosjau.perfil;
                             this.authService.tipocuest = datosjau.cuest;//this.authuser.tipocuest;
+                            this.authService.api_token = datosjau.api_token;
                             console.log(this.authuser);
-                            localStorage.setItem('fditoken', JSON.stringify({ "token": this.authuser.token, "usuario": this.authuser.usuario, "perfil": this.authuser.perfil }));                             
+                            localStorage.setItem('fditoken', JSON.stringify({ "token": this.authuser.token, "usuario": this.authuser.usuario, "perfil": this.authuser.perfil, "api_token":datosjau.api_token }));                             
                             //let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '';
                             let redirect = '';
                             if(this.authuser.perfil == "ADM"){

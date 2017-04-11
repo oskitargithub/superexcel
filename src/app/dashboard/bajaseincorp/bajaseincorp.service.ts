@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, RequestMethod } from "@angular/http";
+import { Http, Response, Headers, RequestOptions, RequestMethod, URLSearchParams } from "@angular/http";
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { AppConfig } from '../../app.config';
@@ -19,7 +19,14 @@ export class BajasEIncorpService {
     }
 
     getDatosModelo() {
-        return this._http.get(this.config.apilaravel + "cuestionario/seccion/7").map(res => {
+        let tokenfdi = JSON.parse(localStorage.getItem('fditoken'));
+        let mitoken = localStorage.getItem('token');
+        let api_token = tokenfdi.api_token;
+        let parametros2: URLSearchParams = new URLSearchParams();
+        parametros2.set('_token', mitoken);
+        parametros2.set('api_token', api_token);
+        let headers = '';
+        return this._http.get(this.config.apilaravel + "cuestionario/seccion/7", { search: parametros2 }).map(res => {
             let headers = res.headers;
             let miobjeto = res.json();
             return (miobjeto);
@@ -27,16 +34,19 @@ export class BajasEIncorpService {
     }
 
     setDatosModelo(modelo: any) {
-        let mitoken = JSON.parse(localStorage.getItem('fditoken'));
+        let tokenfdi = JSON.parse(localStorage.getItem('fditoken'));
+        let mitoken = localStorage.getItem('token');
+        let api_token = tokenfdi.api_token;
         let json = JSON.stringify(modelo);
-        let params = "data=" + json;
-        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        let opciones = new RequestOptions({
-            headers: headers,
-            /*withCredentials: true            */
-        });
-        return this._http.post(this.config.apilaravel + "cuestionario/seccion/5",
-            params, opciones).map(res => res.json());
+        let parametros2: URLSearchParams = new URLSearchParams();
+        parametros2.set('_token', mitoken);
+        parametros2.set('api_token', api_token);
+        parametros2.set('data', json);
+        let misheaders = new Headers({ "X-Requested-With": "XMLHttpRequest", 'Content-Type': 'application/x-www-form-urlencoded' });
+        let options = new RequestOptions({ headers: misheaders });
+
+        return this._http.post(this.config.apilaravel + "cuestionario/seccion",
+            parametros2, options).map(res => res.json());
 
     }
 }

@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Router, NavigationExtras } from '@angular/router';
 import { ComunicacionService } from './comunicacion.service';
 import { ComunicacionModel, dataModel } from './comunicacion.model';
 
@@ -40,7 +40,7 @@ export class ComunicacionComponent implements OnInit {
 
 
 
-    constructor(
+    constructor(private router: Router,
         private fb: FormBuilder,
         private servicio: ComunicacionService,
         injector: Injector
@@ -158,6 +158,55 @@ export class ComunicacionComponent implements OnInit {
 
                 }
             });
+    }
+
+    onSubmit(redirigir: boolean) {
+        this.modelo = this.preparaParaGuardar();
+        this.servicio.setDatosModelo(this.modelo)
+            .subscribe(
+            response => {
+                this.status = response.status;
+                if (this.status !== "success") {
+                    Messenger().post({
+                        message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+                }
+                else {
+                    if (redirigir) {
+                        this.router.navigate(["/app/clasificacionprofesional2"]);
+                    }
+                    Messenger().post({
+                        message: 'Los datos han sido guardados correctamente',
+                        type: 'success',
+                        showCloseButton: true
+                    });
+                }
+
+            },
+            error => {
+                this.errorMessage = <any>error;
+                if (this.errorMessage !== null) {
+
+                    Messenger().post({
+                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+
+                }
+            });
+    }
+
+    preparaParaGuardar(): ComunicacionModel {
+        const formModel = this.ifForm.value;
+        const saveRRPP: any = {        
+            data: formModel.data,
+            preg_355: formModel.preg_355.map((datos: any) => Object.assign({}, datos)),
+            preg_356: formModel.preg_356.map((datos: any) => Object.assign({}, datos))
+        };
+        return saveRRPP;
     }
 
 }

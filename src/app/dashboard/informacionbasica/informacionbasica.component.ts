@@ -9,7 +9,7 @@ import { InformacionBasicaModel, CentroActividad, datosUserModel, dataModel } fr
 import { InformacionBasicaService } from "./informacionbasica.service";
 import { CustomValidators } from 'ng2-validation';
 import { DashBoardFormErrorsService } from '../dashboard.formerrors.service';
-
+import { AuthService }      from '../../auth/auth.service';
 import * as moment from 'moment';
 declare var jQuery: any;
 declare var Messenger: any;
@@ -21,7 +21,7 @@ declare var Messenger: any;
     styleUrls: ['./informacionbasica.css',
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
-    providers: [InformacionBasicaService, DashBoardFormErrorsService],
+    providers: [InformacionBasicaService, DashBoardFormErrorsService,AuthService],
     encapsulation: ViewEncapsulation.None,
 })
 export class InformacionBasicaComponent implements OnInit {
@@ -45,7 +45,7 @@ export class InformacionBasicaComponent implements OnInit {
 
     public midatePickeropt: any;
 
-    constructor(
+    constructor(private authService: AuthService,
         private fb: FormBuilder,
         private servicio: InformacionBasicaService,
         private router: Router,
@@ -142,6 +142,17 @@ export class InformacionBasicaComponent implements OnInit {
 
 
     ngOnInit(): void {
+
+        /*this.authService.getToken().subscribe(
+          response => {
+              let userdatos = response.data;
+              console.log("token asig"+userdatos);
+              localStorage.setItem('token',userdatos);
+              this.getInformacionBasica();
+          }
+      )*/
+
+
         Messenger.options = { theme: 'air' };
         moment.locale('es');
         this.createForm();

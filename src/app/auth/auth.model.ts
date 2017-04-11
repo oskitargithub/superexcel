@@ -6,6 +6,7 @@ export class AuthModel{
         public nombre: string,
         public apellidos: string,
         public token: string,
+        public api_token,
         public tipocuest: number
     ) { }
 }
