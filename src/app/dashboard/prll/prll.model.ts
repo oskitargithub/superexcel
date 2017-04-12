@@ -11,7 +11,6 @@ export class PRLLModel {
 }
 
 export class dataModel {
-    public user_id: number;
     public preg_251: any;
     public preg_252: any;
     public preg_254: any;
@@ -35,8 +34,7 @@ export class dataModel {
     public preg_286: any;
     public preg_287: any;
     public preg_288: any;
-    constructor() {
-        this.user_id = 0,
+    constructor() {        
             this.preg_251 = '',
             this.preg_252 = '',
             this.preg_254 = '',

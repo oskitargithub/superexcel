@@ -55,6 +55,7 @@ export class BajasEIncorpComponent implements OnInit {
             return 0;
         else {
             let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+            value = Math.round(value);            
             return value;
         }
     }
@@ -250,8 +251,7 @@ export class BajasEIncorpComponent implements OnInit {
             preg_122_tabla_3: formModel.preg_122_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
             preg_123_tabla_3: formModel.preg_123_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
             preg_124_tabla_3: formModel.preg_124_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
-            preg_125_tabla_3: formModel.preg_125_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
-            preg_126_tabla_3: formModel.preg_126_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_125_tabla_3: formModel.preg_125_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),            
         };
         return saveModelo;
     }

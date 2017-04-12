@@ -13,8 +13,7 @@ public status: string;
 }
 
 
-export class dataModel{
-    public user_id: number;
+export class dataModel{    
     public preg_360: any;
     public preg_361: any;
     public preg_362: any;
@@ -26,8 +25,7 @@ export class dataModel{
     public preg_368: any;
    
 
-    constructor(){
-        this.user_id = 0,
+    constructor(){        
         this.preg_360 = '',
         this.preg_361 = '',
         this.preg_362 = '',

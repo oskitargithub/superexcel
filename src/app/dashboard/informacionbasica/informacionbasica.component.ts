@@ -55,10 +55,16 @@ export class InformacionBasicaComponent implements OnInit {
         this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
-        this.informacionbasica = new InformacionBasicaModel();
-
+        //this.informacionbasica = new InformacionBasicaModel();
+        this.createForm();
     }
 
+    ngOnInit(): void {
+        Messenger.options = { theme: 'air' };              
+        this.getInformacionBasica();
+        moment.locale('es');  
+        this.midatePickeropt = new Date();
+    }
 
     getValorBarra() {
         if (this.respondidasSeccion == 0)
@@ -91,7 +97,7 @@ export class InformacionBasicaComponent implements OnInit {
 
     onSubmit(redirigir: boolean) {
         this.informacionbasica = this.preparaParaGuardar();
-        this.servicio.setDatosModelo(this.informacionbasica, this.token)
+        this.servicio.setDatosModelo(this.informacionbasica)
             .subscribe(
             response => {
                 this.status = response.status;
@@ -131,8 +137,8 @@ export class InformacionBasicaComponent implements OnInit {
 
     createForm() {
         this.ifForm = this.fb.group({
-            user: this.fb.group(new datosUserModel()),
             data: this.fb.group(new dataModel()),
+            user: this.fb.group(new datosUserModel()),            
             preg_2_tabla_2: this.fb.array([]),
             _token: ''
         });
@@ -141,26 +147,7 @@ export class InformacionBasicaComponent implements OnInit {
 
 
 
-    ngOnInit(): void {
-
-        /*this.authService.getToken().subscribe(
-          response => {
-              let userdatos = response.data;
-              console.log("token asig"+userdatos);
-              localStorage.setItem('token',userdatos);
-              this.getInformacionBasica();
-          }
-      )*/
-
-
-        Messenger.options = { theme: 'air' };
-        moment.locale('es');
-        this.createForm();
-        this.getInformacionBasica();
-        this.midatePickeropt = new Date();
-        console.log(this.midatePickeropt);
-
-    }
+    
 
     get user(): FormArray {
         return this.ifForm.get('user') as FormArray;
@@ -242,23 +229,25 @@ export class InformacionBasicaComponent implements OnInit {
                 }
                 else {
                     //this.ifForm = this.fb.group(response); 
-                    this.token = response._token;
-                    console.log("pillao token" + this.token);
+                    this.token = response._token;     
+                    console.log("trayendoo datos");               
+                    console.log(response.data);
                     console.log(response.user);
-                    this.ifForm.setControl('user', this.fb.group(response.user));
-                    this.ifForm.setControl('data', this.fb.group(response.data));
+                     Object.getOwnPropertyNames(response.data).map((key: string) =>
+                        (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
+                    );
+
+                     Object.getOwnPropertyNames(response.user).map((key: string) =>
+                        (<FormArray>this.ifForm.controls['user']).controls[key].setValue(response.user[key])
+                    );                   
+                    console.log("asignado");
                     this.addValidaciones();
-
+                    console.log("add validaciones");
                     this.setCentroActividad(response.preg_2_tabla_2);
-
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
                     this.valorBarraProgreso();
-                    console.log("respondidas" + this.respondidasSeccion + " y total" + this.totalSeccion);
-
-
-
-
+                    console.log("fin trayendoo datos");                     
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',

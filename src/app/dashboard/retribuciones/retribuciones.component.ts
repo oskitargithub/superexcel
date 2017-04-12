@@ -56,6 +56,7 @@ export class RetribucionesComponent implements OnInit {
             return 0;
         else {
             let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+            value = Math.round(value);            
             return value;
         }
     }

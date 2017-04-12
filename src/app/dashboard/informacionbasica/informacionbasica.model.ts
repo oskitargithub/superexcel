@@ -7,10 +7,10 @@ export class InformacionBasicaModel{
         public respondidasCuest: number;
         public totalSeccion: number;
         public respondidasSeccion: number;
-        constructor(){
+        /*constructor(){
                 this.data = new dataModel();
                 this.user = new datosUserModel();
-        }
+        }*/
 }
 
 export class CentroActividad{
@@ -18,15 +18,15 @@ export class CentroActividad{
         actividad: string ='';
 }
 export class dataModel{
-        public preg_1: string;//public desarrollaact: string;       
-        public preg_3: string;//public denominacion: string;
-        public preg_5: string;//public mujeres: number;
-        public preg_6: string;//public hombres: number;
-        public preg_18: string;//public bpoliticas3: boolean;
-        public preg_19: string;//public bpoliticas1: boolean;
-        public preg_20: string;//public bpoliticas2: boolean;        
-        public preg_22: string;//public bpoliticas4: boolean;
-        public preg_23: string;//public bpoliticas5: boolean;
+        public preg_1: any;//public desarrollaact: string;       
+        public preg_3: any;//public denominacion: string;
+        public preg_5: any;//public mujeres: number;
+        public preg_6: any;//public hombres: number;
+        public preg_18: any;//public bpoliticas3: boolean;
+        public preg_19: any;//public bpoliticas1: boolean;
+        public preg_20: any;//public bpoliticas2: boolean;        
+        public preg_22: any;//public bpoliticas4: boolean;
+        public preg_23: any;//public bpoliticas5: boolean;
         constructor(){
             this.preg_1='',
             this.preg_3='',
@@ -44,6 +44,7 @@ export class dataModel{
 export class datosUserModel{
         public user_id : number;
         public empresa: string;
+        public apellidos: string;
         public cif: string;
         public ambito: string;
         public sector: string;
@@ -60,9 +61,15 @@ export class datosUserModel{
         public dia: string;
         public mes: string;
         public anyo: string;
+        public fecha_ini: any;
+        public nombre: any;
+        public tipo : any;
+        public updated_at : any;
+        public username : any;
         constructor(){
            this.user_id = 0,
            this.ambito='',
+           this.apellidos='',
            this.anyo='',
            this.cif='',
            this.convenio='',
@@ -79,6 +86,11 @@ export class datosUserModel{
            this.sector = '',
            this.telefonos='',
            this.user_id = 0,
+           this.fecha_ini = '',
+           this.nombre='',
+           this.tipo = '',
+           this.updated_at = '',
+           this.username = '',
            this.web = ''
         }
 }

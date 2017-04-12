@@ -8,23 +8,16 @@
         <h1 class="page-title">Actuaciones de la organización en materia de <span class="fw-semi-bold">Prevención de riesgos laborales ligados al sexo</span></h1>
     </div>
     <div class="col-md-4">
-        <div class="row progress-stats">
-            <div class="col-md-9 col-xs-12">
-                <div class="bg-white progress progress-sm">
-                    <div progress-animate class="progress-bar bg-primary progress-sm" style="width: 18%;" data-width="18%"></div>
-                </div>
-            </div>
+        <div class="row progress-stats">           
             <div class="col-md-9 col-xs-12">
                 <p class="description deemphasize">Progreso de la pestaña</p>
                 <div class="bg-white progress-bar">
                     <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic}"></progress>
-
-
                 </div>
             </div>
             <div class="col-md-3 col-xs-12 text-xs-center">
                 <span class="status rounded rounded-lg bg-body-light">
-                                    <small><span number-animate>{{(respondidasSeccion*100)/totalSeccion}}</span>%</small>
+                                    <small><span number-animate>{{getValorBarra()}}</span>%</small>
                 </span>
             </div>
         </div>

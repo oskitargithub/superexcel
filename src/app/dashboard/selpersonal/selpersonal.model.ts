@@ -1,12 +1,8 @@
 export class SelPersonalModel {
 
-    public id: number;
-    public user_id: number;
     public data: dataModel;
     
     constructor() {
-        this.id = 0,
-        this.user_id = 0,
         this.data = new dataModel();
     }
 }

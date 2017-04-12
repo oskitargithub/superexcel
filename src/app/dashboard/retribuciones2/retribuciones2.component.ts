@@ -56,6 +56,7 @@ export class Retribuciones2Component implements OnInit {
             return 0;
         else {
             let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+            value = Math.round(value);            
             return value;
         }
     }
@@ -244,8 +245,7 @@ export class Retribuciones2Component implements OnInit {
             preg_78_tabla_5: formModel.preg_78_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
             preg_79_tabla_5: formModel.preg_79_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
             preg_80_tabla_5: formModel.preg_80_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
-            preg_81_tabla_5: formModel.preg_81_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
-            preg_82_tabla_5: formModel.preg_82_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+            preg_81_tabla_5: formModel.preg_81_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),            
             preg_83_tabla_5: formModel.preg_83_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
             preg_84_tabla_5: formModel.preg_84_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
             preg_85_tabla_5: formModel.preg_85_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),

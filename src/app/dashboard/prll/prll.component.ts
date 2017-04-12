@@ -51,8 +51,18 @@ export class PRLLComponent implements OnInit {
         this.getDatosModelo();
     }
 
+    getValorBarra() {
+        if (this.respondidasSeccion == 0)
+            return 0;
+        else {
+            let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+            value = Math.round(value);            
+            return value;
+        }
+    }
+
     valorBarraProgreso() {
-        let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+        let value = this.getValorBarra();
         let type: string;
 
         if (value < 25) {

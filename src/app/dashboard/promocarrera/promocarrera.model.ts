@@ -35,7 +35,6 @@ export class Tabla6Model {
     respuesta: any = 0;    
 }
 export class dataModel{
-    public user_id: number;    
     public preg_210: any;
     public preg_212: any;
     public preg_213: any; 
@@ -63,7 +62,6 @@ export class dataModel{
     public preg_238: any;
     public preg_239: any;
     constructor(){
-        this.user_id = 0,
         this.preg_210 = '',
         this.preg_212 = '',
         this.preg_213 = '',

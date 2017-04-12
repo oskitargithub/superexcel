@@ -1,5 +1,4 @@
 export class RetribucionesModel{    
-    /*public user_id : number;    */
     public preg_70_tabla_5: Tabla5Model[];
     public preg_71_tabla_5: Tabla5Model[];
     public preg_72_tabla_5: Tabla5Model[];
@@ -15,12 +14,7 @@ export class RetribucionesModel{
     public preg_83_tabla_5: Tabla5Model[];
     public preg_84_tabla_5: Tabla5Model[];
     public preg_85_tabla_5: Tabla5Model[];
-    public preg_86_tabla_3: Tabla3Model[];
-
-    /*constructor(){
-        this.id=0,
-        this.user_id = 0
-    }*/
+    public preg_86_tabla_3: Tabla3Model[];   
 }
 
 

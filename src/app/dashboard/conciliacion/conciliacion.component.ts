@@ -46,7 +46,7 @@ export class ConciliacionComponent implements OnInit {
         private serviceErrores: DashBoardFormErrorsService,
         injector: Injector
     ) {
-        this.dynamic = 20;
+        this.dynamic = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
@@ -63,6 +63,7 @@ export class ConciliacionComponent implements OnInit {
             return 0;
         else {
             let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+            value = Math.round(value);            
             return value;
         }
     }

@@ -30,10 +30,8 @@ export class AcosPRComponent implements OnInit {
     public status: string;
     public respondidasSeccion: any;
     public totalSeccion: any;
-    public max: number = 100;
-    public showWarning: boolean;
-    public dynamic: number;
-    public type: string;
+    public valorbarra: number;
+    public tipobarra: string;
 
     constructor(private router: Router,
         private fb: FormBuilder,
@@ -41,7 +39,7 @@ export class AcosPRComponent implements OnInit {
         private serviceErrores: DashBoardFormErrorsService,
         injector: Injector
     ) {
-        this.dynamic = 0;
+       this.valorbarra = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
@@ -52,8 +50,18 @@ export class AcosPRComponent implements OnInit {
         Messenger.options = { theme: 'air' };
     }
 
-    valorBarraProgreso() {
-        let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+    getValorBarra() {
+        if (this.respondidasSeccion == 0)
+            return 0;
+        else {
+            let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
+            value = Math.round(value);            
+            return value;
+        }
+    }
+
+    setBarraProgreso() {
+        let value = this.getValorBarra();
         let type: string;
 
         if (value < 25) {
@@ -66,8 +74,8 @@ export class AcosPRComponent implements OnInit {
             type = 'success';
 
         }
-        this.dynamic = value;
-        this.type = type;
+        this.valorbarra = value;
+        this.tipobarra = type;
     }
 
     createForm() {
@@ -135,7 +143,7 @@ export class AcosPRComponent implements OnInit {
                     this.setPregunta(response.preg_346_tabla_3, 'preg_346_tabla_3');
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
-                    this.valorBarraProgreso();
+                    this.setBarraProgreso();
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',

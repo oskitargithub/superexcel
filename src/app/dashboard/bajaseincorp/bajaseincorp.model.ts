@@ -1,6 +1,5 @@
 export class BajasEIncorpModel {
-        public status: string;
-        public data: datosModel;
+        public status: string;        
         public totalCuest: number;
         public respondidasCuest: number;
         public totalSeccion: number;
@@ -13,15 +12,6 @@ export class BajasEIncorpModel {
         public preg_125_tabla_3: Tabla3Model[];
 
 
-}
-
-export class datosModel {
-        public user_id: number;
-        public id: number;
-        constructor() {
-                this.id = 0,
-                this.user_id = 0
-        }
 }
 
 export class Tabla3Model {

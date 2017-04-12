@@ -34,14 +34,14 @@ export class InformacionBasicaService{
                 miobjeto.user.created_at = datePipe.transform(fechacrea, 'yyyy-MM-dd');
                 console.log("ea");
             }
-            console.log(res.json().user.created_at);
+            console.log("getDatosModelo");
             return(miobjeto);
         });
         /*return this._http.post(this.config.api + "informacionbasica.php/getinformacionbasica", 
 				params, {headers: headers}).map(res => res.json());*/
     }
     
-    setDatosModelo(informacionbasica: InformacionBasicaModel, tokenjaume: string){
+    setDatosModelo(informacionbasica: InformacionBasicaModel){
         let tokenfdi = JSON.parse(localStorage.getItem('fditoken')); 
         let mitoken =  localStorage.getItem('token');
         let api_token = tokenfdi.api_token;

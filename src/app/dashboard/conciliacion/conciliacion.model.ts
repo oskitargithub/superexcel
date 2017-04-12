@@ -21,8 +21,6 @@ export class ConciliacionModel {
 }
 
 export class datosModel {
-    public user_id: number;
-    public id: number;
     public preg_131: any;
     public preg_132: any;
     public preg_133: any;
@@ -36,8 +34,6 @@ export class datosModel {
     public preg_157: any;
     public preg_158: any;
     constructor() {
-        this.id = 0,
-        this.user_id = 0,
         this.preg_131 = '',
         this.preg_132 = '',
         this.preg_133 = '',

@@ -28,7 +28,6 @@ export class Tabla2Model{
 }
 
 export class datosModel {
-    public user_id: number;    
     public preg_160: any;
     public preg_162: any;
     public preg_163: any; 
@@ -57,7 +56,6 @@ export class datosModel {
     public preg_193: any; 
     public preg_194: any; 
     constructor() {
-        this.user_id = 0,
         this.preg_160 = '',
         this.preg_162 = '',
         this.preg_163 = '',
