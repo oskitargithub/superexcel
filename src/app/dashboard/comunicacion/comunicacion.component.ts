@@ -176,7 +176,7 @@ export class ComunicacionComponent implements OnInit {
                 }
                 else {
                     if (redirigir) {
-                        this.router.navigate(["/app/clasificacionprofesional2"]);
+                        this.router.navigate(["/app/introduccion"]);
                     }
                     Messenger().post({
                         message: 'Los datos han sido guardados correctamente',
