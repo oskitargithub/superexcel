@@ -30,7 +30,6 @@ export class InformacionBasicaComponent implements OnInit {
     colorOptions: Object = { color: '#f0b518' };
     submitted = false;
     ifForm: FormGroup;
-
     public informacionbasica: InformacionBasicaModel;
     public errorMessage: string;
     public status: string;
@@ -109,7 +108,8 @@ export class InformacionBasicaComponent implements OnInit {
                     });
                 }
                 else {
-                    if (redirigir) {
+                    this.ifForm.markAsPristine();                   
+                    if (redirigir) {         
                         this.router.navigate(["/app/clasificacionprofesional1"]);
                     }
                     Messenger().post({
@@ -289,4 +289,7 @@ export class InformacionBasicaComponent implements OnInit {
         };
         return saveInformacionBasica;
     }
+
+    
+    
 }
