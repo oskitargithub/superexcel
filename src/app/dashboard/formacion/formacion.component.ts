@@ -155,7 +155,8 @@ export class FormacionComponent implements OnInit {
                     this.setPregunta(response.preg_200_tabla_3, 'preg_200_tabla_3');
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
-                    this.valorBarraProgreso();                    
+                    this.valorBarraProgreso();     
+                    this.ifForm.markAsPristine();                 
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',
@@ -204,6 +205,7 @@ export class FormacionComponent implements OnInit {
                     });
                 }
                 else {
+                    this.ifForm.markAsPristine();  
                     if (redirigir) {
                         this.router.navigate(["/app/promocarrera"]);
                     }

@@ -1,5 +1,5 @@
 import 'messenger/build/js/messenger.js';
-
+import { AuthGuard } from '../../auth/auth-guard.service';
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { FormsModule,ReactiveFormsModule  }    from '@angular/forms';
@@ -9,7 +9,7 @@ import { ClasProfesional1Component } from './clasprofesional1.component';
 import { MdRadioModule, MdUniqueSelectionDispatcher } from '@angular2-material/radio';
 
 export const routes = [
-  { path: '', component: ClasProfesional1Component, pathMatch: 'full' }
+  { path: '', component: ClasProfesional1Component,canDeactivate: [AuthGuard],canActivate: [AuthGuard], pathMatch: 'full' }
 ];
 
 @NgModule({

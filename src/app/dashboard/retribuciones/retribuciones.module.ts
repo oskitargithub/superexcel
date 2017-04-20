@@ -6,10 +6,10 @@ import { FormsModule,ReactiveFormsModule  }    from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ng2-bootstrap';
 import { RetribucionesComponent } from './retribuciones.component';
-
+import { AuthGuard } from '../../auth/auth-guard.service';
 
 export const routes = [
-  { path: '', component: RetribucionesComponent, pathMatch: 'full' }
+  { path: '', component: RetribucionesComponent,canDeactivate: [AuthGuard],canActivate: [AuthGuard], pathMatch: 'full' }
 ];
 
 @NgModule({

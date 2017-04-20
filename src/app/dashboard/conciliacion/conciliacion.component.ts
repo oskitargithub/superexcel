@@ -207,7 +207,7 @@ export class ConciliacionComponent implements OnInit {
                     this.totalSeccion = response.totalSeccion;
                     this.valorBarraProgreso();
                     this.addValidaciones();
-
+                    this.ifForm.markAsPristine();  
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',
@@ -243,6 +243,7 @@ export class ConciliacionComponent implements OnInit {
                     });
                 }
                 else {
+                    this.ifForm.markAsPristine();  
                     if (redirigir) {
                         this.router.navigate(["/app/formacion"]);
                     }

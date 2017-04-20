@@ -7,9 +7,9 @@ import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ng2-bootstrap';
 import { AcosPRComponent } from './acospr.component';
 import { MdRadioModule, MdUniqueSelectionDispatcher } from '@angular2-material/radio';
-
+import { AuthGuard } from '../../auth/auth-guard.service';
 export const routes = [
-  { path: '', component: AcosPRComponent, pathMatch: 'full' }
+  { path: '', component: AcosPRComponent,canDeactivate: [AuthGuard],canActivate: [AuthGuard], pathMatch: 'full' }
 ];
 
 @NgModule({

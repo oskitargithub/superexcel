@@ -144,6 +144,7 @@ export class AcosPRComponent implements OnInit {
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
                     this.setBarraProgreso();
+                    this.ifForm.markAsPristine();  
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',
@@ -179,6 +180,7 @@ export class AcosPRComponent implements OnInit {
                     });
                 }
                 else {
+                    this.ifForm.markAsPristine();  
                     if (redirigir) {
                         this.router.navigate(["/app/rrpp"]);
                     }

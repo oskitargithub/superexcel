@@ -7,9 +7,9 @@ import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ng2-bootstrap';
 import { FormacionComponent } from './formacion.component';
 import { MdRadioModule, MdUniqueSelectionDispatcher } from '@angular2-material/radio';
-
+import { AuthGuard } from '../../auth/auth-guard.service';
 export const routes = [
-  { path: '', component: FormacionComponent, pathMatch: 'full' }
+  { path: '', component: FormacionComponent,canDeactivate: [AuthGuard],canActivate: [AuthGuard], pathMatch: 'full' }
 ];
 
 @NgModule({

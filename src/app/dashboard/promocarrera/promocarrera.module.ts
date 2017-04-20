@@ -8,8 +8,9 @@ import { TooltipModule } from 'ng2-bootstrap';
 import { PromoCarreraComponent } from './promocarrera.component';
 import { MdRadioModule, MdUniqueSelectionDispatcher } from '@angular2-material/radio';
 import { MdCheckboxModule } from '@angular2-material/checkbox';
+import { AuthGuard } from '../../auth/auth-guard.service';
 export const routes = [
-  { path: '', component: PromoCarreraComponent, pathMatch: 'full' }
+  { path: '', component: PromoCarreraComponent,canDeactivate: [AuthGuard],canActivate: [AuthGuard], pathMatch: 'full' }
 ];
 
 @NgModule({

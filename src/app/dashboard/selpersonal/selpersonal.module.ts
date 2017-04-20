@@ -1,5 +1,5 @@
 import 'messenger/build/js/messenger.js';
-
+import { AuthGuard } from '../../auth/auth-guard.service';
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { FormsModule,ReactiveFormsModule  }    from '@angular/forms';
@@ -11,7 +11,7 @@ import { MdRadioModule, MdUniqueSelectionDispatcher } from '@angular2-material/r
 import { MdCheckboxModule } from '@angular2-material/checkbox';
 
 export const routes = [
-  { path: '', component: SelPersonalComponent, pathMatch: 'full' }
+  { path: '', component: SelPersonalComponent,canDeactivate: [AuthGuard],canActivate: [AuthGuard], pathMatch: 'full' }
 ];
 
 @NgModule({

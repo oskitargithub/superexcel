@@ -7,10 +7,10 @@ import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ng2-bootstrap';
 import { ConciliacionComponent } from './conciliacion.component';
 import { MdRadioModule, MdUniqueSelectionDispatcher } from '@angular2-material/radio';
-
+import { AuthGuard } from '../../auth/auth-guard.service';
 
 export const routes = [
-  { path: '', component: ConciliacionComponent, pathMatch: 'full' }
+  { path: '', component: ConciliacionComponent,canDeactivate: [AuthGuard],canActivate: [AuthGuard], pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -12,7 +12,7 @@
             <div class="col-md-9 col-xs-12">
                 <p class="description deemphasize">Progreso de la pestaña</p>
                 <div class="bg-white progress-bar">
-                    <progress class="progress progress-sm progress-{{tipobarra}}" value="100" max="100" [ngStyle]="{'width': valorbarra}"></progress>
+                    <progress class="progress progress-sm progress-{{tipobarra}}" value="100" max="100" [ngStyle]="{'width': valorbarra+'%'}"></progress>
 
 
                 </div>
@@ -68,6 +68,31 @@
                                 <md-radio-button value="no">No</md-radio-button>
                             </md-radio-group>
                         </div>
+                        <div class="col-md-5 offset-md-2">
+                            <p>En caso afirmativo, indique cuantas</p>
+                        </div>
+                    </div>
+                    <div class="form-group row" formGroupName="data">
+                        <label class="col-md-2  col-form-label text-md-right">Total</label>
+                        <label class="col-md-1  col-form-label text-md-right" for="preg_52">Mujeres</label>
+                        <div class="col-md-1 ">
+                            <input type="text" class="form-control" formControlName="preg_52" tooltip="Mujeres" placeholder="Mujeres" />
+                            <div class="alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_52'].errors?.number">
+                                {{serviceErrores.objetoErrores['numerico']}}
+                            </div>
+                        </div>
+
+                        <label class="col-md-1  col-form-label text-md-right" for="preg_53">Hombres</label>
+                        <div class="col-md-1 ">
+                            <input type="text" class="form-control" formControlName="preg_53" tooltip="Hombres" placeholder="Hombres" />
+                            <div class="alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_53'].errors?.number">{{serviceErrores.objetoErrores['numerico']}}</div>
+                        </div>
+                        <label class="col-md-1  col-form-label text-md-right" for="total">Total</label>
+                        <div class="col-md-2 col-form-label">
+                            {{getTotalDiversidad()}}
+
+                        </div>
+
                     </div>
                     <div class="section" style="margin-top:40px">
                         <fieldset>

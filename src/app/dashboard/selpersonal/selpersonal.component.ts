@@ -55,7 +55,7 @@ export class SelPersonalComponent implements OnInit {
             return 0;
         else {
             let value = (this.respondidasSeccion * 100) / (this.totalSeccion * 1);
-            value = Math.round(value);            
+            value = Math.round(value);
             return value;
         }
     }
@@ -124,21 +124,6 @@ export class SelPersonalComponent implements OnInit {
     getDatosModelo() {
         this.servicio.getDatosModelo().subscribe(
             response => {
-                Object.getOwnPropertyNames(response.data).map((key: string) =>
-                    (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
-                );
-                this.setPregunta(response.preg_87, 'preg_87');
-                this.setPregunta(response.preg_88, 'preg_88');
-                this.setPregunta(response.preg_90, 'preg_90');
-                this.setPregunta(response.preg_95, 'preg_95');
-                this.setPregunta(response.preg_101, 'preg_101');
-                this.setPregunta(response.preg_103, 'preg_103');
-                this.setPregunta(response.preg_117_tabla_2, 'preg_117_tabla_2');
-
-                this.respondidasSeccion = response.respondidasSeccion;
-                this.totalSeccion = response.totalSeccion;
-                this.valorBarraProgreso();
-
                 this.status = response.status;
                 if (this.status !== "success") {
                     if (this.status == "tokenerror") {
@@ -157,6 +142,21 @@ export class SelPersonalComponent implements OnInit {
                     }
                 }
                 else {
+                    Object.getOwnPropertyNames(response.data).map((key: string) =>
+                        (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
+                    );
+                    this.setPregunta(response.preg_87, 'preg_87');
+                    this.setPregunta(response.preg_88, 'preg_88');
+                    this.setPregunta(response.preg_90, 'preg_90');
+                    this.setPregunta(response.preg_95, 'preg_95');
+                    this.setPregunta(response.preg_101, 'preg_101');
+                    this.setPregunta(response.preg_103, 'preg_103');
+                    this.setPregunta(response.preg_117_tabla_2, 'preg_117_tabla_2');
+
+                    this.respondidasSeccion = response.respondidasSeccion;
+                    this.totalSeccion = response.totalSeccion;
+                    this.valorBarraProgreso();
+                    this.ifForm.markAsPristine();
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',
@@ -192,6 +192,7 @@ export class SelPersonalComponent implements OnInit {
                     });
                 }
                 else {
+                    this.ifForm.markAsPristine(); 
                     if (redirigir) {
                         this.router.navigate(["/app/bajaseincorp"]);
                     }

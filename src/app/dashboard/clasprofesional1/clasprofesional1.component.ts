@@ -99,6 +99,8 @@ export class ClasProfesional1Component implements OnInit {
         }
         this.valorbarra = value;
         this.tipobarra = type;
+        console.log("barra:"+this.valorbarra);
+        console.log("tipobarra:"+this.tipobarra);
     }
 
 
@@ -143,7 +145,7 @@ export class ClasProfesional1Component implements OnInit {
                     this.totalSeccion = response.totalSeccion;
                     this.setBarraProgreso();
                     this.addValidaciones();
-
+                    this.ifForm.markAsPristine();  
                     
 
                     Messenger().post({
@@ -170,6 +172,8 @@ export class ClasProfesional1Component implements OnInit {
     addValidaciones() {
         this.ifForm.get('data.preg_46').setValidators([CustomValidators.number]);
         this.ifForm.get('data.preg_47').setValidators([CustomValidators.number]);
+        this.ifForm.get('data.preg_52').setValidators([CustomValidators.number]);
+        this.ifForm.get('data.preg_53').setValidators([CustomValidators.number]);
     }
     
 
@@ -190,6 +194,9 @@ export class ClasProfesional1Component implements OnInit {
 
     getTotalCompo() {
         return (this.ifForm.get('data.preg_46').value * 1 + this.ifForm.get('data.preg_47').value * 1);
+    }
+    getTotalDiversidad() {
+        return (this.ifForm.get('data.preg_52').value * 1 + this.ifForm.get('data.preg_53').value * 1);
     }
 
    
@@ -241,6 +248,7 @@ export class ClasProfesional1Component implements OnInit {
                     });
                 }
                 else {
+                    this.ifForm.markAsPristine();      
                     if (redirigir) {
                         this.router.navigate(["/app/clasificacionprofesional2"]);
                     }

@@ -8,10 +8,10 @@ import { TooltipModule } from 'ng2-bootstrap';
 import { ComunicacionComponent } from './comunicacion.component';
 import { MdRadioModule, MdUniqueSelectionDispatcher } from '@angular2-material/radio';
 import { MdCheckboxModule } from '@angular2-material/checkbox';
-
+import { AuthGuard } from '../../auth/auth-guard.service';
 
 export const routes = [
-  { path: '', component: ComunicacionComponent, pathMatch: 'full' }
+  { path: '', component: ComunicacionComponent,canDeactivate: [AuthGuard],canActivate: [AuthGuard], pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -133,6 +133,7 @@ export class PRLLComponent implements OnInit {
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
                     this.valorBarraProgreso();
+                    this.ifForm.markAsPristine();  
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',
@@ -168,6 +169,7 @@ export class PRLLComponent implements OnInit {
                     });
                 }
                 else {
+                    this.ifForm.markAsPristine();  
                     if (redirigir) {
                         this.router.navigate(["/app/acospr"]);
                     }
