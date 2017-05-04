@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { AcosPRAdmService } from './acospradm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
+import { FuncionesHighChartsT3Service } from '../serviciofunciones/funcioneshighchartst3.service';
 import { AcosPRModel, Tabla3Model } from '../../dashboard/acospr/acospr.model';
 import { AppConfig } from '../../app.config';
 import { AuthService } from '../../auth/auth.service';
@@ -14,7 +15,7 @@ declare var Messenger: any;
     templateUrl: './acospradm.template.html',
     styleUrls: ['../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
-    providers: [AcosPRAdmService, FuncionesService],
+    providers: [AcosPRAdmService, FuncionesService,FuncionesHighChartsT3Service],
     encapsulation: ViewEncapsulation.None,
 })
 export class AcosPRAdmComponent implements OnInit {
@@ -26,6 +27,9 @@ export class AcosPRAdmComponent implements OnInit {
     public status: string;
 
 //{ Datos gráficas
+    public chart1options: Object;
+
+
     public datosGrafica1 = [];
     public datosGrafica2 = [];
     public labelGrafica1 = [];
@@ -37,6 +41,7 @@ export class AcosPRAdmComponent implements OnInit {
     constructor(
         private servicio: AcosPRAdmService,
         public funciones: FuncionesService,
+        public funcionesHighChartsT3Service:FuncionesHighChartsT3Service,
         config: AppConfig,
         private AuthService: AuthService,
         public router: Router,
@@ -107,5 +112,12 @@ export class AcosPRAdmComponent implements OnInit {
         let totalmuj = Math.round(this.funciones.getSumaMujeresDelTotal(this.modelo.preg_346_tabla_3)*100);
         let totalhom = Math.round(this.funciones.getSumaHombresDelTotal(this.modelo.preg_346_tabla_3)*100);
         this.doughnutChartData = [totalmuj, totalhom];
+        this.chart1options = this.funcionesHighChartsT3Service.GraficaSimple('Acoso sexual y por razón de sexo', '',this.modelo.preg_346_tabla_3);
     }
+
+
+
+
+    
+    
 }

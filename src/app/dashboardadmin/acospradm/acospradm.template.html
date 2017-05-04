@@ -58,6 +58,9 @@
                             </h5>
                         </header>
                         <div class="widget-body">
+                            <chart [options]="chart1options"></chart>
+                        </div>
+                        <div class="widget-body">
                             <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" height="100px"></canvas>
                         </div>
                     </section>
