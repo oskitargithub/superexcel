@@ -28,15 +28,7 @@ export class AcosPRAdmComponent implements OnInit {
 
 //{ Datos gráficas
     public chart1options: Object;
-
-
-    public datosGrafica1 = [];
-    public datosGrafica2 = [];
-    public labelGrafica1 = [];
-    public labelGrafica2 = [];
-    public doughnutChartLabels: string[] = ['% Mujeres', '% Hombres'];
-    public doughnutChartData: number[] = [0];// = [350, 450, 100];
-    public doughnutChartType: string = 'doughnut';
+    public chartpieoptions: Object;
 
     constructor(
         private servicio: AcosPRAdmService,
@@ -109,10 +101,8 @@ export class AcosPRAdmComponent implements OnInit {
     }
 
     asignaDatosGraficas() {
-        let totalmuj = Math.round(this.funciones.getSumaMujeresDelTotal(this.modelo.preg_346_tabla_3)*100);
-        let totalhom = Math.round(this.funciones.getSumaHombresDelTotal(this.modelo.preg_346_tabla_3)*100);
-        this.doughnutChartData = [totalmuj, totalhom];
-        this.chart1options = this.funcionesHighChartsT3Service.GraficaSimple('Acoso sexual y por razón de sexo', '',this.modelo.preg_346_tabla_3);
+        this.chart1options = this.funcionesHighChartsT3Service.GraficaSimple('Acoso sexual, reclamaciones presentadas', '',this.modelo.preg_346_tabla_3);
+        this.chartpieoptions = this.funcionesHighChartsT3Service.GraficaPieSimple('Acoso sexual, reclamaciones presentadas (Totales)', '',this.modelo.preg_346_tabla_3);
     }
 
 

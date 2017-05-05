@@ -47,7 +47,7 @@
                                         </h5>
                                     </header>
                                     <div class="widget-body">
-                                        <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" height="100px"></canvas>
+                                        <chart [options]="chart1pieoptions"></chart>                                         
                                     </div>
                                 </section>
                             </div>
@@ -128,6 +128,7 @@
                                     <h5>Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales</h5>
                                 </header>
                                 <div class="widget-body">
+                                    <chart [options]="chart1options"></chart> 
                                     <canvas baseChart [options]="barChartOptions" [datasets]="barChartData" [labels]="barChartLabels" [chartType]="barChartType2" height="120px"></canvas>
                                 </div>
                             </div>
@@ -136,6 +137,7 @@
                                     <h5>Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales (Proporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
+                                    <chart [options]="chart2options"></chart> 
                                     <canvas baseChart [options]="barChartOptions" [datasets]="barChartData2" [labels]="barChartLabels2" [chartType]="barChartType" height="120px"></canvas>
                                 </div>
                             </div>

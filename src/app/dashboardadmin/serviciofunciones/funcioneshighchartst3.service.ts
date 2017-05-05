@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Tabla3Model } from './funciones.model';
+import { Tabla3Model, Tabla5Model } from './funciones.model';
 
 export class OpcionesModel {
     chart: any;
-    colors:any;
+    colors: any;
     title: any;
     subtitle: any;
     xAxis: any;
@@ -14,6 +14,19 @@ export class OpcionesModel {
     credits: any;
     series: any;
 }
+export class OpcionesPieModel {
+    chart: any;
+    colors: any;
+    title: any;
+    showInLegend: any;
+    subtitle: any;
+    tooltip: any;
+    plotOptions: any;
+    credits: any;
+    series: any;
+}
+
+
 
 
 
@@ -24,13 +37,123 @@ export class FuncionesHighChartsT3Service {
     }
 
 
+    GraficaPiePlantilla(modelo:any): Object {
+        let misopciones: OpcionesPieModel;
+        misopciones = {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: 'Distribución de la plantilla por sexo'
+            },
+            subtitle: '',
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            showInLegend: true,
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name} {point.numero} / {point.percentage:.2f}%'
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        }
+
+
+        let datos = [];
+        datos.push({ y: this.getMujeresPlantillaPorcentaje(modelo), name: 'Mujeres', numero: this.getMujeresPlantilla(modelo) });
+        datos.push({ y: this.getHombresPlantillaPorcentaje(modelo), name: 'Hombres', numero: this.getHombresPlantilla(modelo) });
+        misopciones.series.push({ type: 'pie', name: 'Acoso Sexual', data: datos });
+        console.log("misopciones");
+        console.log(misopciones);
+        return misopciones;
+    }
+
+    GraficaPieSimple(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[]): Object {
+        let misopciones: OpcionesPieModel;
+        misopciones = {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: nombregrafica
+            },
+            subtitle: '',
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            showInLegend: true,
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name} {point.numero} / {point.percentage:.1f}%'
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: [/*{
+                type: 'pie',
+                name: 'Browser share',
+                data: [
+                    ['Firefox', 45.0],
+                    ['IE', 26.8],
+                    {
+                        name: 'Chrome',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['Safari', 8.5],
+                    ['Opera', 6.2],
+                    ['Others', 0.7]
+                ]
+            }*/]
+        }
+
+
+        let datos = [];
+        datos.push({ y: this.getSumaMujeresDelTotal(tabla), name: 'Mujeres', numero: this.getTotalMujeres(tabla) });
+        datos.push({ y: this.getSumaHombresDelTotal(tabla), name: 'Hombres', numero: this.getTotalHombres(tabla) });
+        misopciones.series.push({ type: 'pie', name: 'Acoso Sexual', data: datos });
+        console.log("misopciones");
+        console.log(misopciones);
+        return misopciones;
+    }
+
     GraficaSimple(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[]): Object {
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
                 type: 'bar'
             },
-            colors:['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a','#2f7ed8', '#0d233a'],
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             title: {
                 text: nombregrafica
             },
@@ -74,8 +197,8 @@ export class FuncionesHighChartsT3Service {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'top',
-                x: 0,
-                y: 0,
+                x: -20,
+                y: 20,
                 floating: true,
                 borderWidth: 1,
                 backgroundColor: ('#FFFFFF'),
@@ -95,25 +218,492 @@ export class FuncionesHighChartsT3Service {
         let datosmujeres = [];
         let datoshombres = [];
         tabla.forEach(elemento => {
-            misopciones.xAxis.categories.push(elemento.texto);
-            //mujeres
-            datosmujeres.push({y: elemento.mujeres , miporc:this.getMujeresDeFila(elemento,tabla)});          
-            //hombres
-            datoshombres.push({y: elemento.hombres , miporc:this.getHombresDeFila(elemento,tabla)});
-            
+            if (elemento.hombres != 0 && elemento.mujeres != 0) {
+                misopciones.xAxis.categories.push(elemento.texto);
+                //mujeres
+                datosmujeres.push({ y: elemento.mujeres, miporc: this.getMujeresDeFila(elemento, tabla) });
+                //hombres
+                datoshombres.push({ y: elemento.hombres, miporc: this.getHombresDeFila(elemento, tabla) });
+            }
         });
-        misopciones.series.push({name: 'Mujeres', data: datosmujeres});
-        misopciones.series.push({name: 'Hombres', data: datoshombres});
+        misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
+        misopciones.series.push({ name: 'Hombres', data: datoshombres });
         console.log("misopciones");
         console.log(misopciones);
         return misopciones;
     }
 
 
-    getMujeresDeFila(elemento: Tabla3Model, tabla: Tabla3Model[]) {
-        let salida = (elemento.mujeres * 1) / ((elemento.mujeres * 1) + (elemento.hombres * 1));
+    GraficaCompuesta1(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[]): Object {
+        let misopciones: OpcionesModel;
+        misopciones = {
+            chart: {
+                type: 'bar'
+            },
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            title: {
+                text: nombregrafica
+            },
+            subtitle: {
+                text: subnombregrafica
+            },
+            xAxis: {
+                categories: [], /*['Africa', 'America', 'Asia', 'Europe', 'Oceania'],*/
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '',/* 'Population (millions)',*/
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                shared: true
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true,
+                        format: '{y} / {point.miporc:.0f} %',
+                        valueDecimals: 2
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -20,
+                y: 20,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: ('#FFFFFF'),
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        };
+        let datosmujeres = [];
+        let datoshombres = [];
+        tabla.forEach(elemento => {
+            if (elemento.hombres != 0 && elemento.mujeres != 0) {
+                misopciones.xAxis.categories.push(elemento.texto);
+                //mujeres
+                datosmujeres.push({ y: elemento.mujeres, miporc: this.getMujeresDeFila(elemento, tabla) });
+                //hombres
+                datoshombres.push({ y: elemento.hombres, miporc: this.getHombresDeFila(elemento, tabla) });
+            }
+        });
+        misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
+        misopciones.series.push({ name: 'Hombres', data: datoshombres });
+        console.log("misopciones");
+        console.log(misopciones);
+        return misopciones;
+    }
+
+    GraficaCompuesta1Proporcionada(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[]): Object {
+        let misopciones: OpcionesModel;
+        misopciones = {
+            chart: {
+                type: 'bar'
+            },
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            title: {
+                text: nombregrafica
+            },
+            subtitle: {
+                text: subnombregrafica
+            },
+            xAxis: {
+                categories: [], /*['Africa', 'America', 'Asia', 'Europe', 'Oceania'],*/
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '',/* 'Population (millions)',*/
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                shared: true
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true,
+                        format: '{y} / {point.miporc:.0f} %',
+                        valueDecimals: 2
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -20,
+                y: 20,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: ('#FFFFFF'),
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        };
+        let datosmujeres = [];
+        let datoshombres = [];
+        tabla.forEach(elemento => {
+            if (elemento.hombres != 0 && elemento.mujeres != 0) {
+                misopciones.xAxis.categories.push(elemento.texto);
+                //mujeres
+                datosmujeres.push({ y: this.getMujeresAbs(elemento, tabla), miporc: this.getPorcMujeresAbs(elemento, tabla) });
+                //hombres
+                datoshombres.push({ y: this.getHombresAbs(elemento, tabla), miporc: this.getPorcHombresAbs(elemento, tabla) });
+            }
+        });
+        misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
+        misopciones.series.push({ name: 'Hombres', data: datoshombres });
+        console.log("misopciones");
+        console.log(misopciones);
+        return misopciones;
+    }
+
+
+    GraficaPieCompuesta1(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[]): Object {
+        let misopciones: OpcionesPieModel;
+        misopciones = {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: nombregrafica
+            },
+            subtitle: '',
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            showInLegend: true,
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.numero:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name} {point.y} / {point.numero:.1f}%'
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        }
+
+
+        let datos = [];
+        tabla.forEach(elemento => {
+            console.log("aña")
+            datos.push({ y: elemento.mujeres, name: elemento.texto, numero: this.getMujeresDeFila(elemento, tabla) });
+        });
+        misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
+        console.log("misopciones");
+        console.log(misopciones);
+        return misopciones;
+    }
+    GraficaPieCompuesta2(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[]): Object {
+        let misopciones: OpcionesPieModel;
+        misopciones = {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: nombregrafica
+            },
+            subtitle: '',
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            showInLegend: true,
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.numero:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name} {point.y} / {point.numero:.1f}%'
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        }
+
+
+        let datos = [];
+        tabla.forEach(elemento => {
+            datos.push({ y: elemento.hombres, name: elemento.texto, numero: this.getHombresDeFila(elemento, tabla) });
+        });
+        misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
+        console.log("misopciones");
+        console.log(misopciones);
+        return misopciones;
+    }
+
+
+    GraficaCompuestat5(nombregrafica: string, subnombregrafica: string, tabla: Tabla5Model[]): Object {
+        let misopciones: OpcionesModel;
+        misopciones = {
+            chart: {
+                type: 'bar'
+            },
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            title: {
+                text: nombregrafica
+            },
+            subtitle: {
+                text: subnombregrafica
+            },
+            xAxis: {
+                categories: [], /*['Africa', 'America', 'Asia', 'Europe', 'Oceania'],*/
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '',/* 'Population (millions)',*/
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                shared: true
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true,
+                        format: '{y} / {point.miporc:.0f} %',
+                        valueDecimals: 2
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -20,
+                y: 20,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: ('#FFFFFF'),
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        };
+        let datosmujeres = [];
+        let datoshombres = [];
+        tabla.forEach(elemento => {
+            if (elemento.hombres != 0 && elemento.mujeres != 0) {
+                misopciones.xAxis.categories.push(elemento.texto);
+                //mujeres
+                datosmujeres.push({ y: elemento.mujeres, miporc: this.getMujeresDeFila1(elemento, tabla) });
+                //hombres
+                datoshombres.push({ y: elemento.hombres, miporc: this.getHombresDeFila1(elemento, tabla) });
+            }
+        });
+        misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
+        misopciones.series.push({ name: 'Hombres', data: datoshombres });
+        console.log("misopciones");
+        console.log(misopciones);
+        return misopciones;
+    }
+
+    GraficaCompuestat5Proporcionada(nombregrafica: string, subnombregrafica: string, tabla: Tabla5Model[]): Object {
+        let misopciones: OpcionesModel;
+        misopciones = {
+            chart: {
+                type: 'bar'
+            },
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            title: {
+                text: nombregrafica
+            },
+            subtitle: {
+                text: subnombregrafica
+            },
+            xAxis: {
+                categories: [], /*['Africa', 'America', 'Asia', 'Europe', 'Oceania'],*/
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '',/* 'Population (millions)',*/
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                shared: true
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true,
+                        format: '{y} / {point.miporc:.0f} %',
+                        valueDecimals: 2
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -20,
+                y: 20,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: ('#FFFFFF'),
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        };
+        let datosmujeres = [];
+        let datoshombres = [];
+        tabla.forEach(elemento => {
+            if (elemento.hombres != 0 && elemento.mujeres != 0) {
+                misopciones.xAxis.categories.push(elemento.texto);
+                //mujeres
+                datosmujeres.push({ y: this.getMujeresAbs(elemento, tabla), miporc: this.getPorcMujeresAbs1(elemento, tabla) });
+                //hombres
+                datoshombres.push({ y: this.getHombresAbs(elemento, tabla), miporc: this.getPorcHombresAbs1(elemento, tabla) });
+            }
+        });
+        misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
+        misopciones.series.push({ name: 'Hombres', data: datoshombres });
+        console.log("misopciones");
+        console.log(misopciones);
+        return misopciones;
+    }
+
+
+
+
+
+
+
+
+
+
+    getMujeresPlantilla(modelo:any) {
+        let salida = modelo.data.preg_46 * 1;
         if (!isNaN(salida))
-            return Math.round(salida*100);
+            return salida;
+        else
+            return 0;
+    }
+    getMujeresPlantillaPorcentaje(modelo:any) {
+        let salida = (modelo.data.preg_46 * 1) * 100 / ((modelo.data.preg_46 * 1 + modelo.data.preg_47 * 1));
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+
+    getHombresPlantilla(modelo:any) {
+        let salida = modelo.data.preg_47 * 1;
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+
+    getHombresPlantillaPorcentaje(modelo:any) {
+        let salida = (modelo.data.preg_47 * 1) * 100 / ((modelo.data.preg_46 * 1) + (modelo.data.preg_47 * 1));
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+
+    }
+
+
+
+
+
+
+    getPorcMujeresAbs(elemento: Tabla3Model, tabla: Tabla3Model[]) {
+        let salida = this.getMujeresAbs(elemento, tabla) / (this.getMujeresAbs(elemento, tabla) + this.getHombresAbs(elemento, tabla));
+        if (!isNaN(salida))
+            return Math.round(salida * 100);
+        else
+            return 0;
+    }
+    getPorcHombresAbs(elemento: Tabla3Model, tabla: Tabla3Model[]) {
+        let salida = this.getHombresAbs(elemento, tabla) / (this.getMujeresAbs(elemento, tabla) + this.getHombresAbs(elemento, tabla));
+        if (!isNaN(salida))
+            return Math.round(salida * 100);
+        else
+            return 0;
+    }
+
+    getMujeresAbs(elemento: Tabla3Model, tabla: Tabla3Model[]) {
+        let salida = ((elemento.mujeres * 1) * this.getTotalHombresMujeres(tabla)) / this.getTotalMujeres(tabla);
+        if (!isNaN(salida))
+            return Math.round(salida);
+        else
+            return 0;
+    }
+    getHombresAbs(elemento: Tabla3Model, tabla: Tabla3Model[]) {
+        let salida = ((elemento.hombres * 1) * this.getTotalHombresMujeres(tabla)) / this.getTotalHombres(tabla);
+        if (!isNaN(salida))
+            return Math.round(salida);
         else
             return 0;
     }
@@ -123,11 +713,235 @@ export class FuncionesHighChartsT3Service {
 
 
 
+    getMujeresDeFila(elemento: Tabla3Model, tabla: Tabla3Model[]) {
+        let salida = (elemento.mujeres * 1) / ((elemento.mujeres * 1) + (elemento.hombres * 1));
+        if (!isNaN(salida))
+            return Math.round(salida * 100);
+        else
+            return 0;
+    }
+
     getHombresDeFila(elemento: Tabla3Model, tabla: Tabla3Model[]) {
         let salida = (elemento.hombres * 1) / ((elemento.mujeres * 1) + (elemento.hombres * 1));
         if (!isNaN(salida))
-            return Math.round(salida*100);
+            return Math.round(salida * 100);
         else
             return 0;
+    }
+
+
+    getTotalMujeres(elemento: Tabla3Model[]) {
+        if (elemento != null) {
+            return elemento.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+        }
+        else {
+            return 0;
+        }
+    }
+    getTotalHombres(elemento: Tabla3Model[]) {
+        if (elemento != null) {
+            return elemento.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+        }
+        else {
+            return 0;
+        }
+    }
+
+    getSumaMujeresDelTotal(tabla: Tabla3Model[]) {
+        /**suma de elementos de getMujeresDelTotal */
+        let salida = 0;
+        if (tabla != null) {
+            tabla.forEach(elemento => {
+                salida = salida + this.getMujeresDelTotal(elemento, tabla);
+            });
+        }
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+
+    getSumaHombresDelTotal(tabla: Tabla3Model[]) {
+        /**suma de elementos de getMujeresDelTotal */
+        let salida = 0;
+        if (tabla != null) {
+            tabla.forEach(elemento => {
+                salida = salida + this.getHombresDelTotal(elemento, tabla);
+            });
+        }
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+
+    getTotalHombresMujeres(elemento: Tabla3Model[]) {
+        if (elemento != null) {
+            let totalm = elemento.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+            let totalh = elemento.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+            return (totalh * 1 + totalm * 1);
+        }
+        else {
+            return 0;
+        }
+    }
+
+    getMujeresDelTotal(elemento: Tabla3Model, tabla: Tabla3Model[]) {
+        let salida = (elemento.mujeres * 1) / (this.getTotalHombresMujeres(tabla));
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+    getHombresDelTotal(elemento: Tabla3Model, tabla: Tabla3Model[]) {
+        let salida = (elemento.hombres * 1) / (this.getTotalHombresMujeres(tabla));
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+
+
+
+
+    /**
+     * Funciones Tabla 5
+     */
+
+    getMujeresDeFila1(elemento: Tabla5Model, tabla: Tabla5Model[]) {
+        let salida = (elemento.mujeres * 1) / ((elemento.mujeres * 1) + (elemento.hombres * 1));
+        if (!isNaN(salida))
+            return Math.round(salida * 100);
+        else
+            return 0;
+    }
+    getMujeresDeFila2(elemento: Tabla5Model, tabla: Tabla5Model[]) {
+        let salida = (elemento.mujeres2 * 1) / ((elemento.mujeres2 * 1) + (elemento.hombres2 * 1));
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+    getHombresDeFila1(elemento: Tabla5Model, tabla: Tabla5Model[]) {
+        let salida = (elemento.hombres * 1) / ((elemento.mujeres * 1) + (elemento.hombres * 1));
+        if (!isNaN(salida))
+            return Math.round(salida * 100);
+        else
+            return 0;
+    }
+    getHombresDeFila2(elemento: Tabla5Model, tabla: Tabla5Model[]) {
+        let salida = (elemento.hombres2 * 1) / ((elemento.mujeres2 * 1) + (elemento.hombres2 * 1));
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+    getMujeresAbs1(elemento: Tabla5Model, tabla: Tabla5Model[]) {
+        let salida = ((elemento.mujeres * 1) * this.getTotalHombresMujeres1(tabla)) / this.getTotalMujeres1(tabla);
+        if (!isNaN(salida))
+            return Math.round(salida);
+        else
+            return 0;
+    }
+    getMujeresAbs2(elemento: Tabla5Model, tabla: Tabla5Model[]) {
+        let salida = ((elemento.mujeres2 * 1) * this.getTotalHombresMujeres2(tabla)) / this.getTotalMujeres2(tabla);
+        if (!isNaN(salida))
+            return Math.round(salida);
+        else
+            return 0;
+    }
+    getHombresAbs1(elemento: Tabla5Model, tabla: Tabla5Model[]) {
+        let salida = ((elemento.hombres * 1) * this.getTotalHombresMujeres1(tabla)) / this.getTotalHombres1(tabla);
+        if (!isNaN(salida))
+            return Math.round(salida);
+        else
+            return 0;
+    }
+    getHombresAbs2(elemento: Tabla5Model, tabla: Tabla5Model[]) {
+        let salida = ((elemento.hombres2 * 1) * this.getTotalHombresMujeres2(tabla)) / this.getTotalHombres2(tabla);
+        if (!isNaN(salida))
+            return Math.round(salida);
+        else
+            return 0;
+    }
+    getPorcMujeresAbs1(elemento: Tabla5Model, tabla: Tabla5Model[]) {
+        let salida = this.getMujeresAbs1(elemento, tabla) / (this.getMujeresAbs1(elemento, tabla) + this.getHombresAbs1(elemento, tabla));
+        if (!isNaN(salida))
+            return Math.round(salida * 100);
+        else
+            return 0;
+    }
+    getPorcMujeresAbs2(elemento: Tabla5Model, tabla: Tabla5Model[]) {
+        let salida = this.getMujeresAbs2(elemento, tabla) / (this.getMujeresAbs2(elemento, tabla) + this.getHombresAbs2(elemento, tabla));
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+    getPorcHombresAbs1(elemento: Tabla5Model, tabla: Tabla5Model[]) {
+        let salida = this.getHombresAbs1(elemento, tabla) / (this.getMujeresAbs1(elemento, tabla) + this.getHombresAbs1(elemento, tabla));
+        if (!isNaN(salida))
+            return Math.round(salida * 100);
+        else
+            return 0;
+    }
+    getPorcHombresAbs2(elemento: Tabla5Model, tabla: Tabla5Model[]) {
+        let salida = this.getHombresAbs2(elemento, tabla) / (this.getMujeresAbs2(elemento, tabla) + this.getHombresAbs2(elemento, tabla));
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+    getTotalHombresMujeres1(elemento: Tabla5Model[]) {
+        if (elemento != null) {
+            let totalm = elemento.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+            let totalh = elemento.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+            return (totalh * 1 + totalm * 1);
+        }
+        else {
+            return 0;
+        }
+    }
+    getTotalHombresMujeres2(elemento: Tabla5Model[]) {
+        if (elemento != null) {
+            let totalm = elemento.map(c => c.mujeres2).reduce((sum, current) => (sum * 1) + (current * 1));
+            let totalh = elemento.map(c => c.hombres2).reduce((sum, current) => (sum * 1) + (current * 1));
+            return (totalh * 1 + totalm * 1);
+        }
+        else {
+            return 0;
+        }
+    }
+    getTotalMujeres1(elemento: Tabla5Model[]) {
+        if (elemento != null) {
+            return elemento.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+        }
+        else {
+            return 0;
+        }
+    }
+    getTotalMujeres2(elemento: Tabla5Model[]) {
+        if (elemento != null) {
+            return elemento.map(c => c.mujeres2).reduce((sum, current) => (sum * 1) + (current * 1));
+        }
+        else {
+            return 0;
+        }
+    }
+    getTotalHombres1(elemento: Tabla5Model[]) {
+        if (elemento != null) {
+            return elemento.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+        }
+        else {
+            return 0;
+        }
+    }
+    getTotalHombres2(elemento: Tabla5Model[]) {
+        if (elemento != null) {
+            return elemento.map(c => c.hombres2).reduce((sum, current) => (sum * 1) + (current * 1));
+        }
+        else {
+            return 0;
+        }
     }
 }

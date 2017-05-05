@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { BajasEIncorpAdmService } from './bajaseincorpadm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
 import { FuncionesT5Service } from '../serviciofunciones/funcionest5.service';
+import { FuncionesHighChartsT3Service } from '../serviciofunciones/funcioneshighchartst3.service';
 import { BajasEIncorpModel, Tabla5Model, Tabla3Model } from '../../dashboard/bajaseincorp/bajaseincorp.model';
 import { AppConfig } from '../../app.config';
 import { AuthService } from '../../auth/auth.service';
@@ -16,7 +17,7 @@ declare var Messenger: any;
   styleUrls: ['bajaseincorpadm.style.css',
     '../../scss/elements.style.scss',
     '../../scss/notifications.style.scss'],
-  providers: [BajasEIncorpAdmService, FuncionesT5Service, FuncionesService],
+  providers: [BajasEIncorpAdmService, FuncionesT5Service, FuncionesService,FuncionesHighChartsT3Service],
   encapsulation: ViewEncapsulation.None,
 })
 export class BajasEIncorpAdmComponent implements OnInit {
@@ -29,55 +30,20 @@ export class BajasEIncorpAdmComponent implements OnInit {
 
  
 //{ Declaracion de variables de gráficas
-  public barChartType: string = 'bar';
-  public barChartOptions: any = { scaleShowVerticalLines: false, responsive: true };
-
-  public lineChartOptions: any = { responsive: true };
-  public lineChartLegend: boolean = false;
-  public lineChartType: string = 'line';
-
-
-  public lineChartLabels1: Array<any> = [''];
-  public lineChartData1: Array<any> = [{ data: [], label: '' }];
-  public lineChartLabels2: Array<any> = [''];
-  public lineChartData2: Array<any> = [{ data: [], label: '' }];
-
-
-  public barChartLabels1: string[] = [''];
-  public barChartData1: any[] = [{ data: [], label: '' }];
-  
-  public barChartLabels2: string[] = [''];
-  public barChartData2: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels3: string[] = [''];
-  public barChartData3: any[] = [{ data: [], label: '' }];
-  public barChartLabels4: string[] = [''];
-  public barChartData4: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels5: string[] = [''];
-  public barChartData5: any[] = [{ data: [], label: '' }];
-  public barChartLabels6: string[] = [''];
-  public barChartData6: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels7: string[] = [''];
-  public barChartData7: any[] = [{ data: [], label: '' }];
-  public barChartLabels8: string[] = [''];
-  public barChartData8: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels9: string[] = [''];
-  public barChartData9: any[] = [{ data: [], label: '' }];
-  public barChartLabels10: string[] = [''];
-  public barChartData10: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels11: string[] = [''];
-  public barChartData11: any[] = [{ data: [], label: '' }];
-  public barChartLabels12: string[] = [''];
-  public barChartData12: any[] = [{ data: [], label: '' }];
-
-  public datosGrafica1 = [];
-  public datosGrafica2 = [];
-  public labelGrafica1 = [];
-  public labelGrafica2 = [];
+  public chart1options: Object;
+  public chart2options: Object;
+  public chart3options: Object;
+  public chart4options: Object;
+  public chart5options: Object;
+  public chart6options: Object;
+  public chart7options: Object;
+  public chart7pieoptions: Object;
+  public chart8pieoptions: Object;
+  public chart8options: Object;
+  public chart9options: Object;
+  public chart10options: Object;
+  public chart11options: Object;
+  public chart12options: Object;
 //}
  
 
@@ -89,6 +55,7 @@ export class BajasEIncorpAdmComponent implements OnInit {
     public router: Router,
     public funciones: FuncionesService,
     public funcionest5: FuncionesT5Service,
+    public funccioneshct3:FuncionesHighChartsT3Service,
     injector: Injector
   ) {
     this.config = config.getConfig();
@@ -151,129 +118,20 @@ export class BajasEIncorpAdmComponent implements OnInit {
       });
   }
 
-  asignaDatosGraficas() {
-    this.asignaPorcentajesPorTipo(this.modelo.preg_120_tabla_3);
-    this.barChartLabels1 = this.labelGrafica1;
-    this.barChartData1 = this.datosGrafica1;
-    
-    this.barChartData2 = this.datosGrafica2;
-    this.barChartLabels2 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo1(this.modelo.preg_121_tabla_5);
-    this.barChartLabels3 = this.labelGrafica1;
-    this.barChartData3 = this.datosGrafica1;
-    this.barChartData4 = this.datosGrafica2;
-    this.barChartLabels4 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo(this.modelo.preg_122_tabla_3);
-    this.barChartLabels5 = this.labelGrafica1;
-    this.barChartData5 = this.datosGrafica1;
-    this.barChartData6 = this.datosGrafica2;
-    this.barChartLabels6 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo(this.modelo.preg_123_tabla_3);
-    this.barChartLabels7 = this.labelGrafica1;
-    this.barChartData7 = this.datosGrafica1;
-    this.barChartData8 = this.datosGrafica2;
-    this.barChartLabels8 = this.labelGrafica2;
-
-    this.asignaPorcentajesGrafLineal(this.modelo.preg_123_tabla_3);
-    this.lineChartData1 = this.datosGrafica1;
-    this.lineChartLabels1 = this.labelGrafica1;
-    this.lineChartData2 = this.datosGrafica2;
-    this.lineChartLabels2 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo(this.modelo.preg_124_tabla_3);
-    this.barChartLabels9 = this.labelGrafica1;
-    this.barChartData9 = this.datosGrafica1;
-    this.barChartData10 = this.datosGrafica2;
-    this.barChartLabels10 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo(this.modelo.preg_125_tabla_3);
-    this.barChartLabels11 = this.labelGrafica1;
-    this.barChartData11 = this.datosGrafica1;
-    this.barChartData12 = this.datosGrafica2;
-    this.barChartLabels12 = this.labelGrafica2;
-    
-  }
-
-  reinicializaDatosGrafica() {
-    this.labelGrafica1 = [];
-    this.labelGrafica2 = [];
-    this.datosGrafica1 = [];
-    this.datosGrafica2 = [];
-  }
-
-  asignaPorcentajesPorTipo(tabla: any) {
-    this.reinicializaDatosGrafica();
-    let datam = [];
-    let datah = [];
-    let data2m = [];
-    let data2h = [];
-    if (tabla != null) {
-      tabla.forEach(elemento => {
-        let mujeres = this.funciones.getMujeresDeFila(elemento, tabla);
-        let hombres = this.funciones.getHombresDeFila(elemento, tabla);
-        let mujeres2 = this.funciones.getPorcMujeresAbs(elemento, tabla);
-        let hombres2 = this.funciones.getPorcHombresAbs(elemento, tabla);
-        datam.push(Math.round(mujeres * 100));
-        datah.push(Math.round(hombres * 100));
-        data2m.push(Math.round(mujeres2 * 100));
-        data2h.push(Math.round(hombres2 * 100));
-        this.labelGrafica1.push(elemento.texto);
-        this.labelGrafica2.push(elemento.texto);
-
-      });
-      this.datosGrafica1.push({ data: datam, label: "Mujeres %" });
-      this.datosGrafica1.push({ data: datah, label: "Hombres %" });
-      this.datosGrafica2.push({ data: data2m, label: "Mujeres %" });
-      this.datosGrafica2.push({ data: data2h, label: "Hombres %" });
-    }
-  }
-
-  asignaPorcentajesPorTipo1(tabla: any[]) {
-    this.reinicializaDatosGrafica();
-    let datam = [];
-    let datah = [];
-    let data2m = [];
-    let data2h = [];
-    console.log("analizando tabla");
-    console.log(tabla);
-    if (tabla != null) {
-      tabla.forEach(elemento => {
-        let mujeres = this.funcionest5.getMujeresDeFila1(elemento, tabla);
-        let hombres = this.funcionest5.getHombresDeFila1(elemento, tabla);
-        let mujeres2 = this.funcionest5.getPorcMujeresAbs1(elemento, tabla);
-        let hombres2 = this.funcionest5.getPorcHombresAbs1(elemento, tabla);
-        datam.push(Math.round(mujeres * 100));
-        datah.push(Math.round(hombres * 100));
-        data2m.push(Math.round(mujeres2 * 100));
-        data2h.push(Math.round(hombres2 * 100));
-        this.labelGrafica1.push(elemento.texto);
-        this.labelGrafica2.push(elemento.texto);
-      });
-      this.datosGrafica1.push({ data: datam, label: "Mujeres %" });
-      this.datosGrafica1.push({ data: datah, label: "Hombres %" });
-      this.datosGrafica2.push({ data: data2m, label: "Mujeres %" });
-      this.datosGrafica2.push({ data: data2h, label: "Hombres %" });
-    }
-  }
-
-  asignaPorcentajesGrafLineal(tabla: any[]) {
-    this.reinicializaDatosGrafica();
-    let datam = [];
-    let datah = [];
-    if (tabla != null) {
-      tabla.forEach(elemento => {
-        let mujeres = this.funciones.getMujeresDeFila(elemento, tabla);
-        let hombres = this.funciones.getHombresDeFila(elemento, tabla);
-        datam.push(Math.round(mujeres * 100));
-        datah.push(Math.round(hombres * 100));
-        this.labelGrafica1.push(elemento.texto);
-        this.labelGrafica2.push(elemento.texto);
-      });
-      this.datosGrafica1.push({ data: datam, label: "%" }, { data: [], label: '' });
-      this.datosGrafica2.push({ data: [], label: '' }, { data: datah, label: "%" });
-    }
+  asignaDatosGraficas() {    
+    this.chart1options = this.funccioneshct3.GraficaCompuesta1('Baja en la organización en los dos últimos años', '',this.modelo.preg_120_tabla_3);
+    this.chart2options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Baja en la organización en los dos últimos años', 'Proporcionada',this.modelo.preg_120_tabla_3);
+    this.chart3options = this.funccioneshct3.GraficaCompuestat5('Incorporaciones', '',this.modelo.preg_121_tabla_5);
+    this.chart4options = this.funccioneshct3.GraficaCompuestat5Proporcionada('Incorporaciones', 'Proporcionada',this.modelo.preg_121_tabla_5);
+    this.chart5options = this.funccioneshct3.GraficaCompuesta1('Incorporaciones último año por tipo de contrato', '',this.modelo.preg_122_tabla_3);
+    this.chart6options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Incorporaciones último año por tipo de contrato', 'Proporcionada',this.modelo.preg_122_tabla_3);
+    this.chart7options = this.funccioneshct3.GraficaCompuesta1('Incorporaciones último año por categoría', '',this.modelo.preg_123_tabla_3);
+    this.chart8options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Incorporaciones último año por categoría', 'Proporcionada',this.modelo.preg_123_tabla_3);
+    this.chart7pieoptions = this.funccioneshct3.GraficaPieCompuesta1('Incorporaciones último año por categoría Mujeres', '',this.modelo.preg_123_tabla_3);
+    this.chart8pieoptions = this.funccioneshct3.GraficaPieCompuesta2('Incorporaciones último año por categoría Hombres', '',this.modelo.preg_123_tabla_3);
+    this.chart9options = this.funccioneshct3.GraficaCompuesta1('BAJAS DEFINITIVAS ÚLTIMO AÑO POR GRUPO DE EDAD', '',this.modelo.preg_124_tabla_3);
+    this.chart10options = this.funccioneshct3.GraficaCompuesta1Proporcionada('BAJAS DEFINITIVAS ÚLTIMO AÑO POR GRUPO DE EDAD', 'Proporcionada',this.modelo.preg_124_tabla_3);
+    this.chart11options = this.funccioneshct3.GraficaCompuesta1('BAJAS TEMPORALES, PERMISOS Y EXCEDENCIAS ÚLTIMO AÑO', '',this.modelo.preg_125_tabla_3);
+    this.chart12options = this.funccioneshct3.GraficaCompuesta1Proporcionada('BAJAS TEMPORALES, PERMISOS Y EXCEDENCIAS ÚLTIMO AÑO', 'Proporcionada',this.modelo.preg_125_tabla_3);
   }
 }

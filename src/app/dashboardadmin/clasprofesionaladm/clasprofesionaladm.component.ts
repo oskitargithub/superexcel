@@ -4,7 +4,7 @@ import { Select2OptionData } from 'ng2-select2';
 import { ClasProfesionalAdmService } from './clasprofesionaladm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
 import { ClasProfesional1Model, dataModel, Tabla3Model } from '../../dashboard/clasprofesional1/ClasProfesional1.model';
-
+import { FuncionesHighChartsT3Service } from '../serviciofunciones/funcioneshighchartst3.service';
 declare var jQuery: any;
 declare var Messenger: any;
 
@@ -15,7 +15,7 @@ declare var Messenger: any;
   styleUrls: ['clasprofesionaladm.style.css',
     '../../scss/elements.style.scss',
     '../../scss/notifications.style.scss'],
-  providers: [ClasProfesionalAdmService, FuncionesService],
+  providers: [ClasProfesionalAdmService, FuncionesService,FuncionesHighChartsT3Service],
   encapsulation: ViewEncapsulation.None,
 })
 export class ClasProfesionalAdmComponent implements OnInit {
@@ -27,6 +27,37 @@ export class ClasProfesionalAdmComponent implements OnInit {
   public modelo: ClasProfesional1Model;
   public errorMessage: string;
   public status: string;
+
+  public chart1options: Object;
+  public chart2options: Object;
+  public chart3options: Object;
+  public chart4options: Object;
+  public chart5options: Object;
+  public chart6options: Object;
+  public chart7options: Object;  
+  public chart8options: Object;
+  public chart9options: Object;
+  public chart10options: Object;
+  public chart11options: Object;
+  public chart12options: Object;
+  public chart13options: Object;
+  public chart14options: Object;
+  public chart15options: Object;
+  public chart16options: Object;
+  public chart17options: Object;
+  public chart18options: Object;
+  public chart19options: Object;
+  public chart20options: Object;
+  public chart21options: Object;
+
+  public chart1pieoptions: Object;
+  public chart2pieoptions: Object;
+  public chart3pieoptions: Object;
+  
+
+
+
+
 
   public datosGrafica1 = [];
   public datosGrafica2 = [];
@@ -147,6 +178,7 @@ export class ClasProfesionalAdmComponent implements OnInit {
   constructor(
     private servicio: ClasProfesionalAdmService,
     public serviciot3: FuncionesService,
+    public funccioneshct3:FuncionesHighChartsT3Service,
     injector: Injector
   ) {
     this.modelo = new ClasProfesional1Model();
@@ -282,6 +314,10 @@ export class ClasProfesionalAdmComponent implements OnInit {
 
 
     this.doughnutChartData = [Math.round(this.getMujeresPlantillaPorcentaje()), Math.round(this.getHombresPlantillaPorcentaje())];
+
+    this.chart1pieoptions = this.funccioneshct3.GraficaPiePlantilla(this.modelo);
+    this.chart1options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales', '',this.modelo.preg_48_tabla_3);
+    this.chart2options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales', 'Proporcionada',this.modelo.preg_48_tabla_3);
   }
 
   asignaPorcentajeDoughnut(elemento: any) {

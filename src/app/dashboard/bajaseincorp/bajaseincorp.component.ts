@@ -149,6 +149,19 @@ export class BajasEIncorpComponent implements OnInit {
                 hombres:['',CustomValidators.number]        
         }));
     }
+
+    addFila5(elemento: FormArray) {
+        elemento.push(this.fb.group({            
+                texto: [''],
+                respuesta:[''],
+                mujeres: ['',CustomValidators.number],
+                hombres:['',CustomValidators.number],
+                mujeres2: ['',CustomValidators.number],
+                hombres2:['',CustomValidators.number]        
+        }));
+    }
+
+
     removeFila(elemento: FormArray, i: number) {
         elemento.removeAt(i);
     }
