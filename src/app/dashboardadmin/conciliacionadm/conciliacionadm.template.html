@@ -88,8 +88,7 @@
                                     <h5>Conciliación - Circunstancias familiares</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData1" [labels]="barChartLabels1" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                    <chart [options]="chart1options"></chart>                                    
                                 </div>
                             </div>
 
@@ -98,8 +97,7 @@
                                     <h5>Conciliación - Circunstancias familiares (Proporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData2" [labels]="barChartLabels2" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                    <chart [options]="chart2options"></chart> 
                                 </div>
                             </div>
                         </div>
@@ -194,8 +192,7 @@
                                     <h5>Responsabilidades familiares en No. de hijos e hijas</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData3" [labels]="barChartLabels3" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                     <chart [options]="chart3options"></chart>                                     
                                 </div>
                             </div>
 
@@ -204,8 +201,7 @@
                                     <h5>Responsabilidades familiares en No. de hijos e hijas (Proporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData4" [labels]="barChartLabels4" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                    <chart [options]="chart4options"></chart> 
                                 </div>
                             </div>
                         </div>
@@ -299,8 +295,7 @@
                                     <h5>Responsabilidades familiares en No. De hijos e hijas con discapacidad</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData5" [labels]="barChartLabels5" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                    <chart [options]="chart5options"></chart> 
                                 </div>
                             </div>
 
@@ -309,8 +304,7 @@
                                     <h5>Responsabilidades familiares en No. De hijos e hijas con discapacidad (Proporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData6" [labels]="barChartLabels6" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                    <chart [options]="chart6options"></chart> 
                                 </div>
                             </div>
                         </div>
@@ -404,8 +398,7 @@
                                     <h5>Responsabilidades familiares en No. De hijos e hijas por edad</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData7" [labels]="barChartLabels7" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                    <chart [options]="chart7options"></chart> 
                                 </div>
                             </div>
 
@@ -414,8 +407,7 @@
                                     <h5>Responsabilidades familiares en No. De hijos e hijas por edad (Proporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData8" [labels]="barChartLabels8" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                    <chart [options]="chart8options"></chart> 
                                 </div>
                             </div>
                         </div>
@@ -509,8 +501,7 @@
                                     <h5>Responsabilidades familiares en No. De hijos e hijas por edad con discapacidad</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData9" [labels]="barChartLabels9" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                    <chart [options]="chart9options"></chart> 
                                 </div>
                             </div>
 
@@ -519,8 +510,7 @@
                                     <h5>Responsabilidades familiares en No. De hijos e hijas por edad con discapacidad (Proporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData10" [labels]="barChartLabels10" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                    <chart [options]="chart10options"></chart> 
                                 </div>
                             </div>
                         </div>
@@ -614,8 +604,7 @@
                                     <h5> Responsabilidades familiares en No. De personas dependientes a cargo (No hijos/as)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData11" [labels]="barChartLabels11" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                     <chart [options]="chart11options"></chart> 
                                 </div>
                             </div>
 
@@ -624,8 +613,7 @@
                                     <h5> Responsabilidades familiares en No. De personas dependientes a cargo (No hijos/as) (Proporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData12" [labels]="barChartLabels12" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                     <chart [options]="chart12options"></chart> 
                                 </div>
                             </div>
                         </div>
@@ -719,8 +707,7 @@
                                     <h5>Uso mecanismos legales de conciliación</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData13" [labels]="barChartLabels13" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                    <chart [options]="chart13options"></chart> 
                                 </div>
                             </div>
 
@@ -729,8 +716,7 @@
                                     <h5>Uso mecanismos legales de conciliación (Proporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData14" [labels]="barChartLabels14" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                    <chart [options]="chart14options"></chart> 
                                 </div>
                             </div>
                         </div>
@@ -824,8 +810,7 @@
                                     <h5>Recursos para la conciliación establecidos por la organización, número de personas usuarias</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData15" [labels]="barChartLabels15" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                    <chart [options]="chart15options"></chart> 
                                 </div>
                             </div>
 
@@ -834,8 +819,7 @@
                                     <h5>Recursos para la conciliación establecidos por la organización, número de personas usuarias (Proporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData16" [labels]="barChartLabels16" [chartType]="barChartType"
-                                        height="120px"></canvas>
+                                    <chart [options]="chart16options"></chart> 
                                 </div>
                             </div>
                         </div>
@@ -875,8 +859,8 @@
                                         <tbody>
                                             <!-- Banda 2 -->                                            
                                                 <td class="text-md-center">Reincorporaciones tras excedencia por cuidado de hijos/as a puestos de categoría inferior</td>
-                                                <td class="text-md-center">{{modelo.data.preg_9}}</td>
-                                                <td class="text-md-center">{{modelo.data.preg_10}}</td>
+                                                <td class="text-md-center">{{modelo.data.preg_157}}</td>
+                                                <td class="text-md-center">{{modelo.data.preg_158}}</td>
                                                                                
                                         </tbody>
                                     </table>
@@ -887,10 +871,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <header>
-                                    <h5>Recursos para la conciliación establecidos por la organización, número de personas usuarias</h5>
+                                    <h5>Reincorporaciones tras excedencia por cuidado de hijos/as a puestos de categoría inferior</h5>
                                 </header>
                                 <div class="widget-body">
-                                     <canvas baseChart [data]="doughnutChartData1" [labels]="doughnutChartLabels1" [chartType]="doughnutChartType" height="60px"></canvas>
+                                     <chart [options]="chart1pieoptions"></chart> 
                                 </div>
                                 
                             </div>                            
@@ -930,8 +914,8 @@
                                         <tbody>
                                             <!-- Banda 2 -->                                            
                                                 <td class="text-md-center">¿Cuántos trabajadores/as han sido padres y madres en el último año? Especificar la cantidad por sexo.</td>
-                                                <td class="text-md-center">{{modelo.data.preg_11}}</td>
-                                                <td class="text-md-center">{{modelo.data.preg_12}}</td>
+                                                <td class="text-md-center">{{modelo.data.preg_154}}</td>
+                                                <td class="text-md-center">{{modelo.data.preg_155}}</td>
                                                                                
                                         </tbody>
                                     </table>
@@ -945,7 +929,7 @@
                                     <h5>¿Cuántos trabajadores/as han sido padres y madres en el último año? Especificar la cantidad por sexo.</h5>
                                 </header>
                                 <div class="widget-body">
-                                     <canvas baseChart [data]="doughnutChartData2" [labels]="doughnutChartLabels2" [chartType]="doughnutChartType" height="60px"></canvas>
+                                     <chart [options]="chart2pieoptions"></chart> 
                                 </div>
                                 
                             </div>                            

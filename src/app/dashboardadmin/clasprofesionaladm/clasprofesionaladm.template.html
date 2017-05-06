@@ -129,7 +129,6 @@
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart1options"></chart> 
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData" [labels]="barChartLabels" [chartType]="barChartType2" height="120px"></canvas>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -137,8 +136,7 @@
                                     <h5>Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales (Proporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <chart [options]="chart2options"></chart> 
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData2" [labels]="barChartLabels2" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart2options"></chart>     
                                 </div>
                             </div>
                         </div>
@@ -220,7 +218,7 @@
                                     <h5>Distribución de la plantilla Puestos de Jefatura</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData3" [labels]="barChartLabels3" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart3options"></chart> 
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -228,7 +226,7 @@
                                     <h5>Distribución de la plantilla Puestos de Jefatura (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData4" [labels]="barChartLabels4" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart4options"></chart>
                                 </div>
                             </div>
                         </div>
@@ -312,7 +310,7 @@
                                     <h5>Distribución de la plantilla Puestos de Coordinación / Supervisión</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData5" [labels]="barChartLabels5" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart5options"></chart>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -320,7 +318,7 @@
                                     <h5>Distribución de la plantilla Puestos de Coordinación / Supervisión (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData6" [labels]="barChartLabels6" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart6options"></chart>
                                 </div>
                             </div>
                         </div>
@@ -404,7 +402,7 @@
                                     <h5>Distribución de la plantilla Organos Rectores</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData7" [labels]="barChartLabels7" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart7options"></chart>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -412,7 +410,7 @@
                                     <h5>Distribución de la plantilla Organos Rectores (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData8" [labels]="barChartLabels8" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart8options"></chart>
                                 </div>
                             </div>
                         </div>
@@ -496,7 +494,7 @@
                                     <h5>Distribución de la plantilla Organos Asesores</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData9" [labels]="barChartLabels9" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart10options"></chart>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -504,7 +502,7 @@
                                     <h5>Distribución de la plantilla Organos Asesores (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData10" [labels]="barChartLabels10" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart11options"></chart>
                                 </div>
                             </div>
                         </div>
@@ -588,7 +586,7 @@
                                     <h5>Distribución de la plantilla Grupos Profesionales Técnico</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData11" [labels]="barChartLabels11" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart12options"></chart>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -596,7 +594,7 @@
                                     <h5>Distribución de la plantilla Grupos Profesionales Técnico (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData12" [labels]="barChartLabels12" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart13options"></chart>
                                 </div>
                             </div>
                         </div>
@@ -680,7 +678,7 @@
                                     <h5>Distribución de la plantilla Grupos Profesionales Administrativos</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData13" [labels]="barChartLabels13" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart14options"></chart>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -688,7 +686,7 @@
                                     <h5>Distribución de la plantilla Grupos Profesionales Administrativos (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData14" [labels]="barChartLabels14" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart15options"></chart>
                                 </div>
                             </div>
                         </div>
@@ -772,7 +770,7 @@
                                     <h5>Distribución de la plantilla Grupos profesionales no cualificados</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData15" [labels]="barChartLabels15" [chartType]="barChartType" height="120px"></canvas>
+                                     <chart [options]="chart16options"></chart>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -780,7 +778,7 @@
                                     <h5>Distribución de la plantilla Grupos profesionales no cualificados (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData16" [labels]="barChartLabels16" [chartType]="barChartType" height="120px"></canvas>
+                                     <chart [options]="chart17options"></chart>
                                 </div>
                             </div>
                         </div>
@@ -864,7 +862,7 @@
                                     <h5>Distribución de la plantilla Cuerpos y fuerzas de seguridad</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData17" [labels]="barChartLabels17" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart18options"></chart>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -872,7 +870,7 @@
                                     <h5>Distribución de la plantilla Cuerpos y fuerzas de seguridad (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData18" [labels]="barChartLabels18" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart19options"></chart>
                                 </div>
                             </div>
                         </div>
@@ -956,7 +954,7 @@
                                     <h5>Distribución de la plantilla Distribución Categoría Agente de Policía</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData19" [labels]="barChartLabels19" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart20options"></chart>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -964,7 +962,7 @@
                                     <h5>Distribución de la plantilla Distribución Categoría Agente de Policía (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData20" [labels]="barChartLabels20" [chartType]="barChartType" height="120px"></canvas>
+                                    <chart [options]="chart21options"></chart>
                                 </div>
                             </div>
                         </div>
@@ -1048,7 +1046,7 @@
                                     <h5>Edad de las mujeres de la plantilla</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [data]="doughnutChartData2" [labels]="doughnutChartLabels2" [chartType]="doughnutChartType" height="60px"></canvas>
+                                    <chart [options]="chart2pieoptions"></chart>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -1056,7 +1054,7 @@
                                     <h5>Edad de los hombres de la plantilla</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [data]="doughnutChartData3" [labels]="doughnutChartLabels3" [chartType]="doughnutChartType" height="60px"></canvas>
+                                    <chart [options]="chart3pieoptions"></chart>
                                 </div>
                             </div>
                         </div>
@@ -1066,7 +1064,7 @@
                                     <h5>Comparativo plantilla por edad</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <canvas baseChart [options]="barChartOptions" [datasets]="barChartData21" [labels]="barChartLabels21" [chartType]="barChartType" height="120px"></canvas>
+                                     <chart [options]="chart22options"></chart>
                                 </div>
                             </div>
                         </div>

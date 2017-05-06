@@ -37,7 +37,7 @@ export class FuncionesHighChartsT3Service {
     }
 
 
-    GraficaPiePlantilla(modelo:any): Object {
+    GraficaPiePlantilla(modelo: any): Object {
         let misopciones: OpcionesPieModel;
         misopciones = {
             chart: {
@@ -83,6 +83,55 @@ export class FuncionesHighChartsT3Service {
         console.log(misopciones);
         return misopciones;
     }
+
+
+    GraficaPieHM(titulo:string,valor1:any,valor2:any): Object {
+        let misopciones: OpcionesPieModel;
+        misopciones = {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: titulo
+            },
+            subtitle: '',
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            showInLegend: true,
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name} {point.y} / {point.percentage:.2f}%'
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        }
+
+
+        let datos = [];
+        datos.push({ y: valor1*1, name: 'Mujeres', numero:valor1*1 });
+        datos.push({ y: valor2*1, name: 'Hombres', numero:valor2*1 });
+        misopciones.series.push({ type: 'pie', name: titulo, data: datos });
+        console.log("misopciones");
+        console.log(misopciones);
+        return misopciones;
+    }
+
 
     GraficaPieSimple(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[]): Object {
         let misopciones: OpcionesPieModel;
@@ -218,7 +267,7 @@ export class FuncionesHighChartsT3Service {
         let datosmujeres = [];
         let datoshombres = [];
         tabla.forEach(elemento => {
-            if (elemento.hombres != 0 && elemento.mujeres != 0) {
+            if (elemento.hombres != 0 || elemento.mujeres != 0) {
                 misopciones.xAxis.categories.push(elemento.texto);
                 //mujeres
                 datosmujeres.push({ y: elemento.mujeres, miporc: this.getMujeresDeFila(elemento, tabla) });
@@ -234,7 +283,7 @@ export class FuncionesHighChartsT3Service {
     }
 
 
-    GraficaCompuesta1(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[]): Object {
+    GraficaCompuesta1(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[], tipo = "fila"): Object {
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
@@ -293,13 +342,23 @@ export class FuncionesHighChartsT3Service {
         };
         let datosmujeres = [];
         let datoshombres = [];
+
         tabla.forEach(elemento => {
-            if (elemento.hombres != 0 && elemento.mujeres != 0) {
+            if (elemento.hombres != 0 || elemento.mujeres != 0) {
                 misopciones.xAxis.categories.push(elemento.texto);
-                //mujeres
-                datosmujeres.push({ y: elemento.mujeres, miporc: this.getMujeresDeFila(elemento, tabla) });
-                //hombres
-                datoshombres.push({ y: elemento.hombres, miporc: this.getHombresDeFila(elemento, tabla) });
+                if (tipo == "fila") {
+                    //mujeres
+                    datosmujeres.push({ y: elemento.mujeres, miporc: this.getMujeresDeFila(elemento, tabla) });
+                    //hombres
+                    datoshombres.push({ y: elemento.hombres, miporc: this.getHombresDeFila(elemento, tabla) });
+                }
+                else if (tipo == "total") {
+                    //mujeres
+                    datosmujeres.push({ y: elemento.mujeres, miporc: Math.round(this.getMujeresDelTotal(elemento, tabla) * 100) });
+                    //hombres
+                    datoshombres.push({ y: elemento.hombres, miporc: Math.round(this.getHombresDelTotal(elemento, tabla) * 100) });
+                }
+
             }
         });
         misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
@@ -308,6 +367,8 @@ export class FuncionesHighChartsT3Service {
         console.log(misopciones);
         return misopciones;
     }
+
+
 
     GraficaCompuesta1Proporcionada(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[]): Object {
         let misopciones: OpcionesModel;
@@ -369,7 +430,7 @@ export class FuncionesHighChartsT3Service {
         let datosmujeres = [];
         let datoshombres = [];
         tabla.forEach(elemento => {
-            if (elemento.hombres != 0 && elemento.mujeres != 0) {
+            if (elemento.hombres != 0 || elemento.mujeres != 0) {
                 misopciones.xAxis.categories.push(elemento.texto);
                 //mujeres
                 datosmujeres.push({ y: this.getMujeresAbs(elemento, tabla), miporc: this.getPorcMujeresAbs(elemento, tabla) });
@@ -385,7 +446,7 @@ export class FuncionesHighChartsT3Service {
     }
 
 
-    GraficaPieCompuesta1(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[]): Object {
+    GraficaPieCompuesta1(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[],tipo="fila"): Object {
         let misopciones: OpcionesPieModel;
         misopciones = {
             chart: {
@@ -425,15 +486,21 @@ export class FuncionesHighChartsT3Service {
 
         let datos = [];
         tabla.forEach(elemento => {
-            console.log("aña")
-            datos.push({ y: elemento.mujeres, name: elemento.texto, numero: this.getMujeresDeFila(elemento, tabla) });
+            if (elemento.mujeres != 0) {
+                if(tipo=="fila"){
+                    datos.push({ y: elemento.mujeres, name: elemento.texto, numero: this.getMujeresDeFila(elemento, tabla) });
+                }
+                else if(tipo == "total"){
+                    datos.push({ y: elemento.mujeres, name: elemento.texto, numero: Math.round(this.getMujeresDelTotal(elemento, tabla) * 100) });
+                }
+            }
         });
         misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
         console.log("misopciones");
         console.log(misopciones);
         return misopciones;
     }
-    GraficaPieCompuesta2(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[]): Object {
+    GraficaPieCompuesta2(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[], tipo = "fila"): Object {
         let misopciones: OpcionesPieModel;
         misopciones = {
             chart: {
@@ -473,7 +540,14 @@ export class FuncionesHighChartsT3Service {
 
         let datos = [];
         tabla.forEach(elemento => {
-            datos.push({ y: elemento.hombres, name: elemento.texto, numero: this.getHombresDeFila(elemento, tabla) });
+            if (elemento.hombres != 0) {
+                if (tipo == "fila") {
+                    datos.push({ y: elemento.hombres, name: elemento.texto, numero: this.getHombresDeFila(elemento, tabla) });
+                }
+                else if (tipo == "total") {
+                    datos.push({ y: elemento.hombres, name: elemento.texto, numero: Math.round(this.getHombresDelTotal(elemento, tabla)*100) });
+                }
+            }
         });
         misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
         console.log("misopciones");
@@ -542,7 +616,7 @@ export class FuncionesHighChartsT3Service {
         let datosmujeres = [];
         let datoshombres = [];
         tabla.forEach(elemento => {
-            if (elemento.hombres != 0 && elemento.mujeres != 0) {
+            if (elemento.hombres != 0 || elemento.mujeres != 0) {
                 misopciones.xAxis.categories.push(elemento.texto);
                 //mujeres
                 datosmujeres.push({ y: elemento.mujeres, miporc: this.getMujeresDeFila1(elemento, tabla) });
@@ -617,7 +691,7 @@ export class FuncionesHighChartsT3Service {
         let datosmujeres = [];
         let datoshombres = [];
         tabla.forEach(elemento => {
-            if (elemento.hombres != 0 && elemento.mujeres != 0) {
+            if (elemento.hombres != 0 || elemento.mujeres != 0) {
                 misopciones.xAxis.categories.push(elemento.texto);
                 //mujeres
                 datosmujeres.push({ y: this.getMujeresAbs(elemento, tabla), miporc: this.getPorcMujeresAbs1(elemento, tabla) });
@@ -641,14 +715,14 @@ export class FuncionesHighChartsT3Service {
 
 
 
-    getMujeresPlantilla(modelo:any) {
+    getMujeresPlantilla(modelo: any) {
         let salida = modelo.data.preg_46 * 1;
         if (!isNaN(salida))
             return salida;
         else
             return 0;
     }
-    getMujeresPlantillaPorcentaje(modelo:any) {
+    getMujeresPlantillaPorcentaje(modelo: any) {
         let salida = (modelo.data.preg_46 * 1) * 100 / ((modelo.data.preg_46 * 1 + modelo.data.preg_47 * 1));
         if (!isNaN(salida))
             return salida;
@@ -656,7 +730,7 @@ export class FuncionesHighChartsT3Service {
             return 0;
     }
 
-    getHombresPlantilla(modelo:any) {
+    getHombresPlantilla(modelo: any) {
         let salida = modelo.data.preg_47 * 1;
         if (!isNaN(salida))
             return salida;
@@ -664,7 +738,7 @@ export class FuncionesHighChartsT3Service {
             return 0;
     }
 
-    getHombresPlantillaPorcentaje(modelo:any) {
+    getHombresPlantillaPorcentaje(modelo: any) {
         let salida = (modelo.data.preg_47 * 1) * 100 / ((modelo.data.preg_46 * 1) + (modelo.data.preg_47 * 1));
         if (!isNaN(salida))
             return salida;

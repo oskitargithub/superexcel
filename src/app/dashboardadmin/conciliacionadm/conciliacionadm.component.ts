@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { ConciliacionAdmService } from './conciliacionadm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
+import { FuncionesHighChartsT3Service } from '../serviciofunciones/funcioneshighchartst3.service';
 import { ConciliacionModel,datosModel, Tabla3Model } from '../../dashboard/conciliacion/conciliacion.model';
 
 declare var jQuery: any;
@@ -13,7 +14,7 @@ declare var Messenger: any;
   styleUrls: ['conciliacionadm.style.css',
     '../../scss/elements.style.scss',
     '../../scss/notifications.style.scss'],
-  providers: [ConciliacionAdmService, FuncionesService],
+  providers: [ConciliacionAdmService, FuncionesService,FuncionesHighChartsT3Service],
   encapsulation: ViewEncapsulation.None,
 })
 export class ConciliacionAdmComponent implements OnInit {
@@ -23,67 +24,37 @@ export class ConciliacionAdmComponent implements OnInit {
   public errorMessage: string;
   public status: string;
 
-  public barChartType: string = 'bar';
-  public barChartOptions: any = { scaleShowVerticalLines: false, responsive: true };
+
+  public chart1options: Object;
+  public chart2options: Object;
+  public chart3options: Object;
+  public chart4options: Object;
+  public chart5options: Object;
+  public chart6options: Object;
+  public chart7options: Object;  
+  public chart8options: Object;
+  public chart9options: Object;
+  public chart10options: Object;
+  public chart11options: Object;
+  public chart12options: Object;
+  public chart13options: Object;
+  public chart14options: Object;
+  public chart15options: Object;
+  public chart16options: Object;
+
+  public chart1pieoptions: Object;
+  public chart2pieoptions: Object;
+
+
+
 
   
-  public doughnutChartType: string = 'doughnut';
-
-  public doughnutChartLabels1: string[] = [];
-  public doughnutChartData1: number[] = [];
-  public doughnutChartLabels2: string[] = [];
-  public doughnutChartData2: number[] = [];
-
-  public barChartLabels1: string[] = [''];
-  public barChartData1: any[] = [{ data: [], label: '' }];
-  
-  public barChartLabels2: string[] = [''];
-  public barChartData2: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels3: string[] = [''];
-  public barChartData3: any[] = [{ data: [], label: '' }];
-  public barChartLabels4: string[] = [''];
-  public barChartData4: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels5: string[] = [''];
-  public barChartData5: any[] = [{ data: [], label: '' }];
-  public barChartLabels6: string[] = [''];
-  public barChartData6: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels7: string[] = [''];
-  public barChartData7: any[] = [{ data: [], label: '' }];
-  public barChartLabels8: string[] = [''];
-  public barChartData8: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels9: string[] = [''];
-  public barChartData9: any[] = [{ data: [], label: '' }];
-  public barChartLabels10: string[] = [''];
-  public barChartData10: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels11: string[] = [''];
-  public barChartData11: any[] = [{ data: [], label: '' }];
-  public barChartLabels12: string[] = [''];
-  public barChartData12: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels13: string[] = [''];
-  public barChartData13: any[] = [{ data: [], label: '' }];
-  public barChartLabels14: string[] = [''];
-  public barChartData14: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels15: string[] = [''];
-  public barChartData15: any[] = [{ data: [], label: '' }];
-  public barChartLabels16: string[] = [''];
-  public barChartData16: any[] = [{ data: [], label: '' }];
-
-  public datosGrafica1 = [];
-  public datosGrafica2 = [];
-  public labelGrafica1 = [];
-  public labelGrafica2 = [];
 
 
   constructor(
     private servicio: ConciliacionAdmService,
-    public funciones: FuncionesService,    
+    public funciones: FuncionesService,  
+    public funccioneshct3:FuncionesHighChartsT3Service,  
     injector: Injector
   ) {
     this.modelo = new ConciliacionModel();
@@ -143,138 +114,24 @@ export class ConciliacionAdmComponent implements OnInit {
   }
 
   asignaDatosGraficas() {
-    this.asignaPorcentajesPorTipo(this.modelo.preg_140_tabla_3);
-    this.barChartLabels1 = this.labelGrafica1;
-    this.barChartData1 = this.datosGrafica1;    
-    this.barChartData2 = this.datosGrafica2;
-    this.barChartLabels2 = this.labelGrafica2;
+    this.chart1options = this.funccioneshct3.GraficaCompuesta1('Conciliación - Circunstancias familiares', '',this.modelo.preg_140_tabla_3, "fila");
+    this.chart2options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Conciliación - Circunstancias familiares', 'Proporcionada',this.modelo.preg_140_tabla_3);
+    this.chart3options = this.funccioneshct3.GraficaCompuesta1('Responsabilidades familiares en No. de hijos e hijas', '',this.modelo.preg_142_tabla_3, "fila");
+    this.chart4options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Responsabilidades familiares en No. de hijos e hijas', 'Proporcionada',this.modelo.preg_142_tabla_3);
+    this.chart5options = this.funccioneshct3.GraficaCompuesta1('Responsabilidades familiares en No. De hijos e hijas con discapacidad', '',this.modelo.preg_143_tabla_3, "fila");
+    this.chart6options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Responsabilidades familiares en No. De hijos e hijas con discapacidad', 'Proporcionada',this.modelo.preg_143_tabla_3);
+    this.chart7options = this.funccioneshct3.GraficaCompuesta1('Responsabilidades familiares en No. De hijos e hijas por edad', '',this.modelo.preg_146_tabla_3, "fila");
+    this.chart8options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Responsabilidades familiares en No. De hijos e hijas por edad', 'Proporcionada',this.modelo.preg_146_tabla_3);
+    this.chart9options = this.funccioneshct3.GraficaCompuesta1('Responsabilidades familiares en No. De hijos e hijas por edad con discapacidad', '',this.modelo.preg_147_tabla_3, "fila");
+    this.chart10options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Responsabilidades familiares en No. De hijos e hijas por edad con discapacidad', 'Proporcionada',this.modelo.preg_147_tabla_3);
+    this.chart11options = this.funccioneshct3.GraficaCompuesta1('Responsabilidades familiares en No. De personas dependientes a cargo (No hijos/as)', '',this.modelo.preg_148_tabla_3, "fila");
+    this.chart12options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Responsabilidades familiares en No. De personas dependientes a cargo (No hijos/as)', 'Proporcionada',this.modelo.preg_148_tabla_3);
+    this.chart13options = this.funccioneshct3.GraficaCompuesta1('Uso mecanismos legales de conciliación', '',this.modelo.preg_150_tabla_3, "fila");
+    this.chart14options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Uso mecanismos legales de conciliación', 'Proporcionada',this.modelo.preg_150_tabla_3);
+    this.chart15options = this.funccioneshct3.GraficaCompuesta1('Recursos para la conciliación establecidos por la organización, número de personas usuarias', '',this.modelo.preg_152_tabla_3, "fila");
+    this.chart16options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Recursos para la conciliación establecidos por la organización, número de personas usuarias', 'Proporcionada',this.modelo.preg_152_tabla_3);
 
-    this.asignaPorcentajesPorTipo(this.modelo.preg_142_tabla_3);
-    this.barChartLabels3 = this.labelGrafica1;
-    this.barChartData3 = this.datosGrafica1;    
-    this.barChartData4 = this.datosGrafica2;
-    this.barChartLabels4 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo(this.modelo.preg_143_tabla_3);
-    this.barChartLabels5 = this.labelGrafica1;
-    this.barChartData5 = this.datosGrafica1;    
-    this.barChartData6 = this.datosGrafica2;
-    this.barChartLabels6 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo(this.modelo.preg_146_tabla_3);
-    this.barChartLabels7 = this.labelGrafica1;
-    this.barChartData7 = this.datosGrafica1;    
-    this.barChartData8 = this.datosGrafica2;
-    this.barChartLabels8 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo(this.modelo.preg_147_tabla_3);
-    this.barChartLabels9 = this.labelGrafica1;
-    this.barChartData9 = this.datosGrafica1;    
-    this.barChartData10 = this.datosGrafica2;
-    this.barChartLabels10 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo(this.modelo.preg_148_tabla_3);
-    this.barChartLabels11 = this.labelGrafica1;
-    this.barChartData11 = this.datosGrafica1;    
-    this.barChartData12 = this.datosGrafica2;
-    this.barChartLabels12 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo(this.modelo.preg_150_tabla_3);
-    this.barChartLabels13 = this.labelGrafica1;
-    this.barChartData13 = this.datosGrafica1;    
-    this.barChartData14 = this.datosGrafica2;
-    this.barChartLabels14 = this.labelGrafica2;
-
-    this.asignaPorcentajesPorTipo(this.modelo.preg_152_tabla_3);
-    this.barChartLabels15 = this.labelGrafica1;
-    this.barChartData15 = this.datosGrafica1;    
-    this.barChartData16 = this.datosGrafica2;
-    this.barChartLabels16 = this.labelGrafica2;
-
-    this.asignaPorcentajesDoughnutChart(this.modelo.data.preg_154 ,this.modelo.data.preg_155, "“NORMALIZACIÓN” DE LA VIDA PROFESIONAL TRAS LA ATENCIÓN DE OBLIGACIONES FAMILIARES");
-    this.doughnutChartData1 = this.datosGrafica1;
-    this.doughnutChartLabels1 = this.labelGrafica1;
-    
-
-    this.asignaPorcentajesDoughnutChart(this.modelo.data.preg_157 ,this.modelo.data.preg_158, "¿Cuántos trabajadores/as han sido padres y madres en el último año? Especificar la cantidad por sexo.");
-    this.doughnutChartData2 = this.datosGrafica1;
-    this.doughnutChartLabels2 = this.labelGrafica1;
-    
-    
-  }
-
-  
-
-  reinicializaDatosGrafica() {
-    this.labelGrafica1 = [];
-    this.labelGrafica2 = [];
-    this.datosGrafica1 = [];
-    this.datosGrafica2 = [];
-  }
-
-  asignaPorcentajesPorTipo(tabla: any) {
-    this.reinicializaDatosGrafica();
-    let datam = [];
-    let datah = [];
-    let data2m = [];
-    let data2h = [];
-    if (tabla != null) {
-      tabla.forEach(elemento => {
-        let mujeres = this.funciones.getMujeresDeFila(elemento, tabla);
-        let hombres = this.funciones.getHombresDeFila(elemento, tabla);
-        let mujeres2 = this.funciones.getPorcMujeresAbs(elemento, tabla);
-        let hombres2 = this.funciones.getPorcHombresAbs(elemento, tabla);
-        datam.push(Math.round(mujeres * 100));
-        datah.push(Math.round(hombres * 100));
-        data2m.push(Math.round(mujeres2 * 100));
-        data2h.push(Math.round(hombres2 * 100));
-        this.labelGrafica1.push(elemento.texto);
-        this.labelGrafica2.push(elemento.texto);
-
-      });
-      this.datosGrafica1.push({ data: datam, label: "Mujeres %" });
-      this.datosGrafica1.push({ data: datah, label: "Hombres %" });
-      this.datosGrafica2.push({ data: data2m, label: "Mujeres %" });
-      this.datosGrafica2.push({ data: data2h, label: "Hombres %" });
-    }
-  }
-
-  
-
-  asignaPorcentajesGrafLineal(tabla: any[]) {
-    this.reinicializaDatosGrafica();
-    let datam = [];
-    let datah = [];
-    if (tabla != null) {
-      tabla.forEach(elemento => {
-        let mujeres = this.funciones.getMujeresDeFila(elemento, tabla);
-        let hombres = this.funciones.getHombresDeFila(elemento, tabla);
-        datam.push(Math.round(mujeres * 100));
-        datah.push(Math.round(hombres * 100));
-        this.labelGrafica1.push(elemento.texto);
-        this.labelGrafica2.push(elemento.texto);
-      });
-      this.datosGrafica1.push({ data: datam, label: "%" }, { data: [], label: '' });
-      this.datosGrafica2.push({ data: [], label: '' }, { data: datah, label: "%" });
-    }
-  }
-
-  asignaPorcentajesDoughnutChart(mujeres: any, hombres:any, texto:string){
-      this.reinicializaDatosGrafica();
-      let datam = [];
-    let datah = [];
-    console.log("grafl m="+mujeres + " /h="+hombres);
-    let nmujeres = (mujeres * 1) / ((mujeres * 1) + (hombres * 1));
-    if(isNaN(nmujeres)){
-        nmujeres = 0;
-    }
-    let nhombres = (hombres * 1) / ((mujeres * 1) + (hombres * 1));
-    if(isNaN(nhombres)){
-        nhombres = 0;
-    }
-    this.datosGrafica1.push(Math.round(nmujeres * 100));
-    this.datosGrafica1.push(Math.round(nhombres * 100));
-    this.labelGrafica1.push("Madres %");
-    this.labelGrafica1.push("Padres %");
-  }
+    this.chart1pieoptions = this.funccioneshct3.GraficaPieHM("Reincorporaciones tras excedencia por cuidado de hijos/as a puestos de categoría inferior",this.modelo.data.preg_157,this.modelo.data.preg_158);
+    this.chart2pieoptions = this.funccioneshct3.GraficaPieHM("¿Cuántos trabajadores/as han sido padres y madres en el último año? Especificar la cantidad por sexo.",this.modelo.data.preg_154,this.modelo.data.preg_155);
+  }  
 }
