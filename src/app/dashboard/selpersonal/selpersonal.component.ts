@@ -4,7 +4,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
 import { SelPersonalService } from './selpersonal.service';
 import { SelPersonalModel, TablaCheckbox, CriterioTipoInflu, dataModel } from './selpersonal.model';
-
+import { DatePipe } from "@angular/common";
 declare var jQuery: any;
 declare var Messenger: any;
 
@@ -145,6 +145,7 @@ export class SelPersonalComponent implements OnInit {
                     Object.getOwnPropertyNames(response.data).map((key: string) =>
                         (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
                     );
+                    console.log(this.ifForm);
                     this.setPregunta(response.preg_87, 'preg_87');
                     this.setPregunta(response.preg_88, 'preg_88');
                     this.setPregunta(response.preg_90, 'preg_90');
@@ -153,6 +154,13 @@ export class SelPersonalComponent implements OnInit {
                     this.setPregunta(response.preg_103, 'preg_103');
                     this.setPregunta(response.preg_117_tabla_2, 'preg_117_tabla_2');
 
+                    if ((<FormArray>this.ifForm.controls['preg_95']).controls['texto1'] != undefined) {
+                        let fecharpt = (<FormArray>this.ifForm.controls['preg_95']).controls['texto1'].value;
+                        var datePipe = new DatePipe("es");
+                        if (fecharpt != null && fecharpt.length > 1) {
+                            (<FormArray>this.ifForm.controls['preg_95']).controls['texto1'].setValue(datePipe.transform(fecharpt, 'yyyy-MM-dd'));
+                        }
+                    }
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
                     this.valorBarraProgreso();
@@ -192,7 +200,7 @@ export class SelPersonalComponent implements OnInit {
                     });
                 }
                 else {
-                    this.ifForm.markAsPristine(); 
+                    this.ifForm.markAsPristine();
                     if (redirigir) {
                         this.router.navigate(["/app/bajaseincorp"]);
                     }

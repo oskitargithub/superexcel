@@ -37,7 +37,7 @@ export class FuncionesHighChartsT3Service {
     }
 
 
-    GraficaPiePlantilla(modelo: any): Object {
+    GraficaPiePlantilla(modelo: any, texto1="Distribución de la plantilla por sexo", texto2="Acoso Sexual"): Object {
         let misopciones: OpcionesPieModel;
         misopciones = {
             chart: {
@@ -49,7 +49,7 @@ export class FuncionesHighChartsT3Service {
                 }
             },
             title: {
-                text: 'Distribución de la plantilla por sexo'
+                text: texto1
             },
             subtitle: '',
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
@@ -78,7 +78,7 @@ export class FuncionesHighChartsT3Service {
         let datos = [];
         datos.push({ y: this.getMujeresPlantillaPorcentaje(modelo), name: 'Mujeres', numero: this.getMujeresPlantilla(modelo) });
         datos.push({ y: this.getHombresPlantillaPorcentaje(modelo), name: 'Hombres', numero: this.getHombresPlantilla(modelo) });
-        misopciones.series.push({ type: 'pie', name: 'Acoso Sexual', data: datos });
+        misopciones.series.push({ type: 'pie', name: texto2, data: datos });
         console.log("misopciones");
         console.log(misopciones);
         return misopciones;
@@ -592,8 +592,9 @@ export class FuncionesHighChartsT3Service {
                 bar: {
                     dataLabels: {
                         enabled: true,
-                        format: '{y} / {point.miporc:.0f} %',
-                        valueDecimals: 2
+                        format: '{y} / {point.miporc:.2f} %',
+                        valueDecimals: 2,
+                        crop:false
                     }
                 }
             },
@@ -622,6 +623,81 @@ export class FuncionesHighChartsT3Service {
                 datosmujeres.push({ y: elemento.mujeres, miporc: this.getMujeresDeFila1(elemento, tabla) });
                 //hombres
                 datoshombres.push({ y: elemento.hombres, miporc: this.getHombresDeFila1(elemento, tabla) });
+            }
+        });
+        misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
+        misopciones.series.push({ name: 'Hombres', data: datoshombres });
+        console.log("misopciones");
+        console.log(misopciones);
+        return misopciones;
+    }
+
+    GraficaCompuestat5_2(nombregrafica: string, subnombregrafica: string, tabla: Tabla5Model[]): Object {
+        let misopciones: OpcionesModel;
+        misopciones = {
+            chart: {
+                type: 'bar'
+            },
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            title: {
+                text: nombregrafica
+            },
+            subtitle: {
+                text: subnombregrafica
+            },
+            xAxis: {
+                categories: [], /*['Africa', 'America', 'Asia', 'Europe', 'Oceania'],*/
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '',/* 'Population (millions)',*/
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                shared: true
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true,
+                        format: '{y} / {point.miporc:.2f} %',
+                        valueDecimals: 2
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -20,
+                y: 20,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: ('#FFFFFF'),
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        };
+        let datosmujeres = [];
+        let datoshombres = [];
+        tabla.forEach(elemento => {
+            if (elemento.hombres2 != 0 || elemento.mujeres2 != 0) {
+                misopciones.xAxis.categories.push(elemento.texto);
+                //mujeres
+                datosmujeres.push({ y: elemento.mujeres2, miporc: this.getMujeresDeFila2(elemento, tabla) });
+                //hombres
+                datoshombres.push({ y: elemento.hombres2, miporc: this.getHombresDeFila2(elemento, tabla) });
             }
         });
         misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
@@ -706,7 +782,201 @@ export class FuncionesHighChartsT3Service {
         return misopciones;
     }
 
+    GraficaPie_t5_1Mujeres(nombregrafica: string, subnombregrafica: string, tabla: Tabla5Model[]): Object {
+        let misopciones: OpcionesPieModel;
+        misopciones = {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: nombregrafica + " "+subnombregrafica
+            },
+            subtitle: subnombregrafica,
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            showInLegend: true,
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name} {point.numero} / {point.percentage:.1f}%'
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        }
+        let datos = [];
+        tabla.forEach(elemento => {
+            if (elemento.mujeres != 0) {
+                //mujeres
+                datos.push({name:elemento.texto,  y: elemento.mujeres,numero:elemento.mujeres, miporc: this.getPorcMujeresAbs1(elemento, tabla) });
+            }
+        });        
+        misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
+        console.log("misopciones");
+        console.log(misopciones);
+        return misopciones;
+    }
 
+    GraficaPie_t5_1Hombres(nombregrafica: string, subnombregrafica: string, tabla: Tabla5Model[]): Object {
+        let misopciones: OpcionesPieModel;
+        misopciones = {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: nombregrafica + " "+subnombregrafica
+            },
+            subtitle: subnombregrafica,
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            showInLegend: true,
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name} {point.numero} / {point.percentage:.1f}%'
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        }
+        let datos = [];
+        tabla.forEach(elemento => {
+            if (elemento.hombres != 0) {
+                //mujeres
+                datos.push({name:elemento.texto,  y: elemento.hombres,numero:elemento.hombres, miporc: this.getPorcHombresAbs1(elemento, tabla) });
+            }
+        });        
+        misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
+        console.log("misopciones");
+        console.log(misopciones);
+        return misopciones;
+    }
+
+    GraficaPie_t5_2Mujeres(nombregrafica: string, subnombregrafica: string, tabla: Tabla5Model[]): Object {
+        let misopciones: OpcionesPieModel;
+        misopciones = {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: nombregrafica + " "+subnombregrafica
+            },
+            subtitle: subnombregrafica,
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            showInLegend: true,
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name} {point.numero} / {point.percentage:.1f}%'
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        }
+        let datos = [];
+        tabla.forEach(elemento => {
+            if (elemento.mujeres2 != 0) {
+                //mujeres
+                datos.push({name:elemento.texto,  y: elemento.mujeres2,numero:elemento.mujeres2, miporc: this.getPorcMujeresAbs2(elemento, tabla) });
+            }
+        });        
+        misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
+        console.log("misopciones");
+        console.log(misopciones);
+        return misopciones;
+    }
+
+    GraficaPie_t5_2Hombres(nombregrafica: string, subnombregrafica: string, tabla: Tabla5Model[]): Object {
+        let misopciones: OpcionesPieModel;
+        misopciones = {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: nombregrafica + " "+subnombregrafica
+            },
+            subtitle: subnombregrafica,
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            showInLegend: true,
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name} {point.numero} / {point.percentage:.1f}%'
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        }
+        let datos = [];
+        tabla.forEach(elemento => {
+            if (elemento.hombres2 != 0) {
+                //mujeres
+                datos.push({name:elemento.texto,  y: elemento.hombres2,numero:elemento.hombres2, miporc: this.getPorcHombresAbs2(elemento, tabla) });
+            }
+        });        
+        misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
+        console.log("misopciones");
+        console.log(misopciones);
+        return misopciones;
+    }
 
 
 
@@ -892,7 +1162,7 @@ export class FuncionesHighChartsT3Service {
     getMujeresDeFila2(elemento: Tabla5Model, tabla: Tabla5Model[]) {
         let salida = (elemento.mujeres2 * 1) / ((elemento.mujeres2 * 1) + (elemento.hombres2 * 1));
         if (!isNaN(salida))
-            return salida;
+            return Math.round(salida * 100);
         else
             return 0;
     }
@@ -906,7 +1176,7 @@ export class FuncionesHighChartsT3Service {
     getHombresDeFila2(elemento: Tabla5Model, tabla: Tabla5Model[]) {
         let salida = (elemento.hombres2 * 1) / ((elemento.mujeres2 * 1) + (elemento.hombres2 * 1));
         if (!isNaN(salida))
-            return salida;
+            return Math.round(salida * 100);
         else
             return 0;
     }

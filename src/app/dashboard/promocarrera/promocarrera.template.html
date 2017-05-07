@@ -456,7 +456,7 @@
                         <fieldset>
                             <div formArrayName="preg_240_tabla_3">
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-2 text-md-center">
+                                    <div class="col-md-5 offset-md-2 text-md-center">
                                         Promoción
                                     </div>
                                     <div class="col-md-1 text-md-center">
@@ -469,7 +469,7 @@
                                 <div *ngFor="let datos of getPregunta('preg_240_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
-                                        <div class="col-md-3 offset-md-2 ">
+                                        <div class="col-md-5 offset-md-2 ">
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <input class="form-control" readonly formControlName="texto" tooltip="Promoción" placeholder="Promoción" />
@@ -505,7 +505,7 @@
                         <fieldset>
                             <div formArrayName="preg_241_tabla_3">
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-2 text-md-center">
+                                    <div class="col-md-5 offset-md-2 text-md-center">
                                         ASCENSOS POR CARGOS
                                     </div>
                                     <div class="col-md-1 text-md-center">
@@ -518,7 +518,7 @@
                                 <div *ngFor="let datos of getPregunta('preg_241_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
-                                        <div class="col-md-3 offset-md-2 ">
+                                        <div class="col-md-5 offset-md-2 ">
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="texto" tooltip="ASCENSOS POR CARGOS " placeholder="ASCENSOS POR CARGOS " />
@@ -566,7 +566,7 @@
                         <fieldset>
                             <div formArrayName="preg_242_tabla_3">
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-2 text-md-center">
+                                    <div class="col-md-5 offset-md-2 text-md-center">
                                         Ascensos por categorías profesionales
                                     </div>
                                     <div class="col-md-1 text-md-center">
@@ -579,7 +579,7 @@
                                 <div *ngFor="let datos of getPregunta('preg_242_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
-                                        <div class="col-md-3 offset-md-2 ">
+                                        <div class="col-md-5 offset-md-2 ">
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <input class="form-control" formControlName="texto" tooltip="Ascensos por categorías profesionales " placeholder="Ascensos por categorías profesionales"
@@ -628,7 +628,7 @@
                         <fieldset>
                             <div formArrayName="preg_243_tabla_3">
                                 <div class="row">
-                                    <div class="col-md-3 offset-md-2 text-md-center">
+                                    <div class="col-md-5 offset-md-2 text-md-center">
                                         CALIDAD EN EL EMPLEO
                                     </div>
                                     <div class="col-md-1 text-md-center">
@@ -641,10 +641,13 @@
                                 <div *ngFor="let datos of getPregunta('preg_243_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
-                                        <div class="col-md-3 offset-md-2 ">
+                                        <div class="col-md-5 offset-md-2 ">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input class="form-control" readonly formControlName="texto" tooltip="CALIDAD EN EL EMPLEO" placeholder="CALIDAD EN EL EMPLEO"
+                                                    <span class="form-control" >
+                                                        {{ (ifForm.controls['preg_243_tabla_3']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" readonly hidden formControlName="texto" tooltip="CALIDAD EN EL EMPLEO" placeholder="CALIDAD EN EL EMPLEO"
                                                     />
                                                 </div>
                                             </div>

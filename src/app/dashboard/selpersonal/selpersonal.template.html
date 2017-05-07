@@ -139,30 +139,34 @@
                                         <md-checkbox formControlName="valor1">
                                             {{ifForm.controls.preg_95.value[i].texto}}
                                         </md-checkbox>
-                                        <div class="col-md-6" *ngIf="i==1">
-                                            <input [readonly]="!ifForm.controls.preg_95.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
-                                                placeholder="Otros" />
+                                        <div class="col-md-6 input-group" *ngIf="i==1 && ifForm.controls.preg_95.value[i].valor1">
+                                            <input type="date" class="form-control" formControlName="texto1" tooltip="Indica fecha"
+                                                placeholder="Indica fecha" />
+                                            <span
+                                                class="input-group-addon"> <span class="fa fa-calendar"></span></span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" formGroupName="data" style="margin-top:40px">
-                                    <div class="col-md-12">
-                                        <p>En caso afirmativo, identifíquense en los listados siguientes.</p>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <label class="col-form-label text-md-left" for="preg_96">
+                                <div *ngIf="ifForm.controls.preg_95.value[1]!=undefined && ifForm.controls.preg_95.value[1].valor1">
+                                    <div class="row" formGroupName="data">
+                                        <div class="col-md-12">
+                                            <p>En caso afirmativo, aporte la RPT a la consultora.</p>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <label class="col-form-label text-md-left" for="preg_96">
                                         a) Mencione los criterios profesionales de aplicación general, en su caso, a todos los grupos, categorías y puestos de trabajo:
                                         </label>
-                                    </div>
+                                        </div>
 
-                                    <div class="col-md-8">
-                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_96" formControlName="preg_96" autosize placeholder="Criterios aplicación general"></textarea>
+                                        <div class="col-md-8">
+                                            <textarea rows="3" class="autogrow form-control transition-height" id="preg_96" formControlName="preg_96" autosize placeholder="Criterios aplicación general"></textarea>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row" formGroupName="data">
+                                <div class="row" formGroupName="data" *ngIf="ifForm.controls.preg_95.value[1]!=undefined && ifForm.controls.preg_95.value[1].valor1">
                                     <div class="col-md-10">
                                         <label class="col-form-label text-md-left" for="preg_97">
-                                        b) Menciones los criterios profesionales específicos, de aplicación sólo a ciertos grupos, categorías y puestos de trabajo (con indicación de a qué grupos, categorías o puestos se asocian):
+                                        b) Mencione los criterios profesionales específicos, de aplicación sólo a ciertos grupos, categorías y puestos de trabajo (con indicación de a qué grupos, categorías o puestos se asocian):
                                         </label>
                                     </div>
 
@@ -202,36 +206,36 @@
                                 </div>
                             </div>
                             <div class="col-md-12 offset-md-2">
-                                <p>En caso afirmativo, identifíquense en los listados siguientes.</p>
+                                <p *ngIf="ifForm.controls.data.controls.preg_100.value=='si'">En caso afirmativo, identifíquense en los listados siguientes.</p>
                             </div>
                         </fieldset>
                     </div>
 
 
 
-
-                    <div class="section" style="margin-top:40px" formArrayName="preg_101">
-                        <fieldset>
-                            <legend><strong>CRITERIOS  DE  SELECCIÓN  PERSONALES  con  carácter  general  (para cualquier grupo profesional, categoría o puesto de trabajo)</strong></legend>
-                            <div class="col-md-10 offset-md-2">
-                                <div class="row">
-                                    <div *ngFor="let datos of getPregunta('preg_101').controls; let i=index" [formGroupName]="i" class="col-md-4">
-                                        <md-checkbox formControlName="valor1">
-                                            {{ifForm.controls.preg_101.value[i].texto}}
-                                        </md-checkbox>
-                                        <div class="col-md-6" *ngIf="i==20">
-                                            <input [readonly]="!ifForm.controls.preg_101.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
-                                                placeholder="Otros" />
+                    <div *ngIf="ifForm.controls.data.controls.preg_100.value=='si'">
+                        <div class="section" style="margin-top:40px" formArrayName="preg_101">
+                            <fieldset>
+                                <legend><strong>CRITERIOS  DE  SELECCIÓN  PERSONALES  con  carácter  general  (para cualquier grupo profesional, categoría o puesto de trabajo)</strong></legend>
+                                <div class="col-md-10 offset-md-2">
+                                    <div class="row">
+                                        <div *ngFor="let datos of getPregunta('preg_101').controls; let i=index" [formGroupName]="i" class="col-md-4">
+                                            <md-checkbox formControlName="valor1">
+                                                {{ifForm.controls.preg_101.value[i].texto}}
+                                            </md-checkbox>
+                                            <div class="col-md-6" *ngIf="i==20">
+                                                <input [readonly]="!ifForm.controls.preg_101.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
+                                                    placeholder="Otros" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
 
-                        </fieldset>
+                            </fieldset>
 
+                        </div>
                     </div>
-
 
                     <div class="section" style="margin-top:40px">
                         <fieldset>
@@ -253,37 +257,39 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 offset-md-2">
-                                        <p>En caso afirmativo, identifíquense en los listados siguientes.</p>
+                                        <p *ngIf="ifForm.controls.data.controls.preg_102.value=='si'">En caso afirmativo, identifíquense en los listados siguientes.</p>
                                     </div>
                                 </div>
                             </div>
                         </fieldset>
-                        <fieldset formArrayName="preg_103">
-                            <legend><strong>Mencione cuales son los criterios de selección de personal aplicados con carácter particular (sólo a algún grupo profesional, categoría o puesto de trabajo, y concretar a cuál/es)</strong></legend>
+                        <div *ngIf="ifForm.controls.data.controls.preg_102.value=='si'">
+                            <fieldset formArrayName="preg_103">
+                                <legend><strong>Mencione cuales son los criterios de selección de personal aplicados con carácter particular (sólo a algún grupo profesional, categoría o puesto de trabajo, y concretar a cuál/es)</strong></legend>
 
-                            <div class="row">
-                                <div class="col-md-4 offset-md-2">GRUPOS/CATEGORÍAS PROFESIONALES</div>
-                                <div class="col-md-4">Criterio</div>
-                            </div>
-                            <div *ngFor="let datos of getPregunta('preg_103').controls; let i=index" [formGroupName]="i">
                                 <div class="row">
-                                    <div class="col-md-4 offset-md-2">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input class="form-control" formControlName="texto1" tooltip="GRUPOS/CATEGORÍAS PROFESIONALES" placeholder="GRUPOS/CATEGORÍAS PROFESIONALES"
-                                                />
+                                    <div class="col-md-4 offset-md-2">GRUPOS/CATEGORÍAS PROFESIONALES</div>
+                                    <div class="col-md-4">Criterio</div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_103').controls; let i=index" [formGroupName]="i">
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto1" tooltip="GRUPOS/CATEGORÍAS PROFESIONALES" placeholder="GRUPOS/CATEGORÍAS PROFESIONALES"
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <md-checkbox formControlName="valor1">
-                                            {{ifForm.controls.preg_103.value[i].texto}}
-                                        </md-checkbox>
+                                        <div class="col-md-4">
+                                            <md-checkbox formControlName="valor1">
+                                                {{ifForm.controls.preg_103.value[i].texto}}
+                                            </md-checkbox>
 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </fieldset>
+                            </fieldset>
+                        </div>
                     </div>
 
 
@@ -349,12 +355,12 @@
                                     <div class="w-100"></div>
                                 </div>
 
-                                <div class="row">
+                                <div class="row" *ngIf="ifForm.controls.data.controls.preg_111.value=='si'">
                                     <div class="col-md-8 offset-md-2">
-                                        <label for="preg_112">En caso afirmativo, menciones qué sistema se realiza para realizar la publicación:</label>
+                                        <label for="preg_112">Menciones qué sistema se realiza para realizar la publicación:</label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row" *ngIf="ifForm.controls.data.controls.preg_111.value=='si'">
                                     <div class="col-md-8 offset-md-2">
                                         <textarea [readonly]="getValorElemento('data.preg_111')!='si'" rows="3" class="autogrow form-control transition-height" id="preg_112"
                                             formControlName="preg_112" autosize placeholder="Menciones qué sistema se realiza para realizar la publicación"></textarea>
@@ -377,12 +383,12 @@
                                     <div class="w-100"></div>
                                 </div>
 
-                                <div class="row">
+                                <div class="row" *ngIf="ifForm.controls.data.controls.preg_113.value=='si'">
                                     <div class="col-md-8 offset-md-2">
-                                        <label for="preg_114">En caso afirmativo por favor indique en qué sectores y categorías</label>
+                                        <label for="preg_114">Por favor indique en qué sectores y categorías</label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row" *ngIf="ifForm.controls.data.controls.preg_113.value=='si'">
                                     <div class="col-md-8 offset-md-2">
                                         <textarea [readonly]="getValorElemento('data.preg_113')!='si'" rows="3" class="autogrow form-control transition-height" id="preg_114"
                                             formControlName="preg_114" autosize placeholder="Sectores y categorías"></textarea>
@@ -409,12 +415,12 @@
                                     <div class="w-100"></div>
                                 </div>
 
-                                <div class="row">
+                                <div class="row" *ngIf="ifForm.controls.data.controls.preg_115.value=='si'">
                                     <div class="col-md-8 offset-md-2">
-                                        <label for="preg_116">En caso afirmativo indique qué tipo de puestos y las razones que lo provocan</label>
+                                        <label for="preg_116">Indique qué tipo de puestos y las razones que lo provocan</label>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row" *ngIf="ifForm.controls.data.controls.preg_115.value=='si'">
                                     <div class="col-md-8 offset-md-2">
                                         <textarea [readonly]="getValorElemento('data.preg_115')!='si'" rows="3" class="autogrow form-control transition-height" id="preg_116"
                                             formControlName="preg_116" autosize placeholder="Tipo de puestos y las razones que lo provocan"></textarea>
@@ -481,14 +487,14 @@
         </div>
     </div>
 
-   <div class="form-actions" style="margin-top:40px">
-                        <div class="row">
-                            <div class="offset-md-4 col-md-7 ">
-                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(false)" class="btn btn-primary">Guardar cambios</button>
-                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(true)" class="btn btn-success">Guardar y Continuar</button>
-                            </div>
-                        </div>
-                    </div>
+    <div class="form-actions" style="margin-top:40px">
+        <div class="row">
+            <div class="offset-md-4 col-md-7 ">
+                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(false)" class="btn btn-primary">Guardar cambios</button>
+                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(true)" class="btn btn-success">Guardar y Continuar</button>
+            </div>
+        </div>
+    </div>
 
 
 </form>

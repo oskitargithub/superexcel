@@ -6,7 +6,7 @@ import { RetribucionesAdm2Service } from './retribucionesadm2.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
 import { FuncionesT5Service } from '../serviciofunciones/funcionest5.service';
 import { RetribucionesModel, Tabla5Model } from '../../dashboard/retribuciones/retribuciones.model';
-
+import { FuncionesHighChartsT3Service } from '../serviciofunciones/funcioneshighchartst3.service';
 declare var jQuery: any;
 declare var Messenger: any;
 
@@ -17,7 +17,7 @@ declare var Messenger: any;
   styleUrls: ['retribucionesadm2.style.css',
     '../../scss/elements.style.scss',
     '../../scss/notifications.style.scss'],
-  providers: [RetribucionesAdm2Service, FuncionesT5Service, FuncionesService],
+  providers: [RetribucionesAdm2Service, FuncionesT5Service, FuncionesService,FuncionesHighChartsT3Service],
   encapsulation: ViewEncapsulation.None,
 })
 export class RetribucionesAdm2Component implements OnInit {
@@ -30,117 +30,32 @@ export class RetribucionesAdm2Component implements OnInit {
   public status: string;
 
 
-  public barChartType: string = 'bar';
-  public barChartOptions: any = { scaleShowVerticalLines: false, responsive: true };
-  public barChartLegend: boolean = true;
+  public chart1options: Object;
+  public chart2options: Object;
+  public chart3options: Object;
+  public chart4options: Object;
+  public chart5options: Object;
+  public chart6options: Object;
+  public chart7options: Object;
+  public chart8options: Object;
+  public chart9options: Object;
+  public chart10options: Object;
+  public chart11options: Object;
+  public chart12options: Object;
+  public chart13options: Object;
+  public chart14options: Object;
+  public chart15options: Object;
+  public chart16options: Object;
+  public chart17options: Object;
 
-  /** Variables para gráficas banda 1 y 2 */
-  public barChartLabels1: string[] = [''];  
-  public barChartData1: any[] = [{ data: [], label: '' }];
-  public barChartLabels2: string[] = [''];
-  public barChartData2: any[] = [{ data: [], label: '' }];
-  public barChartLabels3: string[] = [''];
-  public barChartData3: any[] = [{ data: [], label: '' }];
-  public barChartLabels4: string[] = [''];
-  public barChartData4: any[] = [{ data: [], label: '' }];
-
-
-
-
-  /** Variables para gráficas banda 3 y 4 */
-  public barChartLabels5: string[] = [''];
-  public barChartData5: any[] = [{ data: [], label: '' }];
-  public barChartLabels6: string[] = [''];
-  public barChartData6: any[] = [{ data: [], label: '' }];
-  public barChartLabels7: string[] = [''];
-  public barChartData7: any[] = [{ data: [], label: '' }];
-  public barChartLabels8: string[] = [''];
-  public barChartData8: any[] = [{ data: [], label: '' }];
-
-  /** Variables para gráficas banda 5 y 6 */
-  public barChartLabels9: string[] = [''];
-  public barChartData9: any[] = [{ data: [], label: '' }];
-  public barChartLabels10: string[] = [''];
-  public barChartData10: any[] = [{ data: [], label: '' }];
-  public barChartLabels11: string[] = [''];
-  public barChartData11: any[] = [{ data: [], label: '' }];
-  public barChartLabels12: string[] = [''];
-  public barChartData12: any[] = [{ data: [], label: '' }];
-
-
-  /** Variables para gráficas banda 7 y 8 */
-  public barChartLabels13: string[] = [''];
-  public barChartData13: any[] = [{ data: [], label: '' }];
-  public barChartLabels14: string[] = [''];
-  public barChartData14: any[] = [{ data: [], label: '' }];
-  public barChartLabels15: string[] = [''];
-  public barChartData15: any[] = [{ data: [], label: '' }];
-  public barChartLabels16: string[] = [''];
-  public barChartData16: any[] = [{ data: [], label: '' }];
-
-
-
-  /** Variables para gráficas banda 9 */
-  public barChartLabels17: string[] = [''];
-  public barChartData17: any[] = [{ data: [], label: '' }];
-  public barChartLabels18: string[] = [''];
-  public barChartData18: any[] = [{ data: [], label: '' }];
-
-
-  /** Variables para gráficas banda 10 */
-  public barChartLabels19: string[] = [''];
-  public barChartData19: any[] = [{ data: [], label: '' }];
-  public barChartLabels20: string[] = [''];
-  public barChartData20: any[] = [{ data: [], label: '' }];
-
-
-
-
-  /** Variables para gráficas Banda 11 */
-  public barChartLabels21: string[] = [''];
-  public barChartData21: any[] = [{ data: [], label: '' }];
-  public barChartLabels22: string[] = [''];
-  public barChartData22: any[] = [{ data: [], label: '' }];
-
-  /** Variables para gráficas Banda 11 */
-  public barChartLabels23: string[] = [''];
-  public barChartData23: any[] = [{ data: [], label: '' }];
-  public barChartLabels24: string[] = [''];
-  public barChartData24: any[] = [{ data: [], label: '' }];
-
-  /** Variables para gráficas Banda 11 */
-  public barChartLabels25: string[] = [''];
-  public barChartData25: any[] = [{ data: [], label: '' }];
-  public barChartLabels26: string[] = [''];
-  public barChartData26: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels27: string[] = [''];
-  public barChartData27: any[] = [{ data: [], label: '' }];
-  public barChartLabels28: string[] = [''];
-  public barChartData28: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels29: string[] = [''];
-  public barChartData29: any[] = [{ data: [], label: '' }];
-
-  public barChartLabels30: string[] = [''];
-  public barChartData30: any[] = [{ data: [], label: '' }];
-  public barChartLabels31: string[] = [''];
-  public barChartData31: any[] = [{ data: [], label: '' }];
-  public barChartLabels32: string[] = [''];
-  public barChartData32: any[] = [{ data: [], label: '' }];
-  public barChartLabels33: string[] = [''];
-  public barChartData33: any[] = [{ data: [], label: '' }];
-
-  public datosGrafica1 = [];
-  public datosGrafica2 = [];
-  public labelGrafica1 = [];
-  public labelGrafica2 = [];
-
+  public chart1pieoptions: Object;
+  public chart2pieoptions: Object;
 
   constructor(
     private servicio: RetribucionesAdm2Service,
     public funciones: FuncionesT5Service,
     public funcionest3: FuncionesService,
+    public funccioneshct3: FuncionesHighChartsT3Service,
     injector: Injector
   ) {
     this.modelo = new RetribucionesModel();
@@ -209,211 +124,35 @@ export class RetribucionesAdm2Component implements OnInit {
 
   asignaDatosGraficas() {
     /** Asignamos los datos para las gráficas */
-    /**Gráficas -7200 */
-    this.asignaPorcentajesPorTipo1(this.modelo.preg_85_tabla_5);
-    this.barChartLabels30 = this.labelGrafica1;
-    this.barChartData30 = this.datosGrafica1;
-    this.barChartLabels31 = this.labelGrafica1;
-    this.barChartData31 = this.datosGrafica1;
+    this.chart1options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 7.201 y 12.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_77_tabla_5);
+    this.chart2options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 7.201 y 12.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_77_tabla_5);
 
-    this.asignaPorcentajesPorTipo2(this.modelo.preg_85_tabla_5);
-    this.barChartLabels32 = this.labelGrafica1;
-    this.barChartData32 = this.datosGrafica1;
-    this.barChartLabels33 = this.labelGrafica1;
-    this.barChartData33 = this.datosGrafica1;    
+    this.chart3options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 12.001 y 14.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_78_tabla_5);
+    this.chart4options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 12.001 y 14.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_78_tabla_5);
+
+    this.chart5options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 14.001 y 18.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_79_tabla_5);
+    this.chart6options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 14.001 y 18.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_79_tabla_5);
+
+    this.chart7options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 18.001 y 24.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_80_tabla_5);
+    this.chart8options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 18.001 y 24.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_80_tabla_5);
+
+    this.chart9options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 24.001 y 30.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_81_tabla_5);
+    this.chart10options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 24.001 y 30.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_81_tabla_5);
+
+    this.chart11options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 30.001 y 36.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_83_tabla_5);
+    this.chart12options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 30.001 y 36.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_83_tabla_5);
+
+    this.chart13options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Más de 36.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_84_tabla_5);
+    this.chart14options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Más de 36.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_84_tabla_5);
     
-
-    /**Gráficas 7001 y 12000 */
-    this.asignaPorcentajesPorTipo1(this.modelo.preg_77_tabla_5);
-    this.barChartLabels1 = this.labelGrafica1;
-    this.barChartData1 = this.datosGrafica1;
-    this.barChartLabels2 = this.labelGrafica1;
-    this.barChartData2 = this.datosGrafica1;
-
-    this.asignaPorcentajesPorTipo2(this.modelo.preg_77_tabla_5);
-    this.barChartLabels3 = this.labelGrafica1;
-    this.barChartData3 = this.datosGrafica1;
-    this.barChartLabels4 = this.labelGrafica1;
-    this.barChartData4 = this.datosGrafica1;
+    this.chart15options = this.funccioneshct3.GraficaCompuesta1("Compensaciones extrasalariales","",this.modelo.preg_86_tabla_3,"fila");
+    this.chart1pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Compensaciones extrasalariales","Mujeres",this.modelo.preg_86_tabla_3);
+    this.chart2pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Compensaciones extrasalariales","Hombres",this.modelo.preg_86_tabla_3);
     
-
-    /**Gráficas 12001 y 14000 */
-    this.asignaPorcentajesPorTipo1(this.modelo.preg_78_tabla_5);
-    this.barChartLabels5 = this.labelGrafica1;
-    this.barChartData5 = this.datosGrafica1;
-    this.barChartLabels6 = this.labelGrafica1;
-    this.barChartData6 = this.datosGrafica1;
-
-    this.asignaPorcentajesPorTipo2(this.modelo.preg_78_tabla_5);
-    this.barChartLabels7 = this.labelGrafica1;
-    this.barChartData7 = this.datosGrafica1;
-    this.barChartLabels8 = this.labelGrafica1;
-    this.barChartData8 = this.datosGrafica1;
-
-    /**Gráficas 14001 y 18000 */
-    this.asignaPorcentajesPorTipo1(this.modelo.preg_79_tabla_5);
-    this.barChartLabels9 = this.labelGrafica1;
-    this.barChartData9 = this.datosGrafica1;
-    this.barChartLabels10 = this.labelGrafica1;
-    this.barChartData10 = this.datosGrafica1;
-
-    this.asignaPorcentajesPorTipo2(this.modelo.preg_79_tabla_5);
-    this.barChartLabels11 = this.labelGrafica1;
-    this.barChartData11 = this.datosGrafica1;
-    this.barChartLabels12 = this.labelGrafica1;
-    this.barChartData12 = this.datosGrafica1;
-
-    /**Gráficas 18001 y 24000 */
-    this.asignaPorcentajesPorTipo1(this.modelo.preg_80_tabla_5);
-    this.barChartLabels13 = this.labelGrafica1;
-    this.barChartData13 = this.datosGrafica1;
-    this.barChartLabels14 = this.labelGrafica1;
-    this.barChartData14 = this.datosGrafica1;
-
-    this.asignaPorcentajesPorTipo2(this.modelo.preg_80_tabla_5);
-    this.barChartLabels15 = this.labelGrafica1;
-    this.barChartData15 = this.datosGrafica1;
-    this.barChartLabels16 = this.labelGrafica1;
-    this.barChartData16 = this.datosGrafica1;
-
-    /**Gráficas 24001 y 30000 */
-    this.asignaPorcentajesPorTipo1(this.modelo.preg_81_tabla_5);
-    this.barChartLabels17 = this.labelGrafica1;
-    this.barChartData17 = this.datosGrafica1;
-    this.barChartLabels18 = this.labelGrafica1;
-    this.barChartData18 = this.datosGrafica1;
-
-    this.asignaPorcentajesPorTipo2(this.modelo.preg_81_tabla_5);
-    this.barChartLabels19 = this.labelGrafica1;
-    this.barChartData19 = this.datosGrafica1;
-    this.barChartLabels20 = this.labelGrafica1;
-    this.barChartData20 = this.datosGrafica1;
-    
-    /**Gráficas 30001 y 36000 */
-    this.asignaPorcentajesPorTipo1(this.modelo.preg_83_tabla_5);
-    this.barChartLabels21 = this.labelGrafica1;
-    this.barChartData21 = this.datosGrafica1;
-    this.barChartLabels22 = this.labelGrafica1;
-    this.barChartData22 = this.datosGrafica1;
-
-    this.asignaPorcentajesPorTipo2(this.modelo.preg_83_tabla_5);
-    this.barChartLabels23 = this.labelGrafica1;
-    this.barChartData23 = this.datosGrafica1;
-    this.barChartLabels24 = this.labelGrafica1;
-    this.barChartData24 = this.datosGrafica1;
-
-    /**Gráficas Más de 36000 */
-    this.asignaPorcentajesPorTipo1(this.modelo.preg_84_tabla_5);
-    this.barChartLabels25 = this.labelGrafica1;
-    this.barChartData25 = this.datosGrafica1;
-    this.barChartLabels26 = this.labelGrafica1;
-    this.barChartData26 = this.datosGrafica1;
-
-    this.asignaPorcentajesPorTipo2(this.modelo.preg_84_tabla_5);
-    this.barChartLabels27 = this.labelGrafica1;
-    this.barChartData27 = this.datosGrafica1;
-    this.barChartLabels28 = this.labelGrafica1;
-    this.barChartData28 = this.datosGrafica1;    
-    
-
-    /**Gráficas Compensaciones extrasalariales */
-    this.asignaPorcentajesPorTipo(this.modelo.preg_86_tabla_3);
-    this.barChartLabels29 = this.labelGrafica1;
-    this.barChartData29 = this.datosGrafica1;
+    this.chart16options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Menos de 7.200 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_85_tabla_5);
+    this.chart17options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Menos de 7.200 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_85_tabla_5);
   }
 
-
-
-
-
-
-
-
-  reinicializaDatosGrafica() {
-    this.labelGrafica1 = [];
-    this.labelGrafica2 = [];
-    this.datosGrafica1 = [];
-    this.datosGrafica2 = [];
-  }
-
-  asignaPorcentajesPorTipo(tabla: any) {
-    this.reinicializaDatosGrafica();
-    let datam = [];
-    let datah = [];
-    let data2m = [];
-    let data2h = [];
-    tabla.forEach(elemento => {
-      let mujeres = this.funcionest3.getMujeresDeFila(elemento, tabla);
-      let hombres = this.funcionest3.getHombresDeFila(elemento, tabla);
-      let mujeres2 = this.funcionest3.getPorcMujeresAbs(elemento, tabla);
-      let hombres2 = this.funcionest3.getPorcHombresAbs(elemento, tabla);
-      datam.push(Math.round(mujeres * 100));
-      datah.push(Math.round(hombres * 100));
-      data2m.push(Math.round(mujeres2 * 100));
-      data2h.push(Math.round(hombres2 * 100));
-      this.labelGrafica1.push(elemento.texto);
-      this.labelGrafica2.push(elemento.texto);
-
-    });
-    this.datosGrafica1.push({ data: datam, label: "Mujeres %" });
-    this.datosGrafica1.push({ data: datah, label: "Hombres %" });
-    this.datosGrafica2.push({ data: data2m, label: "Mujeres %" });
-    this.datosGrafica2.push({ data: data2h, label: "Hombres %" });
-  }
-
-
-  asignaPorcentajesPorTipo1(tabla: any[]) {
-    this.reinicializaDatosGrafica();
-    let datam = [];
-    let datah = [];
-    let data2m = [];
-    let data2h = [];
-    if (tabla != null) {
-      tabla.forEach(elemento => {
-        let mujeres = this.funciones.getMujeresDeFila1(elemento, tabla);
-        let hombres = this.funciones.getHombresDeFila1(elemento, tabla);
-        let mujeres2 = this.funciones.getPorcMujeresAbs1(elemento, tabla);
-        let hombres2 = this.funciones.getPorcHombresAbs1(elemento, tabla);
-        datam.push(Math.round(mujeres * 100));
-        datah.push(Math.round(hombres * 100));
-        data2m.push(Math.round(mujeres2 * 100));
-        data2h.push(Math.round(hombres2 * 100));
-        this.labelGrafica1.push(elemento.texto);
-        this.labelGrafica2.push(elemento.texto);
-      });
-      this.datosGrafica1.push({ data: datam, label: "Mujeres %" });
-      this.datosGrafica1.push({ data: datah, label: "Hombres %" });
-      this.datosGrafica2.push({ data: data2m, label: "Mujeres %" });
-      this.datosGrafica2.push({ data: data2h, label: "Hombres %" });
-    }
-  }
-
-
-  asignaPorcentajesPorTipo2(tabla: any[]) {
-    this.reinicializaDatosGrafica();
-    let datam = [];
-    let datah = [];
-    let data2m = [];
-    let data2h = [];
-    if (tabla != null) {
-      tabla.forEach(elemento => {
-        let mujeres = this.funciones.getMujeresDeFila2(elemento, tabla);
-        let hombres = this.funciones.getHombresDeFila2(elemento, tabla);
-        let mujeres2 = this.funciones.getPorcMujeresAbs2(elemento, tabla);
-        let hombres2 = this.funciones.getPorcHombresAbs2(elemento, tabla);
-        datam.push(Math.round(mujeres * 100));
-        datah.push(Math.round(hombres * 100));
-        data2m.push(Math.round(mujeres2 * 100));
-        data2h.push(Math.round(hombres2 * 100));
-        this.labelGrafica1.push(elemento.texto);
-        this.labelGrafica2.push(elemento.texto);
-      });
-      this.datosGrafica1.push({ data: datam, label: "Mujeres %" });
-      this.datosGrafica1.push({ data: datah, label: "Hombres %" });
-      this.datosGrafica2.push({ data: data2m, label: "Mujeres %" });
-      this.datosGrafica2.push({ data: data2h, label: "Hombres %" });
-    }
-  }
 
 
 }

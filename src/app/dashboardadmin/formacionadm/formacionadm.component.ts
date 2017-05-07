@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { FormacionAdmService } from './formacionadm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
 import { FormacionModel, Tabla3Model } from '../../dashboard/formacion/formacion.model';
+import { FuncionesHighChartsT3Service } from '../serviciofunciones/funcioneshighchartst3.service';
 import { AppConfig } from '../../app.config';
 import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
@@ -15,7 +16,7 @@ declare var Messenger: any;
     styleUrls: ['Formacionadm.style.css',
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
-    providers: [FormacionAdmService, FuncionesService],
+    providers: [FormacionAdmService, FuncionesService, FuncionesHighChartsT3Service],
     encapsulation: ViewEncapsulation.None,
 })
 export class FormacionAdmComponent implements OnInit {
@@ -27,38 +28,24 @@ export class FormacionAdmComponent implements OnInit {
     public status: string;
 
     //{ Datos gráficas
-    public barChartType: string = 'bar';
-    public barChartOptions: any = { scaleShowVerticalLines: false, responsive: true };
-    public doughnutChartLabels: string[] = ['% Mujeres', '% Hombres'];
-    public doughnutChartData: number[] = [0];// = [350, 450, 100];
-    public doughnutChartType: string = 'doughnut';
+    public chart1options: Object;
+    public chart2options: Object;
+    public chart3options: Object;
+    public chart4options: Object;
+    public chart5options: Object;
+    public chart6options: Object;
+    public chart7options: Object;
+    public chart8options: Object;
+    public chart9options: Object;
+    public chart10options: Object;
 
-    public barChartLabels1: string[] = [''];
-    public barChartData1: any[] = [{ data: [], label: '' }];
-    public barChartLabels2: string[] = [''];
-    public barChartData2: any[] = [{ data: [], label: '' }];
-    public barChartLabels3: string[] = [''];
-    public barChartData3: any[] = [{ data: [], label: '' }];
-    public barChartLabels4: string[] = [''];
-    public barChartData4: any[] = [{ data: [], label: '' }];
-    public barChartLabels5: string[] = [''];
-    public barChartData5: any[] = [{ data: [], label: '' }];
-    public barChartLabels6: string[] = [''];
-    public barChartData6: any[] = [{ data: [], label: '' }];
-    public barChartLabels7: string[] = [''];
-    public barChartData7: any[] = [{ data: [], label: '' }];
-    public barChartLabels8: string[] = [''];
-    public barChartData8: any[] = [{ data: [], label: '' }];
-    public barChartLabels9: string[] = [''];
-    public barChartData9: any[] = [{ data: [], label: '' }];
-    public barChartLabels10: string[] = [''];
-    public barChartData10: any[] = [{ data: [], label: '' }];
+    public chart1pieoptions: Object;
+    public chart2pieoptions: Object;
+    public chart3pieoptions: Object;
 
-    public datosGrafica1 = [];
-    public datosGrafica2 = [];
-    public labelGrafica1 = [];
-    public labelGrafica2 = [];
 
+
+    
     //}
 
     constructor(
@@ -66,6 +53,7 @@ export class FormacionAdmComponent implements OnInit {
         public funciones: FuncionesService,
         config: AppConfig,
         private AuthService: AuthService,
+        public funccioneshct3: FuncionesHighChartsT3Service,
         public router: Router,
         injector: Injector
     ) {
@@ -130,106 +118,32 @@ export class FormacionAdmComponent implements OnInit {
     }
 
     asignaDatosGraficas() {
-        this.doughnutChartData = [Math.round(this.getMujeresPlantillaPorcentaje()), Math.round(this.getHombresPlantillaPorcentaje())];
-        this.asignaPorcentajesPorTipo(this.modelo.preg_199_tabla_3);
-        this.barChartLabels1 = this.labelGrafica1;
-        this.barChartData1 = this.datosGrafica1;
-        this.barChartData2 = this.datosGrafica2;
-        this.barChartLabels2 = this.labelGrafica2;
-        this.asignaPorcentajesPorTipo(this.modelo.preg_200_tabla_3);
-        this.barChartLabels3 = this.labelGrafica1;
-        this.barChartData3 = this.datosGrafica1;
-        this.barChartData4 = this.datosGrafica2;
-        this.barChartLabels4 = this.labelGrafica2;
+        this.chart1options = this.funccioneshct3.GraficaCompuesta1('Personas beneficiadas por tipo de formación', '', this.modelo.preg_199_tabla_3, "fila");
+        this.chart2options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Personas beneficiadas por tipo de formación', 'Proporcionada', this.modelo.preg_199_tabla_3);
 
-        this.asignaPorcentajesPorTipo(this.modelo.preg_174_tabla_3);
-        this.barChartLabels5 = this.labelGrafica1;
-        this.barChartData5 = this.datosGrafica1;
-        this.barChartData6 = this.datosGrafica2;
-        this.barChartLabels6 = this.labelGrafica2;
-        this.asignaPorcentajesGrafica(this.modelo.preg_174_tabla_3);
-        this.barChartLabels7 = this.labelGrafica1;
-        this.barChartData7 = this.datosGrafica1;
-        this.barChartData8 = this.datosGrafica2;
-        this.barChartLabels8 = this.labelGrafica2;
+        this.chart3options = this.funccioneshct3.GraficaCompuesta1('Personas beneficiarias de la formació por categoria profesional', '', this.modelo.preg_200_tabla_3, "fila");
+        this.chart4options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Personas beneficiarias de la formació por categoria profesional', 'Proporcionada', this.modelo.preg_200_tabla_3);
 
-        this.asignaPorcentajesPorTipo(this.modelo.preg_195_tabla_3);
-        this.barChartLabels9 = this.labelGrafica1;
-        this.barChartData9 = this.datosGrafica1;
-        this.barChartData10 = this.datosGrafica2;
-        this.barChartLabels10 = this.labelGrafica2;
+        this.chart5options = this.funccioneshct3.GraficaCompuesta1('Posibilidad de recibir formación que no esté directamente relacionada con el puesto de trabajo', '', this.modelo.preg_195_tabla_3, "fila");
+        this.chart6options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Posibilidad de recibir formación que no esté directamente relacionada con el puesto de trabajo', 'Proporcionada', this.modelo.preg_195_tabla_3);
+
+        this.chart7options = this.funccioneshct3.GraficaCompuesta1('Personas beneficiarias de la formació por categoria profesional', '', this.modelo.preg_174_tabla_3, "fila");
+        this.chart8options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Personas beneficiarias de la formació por categoria profesional', 'Proporcionada', this.modelo.preg_174_tabla_3);
+
+        this.chart1pieoptions = this.funccioneshct3.GraficaPieHM("Ayudas formación externa",this.modelo.preg_174_tabla_3[0].mujeres,this.modelo.preg_174_tabla_3[0].hombres);
+
+        this.chart2pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Personas beneficiarias de la formació por categoria profesional","Mujeres",this.modelo.preg_200_tabla_3,"fila");
+        this.chart3pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Personas beneficiarias de la formació por categoria profesional","Hombres",this.modelo.preg_200_tabla_3,"total");
+        
+        
     }
 
 
-    reinicializaDatosGrafica() {
-        this.labelGrafica1 = [];
-        this.labelGrafica2 = [];
-        this.datosGrafica1 = [];
-        this.datosGrafica2 = [];
-    }
-
-    asignaPorcentajesGrafica(elemento: any) {
-        this.reinicializaDatosGrafica();
-
-        let datam = [];
-        let datah = [];
-        let data2m = [];
-        let data2h = [];
-
-        if (elemento != null) {
-            elemento.forEach(element => {
-                let porcentajem = Math.round((element.mujeres * 1) / this.funciones.getTotalHombresMujeres(elemento) * 100);
-                let porcentajeh = Math.round((element.hombres * 1) / this.funciones.getTotalHombresMujeres(elemento) * 100);
-
-                let mujabs = ((element.mujeres * 1) * this.funciones.getTotalHombresMujeres(elemento)) / this.funciones.getTotalMujeres(elemento);
-                let homabs = ((element.hombres * 1) * this.funciones.getTotalHombresMujeres(elemento)) / this.funciones.getTotalHombres(elemento);
-                let porcentaje2m = Math.round(mujabs / (mujabs + homabs) * 100);
-                let porcentaje2h = Math.round(homabs / (mujabs + homabs) * 100);
-
-                datam.push(porcentajem);
-                datah.push(porcentajeh);
-                data2m.push(porcentaje2m);
-                data2h.push(porcentaje2h);
-                this.labelGrafica1.push(element.texto);
-                this.labelGrafica2.push(element.texto);
-            });
-            this.datosGrafica1.push({ data: datam, label: "Mujeres %" });
-            this.datosGrafica1.push({ data: datah, label: "Hombres %" });
-            this.datosGrafica2.push({ data: data2m, label: "Mujeres %" });
-            this.datosGrafica2.push({ data: data2h, label: "Hombres %" });
-        }
-    }
-
-    asignaPorcentajesPorTipo(tabla: any) {
-        this.reinicializaDatosGrafica();
-        let datam = [];
-        let datah = [];
-        let data2m = [];
-        let data2h = [];
-        if (tabla != null) {
-            tabla.forEach(elemento => {
-                let mujeres = this.funciones.getMujeresDeFila(elemento, tabla);
-                let hombres = this.funciones.getHombresDeFila(elemento, tabla);
-                let mujeres2 = this.funciones.getPorcMujeresAbs(elemento, tabla);
-                let hombres2 = this.funciones.getPorcHombresAbs(elemento, tabla);
-                datam.push(Math.round(mujeres * 100));
-                datah.push(Math.round(hombres * 100));
-                data2m.push(Math.round(mujeres2 * 100));
-                data2h.push(Math.round(hombres2 * 100));
-                this.labelGrafica1.push(elemento.texto);
-                this.labelGrafica2.push(elemento.texto);
-
-            });
-            this.datosGrafica1.push({ data: datam, label: "Mujeres %" });
-            this.datosGrafica1.push({ data: datah, label: "Hombres %" });
-            this.datosGrafica2.push({ data: data2m, label: "Mujeres %" });
-            this.datosGrafica2.push({ data: data2h, label: "Hombres %" });
-        }
-    }
+    
 
     getTotalCompoPlantilla() {
         if (this.modelo.preg_174_tabla_3 != null) {
-            let salida = this.modelo.preg_174_tabla_3.mujeres * 1 + this.modelo.preg_174_tabla_3.hombres * 1;
+            let salida = this.modelo.preg_174_tabla_3[0].mujeres * 1 + this.modelo.preg_174_tabla_3[0].hombres * 1;
             if (!isNaN(salida))
                 return salida;
             else
@@ -241,7 +155,7 @@ export class FormacionAdmComponent implements OnInit {
     }
     getMujeresPlantilla() {
         if (this.modelo.preg_174_tabla_3 != null) {
-            let salida = this.modelo.preg_174_tabla_3.mujeres * 1;
+            let salida = this.modelo.preg_174_tabla_3[0].mujeres * 1;
             if (!isNaN(salida))
                 return salida;
             else
@@ -253,7 +167,7 @@ export class FormacionAdmComponent implements OnInit {
     }
     getMujeresPlantillaPorcentaje() {
         if (this.modelo.preg_174_tabla_3 != null) {
-            let salida = (this.modelo.preg_174_tabla_3.mujeres * 1) * 100 / ((this.modelo.preg_174_tabla_3.mujeres * 1 + this.modelo.preg_174_tabla_3.hombres * 1));
+            let salida = (this.modelo.preg_174_tabla_3[0].mujeres * 1) * 100 / ((this.modelo.preg_174_tabla_3[0].mujeres * 1 + this.modelo.preg_174_tabla_3[0].hombres * 1));
             if (!isNaN(salida))
                 return salida;
             else
@@ -266,7 +180,7 @@ export class FormacionAdmComponent implements OnInit {
 
     getHombresPlantilla() {
         if (this.modelo.preg_174_tabla_3 != null) {
-            let salida = this.modelo.preg_174_tabla_3.hombres * 1;
+            let salida = this.modelo.preg_174_tabla_3[0].hombres * 1;
             if (!isNaN(salida))
                 return salida;
             else
@@ -279,7 +193,7 @@ export class FormacionAdmComponent implements OnInit {
 
     getHombresPlantillaPorcentaje() {
         if (this.modelo.preg_174_tabla_3 != null) {
-            let salida = (this.modelo.preg_174_tabla_3.hombres * 1) * 100 / ((this.modelo.preg_174_tabla_3.mujeres * 1) + (this.modelo.preg_174_tabla_3.hombres * 1));
+            let salida = (this.modelo.preg_174_tabla_3[0].hombres * 1) * 100 / ((this.modelo.preg_174_tabla_3[0].mujeres * 1) + (this.modelo.preg_174_tabla_3[0].hombres * 1));
             if (!isNaN(salida))
                 return salida;
             else

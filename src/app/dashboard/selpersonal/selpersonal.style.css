@@ -19,3 +19,8 @@
     opacity: 1; 
 background-color: rgba(30, 144, 255, 0.5)
 }
+
+/** Para que no salga el campo de fecha redimensionado a lo alto en varias columnas*/
+.input-group .form-control[type=date] {
+    flex-direction: row;
+}

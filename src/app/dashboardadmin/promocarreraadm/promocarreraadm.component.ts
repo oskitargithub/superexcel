@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { PromoCarreraAdmService } from './promocarreraadm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
 import { PromoCarreraModel, Tabla3Model } from '../../dashboard/promocarrera/promocarrera.model';
+import { FuncionesHighChartsT3Service } from '../serviciofunciones/funcioneshighchartst3.service';
 import { AppConfig } from '../../app.config';
 import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
@@ -15,7 +16,7 @@ declare var Messenger: any;
     styleUrls: ['promocarreraadm.style.css',
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
-    providers: [PromoCarreraAdmService, FuncionesService],
+    providers: [PromoCarreraAdmService, FuncionesService,FuncionesHighChartsT3Service],
     encapsulation: ViewEncapsulation.None,
 })
 export class PromoCarreraAdmComponent implements OnInit {
@@ -27,45 +28,24 @@ export class PromoCarreraAdmComponent implements OnInit {
     public status: string;
 
 //{ Datos gráficas
-    public datosGrafica1 = [];
-    public datosGrafica2 = [];
-    public labelGrafica1 = [];
-    public labelGrafica2 = [];
-
-    public barChartType: string = 'bar';
-    public barChartOptions: any = { scaleShowVerticalLines: false, responsive: true };
-    public doughnutChartType: string = 'doughnut';
-
-    public doughnutChartLabels1: string[] = ['% Mujeres', '% Hombres'];
-    public doughnutChartData1: number[] = [];
-
-    public barChartLabels1: string[] = [''];
-    public barChartData1: any[] = [{ data: [], label: '' }];
-    public barChartLabels2: string[] = [''];
-    public barChartData2: any[] = [{ data: [], label: '' }];
-    public barChartLabels3: string[] = [''];
-    public barChartData3: any[] = [{ data: [], label: '' }];
-    public barChartLabels4: string[] = [''];
-    public barChartData4: any[] = [{ data: [], label: '' }];
-    public barChartLabels5: string[] = [''];
-    public barChartData5: any[] = [{ data: [], label: '' }];
-    public barChartLabels6: string[] = [''];
-    public barChartData6: any[] = [{ data: [], label: '' }];
-    public barChartLabels7: string[] = [''];
-    public barChartData7: any[] = [{ data: [], label: '' }];
-    public barChartLabels8: string[] = [''];
-    public barChartData8: any[] = [{ data: [], label: '' }];
-    public barChartLabels9: string[] = [''];
-    public barChartData9: any[] = [{ data: [], label: '' }];
-    public barChartLabels10: string[] = [''];
-    public barChartData10: any[] = [{ data: [], label: '' }];
-    
+    public chart1options: Object;
+    public chart2options: Object;
+    public chart3options: Object;
+    public chart4options: Object;
+    public chart5options: Object;
+    public chart6options: Object;
+    public chart7options: Object;
+    public chart8options: Object;
+    public chart9options: Object;
+    public chart10options: Object;
+    public chart1pieoptions: Object;
 //}
 
 
     constructor(
         private servicio: PromoCarreraAdmService,
         public funciones: FuncionesService,
+        public funccioneshct3: FuncionesHighChartsT3Service,
         config: AppConfig,
         private AuthService: AuthService,
         public router: Router,
@@ -132,70 +112,19 @@ export class PromoCarreraAdmComponent implements OnInit {
     }
 
     asignaDatosGraficas() {
-        this.asignaPorcentajesPorTipo(this.modelo.preg_242_tabla_3);
-        this.barChartLabels1 = this.labelGrafica1;
-        this.barChartData1 = this.datosGrafica1;
-        this.barChartData2 = this.datosGrafica2;
-        this.barChartLabels2 = this.labelGrafica2;
-        this.asignaPorcentajesPorTipo(this.modelo.preg_244_tabla_3);
-        this.barChartLabels3 = this.labelGrafica1;
-        this.barChartData3 = this.datosGrafica1;
-        this.barChartData4 = this.datosGrafica2;
-        this.barChartLabels4 = this.labelGrafica2;
+        this.chart1options = this.funccioneshct3.GraficaCompuesta1('Relación de Ascensos por categorías profesionales por género', '', this.modelo.preg_242_tabla_3, "fila");
+        this.chart2options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Relación de Ascensos por categorías profesionales por género', 'Proporcionada', this.modelo.preg_242_tabla_3);
+        this.chart3options = this.funccioneshct3.GraficaCompuesta1('Comparativo promociones en el último año', '', this.modelo.preg_244_tabla_3, "fila");
+        this.chart4options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Comparativo promociones en el último año', 'Proporcionada', this.modelo.preg_244_tabla_3);
+        
+        this.chart1pieoptions = this.funccioneshct3.GraficaPieSimple("Comparación promoción por género en el último año","",this.modelo.preg_244_tabla_3);
+        
+        this.chart5options = this.funccioneshct3.GraficaCompuesta1('Solicitudes de promoción presentadas', '', this.modelo.preg_240_tabla_3, "fila");
+        this.chart6options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Solicitudes de promoción presentadas', 'Proporcionada', this.modelo.preg_240_tabla_3);
+        this.chart7options = this.funccioneshct3.GraficaCompuesta1('Comparativo Ascensos Por Género', '', this.modelo.preg_241_tabla_3, "fila");
+        this.chart8options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Comparativo Ascensos Por Género', 'Proporcionada', this.modelo.preg_241_tabla_3);
+        this.chart9options = this.funccioneshct3.GraficaCompuesta1('Transformación de contratos a tiempo parcial en tiempo completo', '', this.modelo.preg_243_tabla_3, "fila");
+        this.chart10options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Transformación de contratos a tiempo parcial en tiempo completo', 'Proporcionada', this.modelo.preg_243_tabla_3);
 
-        let totalmuj = Math.round(this.funciones.getSumaMujeresDelTotal(this.modelo.preg_244_tabla_3)*100);
-        let totalhom = Math.round(this.funciones.getSumaHombresDelTotal(this.modelo.preg_244_tabla_3)*100);
-        this.doughnutChartData1 = [totalmuj, totalhom];
-
-        this.asignaPorcentajesPorTipo(this.modelo.preg_240_tabla_3);
-        this.barChartLabels5 = this.labelGrafica1;
-        this.barChartData5 = this.datosGrafica1;
-        this.barChartData6 = this.datosGrafica2;
-        this.barChartLabels6 = this.labelGrafica2;
-
-        this.asignaPorcentajesPorTipo(this.modelo.preg_241_tabla_3);
-        this.barChartLabels7 = this.labelGrafica1;
-        this.barChartData7 = this.datosGrafica1;
-        this.barChartData8 = this.datosGrafica2;
-        this.barChartLabels8 = this.labelGrafica2;
-
-        this.asignaPorcentajesPorTipo(this.modelo.preg_243_tabla_3);
-        this.barChartLabels9 = this.labelGrafica1;
-        this.barChartData9 = this.datosGrafica1;
-        this.barChartData10 = this.datosGrafica2;
-        this.barChartLabels10 = this.labelGrafica2;
-    }
-
-    reinicializaDatosGrafica() {
-        this.labelGrafica1 = [];
-        this.labelGrafica2 = [];
-        this.datosGrafica1 = [];
-        this.datosGrafica2 = [];
-    }
-    asignaPorcentajesPorTipo(tabla: any) {
-        this.reinicializaDatosGrafica();
-        let datam = [];
-        let datah = [];
-        let data2m = [];
-        let data2h = [];
-        if (tabla != null) {
-            tabla.forEach(elemento => {
-                let mujeres = this.funciones.getMujeresDeFila(elemento, tabla);
-                let hombres = this.funciones.getHombresDeFila(elemento, tabla);
-                let mujeres2 = this.funciones.getPorcMujeresAbs(elemento, tabla);
-                let hombres2 = this.funciones.getPorcHombresAbs(elemento, tabla);
-                datam.push(Math.round(mujeres * 100));
-                datah.push(Math.round(hombres * 100));
-                data2m.push(Math.round(mujeres2 * 100));
-                data2h.push(Math.round(hombres2 * 100));
-                this.labelGrafica1.push(elemento.texto);
-                this.labelGrafica2.push(elemento.texto);
-
-            });
-            this.datosGrafica1.push({ data: datam, label: "Mujeres %" });
-            this.datosGrafica1.push({ data: datah, label: "Hombres %" });
-            this.datosGrafica2.push({ data: data2m, label: "Mujeres %" });
-            this.datosGrafica2.push({ data: data2h, label: "Hombres %" });
-        }
     }
 }

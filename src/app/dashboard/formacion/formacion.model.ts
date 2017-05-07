@@ -5,10 +5,10 @@ export class FormacionModel {
     public respondidasCuest: number;
     public totalSeccion: number;
     public respondidasSeccion: number;
-    public preg_174_tabla_3 : Tabla3Model;
-    public preg_195_tabla_3 : Tabla3Model;
-    public preg_199_tabla_3 : Tabla3Model;
-    public preg_200_tabla_3 : Tabla3Model;    
+    public preg_174_tabla_3 : Tabla3Model[];
+    public preg_195_tabla_3 : Tabla3Model[];
+    public preg_199_tabla_3 : Tabla3Model[];
+    public preg_200_tabla_3 : Tabla3Model[];    
    constructor(){
         this.data = new datosModel();
     }

@@ -5,6 +5,7 @@ import { RRPPModel, Tabla3Model } from '../../dashboard/rrpp/rrpp.model';
 import { AppConfig } from '../../app.config';
 import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
+import { FuncionesHighChartsT3Service } from '../serviciofunciones/funcioneshighchartst3.service';
 declare var jQuery: any;
 declare var Messenger: any;
 
@@ -15,7 +16,7 @@ declare var Messenger: any;
     styleUrls: ['rrppadm.style.css',
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
-    providers: [RRPPAdmService, FuncionesService],
+    providers: [RRPPAdmService, FuncionesService, FuncionesHighChartsT3Service],
     encapsulation: ViewEncapsulation.None,
 })
 export class RRPPAdmComponent implements OnInit {
@@ -26,27 +27,16 @@ export class RRPPAdmComponent implements OnInit {
     public errorMessage: string;
     public status: string;
 
-//{ Datos gráficas
-    public datosGrafica1 = [];
-    public datosGrafica2 = [];
-    public labelGrafica1 = [];
-    public labelGrafica2 = [];
-
-    public barChartType: string = 'bar';
-    public barChartOptions: any = { scaleShowVerticalLines: false, responsive: true };
-
-    public barChartLabels1: string[] = [''];
-    public barChartData1: any[] = [{ data: [], label: '' }];
-    public barChartLabels2: string[] = [''];
-    public barChartData2: any[] = [{ data: [], label: '' }];
-    public barChartLabels3: string[] = [''];
-    public barChartData3: any[] = [{ data: [], label: '' }];
-    public barChartLabels4: string[] = [''];
-    public barChartData4: any[] = [{ data: [], label: '' }];
+    //{ Datos gráficas
+    public chart1options: Object;
+    public chart2options: Object;
+    public chart3options: Object;
+    public chart4options: Object;
 
     constructor(
         private servicio: RRPPAdmService,
         public funciones: FuncionesService,
+        public funccioneshct3: FuncionesHighChartsT3Service,
         config: AppConfig,
         private AuthService: AuthService,
         public router: Router,
@@ -113,47 +103,11 @@ export class RRPPAdmComponent implements OnInit {
     }
 
     asignaDatosGraficas() {
-        this.asignaPorcentajesPorTipo(this.modelo.preg_351_tabla_3);
-        this.barChartLabels1 = this.labelGrafica1;
-        this.barChartData1 = this.datosGrafica1;
-        this.barChartData2 = this.datosGrafica2;
-        this.barChartLabels2 = this.labelGrafica2;
-        this.asignaPorcentajesPorTipo(this.modelo.preg_352_tabla_3);
-        this.barChartLabels3 = this.labelGrafica1;
-        this.barChartData3 = this.datosGrafica1;
-        this.barChartData4 = this.datosGrafica2;
-        this.barChartLabels4 = this.labelGrafica2;
+        this.chart1options = this.funccioneshct3.GraficaCompuesta1('Junta de Personal por Sindicato', '', this.modelo.preg_351_tabla_3, "fila");
+        this.chart2options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Junta de Personal por Sindicato', 'Proporcionado', this.modelo.preg_351_tabla_3);
+        this.chart3options = this.funccioneshct3.GraficaCompuesta1('Integrantes del Comité de Empresa por Sindicato', '', this.modelo.preg_352_tabla_3, "fila");
+        this.chart4options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Integrantes del Comité de Empresa por Sindicato', 'Proporcionado', this.modelo.preg_352_tabla_3);
+        
     }
-    reinicializaDatosGrafica() {
-        this.labelGrafica1 = [];
-        this.labelGrafica2 = [];
-        this.datosGrafica1 = [];
-        this.datosGrafica2 = [];
-    }
-    asignaPorcentajesPorTipo(tabla: any) {
-        this.reinicializaDatosGrafica();
-        let datam = [];
-        let datah = [];
-        let data2m = [];
-        let data2h = [];
-        if (tabla != null) {
-            tabla.forEach(elemento => {
-                let mujeres = this.funciones.getMujeresDeFila(elemento, tabla);
-                let hombres = this.funciones.getHombresDeFila(elemento, tabla);
-                let mujeres2 = this.funciones.getPorcMujeresAbs(elemento, tabla);
-                let hombres2 = this.funciones.getPorcHombresAbs(elemento, tabla);
-                datam.push(Math.round(mujeres * 100));
-                datah.push(Math.round(hombres * 100));
-                data2m.push(Math.round(mujeres2 * 100));
-                data2h.push(Math.round(hombres2 * 100));
-                this.labelGrafica1.push(elemento.texto);
-                this.labelGrafica2.push(elemento.texto);
-
-            });
-            this.datosGrafica1.push({ data: datam, label: "Mujeres %" });
-            this.datosGrafica1.push({ data: datah, label: "Hombres %" });
-            this.datosGrafica2.push({ data: data2m, label: "Mujeres %" });
-            this.datosGrafica2.push({ data: data2h, label: "Hombres %" });
-        }
-    }
+    
 }

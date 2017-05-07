@@ -86,8 +86,7 @@
                                 <h5>Relación de Ascensos por categorías profesionales por género</h5>
                             </header>
                             <div class="widget-body">
-                                <canvas baseChart [options]="barChartOptions" [datasets]="barChartData1" [labels]="barChartLabels1" [chartType]="barChartType"
-                                    height="120px"></canvas>
+                                <chart [options]="chart1options"></chart>  
                             </div>
                         </div>
 
@@ -96,8 +95,7 @@
                                 <h5>Relación de Ascensos por categorías profesionales por género (Proporcionado)</h5>
                             </header>
                             <div class="widget-body">
-                                <canvas baseChart [options]="barChartOptions" [datasets]="barChartData2" [labels]="barChartLabels2" [chartType]="barChartType"
-                                    height="120px"></canvas>
+                                <chart [options]="chart2options"></chart>  
                             </div>
                         </div>
                     </div>
@@ -187,8 +185,7 @@
                                 <h5>Comparativo promociones en el último año</h5>
                             </header>
                             <div class="widget-body">
-                                <canvas baseChart [options]="barChartOptions" [datasets]="barChartData3" [labels]="barChartLabels3" [chartType]="barChartType"
-                                    height="120px"></canvas>
+                                <chart [options]="chart3options"></chart>  
                             </div>
                         </div>
 
@@ -197,8 +194,7 @@
                                 <h5>Comparativo promociones en el último año (Proporcionado)</h5>
                             </header>
                             <div class="widget-body">
-                                <canvas baseChart [options]="barChartOptions" [datasets]="barChartData4" [labels]="barChartLabels4" [chartType]="barChartType"
-                                    height="120px"></canvas>
+                               <chart [options]="chart4options"></chart>  
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -206,7 +202,7 @@
                                 <h5>Comparación promoción por género en el último año</h5>
                             </header>
                             <div class="widget-body">
-                                <canvas baseChart [data]="doughnutChartData1" [labels]="doughnutChartLabels1" [chartType]="doughnutChartType" height="100px"></canvas>
+                                <chart [options]="chart1pieoptions"></chart>  
                             </div>
                         </div>
                     </div>
@@ -296,8 +292,7 @@
                                 <h5>Solicitudes de promoción presentadas</h5>
                             </header>
                             <div class="widget-body">
-                                <canvas baseChart [options]="barChartOptions" [datasets]="barChartData5" [labels]="barChartLabels5" [chartType]="barChartType"
-                                    height="120px"></canvas>
+                                <chart [options]="chart5options"></chart>  
                             </div>
                         </div>
 
@@ -306,8 +301,7 @@
                                 <h5>Solicitudes de promoción presentadas (Proporcionado)</h5>
                             </header>
                             <div class="widget-body">
-                                <canvas baseChart [options]="barChartOptions" [datasets]="barChartData6" [labels]="barChartLabels6" [chartType]="barChartType"
-                                    height="120px"></canvas>
+                               <chart [options]="chart6options"></chart>  
                             </div>
                         </div>
                     </div>
@@ -397,8 +391,7 @@
                                 <h5>Comparativo Ascensos Por Género</h5>
                             </header>
                             <div class="widget-body">
-                                <canvas baseChart [options]="barChartOptions" [datasets]="barChartData7" [labels]="barChartLabels7" [chartType]="barChartType"
-                                    height="120px"></canvas>
+                                <chart [options]="chart7options"></chart>  
                             </div>
                         </div>
 
@@ -407,8 +400,7 @@
                                 <h5>Comparativo Ascensos Por Género (Proporcionado)</h5>
                             </header>
                             <div class="widget-body">
-                                <canvas baseChart [options]="barChartOptions" [datasets]="barChartData8" [labels]="barChartLabels8" [chartType]="barChartType"
-                                    height="120px"></canvas>
+                                <chart [options]="chart8options"></chart>  
                             </div>
                         </div>
                     </div>
@@ -498,8 +490,7 @@
                                 <h5>Transformación de contratos a tiempo parcial en tiempo completo</h5>
                             </header>
                             <div class="widget-body">
-                                <canvas baseChart [options]="barChartOptions" [datasets]="barChartData9" [labels]="barChartLabels9" [chartType]="barChartType"
-                                    height="120px"></canvas>
+                               <chart [options]="chart9options"></chart>  
                             </div>
                         </div>
 
@@ -508,8 +499,7 @@
                                 <h5>Transformación de contratos a tiempo parcial en tiempo completo (Proporcionado)</h5>
                             </header>
                             <div class="widget-body">
-                                <canvas baseChart [options]="barChartOptions" [datasets]="barChartData10" [labels]="barChartLabels10" [chartType]="barChartType"
-                                    height="120px"></canvas>
+                                <chart [options]="chart10options"></chart>  
                             </div>
                         </div>
                     </div>
