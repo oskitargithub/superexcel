@@ -178,7 +178,7 @@ export class ComunicacionComponent implements OnInit {
                 else {
                     this.ifForm.markAsPristine();  
                     if (redirigir) {
-                        this.router.navigate(["/app/introduccion"]);
+                        this.router.navigate(["/app/final"]);
                     }
                     Messenger().post({
                         message: 'Los datos han sido guardados correctamente',

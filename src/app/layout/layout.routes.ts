@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: '', component: Layout, children: [
     /*{ path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivateChild: [AuthGuard], data:{ roles:['USER'] } },*/
     { path: '', redirectTo: 'introduccion', pathMatch: 'full', canActivateChild: [AuthGuard], data:{ roles:['USER'] } },
+    { path: 'final', loadChildren: '../dashboard/final/final.module#FinalModule'},
     { path: 'profile', loadChildren: '../profile/profile.module#ProfileModule', canActivateChild: [AuthGuard], data:{ roles:['USER'] }},
     { path: 'dashboard', loadChildren: '../dashboard/dashboard.module#DashboardModule', canActivate: [AuthGuard], data:{ roles:['USER'] }},
     { path: 'introduccion', loadChildren: '../dashboard/introduccion/introduccion.module#IntroduccionModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
@@ -59,6 +60,7 @@ const routes: Routes = [
     { path: 'rrppadm', loadChildren: '../dashboardadmin/rrppadm/rrppadm.module#RRPPAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
   ]},
   { path: 'login', loadChildren: '../login/login.module#LoginModule'}
+  
 ];
 
 export const ROUTES = RouterModule.forChild(routes);

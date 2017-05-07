@@ -45,21 +45,22 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
+                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_210.value=='si'">
+                                    <div class="col-md-6 offset-md-2">
+                                        <p>En caso afirmativo</p>
+                                    </div>
+                                    <div class="col-md-8 offset-md-2"><label for="preg_212">A) Indique para qué categorías</label></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_210')!='si'" class="autogrow form-control transition-height" id="preg_212"
+                                            formControlName="preg_212" autosize placeholder="Categorías"></textarea>
+                                    </div>
+                                    <div class="w-100"></div>
 
-                                <div class="col-md-6 offset-md-2">
-                                    <p>En caso afirmativo</p>
-                                </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_212">A) Indique para qué categorías</label></div>
-                                <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_210')!='si'" class="autogrow form-control transition-height" id="preg_212"
-                                        formControlName="preg_212" autosize placeholder="Categorías"></textarea>
-                                </div>
-                                <div class="w-100"></div>
-
-                                <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_213">B) Indicar para qué niveles jerárquicos</label></div>
-                                <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_210')!='si'" class="autogrow form-control transition-height" id="preg_213"
-                                        formControlName="preg_213" autosize placeholder="Niveles jerárquicos"></textarea>
+                                    <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_213">B) Indicar para qué niveles jerárquicos</label></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_210')!='si'" class="autogrow form-control transition-height" id="preg_213"
+                                            formControlName="preg_213" autosize placeholder="Niveles jerárquicos"></textarea>
+                                    </div>
                                 </div>
                             </div>
 
@@ -76,27 +77,28 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
+                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_214.value=='si'">
+                                    <div class="col-md-6 offset-md-2">
+                                        <p>En caso afirmativo</p>
+                                    </div>
+                                    <div class="col-md-8 offset-md-2"><label for="preg_215">Describa brevemente de los criterios utilizados</label></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_214')!='si'" class="autogrow form-control transition-height" id="preg_215"
+                                            formControlName="preg_215" autosize placeholder="Criterios utilizados"></textarea>
+                                    </div>
+                                    <div class="w-100"></div>
 
-                                <div class="col-md-6 offset-md-2">
-                                    <p>En caso afirmativo</p>
-                                </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_215">Describa brevemente de los criterios utilizados</label></div>
-                                <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_214')!='si'" class="autogrow form-control transition-height" id="preg_215"
-                                        formControlName="preg_215" autosize placeholder="Criterios utilizados"></textarea>
-                                </div>
-                                <div class="w-100"></div>
+                                    <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_216">Describa brevemente de la metodología empleada</label></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_214')!='si'" class="autogrow form-control transition-height" id="preg_216"
+                                            formControlName="preg_216" autosize placeholder="Metodología empleada"></textarea>
+                                    </div>
 
-                                <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_216">Describa brevemente de la metodología empleada</label></div>
-                                <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_214')!='si'" class="autogrow form-control transition-height" id="preg_216"
-                                        formControlName="preg_216" autosize placeholder="Metodología empleada"></textarea>
-                                </div>
-
-                                <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_217">Describa brevemente el procedimiento utilizado</label></div>
-                                <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_214')!='si'" class="autogrow form-control transition-height" id="preg_217"
-                                        formControlName="preg_217" autosize placeholder="Procedimiento utilizado"></textarea>
+                                    <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_217">Describa brevemente el procedimiento utilizado</label></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_214')!='si'" class="autogrow form-control transition-height" id="preg_217"
+                                            formControlName="preg_217" autosize placeholder="Procedimiento utilizado"></textarea>
+                                    </div>
                                 </div>
                             </div>
 
@@ -122,14 +124,15 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-
-                                <div class="col-md-6 offset-md-2">
-                                    <p>En caso afirmativo</p>
-                                </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_220">Detalle brevemente en qué consisten</label></div>
-                                <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_219')!='si'" class="autogrow form-control transition-height" id="preg_220"
-                                        formControlName="preg_220" autosize placeholder="Detalle brevemente en qué consisten"></textarea>
+                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_219.value=='si'">
+                                    <div class="col-md-6 offset-md-2">
+                                        <p>En caso afirmativo</p>
+                                    </div>
+                                    <div class="col-md-8 offset-md-2"><label for="preg_220">Detalle brevemente en qué consisten</label></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_219')!='si'" class="autogrow form-control transition-height" id="preg_220"
+                                            formControlName="preg_220" autosize placeholder="Detalle brevemente en qué consisten"></textarea>
+                                    </div>
                                 </div>
                             </div>
 
@@ -145,14 +148,15 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-
-                                <div class="col-md-6 offset-md-2">
-                                    <p>En caso afirmativo</p>
-                                </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_222">¿Influye de igual manera en hombres y en mujeres?¿Por qué razones?</label></div>
-                                <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_221')!='si'" class="autogrow form-control transition-height" id="preg_222"
-                                        formControlName="preg_222" autosize placeholder="¿Influye de igual manera en hombres y en mujeres?¿Por qué razones?"></textarea>
+                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_221.value=='si'">
+                                    <div class="col-md-6 offset-md-2">
+                                        <p>En caso afirmativo</p>
+                                    </div>
+                                    <div class="col-md-8 offset-md-2"><label for="preg_222">¿Influye de igual manera en hombres y en mujeres?¿Por qué razones?</label></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_221')!='si'" class="autogrow form-control transition-height" id="preg_222"
+                                            formControlName="preg_222" autosize placeholder="¿Influye de igual manera en hombres y en mujeres?¿Por qué razones?"></textarea>
+                                    </div>
                                 </div>
                             </div>
 
@@ -168,14 +172,15 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-
-                                <div class="col-md-6 offset-md-2">
-                                    <p>En caso afirmativo</p>
-                                </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_224">Indique por favor en que tipos de cargos se presenta</label></div>
-                                <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_223')!='si'" class="autogrow form-control transition-height" id="preg_224"
-                                        formControlName="preg_224" autosize placeholder="Indique por favor en que tipos de cargos se presenta"></textarea>
+                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_223.value=='si'">
+                                    <div class="col-md-6 offset-md-2">
+                                        <p>En caso afirmativo</p>
+                                    </div>
+                                    <div class="col-md-8 offset-md-2"><label for="preg_224">Indique por favor en que tipos de cargos se presenta</label></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_223')!='si'" class="autogrow form-control transition-height" id="preg_224"
+                                            formControlName="preg_224" autosize placeholder="Indique por favor en que tipos de cargos se presenta"></textarea>
+                                    </div>
                                 </div>
                             </div>
 
@@ -191,14 +196,15 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-
-                                <div class="col-md-6 offset-md-2">
-                                    <p>En caso afirmativo</p>
-                                </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_226">Indique por favor cuales son los incentivos utilizados</label></div>
-                                <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_225')!='si'" class="autogrow form-control transition-height" id="preg_226"
-                                        formControlName="preg_226" autosize placeholder="Indique por favor cuales son los incentivos utilizados"></textarea>
+                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_225.value=='si'">
+                                    <div class="col-md-6 offset-md-2">
+                                        <p>En caso afirmativo</p>
+                                    </div>
+                                    <div class="col-md-8 offset-md-2"><label for="preg_226">Indique por favor cuales son los incentivos utilizados</label></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_225')!='si'" class="autogrow form-control transition-height" id="preg_226"
+                                            formControlName="preg_226" autosize placeholder="Indique por favor cuales son los incentivos utilizados"></textarea>
+                                    </div>
                                 </div>
                             </div>
 
@@ -214,14 +220,15 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-
-                                <div class="col-md-6 offset-md-2">
-                                    <p>En caso afirmativo</p>
-                                </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_228">Indicar qué categorías y niveles jerárquicos</label></div>
-                                <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_227')!='si'" class="autogrow form-control transition-height" id="preg_228"
-                                        formControlName="preg_228" autosize placeholder="Indicar qué categorías y niveles jerárquicos"></textarea>
+                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_227.value=='si'">
+                                    <div class="col-md-6 offset-md-2">
+                                        <p>En caso afirmativo</p>
+                                    </div>
+                                    <div class="col-md-8 offset-md-2"><label for="preg_228">Indicar qué categorías y niveles jerárquicos</label></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_227')!='si'" class="autogrow form-control transition-height" id="preg_228"
+                                            formControlName="preg_228" autosize placeholder="Indicar qué categorías y niveles jerárquicos"></textarea>
+                                    </div>
                                 </div>
                             </div>
 
@@ -237,14 +244,15 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-
-                                <div class="col-md-6 offset-md-2">
-                                    <p>En caso afirmativo</p>
-                                </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_230">Indicar mecanismo/s de publicidad utilizado/s</label></div>
-                                <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_229')!='si'" class="autogrow form-control transition-height" id="preg_230"
-                                        formControlName="preg_230" autosize placeholder="Indicar mecanismo/s de publicidad utilizado/s"></textarea>
+                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_229.value=='si'">
+                                    <div class="col-md-6 offset-md-2">
+                                        <p>En caso afirmativo</p>
+                                    </div>
+                                    <div class="col-md-8 offset-md-2"><label for="preg_230">Indicar mecanismo/s de publicidad utilizado/s</label></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_229')!='si'" class="autogrow form-control transition-height" id="preg_230"
+                                            formControlName="preg_230" autosize placeholder="Indicar mecanismo/s de publicidad utilizado/s"></textarea>
+                                    </div>
                                 </div>
                             </div>
 
@@ -265,7 +273,7 @@
 
                         </fieldset>
                     </div>
-                    <div class="section">
+                    <div class="section" *ngIf="ifForm.controls.data.controls.preg_231.value=='si'">
                         <fieldset>
                             <div formArrayName="preg_233_tabla_6">
                                 <div class="row">
@@ -332,7 +340,7 @@
                             </div>
                         </fieldset>
                     </div>
-                    <div class="section" style="margin-top:40px">
+                    <div class="section" style="margin-top:40px" *ngIf="ifForm.controls.data.controls.preg_231.value=='si'">
                         <fieldset>
                             <div formArrayName="preg_234_tabla_6">
                                 <div class="row">
@@ -411,21 +419,22 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
+                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_235.value=='si'">
+                                    <div class="col-md-6 offset-md-2">
+                                        <p>En caso afirmativo</p>
+                                    </div>
+                                    <div class="col-md-8 offset-md-2"><label for="preg_236">Indicar Publicidad y requisitos</label></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_235')!='si'" class="autogrow form-control transition-height" id="preg_236"
+                                            formControlName="preg_236" autosize placeholder="Publicidad y requisitos"></textarea>
+                                    </div>
+                                    <div class="w-100"></div>
 
-                                <div class="col-md-6 offset-md-2">
-                                    <p>En caso afirmativo</p>
-                                </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_236">Indicar Publicidad y requisitos</label></div>
-                                <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_235')!='si'" class="autogrow form-control transition-height" id="preg_236"
-                                        formControlName="preg_236" autosize placeholder="Publicidad y requisitos"></textarea>
-                                </div>
-                                <div class="w-100"></div>
-
-                                <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_237">Explicar brevemente procedimiento</label></div>
-                                <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_235')!='si'" class="autogrow form-control transition-height" id="preg_237"
-                                        formControlName="preg_237" autosize placeholder="Explicar brevemente procedimiento"></textarea>
+                                    <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_237">Explicar brevemente procedimiento</label></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_235')!='si'" class="autogrow form-control transition-height" id="preg_237"
+                                            formControlName="preg_237" autosize placeholder="Explicar brevemente procedimiento"></textarea>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row" style="margin-top:40px">
@@ -440,14 +449,15 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-
-                                <div class="col-md-6 offset-md-2">
-                                    <p>En caso afirmativo</p>
-                                </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_239">Indique el procedimiento utilizado por la organización y cuales son los requisitos</label></div>
-                                <div class="col-md-8 offset-md-2">
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_238')!='si'" class="autogrow form-control transition-height" id="preg_239"
-                                        formControlName="preg_239" autosize placeholder="Procedimiento utilizado por la organización y cuales son los requisitos"></textarea>
+                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_238.value=='si'">
+                                    <div class="col-md-6 offset-md-2">
+                                        <p>En caso afirmativo</p>
+                                    </div>
+                                    <div class="col-md-8 offset-md-2"><label for="preg_239">Indique el procedimiento utilizado por la organización y cuales son los requisitos</label></div>
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_238')!='si'" class="autogrow form-control transition-height" id="preg_239"
+                                            formControlName="preg_239" autosize placeholder="Procedimiento utilizado por la organización y cuales son los requisitos"></textarea>
+                                    </div>
                                 </div>
                             </div>
                         </fieldset>

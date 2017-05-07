@@ -36,6 +36,9 @@ export class ClasProfesional2Component implements OnInit {
     public dynamic: number;
     public type: string;
 
+    public mujerestotal:number = 0;
+    public hombrestotal:number = 0;
+
     constructor(private router: Router,
         private fb: FormBuilder,
         private servicio: ClasProfesional2Service,
@@ -52,6 +55,7 @@ export class ClasProfesional2Component implements OnInit {
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
         this.getDatosModelo();
+        this.getDatosModeloProf1();
     }
 
     createForm() {
@@ -96,6 +100,51 @@ export class ClasProfesional2Component implements OnInit {
         this.type = type;
     }
 
+    getDatosModeloProf1(){
+        this.servicio.getDatosModeloProf1()
+        .subscribe(
+            response => {
+                this.status = response.status;
+                if (this.status !== "success") {
+                    if (this.status == "tokenerror") {
+                        Messenger().post({
+                            message: 'Ha ocurrido un error de token.' + this.errorMessage,
+                            type: 'error',
+                            showCloseButton: true
+                        });
+                    }
+                    else {
+                        Messenger().post({
+                            message: 'Ha ocurrido un error cargando los datos.' + this.errorMessage,
+                            type: 'error',
+                            showCloseButton: true
+                        });
+                    }
+                }
+                else {
+                    this.mujerestotal = response.data.preg_46;
+                    this.hombrestotal = response.data.preg_47;
+                    console.log("El total da" + this.SumaTotal());
+                    Messenger().post({
+                        message: 'Los datos han sido cargados correctamente',
+                        type: 'success',
+                        showCloseButton: true
+                    });
+                }
+            },
+            error => {
+                this.errorMessage = <any>error;
+                if (this.errorMessage !== null) {
+
+                    Messenger().post({
+                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+
+                }
+            });
+    }
 
     getDatosModelo() {
         this.servicio.getDatosModelo()
@@ -161,6 +210,16 @@ export class ClasProfesional2Component implements OnInit {
         let hombres = elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1), 0);
         let mujeres = elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1), 0);
         return (hombres * 1 + mujeres * 1);
+    }
+
+    SumaMujeres(){
+        return this.mujerestotal*1;
+    }
+    SumaHombres(){
+        return this.hombrestotal*1;
+    }
+    SumaTotal(){
+        return ((this.mujerestotal*1) + (this.hombrestotal*1));
     }
 
 

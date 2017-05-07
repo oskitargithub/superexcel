@@ -190,6 +190,16 @@ export class FormacionComponent implements OnInit {
         else
             return 0;
     }
+    getTotalTotal(elemento: FormArray) {
+        if (elemento != null && elemento.value.length > 0) {
+            let hombres = elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));
+            let mujeres = elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
+            return (hombres * 1 + mujeres * 1);
+        }
+        else {
+            return 0;
+        }
+    }
 
     onSubmit(redirigir: boolean) {
         this.modelo = this.preparaParaGuardar();

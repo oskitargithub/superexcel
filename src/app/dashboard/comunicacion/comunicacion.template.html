@@ -59,12 +59,17 @@
                             <legend><strong>Canales comunicación externa</strong></legend>
 
                             <div class="row">
-                                <div class="col-md-4 offset-md-2">Tipo de canal</div>
+                                <div class="col-md-2 offset-md-2">Tipo de canal</div>
                                 <div class="col-md-4">Especificación del canal</div>
                             </div>
                             <div *ngFor="let datos of getPregunta('preg_356').controls; let i=index" [formGroupName]="i">
                                 <div class="row">
-                                    <div class="col-md-4 offset-md-2">
+                                    <div class="col-md-2 offset-md-2">
+                                        <md-checkbox formControlName="valor1">
+                                            {{ifForm.controls.preg_356.value[i].texto}}
+                                        </md-checkbox>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <input class="form-control" formControlName="texto1" tooltip="Especificación del canal" placeholder="Especificación del canal"
@@ -72,12 +77,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <md-checkbox formControlName="valor1">
-                                            {{ifForm.controls.preg_356.value[i].texto}}
-                                        </md-checkbox>
-
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </fieldset>
@@ -185,7 +185,7 @@
                         <div class="row">
                             <div class="offset-md-4 col-md-7 ">
                                 <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(false)" class="btn btn-primary">Guardar cambios</button>
-                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(true)" class="btn btn-success">Guardar y Continuar</button>
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(true)" class="btn btn-success">Guardar y Finalizar</button>
                             </div>
                         </div>
                     </div>

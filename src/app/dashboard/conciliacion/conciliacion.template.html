@@ -38,7 +38,7 @@
                             <div formArrayName="preg_130_tabla_2">
                                 <div *ngFor="let datos of getPregunta('preg_130_tabla_2').controls; let i=index" [formGroupName]="i">
                                     <div class="row">
-                                        <div class="col-md-3 offset-md-2 ">
+                                        <div class="col-md-8 offset-md-1 ">
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <input class="form-control" [readonly]="i<4" formControlName="texto1" tooltip="Estrategia" placeholder="Estrategia" />
@@ -59,13 +59,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-2 offset-md-2">
+                                    <div class="col-md-8 offset-md-1">
                                         <button (click)="addFila2(ifForm.controls.preg_130_tabla_2)" type="button" class="btn btn-success btn-xs mb-xs">Añade Estrategia</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row" style="margin-top:40px" formGroupName="data">
-                                <div class="col-md-6 offset-md-2">
+                                <div class="col-md-8 offset-md-1">
                                     <p>La organización se preocupa por divulgación de los mecanismos de conciliación (legales
                                         y dispuestos por la organización)</p>
                                 </div>
@@ -76,26 +76,26 @@
                                     </md-radio-group>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-6 offset-md-2">
+                                <div class="col-md-8 offset-md-1">
                                     <p>En caso afirmativo, breve descripción del método divulgativo</p>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-8 offset-md-2">
+                                <div class="col-md-8 offset-md-1">
                                     <textarea rows="3" [readonly]="getValorElemento('data.preg_131')!='si'" class="autogrow form-control transition-height" id="preg_132"
                                         formControlName="preg_132" autosize placeholder="Descripción del método divulgativo"></textarea>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-6 offset-md-2">
+                                <div class="col-md-8 offset-md-1">
                                     <p>En caso afirmativo, indicar personas destinatarias</p>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-8 offset-md-2">
+                                <div class="col-md-8 offset-md-1">
                                     <textarea rows="3" [readonly]="getValorElemento('data.preg_131')!='si'" class="autogrow form-control transition-height" id="preg_133"
                                         formControlName="preg_133" autosize placeholder="Personas destinatarias"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row" style="margin-top:40px" formGroupName="data">
-                                <div class="col-md-6 offset-md-2">
+                                <div class="col-md-8 offset-md-1">
                                     <p>La organización desarrolla métodos de promoción del uso de las medidas de conciliación</p>
                                 </div>
                                 <div class="col-md-2">
@@ -105,20 +105,20 @@
                                     </md-radio-group>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-6 offset-md-2">
+                                <div class="col-md-8 offset-md-1">
                                     <p>En caso afirmativo, breve descripción del método de promoción</p>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-8 offset-md-2">
+                                <div class="col-md-8 offset-md-1">
                                     <textarea rows="3" [readonly]="getValorElemento('data.preg_134')!='si'" class="autogrow form-control transition-height" id="preg_135"
                                         formControlName="preg_135" autosize placeholder="Método de promoción"></textarea>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-6 offset-md-2">
+                                <div class="col-md-8 offset-md-1">
                                     <p>En caso afirmativo, indicar personas destinatarias</p>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-8 offset-md-2">
+                                <div class="col-md-8 offset-md-1">
                                     <textarea rows="3" [readonly]="getValorElemento('data.preg_134')!='si'" class="autogrow form-control transition-height" id="preg_136"
                                         formControlName="preg_136" autosize placeholder="Personas destinatarias"></textarea>
                                 </div>
@@ -126,13 +126,13 @@
 
 
                             <div class="form-group row" style="margin-top:40px" formGroupName="data">
-                                <div class="col-md-6 offset-md-2">
+                                <div class="col-md-8 offset-md-1">
                                     <p>De acuerdo al procedimiento para el ejercicio de los derechos de conciliación conteste
                                         las siguientes preguntas</p>
                                 </div>
                                 <div class="w-100"></div>
 
-                                <div class="col-md-3 offset-md-2">
+                                <div class="col-md-3 offset-md-1">
                                     <p>¿Se exige comunicación formal escrita?</p>
                                 </div>
                                 <div class="col-md-2">
@@ -142,9 +142,9 @@
                                     </md-radio-group>
                                 </div>
                                 <div class="w-100"></div>
-                                <label class="col-md-6 offset-md-2  col-form-label" for="preg_139">Cual es el tiempo estimado de respuesta a la comunicación del trabajador o trabajadora</label>
+                                <label class="col-md-8 offset-md-1  col-form-label" for="preg_139">Cual es el tiempo estimado de respuesta a la comunicación del trabajador o trabajadora</label>
                                 <div class="w-100"></div>
-                                <div class="col-md-6 offset-md-2">
+                                <div class="col-md-8 offset-md-1">
                                     <input type="text" formControlName="preg_139" class="form-control" tooltip="Cual es el tiempo estimado de respuesta a la comunicación del trabajador o trabajadora"
                                         placeholder="Cual es el tiempo estimado de respuesta a la comunicación del trabajador o trabajadora"
                                     />
@@ -161,7 +161,7 @@
                             <div formArrayName="preg_140_tabla_3">
                                 <div class="row">
 
-                                    <div class="col-md-3 offset-md-2 text-md-center">
+                                    <div class="col-md-8 offset-md-1 text-md-center">
                                         CIRCUNSTANCIAS FAMILIARES
                                     </div>
                                     <div class="col-md-1 text-md-center">
@@ -170,11 +170,14 @@
                                     <div class="col-md-1 text-md-center">
                                         Nº Hombres
                                     </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Total
+                                    </div>
                                 </div>
                                 <div *ngFor="let datos of getPregunta('preg_140_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
-                                        <div class="col-md-3 offset-md-2 ">
+                                        <div class="col-md-8 offset-md-1 ">
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <input class="form-control" readonly formControlName="texto" tooltip="CIRCUNSTANCIAS FAMILIARES" placeholder="CIRCUNSTANCIAS FAMILIARES"
@@ -188,7 +191,7 @@
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_140_tabla_3']).controls[i].controls['mujeres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -198,13 +201,50 @@
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_140_tabla_3']).controls[i].controls['hombres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="text-md-center">
+                                                    {{ifForm.controls.preg_140_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_140_tabla_3.value[i].hombres*1 }}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-8 offset-md-1 ">
+                                    <div class="form-group">
+                                        <div class="text-md-right">
+                                            TOTAL
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <div class="text-md-center">
+                                            {{getTotalMujeres(ifForm.controls.preg_140_tabla_3)}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <div class="text-md-center">
+                                            {{getTotalHombres(ifForm.controls.preg_140_tabla_3)}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <div class="text-md-center">
+                                            {{getTotalTotal(ifForm.controls.preg_140_tabla_3)}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
                         </fieldset>
                     </div>
 
@@ -217,7 +257,7 @@
 
                             <div class="row">
 
-                                <div class="col-md-3 offset-md-2 text-md-center">
+                                <div class="col-md-8 offset-md-1 text-md-center">
                                     Nº de hijas/os
                                 </div>
                                 <div class="col-md-1 text-md-center">
@@ -226,15 +266,15 @@
                                 <div class="col-md-1 text-md-center">
                                     Nº Hombres
                                 </div>
-                                <div class="col-md-1 text-md-center">
-                                    Total
-                                </div>
+                                 <div class="col-md-1 text-md-center">
+                                        Total
+                                    </div>
                             </div>
                             <div formArrayName="preg_142_tabla_3">
                                 <div *ngFor="let datos of getPregunta('preg_142_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
-                                        <div class="col-md-3 offset-md-2 ">
+                                        <div class="col-md-8 offset-md-1 ">
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <input class="form-control" readonly formControlName="texto" tooltip="Nº de hijos/as" placeholder="Nº de hijos/as" />
@@ -247,7 +287,7 @@
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_142_tabla_3']).controls[i].controls['mujeres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -257,7 +297,7 @@
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_142_tabla_3']).controls[i].controls['hombres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -268,11 +308,12 @@
                                                 </div>
                                             </div>
                                         </div>
+                                       
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 offset-md-2 ">
+                                <div class="col-md-8 offset-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-right">
                                             TOTAL
@@ -301,6 +342,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row" *ngIf="getTotalMujeres(ifForm.controls.preg_140_tabla_3)!= getTotalMujeres(ifForm.controls.preg_142_tabla_3) || getTotalHombres(ifForm.controls.preg_140_tabla_3) != getTotalHombres(ifForm.controls.preg_142_tabla_3) || getTotalTotal(ifForm.controls.preg_140_tabla_3)!= getTotalTotal(ifForm.controls.preg_142_tabla_3)">
+                                <div class="col-md-10 offset-md-1">
+                                    <div class="form-group">
+                                        <div class="alert alert-danger">
+                                            La información en responsabilidades familiares desglosada por nº de hijas e hijos no coincide con los datos facilitados anteriormente, por favor, revíselos</div>
+                                    </div>
+                                </div>
+                            </div>
                         </fieldset>
                         <fieldset>
                             <legend><strong>Responsabilidades familiares en número de hijas e hijos con diversidad funcional o discapacidad</strong></legend>
@@ -308,7 +357,7 @@
 
                             <div class="row">
 
-                                <div class="col-md-3 offset-md-2 text-md-center">
+                                <div class="col-md-8 offset-md-1 text-md-center">
                                     Nº de hijas/os
                                 </div>
                                 <div class="col-md-1 text-md-center">
@@ -325,7 +374,7 @@
                                 <div *ngFor="let datos of getPregunta('preg_143_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
-                                        <div class="col-md-3 offset-md-2 ">
+                                        <div class="col-md-8 offset-md-1 ">
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <input class="form-control" readonly formControlName="texto" tooltip="Nº de hijos/as" placeholder="Nº de hijos/as" />
@@ -338,7 +387,7 @@
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_143_tabla_3']).controls[i].controls['mujeres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -348,7 +397,7 @@
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_143_tabla_3']).controls[i].controls['hombres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -363,7 +412,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 offset-md-2 ">
+                                <div class="col-md-8 offset-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-right">
                                             TOTAL
@@ -392,6 +441,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row" *ngIf="getTotalMujeres(ifForm.controls.preg_140_tabla_3)!= getTotalMujeres(ifForm.controls.preg_143_tabla_3) || getTotalHombres(ifForm.controls.preg_140_tabla_3) != getTotalHombres(ifForm.controls.preg_143_tabla_3) || getTotalTotal(ifForm.controls.preg_140_tabla_3)!= getTotalTotal(ifForm.controls.preg_143_tabla_3)">
+                                <div class="col-md-10 offset-md-1">
+                                    <div class="form-group">
+                                        <div class="alert alert-danger">
+                                            La información en responsabilidades familiares desglosada por nº de hijas e hijos con diversidad funcional o discapacidad no coincide con los datos facilitados anteriormente, por favor, revíselos</div>
+                                    </div>
+                                </div>
+                            </div>
                         </fieldset>
                     </div>
 
@@ -405,7 +462,7 @@
 
                             <div class="row">
 
-                                <div class="col-md-3 offset-md-2 text-md-center">
+                                <div class="col-md-8 offset-md-1 text-md-center">
                                     Nº de hijas/os
                                 </div>
                                 <div class="col-md-1 text-md-center">
@@ -422,7 +479,7 @@
                                 <div *ngFor="let datos of getPregunta('preg_146_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
-                                        <div class="col-md-3 offset-md-2 ">
+                                        <div class="col-md-8 offset-md-1 ">
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <input class="form-control" readonly formControlName="texto" tooltip="Nº de hijos/as" placeholder="Nº de hijos/as" />
@@ -435,7 +492,7 @@
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_146_tabla_3']).controls[i].controls['mujeres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -445,7 +502,7 @@
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_146_tabla_3']).controls[i].controls['hombres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -460,7 +517,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 offset-md-2 ">
+                                <div class="col-md-8 offset-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-right">
                                             TOTAL
@@ -497,7 +554,7 @@
 
                             <div class="row">
 
-                                <div class="col-md-3 offset-md-2 text-md-center">
+                                <div class="col-md-8 offset-md-1 text-md-center">
                                     Nº de hijas/os
                                 </div>
                                 <div class="col-md-1 text-md-center">
@@ -514,7 +571,7 @@
                                 <div *ngFor="let datos of getPregunta('preg_147_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
-                                        <div class="col-md-3 offset-md-2 ">
+                                        <div class="col-md-8 offset-md-1 ">
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <input class="form-control" readonly formControlName="texto" tooltip="Nº de hijos/as" placeholder="Nº de hijos/as" />
@@ -527,7 +584,7 @@
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_147_tabla_3']).controls[i].controls['mujeres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -537,7 +594,7 @@
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_147_tabla_3']).controls[i].controls['hombres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -552,7 +609,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 offset-md-2 ">
+                                <div class="col-md-8 offset-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-right">
                                             TOTAL
@@ -590,7 +647,7 @@
 
                             <div class="row">
 
-                                <div class="col-md-3 offset-md-2 text-md-center">
+                                <div class="col-md-8 offset-md-1 text-md-center">
                                     Nº de hijas/os
                                 </div>
                                 <div class="col-md-1 text-md-center">
@@ -607,7 +664,7 @@
                                 <div *ngFor="let datos of getPregunta('preg_148_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
-                                        <div class="col-md-3 offset-md-2 ">
+                                        <div class="col-md-8 offset-md-1 ">
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <input class="form-control" readonly formControlName="texto" tooltip="Nº de hijos/as" placeholder="Nº de hijos/as" />
@@ -620,7 +677,7 @@
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_148_tabla_3']).controls[i].controls['mujeres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -630,7 +687,7 @@
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_148_tabla_3']).controls[i].controls['hombres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -645,7 +702,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 offset-md-2 ">
+                                <div class="col-md-8 offset-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-right">
                                             TOTAL
@@ -687,7 +744,7 @@
 
                             <div class="row">
 
-                                <div class="col-md-3 offset-md-2 text-md-center">
+                                <div class="col-md-7 offset-md-1 text-md-center">
                                     Descripción
                                 </div>
                                 <div class="col-md-1 text-md-center">
@@ -704,10 +761,10 @@
                                 <div *ngFor="let datos of getPregunta('preg_150_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
-                                        <div class="col-md-3 offset-md-2 ">
+                                        <div class="col-md-7 offset-md-1 ">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input class="form-control"  [readonly]="i<18" formControlName="texto" tooltip="Descripción" placeholder="Descripción" />
+                                                    <input class="form-control" [readonly]="i<18" formControlName="texto" tooltip="Descripción" placeholder="Descripción" />
                                                 </div>
                                             </div>
                                         </div>
@@ -717,7 +774,7 @@
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_150_tabla_3']).controls[i].controls['mujeres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -727,7 +784,7 @@
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_150_tabla_3']).controls[i].controls['hombres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -747,7 +804,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 offset-md-2 ">
+                                <div class="col-md-7 offset-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-right">
                                             TOTAL
@@ -778,12 +835,12 @@
 
                             </div>
                             <div class="row">
-                                <div class="col-md-2 offset-md-2">
+                                <div class="col-md-7 offset-md-1">
                                     <button (click)="addFila3(ifForm.controls.preg_150_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Mecanismo</button>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 offset-md-2">
+                                <div class="col-md-8 offset-md-1">
                                     <small> * Nº de trabajadoras de la organización que han cedido a sus parejas su permiso de maternidad, con independencia de que ellos trabajen o no en la misma organización</small>
                                     <br/><small>** Nº de trabajadores de la organización cuyas parejas/cónyuges les han cedido su permiso de maternidad, con independencia de que ellas trabajen o no en la misma.</small>
                                 </div>
@@ -800,7 +857,7 @@
 
                             <div class="row">
 
-                                <div class="col-md-3 offset-md-2 text-md-center">
+                                <div class="col-md-7 offset-md-1 text-md-center">
                                     Descripción
                                 </div>
                                 <div class="col-md-1 text-md-center">
@@ -817,11 +874,11 @@
                                 <div *ngFor="let datos of getPregunta('preg_152_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                     <div class="row">
-                                        <div class="col-md-3 offset-md-2 ">
+                                        <div class="col-md-7 offset-md-1 ">
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <input class="form-control" [readonly]="i<6" formControlName="texto" tooltip="Descripción" placeholder="Descripción" />
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -831,7 +888,7 @@
                                                     <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_152_tabla_3']).controls[i].controls['mujeres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -841,7 +898,7 @@
                                                     <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                 </div>
                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_152_tabla_3']).controls[i].controls['hombres'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                    {{serviceErrores.objetoErrores['numerico']}}
                                                 </div>
                                             </div>
                                         </div>
@@ -861,7 +918,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3 offset-md-2 ">
+                                <div class="col-md-7 offset-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-right">
                                             TOTAL
@@ -891,7 +948,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-2 offset-md-2">
+                                <div class="col-md-7 offset-md-1">
                                     <button (click)="addFila3(ifForm.controls.preg_152_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Beneficio</button>
                                 </div>
                             </div>
@@ -901,43 +958,43 @@
 
                     <div class="section" style="margin-top:40px" formGroupName="data">
                         <div class="row">
-                            <label class="col-md-5 offset-md-2 col-form-label" for="preg_154">¿Cuántos trabajadores y trabajadoras han sido padres y madres en el último año?</label>
+                            <label class="col-md-8 offset-md-1 col-form-label" for="preg_154">¿Cuántos trabajadores y trabajadoras han sido padres y madres en el último año?</label>
                             <div class="col-md-1">
                                 <input type="text" formControlName="preg_154" class="form-control" tooltip="Madres" placeholder="Madres" />
-                            </div>                                    
+                            </div>
                             <div class="col-md-1">
                                 <input type="text" formControlName="preg_155" class="form-control" tooltip="Padres" placeholder="Padres" />
-                            </div>                            
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-5 offset-md-2"></div>
-                                <div class="col-md-1 alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_154'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
-                                                </div>
+                            <div class="col-md-8 offset-md-1"></div>
+                            <div class="col-md-1 alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_154'].errors?.number">
+                                {{serviceErrores.objetoErrores['numerico']}}
+                            </div>
                             <div class="col-md-1 alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_155'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
-                            </div> 
+                                {{serviceErrores.objetoErrores['numerico']}}
+                            </div>
                         </div>
 
                         <div class="row" style="margin-top:40px">
-                            <label class="col-md-5 offset-md-2 col-form-label" for="preg_157">¿Cuántas trabajadoras y trabajadores se han incorporado tras la maternidad / paternidad / excedencia o permiso a un puesto de trabajo de categoría inferior?</label>
+                            <label class="col-md-8 offset-md-1 col-form-label" for="preg_157">¿Cuántas trabajadoras y trabajadores se han incorporado tras la maternidad / paternidad / excedencia o permiso a un puesto de trabajo de categoría inferior?</label>
                             <div class="col-md-1">
                                 <input type="text" formControlName="preg_157" class="form-control" tooltip="Madres" placeholder="Madres" />
                             </div>
-                                                      
+
                             <div class="col-md-1">
                                 <input type="text" formControlName="preg_158" class="form-control" tooltip="Padres" placeholder="Padres" />
                             </div>
-                            
+
                         </div>
                         <div class="row">
-                            <div class="col-md-5 offset-md-2"></div>
-                                <div class="col-md-1 alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_157'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
-                                                </div>
+                            <div class="col-md-8 offset-md-1  "></div>
+                            <div class="col-md-1 alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_157'].errors?.number">
+                                {{serviceErrores.objetoErrores['numerico']}}
+                            </div>
                             <div class="col-md-1 alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_158'].errors?.number">
-                                                     {{serviceErrores.objetoErrores['numerico']}}
-                            </div> 
+                                {{serviceErrores.objetoErrores['numerico']}}
+                            </div>
                         </div>
                     </div>
                     <div class="form-actions" style="margin-top:40px">
