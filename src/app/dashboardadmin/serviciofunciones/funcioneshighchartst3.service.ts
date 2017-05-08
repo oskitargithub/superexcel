@@ -17,12 +17,8 @@ export class OpcionesModel {
 export class OpcionesPieModel {
     chart: any;
     colors: any;
-    title: any;
-    showInLegend: any;
-    subtitle: any;
-    tooltip: any;
+    title: any;   
     plotOptions: any;
-    credits: any;
     series: any;
 }
 
@@ -51,12 +47,7 @@ export class FuncionesHighChartsT3Service {
             title: {
                 text: texto1
             },
-            subtitle: '',
-            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
-            showInLegend: true,
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
-            },
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],            
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -67,9 +58,6 @@ export class FuncionesHighChartsT3Service {
                         format: '{point.name} {point.numero} / {point.percentage:.2f}%'
                     }
                 }
-            },
-            credits: {
-                enabled: false
             },
             series: []
         }
@@ -99,12 +87,7 @@ export class FuncionesHighChartsT3Service {
             title: {
                 text: titulo
             },
-            subtitle: '',
-            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
-            showInLegend: true,
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
-            },
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],                        
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -115,9 +98,6 @@ export class FuncionesHighChartsT3Service {
                         format: '{point.name} {point.y} / {point.percentage:.2f}%'
                     }
                 }
-            },
-            credits: {
-                enabled: false
             },
             series: []
         }
@@ -146,13 +126,8 @@ export class FuncionesHighChartsT3Service {
             },
             title: {
                 text: nombregrafica
-            },
-            subtitle: '',
+            },            
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
-            showInLegend: true,
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -163,9 +138,6 @@ export class FuncionesHighChartsT3Service {
                         format: '{point.name} {point.numero} / {point.percentage:.1f}%'
                     }
                 }
-            },
-            credits: {
-                enabled: false
             },
             series: [/*{
                 type: 'pie',
@@ -190,7 +162,7 @@ export class FuncionesHighChartsT3Service {
         let datos = [];
         datos.push({ y: this.getSumaMujeresDelTotal(tabla), name: 'Mujeres', numero: this.getTotalMujeres(tabla) });
         datos.push({ y: this.getSumaHombresDelTotal(tabla), name: 'Hombres', numero: this.getTotalHombres(tabla) });
-        misopciones.series.push({ type: 'pie', name: 'Acoso Sexual', data: datos });
+        misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
         console.log("misopciones");
         console.log(misopciones);
         return misopciones;
@@ -459,13 +431,8 @@ export class FuncionesHighChartsT3Service {
             },
             title: {
                 text: nombregrafica
-            },
-            subtitle: '',
+            },            
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
-            showInLegend: true,
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.numero:.1f}%</b>'
-            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -476,9 +443,6 @@ export class FuncionesHighChartsT3Service {
                         format: '{point.name} {point.y} / {point.numero:.1f}%'
                     }
                 }
-            },
-            credits: {
-                enabled: false
             },
             series: []
         }
@@ -513,13 +477,8 @@ export class FuncionesHighChartsT3Service {
             },
             title: {
                 text: nombregrafica
-            },
-            subtitle: '',
+            },            
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
-            showInLegend: true,
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.numero:.1f}%</b>'
-            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -530,9 +489,6 @@ export class FuncionesHighChartsT3Service {
                         format: '{point.name} {point.y} / {point.numero:.1f}%'
                     }
                 }
-            },
-            credits: {
-                enabled: false
             },
             series: []
         }
@@ -795,13 +751,8 @@ export class FuncionesHighChartsT3Service {
             },
             title: {
                 text: nombregrafica + " "+subnombregrafica
-            },
-            subtitle: subnombregrafica,
+            },            
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
-            showInLegend: true,
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -812,9 +763,6 @@ export class FuncionesHighChartsT3Service {
                         format: '{point.name} {point.numero} / {point.percentage:.1f}%'
                     }
                 }
-            },
-            credits: {
-                enabled: false
             },
             series: []
         }
@@ -844,13 +792,8 @@ export class FuncionesHighChartsT3Service {
             },
             title: {
                 text: nombregrafica + " "+subnombregrafica
-            },
-            subtitle: subnombregrafica,
+            },            
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
-            showInLegend: true,
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -861,9 +804,6 @@ export class FuncionesHighChartsT3Service {
                         format: '{point.name} {point.numero} / {point.percentage:.1f}%'
                     }
                 }
-            },
-            credits: {
-                enabled: false
             },
             series: []
         }
@@ -893,13 +833,8 @@ export class FuncionesHighChartsT3Service {
             },
             title: {
                 text: nombregrafica + " "+subnombregrafica
-            },
-            subtitle: subnombregrafica,
+            },            
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
-            showInLegend: true,
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -910,9 +845,6 @@ export class FuncionesHighChartsT3Service {
                         format: '{point.name} {point.numero} / {point.percentage:.1f}%'
                     }
                 }
-            },
-            credits: {
-                enabled: false
             },
             series: []
         }
@@ -942,13 +874,8 @@ export class FuncionesHighChartsT3Service {
             },
             title: {
                 text: nombregrafica + " "+subnombregrafica
-            },
-            subtitle: subnombregrafica,
+            },            
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
-            showInLegend: true,
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -959,9 +886,6 @@ export class FuncionesHighChartsT3Service {
                         format: '{point.name} {point.numero} / {point.percentage:.1f}%'
                     }
                 }
-            },
-            credits: {
-                enabled: false
             },
             series: []
         }

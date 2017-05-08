@@ -1,6 +1,4 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
-import { Select2OptionData } from 'ng2-select2';
-
 import { ClasProfesionalAdmService } from './clasprofesionaladm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
 import { ClasProfesional1Model, dataModel, Tabla3Model } from '../../dashboard/clasprofesional1/ClasProfesional1.model';
@@ -123,7 +121,7 @@ export class ClasProfesionalAdmComponent implements OnInit {
 
   asignaDatosGraficas() {
     /** Asignamos los datos para las gráficas */    
-    this.chart1pieoptions = this.funccioneshct3.GraficaPiePlantilla(this.modelo);
+    this.chart1pieoptions = this.funccioneshct3.GraficaPiePlantilla(this.modelo, "Distribución de la plantilla por sexo","");
     this.chart1options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales', '',this.modelo.preg_48_tabla_3, "total");
     this.chart2options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales', 'Proporcionada',this.modelo.preg_48_tabla_3);
     this.chart3options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Puestos de Jefatura', '',this.modelo.preg_54_tabla_3, "total");

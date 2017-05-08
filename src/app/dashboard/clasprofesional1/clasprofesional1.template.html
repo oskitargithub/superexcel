@@ -182,7 +182,15 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <!-- errores -->
+                            <div class="row" *ngIf="getTotalMujeres(ifForm.controls.preg_49_tabla_3)!= SumaMujeres() || getTotalHombres(ifForm.controls.preg_49_tabla_3) != SumaHombres() || getTotalTotal(ifForm.controls.preg_49_tabla_3)!= SumaTotal()">
+                                <div class="col-md-10 offset-md-2">
+                                    <div class="form-group">
+                                        <div class="alert alert-danger">
+                                            El total de la composición del personal contratado y en plantilla debería ser el mismo que el total de la edad del personal contratado y en plantilla, por favor, revíselos</div>
+                                    </div>
+                                </div>
+                            </div>
 
                         </fieldset>
                     </div>

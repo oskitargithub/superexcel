@@ -44,11 +44,11 @@
                             <legend><strong>Factores</strong></legend>
                             <div class="col-md-10 offset-md-2">
                                 <div class="row">
-                                    <div *ngFor="let datos of getPregunta('preg_87').controls; let i=index" [formGroupName]="i" class="col-md-6">
+                                    <div *ngFor="let datos of getPregunta('preg_87').controls; let i=index" [formGroupName]="i" class="col-md-10">
                                         <md-checkbox formControlName="valor1">
                                             {{ifForm.controls.preg_87.value[i].texto}}
                                         </md-checkbox>
-                                        <div class="col-md-6" *ngIf="i==5">
+                                        <div class="col-md-10" *ngIf="i==5">
                                             <input [readonly]="!ifForm.controls.preg_87.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
                                                 placeholder="Otros" />
                                         </div>
@@ -66,11 +66,11 @@
                             <legend><strong>Estrategias</strong></legend>
                             <div class="col-md-10 offset-md-2">
                                 <div class="row">
-                                    <div *ngFor="let datos of getPregunta('preg_88').controls; let i=index" [formGroupName]="i" class="col-md-6">
+                                    <div *ngFor="let datos of getPregunta('preg_88').controls; let i=index" [formGroupName]="i" class="col-md-10">
                                         <md-checkbox formControlName="valor1">
                                             {{ifForm.controls.preg_88.value[i].texto}}
                                         </md-checkbox>
-                                        <div class="col-md-6" *ngIf="i==5">
+                                        <div class="col-md-10" *ngIf="i==5">
                                             <input [readonly]="!ifForm.controls.preg_88.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
                                                 placeholder="Otros" />
                                         </div>
@@ -102,11 +102,11 @@
                             <legend><strong>Métodos</strong></legend>
                             <div class="col-md-10 offset-md-2">
                                 <div class="row">
-                                    <div *ngFor="let datos of getPregunta('preg_90').controls; let i=index" [formGroupName]="i" class="col-md-6">
+                                    <div *ngFor="let datos of getPregunta('preg_90').controls; let i=index" [formGroupName]="i" class="col-md-10">
                                         <md-checkbox formControlName="valor1">
                                             {{ifForm.controls.preg_90.value[i].texto}}
                                         </md-checkbox>
-                                        <div class="col-md-6" *ngIf="i==6">
+                                        <div class="col-md-10" *ngIf="i==6">
                                             <input [readonly]="!ifForm.controls.preg_90.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
                                                 placeholder="Otros" />
                                         </div>
@@ -135,7 +135,7 @@
                             <legend>Factores determinantes de la apertura de un proceso de selección y contratación</legend>
                             <div class="col-md-10 offset-md-2">
                                 <div class="row" formArrayName="preg_95">
-                                    <div *ngFor="let datos of getPregunta('preg_95').controls; let i=index" [formGroupName]="i" class="col-md-10">
+                                    <div *ngFor="let datos of getPregunta('preg_95').controls; let i=index" [formGroupName]="i" class="col-md-12">
                                         <md-checkbox formControlName="valor1">
                                             {{ifForm.controls.preg_95.value[i].texto}}
                                         </md-checkbox>
@@ -174,7 +174,8 @@
                                         <textarea rows="3" class="autogrow form-control transition-height" id="preg_97" formControlName="preg_97" autosize placeholder="Criterios aplicación a ciertos grupos"></textarea>
                                     </div>
                                 </div>
-                                <div class="row" style="margin-top:40px" formGroupName="data">
+                                <div  *ngIf="ifForm.controls.preg_95.value[1]!=undefined && ifForm.controls.preg_95.value[1].valor1" style="margin-top:40px">&nbsp;</div>
+                                <div class="row" formGroupName="data">
 
                                     <div class="col-md-8">
                                         <md-checkbox formControlName="preg_98">

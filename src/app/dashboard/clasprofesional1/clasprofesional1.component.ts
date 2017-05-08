@@ -34,7 +34,8 @@ export class ClasProfesional1Component implements OnInit {
     public totalSeccion: any;
     public valorbarra: number;
     public tipobarra: string;
-
+    public mujerestotal:number = 0;
+    public hombrestotal:number = 0;
     
 
     constructor(
@@ -103,6 +104,16 @@ export class ClasProfesional1Component implements OnInit {
         console.log("tipobarra:"+this.tipobarra);
     }
 
+    SumaMujeres(){
+        return this.mujerestotal*1;
+    }
+    SumaHombres(){
+        return this.hombrestotal*1;
+    }
+    SumaTotal(){
+        return ((this.mujerestotal*1) + (this.hombrestotal*1));
+    }
+
 
     getDatosModelo() {
         this.servicio.getDatosModelo()
@@ -140,7 +151,8 @@ export class ClasProfesional1Component implements OnInit {
                     this.setPregunta(response.preg_61_tabla_3, 'preg_61_tabla_3');
                     this.setPregunta(response.preg_62_tabla_3, 'preg_62_tabla_3');
                     this.setPregunta(response.preg_63_tabla_3, 'preg_63_tabla_3');
-
+                    this.mujerestotal = response.data.preg_46;
+                    this.hombrestotal = response.data.preg_47;
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
                     this.setBarraProgreso();
