@@ -17,6 +17,7 @@ export class OpcionesModel {
 export class OpcionesPieModel {
     chart: any;
     colors: any;
+    tooltip:any;
     title: any;   
     plotOptions: any;
     series: any;
@@ -48,6 +49,9 @@ export class FuncionesHighChartsT3Service {
                 text: texto1
             },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],            
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -88,6 +92,9 @@ export class FuncionesHighChartsT3Service {
                 text: titulo
             },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],                        
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -128,7 +135,9 @@ export class FuncionesHighChartsT3Service {
                 text: nombregrafica
             },            
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
-            plotOptions: {
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+            },plotOptions: {
                 pie: {
                     allowPointSelect: true,
                     cursor: 'pointer',
@@ -433,7 +442,9 @@ export class FuncionesHighChartsT3Service {
                 text: nombregrafica
             },            
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
-            plotOptions: {
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+            },plotOptions: {
                 pie: {
                     allowPointSelect: true,
                     cursor: 'pointer',
@@ -479,7 +490,9 @@ export class FuncionesHighChartsT3Service {
                 text: nombregrafica
             },            
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
-            plotOptions: {
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+            },plotOptions: {
                 pie: {
                     allowPointSelect: true,
                     cursor: 'pointer',
@@ -753,7 +766,9 @@ export class FuncionesHighChartsT3Service {
                 text: nombregrafica + " "+subnombregrafica
             },            
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
-            plotOptions: {
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+            },plotOptions: {
                 pie: {
                     allowPointSelect: true,
                     cursor: 'pointer',
@@ -793,6 +808,9 @@ export class FuncionesHighChartsT3Service {
             title: {
                 text: nombregrafica + " "+subnombregrafica
             },            
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+            },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             plotOptions: {
                 pie: {
@@ -835,6 +853,9 @@ export class FuncionesHighChartsT3Service {
                 text: nombregrafica + " "+subnombregrafica
             },            
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
@@ -876,6 +897,9 @@ export class FuncionesHighChartsT3Service {
                 text: nombregrafica + " "+subnombregrafica
             },            
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+            },
             plotOptions: {
                 pie: {
                     allowPointSelect: true,
