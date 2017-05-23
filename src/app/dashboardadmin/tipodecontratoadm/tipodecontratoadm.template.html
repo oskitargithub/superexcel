@@ -15,7 +15,7 @@
                 <section class="widget" widget>
                     <div class="widget-body">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-10">
                                 <fieldset>
                                     <legend><strong>Tipo de relación contractual</strong></legend>
                                     <table class="table table-bordered table-sm">
@@ -50,7 +50,7 @@
                                     </table>
                                 </fieldset>
                             </div>
-                            <div class="col-md-5 offset-md-1">
+                            <div class="col-md-10">
                                 <section class="widget" widget>
                                     <header>
                                         <h5>
@@ -132,7 +132,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Tipo de contrato temporal  de la plantilla personas contratadas a término definido</h5>
                                 </header>
@@ -212,7 +212,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Comparativa según el tipo de jornada</h5>
                                 </header>
@@ -221,7 +221,7 @@
                                 </div>
                             </div>                            
                        
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Comparativa por tipo de contrato según tipo de Jornada (Proporcionado)</h5>
                                 </header>
@@ -285,33 +285,33 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of modelo.preg_67_tabla_3; let i=index">
+                                            <tr *ngFor="let item of modelo.preg_69_tabla_3; let i=index">
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
-                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_67_tabla_3) | percent:'1.0-0'}}</td>
-                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_67_tabla_3)}}</td>
-                                                 <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_67_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_69_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_69_tabla_3)}}</td>
+                                                 <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_69_tabla_3) | percent:'1.0-0'}}</td>
 
                                                 <td class="text-md-center">{{item.hombres}}</td>
-                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_67_tabla_3) | percent:'1.0-0'}}</td>
-                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_67_tabla_3)}}</td>
-                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_67_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_69_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_69_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_69_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
-                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_67_tabla_3))}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_69_tabla_3))}}</td>
                                                
                                                 
                                             </tr>
                                             <tr>
                                                 <th class="text-md-center" scope="row">Total</th>
-                                                <th class="text-md-center" scope="row">{{funciones.getTotalMujeres(modelo.preg_67_tabla_3)}}</th>
-                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_67_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">{{funciones.getTotalMujeres(modelo.preg_69_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_69_tabla_3) | percent:'1.0-0'}}</th>
                                                 <th class="text-md-center" scope="row"></th>
                                                 <th class="text-md-center" scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{funciones.getTotalHombres(modelo.preg_67_tabla_3)}}</th>
-                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_67_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">{{funciones.getTotalHombres(modelo.preg_69_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_69_tabla_3) | percent:'1.0-0'}}</th>
                                                 <th class="text-md-center" scope="row"></th>
                                                 <th class="text-md-center" scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{funciones.getTotalHombresMujeres(modelo.preg_67_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{funciones.getTotalHombresMujeres(modelo.preg_69_tabla_3)}}</th>
                                                 <th class="text-md-center" scope="row"></th>
                                             </tr>
                                         </tbody>
@@ -493,33 +493,33 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of modelo.preg_69_tabla_3; let i=index">
+                                            <tr *ngFor="let item of modelo.preg_67_tabla_3; let i=index">
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
-                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_69_tabla_3) | percent:'1.0-0'}}</td>
-                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_69_tabla_3)}}</td>
-                                                 <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_69_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_67_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_67_tabla_3)}}</td>
+                                                 <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_67_tabla_3) | percent:'1.0-0'}}</td>
 
                                                 <td class="text-md-center">{{item.hombres}}</td>
-                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_69_tabla_3) | percent:'1.0-0'}}</td>
-                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_69_tabla_3)}}</td>
-                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_69_tabla_3) | percent:'1.0-0'}}</td>
-                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_69_tabla_3))}}
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_67_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_67_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_67_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_67_tabla_3))}}
                                                 </td>
                                                
                                                 
                                             </tr>
                                             <tr>
                                                 <th class="text-md-center" scope="row">Total</th>
-                                                <th class="text-md-center" scope="row">{{funciones.getTotalMujeres(modelo.preg_69_tabla_3)}}</th>
-                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_69_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">{{funciones.getTotalMujeres(modelo.preg_67_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_67_tabla_3) | percent:'1.0-0'}}</th>
                                                 <th class="text-md-center" scope="row"></th>
                                                 <th class="text-md-center" scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{funciones.getTotalHombres(modelo.preg_69_tabla_3)}}</th>
-                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_69_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">{{funciones.getTotalHombres(modelo.preg_67_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_67_tabla_3) | percent:'1.0-0'}}</th>
                                                 <th class="text-md-center" scope="row"></th>
                                                 <th class="text-md-center" scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{funciones.getTotalHombresMujeres(modelo.preg_69_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{funciones.getTotalHombresMujeres(modelo.preg_67_tabla_3)}}</th>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -527,7 +527,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Comparativo por número de turnos</h5>
                                 </header>
@@ -535,7 +535,7 @@
                                     <chart [options]="chart8options"></chart> 
                                 </div>
                             </div>                            
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Comparativo por número de turnos (Proporcionado)</h5>
                                 </header>
@@ -544,7 +544,26 @@
                                 </div>
                             </div>     
                                                 
-                        </div>                        
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Comparativo Turnos Mujeres </h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart7pieoptions"></chart> 
+                                </div>
+                            </div>                            
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Comparativo Turnos Hombres</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart8pieoptions"></chart> 
+                                </div>
+                            </div>     
+                                                
+                        </div>                             
                     </div>
                 </section>
             </div>

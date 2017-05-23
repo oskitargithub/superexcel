@@ -120,14 +120,14 @@ export class ClasProfesionalAdmComponent implements OnInit {
   }
 
   asignaDatosGraficas() {
+    let alto = 800;
     /** Asignamos los datos para las gráficas */    
     this.chart1pieoptions = this.funccioneshct3.GraficaPiePlantilla(this.modelo, "Distribución de la plantilla por sexo","");
+    
     this.chart1options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales', '',this.modelo.preg_48_tabla_3, "total");
     this.chart2options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales', 'Proporcionada',this.modelo.preg_48_tabla_3);
     this.chart3options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Puestos de Jefatura', '',this.modelo.preg_54_tabla_3, "total");
     this.chart4options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Puestos de Jefatura', 'Proporcionada',this.modelo.preg_54_tabla_3);
-    console.log("tabla55");
-    console.log(this.modelo.preg_55_tabla_3);
     this.chart5options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Puestos de Coordinación / Supervisión', '',this.modelo.preg_55_tabla_3, "total");
     this.chart6options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Puestos de Coordinación / Supervisión', 'Proporcionada',this.modelo.preg_55_tabla_3);
     this.chart7options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Organos Rectores', '',this.modelo.preg_56_tabla_3, "total");

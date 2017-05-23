@@ -1072,7 +1072,7 @@
                                         <div class="col-md-2 offset-md-2">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input class="form-control" [readonly]="i<4" formControlName="texto" tooltip="Denominación" placeholder="Denominación" />
+                                                    <input class="form-control" formControlName="texto" tooltip="Denominación" placeholder="Denominación" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1103,7 +1103,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span *ngIf="i > 3">
+                                        <span>
                                         <button type="button"(click)="removeFila(ifForm.controls.preg_62_tabla_3, i)" class="btn btn-danger btn-xs mb-xs">borra</button>
                                         </span>
 

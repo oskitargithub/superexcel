@@ -118,6 +118,8 @@ export class FormacionAdmComponent implements OnInit {
     }
 
     asignaDatosGraficas() {
+        console.log("preg_174_tabla_3");
+        console.log(this.modelo.preg_174_tabla_3);
         this.chart1options = this.funccioneshct3.GraficaCompuesta1('Personas beneficiadas por tipo de formación', '', this.modelo.preg_199_tabla_3, "fila");
         this.chart2options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Personas beneficiadas por tipo de formación', 'Proporcionada', this.modelo.preg_199_tabla_3);
 

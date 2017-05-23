@@ -105,9 +105,11 @@ export class ClasProfesional1Component implements OnInit {
     }
 
     SumaMujeres(){
+        this.mujerestotal = (<FormArray>this.ifForm.controls['data']).controls["preg_46"].value;
         return this.mujerestotal*1;
     }
     SumaHombres(){
+        this.hombrestotal = (<FormArray>this.ifForm.controls['data']).controls["preg_47"].value;
         return this.hombrestotal*1;
     }
     SumaTotal(){

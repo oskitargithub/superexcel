@@ -17,8 +17,8 @@ export class OpcionesModel {
 export class OpcionesPieModel {
     chart: any;
     colors: any;
-    tooltip:any;
-    title: any;   
+    tooltip: any;
+    title: any;
     plotOptions: any;
     series: any;
 }
@@ -34,7 +34,7 @@ export class FuncionesHighChartsT3Service {
     }
 
 
-    GraficaPiePlantilla(modelo: any, texto1="Distribución de la plantilla por sexo", texto2="Acoso Sexual"): Object {
+    GraficaPiePlantilla(modelo: any, texto1 = "Distribución de la plantilla por sexo", texto2 = "Acoso Sexual"): Object {
         let misopciones: OpcionesPieModel;
         misopciones = {
             chart: {
@@ -48,7 +48,7 @@ export class FuncionesHighChartsT3Service {
             title: {
                 text: texto1
             },
-            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],            
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
             },
@@ -71,13 +71,13 @@ export class FuncionesHighChartsT3Service {
         datos.push({ y: this.getMujeresPlantillaPorcentaje(modelo), name: 'Mujeres', numero: this.getMujeresPlantilla(modelo) });
         datos.push({ y: this.getHombresPlantillaPorcentaje(modelo), name: 'Hombres', numero: this.getHombresPlantilla(modelo) });
         misopciones.series.push({ type: 'pie', name: texto2, data: datos });
-        console.log("misopciones");
-        console.log(misopciones);
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
 
 
-    GraficaPieHM(titulo:string,valor1:any,valor2:any): Object {
+    GraficaPieHM(titulo: string, valor1: any, valor2: any): Object {
         let misopciones: OpcionesPieModel;
         misopciones = {
             chart: {
@@ -91,7 +91,7 @@ export class FuncionesHighChartsT3Service {
             title: {
                 text: titulo
             },
-            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],                        
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
             },
@@ -111,11 +111,11 @@ export class FuncionesHighChartsT3Service {
 
 
         let datos = [];
-        datos.push({ y: valor1*1, name: 'Mujeres', numero:valor1*1 });
-        datos.push({ y: valor2*1, name: 'Hombres', numero:valor2*1 });
+        datos.push({ y: valor1 * 1, name: 'Mujeres', numero: valor1 * 1 });
+        datos.push({ y: valor2 * 1, name: 'Hombres', numero: valor2 * 1 });
         misopciones.series.push({ type: 'pie', name: titulo, data: datos });
-        console.log("misopciones");
-        console.log(misopciones);
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
 
@@ -133,11 +133,11 @@ export class FuncionesHighChartsT3Service {
             },
             title: {
                 text: nombregrafica
-            },            
+            },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
-            },plotOptions: {
+            }, plotOptions: {
                 pie: {
                     allowPointSelect: true,
                     cursor: 'pointer',
@@ -172,16 +172,36 @@ export class FuncionesHighChartsT3Service {
         datos.push({ y: this.getSumaMujeresDelTotal(tabla), name: 'Mujeres', numero: this.getTotalMujeres(tabla) });
         datos.push({ y: this.getSumaHombresDelTotal(tabla), name: 'Hombres', numero: this.getTotalHombres(tabla) });
         misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
-        console.log("misopciones");
-        console.log(misopciones);
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
 
     GraficaSimple(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[]): Object {
+        let ancho = 800;
+        let alto = 1200;
+        if (tabla.length < 4) {
+            alto = 600;
+            ancho = 400;
+        }
+        else if (tabla.length < 12) {
+            alto = 800;
+            ancho = 400;
+        }
+        else if (tabla.length < 24) {
+            alto = 1200;
+            ancho = 400;
+        }
+        else {
+            ancho = 800;
+            alto = (tabla.length / 2) * 100;
+        }
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
-                type: 'bar'
+                type: 'bar',
+                height: alto,
+                width: ancho
             },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             title: {
@@ -258,17 +278,39 @@ export class FuncionesHighChartsT3Service {
         });
         misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
         misopciones.series.push({ name: 'Hombres', data: datoshombres });
-        console.log("misopciones");
-        console.log(misopciones);
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
 
 
     GraficaCompuesta1(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[], tipo = "fila"): Object {
+        let ancho = 800;
+        let alto = 1200;
+        if (tabla.length < 4) {
+            alto = 600;
+            ancho = 400;
+        }
+        else if (tabla.length < 12) {
+            alto = 800;
+            ancho = 400;
+        }
+        else if (tabla.length < 24) {
+            alto = 1200;
+            ancho = 400;
+        }
+        else {
+            ancho = 800;
+            alto = (tabla.length / 2) * 100;
+        }
+
+
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
-                type: 'bar'
+                type: 'bar',
+                height: alto,
+                width: ancho
             },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             title: {
@@ -344,18 +386,40 @@ export class FuncionesHighChartsT3Service {
         });
         misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
         misopciones.series.push({ name: 'Hombres', data: datoshombres });
-        console.log("misopciones");
-        console.log(misopciones);
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
 
 
 
     GraficaCompuesta1Proporcionada(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[]): Object {
+        let ancho = 800;
+        let alto = 1200;
+        if (tabla.length < 4) {
+            alto = 600;
+            ancho = 400;
+        }
+        else if (tabla.length < 12) {
+            alto = 800;
+            ancho = 400;
+        }
+        else if (tabla.length < 24) {
+            alto = 1200;
+            ancho = 400;
+        }
+        else {
+            ancho = 800;
+            alto = (tabla.length / 2) * 100;
+        }
+
+
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
-                type: 'bar'
+                type: 'bar',
+                height: alto,
+                width: ancho
             },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             title: {
@@ -387,7 +451,7 @@ export class FuncionesHighChartsT3Service {
                 bar: {
                     dataLabels: {
                         enabled: true,
-                        format: '{y} / {point.miporc:.0f} %',
+                        format: '{point.miporc:.0f} %',
                         valueDecimals: 2
                     }
                 }
@@ -414,20 +478,20 @@ export class FuncionesHighChartsT3Service {
             if (elemento.hombres != 0 || elemento.mujeres != 0) {
                 misopciones.xAxis.categories.push(elemento.texto);
                 //mujeres
-                datosmujeres.push({ y: this.getMujeresAbs(elemento, tabla), miporc: this.getPorcMujeresAbs(elemento, tabla) });
+                datosmujeres.push({ y: this.getPorcMujeresAbs(elemento, tabla), miporc: this.getPorcMujeresAbs(elemento, tabla) });
                 //hombres
-                datoshombres.push({ y: this.getHombresAbs(elemento, tabla), miporc: this.getPorcHombresAbs(elemento, tabla) });
+                datoshombres.push({ y: this.getPorcHombresAbs(elemento, tabla), miporc: this.getPorcHombresAbs(elemento, tabla) });
             }
         });
-        misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
-        misopciones.series.push({ name: 'Hombres', data: datoshombres });
-        console.log("misopciones");
-        console.log(misopciones);
+        misopciones.series.push({ name: 'Mujeres %', data: datosmujeres });
+        misopciones.series.push({ name: 'Hombres %', data: datoshombres });
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
 
 
-    GraficaPieCompuesta1(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[],tipo="fila"): Object {
+    GraficaPieCompuesta1(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[], tipo = "fila"): Object {
         let misopciones: OpcionesPieModel;
         misopciones = {
             chart: {
@@ -440,11 +504,11 @@ export class FuncionesHighChartsT3Service {
             },
             title: {
                 text: nombregrafica
-            },            
+            },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
-            },plotOptions: {
+            }, plotOptions: {
                 pie: {
                     allowPointSelect: true,
                     cursor: 'pointer',
@@ -462,17 +526,17 @@ export class FuncionesHighChartsT3Service {
         let datos = [];
         tabla.forEach(elemento => {
             if (elemento.mujeres != 0) {
-                if(tipo=="fila"){
+                if (tipo == "fila") {
                     datos.push({ y: elemento.mujeres, name: elemento.texto, numero: this.getMujeresDeFila(elemento, tabla) });
                 }
-                else if(tipo == "total"){
+                else if (tipo == "total") {
                     datos.push({ y: elemento.mujeres, name: elemento.texto, numero: Math.round(this.getMujeresDelTotal(elemento, tabla) * 100) });
                 }
             }
         });
         misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
-        console.log("misopciones");
-        console.log(misopciones);
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
     GraficaPieCompuesta2(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[], tipo = "fila"): Object {
@@ -488,11 +552,11 @@ export class FuncionesHighChartsT3Service {
             },
             title: {
                 text: nombregrafica
-            },            
+            },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
-            },plotOptions: {
+            }, plotOptions: {
                 pie: {
                     allowPointSelect: true,
                     cursor: 'pointer',
@@ -514,22 +578,43 @@ export class FuncionesHighChartsT3Service {
                     datos.push({ y: elemento.hombres, name: elemento.texto, numero: this.getHombresDeFila(elemento, tabla) });
                 }
                 else if (tipo == "total") {
-                    datos.push({ y: elemento.hombres, name: elemento.texto, numero: Math.round(this.getHombresDelTotal(elemento, tabla)*100) });
+                    datos.push({ y: elemento.hombres, name: elemento.texto, numero: Math.round(this.getHombresDelTotal(elemento, tabla) * 100) });
                 }
             }
         });
         misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
-        console.log("misopciones");
-        console.log(misopciones);
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
 
 
     GraficaCompuestat5(nombregrafica: string, subnombregrafica: string, tabla: Tabla5Model[]): Object {
+        let ancho = 800;
+        let alto = 1200;
+        if (tabla.length < 4) {
+            alto = 600;
+            ancho = 400;
+        }
+        else if (tabla.length < 12) {
+            alto = 800;
+            ancho = 400;
+        }
+        else if (tabla.length < 24) {
+            alto = 1200;
+            ancho = 400;
+        }
+        else {
+            ancho = 800;
+            alto = (tabla.length / 2) * 100;
+        }
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
-                type: 'bar'
+                type: 'bar',
+                height: alto,
+                width: ancho
+
             },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             title: {
@@ -563,7 +648,7 @@ export class FuncionesHighChartsT3Service {
                         enabled: true,
                         format: '{y} / {point.miporc:.2f} %',
                         valueDecimals: 2,
-                        crop:false
+                        crop: false
                     }
                 }
             },
@@ -596,16 +681,36 @@ export class FuncionesHighChartsT3Service {
         });
         misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
         misopciones.series.push({ name: 'Hombres', data: datoshombres });
-        console.log("misopciones");
-        console.log(misopciones);
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
 
     GraficaCompuestat5_2(nombregrafica: string, subnombregrafica: string, tabla: Tabla5Model[]): Object {
+        let ancho = 800;
+        let alto = 1200;
+        if (tabla.length < 4) {
+            alto = 600;
+            ancho = 400;
+        }
+        else if (tabla.length < 12) {
+            alto = 800;
+            ancho = 400;
+        }
+        else if (tabla.length < 24) {
+            alto = 1200;
+            ancho = 400;
+        }
+        else {
+            ancho = 800;
+            alto = (tabla.length / 2) * 100;
+        }
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
-                type: 'bar'
+                type: 'bar',
+                height: alto,
+                width: ancho
             },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             title: {
@@ -671,16 +776,36 @@ export class FuncionesHighChartsT3Service {
         });
         misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
         misopciones.series.push({ name: 'Hombres', data: datoshombres });
-        console.log("misopciones");
-        console.log(misopciones);
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
 
     GraficaCompuestat5Proporcionada(nombregrafica: string, subnombregrafica: string, tabla: Tabla5Model[]): Object {
+        let ancho = 800;
+        let alto = 1200;
+        if (tabla.length < 4) {
+            alto = 600;
+            ancho = 400;
+        }
+        else if (tabla.length < 12) {
+            alto = 800;
+            ancho = 400;
+        }
+        else if (tabla.length < 24) {
+            alto = 1200;
+            ancho = 400;
+        }
+        else {
+            ancho = 800;
+            alto = (tabla.length / 2) * 100;
+        }
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
-                type: 'bar'
+                type: 'bar',
+                height: alto,
+                width: ancho
             },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             title: {
@@ -712,7 +837,7 @@ export class FuncionesHighChartsT3Service {
                 bar: {
                     dataLabels: {
                         enabled: true,
-                        format: '{y} / {point.miporc:.0f} %',
+                        format: '{point.miporc:.0f} %',
                         valueDecimals: 2
                     }
                 }
@@ -739,15 +864,15 @@ export class FuncionesHighChartsT3Service {
             if (elemento.hombres != 0 || elemento.mujeres != 0) {
                 misopciones.xAxis.categories.push(elemento.texto);
                 //mujeres
-                datosmujeres.push({ y: this.getMujeresAbs(elemento, tabla), miporc: this.getPorcMujeresAbs1(elemento, tabla) });
+                datosmujeres.push({ y: this.getPorcMujeresAbs1(elemento, tabla), miporc: this.getPorcMujeresAbs1(elemento, tabla) });
                 //hombres
-                datoshombres.push({ y: this.getHombresAbs(elemento, tabla), miporc: this.getPorcHombresAbs1(elemento, tabla) });
+                datoshombres.push({ y: this.getPorcHombresAbs1(elemento, tabla), miporc: this.getPorcHombresAbs1(elemento, tabla) });
             }
         });
-        misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
-        misopciones.series.push({ name: 'Hombres', data: datoshombres });
-        console.log("misopciones");
-        console.log(misopciones);
+        misopciones.series.push({ name: 'Mujeres %', data: datosmujeres });
+        misopciones.series.push({ name: 'Hombres %', data: datoshombres });
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
 
@@ -763,12 +888,12 @@ export class FuncionesHighChartsT3Service {
                 }
             },
             title: {
-                text: nombregrafica + " "+subnombregrafica
-            },            
+                text: nombregrafica + " " + subnombregrafica
+            },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
-            },plotOptions: {
+            }, plotOptions: {
                 pie: {
                     allowPointSelect: true,
                     cursor: 'pointer',
@@ -785,12 +910,12 @@ export class FuncionesHighChartsT3Service {
         tabla.forEach(elemento => {
             if (elemento.mujeres != 0) {
                 //mujeres
-                datos.push({name:elemento.texto,  y: elemento.mujeres,numero:elemento.mujeres, miporc: this.getPorcMujeresAbs1(elemento, tabla) });
+                datos.push({ name: elemento.texto, y: elemento.mujeres, numero: elemento.mujeres, miporc: this.getPorcMujeresAbs1(elemento, tabla) });
             }
-        });        
+        });
         misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
-        console.log("misopciones");
-        console.log(misopciones);
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
 
@@ -806,8 +931,8 @@ export class FuncionesHighChartsT3Service {
                 }
             },
             title: {
-                text: nombregrafica + " "+subnombregrafica
-            },            
+                text: nombregrafica + " " + subnombregrafica
+            },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
             },
@@ -829,12 +954,12 @@ export class FuncionesHighChartsT3Service {
         tabla.forEach(elemento => {
             if (elemento.hombres != 0) {
                 //mujeres
-                datos.push({name:elemento.texto,  y: elemento.hombres,numero:elemento.hombres, miporc: this.getPorcHombresAbs1(elemento, tabla) });
+                datos.push({ name: elemento.texto, y: elemento.hombres, numero: elemento.hombres, miporc: this.getPorcHombresAbs1(elemento, tabla) });
             }
-        });        
+        });
         misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
-        console.log("misopciones");
-        console.log(misopciones);
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
 
@@ -850,8 +975,8 @@ export class FuncionesHighChartsT3Service {
                 }
             },
             title: {
-                text: nombregrafica + " "+subnombregrafica
-            },            
+                text: nombregrafica + " " + subnombregrafica
+            },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
@@ -873,12 +998,12 @@ export class FuncionesHighChartsT3Service {
         tabla.forEach(elemento => {
             if (elemento.mujeres2 != 0) {
                 //mujeres
-                datos.push({name:elemento.texto,  y: elemento.mujeres2,numero:elemento.mujeres2, miporc: this.getPorcMujeresAbs2(elemento, tabla) });
+                datos.push({ name: elemento.texto, y: elemento.mujeres2, numero: elemento.mujeres2, miporc: this.getPorcMujeresAbs2(elemento, tabla) });
             }
-        });        
+        });
         misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
-        console.log("misopciones");
-        console.log(misopciones);
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
 
@@ -894,8 +1019,8 @@ export class FuncionesHighChartsT3Service {
                 }
             },
             title: {
-                text: nombregrafica + " "+subnombregrafica
-            },            
+                text: nombregrafica + " " + subnombregrafica
+            },
             colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
@@ -917,12 +1042,12 @@ export class FuncionesHighChartsT3Service {
         tabla.forEach(elemento => {
             if (elemento.hombres2 != 0) {
                 //mujeres
-                datos.push({name:elemento.texto,  y: elemento.hombres2,numero:elemento.hombres2, miporc: this.getPorcHombresAbs2(elemento, tabla) });
+                datos.push({ name: elemento.texto, y: elemento.hombres2, numero: elemento.hombres2, miporc: this.getPorcHombresAbs2(elemento, tabla) });
             }
-        });        
+        });
         misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
-        console.log("misopciones");
-        console.log(misopciones);
+        //console.log("misopciones");
+        //console.log(misopciones);
         return misopciones;
     }
 

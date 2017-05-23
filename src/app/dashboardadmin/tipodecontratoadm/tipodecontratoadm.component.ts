@@ -49,6 +49,8 @@ export class TipoDeContratoAdmComponent implements OnInit {
   public chart4pieoptions: Object;
   public chart5pieoptions: Object;
   public chart6pieoptions: Object;
+  public chart7pieoptions: Object;
+  public chart8pieoptions: Object;
   
 
   constructor(
@@ -140,21 +142,24 @@ export class TipoDeContratoAdmComponent implements OnInit {
     this.chart3options = this.funccioneshct3.GraficaCompuesta1('Comparativa según el tipo de jornada', '', this.modelo.preg_66_tabla_3, "fila");
     this.chart4options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Comparativa según el tipo de jornada', 'Proporcionado', this.modelo.preg_66_tabla_3);
 
-    this.chart5options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla por antigüedad Comparativa hombres y mujeres', '', this.modelo.preg_67_tabla_3, "fila");
-    this.chart6options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla por antigüedad Comparativa hombres y mujeres', 'Proporcionado', this.modelo.preg_67_tabla_3);
+    this.chart5options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla por antigüedad Comparativa hombres y mujeres', '', this.modelo.preg_69_tabla_3, "fila");
+    this.chart6options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla por antigüedad Comparativa hombres y mujeres', 'Proporcionado', this.modelo.preg_69_tabla_3);
 
     this.chart7options = this.funccioneshct3.GraficaCompuesta1('Comparativo Jornada laboral', '', this.modelo.preg_68_tabla_3, "fila");
 
-    this.chart8options = this.funccioneshct3.GraficaCompuesta1('Comparativo por número de turnos', '', this.modelo.preg_69_tabla_3, "fila");
-    this.chart9options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Comparativo por número de turnos', 'Proporcionado', this.modelo.preg_69_tabla_3);
+    this.chart8options = this.funccioneshct3.GraficaCompuesta1('Comparativo por número de turnos', '', this.modelo.preg_67_tabla_3, "fila");
+    this.chart9options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Comparativo por número de turnos', 'Proporcionado', this.modelo.preg_67_tabla_3);
 
-    this.chart1pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Tipo de contrato según tipo de Jornada","Mujeres",this.modelo.preg_66_tabla_3);
-    this.chart2pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Tipo de contrato según tipo de Jornada","Hombres",this.modelo.preg_66_tabla_3);
+    this.chart1pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Tipo de contrato según tipo de Jornada","Mujeres",this.modelo.preg_66_tabla_3,"total");
+    this.chart2pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Tipo de contrato según tipo de Jornada","Hombres",this.modelo.preg_66_tabla_3, "total");
 
-    this.chart3pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Comparativo de Antigüedad","Mujeres",this.modelo.preg_67_tabla_3);
-    this.chart4pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Comparativo de Antigüedad","Hombres",this.modelo.preg_67_tabla_3);
+    this.chart3pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Comparativo de Antigüedad","Mujeres",this.modelo.preg_69_tabla_3,"total");
+    this.chart4pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Comparativo de Antigüedad","Hombres",this.modelo.preg_69_tabla_3,"total");
 
-    this.chart5pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Horas dedicadas al Trabajo","Mujeres",this.modelo.preg_68_tabla_3);
-    this.chart6pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Horas dedicadas al Trabajo","Hombres",this.modelo.preg_68_tabla_3);
+    this.chart5pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Horas dedicadas al Trabajo","Mujeres",this.modelo.preg_68_tabla_3,"total");
+    this.chart6pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Horas dedicadas al Trabajo","Hombres",this.modelo.preg_68_tabla_3,"total");
+
+    this.chart7pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Comparativo Turnos","Mujeres",this.modelo.preg_67_tabla_3,"total");
+    this.chart8pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Comparativo Turnos","Hombres",this.modelo.preg_67_tabla_3,"total");
   }
 }

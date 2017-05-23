@@ -210,6 +210,8 @@ export class RetribucionesAdmComponent implements OnInit {
     /**
      * E
      */
+    console.log("tabla preg_76_tabla_5");
+    console.log(this.modelo.preg_76_tabla_5)
     this.chart13options = this.funccioneshct3.GraficaCompuestat5('Retribuciones salariales Comparativa por sexo ', 'Grupo E - Sin compensaciones', this.modelo.preg_76_tabla_5);
     this.chart14options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones salariales Comparativa por sexo ', 'Grupo E - Con compensaciones', this.modelo.preg_76_tabla_5);
     this.chart25pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones sin compensaciones extrasalariales","Grupo E - Mujeres",this.modelo.preg_76_tabla_5);

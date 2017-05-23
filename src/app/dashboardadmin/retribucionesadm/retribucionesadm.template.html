@@ -186,9 +186,9 @@
                                     <table class="table table-bordered table-sm">
                                         <thead>
                                             <tr>
-                                                <th></th>
+                                                <th>&nbsp;</th>
                                                 <th class="text-md-center" colspan="11">Sin compensaciones extrasalariales</th>
-                                                <th></th>
+                                                <th>&nbsp;</th>
                                                 <th class="text-md-center" colspan="11">Con compensaciones extrasalariales</th>
                                             </tr>
                                             <tr>
@@ -222,7 +222,7 @@
                                         <tbody>
                                             <!-- Grupo A1 -->
                                             <tr *ngFor="let item of modelo.preg_71_tabla_5; let i=index">
-                                                <td *ngIf="i==0" rowspan="7" class="text-md-center align-middle">Grupo A Subgrupo A1</td>
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Grupo A Subgrupo A1</td>
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
                                                 <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_71_tabla_5) | percent:'1.0-0'}}</td>
@@ -254,7 +254,7 @@
                                             </tr>
                                             <!-- Grupo A2 -->
                                             <tr *ngFor="let item of modelo.preg_72_tabla_5; let i=index">
-                                                <td *ngIf="i==0" rowspan="7" class="text-md-center align-middle">Grupo A Subgrupo A2</td>
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Grupo A Subgrupo A2</td>
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
                                                 <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_72_tabla_5) | percent:'1.0-0'}}</td>
@@ -281,7 +281,7 @@
                                             </tr>
                                             <!-- Grupo B -->
                                             <tr *ngFor="let item of modelo.preg_73_tabla_5; let i=index">
-                                                <td *ngIf="i==0" rowspan="7" class="text-md-center align-middle">Grupo B</td>
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Grupo B</td>
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
                                                 <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_73_tabla_5) | percent:'1.0-0'}}</td>
@@ -308,7 +308,7 @@
                                             </tr>
                                             <!-- Grupo C1 -->
                                             <tr *ngFor="let item of modelo.preg_74_tabla_5; let i=index">
-                                                <td *ngIf="i==0" rowspan="7" class="text-md-center align-middle">Grupo C Subgrupo C1</td>
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Grupo C Subgrupo C1</td>
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
                                                 <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_74_tabla_5) | percent:'1.0-0'}}</td>
@@ -335,7 +335,7 @@
                                             </tr>
                                             <!-- Grupo C2 -->
                                             <tr *ngFor="let item of modelo.preg_75_tabla_5; let i=index">
-                                                <td *ngIf="i==0" rowspan="7" class="text-md-center align-middle">Grupo C Subgrupo C2</td>
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Grupo C Subgrupo C2</td>
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
                                                 <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_75_tabla_5) | percent:'1.0-0'}}</td>
@@ -362,7 +362,7 @@
                                             </tr>
                                             <!-- Grupo E -->
                                             <tr *ngFor="let item of modelo.preg_76_tabla_5; let i=index">
-                                                <td *ngIf="i==0" rowspan="7" class="text-md-center align-middle">Grupo E</td>
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Grupo E</td>
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
                                                 <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_76_tabla_5) | percent:'1.0-0'}}</td>
@@ -458,7 +458,7 @@
 
                         <!-- Gráficas A1-->
                          <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Retribuciones salariales Comparativa por sexo - Grupo A1  (Sin compensaciones)</h5>
                                 </header>
@@ -467,7 +467,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Retribuciones salariales Comparativa por sexo - Grupo A1 (Con compensaciones)</h5>
                                 </header>
@@ -477,7 +477,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual sin compensaciones  Mujeres Grupo A1</h5>
                                 </header>
@@ -485,7 +485,7 @@
                                    <chart [options]="chart5pieoptions"></chart>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual sin compensaciones Hombres Grupo A1</h5>
                                 </header>
@@ -495,7 +495,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual con compensaciones  Mujeres Grupo A1</h5>
                                 </header>
@@ -503,7 +503,7 @@
                                    <chart [options]="chart7pieoptions"></chart>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual con compensaciones  Hombres Grupo A1</h5>
                                 </header>
@@ -515,7 +515,7 @@
 
                         <!-- Gráficas A2-->
                          <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Retribuciones salariales Comparativa por sexo - Grupo A2  (Sin compensaciones)</h5>
                                 </header>
@@ -524,7 +524,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Retribuciones salariales Comparativa por sexo - Grupo A2 (Con compensaciones)</h5>
                                 </header>
@@ -534,7 +534,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual sin compensaciones  Mujeres Grupo A2</h5>
                                 </header>
@@ -542,7 +542,7 @@
                                    <chart [options]="chart9pieoptions"></chart>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual sin compensaciones Hombres Grupo A2</h5>
                                 </header>
@@ -552,7 +552,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual con compensaciones  Mujeres Grupo A2</h5>
                                 </header>
@@ -560,7 +560,7 @@
                                    <chart [options]="chart11pieoptions"></chart>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual con compensaciones  Hombres Grupo A2</h5>
                                 </header>
@@ -572,7 +572,7 @@
 
                         <!-- Gráficas B-->
                          <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Retribuciones salariales Comparativa por sexo - Grupo B  (Sin compensaciones)</h5>
                                 </header>
@@ -581,7 +581,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Retribuciones salariales Comparativa por sexo - Grupo B (Con compensaciones)</h5>
                                 </header>
@@ -591,7 +591,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual sin compensaciones  Mujeres Grupo B</h5>
                                 </header>
@@ -599,7 +599,7 @@
                                    <chart [options]="chart13pieoptions"></chart>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual sin compensaciones Hombres Grupo B</h5>
                                 </header>
@@ -609,7 +609,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual con compensaciones  Mujeres Grupo B</h5>
                                 </header>
@@ -617,7 +617,7 @@
                                    <chart [options]="chart15pieoptions"></chart>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual con compensaciones  Hombres Grupo B</h5>
                                 </header>
@@ -629,7 +629,7 @@
                        
                         <!-- Gráficas C1-->
                          <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Retribuciones salariales Comparativa por sexo - Grupo C1  (Sin compensaciones)</h5>
                                 </header>
@@ -638,7 +638,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Retribuciones salariales Comparativa por sexo - Grupo C1 (Con compensaciones)</h5>
                                 </header>
@@ -648,7 +648,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual sin compensaciones  Mujeres Grupo C1</h5>
                                 </header>
@@ -656,7 +656,7 @@
                                    <chart [options]="chart17pieoptions"></chart>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual sin compensaciones Hombres Grupo C1</h5>
                                 </header>
@@ -666,7 +666,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual con compensaciones  Mujeres Grupo C1</h5>
                                 </header>
@@ -674,7 +674,7 @@
                                    <chart [options]="chart19pieoptions"></chart>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual con compensaciones  Hombres Grupo C1</h5>
                                 </header>
@@ -686,7 +686,7 @@
 
                         <!-- Gráficas C2-->
                          <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Retribuciones salariales Comparativa por sexo - Grupo C2  (Sin compensaciones)</h5>
                                 </header>
@@ -695,7 +695,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Retribuciones salariales Comparativa por sexo - Grupo C2 (Con compensaciones)</h5>
                                 </header>
@@ -705,7 +705,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual sin compensaciones  Mujeres Grupo C2</h5>
                                 </header>
@@ -713,7 +713,7 @@
                                    <chart [options]="chart21pieoptions"></chart>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual sin compensaciones Hombres Grupo C2</h5>
                                 </header>
@@ -723,7 +723,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual con compensaciones  Mujeres Grupo C2</h5>
                                 </header>
@@ -731,7 +731,7 @@
                                    <chart [options]="chart23pieoptions"></chart>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual con compensaciones  Hombres Grupo C2</h5>
                                 </header>
@@ -743,7 +743,7 @@
 
                         <!-- Gráficas E-->
                          <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Retribuciones salariales Comparativa por sexo - Grupo E  (Sin compensaciones)</h5>
                                 </header>
@@ -752,7 +752,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Retribuciones salariales Comparativa por sexo - Grupo E (Con compensaciones)</h5>
                                 </header>
@@ -762,7 +762,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual sin compensaciones  Mujeres Grupo E</h5>
                                 </header>
@@ -770,7 +770,7 @@
                                    <chart [options]="chart25pieoptions"></chart>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual sin compensaciones Hombres Grupo E</h5>
                                 </header>
@@ -780,7 +780,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual con compensaciones  Mujeres Grupo E</h5>
                                 </header>
@@ -788,7 +788,7 @@
                                    <chart [options]="chart27pieoptions"></chart>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <header>
                                     <h5>Salario bruto anual con compensaciones  Hombres Grupo C2</h5>
                                 </header>

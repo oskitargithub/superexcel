@@ -54,7 +54,7 @@ export class ClasProfesional2Component implements OnInit {
 
     ngOnInit(): void {
         Messenger.options = { theme: 'air' };
-        this.getDatosModelo();
+        //this.getDatosModelo();
         this.getDatosModeloProf1();
     }
 
@@ -124,6 +124,7 @@ export class ClasProfesional2Component implements OnInit {
                 else {
                     this.mujerestotal = response.data.preg_46;
                     this.hombrestotal = response.data.preg_47;
+                    this.getDatosModelo();
                     console.log("El total da" + this.SumaTotal());
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
@@ -212,10 +213,10 @@ export class ClasProfesional2Component implements OnInit {
         return (hombres * 1 + mujeres * 1);
     }
 
-    SumaMujeres(){
+    SumaMujeres(){        
         return this.mujerestotal*1;
     }
-    SumaHombres(){
+    SumaHombres(){        
         return this.hombrestotal*1;
     }
     SumaTotal(){
