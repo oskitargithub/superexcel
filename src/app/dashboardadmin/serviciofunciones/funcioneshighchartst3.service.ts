@@ -47,8 +47,8 @@ export class FuncionesHighChartsT3Service {
             },
             title: {
                 text: texto1
-            },
-            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            },colors: [],
+            /*colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],*/
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
             },
@@ -68,8 +68,8 @@ export class FuncionesHighChartsT3Service {
 
 
         let datos = [];
-        datos.push({ y: this.getMujeresPlantillaPorcentaje(modelo), name: 'Mujeres', numero: this.getMujeresPlantilla(modelo) });
-        datos.push({ y: this.getHombresPlantillaPorcentaje(modelo), name: 'Hombres', numero: this.getHombresPlantilla(modelo) });
+        datos.push({ y: this.getMujeresPlantillaPorcentaje(modelo), name: 'Mujeres', numero: this.getMujeresPlantilla(modelo), color:"#910000" });
+        datos.push({ y: this.getHombresPlantillaPorcentaje(modelo), name: 'Hombres', numero: this.getHombresPlantilla(modelo), color:"#8bbc21" });
         misopciones.series.push({ type: 'pie', name: texto2, data: datos });
         //console.log("misopciones");
         //console.log(misopciones);
@@ -111,8 +111,8 @@ export class FuncionesHighChartsT3Service {
 
 
         let datos = [];
-        datos.push({ y: valor1 * 1, name: 'Mujeres', numero: valor1 * 1 });
-        datos.push({ y: valor2 * 1, name: 'Hombres', numero: valor2 * 1 });
+        datos.push({ y: valor1 * 1, name: 'Mujeres', numero: valor1 * 1, color:"#910000"});
+        datos.push({ y: valor2 * 1, name: 'Hombres', numero: valor2 * 1 , color:"#8bbc21"});
         misopciones.series.push({ type: 'pie', name: titulo, data: datos });
         //console.log("misopciones");
         //console.log(misopciones);
@@ -169,8 +169,8 @@ export class FuncionesHighChartsT3Service {
 
 
         let datos = [];
-        datos.push({ y: this.getSumaMujeresDelTotal(tabla), name: 'Mujeres', numero: this.getTotalMujeres(tabla) });
-        datos.push({ y: this.getSumaHombresDelTotal(tabla), name: 'Hombres', numero: this.getTotalHombres(tabla) });
+        datos.push({ y: this.getSumaMujeresDelTotal(tabla), name: 'Mujeres', numero: this.getTotalMujeres(tabla), color:"#910000" });
+        datos.push({ y: this.getSumaHombresDelTotal(tabla), name: 'Hombres', numero: this.getTotalHombres(tabla) , color:"#8bbc21" });
         misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
         //console.log("misopciones");
         //console.log(misopciones);
@@ -524,13 +524,16 @@ export class FuncionesHighChartsT3Service {
 
 
         let datos = [];
-        tabla.forEach(elemento => {
+        let  colores= ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'];
+        tabla.forEach((elemento,index) => {
+            let colorin = colores[index];
+            console.log(elemento.texto + "/" + colorin);
             if (elemento.mujeres != 0) {
                 if (tipo == "fila") {
-                    datos.push({ y: elemento.mujeres, name: elemento.texto, numero: this.getMujeresDeFila(elemento, tabla) });
+                    datos.push({ y: elemento.mujeres, name: elemento.texto, numero: this.getMujeresDeFila(elemento, tabla), color:colorin });
                 }
                 else if (tipo == "total") {
-                    datos.push({ y: elemento.mujeres, name: elemento.texto, numero: Math.round(this.getMujeresDelTotal(elemento, tabla) * 100) });
+                    datos.push({ y: elemento.mujeres, name: elemento.texto, numero: Math.round(this.getMujeresDelTotal(elemento, tabla) * 100), color:colorin });
                 }
             }
         });
@@ -540,6 +543,7 @@ export class FuncionesHighChartsT3Service {
         return misopciones;
     }
     GraficaPieCompuesta2(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[], tipo = "fila"): Object {
+        let  colores= ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'];
         let misopciones: OpcionesPieModel;
         misopciones = {
             chart: {
@@ -572,13 +576,14 @@ export class FuncionesHighChartsT3Service {
 
 
         let datos = [];
-        tabla.forEach(elemento => {
+        tabla.forEach((elemento, index)=> {
+            let colorin = colores[index];
             if (elemento.hombres != 0) {
                 if (tipo == "fila") {
-                    datos.push({ y: elemento.hombres, name: elemento.texto, numero: this.getHombresDeFila(elemento, tabla) });
+                    datos.push({ y: elemento.hombres, name: elemento.texto, numero: this.getHombresDeFila(elemento, tabla), color:colorin });
                 }
                 else if (tipo == "total") {
-                    datos.push({ y: elemento.hombres, name: elemento.texto, numero: Math.round(this.getHombresDelTotal(elemento, tabla) * 100) });
+                    datos.push({ y: elemento.hombres, name: elemento.texto, numero: Math.round(this.getHombresDelTotal(elemento, tabla) * 100), color:colorin });
                 }
             }
         });
