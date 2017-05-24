@@ -156,8 +156,8 @@ export class TipoDeContratoAdmComponent implements OnInit {
     this.chart3pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Comparativo de Antigüedad","Mujeres",this.modelo.preg_69_tabla_3,"total");
     this.chart4pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Comparativo de Antigüedad","Hombres",this.modelo.preg_69_tabla_3,"total");
 
-    this.chart5pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Horas dedicadas al Trabajo","Mujeres",this.modelo.preg_68_tabla_3,"total");
-    this.chart6pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Horas dedicadas al Trabajo","Hombres",this.modelo.preg_68_tabla_3,"total");
+    this.chart5pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Horas dedicadas al Trabajo","Mujeres",this.modelo.preg_68_tabla_3,"fila");
+    this.chart6pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Horas dedicadas al Trabajo","Hombres",this.modelo.preg_68_tabla_3,"fila");
 
     this.chart7pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Comparativo Turnos","Mujeres",this.modelo.preg_67_tabla_3,"total");
     this.chart8pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Comparativo Turnos","Hombres",this.modelo.preg_67_tabla_3,"total");

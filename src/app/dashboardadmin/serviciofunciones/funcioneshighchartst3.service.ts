@@ -520,7 +520,8 @@ export class FuncionesHighChartsT3Service {
                     depth: 35,
                     dataLabels: {
                         enabled: true,
-                        format: '{point.name} {point.y} / {point.numero:.1f}%'
+                        format: '{point.name} {point.y} / {point.percentage:.2f}%'
+                        /*format: '{point.name} {point.y} / {point.numero:.1f}%'*/
                     }
                 }
             },
@@ -540,8 +541,8 @@ export class FuncionesHighChartsT3Service {
             }
         });
         misopciones.series.push({ type: 'pie', name: subnombregrafica, data: datos });
-        //console.log("misopciones");
-        //console.log(misopciones);
+        console.log("misopciones"+nombregrafica);
+        console.log(misopciones);
         return misopciones;
     }
     GraficaPieCompuesta2(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[], tipo = "fila"): Object {
@@ -569,7 +570,8 @@ export class FuncionesHighChartsT3Service {
                     depth: 35,
                     dataLabels: {
                         enabled: true,
-                        format: '{point.name} {point.y} / {point.numero:.1f}%'
+                        format: '{point.name} {point.y} / {point.percentage:.2f}%'
+                        /*format: '{point.name} {point.y} / {point.numero:.1f}%'*/
                     }
                 }
             },
