@@ -123,8 +123,10 @@ export class RRPPComponent implements OnInit {
                 hombres:['',CustomValidators.number]        
         }));
     }
-    removeFila(elemento: FormArray, i: number) {
-        elemento.removeAt(i);
+    removeFila(elemento: FormArray, i: number, nombretabla:string) {
+        elemento.removeAt(i);        
+        let nueva = this.ifForm.value[nombretabla].map((datos) => Object.assign({}, datos));
+        this.setPregunta(nueva,nombretabla);
     }
 
    getTotalMujeres(elemento: FormArray) {

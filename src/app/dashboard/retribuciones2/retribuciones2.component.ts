@@ -23,6 +23,7 @@ export class Retribuciones2Component implements OnInit {
     colorOptions: Object = { color: '#f0b518' };
     submitted = false;
     ifForm: FormGroup;
+    iRow: number = 0;
     public modelo: Retribuciones2Model;
     public errorMessage: string;
     public status: string;
@@ -141,8 +142,11 @@ export class Retribuciones2Component implements OnInit {
             hombres: ['', CustomValidators.number]
         }));
     }
-    removeFila(elemento: FormArray, i: number) {
-        elemento.removeAt(i);
+    removeFila(elemento: FormArray, i: number, nombretabla:string) {
+        elemento.removeAt(i);        
+        //let nueva = this.ifForm.value.preg_85_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos));
+        let nueva = this.ifForm.value[nombretabla].map((datos) => Object.assign({}, datos));
+        this.setPregunta(nueva,nombretabla);
     }
     getDatosModelo() {
         this.servicio.getDatosModelo().subscribe(

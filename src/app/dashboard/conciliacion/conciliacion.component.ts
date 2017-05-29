@@ -160,8 +160,10 @@ export class ConciliacionComponent implements OnInit {
     addFila2(elemento: FormArray) {
         elemento.push(this.fb.group(new Tabla2Model()));
     }
-    removeFila(elemento: FormArray, i: number) {
-        elemento.removeAt(i);
+    removeFila(elemento: FormArray, i: number, nombretabla:string) {
+        elemento.removeAt(i);        
+        let nueva = this.ifForm.value[nombretabla].map((datos) => Object.assign({}, datos));
+        this.setPregunta(nueva,nombretabla);
     }
     addValidaciones() {
         this.ifForm.get('data.preg_154').setValidators([CustomValidators.number]);
