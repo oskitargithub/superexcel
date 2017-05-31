@@ -42,7 +42,7 @@
                                 <div class="row">
                                     <div *ngFor="let datos of getPregunta('preg_355').controls; let i=index" [formGroupName]="i" class="col-md-6">
                                         <md-checkbox formControlName="valor1">
-                                            {{ifForm.controls.preg_355.value[i].texto}}
+                                            {{ifForm.controls.preg_355.value[i].texto==''?'Otros':ifForm.controls.preg_355.value[i].texto}}
                                         </md-checkbox>
                                         <div class="col-md-6" *ngIf="i==14">
                                             <input [readonly]="!ifForm.controls.preg_355.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
@@ -97,12 +97,12 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_361">En caso afirmativo, ¿En que temática?</label></div>
-                                <div class="col-md-8 offset-md-2">
+                                <div class="col-md-8 offset-md-2" *ngIf="ifForm.controls.data.controls.preg_360.value=='si'"><label for="preg_361">En caso afirmativo, ¿En que temática?</label></div>
+                                <div class="col-md-8 offset-md-2" *ngIf="ifForm.controls.data.controls.preg_360.value=='si'">
                                     <textarea rows="3" class="autogrow form-control transition-height" id="preg_361" formControlName="preg_361" autosize placeholder="Temáticas"></textarea>
                                 </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_362">En caso afirmativo, ¿Influye de igual manera en hombres y en mujeres?¿Por qué razones?</label></div>
-                                <div class="col-md-8 offset-md-2">
+                                <div class="col-md-8 offset-md-2" *ngIf="ifForm.controls.data.controls.preg_360.value=='si'"><label for="preg_362">En caso afirmativo, ¿Influye de igual manera en hombres y en mujeres?¿Por qué razones?</label></div>
+                                <div class="col-md-8 offset-md-2" *ngIf="ifForm.controls.data.controls.preg_360.value=='si'">
                                     <textarea rows="3" class="autogrow form-control transition-height" id="preg_362" formControlName="preg_362" autosize placeholder="Razones"></textarea>
                                 </div>
                             </div>
@@ -123,8 +123,8 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_364">En caso afirmativo, mencione por qué?</label></div>
-                                <div class="col-md-8 offset-md-2">
+                                <div class="col-md-8 offset-md-2" *ngIf="ifForm.controls.data.controls.preg_363.value=='si'"><label for="preg_364">En caso afirmativo, mencione por qué?</label></div>
+                                <div class="col-md-8 offset-md-2" *ngIf="ifForm.controls.data.controls.preg_363.value=='si'">
                                     <textarea rows="3" class="autogrow form-control transition-height" id="preg_364" formControlName="preg_364" autosize placeholder="Describe"></textarea>
                                 </div>                                
                             </div>
@@ -145,8 +145,8 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-8 offset-md-2"><label for="preg_366">En caso afirmativo indique que canales</label></div>
-                                <div class="col-md-8 offset-md-2">
+                                <div class="col-md-8 offset-md-2" *ngIf="ifForm.controls.data.controls.preg_365.value=='si'"><label for="preg_366">En caso afirmativo indique que canales</label></div>
+                                <div class="col-md-8 offset-md-2" *ngIf="ifForm.controls.data.controls.preg_365.value=='si'">
                                     <textarea rows="3" class="autogrow form-control transition-height" id="preg_366" formControlName="preg_366" autosize placeholder="Canales"></textarea>
                                 </div>                                
                             </div>

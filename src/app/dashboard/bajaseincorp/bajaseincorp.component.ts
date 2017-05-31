@@ -138,6 +138,9 @@ export class BajasEIncorpComponent implements OnInit {
         this.ifForm.setControl(nombretabla, addressFormArray);
     }
 
+    
+
+
     getPregunta(pregunta: string): FormArray {
         return this.ifForm.get(pregunta) as FormArray;
     };

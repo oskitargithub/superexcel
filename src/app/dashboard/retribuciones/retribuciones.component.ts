@@ -93,6 +93,50 @@ export class RetribucionesComponent implements OnInit {
         });
     }
 
+    CalculaValor(indice:any){
+        console.log("calculando valor de " + indice);
+        //console.log(this.ifForm.get('preg_70_tabla_5'));
+        let valor_a1 = (<FormGroup>(<FormArray> this.ifForm.get('preg_71_tabla_5')).controls[indice]).controls['mujeres'].value;
+        let valor_a2 = (<FormGroup>(<FormArray> this.ifForm.get('preg_72_tabla_5')).controls[indice]).controls['mujeres'].value;
+        let valor_b = (<FormGroup>(<FormArray> this.ifForm.get('preg_73_tabla_5')).controls[indice]).controls['mujeres'].value;
+        let valor_c1 = (<FormGroup>(<FormArray> this.ifForm.get('preg_74_tabla_5')).controls[indice]).controls['mujeres'].value;
+        let valor_c2 = (<FormGroup>(<FormArray> this.ifForm.get('preg_75_tabla_5')).controls[indice]).controls['mujeres'].value;
+        let valor_e = (<FormGroup>(<FormArray> this.ifForm.get('preg_76_tabla_5')).controls[indice]).controls['mujeres'].value;
+        let totalm = valor_a1*1 + valor_a2*1 + valor_b*1 + valor_c1*1 + valor_c2*1 + valor_e*1;
+        (<FormGroup>(<FormArray> this.ifForm.get('preg_70_tabla_5')).controls[indice]).controls['mujeres'].setValue(totalm);
+
+        valor_a1 = (<FormGroup>(<FormArray> this.ifForm.get('preg_71_tabla_5')).controls[indice]).controls['hombres'].value;
+        valor_a2 = (<FormGroup>(<FormArray> this.ifForm.get('preg_72_tabla_5')).controls[indice]).controls['hombres'].value;
+        valor_b = (<FormGroup>(<FormArray> this.ifForm.get('preg_73_tabla_5')).controls[indice]).controls['hombres'].value;
+        valor_c1 = (<FormGroup>(<FormArray> this.ifForm.get('preg_74_tabla_5')).controls[indice]).controls['hombres'].value;
+        valor_c2 = (<FormGroup>(<FormArray> this.ifForm.get('preg_75_tabla_5')).controls[indice]).controls['hombres'].value;
+        valor_e = (<FormGroup>(<FormArray> this.ifForm.get('preg_76_tabla_5')).controls[indice]).controls['hombres'].value;
+        let totalh = valor_a1*1 + valor_a2*1 + valor_b*1 + valor_c1*1 + valor_c2*1 + valor_e*1;
+        (<FormGroup>(<FormArray> this.ifForm.get('preg_70_tabla_5')).controls[indice]).controls['hombres'].setValue(totalh);
+
+
+        valor_a1 = (<FormGroup>(<FormArray> this.ifForm.get('preg_71_tabla_5')).controls[indice]).controls['mujeres2'].value;
+        valor_a2 = (<FormGroup>(<FormArray> this.ifForm.get('preg_72_tabla_5')).controls[indice]).controls['mujeres2'].value;
+        valor_b = (<FormGroup>(<FormArray> this.ifForm.get('preg_73_tabla_5')).controls[indice]).controls['mujeres2'].value;
+        valor_c1 = (<FormGroup>(<FormArray> this.ifForm.get('preg_74_tabla_5')).controls[indice]).controls['mujeres2'].value;
+        valor_c2 = (<FormGroup>(<FormArray> this.ifForm.get('preg_75_tabla_5')).controls[indice]).controls['mujeres2'].value;
+        valor_e = (<FormGroup>(<FormArray> this.ifForm.get('preg_76_tabla_5')).controls[indice]).controls['mujeres2'].value;
+        let totalm2 = valor_a1*1 + valor_a2*1 + valor_b*1 + valor_c1*1 + valor_c2*1 + valor_e*1;
+        (<FormGroup>(<FormArray> this.ifForm.get('preg_70_tabla_5')).controls[indice]).controls['mujeres2'].setValue(totalm2);
+
+        valor_a1 = (<FormGroup>(<FormArray> this.ifForm.get('preg_71_tabla_5')).controls[indice]).controls['hombres2'].value;
+        valor_a2 = (<FormGroup>(<FormArray> this.ifForm.get('preg_72_tabla_5')).controls[indice]).controls['hombres2'].value;
+        valor_b = (<FormGroup>(<FormArray> this.ifForm.get('preg_73_tabla_5')).controls[indice]).controls['hombres2'].value;
+        valor_c1 = (<FormGroup>(<FormArray> this.ifForm.get('preg_74_tabla_5')).controls[indice]).controls['hombres2'].value;
+        valor_c2 = (<FormGroup>(<FormArray> this.ifForm.get('preg_75_tabla_5')).controls[indice]).controls['hombres2'].value;
+        valor_e = (<FormGroup>(<FormArray> this.ifForm.get('preg_76_tabla_5')).controls[indice]).controls['hombres2'].value;
+        let totalh2 = valor_a1*1 + valor_a2*1 + valor_b*1 + valor_c1*1 + valor_c2*1 + valor_e*1;
+        (<FormGroup>(<FormArray> this.ifForm.get('preg_70_tabla_5')).controls[indice]).controls['hombres2'].setValue(totalh2);
+
+
+        //(this.ifForm.controls['preg_70_tabla_5'][indice]).mujeres.value = 12;
+    }
+
     setPregunta(tabla: Tabla5Model[], nombretabla: string) {
         const addressFGs = tabla.map(datos =>
             this.fb.group({

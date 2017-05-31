@@ -101,7 +101,7 @@
                                     MEDIDAS SOBRE EL FACTOR TÉCNICO
                                 </div>
                                 <div class="col-md-1 text-md-center">
-                                    Nº de casos
+                                   <!-- Nº de casos-->
                                 </div>
                             </div>
                             <div class="row">
@@ -116,7 +116,7 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-1 text-md-center">
+                                <div class="col-md-1 text-md-center" *ngIf="ifForm.controls.data.controls.preg_257.value=='si'">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input class="form-control" formControlName="preg_258" tooltip="Nº de casos" placeholder="Nº de casos" />
@@ -140,7 +140,7 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-1 text-md-center">
+                                <div class="col-md-1 text-md-center" *ngIf="ifForm.controls.data.controls.preg_259.value=='si'">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input class="form-control" formControlName="preg_260" tooltip="Nº de casos" placeholder="Nº de casos" />
@@ -163,7 +163,7 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-1 text-md-center">
+                                <div class="col-md-1 text-md-center" *ngIf="ifForm.controls.data.controls.preg_261.value=='si'">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input class="form-control" formControlName="preg_262" tooltip="Nº de casos" placeholder="Nº de casos" />
@@ -186,7 +186,7 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-1 text-md-center">
+                                <div class="col-md-1 text-md-center" *ngIf="ifForm.controls.data.controls.preg_263.value=='si'">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input class="form-control" formControlName="preg_264" tooltip="Nº de casos" placeholder="Nº de casos" />
@@ -208,7 +208,7 @@
                                     MEDIDAS ORGANIZATIVAS (MOVILIDAD FUNCIONAL )
                                 </div>
                                 <div class="col-md-1 text-md-center">
-                                    Nº de puestos
+                                    <!--Nº de puestos-->
                                 </div>
                             </div>
                             <div class="row">
@@ -223,7 +223,7 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-1 text-md-center">
+                                <div class="col-md-1 text-md-center" *ngIf="ifForm.controls.data.controls.preg_271.value=='si'">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input class="form-control" formControlName="preg_272" tooltip="Nº de puestos" placeholder="Nº de puestos" />
@@ -234,7 +234,7 @@
                                                 </div>
                                 </div>
                             </div>                           
-                             <div class="row">
+                             <div class="row" *ngIf="ifForm.controls.data.controls.preg_271.value=='si'">
                                 <div class="col-md-8 offset-md-2"><label for="preg_273">En caso afirmativo, indicar cuáles</label></div>
                                 <div class="col-md-8 offset-md-2">
                                     <textarea rows="3" class="autogrow form-control transition-height" id="preg_273" formControlName="preg_273" autosize placeholder="Puestos de trabajo exentos de riesgo para el embarazo"></textarea>
@@ -253,7 +253,7 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-1 text-md-center">
+                                <div class="col-md-1 text-md-center" *ngIf="ifForm.controls.data.controls.preg_274.value=='si'">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input class="form-control" formControlName="preg_275" tooltip="Nº de puestos" placeholder="Nº de puestos" />
@@ -264,7 +264,7 @@
                                                 </div>
                                 </div>
                             </div>                            
-                             <div class="row">
+                             <div class="row" *ngIf="ifForm.controls.data.controls.preg_274.value=='si'">
                                 <div class="col-md-8 offset-md-2"><label for="preg_18">En caso afirmativo, indicar cuáles</label></div>
                                 <div class="col-md-8 offset-md-2">
                                     <textarea rows="3" class="autogrow form-control transition-height" id="preg_276" formControlName="preg_276" autosize placeholder="Puestos de trabajo exentos de riesgo para la lactancia"></textarea>
@@ -281,7 +281,7 @@
                                     MEDIDAS LÍMITE: SUSPENSIÓN DEL CONTRATO DE TRABAJO
                                 </div>
                                 <div class="col-md-1 text-md-center">
-                                    Casos
+                                    <!--Casos-->
                                 </div>
                             </div>
                             <div class="row">
@@ -296,7 +296,7 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-1 text-md-center">
+                                <div class="col-md-1 text-md-center" *ngIf="ifForm.controls.data.controls.preg_281.value=='si'">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input class="form-control" formControlName="preg_282" tooltip="Casos" placeholder="Casos" />
@@ -319,7 +319,7 @@
                                     MEDIDAS de MEJORA con respecto a la LEY
                                 </div>
                                 <div class="col-md-1 text-md-center">
-                                    Nº de mejoras
+                                    <!--Nº de mejoras-->
                                 </div>
                             </div>
                             <div class="row">
@@ -334,7 +334,7 @@
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
-                                <div class="col-md-1 text-md-center">
+                                <div class="col-md-1 text-md-center" *ngIf="ifForm.controls.data.controls.preg_286.value=='si'">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input class="form-control" formControlName="preg_287" tooltip="Nº de mejoras" placeholder="Nº de mejoras" />
@@ -345,7 +345,7 @@
                                                 </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" *ngIf="ifForm.controls.data.controls.preg_286.value=='si'">
                                 <div class="col-md-8 offset-md-2"><label for="preg_23">En caso afirmativo, indicar cuáles</label></div>
                                 <div class="col-md-8 offset-md-2">
                                     <textarea rows="3" class="autogrow form-control transition-height" id="preg_288" formControlName="preg_288" autosize placeholder="Mejora a lo que establece la ley o el convenio colectivo"></textarea>
