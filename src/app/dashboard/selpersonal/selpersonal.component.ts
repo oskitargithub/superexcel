@@ -11,10 +11,10 @@ declare var Messenger: any;
 @Component({
     selector: 'selpersonal',
     templateUrl: './selpersonal.template.html',
-    styleUrls: [
-        'selpersonal.style.css',
+    styleUrls: [        
         '../../scss/elements.style.scss',
-        '../../scss/notifications.style.scss'],
+        '../../scss/notifications.style.scss',
+        'selpersonal.style.css',],
     providers: [SelPersonalService],
     encapsulation: ViewEncapsulation.None,
 })
