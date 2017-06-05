@@ -34,7 +34,7 @@ export class FuncionesHighChartsT3Service {
     private colorhombre = '#8bbc21';
     constructor() {
         /** Vacío */
-        this.colorespie = ['#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a',
+        this.colorespie = ['#492970', '#f28f43','#1aadce', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a',
         '#81F7BE','#DF3A01','#A901DB','#0B0B61','#0B6121','#FF0040','#F3F781','#8A0868','#FA5858','#9FF781'];
     }
 
@@ -510,7 +510,7 @@ export class FuncionesHighChartsT3Service {
             title: {
                 text: nombregrafica
             },
-            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            colors: ['#910000', '#492970', '#8bbc21', '#1aadce', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
             }, plotOptions: {
@@ -560,7 +560,7 @@ export class FuncionesHighChartsT3Service {
             title: {
                 text: nombregrafica
             },
-            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            colors: ['#910000', '#492970', '#8bbc21', '#1aadce', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
             }, plotOptions: {

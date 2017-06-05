@@ -113,6 +113,32 @@ export class ConciliacionComponent implements OnInit {
         else
             return 0;
     }
+
+    getTotalMujeresFila1(elemento: FormArray){
+        if (elemento != null && elemento.value.length > 0){
+            let salida= elemento.value.map(c => (c.texto == "Personas empleadas con hijos e hijas a cargo")? c.mujeres:0).reduce((sum, current) => (sum * 1) + (current * 1));;
+            return salida;
+        }
+        else
+            return 0;
+    }
+    getTotalHombresFila1(elemento: FormArray){
+        if (elemento != null && elemento.value.length > 0){
+            let salida= elemento.value.map(c => (c.texto == "Personas empleadas con hijos e hijas a cargo")? c.hombres:0).reduce((sum, current) => (sum * 1) + (current * 1));;
+            return salida;
+        }
+        else
+            return 0;
+    }
+    getTotalTotalFila1(elemento: FormArray){
+        if (elemento != null && elemento.value.length > 0){
+            let mujeres= elemento.value.map(c => (c.texto == "Personas empleadas con hijos e hijas a cargo")? c.mujeres:0).reduce((sum, current) => (sum * 1) + (current * 1));
+            let hombres= elemento.value.map(c => (c.texto == "Personas empleadas con hijos e hijas a cargo")? c.hombres:0).reduce((sum, current) => (sum * 1) + (current * 1));;
+            return (hombres * 1 + mujeres * 1);;
+        }
+        else
+            return 0;
+    }
     getTotalHombres(elemento: FormArray) {
         if (elemento != null && elemento.value.length > 0)
             return elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1));

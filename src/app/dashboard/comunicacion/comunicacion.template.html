@@ -42,7 +42,7 @@
                                 <div class="row">
                                     <div *ngFor="let datos of getPregunta('preg_355').controls; let i=index" [formGroupName]="i" class="col-md-6">
                                         <md-checkbox formControlName="valor1">
-                                            {{ifForm.controls.preg_355.value[i].texto==''?'Otros':ifForm.controls.preg_355.value[i].texto}}
+                                            {{ifForm.controls.preg_355.value[i].texto==''?'Otros (especificar)':ifForm.controls.preg_355.value[i].texto}}
                                         </md-checkbox>
                                         <div class="col-md-6" *ngIf="i==14">
                                             <input [readonly]="!ifForm.controls.preg_355.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"

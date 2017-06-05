@@ -126,11 +126,11 @@ export class ClasProfesional2Component implements OnInit {
                     this.hombrestotal = response.data.preg_47;
                     this.getDatosModelo();
                     console.log("El total da" + this.SumaTotal());
-                    Messenger().post({
+                    /*Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
                         type: 'success',
                         showCloseButton: true
-                    });
+                    });*/
                 }
             },
             error => {

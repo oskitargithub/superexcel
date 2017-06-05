@@ -530,7 +530,14 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="row" *ngIf="getTotalMujeres(ifForm.controls.preg_65_tabla_3)!= SumaMujeres() || getTotalHombres(ifForm.controls.preg_65_tabla_3) != SumaHombres() || getTotalTotal(ifForm.controls.preg_65_tabla_3)!= SumaTotal()">
+                                <div class="col-md-10 offset-md-2">
+                                    <div class="form-group">
+                                        <div class="alert alert-danger">
+                                            La información desglosada por Horas Semanales no coincide con los datos facilitados anteriormente, por favor, revíselos</div>
+                                    </div>
+                                </div>
+                            </div>
 
                         </fieldset>
                     </div>

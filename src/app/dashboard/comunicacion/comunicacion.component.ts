@@ -178,6 +178,7 @@ export class ComunicacionComponent implements OnInit {
                 else {
                     this.ifForm.markAsPristine();  
                     if (redirigir) {
+                        console.log("rediriguir a final");
                         this.router.navigate(["/app/final"]);
                     }
                     Messenger().post({
