@@ -1208,9 +1208,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span *ngIf="i > 5">
+                                        <span *ngIf="getPregunta('preg_63_tabla_3').controls.length > 1">
                                         <button type="button"(click)="removeFila(ifForm.controls.preg_63_tabla_3, i,'preg_63_tabla_3')" class="btn btn-danger btn-xs mb-xs">Borrar</button>
                                         </span>
+                                        <!--<span *ngIf="i > 5">
+                                        <button type="button"(click)="removeFila(ifForm.controls.preg_63_tabla_3, i,'preg_63_tabla_3')" class="btn btn-danger btn-xs mb-xs">Borrar</button>
+                                        </span>-->
 
                                     </div>
                                 </div>
