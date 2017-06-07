@@ -1,0 +1,879 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Clasificación profesional II</li>
+</ol>
+
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="page-title">TIPO <span class="fw-semi-bold">DE CONTRATACIÓN</span></h1>
+    </div>
+    <div class="col-md-4">
+        <div class="row progress-stats">
+            <div class="col-md-9 col-xs-12">
+                <p class="description deemphasize">Progreso de la pestaña</p>
+                <div class="bg-white progress-bar">
+                    <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic+'%'}"></progress>
+
+
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 text-xs-center">
+                <span class="status rounded rounded-lg bg-body-light">
+                                   <small><span number-animate>{{getValorBarra()}}</span>%</small>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<p>A continuación le solicitamos nos facilte información sobre la relación contractual del personal contratado y la plantilla. Asegúrese que los datos que va a proporcionar coinciden con lo declarado en Clasificación Profesional I</p>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="widget" widget>
+            <div class="widget-body">
+                <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
+                    
+                    <!-- Tipo de contrato 406 -->
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <legend><strong>Tipo de contrato</strong></legend>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                        <label>Tipo de relación contractual</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_406_tabla_3">
+                                <div *ngFor="let datos of getPregunta('preg_406_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_406_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_406_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ifForm.controls.preg_406_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_406_tabla_3.value[i].hombres*1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span *ngIf="getPregunta('preg_406_tabla_3').controls.length > 1">
+                                        <button type="button"(click)="removeFila(ifForm.controls.preg_406_tabla_3, i,'preg_406_tabla_3')" class="btn btn-danger btn-xs mb-xs">Borrar</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila(ifForm.controls.preg_406_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Relación</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_406_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_406_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_406_tabla_3) }}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                             <div class="row" *ngIf="getTotalMujeres(ifForm.controls.preg_406_tabla_3)!= SumaMujeres() || getTotalHombres(ifForm.controls.preg_406_tabla_3) != SumaHombres() || getTotalTotal(ifForm.controls.preg_406_tabla_3)!= SumaTotal()">
+                                <div class="col-md-10 offset-md-2">
+                                    <div class="form-group">
+                                        <div class="alert alert-danger">
+                                            La información desglosada por TIPOS DE CONTRATO no coincide con los datos facilitados anteriormente, por favor, revíselos</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+                    <!-- personas contratadas indefinida inicial por 408 -->
+                     <div class="section" style="margin-top:40px">
+                        <p>A continuación le solicitamos especifique si la contratación indefinida se realizó desde el inicio o bien los contratos indefinidos provienen de conversión de otros temporales o becas de formación, prácticas, etc... En caso de otras situaciones, especifíquelas</p>
+                        <fieldset>
+                            <legend><strong>Personas contratados de forma indefinida inicialmente por</strong></legend>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                        <label>Tipo </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_408_tabla_3">
+                                <div *ngFor="let datos of getPregunta('preg_408_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" [readonly]="true" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_408_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_408_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ifForm.controls.preg_408_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_408_tabla_3.value[i].hombres*1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_408_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_408_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_408_tabla_3) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--<div class="row" *ngIf="getTotalMujeres(ifForm.controls.preg_408_tabla_3)!= SumaMujeres() || getTotalHombres(ifForm.controls.preg_408_tabla_3) != SumaHombres() || getTotalTotal(ifForm.controls.preg_408_tabla_3)!= SumaTotal()">
+                                <div class="col-md-10 offset-md-2">
+                                    <div class="form-group">
+                                        <div class="alert alert-danger">
+                                            La información desglosada por Horas Semanales no coincide con los datos facilitados anteriormente, por favor, revíselos</div>
+                                    </div>
+                                </div>
+                            </div>-->
+
+                        </fieldset>
+                    </div>
+
+
+                    <!-- personas contratadas indefinida temporal 409-->
+                    <div class="section" style="margin-top:40px">
+                        
+                        <fieldset>
+                            <legend><strong>Indefinidas por cambio o conversión de contrato temporal</strong></legend>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                        <label>Tipo de Contrato</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_409_tabla_3">
+                                <div *ngFor="let datos of getPregunta('preg_409_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" [readonly]="true" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_409_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_409_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ifForm.controls.preg_409_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_409_tabla_3.value[i].hombres*1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_409_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_409_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_409_tabla_3) }}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+                    </div>
+
+                    <!-- personas contratadas definido 410-->
+                    <div class="section" style="margin-top:40px">
+                        <p>A continuación le solicitamos especifique el tipo de contrato temporal que tienen las personas contratadas de manera temporal en su empresa</p>
+                        <fieldset>
+                            <legend><strong>Personas contratadas de forma indefinida</strong></legend>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                        <label>Tipo de Contrato </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_410_tabla_3">
+                                <div *ngFor="let datos of getPregunta('preg_410_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_410_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_410_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ifForm.controls.preg_410_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_410_tabla_3.value[i].hombres*1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span *ngIf="getPregunta('preg_410_tabla_3').controls.length > 1">
+                                        <button type="button"(click)="removeFila(ifForm.controls.preg_410_tabla_3, i,'preg_410_tabla_3')" class="btn btn-danger btn-xs mb-xs">Borrar</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 offset-md-2">
+                                        <button (click)="addFila(ifForm.controls.preg_410_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Turnos</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_410_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_410_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_410_tabla_3) }}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+                    </div>
+
+                    <!-- Horas semanales trabajo 411-->
+                    <div class="section" style="margin-top:40px">
+
+                        <fieldset>
+                            <legend><strong>Distribución de la plantilla por Horas Semanales de Trabajo</strong></legend>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                        <label>Nº de horas</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_411_tabla_3">
+                                <div *ngFor="let datos of getPregunta('preg_411_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" [readonly]="true" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_411_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_411_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ifForm.controls.preg_411_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_411_tabla_3.value[i].hombres*1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_411_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_411_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_411_tabla_3) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="row" *ngIf="getTotalMujeres(ifForm.controls.preg_411_tabla_3)!= SumaMujeres() || getTotalHombres(ifForm.controls.preg_411_tabla_3) != SumaHombres() || getTotalTotal(ifForm.controls.preg_411_tabla_3)!= SumaTotal()">
+                                <div class="col-md-10 offset-md-2">
+                                    <div class="form-group">
+                                        <div class="alert alert-danger">
+                                            La información desglosada en ORGANIZACIÓN TIEMPO DE TRABAJO no coincide con los datos facilitados anteriormente, por favor, revíselos</div>
+                                    </div>
+                                </div>
+                            </div>-->
+
+                        </fieldset>
+                    </div>
+
+                    <!-- Organización tiempo trabajo 412-->
+                    <div class="section" style="margin-top:40px">
+
+                        <fieldset>
+                            <legend><strong>Organización tiempo de trabajo</strong></legend>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                        <label></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_412_tabla_3">
+                                <div *ngFor="let datos of getPregunta('preg_412_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" [readonly]="true" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_412_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_412_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ifForm.controls.preg_412_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_412_tabla_3.value[i].hombres*1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_412_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_412_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_412_tabla_3) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="row" *ngIf="getTotalMujeres(ifForm.controls.preg_412_tabla_3)!= SumaMujeres() || getTotalHombres(ifForm.controls.preg_412_tabla_3) != SumaHombres() || getTotalTotal(ifForm.controls.preg_412_tabla_3)!= SumaTotal()">
+                                <div class="col-md-10 offset-md-2">
+                                    <div class="form-group">
+                                        <div class="alert alert-danger">
+                                            La información desglosada en ANÁLISIS DE LA ANTIGÜEDAD no coincide con los datos facilitados anteriormente, por favor, revíselos</div>
+                                    </div>
+                                </div>
+                            </div>-->
+
+                        </fieldset>
+                    </div>
+
+                    <!-- Organización tiempo trabajo 413-->
+                    <div class="section" style="margin-top:40px">
+                        <p>En caso de que hubiera algún colectivo que trabaje a turnos, especifique el tipo de turno (por ejemplo: Mañana-Tarde-Noche, Tarde-Noche, etc.)</p>
+                        <fieldset>
+                            <legend><strong>Distribución de la plantilla por turnos de trabajo</strong></legend>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                        <label></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_413_tabla_3">
+                                <div *ngFor="let datos of getPregunta('preg_413_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_413_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_413_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ifForm.controls.preg_413_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_413_tabla_3.value[i].hombres*1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span *ngIf="getPregunta('preg_413_tabla_3').controls.length > 1">
+                                        <button type="button"(click)="removeFila(ifForm.controls.preg_413_tabla_3, i,'preg_413_tabla_3')" class="btn btn-danger btn-xs mb-xs">Borrar</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila(ifForm.controls.preg_413_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Turno</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_413_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_413_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_413_tabla_3) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="row" *ngIf="getTotalMujeres(ifForm.controls.preg_413_tabla_3)!= SumaMujeres() || getTotalHombres(ifForm.controls.preg_413_tabla_3) != SumaHombres() || getTotalTotal(ifForm.controls.preg_413_tabla_3)!= SumaTotal()">
+                                <div class="col-md-10 offset-md-2">
+                                    <div class="form-group">
+                                        <div class="alert alert-danger">
+                                            La información desglosada en ANÁLISIS DE LA ANTIGÜEDAD no coincide con los datos facilitados anteriormente, por favor, revíselos</div>
+                                    </div>
+                                </div>
+                            </div>-->
+
+                        </fieldset>
+                    </div>
+
+                    <!-- Análisis antigüedad 414-->
+                    <div class="section" style="margin-top:40px">
+
+                        <fieldset>
+                            <legend><strong>ANALISIS DE LA ANTIGÜEDAD</strong></legend>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                        <label></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Mujeres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Hombres:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Total:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_414_tabla_3">
+                                <div *ngFor="let datos of getPregunta('preg_414_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" [readonly]="true" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_414_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_414_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                    {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    {{ifForm.controls.preg_414_tabla_3.value[i].mujeres*1 + ifForm.controls.preg_414_tabla_3.value[i].hombres*1 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Mujeres:{{ getTotalMujeres(ifForm.controls.preg_414_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        Total Hombres:{{ getTotalHombres(ifForm.controls.preg_414_tabla_3) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        total suma:{{ getTotalTotal(ifForm.controls.preg_414_tabla_3) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="row" *ngIf="getTotalMujeres(ifForm.controls.preg_414_tabla_3)!= SumaMujeres() || getTotalHombres(ifForm.controls.preg_414_tabla_3) != SumaHombres() || getTotalTotal(ifForm.controls.preg_414_tabla_3)!= SumaTotal()">
+                                <div class="col-md-10 offset-md-2">
+                                    <div class="form-group">
+                                        <div class="alert alert-danger">
+                                            La información desglosada en ANÁLISIS DE LA ANTIGÜEDAD no coincide con los datos facilitados anteriormente, por favor, revíselos</div>
+                                    </div>
+                                </div>
+                            </div>-->
+
+                        </fieldset>
+                    </div>
+
+
+                    
+
+
+                    <div class="form-actions" style="margin-top:40px">
+                        <div class="row">
+                            <div class="offset-md-4 col-md-7 ">
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(false)" class="btn btn-primary">Guardar cambios</button>
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(true)" class="btn btn-success">Guardar y Continuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

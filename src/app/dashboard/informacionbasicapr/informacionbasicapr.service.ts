@@ -1,11 +1,8 @@
 import {Injectable} from "@angular/core";
-import {Http, Response, Headers} from "@angular/http";
+import {Http, Response, Headers,RequestOptions,RequestMethod, URLSearchParams} from "@angular/http";
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {DatePipe} from "@angular/common";
-import {InformacionBasicaPrModel} from './informacionbasicapr.model';
-
-
 import { AppConfig } from '../../app.config';
 
 
@@ -16,37 +13,44 @@ export class InformacionBasicaPrService{
          this.config = config.getConfig(); //me traigo la configuración para saber la url de la api
     }
 
-    getInformacionBasica(){
-        let mitoken = JSON.parse(localStorage.getItem('fditoken'));        
-        let json = JSON.stringify({fditoken: mitoken.token});
-        let params = "json="+json;
-		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
-        
-        
-        return this._http.get(this.config.apilaravel + "cuestionario/seccion/20").map(res => {
+    getDatosModelo(){
+        let tokenfdi = JSON.parse(localStorage.getItem('fditoken')); 
+        let mitoken =  localStorage.getItem('token');
+        let api_token = tokenfdi.api_token;       
+        let parametros2: URLSearchParams = new URLSearchParams();   
+        parametros2.set('_token', mitoken);    
+        parametros2.set('api_token', api_token);      
+		let headers = '';
+        return this._http.get(this.config.apilaravel + "cuestionario/seccion/20",{ search: parametros2 }).map(res =>{
             let headers = res.headers;
             let miobjeto = res.json();
 
             let fechacrea = miobjeto.user.created_at;
             var datePipe = new DatePipe("es");
-            if (fechacrea.length>1){
+            if (fechacrea!=null && fechacrea.length>1){
                 miobjeto.user.created_at = datePipe.transform(fechacrea, 'yyyy-MM-dd');
                 console.log("ea");
             }
-            console.log(res.json().user.created_at);
+            console.log("getDatosModelo");
             return(miobjeto);
         });
         /*return this._http.post(this.config.api + "informacionbasica.php/getinformacionbasica", 
 				params, {headers: headers}).map(res => res.json());*/
     }
     
-    edit(informacionbasica: InformacionBasicaPrModel){
-        let mitoken = JSON.parse(localStorage.getItem('fditoken')); 
-        let json = JSON.stringify({"informacionbasica": informacionbasica,"fditoken":mitoken.token} );
-		let params = "json="+json;
-		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+    setDatosModelo(datos: any){
+        let tokenfdi = JSON.parse(localStorage.getItem('fditoken')); 
+        let mitoken =  localStorage.getItem('token');
+        let api_token = tokenfdi.api_token;
+        let json = JSON.stringify(datos);
+        let parametros2: URLSearchParams = new URLSearchParams();   
+        parametros2.set('_token', mitoken);
+        parametros2.set('api_token', api_token);   
+        parametros2.set('data', json);    
+        let misheaders = new Headers({ "X-Requested-With": "XMLHttpRequest",'Content-Type': 'application/x-www-form-urlencoded' });
+        let options = new RequestOptions({ headers: misheaders });
 
-		return this._http.post(this.config.api + "informacionbasica.php/updinformacionbasica", 
-				params, {headers: headers}).map(res => res.json());
+		return this._http.post(this.config.apilaravel + "cuestionario/seccion", 
+				parametros2, options).map(res => res.json());
     }
 }

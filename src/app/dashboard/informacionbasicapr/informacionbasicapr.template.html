@@ -1,8 +1,33 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item">Home</li>
-    <li class="breadcrumb-item active">Información Básica</li>
+    <li class="breadcrumb-item active">Información Básica </li>
 </ol>
-<h1 class="page-title">Información <span class="fw-semi-bold">Básica Empresa Privada</span></h1>
+
+
+
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="page-title">Información <span class="fw-semi-bold">Básica</span></h1>
+    </div>
+    <div class="col-md-4">
+        <div class="row progress-stats">
+            <div class="col-md-9 col-xs-12">
+                <p class="description deemphasize">Progreso de la pestaña</p>
+                <div class="bg-white progress-bar">
+                    <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic+'%'}"></progress>
+
+
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 text-xs-center">
+                <span class="status rounded rounded-lg bg-body-light">
+                                    <small><span number-animate>{{getValorBarra()}}</span>%</small>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-lg-12">
         <section class="widget" widget>
@@ -43,14 +68,14 @@
                                 </div>
                             </div>
 
-
-
                             <div class="form-group row">
                                 <label class="col-md-3  col-form-label text-md-right" for="ambito">Ámbito</label>
                                 <div class="col-md-8 ">
                                     <input type="text" class="form-control" formControlName="ambito" tooltip="Ámbito" placeholder="Ámbito" />
                                 </div>
                             </div>
+
+
 
                             <div class="form-group row">
                                 <label class="col-md-3  col-form-label text-md-right" for="domicilio">Domicilio social</label>
@@ -68,23 +93,22 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-md-3  col-form-label text-md-right" for="num_centros">Nº de Centros de Trabajo</label>
+                                <label class="col-md-3  col-form-label text-md-right" for="num_centros">Nº de centros de trabajo</label>
                                 <div class="col-md-8 ">
-                                    <input type="text" class="form-control" formControlName="num_centros" tooltip="Nº de Centros de Trabajo" placeholder="Nº de Centros de Trabajo"
+                                    <input type="text" class="form-control" formControlName="num_centros" tooltip="Nº de centros de trabajo" placeholder="Nº de centros de trabajo"
                                     />
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-md-3  col-form-label text-md-right" for="num_comunidades">Nº de Comunidades</label>
+                                <label class="col-md-3  col-form-label text-md-right" for="num_comunidades">Nº de comunidades</label>
                                 <div class="col-md-8 ">
-                                    <input type="text" class="form-control" formControlName="num_comunidades" tooltip="Nº de Comunidades" placeholder="Nº de Comunidades"
+                                    <input type="text" class="form-control" formControlName="num_comunidades" tooltip="Nº de comunidades" placeholder="Nº de comunidades"
                                     />
                                 </div>
                             </div>
 
                         </fieldset>
-
 
                         <div class="section" style="margin-top:40px">
                             <fieldset>
@@ -106,8 +130,13 @@
 
                                     <label class="col-md-1  col-form-label text-md-right" for="email">E-Mail</label>
                                     <div class="col-md-3 ">
-                                        <input type="text" class="form-control" formControlName="email" tooltip="E-Mail" placeholder="E-Mail" />
+                                        <input type="text" disabled class="form-control" formControlName="email" tooltip="E-Mail" placeholder="E-Mail" />
+                                        <div class="alert alert-danger" *ngIf="(ifForm.controls['user']).controls['email'].errors?.email">
+                                            {{serviceErrores.objetoErrores['email']}}
+                                        </div>
                                     </div>
+
+
                                 </div>
 
                                 <div class="form-group row">
@@ -124,431 +153,362 @@
                                 <div class="form-group row">
                                     <label class="col-md-3  col-form-label text-md-right" for="personas">Fecha</label>
                                     <div class="col-md-3 ">
-                                        <div class="input-group date">
-                                            <input class="form-control" formControlName="created_at" type="date" placeholder="Choose date">
+                                        <div class="input-group">
+                                            <input type="date" class="form-control" formControlName="created_at" placeholder="Selecciona fecha">
+                                            <span class="input-group-addon"> <span class="fa fa-calendar"></span></span>
+                                        </div>
+
+                                        <!--  <div class="input-group date">
+                                            <input class="form-control" style="flex: 1 1 auto;" formControlName="created_at" type="date" placeholder="Choose date">
                                             <div class="input-group-addon">
                                                 <span class="fa fa-calendar"></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                         <!-- <datepicker formControlName="created_at" [startingDay]=1 [showWeeks]="true" [dateDisabled]="dateDisabled"></datepicker>-->
                                     </div>
                                 </div>
                             </fieldset>
                         </div>
                     </div>
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <legend><strong>Centro / Actividad</strong></legend>
+                            <div formGroupName="data" class="col-md-8 offset-md-2">
+                                <md-checkbox formControlName="preg_24">
+                                    ¿Desarrolla la organización actividades productivas diferenciadas?
+                                </md-checkbox>
 
-                    <fieldset style="margin-top:40px">
-                        <div class="abc-checkbox abc-checkbox-primary" formGroupName="data">
+                                <p>En caso afirmativo, detallense las actividades y los centros en que se desarrollan: </p>
+                            </div>
 
-                            <input id="preg_24" type="checkbox" formControlName="preg_24" />
-                            <label for="preg_24">
-                   ¿Desarrolla la organización actividades productivas diferenciadas? 
-                  </label>
-                        </div>
-                        <p>En caso afirmativo, detállense las actividades y los centros en que se desarrollan</p>
-
-                        <legend>Centro / Actividad</legend>
-                        <div class="row">
-                            <div class="col-md-5 ">
-                                <div class="form-group">
-                                    <label>Centro:</label>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <div class="form-group">
+                                        <label>Centro:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <label>Actividad:</label>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-5 ">
-                                <div class="form-group">
-                                    <label>Actividad:</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div formArrayName="preg_25_tabla_2">
-                            <div *ngFor="let centroact of preg_25_tabla_2.controls; let i=index" [formGroupName]="i">
+                            <div formArrayName="preg_25_tabla_2">
+                                <div *ngFor="let centroact of preg_25_tabla_2.controls; let i=index" [formGroupName]="i">
 
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="centro" tooltip="Centro" placeholder="Centro" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="actividad" tooltip="Actividad" placeholder="Actividad" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span *ngIf="getPregunta('preg_25_tabla_2').controls.length > 1">
+                                            <button type="button"(click)="removeCentroActividad(i)" class="btn btn-danger btn-xs mb-xs">Borrar</button>                        
+                                        </span>
+                                    </div>
+                                </div>
                                 <div class="row">
-                                    <div class="col-md-5 ">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input class="form-control" formControlName="centro" tooltip="Centro" placeholder="Centro" />
-                                            </div>
-                                        </div>
+                                    <div class="col-md-4 offset-md-2">
+                                        <button (click)="addCentroActividad()" type="button" class="btn btn-success btn-xs mb-xs">Añade Centro/Actividad</button>
                                     </div>
-                                    <div class="col-md-5 ">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input class="form-control" formControlName="actividad" tooltip="Actividad" placeholder="Actividad" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <span *ngIf="preg_25_tabla_2.controls.length > 1">
-                        <button type="button"(click)="removeCentroActividad(i)" class="btn btn-danger btn-xs mb-xs">Borrar</button>
-                        
-                    </span>
-
                                 </div>
                             </div>
-                            <button (click)="addCentroActividad()" type="button" class="btn btn-success btn-xs mb-xs">Añade Centro/Actividad</button>
-                        </div>
-                    </fieldset>
-                    <fieldset style="margin-top:40px" formGroupName="data">
-                        <legend><strong>ÓRGANO RECTOR</strong></legend>
-                        <div class="form-group row">
-                            <label class="col-md-2  col-form-label text-md-right" for="preg_26">Denominación</label>
-                            <div class="col-md-6 ">
-                                <input type="text" formControlName="preg_26" class="form-control" tooltip="Denominación" placeholder="Denominación" />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-2  col-form-label text-md-right">Composición de órgano</label>
-                            <label class="col-md-1  col-form-label text-md-right" for="preg_28">Mujeres</label>
-                            <div class="col-md-1 ">
-                                <input type="text" class="form-control" formControlName="preg_28" tooltip="Mujeres" placeholder="Mujeres" />
-                            </div>
-
-                            <label class="col-md-1  col-form-label text-md-right" for="preg_29">Hombres</label>
-                            <div class="col-md-1 ">
-                                <input type="text" class="form-control" formControlName="preg_29" tooltip="Hombres" placeholder="Hombres" />
-                            </div>
-
-                            <label class="col-md-1  col-form-label text-md-right" for="total">Total</label>
-                            <div class="col-md-1 ">
-                                {{ getTotal() }}
-                            </div>
-                        </div>
-
-                    </fieldset>
-
-
-                    <fieldset style="margin-top:40px" formGroupName="data">
-                        <legend><strong>ESTRUCTURAS DE REPRESENTACIÓN DEL PERSONAL</strong></legend>
-                        <p>A continuación encontrará un listado de estructuras de representación, por favor marque frente a
-                            cada una de ellas si han sido constituidas en la organización o no.</p>
-                        <div class="form-group row">
-                            <div class="col-md-6 ">
-                                Comité de Empresa
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_31" id="preg_31si" formControlName="preg_31" value="si">
-                                    <label for="preg_31si">Si</label>
-                                </div>
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_31" id="preg_31no" formControlName="preg_31" value="no">
-                                    <label for="preg_31no">No</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 ">
-                                Alguna/s sección/es sindicales
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_32" id="preg_32si" formControlName="preg_32" value="si">
-                                    <label for="preg_32si">Si</label>
-                                </div>
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_32" id="preg_32no" formControlName="preg_32" value="no">
-                                    <label for="preg_32no">No</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 ">
-                                El comité de seguridad y salud
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_33" id="preg_33si" formControlName="preg_33" value="si">
-                                    <label for="preg_33si">Si</label>
-                                </div>
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_33" id="preg_33no" formControlName="preg_33" value="no">
-                                    <label for="preg_33no">No</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 ">
-                                Un comité de empresa intercentros
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_34" id="preg_34si" formControlName="preg_34" value="si">
-                                    <label for="preg_34si">Si</label>
-                                </div>
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_34" id="preg_34no" formControlName="preg_34" value="no">
-                                    <label for="preg_34no">No</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 ">
-                                Un comité de seguridad y salud intercentros
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_35" id="preg_35si" formControlName="preg_35" value="si">
-                                    <label for="preg_35si">Si</label>
-                                </div>
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_35" id="preg_35no" formControlName="preg_35" value="no">
-                                    <label for="preg_35no">No</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <p>A continuación encontrará un listado de estructuras de representación, por favor marque frente a
-                            cada de ellas si existen dentro de la organización.</p>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 ">
-                                Delegados/as de personal?
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_36" id="preg_36si" formControlName="preg_36" value="si">
-                                    <label for="preg_36si">Si</label>
-                                </div>
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_36" id="preg_36no" formControlName="preg_36" value="no">
-                                    <label for="preg_36no">No</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-6 ">
-                                Delegados/as sindicales?
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_37" id="preg_37si" formControlName="preg_37" value="si">
-                                    <label for="preg_37si">Si</label>
-                                </div>
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_37" id="preg_37no" formControlName="preg_37" value="no">
-                                    <label for="preg_37no">No</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-6 ">
-                                Delegados/as de prevención?
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_38" id="preg_38si" formControlName="preg_38" value="si">
-                                    <label for="preg_38si">Si</label>
-                                </div>
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_38" id="preg_38no" formControlName="preg_38" value="no">
-                                    <label for="preg_38no">No</label>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-
-
-                    <fieldset>
-                        <legend><strong>Movimientos de plantilla en bloque</strong></legend>
-                        <div class="form-group row" formGroupName="data">
-                            <div class="col-md-6 ">
-                                En los últimos 5 años ¿se han producido movimientos de plantilla que hayan afectado en bloque a más de 10 trabajadoras/es?
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_39" id="preg_39si" formControlName="preg_39" value="si">
-                                    <label for="preg_39si">Si</label>
-                                </div>
-                            </div>
-                            <div class="col-md-1 ">
-                                <div class="abc-radio">
-                                    <input type="radio" name="preg_39" id="preg_39no" formControlName="preg_39" value="no">
-                                    <label for="preg_39no">No</label>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-                        <div class="row">
-                            <div class="col-md-5 ">
-                                <div class="form-group">
-                                    <label>Tipo de movimiento:</label>
-                                </div>
-                            </div>
-                            <div class="col-md-2 ">
-                                <div class="form-group">
-                                    <label>Fecha:</label>
-                                </div>
-                            </div>
-                            <div class="col-md-2 ">
-                                <div class="form-group">
-                                    <label>Mujeres afectadas:</label>
-                                </div>
-                            </div>
-                            <div class="col-md-2 ">
-                                <div class="form-group">
-                                    <label>Hombres afectados:</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div formArrayName="preg_40_tabla_4">
-                            <div *ngFor="let tipomov of preg_40_tabla_4.controls; let i=index" [formGroupName]="i">
-
-                                <div class="row">
-                                    <div class="col-md-5 ">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input class="form-control" formControlName="tipo_movimiento" tooltip="tipo" placeholder="Tipo" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 ">
-                                        <div class="form-group">
-                                            <div class="input-group">
-
-                                                <datetime [timepicker]="false" (locale)="es" formControlName="fecha" tooltip="Fecha" title="Fecha" placeholder="Fecha" [datepicker]="datepickerOpts"></datetime>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 ">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input class="form-control" formControlName="mujeres" tooltip="Mujeres afectadas" placeholder="Mujeres afectadas" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2 ">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input class="form-control" formControlName="hombres" tooltip="Hombres afectados" placeholder="Hombres afectados" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <span *ngIf="i > 2">
-                        <button type="button"(click)="removeTipoMov(i)" class="btn btn-danger btn-xs mb-xs">Borrar</button>
-                        
-                    </span>
-
-                                </div>
-                            </div>
-                            <button (click)="addTipoMov()" type="button" class="btn btn-success btn-xs mb-xs">Añade Tipo de movimiento</button>
-                        </div>
-                    </fieldset>
+                        </fieldset>
+                    </div>
                     <div class="section" style="margin-top:40px" formGroupName="data">
                         <fieldset>
-                            <legend><strong>POLÍTICAS DE IGUALDAD DE OPORTUNIDADES ENTRE MUJERES Y HOMBRES</strong></legend>
+                            <legend><strong>Órgano Rector</strong></legend>
                             <div class="form-group row">
+                                <label class="col-md-2 offset-md-2  col-form-label text-md-right" for="preg_26">Denominación</label>
                                 <div class="col-md-6 ">
-                                    La empresa, ¿dispone de estructuras, programas de actuación, guías de buenas prácticas o cualesquiera medidas específicas
-                                    (sectoriales o pactadas) en materia de igualdad de oportunidades entre mujeres y hombres?
-                                </div>
-                                <div class="col-md-1 ">
-                                    <div class="abc-radio">
-                                        <input type="radio" name="preg_41" id="preg41si" formControlName="preg_41" value="si">
-                                        <label for="preg41si">Si</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-1 ">
-                                    <div class="abc-radio">
-                                        <input type="radio" name="preg_41" id="preg41no" formControlName="preg_41" value="no">
-                                        <label for="preg41no">No</label>
-                                    </div>
+                                    <input type="text" formControlName="preg_26" class="form-control" tooltip="Denominación" placeholder="Denominación" />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-md-6 ">
+                                <label class="col-md-2 offset-md-2  col-form-label text-md-right">Composición de órgano</label>
+                                <label class="col-md-1  col-form-label text-md-right" for="preg_28">Mujeres</label>
+                                <div class="col-md-1 ">
+                                    <input type="text" class="form-control" formControlName="preg_28" tooltip="Mujeres" placeholder="Mujeres" />
+                                    <div class="alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_28'].errors?.number">
+                                        {{serviceErrores.objetoErrores['numerico']}}
+                                    </div>
+                                </div>
+
+                                <label class="col-md-1  col-form-label text-md-right" for="preg_29">Hombres</label>
+                                <div class="col-md-1 ">
+                                    <input type="text" class="form-control" formControlName="preg_29" tooltip="Hombres" placeholder="Hombres" />
+                                    <div class="alert alert-danger" *ngIf="(ifForm.controls['data']).controls['preg_29'].errors?.number">
+                                        {{serviceErrores.objetoErrores['numerico']}}
+                                    </div>
+                                </div>
+
+                                <label class="col-md-1  col-form-label text-md-right" for="total">Total</label>
+                                <div class="col-md-1 col-form-label">
+                                    {{ getTotal() }}
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <legend><strong>Estructuras de Representación del Personal</strong></legend>
+                            <p> A continuación encontrará un listado de estructuras de representación, por favor marque frente
+                                a cada una de ellas si han sido constituidas en la organización o no.</p>
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-2">
+                                    Comité de empresa
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_31">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-2">
+                                    Alguna/s sección/es sindicales:
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_32">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-2">
+                                    El comité de seguridad y salud:
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_33">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-2">
+                                    Un comité de empresa intercentros:
+                                </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_34">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-2">
+                                    Un comité de seguridad y salud intercentros: </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_35">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+
+
+                            <p> A continuación encontrará un listado de estructuras de representación, por favor marque frente
+                                a cada una de ellas si existen dentro de la organización</p>
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-2">
+                                    Delegados/as de personal? </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_36">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-2">
+                                    Delegados/as sindicales? </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_37">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-2">
+                                    Delegados/as de prevención? </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_38">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <legend><strong>Movimientos de plantilla en bloque</strong></legend>
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-2">
+                                    En los últimos 5 años ¿se han producido movimientos de plantilla que hayan afectado en bloque a más de 10 trabajadoras/es?
+                                    </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_39">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+                    <div class="section">
+                        <fieldset>
+                            
+                            
+
+                            <div class="row">
+                                <div class="col-md-6 offset-md-2">
+                                    <div class="form-group">
+                                        <label>Tipo de Movimiento</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <div class="form-group">
+                                        <label>Fecha:</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Mujeres afectadas</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <label>Hombres afectados</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div formArrayName="preg_40_tabla_4">
+                                <div *ngFor="let datos of getPregunta('preg_40_tabla_4').controls; let i=index" [formGroupName]="i">
+                                <!--<div *ngFor="let tipomov of preg_40_tabla_4.controls; let i=index" [formGroupName]="i">-->
+                                    <div class="row">
+                                        <div class="col-md-6 offset-md-2">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="{{datos.controls['texto'].value}}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input type="date" class="form-control" formControlName="fecha" tooltip="Fecha" placeholder="Fecha" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <fieldset>
+                            <legend><strong>Políticas de igualdad de oportunidades entre mujeres y hombres</strong></legend>
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-2">
+                                    La empresa, ¿dispone de estructuras, programas de actuación, guías de buenas prácticas o cualesquiera medidas específicas
+                                    (sectoriales o pactadas) en materia de igualdad de oportunidades entre mujeres y hombres?
+                                    </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_41">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-2">
                                     La empresa, ¿dispone de estructuras, programas de actuación, guías de buenas prácticas o cualesquiera medidas específicas
                                     (sectoriales o pactadas) en materia de conciliación de la vida laboral y familiar?
                                 </div>
-                                <div class="col-md-1 ">
-                                    <div class="abc-radio">
-                                        <input type="radio" name="preg_42" id="preg42si" formControlName="preg_42" value="si">
-                                        <label for="preg42si">Si</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-1 ">
-                                    <div class="abc-radio">
-                                        <input type="radio" name="preg_42" id="preg42no" formControlName="preg_42" value="no">
-                                        <label for="preg42no">No</label>
-                                    </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_42">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
                                 </div>
                             </div>
-
                             <div class="form-group row">
-                                <div class="col-md-6 ">
+                                <div class="col-md-6 offset-md-2">
                                     La empresa, ¿dispone de estructuras, programas de actuación, guías de buenas prácticas o cualesquiera medidas específicas
                                     (sectoriales o pactadas) en materia de violencia de género?
                                 </div>
-                                <div class="col-md-1 ">
-                                    <div class="abc-radio">
-                                        <input type="radio" name="preg_43" id="preg43si" formControlName="preg_43" value="si">
-                                        <label for="preg43si">Si</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-1 ">
-                                    <div class="abc-radio">
-                                        <input type="radio" name="preg_43" id="preg43no" formControlName="preg_43" value="no">
-                                        <label for="preg43no">No</label>
-                                    </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_43">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
                                 </div>
                             </div>
-
-
-
                             <div class="form-group row">
-                                <div class="col-md-6 ">
+                                <div class="col-md-6 offset-md-2">
                                     Caso de que la empresa haya implementado ya un plan de igualdad, dichas medidas han sido evaluadas con carácter interno o
                                     externo a la organización?
                                 </div>
-                                <div class="col-md-1 ">
-                                    <div class="abc-radio">
-                                        <input type="radio" name="preg_44" id="preg44si" formControlName="preg_44" value="si">
-                                        <label for="preg44si">Si</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-1 ">
-                                    <div class="abc-radio">
-                                        <input type="radio" name="preg_44" id="preg44no" formControlName="preg_44" value="no">
-                                        <label for="preg44no">No</label>
-                                    </div>
+                                <div class="col-md-2">
+                                    <md-radio-group formControlName="preg_44">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
                                 </div>
                             </div>
-
-
-                            <p class="text-danger">Proporcionar esta información (Plan de igualdad anterior, Guía de buenas prácticas, programas,
-                                memorias, informes, etc.) a Equality Momentum</p>
+                            <p class="text-danger">En caso de marcar "Sí" en alguna de las opciones anteriores, será importante proporcionar esta
+                                información (Guías, programas, memorias, informes, etc.) a Equality Momentum</p>
                         </fieldset>
                     </div>
+
                     <div class="form-actions">
                         <div class="row">
                             <div class="offset-md-4 col-md-7 ">
-                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                                <button type="button" class="btn btn-inverse">Cancelar</button>
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(false)" class="btn btn-primary">Guardar cambios</button>
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(true)" class="btn btn-success">Guardar y Continuar</button>
                             </div>
                         </div>
                     </div>
                 </form>
+            </div>
+        </section>
+    </div>
+</div>

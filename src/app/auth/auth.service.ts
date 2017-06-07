@@ -43,12 +43,11 @@ export class AuthService {
         console.log("Asignamos rol:" + datos.perfil);
         
         this.perfilauth = datos.perfil;
-        /*if (datos.cuest != null)
-          this.tipocuest = datos.cuest;*/
-
-        //return res.json().success
-        //return res.json().isLoggedIn
-        this.tipocuest = 1; //mirar de cambiarlo
+        if (datos.cuest != null)
+          this.tipocuest = datos.cuest;
+        else
+          this.tipocuest = 1; // lo pongo a 1 para que no de error en el admin
+        
         return (res.json().isLoggedIn==true);
       });
    

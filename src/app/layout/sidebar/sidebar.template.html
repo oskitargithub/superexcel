@@ -22,6 +22,11 @@
     <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['rrpp'] " title="Representación de Personal">Rep. de Personal</a></li>
     <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['comunicacion']" title="Comunicación">Comunicación</a></li>
     
+    <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['introduccionpr'] " title="Introducción"><span class="icon"><i class="fa fa-desktop"></i></span>Introducción</a></li>
+    <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['informacionbasicapr'] "><span class="icon"><i class="glyphicon glyphicon-stats"></i></span>Información Básica</a></li>
+    <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['clasificacionprofesional1pr'] " title="Clasificación Profesional I">Clasificación Prof. I</a></li>
+    <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['clasificacionprofesional2pr'] " title="Clasificación Profesional II">Clasificación Prof. II</a></li>
+
   </ul>
   <ul class="sidebar-nav" id="sidebar-dashboardadmin" *ngIf="perfil=='ADM'">
     <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['dashboardadmin'] ">Dashboard Admin</a></li>

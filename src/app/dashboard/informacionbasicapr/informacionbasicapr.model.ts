@@ -16,7 +16,7 @@ export class CentroActividad{
 }
 
 export class TipodeMovimiento{
-        tipo_movimiento : string='';
+        texto : string='';
         fecha: string = '';
         mujeres: string ='';
         hombres: string ='';
@@ -66,6 +66,7 @@ export class dataModel{
 export class datosUserModel{
         public user_id : number;
         public empresa: string;
+        public apellidos: string;
         public cif: string;
         public ambito: string;
         public sector: string;
@@ -78,13 +79,19 @@ export class datosUserModel{
         public email: string;
         public num_centros: string;
         public num_comunidades:string;
+        public created_at: any;
         public dia: string;
         public mes: string;
         public anyo: string;
-        public created_at: string;
+        public fecha_ini: any;
+        public nombre: any;
+        public tipo : any;
+        public updated_at : any;
+        public username : any;
         constructor(){
            this.user_id = 0,
            this.ambito='',
+           this.apellidos='',
            this.anyo='',
            this.cif='',
            this.convenio='',
@@ -95,12 +102,17 @@ export class datosUserModel{
            this.horarios='',
            this.mes='',
            this.num_centros='',
+           this.created_at = '';
            this.num_comunidades='',
            this.personas = '',
            this.sector = '',
            this.telefonos='',
            this.user_id = 0,
-           this.web = '',
-           this.created_at = ''
+           this.fecha_ini = '',
+           this.nombre='',
+           this.tipo = '',
+           this.updated_at = '',
+           this.username = '',
+           this.web = ''
         }
 }

@@ -27,8 +27,6 @@ const routes: Routes = [
     { path: 'dashboard', loadChildren: '../dashboard/dashboard.module#DashboardModule', canActivate: [AuthGuard], data:{ roles:['USER'] }},
     { path: 'introduccion', loadChildren: '../dashboard/introduccion/introduccion.module#IntroduccionModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'informacionbasica', loadChildren: '../dashboard/informacionbasica/informacionbasica.module#InformacionBasicaModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
-    { path: 'informacionbasicapr', loadChildren: '../dashboard/informacionbasicapr/informacionbasicapr.module#InformacionBasicaPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
-   
     { path: 'clasificacionprofesional1', loadChildren: '../dashboard/clasprofesional1/clasprofesional1.module#ClasProfesional1Module', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'clasificacionprofesional2', loadChildren: '../dashboard/clasprofesional2/clasprofesional2.module#ClasProfesional2Module', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'retribuciones', loadChildren: '../dashboard/retribuciones/retribuciones.module#RetribucionesModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
@@ -42,6 +40,12 @@ const routes: Routes = [
     { path: 'acospr', loadChildren: '../dashboard/acospr/acospr.module#AcosPRModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'rrpp', loadChildren: '../dashboard/rrpp/rrpp.module#RRPPModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'comunicacion', loadChildren: '../dashboard/comunicacion/comunicacion.module#ComunicacionModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
+
+
+    { path: 'informacionbasicapr', loadChildren: '../dashboard/informacionbasicapr/informacionbasicapr.module#InformacionBasicaPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
+    { path: 'introduccionpr', loadChildren: '../dashboard/introduccion/introduccion.module#IntroduccionModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
+    { path: 'clasificacionprofesional1pr', loadChildren: '../dashboard/clasprofesional1pr/clasprofesional1pr.module#ClasProfesional1PrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
+    { path: 'clasificacionprofesional2pr', loadChildren: '../dashboard/clasprofesional2pr/clasprofesional2pr.module#ClasProfesional2PrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
 ]},
    { path: 'admin', component: Layout, children: [
      { path: '', redirectTo: 'dashboardadmin', pathMatch: 'full', canActivateChild: [AuthGuard], data:{ roles:['ADM'] } },
