@@ -1,0 +1,1069 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Retribuciones Salariales</li>
+</ol>
+
+<div class="row">
+  <div class="col-md-8"><h1 class="page-title">Retribuciones <span class="fw-semi-bold">Salariales</span></h1></div>
+  <div class="col-md-4">
+      <div class="row progress-stats">
+          <div class="col-md-9 col-xs-12">
+            <p class="description deemphasize">Progreso de la pestaña</p>
+            <div class="bg-white progress-bar">              
+            <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic+'%'}"></progress>
+
+            
+            </div>
+          </div>
+          <div class="col-md-3 col-xs-12 text-xs-center">
+                                <span class="status rounded rounded-lg bg-body-light">
+                                    <small><span number-animate>{{getValorBarra()}}</span>%</small>
+                                </span>
+          </div>
+        </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="widget" widget>
+            <div class="widget-body">
+                <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
+                    
+
+                    <!-- A1 -->
+                    <div class="section" style="margin-top:40px">
+                        <p>A continuación encontrará una serie de tablas donde deberá especificar cuantas personas desagregadas por sexo reciben un determinado salario de acuerdo a la clasificación del  cargo ejercido según los grupos profesionales. En caso de cambiar alguna categoría por favor contáctenos</p>
+                            
+                        <fieldset>
+                            <legend><strong>Cargos en los que se exige estar en posesión del título de Master o Doctorado  para poder ejercerlos.</strong></legend>
+                            
+                            <div formArrayName="preg_416_tabla_5">
+                                <div class="row">
+                                    <div class="col-md-2 ">
+
+                                    </div>
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        <strong> Sin compensaciones</strong>
+                                    </div>
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        <strong> Con compensaciones</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 text-md-center">
+                                        Denominación categoría
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Bandas salariales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                     <div class="col-md-2 text-md-center">
+                                        Bandas salariales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>                                
+                                <div *ngFor="let datos of getPregunta('preg_416_tabla_5').controls; let i=index" [formGroupName]="i">
+                                    
+                                    <div class="row">
+                                        <div class="col-md-2 text-md-center" *ngIf="i==3"><strong>Grupo A, Subgrupo A1</strong></div>
+                                        <div class="col-md-2 " *ngIf="i!=3"></div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="form-control"  tooltip="{{datos.controls['texto'].value}}">
+                                                        {{ (ifForm.controls['preg_416_tabla_5']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" [readonly]="true" hidden formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_416_tabla_5']).controls[i].controls['mujeres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                  <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_416_tabla_5']).controls[i].controls['hombres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="form-control"  tooltip="{{datos.controls['texto'].value}}">
+                                                        {{ (ifForm.controls['preg_416_tabla_5']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" [readonly]="true" hidden formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                  <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_416_tabla_5']).controls[i].controls['mujeres2'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                  <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_416_tabla_5']).controls[i].controls['hombres2'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-2 text-md-center">
+                                        
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Total
+                                    </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalMujeres(ifForm.controls.preg_416_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalHombres(ifForm.controls.preg_416_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                        Total
+                                    </div>
+                                 <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalMujeres2(ifForm.controls.preg_416_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                       {{ getTotalHombres2(ifForm.controls.preg_416_tabla_5) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- A2 -->
+                     <div class="section" style="margin-top:40px">
+                           
+                        <fieldset>
+                            <legend><strong>Cargos en los que se exige estar en posesión del título de Universitario de Grado, Licenciatura o Ingeniería  para poder ejercerlos. </strong></legend>
+                            
+                            <div formArrayName="preg_417_tabla_5">
+                                <div class="row">
+                                    <div class="col-md-2 ">
+
+                                    </div>
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        <strong> Sin compensaciones</strong>
+                                    </div>
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        <strong> Con compensaciones</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 text-md-center">
+                                        Denominación categoría
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Bandas salariales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                     <div class="col-md-2 text-md-center">
+                                        Bandas salariales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>                                
+                                <div *ngFor="let datos of getPregunta('preg_417_tabla_5').controls; let i=index" [formGroupName]="i">
+                                    
+                                    <div class="row">
+                                        <div class="col-md-2 text-md-center" *ngIf="i==3"><strong>Grupo A, Subgrupo A2</strong></div>
+                                        <div class="col-md-2 " *ngIf="i!=3"></div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="form-control"  tooltip="{{datos.controls['texto'].value}}">
+                                                        {{ (ifForm.controls['preg_417_tabla_5']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" [readonly]="true" hidden formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                  <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_417_tabla_5']).controls[i].controls['mujeres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_417_tabla_5']).controls[i].controls['hombres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="form-control"  tooltip="{{datos.controls['texto'].value}}">
+                                                        {{ (ifForm.controls['preg_417_tabla_5']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" [readonly]="true" hidden formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_417_tabla_5']).controls[i].controls['mujeres2'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_417_tabla_5']).controls[i].controls['hombres2'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 text-md-center">
+                                        
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Total
+                                    </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalMujeres(ifForm.controls.preg_417_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalHombres(ifForm.controls.preg_417_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                        Total
+                                    </div>
+                                 <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalMujeres2(ifForm.controls.preg_417_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                       {{ getTotalHombres2(ifForm.controls.preg_417_tabla_5) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                     <!-- B -->
+                     <div class="section" style="margin-top:40px">
+                           
+                        <fieldset>
+                            <legend><strong>Cargos en los que se exige estar en posesión del título de Técnico Superior, Diplomatura para poder ejercerlos.</strong></legend>
+                            
+                            <div formArrayName="preg_418_tabla_5">
+                                <div class="row">
+                                    <div class="col-md-2 ">
+
+                                    </div>
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        <strong> Sin compensaciones</strong>
+                                    </div>
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        <strong> Con compensaciones</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 text-md-center">
+                                        Denominación categoría
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Bandas salariales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                     <div class="col-md-2 text-md-center">
+                                        Bandas salariales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>                                
+                                <div *ngFor="let datos of getPregunta('preg_418_tabla_5').controls; let i=index" [formGroupName]="i">
+                                    
+                                    <div class="row">
+                                        <div class="col-md-2 text-md-center" *ngIf="i==3"><strong>Grupo B</strong></div>
+                                        <div class="col-md-2 " *ngIf="i!=3"></div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="form-control"  tooltip="{{datos.controls['texto'].value}}">
+                                                        {{ (ifForm.controls['preg_418_tabla_5']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" [readonly]="true" hidden formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                 <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_418_tabla_5']).controls[i].controls['mujeres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_418_tabla_5']).controls[i].controls['hombres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="form-control"  tooltip="{{datos.controls['texto'].value}}">
+                                                        {{ (ifForm.controls['preg_418_tabla_5']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" [readonly]="true" hidden formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_418_tabla_5']).controls[i].controls['mujeres2'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_418_tabla_5']).controls[i].controls['hombres2'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 text-md-center">
+                                        
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Total
+                                    </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalMujeres(ifForm.controls.preg_418_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalHombres(ifForm.controls.preg_418_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                        Total
+                                    </div>
+                                 <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalMujeres2(ifForm.controls.preg_418_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                       {{ getTotalHombres2(ifForm.controls.preg_418_tabla_5) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                     <!-- C1 -->
+                     <div class="section" style="margin-top:40px">
+                           
+                        <fieldset>
+                            <legend><strong>Cargos en los que se exige estar en posesión del título de bachiller o técnico para poder ejercerlos. </strong></legend>
+                            
+                            <div formArrayName="preg_419_tabla_5">
+                                <div class="row">
+                                    <div class="col-md-2 ">
+
+                                    </div>
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        <strong> Sin compensaciones</strong>
+                                    </div>
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        <strong> Con compensaciones</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 text-md-center">
+                                        Denominación categoría
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Bandas salariales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                     <div class="col-md-2 text-md-center">
+                                        Bandas salariales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>                                
+                                <div *ngFor="let datos of getPregunta('preg_419_tabla_5').controls; let i=index" [formGroupName]="i">
+                                    
+                                    <div class="row">
+                                        <div class="col-md-2 text-md-center" *ngIf="i==3"><strong>Grupo C,  Subgrupo C1</strong></div>
+                                        <div class="col-md-2 " *ngIf="i!=3"></div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="form-control"  tooltip="{{datos.controls['texto'].value}}">
+                                                        {{ (ifForm.controls['preg_419_tabla_5']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" [readonly]="true" hidden formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_419_tabla_5']).controls[i].controls['mujeres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_419_tabla_5']).controls[i].controls['hombres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="form-control"  tooltip="{{datos.controls['texto'].value}}">
+                                                        {{ (ifForm.controls['preg_419_tabla_5']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" [readonly]="true" hidden formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_419_tabla_5']).controls[i].controls['mujeres2'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_419_tabla_5']).controls[i].controls['hombres2'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 text-md-center">
+                                        
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Total
+                                    </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalMujeres(ifForm.controls.preg_419_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalHombres(ifForm.controls.preg_419_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                        Total
+                                    </div>
+                                 <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalMujeres2(ifForm.controls.preg_419_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                       {{ getTotalHombres2(ifForm.controls.preg_419_tabla_5) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                     <!-- C2 -->
+                     <div class="section" style="margin-top:40px">
+                           
+                        <fieldset>
+                            <legend><strong>Cargos en los que se exige estar en posesión del título de graduado en Educación Secundaria Obligatoria.</strong></legend>
+                            
+                            <div formArrayName="preg_420_tabla_5">
+                                <div class="row">
+                                    <div class="col-md-2 ">
+
+                                    </div>
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        <strong> Sin compensaciones</strong>
+                                    </div>
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        <strong> Con compensaciones</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 text-md-center">
+                                        Denominación categoría
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Bandas salariales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                     <div class="col-md-2 text-md-center">
+                                        Bandas salariales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>                                
+                                <div *ngFor="let datos of getPregunta('preg_420_tabla_5').controls; let i=index" [formGroupName]="i">
+                                    
+                                    <div class="row">
+                                        <div class="col-md-2 text-md-center" *ngIf="i==3"><strong>Grupo C,  Subgrupo C2</strong></div>
+                                        <div class="col-md-2 " *ngIf="i!=3"></div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="form-control"  tooltip="{{datos.controls['texto'].value}}">
+                                                        {{ (ifForm.controls['preg_420_tabla_5']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" [readonly]="true" hidden formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_420_tabla_5']).controls[i].controls['mujeres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_420_tabla_5']).controls[i].controls['hombres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="form-control"  tooltip="{{datos.controls['texto'].value}}">
+                                                        {{ (ifForm.controls['preg_420_tabla_5']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" [readonly]="true" hidden formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_420_tabla_5']).controls[i].controls['mujeres2'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_420_tabla_5']).controls[i].controls['hombres2'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 text-md-center">
+                                        
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Total
+                                    </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalMujeres(ifForm.controls.preg_420_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalHombres(ifForm.controls.preg_420_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                        Total
+                                    </div>
+                                 <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalMujeres2(ifForm.controls.preg_420_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                       {{ getTotalHombres2(ifForm.controls.preg_420_tabla_5) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                     <!-- E -->
+                     <div class="section" style="margin-top:40px">
+                           
+                        <fieldset>
+                            <legend><strong>Cargos en los que se exige estudios inferiores al de  Educación Secundaria Obligatoria.</strong></legend>
+                            
+                            <div formArrayName="preg_421_tabla_5">
+                                <div class="row">
+                                    <div class="col-md-2 ">
+
+                                    </div>
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        <strong> Sin compensaciones</strong>
+                                    </div>
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        <strong> Con compensaciones</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 text-md-center">
+                                        Denominación categoría
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Bandas salariales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                     <div class="col-md-2 text-md-center">
+                                        Bandas salariales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>                                
+                                <div *ngFor="let datos of getPregunta('preg_421_tabla_5').controls; let i=index" [formGroupName]="i">
+                                    
+                                    <div class="row">
+                                        <div class="col-md-2 text-md-center" *ngIf="i==3"><strong>Grupo E</strong></div>
+                                        <div class="col-md-2 " *ngIf="i!=3"></div>
+                                        <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="form-control"  tooltip="{{datos.controls['texto'].value}}">
+                                                        {{ (ifForm.controls['preg_421_tabla_5']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" [readonly]="true" hidden formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_421_tabla_5']).controls[i].controls['mujeres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_421_tabla_5']).controls[i].controls['hombres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="form-control"  tooltip="{{datos.controls['texto'].value}}">
+                                                        {{ (ifForm.controls['preg_421_tabla_5']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" [readonly]="true" hidden formControlName="texto"  tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_421_tabla_5']).controls[i].controls['mujeres2'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_421_tabla_5']).controls[i].controls['hombres2'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 text-md-center">
+                                        
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Total
+                                    </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalMujeres(ifForm.controls.preg_421_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalHombres(ifForm.controls.preg_421_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                        Total
+                                    </div>
+                                 <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalMujeres2(ifForm.controls.preg_421_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                       {{ getTotalHombres2(ifForm.controls.preg_421_tabla_5) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+
+
+                    <!-- Resumen -->
+                    <!-- Situación según retribución-->
+                    <div class="section" style="margin-top:40px">
+                        <p>A continuación tiene una tabla resumen que contempla la situación de mujeres y hombres según sus retribuciones brutas anuales en su organización</p>
+                        <fieldset>
+                            <legend><strong>Situación Mujeres y Hombres según sus retribuciones brutas anuales</strong></legend>
+                            <div formArrayName="preg_415_tabla_5">
+                                <div class="row">
+                                   
+                                    <div class="col-md-2 offset-md-4 text-md-center">
+                                        <strong> Sin compensaciones</strong>
+                                    </div>
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        <strong> Con compensaciones</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2 text-md-center">
+                                        Bandas salariales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                    <div class="col-md-2">
+                                         Bandas salariales
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Mujeres
+                                    </div>
+                                    <div class="col-md-1 text-md-center">
+                                        Hombres
+                                    </div>
+                                </div>                                
+                                <div *ngFor="let datos of getPregunta('preg_415_tabla_5').controls; let i=index" [formGroupName]="i">
+
+                                    <div class="row">
+                                        <div class="col-md-2 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="form-control"  tooltip="{{datos.controls['texto'].value}}">
+                                                        {{ (ifForm.controls['preg_415_tabla_5']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" [readonly]="true" hidden formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    
+                                                    <input class="form-control" [readonly]="true" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" value="{{CalculaValor(i)}}" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_415_tabla_5']).controls[i].controls['mujeres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" [readonly]="true" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_415_tabla_5']).controls[i].controls['hombres'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="form-control"  tooltip="{{datos.controls['texto'].value}}">
+                                                        {{ (ifForm.controls['preg_415_tabla_5']).controls[i].controls['texto'].value }}
+                                                    </span>
+                                                    <input class="form-control" [readonly]="true" hidden formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" [readonly]="true" formControlName="mujeres2" tooltip="Mujeres" placeholder="Mujeres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_415_tabla_5']).controls[i].controls['mujeres2'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" [readonly]="true" formControlName="hombres2" tooltip="Hombres" placeholder="Hombres" />
+                                                </div>
+                                                <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_415_tabla_5']).controls[i].controls['hombres2'].errors?.number">
+                                                     {{serviceErrores.objetoErrores['numerico']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 text-md-center">
+                                        
+                                    </div>
+                                    <div class="col-md-2 text-md-center">
+                                        Total
+                                    </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalMujeres(ifForm.controls.preg_415_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalHombres(ifForm.controls.preg_415_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-md-center">
+                                        Total
+                                    </div>
+                                 <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                        {{ getTotalMujeres2(ifForm.controls.preg_415_tabla_5) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    <div class="form-group">
+                                       {{ getTotalHombres2(ifForm.controls.preg_415_tabla_5) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" *ngIf="getTotalMujeresT5(ifForm.controls.preg_415_tabla_5) || getTotalHombresT5(ifForm.controls.preg_415_tabla_5) || getTotalTotal(ifForm.controls.preg_415_tabla_5)">
+                                <div class="col-md-10 offset-md-2">
+                                    <div class="form-group">
+                                        <div class="alert alert-danger">
+                                            El número total de mujeres y hombres declarado en el apartado de Retribuciones Salariales no coincide con el número facilitado anteriormente, por favor revise la información o justifique, en su caso, las diferencias con el equipo de Equality Momentum</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- fin resumen -->
+                    <div class="form-actions" style="margin-top:40px">
+                        <div class="row">
+                            <div class="offset-md-4 col-md-7 ">
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(false)" class="btn btn-primary">Guardar cambios</button>
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(true)" class="btn btn-success">Guardar y Continuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

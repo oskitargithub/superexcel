@@ -285,7 +285,7 @@ export class ClasProfesional2PrComponent implements OnInit {
                 else {
                     this.ifForm.markAsPristine();      
                     if (redirigir) {
-                        this.router.navigate(["/app/retribuciones"]);
+                        this.router.navigate(["/app/retribucionespr"]);
                     }
                     Messenger().post({
                         message: 'Los datos han sido guardados correctamente',

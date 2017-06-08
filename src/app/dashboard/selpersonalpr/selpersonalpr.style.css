@@ -1,0 +1,28 @@
+.autogrow {
+  overflow: hidden;
+  resize: none;
+}
+ .md-radio-checked .md-radio-inner-circle{
+     background-color: dodgerblue;
+ }
+ .md-radio-checked .md-radio-outer-circle{
+    border-color:  dodgerblue;
+}
+
+
+
+.md-radio-checked .md-radio-label .md-radio-container .md-radio-outer-circle{
+    border-color:  dodgerblue;
+    transition: border-color ease 280ms;
+}
+.md-radio-focused .md-radio-label .md-radio-container .md-ink-ripple { 
+    opacity: 1; 
+background-color: rgba(30, 144, 255, 0.5)
+}
+
+/** Para que no salga el campo de fecha redimensionado a lo alto en varias columnas*/
+.input-group .form-control[type=date] {
+    flex-direction: row;
+}
+
+  

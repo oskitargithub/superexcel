@@ -1,0 +1,501 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Acceso al empleo</li>
+</ol>
+
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="page-title">Selección de <span class="fw-semi-bold">Personal</span></h1>
+    </div>
+    <div class="col-md-4">
+        <div class="row progress-stats">
+            <div class="col-md-9 col-xs-12">
+                <p class="description deemphasize">Progreso de la pestaña</p>
+                <div class="bg-white progress-bar">
+                    <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic+'%'}"></progress>
+
+
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 text-xs-center">
+                <span class="status rounded rounded-lg bg-body-light">
+                                    <small><span number-animate>{{getValorBarra()}}</span>%</small>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="widget" widget>
+                <div class="widget-body">
+
+
+                    <div class="section" style="margin-top:40px" formArrayName="preg_435">
+                        <p>Marque cuales son los factores determinantes de la apertura de un proceso de selección y contratación
+                            en la organización</p>
+                        <fieldset>
+                            <legend><strong>Factores</strong></legend>
+                            <div class="col-md-10 offset-md-2">
+                                <div class="row">
+                                    <div *ngFor="let datos of getPregunta('preg_435').controls; let i=index" [formGroupName]="i" class="col-md-10">
+                                        <md-checkbox formControlName="valor1">
+                                            {{ifForm.controls.preg_435.value[i].texto}}
+                                        </md-checkbox>
+                                        <div class="col-md-10" *ngIf="i==5">
+                                            <input [readonly]="!ifForm.controls.preg_435.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
+                                                placeholder="Otros" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+                    <div class="section" style="margin-top:40px" formArrayName="preg_436">
+                        <p>Cual de las siguientes estrategias de reclutamiento son utilizada por la organización para la realización
+                            de procesos de selección</p>
+                        <fieldset>
+                            <legend><strong>Estrategias</strong></legend>
+                            <div class="col-md-10 offset-md-2">
+                                <div class="row">
+                                    <div *ngFor="let datos of getPregunta('preg_436').controls; let i=index" [formGroupName]="i" class="col-md-10">
+                                        <md-checkbox formControlName="valor1">
+                                            {{ifForm.controls.preg_436.value[i].texto}}
+                                        </md-checkbox>
+                                        <div class="col-md-10" *ngIf="i==5">
+                                            <input [readonly]="!ifForm.controls.preg_436.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
+                                                placeholder="Otros" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <p>Determinación del perfil de los puestos de trabajo</p>
+                        <fieldset>
+                            <legend><strong>Indicar el procedimiento y  órgano/s implicado/s en el mismo</strong></legend>
+
+                            <div class="row">
+                                <div class="col-md-8 offset-md-2">
+
+                                    <textarea rows="3" class="autogrow form-control transition-height" id="preg_13txt" formControlName="preg_437" autosize placeholder="Procedimiento y órgano"></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+                    <div class="section" style="margin-top:40px" formArrayName="preg_438">
+                        <p>Métodos de selección utilizados</p>
+                        <fieldset>
+                            <legend><strong>Métodos</strong></legend>
+                            <div class="col-md-10 offset-md-2">
+                                <div class="row">
+                                    <div *ngFor="let datos of getPregunta('preg_438').controls; let i=index" [formGroupName]="i" class="col-md-10">
+                                        <md-checkbox formControlName="valor1">
+                                            {{ifForm.controls.preg_438.value[i].texto}}
+                                        </md-checkbox>
+                                        <div class="col-md-10" *ngIf="i==6">
+                                            <input [readonly]="!ifForm.controls.preg_438.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
+                                                placeholder="Otros" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="widget" widget>
+                <div class="widget-body">
+                    <div class="section" style="margin-top:40px">
+                        <p><strong> INFORMACIÓN CUALITATIVA. INGRESO EN LA ORGANIZACIÓN</strong></p>
+                        <fieldset>
+                            <legend>Factores determinantes de la apertura de un proceso de selección y contratación</legend>
+                            <div class="col-md-10 offset-md-2">
+                                <div class="row" formArrayName="preg_440">
+                                    <div *ngFor="let datos of getPregunta('preg_440').controls; let i=index" [formGroupName]="i" class="col-md-12">
+                                        <md-checkbox formControlName="valor1">
+                                            {{ifForm.controls.preg_440.value[i].texto}}
+                                        </md-checkbox>
+                                        <div class="col-md-6 input-group" *ngIf="i==1 && ifForm.controls.preg_440.value[i].valor1">
+                                            <input type="date" class="form-control" formControlName="texto1" tooltip="Indica fecha"
+                                                placeholder="Indica fecha" />
+                                            <span
+                                                class="input-group-addon"> <span class="fa fa-calendar"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="ifForm.controls.preg_440.value[1]!=undefined && ifForm.controls.preg_440.value[1].valor1">
+                                    <div class="row" formGroupName="data">
+                                        <div class="col-md-12">
+                                            <p>En caso afirmativo, aporte la RPT a la consultora.</p>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <label class="col-form-label text-md-left" for="preg_441">
+                                        a) Mencione los criterios profesionales de aplicación general, en su caso, a todos los grupos, categorías y puestos de trabajo:
+                                        </label>
+                                        </div>
+
+                                        <div class="col-md-8">
+                                            <textarea rows="3" class="autogrow form-control transition-height" id="preg_441" formControlName="preg_441" autosize placeholder="Criterios aplicación general"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" formGroupName="data" *ngIf="ifForm.controls.preg_440.value[1]!=undefined && ifForm.controls.preg_440.value[1].valor1">
+                                    <div class="col-md-10">
+                                        <label class="col-form-label text-md-left" for="preg_442">
+                                        b) Mencione los criterios profesionales específicos, de aplicación sólo a ciertos grupos, categorías y puestos de trabajo (con indicación de a qué grupos, categorías o puestos se asocian):
+                                        </label>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_442" formControlName="preg_442" autosize placeholder="Criterios aplicación a ciertos grupos"></textarea>
+                                    </div>
+                                </div>
+                                <div  *ngIf="ifForm.controls.preg_440.value[1]!=undefined && ifForm.controls.preg_440.value[1].valor1" style="margin-top:40px">&nbsp;</div>
+                                <div class="row" formGroupName="data">
+
+                                    <div class="col-md-8">
+                                        <md-checkbox formControlName="preg_443">
+                                            La organización no dispone de criterios de selección profesionales formalizados y/o documentados
+                                        </md-checkbox>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="section" style="margin-top:40px">
+
+                        <fieldset>
+                            <legend><strong> Identificación de los criterios de selección PERSONALES (aunque se apliquen de manera no formalizada)</strong></legend>
+                            <div class="row">
+                                <div class="col-md-10 offset-md-2">
+                                    ¿En el caso de realizar entrevistas personales en el proceso selectivo, aplica la organización criterios de selección de
+                                    carácter PERSONAL?
+                                </div>
+                            </div>
+                            <div class="row" formGroupName="data">
+                                <div class="col-md-2 offset-md-2">
+                                    <md-radio-group formControlName="preg_445">
+                                        <md-radio-button value="si">Si</md-radio-button>
+                                        <md-radio-button value="no">No</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="col-md-12 offset-md-2">
+                                <p *ngIf="ifForm.controls.data.controls.preg_445.value=='si'">En caso afirmativo, identifíquense en los listados siguientes.</p>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+
+                    <div *ngIf="ifForm.controls.data.controls.preg_445.value=='si'">
+                        <div class="section" style="margin-top:40px" formArrayName="preg_446">
+                            <fieldset>
+                                <legend><strong>CRITERIOS  DE  SELECCIÓN  PERSONALES  con  carácter  general  (para cualquier grupo profesional, categoría o puesto de trabajo)</strong></legend>
+                                <div class="col-md-10 offset-md-2">
+                                    <div class="row">
+                                        <div *ngFor="let datos of getPregunta('preg_446').controls; let i=index" [formGroupName]="i" class="col-md-4">
+                                            <md-checkbox formControlName="valor1">
+                                                {{ifForm.controls.preg_446.value[i].texto}}
+                                            </md-checkbox>
+                                            <div class="col-md-6" *ngIf="i==20">
+                                                <input [readonly]="!ifForm.controls.preg_446.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
+                                                    placeholder="Otros" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </fieldset>
+
+                        </div>
+                    </div>
+
+                    <div class="section" style="margin-top:40px">
+                        <fieldset>
+                            <div formGroupName="data">
+                                <div class="row">
+                                    <div class="col-md-10 offset-md-2">
+                                        <strong> ¿Aplica la organización criterios de selección de carácter PERSONAL aplicados de manera particular a alguna categoría o puesto?</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <md-radio-group formControlName="preg_447">
+                                            <md-radio-button value="si">Si</md-radio-button>
+                                            <md-radio-button value="no">No</md-radio-button>
+                                        </md-radio-group>
+                                    </div>
+
+                                    <div class="w-100"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 offset-md-2">
+                                        <p *ngIf="ifForm.controls.data.controls.preg_447.value=='si'">En caso afirmativo, identifíquense en los listados siguientes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div *ngIf="ifForm.controls.data.controls.preg_447.value=='si'">
+                            <fieldset formArrayName="preg_448">
+                                <legend><strong>Mencione cuales son los criterios de selección de personal aplicados con carácter particular (sólo a algún grupo profesional, categoría o puesto de trabajo, y concretar a cuál/es)</strong></legend>
+
+                                <div class="row">
+                                    <div class="col-md-4 offset-md-2">GRUPOS/CATEGORÍAS PROFESIONALES</div>
+                                    <div class="col-md-4">Criterio</div>
+                                </div>
+                                <div *ngFor="let datos of getPregunta('preg_448').controls; let i=index" [formGroupName]="i">
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" formControlName="texto1" tooltip="GRUPOS/CATEGORÍAS PROFESIONALES" placeholder="GRUPOS/CATEGORÍAS PROFESIONALES"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <md-checkbox formControlName="valor1">
+                                                {{ifForm.controls.preg_448.value[i].texto}}
+                                            </md-checkbox>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+
+
+                    <div class="section" style="margin-top:40px" formGroupName="data">
+                        <legend><strong>GESTIÓN DEL PROCESO DE SELECCIÓN DE PERSONAL Y TOMA DE DECISIONES</strong></legend>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <label for="preg_450">Enumera las fases del proceso de selección</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_450" formControlName="preg_450" autosize placeholder="Enumera las fases del proceso de selección"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <label for="preg_451">Enumera los órganos implicados en el proceso de selección</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_451" formControlName="preg_451" autosize placeholder="Enumera los órganos implicados en el proceso de selección"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <label for="preg_452">Mencione el órgano u órganos a quienes corresponde la decisión final sobre la selección del personal y su incorporación a la empresa</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_452" formControlName="preg_452" autosize placeholder="Mencione el órgano u órganos a quienes corresponde la decisión final sobre la selección del personal y su incorporación a la organización"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-8 offset-md-2">
+                                        <p>Marque "Sí" o "No" a las siguientes preguntas</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10 offset-md-2">
+                                        <strong>¿Se realizan publicaciones internas de las vacantes disponibles en la empresa?</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <md-radio-group formControlName="preg_454">
+                                            <md-radio-button value="si">Si</md-radio-button>
+                                            <md-radio-button value="no">No</md-radio-button>
+                                        </md-radio-group>
+                                    </div>
+
+                                    <div class="w-100"></div>
+                                </div>
+
+                                <div class="row" *ngIf="ifForm.controls.data.controls.preg_454.value=='si'">
+                                    <div class="col-md-8 offset-md-2">
+                                        <label for="preg_455">Menciones qué sistema se realiza para realizar la publicación:</label>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="ifForm.controls.data.controls.preg_454.value=='si'">
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea [readonly]="getValorElemento('data.preg_454')!='si'" rows="3" class="autogrow form-control transition-height" id="preg_455"
+                                            formControlName="preg_455" autosize placeholder="Menciones qué sistema se realiza para realizar la publicación"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-10 offset-md-2">
+                                        <strong>¿Observa barreras internas, externas o sectoriales para la incorporación de mujeres a la compañía?</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <md-radio-group formControlName="preg_456">
+                                            <md-radio-button value="si">Si</md-radio-button>
+                                            <md-radio-button value="no">No</md-radio-button>
+                                        </md-radio-group>
+                                    </div>
+                                    <div class="w-100"></div>
+                                </div>
+
+                                <div class="row" *ngIf="ifForm.controls.data.controls.preg_456.value=='si'">
+                                    <div class="col-md-8 offset-md-2">
+                                        <label for="preg_457">Por favor indique en qué sectores y categorías</label>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="ifForm.controls.data.controls.preg_456.value=='si'">
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea [readonly]="getValorElemento('data.preg_456')!='si'" rows="3" class="autogrow form-control transition-height" id="preg_457"
+                                            formControlName="preg_457" autosize placeholder="Sectores y categorías"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-10 offset-md-2">
+                                        <strong>¿Observa que existan servicios o puestos en la compañía que estén especialmente masculinizados (mayoría de hombres)?</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <md-radio-group formControlName="preg_458">
+                                            <md-radio-button value="si">Si</md-radio-button>
+                                            <md-radio-button value="no">No</md-radio-button>
+                                        </md-radio-group>
+                                    </div>
+
+                                    <div class="w-100"></div>
+                                </div>
+
+                                <div class="row" *ngIf="ifForm.controls.data.controls.preg_458.value=='si'">
+                                    <div class="col-md-8 offset-md-2">
+                                        <label for="preg_459">Indique qué tipo de puestos y las razones que lo provocan</label>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="ifForm.controls.data.controls.preg_458.value=='si'">
+                                    <div class="col-md-8 offset-md-2">
+                                        <textarea [readonly]="getValorElemento('data.preg_458')!='si'" rows="3" class="autogrow form-control transition-height" id="preg_459"
+                                            formControlName="preg_459" autosize placeholder="Tipo de puestos y las razones que lo provocan"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+
+                    </div>
+
+
+
+                    <div class="section" style="margin-top:40px" formArrayName="preg_460_tabla_2">
+                        <fieldset>
+                            <legend><strong>Teniendo en cuenta los siguientes criterios, marque el nivel de influencia que cada uno de estos tiene en el proceso de selección de la organización.</strong></legend>
+                            <div class="row">
+
+                                <div class="col-md-4 offset-md-2 text-md-center">
+                                    Criterio
+                                </div>
+                                <div class="col-md-3 text-md-center">
+                                    Tipo de influencia
+                                </div>
+
+
+
+                            </div>
+                            <div *ngFor="let datos of getPregunta('preg_460_tabla_2').controls; let i=index" [formGroupName]="i">
+
+                                <div class="row">
+                                    <div class="col-md-4 offset-md-2 ">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" [readonly]="i<26" formControlName="texto1" tooltip="Criterio" placeholder="Criterio" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div clas="col-md-3">
+                                        <md-radio-group formControlName="texto2">
+                                            <md-radio-button value="1">Positivo</md-radio-button>
+                                            <md-radio-button value="2">Negativo</md-radio-button>
+                                            <md-radio-button value="3">indiferente</md-radio-button>
+                                        </md-radio-group>
+                                    </div>
+
+                                    <div class="col-md-1 ">
+                                        <span *ngIf="i > 25">
+                                     <button type="button"(click)="removeFila(ifForm.controls.preg_460_tabla_2, i,'preg_460_tabla_2')" class="btn btn-danger btn-xs mb-xs">Borrar</button> 
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 offset-md-2">
+                                    <button (click)="addFila(ifForm.controls.preg_460_tabla_2)" type="button" class="btn btn-success btn-xs mb-xs">Añade Criterio</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="form-actions" style="margin-top:40px">
+        <div class="row">
+            <div class="offset-md-4 col-md-7 ">
+                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(false)" class="btn btn-primary">Guardar cambios</button>
+                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(true)" class="btn btn-success">Guardar y Continuar</button>
+            </div>
+        </div>
+    </div>
+
+
+</form>
