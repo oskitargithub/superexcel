@@ -80,7 +80,47 @@ export class FuncionesHighChartsT3Service {
         //console.log(misopciones);
         return misopciones;
     }
+    GraficaPiePlantillaPr(modelo: any, texto1 = "Distribución de la plantilla por sexo", texto2 = "Acoso Sexual"): Object {
+        let misopciones: OpcionesPieModel;
+        misopciones = {
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: texto1
+            },colors: [],
+            /*colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],*/
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name} {point.numero} / {point.percentage:.2f}%'
+                    }
+                }
+            },
+            series: []
+        }
 
+
+        let datos = [];
+        datos.push({ y: this.getMujeresPlantillaPorcentajePr(modelo), name: 'Mujeres', numero: this.getMujeresPlantillaPr(modelo), color:this.colormujer });
+        datos.push({ y: this.getHombresPlantillaPorcentajePr(modelo), name: 'Hombres', numero: this.getHombresPlantillaPr(modelo), color:this.colorhombre});
+        misopciones.series.push({ type: 'pie', name: texto2, data: datos });
+        //console.log("misopciones");
+        //console.log(misopciones);
+        return misopciones;
+    }
 
     GraficaPieHM(titulo: string, valor1: any, valor2: any): Object {
         let misopciones: OpcionesPieModel;
@@ -292,19 +332,22 @@ export class FuncionesHighChartsT3Service {
     GraficaCompuesta1(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[], tipo = "fila"): Object {
         let ancho = 800;
         let alto = 1200;
+        let milayout = 'horizontal';
         if (tabla.length < 4) {
             alto = 600;
-            ancho = 400;
+            ancho = 600;
         }
         else if (tabla.length < 12) {
             alto = 800;
-            ancho = 400;
+            ancho = 600;
         }
         else if (tabla.length < 24) {
+            milayout = 'vertical';
             alto = 1200;
-            ancho = 400;
+            ancho = 600;
         }
         else {
+            milayout = 'vertical';
             ancho = 800;
             alto = (tabla.length / 2) * 100;
         }
@@ -353,7 +396,7 @@ export class FuncionesHighChartsT3Service {
                 }
             },
             legend: {
-                layout: 'vertical',
+                layout: milayout,
                 align: 'right',
                 verticalAlign: 'top',
                 x: -20,
@@ -401,19 +444,22 @@ export class FuncionesHighChartsT3Service {
     GraficaCompuesta1Proporcionada(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[]): Object {
         let ancho = 800;
         let alto = 1200;
+        let milayout = 'horizontal';
         if (tabla.length < 4) {
             alto = 600;
-            ancho = 400;
+            ancho = 600;
         }
         else if (tabla.length < 12) {
             alto = 800;
-            ancho = 400;
+            ancho = 600;
         }
         else if (tabla.length < 24) {
+            milayout = 'vertical';
             alto = 1200;
-            ancho = 400;
+            ancho = 600;
         }
         else {
+            milayout = 'vertical';
             ancho = 800;
             alto = (tabla.length / 2) * 100;
         }
@@ -462,7 +508,7 @@ export class FuncionesHighChartsT3Service {
                 }
             },
             legend: {
-                layout: 'vertical',
+                layout: milayout,
                 align: 'right',
                 verticalAlign: 'top',
                 x: -20,
@@ -1073,6 +1119,15 @@ export class FuncionesHighChartsT3Service {
         else
             return 0;
     }
+    getMujeresPlantillaPr(modelo: any) {
+        let salida = modelo.data.preg_381 * 1;
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+
+
     getMujeresPlantillaPorcentaje(modelo: any) {
         let salida = (modelo.data.preg_46 * 1) * 100 / ((modelo.data.preg_46 * 1 + modelo.data.preg_47 * 1));
         if (!isNaN(salida))
@@ -1080,9 +1135,25 @@ export class FuncionesHighChartsT3Service {
         else
             return 0;
     }
+    getMujeresPlantillaPorcentajePr(modelo: any) {
+        let salida = (modelo.data.preg_381 * 1) * 100 / ((modelo.data.preg_381 * 1 + modelo.data.preg_382 * 1));
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+
 
     getHombresPlantilla(modelo: any) {
         let salida = modelo.data.preg_47 * 1;
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+
+    getHombresPlantillaPr(modelo: any) {
+        let salida = modelo.data.preg_382 * 1;
         if (!isNaN(salida))
             return salida;
         else
@@ -1097,7 +1168,14 @@ export class FuncionesHighChartsT3Service {
             return 0;
 
     }
+    getHombresPlantillaPorcentajePr(modelo: any) {
+        let salida = (modelo.data.preg_382 * 1) * 100 / ((modelo.data.preg_381 * 1) + (modelo.data.preg_382 * 1));
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
 
+    }
 
 
 

@@ -73,6 +73,10 @@ const routes: Routes = [
     { path: 'promocarreraadm', loadChildren: '../dashboardadmin/promocarreraadm/promocarreraadm.module#PromoCarreraAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'acospradm', loadChildren: '../dashboardadmin/acospradm/acospradm.module#AcosPRAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'rrppadm', loadChildren: '../dashboardadmin/rrppadm/rrppadm.module#RRPPAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+
+
+    { path: 'infoencuestapr', loadChildren: '../dashboardadmin/infoencuestapr/infoencuestapr.module#InfoEncuestaPRModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'clasificacionprofesionalpradm', loadChildren: '../dashboardadmin/clasprofesionalpradm/clasprofesionalpradm.module#ClasProfesionalPrAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
   ]},
   { path: 'login', loadChildren: '../login/login.module#LoginModule'}
   
