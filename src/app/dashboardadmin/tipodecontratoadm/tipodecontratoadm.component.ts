@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
 import { TipoDeContratoAdmService } from './tipodecontratoadm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
-import { ClasProfesional2Model, Tabla3Model } from '../../dashboard/clasprofesional2/ClasProfesional2.model';
+import { ClasProfesional2Model, Tabla3Model } from '../../dashboard/clasprofesional2/clasprofesional2.model';
 import { FuncionesHighChartsT3Service } from '../serviciofunciones/funcioneshighchartst3.service';
 import { AppConfig } from '../../app.config';
 import { AuthService } from '../../auth/auth.service';

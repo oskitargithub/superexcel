@@ -2,8 +2,8 @@ import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
-import { ClasProfesional2Service } from './ClasProfesional2.service';
-import { ClasProfesional2Model, Tabla3Model } from './ClasProfesional2.model';
+import { ClasProfesional2Service } from './clasprofesional2.service';
+import { ClasProfesional2Model, Tabla3Model } from './clasprofesional2.model';
 import { CustomValidators } from 'ng2-validation';
 import { DashBoardFormErrorsService } from '../dashboard.formerrors.service';
 
