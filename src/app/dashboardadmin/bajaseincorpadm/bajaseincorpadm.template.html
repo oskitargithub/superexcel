@@ -142,7 +142,7 @@
                                         </thead>
                                         <tbody>
                                             <!-- Banda 2 -->
-                                            <tr *ngFor="let item of modelo.preg_121_tabla_5; let i=index">                                                
+                                            <tr *ngFor="let item of modelo.preg_121_tabla_5 | orderByPipe; let i=index">                                                
                                                     <td class="text-md-center">{{item.texto}}</td>
                                                     <td class="text-md-center">{{item.mujeres}}</td>
                                                     <td class="text-md-center">{{funcionest5.getMujeresDeFila1(item, modelo.preg_121_tabla_5) | percent:'1.0-0'}}</td>

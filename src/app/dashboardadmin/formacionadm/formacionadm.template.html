@@ -381,17 +381,67 @@
     </accordion-group>
     <accordion-group>
         <div accordion-heading>
-            Personas beneficiarias de ayudas para la formación externa
+            Personas beneficiarias de la formación en igualdad de género
             <i class="fa fa-angle-down float-xs-right"></i>
-        </div>        
-        <div class="col-lg-12">
+        </div>   
+         <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <fieldset>
+                                    <legend><strong>Formación en igualdad de género</strong></legend>
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                              
+                                            <th class="text-md-center">Tipo</th>
+                                            <th class="text-md-center">Nº de Mujeres</th>
+                                            <th class="text-md-center">Porcentaje</th>
+                                            <th class="text-md-center">Nº de Hombres</th>
+                                            <th class="text-md-center">Porcentaje</th>
+                                            <th class="text-md-center">Total</th>                                           
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <td class="text-md-right">Formación en igualdad de género</td>
+                                            <td class="text-md-right">{{getMujeresPlantilla2()}}</td>
+                                            <td class="text-md-right">{{getMujeresPlantillaPorcentaje2() | number : '1.2-2'}}%</td>
+                                            <td class="text-md-right">{{getHombresPlantilla2()}}</td>
+                                            <td class="text-md-right">{{getHombresPlantillaPorcentaje2() | number : '1.2-2'}}%</td>
+                                            <td class="text-md-right">{{getTotalCompoPlantilla2()}}</td>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-5 offset-md-1">
+                                <section class="widget" widget>
+                                    <header>
+                                        <h5>
+                                            Formación en igualdad de género
+                                        </h5>
+                                    </header>                                    
+                                    <div class="widget-body">
+                                        <chart [options]="chart4pieoptions"></chart>         
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+
+       <!-- <div class="col-lg-12">
             <section class="widget" widget>
                 <div class="widget-body">
                     <div class="row">
                         <div class="col-md-12">
                             <fieldset>
                                 <legend>
-                                    <strong> Personas beneficiarias de ayudas para la formación externa</strong>
+                                    <strong> Personas beneficiarias de la formación en igualdad de género</strong>
                                 </legend>
 
                                 <table class="table table-bordered table-sm">
@@ -411,7 +461,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <!-- Banda 2 -->
+                                       
                                         <tr *ngFor="let item of modelo.preg_174_tabla_3; let i=index">
                                             <td class="text-md-center" *ngIf="i==0">Ayudas o beneficios para la formación externa</td>
                                             <td class="text-md-center" *ngIf="i==1">Formación para el personal en materia de Igualdad de género</td>
@@ -427,7 +477,7 @@
                                             <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_174_tabla_3) | percent:'1.0-0'}}</td>
                                         </tr>
 
-                                        <!-- Totales -->
+                                       
                                         <tr>
                                             <th class="text-md-center" scope="row">Total</th>
                                             <th class="text-md-center" scope="row">
@@ -454,11 +504,11 @@
                             </fieldset>
                         </div>
                     </div>
-                    <!-- Formación-->
+                   
                     <div class="row">
                         <div class="col-md-6">
                             <header>
-                                <h5>Personas beneficiarias de la formació por categoria profesional</h5>
+                                <h5>Personas beneficiarias de la formación por categoria profesional</h5>
                             </header>
                             <div class="widget-body">
                                 <chart [options]="chart7options"></chart> 
@@ -467,7 +517,7 @@
 
                         <div class="col-md-6">
                             <header>
-                                <h5>Personas beneficiarias de la formació por categoria profesional (Proporcionado)</h5>
+                                <h5>Personas beneficiarias de la formación por categoria profesional (Proporcionado)</h5>
                             </header>
                             <div class="widget-body">
                                 <chart [options]="chart8options"></chart> 
@@ -475,8 +525,8 @@
                         </div>
                     </div>
 
-                    <!--Fin Formación-->
+                   
                 </div>
             </section>
-        </div>   
+        </div>   -->
     </accordion-group>

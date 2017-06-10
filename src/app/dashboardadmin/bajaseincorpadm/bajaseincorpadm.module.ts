@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { TooltipModule, AccordionModule } from 'ng2-bootstrap';
 import { BajasEIncorpAdmComponent } from './bajaseincorpadm.component';
 import { ChartModule } from 'angular2-highcharts';
-
+import {OrderByPipe} from './orderby.pipe';
 
 export const routes = [
   { path: '', component: BajasEIncorpAdmComponent, pathMatch: 'full' }
@@ -21,7 +21,7 @@ export const routes = [
     AccordionModule.forRoot(),
     TooltipModule.forRoot(),
     RouterModule.forChild(routes)],
-  declarations: [BajasEIncorpAdmComponent]
+  declarations: [BajasEIncorpAdmComponent,OrderByPipe]
 })
 export class BajasEIncorpAdmModule {
   static routes = routes;

@@ -124,33 +124,33 @@ export class RetribucionesAdm2Component implements OnInit {
 
   asignaDatosGraficas() {
     /** Asignamos los datos para las gráficas */
-    this.chart1options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 7.201 y 12.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_77_tabla_5);
-    this.chart2options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 7.201 y 12.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_77_tabla_5);
+    this.chart1options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 7.201 y 12.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_77_tabla_5,1);
+    this.chart2options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 7.201 y 12.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_77_tabla_5,1);
 
-    this.chart3options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 12.001 y 14.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_78_tabla_5);
-    this.chart4options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 12.001 y 14.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_78_tabla_5);
+    this.chart3options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 12.001 y 14.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_78_tabla_5,1);
+    this.chart4options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 12.001 y 14.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_78_tabla_5,1);
 
-    this.chart5options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 14.001 y 18.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_79_tabla_5);
-    this.chart6options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 14.001 y 18.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_79_tabla_5);
+    this.chart5options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 14.001 y 18.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_79_tabla_5,1);
+    this.chart6options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 14.001 y 18.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_79_tabla_5,1);
 
-    this.chart7options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 18.001 y 24.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_80_tabla_5);
-    this.chart8options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 18.001 y 24.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_80_tabla_5);
+    this.chart7options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 18.001 y 24.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_80_tabla_5,1);
+    this.chart8options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 18.001 y 24.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_80_tabla_5,1);
 
-    this.chart9options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 24.001 y 30.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_81_tabla_5);
-    this.chart10options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 24.001 y 30.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_81_tabla_5);
+    this.chart9options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 24.001 y 30.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_81_tabla_5,1);
+    this.chart10options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 24.001 y 30.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_81_tabla_5,1);
 
-    this.chart11options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 30.001 y 36.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_83_tabla_5);
-    this.chart12options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 30.001 y 36.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_83_tabla_5);
+    this.chart11options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Entre 30.001 y 36.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_83_tabla_5,1);
+    this.chart12options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Entre 30.001 y 36.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_83_tabla_5,1);
 
-    this.chart13options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Más de 36.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_84_tabla_5);
-    this.chart14options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Más de 36.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_84_tabla_5);
+    this.chart13options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Más de 36.000 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_84_tabla_5,1);
+    this.chart14options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Más de 36.000 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_84_tabla_5,1);
     
-    this.chart15options = this.funccioneshct3.GraficaCompuesta1("Compensaciones extrasalariales","",this.modelo.preg_86_tabla_3,"fila");
+    this.chart15options = this.funccioneshct3.GraficaCompuesta1("Compensaciones extrasalariales","",this.modelo.preg_86_tabla_3,"fila",1);
     this.chart1pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Compensaciones extrasalariales","Mujeres",this.modelo.preg_86_tabla_3);
     this.chart2pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Compensaciones extrasalariales","Hombres",this.modelo.preg_86_tabla_3);
     
-    this.chart16options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Menos de 7.200 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_85_tabla_5);
-    this.chart17options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Menos de 7.200 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_85_tabla_5);
+    this.chart16options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Menos de 7.200 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_85_tabla_5,1);
+    this.chart17options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Menos de 7.200 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_85_tabla_5,1);
   }
 
 

@@ -137,10 +137,10 @@ export class TipoDeContratoAdmComponent implements OnInit {
   asignaDatosGraficas() {
     /** Asignamos los datos para las gráficas */
     this.chart1options = this.funccioneshct3.GraficaCompuesta1('Tipo de relación contractual', '', this.modelo.preg_64_tabla_3, "fila");
-    this.chart2options = this.funccioneshct3.GraficaCompuesta1('Tipo de contrato temporal', 'de la plantilla personas contratadas a término definido', this.modelo.preg_65_tabla_3, "fila");
+    this.chart2options = this.funccioneshct3.GraficaCompuesta1('Tipo de contrato temporal', 'de la plantilla personas contratadas a término definido', this.modelo.preg_66_tabla_3, "fila");
 
-    this.chart3options = this.funccioneshct3.GraficaCompuesta1('Comparativa según el tipo de jornada', '', this.modelo.preg_66_tabla_3, "fila");
-    this.chart4options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Comparativa según el tipo de jornada', 'Proporcionado', this.modelo.preg_66_tabla_3);
+    this.chart3options = this.funccioneshct3.GraficaCompuesta1('Comparativa según el tipo de jornada', '', this.modelo.preg_65_tabla_3, "fila");
+    this.chart4options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Comparativa según el tipo de jornada', 'Proporcionado', this.modelo.preg_65_tabla_3);
 
     this.chart5options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla por antigüedad Comparativa hombres y mujeres', '', this.modelo.preg_69_tabla_3, "fila");
     this.chart6options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla por antigüedad Comparativa hombres y mujeres', 'Proporcionado', this.modelo.preg_69_tabla_3);
@@ -150,8 +150,8 @@ export class TipoDeContratoAdmComponent implements OnInit {
     this.chart8options = this.funccioneshct3.GraficaCompuesta1('Comparativo por número de turnos', '', this.modelo.preg_67_tabla_3, "fila");
     this.chart9options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Comparativo por número de turnos', 'Proporcionado', this.modelo.preg_67_tabla_3);
 
-    this.chart1pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Tipo de contrato según tipo de Jornada","Mujeres",this.modelo.preg_66_tabla_3,"total");
-    this.chart2pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Tipo de contrato según tipo de Jornada","Hombres",this.modelo.preg_66_tabla_3, "total");
+    this.chart1pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Tipo de contrato según tipo de Jornada","Mujeres",this.modelo.preg_65_tabla_3,"total");
+    this.chart2pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Tipo de contrato según tipo de Jornada","Hombres",this.modelo.preg_65_tabla_3, "total");
 
     this.chart3pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Comparativo de Antigüedad","Mujeres",this.modelo.preg_69_tabla_3,"total");
     this.chart4pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Comparativo de Antigüedad","Hombres",this.modelo.preg_69_tabla_3,"total");

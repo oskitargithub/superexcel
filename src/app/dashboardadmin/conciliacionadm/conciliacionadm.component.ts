@@ -41,6 +41,9 @@ export class ConciliacionAdmComponent implements OnInit {
   public chart14options: Object;
   public chart15options: Object;
   public chart16options: Object;
+  public chart17options: Object;
+  public chart18options: Object;
+  public chart19options: Object;
 
   public chart1pieoptions: Object;
   public chart2pieoptions: Object;
@@ -126,8 +129,14 @@ export class ConciliacionAdmComponent implements OnInit {
     this.chart10options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Responsabilidades familiares en No. De hijos e hijas por edad con discapacidad', 'Proporcionada',this.modelo.preg_147_tabla_3);
     this.chart11options = this.funccioneshct3.GraficaCompuesta1('Responsabilidades familiares en No. De personas dependientes a cargo (No hijos/as)', '',this.modelo.preg_148_tabla_3, "fila");
     this.chart12options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Responsabilidades familiares en No. De personas dependientes a cargo (No hijos/as)', 'Proporcionada',this.modelo.preg_148_tabla_3);
+    
     this.chart13options = this.funccioneshct3.GraficaCompuesta1('Uso mecanismos legales de conciliación', '',this.modelo.preg_150_tabla_3, "fila");
     this.chart14options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Uso mecanismos legales de conciliación', 'Proporcionada',this.modelo.preg_150_tabla_3);
+    
+    this.chart17options = this.funccioneshct3.GraficaCompuesta1ConOpcion('Uso mecanismos legales de conciliación', 'Flexibilidad horaria',this.modelo.preg_150_tabla_3, "fila" , "Flexibilidad horaria");
+    this.chart18options = this.funccioneshct3.GraficaCompuesta1ConOpcion('Uso mecanismos legales de conciliación', 'Permiso para acudir a servicios sanitarios',this.modelo.preg_150_tabla_3, "fila", "Permiso para acudir a servicios sanitarios");
+    this.chart19options = this.funccioneshct3.GraficaCompuesta1SinOpciones('Uso mecanismos legales de conciliación', '',this.modelo.preg_150_tabla_3, "fila", 'Flexibilidad horaria', "Permiso para acudir a servicios sanitarios");
+
     this.chart15options = this.funccioneshct3.GraficaCompuesta1('Recursos para la conciliación establecidos por la organización, número de personas usuarias', '',this.modelo.preg_152_tabla_3, "fila");
     this.chart16options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Recursos para la conciliación establecidos por la organización, número de personas usuarias', 'Proporcionada',this.modelo.preg_152_tabla_3);
 

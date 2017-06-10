@@ -18,7 +18,7 @@ declare var Messenger: any;
     '../../scss/elements.style.scss',
     '../../scss/notifications.style.scss'],
   providers: [BajasEIncorpAdmService, FuncionesT5Service, FuncionesService,FuncionesHighChartsT3Service],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 export class BajasEIncorpAdmComponent implements OnInit {
   config: any;
@@ -134,4 +134,11 @@ export class BajasEIncorpAdmComponent implements OnInit {
     this.chart11options = this.funccioneshct3.GraficaCompuesta1('BAJAS TEMPORALES, PERMISOS Y EXCEDENCIAS ÚLTIMO AÑO', '',this.modelo.preg_125_tabla_3);
     this.chart12options = this.funccioneshct3.GraficaCompuesta1Proporcionada('BAJAS TEMPORALES, PERMISOS Y EXCEDENCIAS ÚLTIMO AÑO', 'Proporcionada',this.modelo.preg_125_tabla_3);
   }
+
+  ordenaanyo(index,item){
+      //do what ever logic you need to come up with the unique identifier of your item in loop, I will just return the object id.
+     console.log(item);
+     console.log(index);
+      return item.mujeres;
+     }
 }
