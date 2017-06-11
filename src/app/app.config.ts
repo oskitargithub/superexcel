@@ -13,7 +13,8 @@ export class AppConfig {
     /*apilaravel: 'http://planigualdad.com.mialias.net/backend/public/api/',*/
     urluser: '/app/',
     urladmin: '/app/admin/dashboardadmin',
-    urlpestanapublic: '/app/admin/infoencuestapb',
+    /*urlpestanapublic: '/app/admin/infoencuestapb',*/
+    urlpestanapublic: '/app/admin/clasificacionprofesionaladm',
     urlpestanaprivate:'/app/admin/infoencuestapr',
     login: '/app/login',
     /**

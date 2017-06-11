@@ -1,9 +1,8 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
-import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
-import { ConciliacionService } from './conciliacion.service';
-import { ConciliacionModel, Tabla2Model, Tabla3Model, datosModel } from './conciliacion.model';
+import { BajasEIncorpPrService } from './bajaseincorppr.service';
+import { BajasEIncorpPrModel, Tabla5Model, Tabla3Model, dataModel } from './bajaseincorppr.model';
 import { CustomValidators } from 'ng2-validation';
 import { DashBoardFormErrorsService } from '../dashboard.formerrors.service';
 declare var jQuery: any;
@@ -11,46 +10,39 @@ declare var Messenger: any;
 
 
 @Component({
-    selector: 'conciliacion',
-    templateUrl: './conciliacion.template.html',
+    selector: 'bajaseincorppr',
+    templateUrl: './bajaseincorppr.template.html',
     styleUrls: [
-        '../../scss/notifications.style.scss',
-        '../../scss/elements.style.scss'
-    ],
-    providers: [ConciliacionService,DashBoardFormErrorsService],
+        '../../scss/elements.style.scss',
+        '../../scss/notifications.style.scss'],
+    providers: [BajasEIncorpPrService, DashBoardFormErrorsService],
     encapsulation: ViewEncapsulation.None,
 })
-export class ConciliacionComponent implements OnInit {
+export class BajasEIncorpPrComponent implements OnInit {
     injector: Injector;
     colorOptions: Object = { color: '#f0b518' };
     submitted = false;
     ifForm: FormGroup;
-    public modelo: ConciliacionModel;
+    public modelo: BajasEIncorpPrModel;
     public errorMessage: string;
     public status: string;
     public respondidasSeccion: any;
     public totalSeccion: any;
-
-    public max: number = 100;
-    public showWarning: boolean;
-    public dynamic: number;
-    public type: string;
-
-    rememberMe: boolean = false;
-    sortBy: string = "date";
-    orderBy: string[] = ["rating", "comments"];
+    public valorbarra: number;
+    public tipobarra: string;
 
     constructor(private router: Router,
         private fb: FormBuilder,
-        private servicio: ConciliacionService,
+        private servicio: BajasEIncorpPrService,
         private serviceErrores: DashBoardFormErrorsService,
         injector: Injector
     ) {
-        this.dynamic = 0;
+        this.valorbarra = 0;
         this.respondidasSeccion = 0;
         this.totalSeccion = 0;
         this.createForm();
-        this.modelo = new ConciliacionModel();
+        this.modelo = new BajasEIncorpPrModel();
+
     }
 
     ngOnInit(): void {
@@ -68,7 +60,7 @@ export class ConciliacionComponent implements OnInit {
         }
     }
 
-    valorBarraProgreso() {
+    setBarraProgreso() {
         let value = this.getValorBarra();
         let type: string;
 
@@ -82,60 +74,32 @@ export class ConciliacionComponent implements OnInit {
             type = 'success';
 
         }
-        this.dynamic = value;
-        this.type = type;
+        this.valorbarra = value;
+        this.tipobarra = type;
     }
 
     createForm() {
-        console.log("creando formulario");
         this.ifForm = this.fb.group({
-            data: this.fb.group(new datosModel()),
-            preg_140_tabla_3: this.fb.array([]),
-            preg_142_tabla_3: this.fb.array([]),
-            preg_143_tabla_3: this.fb.array([]),
-            preg_146_tabla_3: this.fb.array([]),
-            preg_147_tabla_3: this.fb.array([]),
-            preg_148_tabla_3: this.fb.array([]),
-            preg_150_tabla_3: this.fb.array([]),
-            preg_152_tabla_3: this.fb.array([]),
-            preg_130_tabla_2: this.fb.array([]),
+            data: this.fb.group(new dataModel()),
+            preg_465_tabla_3: this.fb.array([]),
+            preg_466_tabla_5: this.fb.array([]),
+            preg_467_tabla_3: this.fb.array([]),
+            preg_468_tabla_3: this.fb.array([]),
+            preg_469_tabla_3: this.fb.array([]),
+            preg_470_tabla_3: this.fb.array([]),
+            preg_471_tabla_3: this.fb.array([]),
+            preg_472_tabla_3: this.fb.array([]),
+            preg_473_tabla_3: this.fb.array([]),
         });
-        console.log("fin creando formulario");
     }
 
-    getValorElemento(elemento: string) {
-        return this.ifForm.get(elemento).value;
-    }
+    get data(): FormArray {
+        return this.ifForm.get('data') as FormArray;
+    };
 
     getTotalMujeres(elemento: FormArray) {
         if (elemento != null && elemento.value.length > 0)
             return elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1));
-        else
-            return 0;
-    }
-
-    getTotalMujeresFila1(elemento: FormArray){
-        if (elemento != null && elemento.value.length > 0){
-            let salida= elemento.value.map(c => (c.texto == "Personas empleadas con hijos e hijas a cargo")? c.mujeres:0).reduce((sum, current) => (sum * 1) + (current * 1));;
-            return salida;
-        }
-        else
-            return 0;
-    }
-    getTotalHombresFila1(elemento: FormArray){
-        if (elemento != null && elemento.value.length > 0){
-            let salida= elemento.value.map(c => (c.texto == "Personas empleadas con hijos e hijas a cargo")? c.hombres:0).reduce((sum, current) => (sum * 1) + (current * 1));;
-            return salida;
-        }
-        else
-            return 0;
-    }
-    getTotalTotalFila1(elemento: FormArray){
-        if (elemento != null && elemento.value.length > 0){
-            let mujeres= elemento.value.map(c => (c.texto == "Personas empleadas con hijos e hijas a cargo")? c.mujeres:0).reduce((sum, current) => (sum * 1) + (current * 1));
-            let hombres= elemento.value.map(c => (c.texto == "Personas empleadas con hijos e hijas a cargo")? c.hombres:0).reduce((sum, current) => (sum * 1) + (current * 1));;
-            return (hombres * 1 + mujeres * 1);;
-        }
         else
             return 0;
     }
@@ -156,7 +120,8 @@ export class ConciliacionComponent implements OnInit {
         }
     }
 
-    setPregunta(tabla: Tabla3Model[], nombretabla: string) {
+
+    setPregunta(tabla: any[], nombretabla: string) {
         const addressFGs = tabla.map(datos =>
             this.fb.group({
                 texto: [datos.texto],
@@ -167,11 +132,23 @@ export class ConciliacionComponent implements OnInit {
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
     }
-    setPregunta2(tabla: any, nombretabla: string) {
-        const addressFGs = tabla.map(datos => this.fb.group(datos));
+    setPregunta5(tabla: any[], nombretabla: string) {
+        const addressFGs = tabla.map(datos =>
+            this.fb.group({
+                texto: [datos.texto],
+                respuesta: [datos.respuesta],
+                mujeres: [datos.mujeres, CustomValidators.number],
+                hombres: [datos.hombres, CustomValidators.number],
+                mujeres2: [datos.mujeres2, CustomValidators.number],
+                hombres2: [datos.hombres2, CustomValidators.number]
+            }));
         const addressFormArray = this.fb.array(addressFGs);
         this.ifForm.setControl(nombretabla, addressFormArray);
     }
+
+    
+
+
     getPregunta(pregunta: string): FormArray {
         return this.ifForm.get(pregunta) as FormArray;
     };
@@ -183,26 +160,24 @@ export class ConciliacionComponent implements OnInit {
                 hombres:['',CustomValidators.number]        
         }));
     }
-    addFila2(elemento: FormArray) {
-        elemento.push(this.fb.group(new Tabla2Model()));
+
+    addFila5(elemento: FormArray) {
+        elemento.push(this.fb.group({            
+                texto: [''],
+                respuesta:[''],
+                mujeres: ['',CustomValidators.number],
+                hombres:['',CustomValidators.number],
+                mujeres2: ['',CustomValidators.number],
+                hombres2:['',CustomValidators.number]        
+        }));
     }
-    removeFila(elemento: FormArray, i: number, nombretabla:string) {
-        elemento.removeAt(i);        
+
+
+    removeFila(elemento: FormArray, i: number,nombretabla:string) {
+        elemento.removeAt(i);
         let nueva = this.ifForm.value[nombretabla].map((datos) => Object.assign({}, datos));
         this.setPregunta(nueva,nombretabla);
     }
-    removeFila2(elemento: FormArray, i: number, nombretabla:string) {
-        elemento.removeAt(i);        
-        let nueva = this.ifForm.value[nombretabla].map((datos) => Object.assign({}, datos));
-        this.setPregunta2(nueva,nombretabla);
-    }
-    addValidaciones() {
-        this.ifForm.get('data.preg_154').setValidators([CustomValidators.number]);
-        this.ifForm.get('data.preg_155').setValidators([CustomValidators.number]);
-        this.ifForm.get('data.preg_157').setValidators([CustomValidators.number]);
-        this.ifForm.get('data.preg_158').setValidators([CustomValidators.number]);        
-    }
-
     getDatosModelo() {
         this.servicio.getDatosModelo().subscribe(
             response => {
@@ -224,22 +199,23 @@ export class ConciliacionComponent implements OnInit {
                     }
                 }
                 else {
+                    console.log(response.data);
                     Object.getOwnPropertyNames(response.data).map((key: string) =>
                         (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
                     );
-                    this.setPregunta(response.preg_140_tabla_3, 'preg_140_tabla_3');
-                    this.setPregunta(response.preg_142_tabla_3, 'preg_142_tabla_3');
-                    this.setPregunta(response.preg_143_tabla_3, 'preg_143_tabla_3');
-                    this.setPregunta(response.preg_146_tabla_3, 'preg_146_tabla_3');
-                    this.setPregunta(response.preg_147_tabla_3, 'preg_147_tabla_3');
-                    this.setPregunta(response.preg_148_tabla_3, 'preg_148_tabla_3');
-                    this.setPregunta(response.preg_150_tabla_3, 'preg_150_tabla_3');
-                    this.setPregunta(response.preg_152_tabla_3, 'preg_152_tabla_3');
-                    this.setPregunta2(response.preg_130_tabla_2,'preg_130_tabla_2');
+                    this.setPregunta(response.preg_465_tabla_3, 'preg_465_tabla_3');
+                    this.setPregunta5(response.preg_466_tabla_5, 'preg_466_tabla_5');
+                    this.setPregunta(response.preg_467_tabla_3, 'preg_467_tabla_3');
+                    this.setPregunta(response.preg_468_tabla_3, 'preg_468_tabla_3');
+                    this.setPregunta(response.preg_469_tabla_3, 'preg_469_tabla_3');
+                    this.setPregunta(response.preg_470_tabla_3, 'preg_470_tabla_3');
+                    this.setPregunta(response.preg_471_tabla_3, 'preg_471_tabla_3');
+                    this.setPregunta(response.preg_472_tabla_3, 'preg_472_tabla_3');
+                    this.setPregunta(response.preg_473_tabla_3, 'preg_473_tabla_3');
+
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
-                    this.valorBarraProgreso();
-                    this.addValidaciones();
+                    this.setBarraProgreso();
                     this.ifForm.markAsPristine();  
                     Messenger().post({
                         message: 'Los datos han sido cargados correctamente',
@@ -278,7 +254,7 @@ export class ConciliacionComponent implements OnInit {
                 else {
                     this.ifForm.markAsPristine();  
                     if (redirigir) {
-                        this.router.navigate(["/app/formacion"]);
+                        this.router.navigate(["/app/conciliacionpr"]);
                     }
                     Messenger().post({
                         message: 'Los datos han sido guardados correctamente',
@@ -302,20 +278,22 @@ export class ConciliacionComponent implements OnInit {
             });
     }
 
-    preparaParaGuardar(): ConciliacionModel {
+    preparaParaGuardar(): BajasEIncorpPrModel {
         const formModel = this.ifForm.value;
+         const datacuestionario: dataModel = formModel.data;
         const saveModelo: any = {
-            data: formModel.data,
-            preg_140_tabla_3: formModel.preg_140_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
-            preg_142_tabla_3: formModel.preg_142_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
-            preg_143_tabla_3: formModel.preg_143_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
-            preg_146_tabla_3: formModel.preg_146_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
-            preg_147_tabla_3: formModel.preg_147_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
-            preg_148_tabla_3: formModel.preg_148_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
-            preg_150_tabla_3: formModel.preg_150_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
-            preg_152_tabla_3: formModel.preg_152_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
-            preg_130_tabla_2: formModel.preg_130_tabla_2.map((datos: Tabla2Model) => Object.assign({}, datos)),
+            data: datacuestionario,
+            preg_465_tabla_3: formModel.preg_465_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_466_tabla_5: formModel.preg_466_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+            preg_467_tabla_3: formModel.preg_467_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_468_tabla_3: formModel.preg_468_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_469_tabla_3: formModel.preg_469_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_470_tabla_3: formModel.preg_470_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),   
+            preg_471_tabla_3: formModel.preg_471_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)), 
+            preg_472_tabla_3: formModel.preg_472_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)), 
+            preg_473_tabla_3: formModel.preg_473_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),          
         };
         return saveModelo;
     }
+
 }
