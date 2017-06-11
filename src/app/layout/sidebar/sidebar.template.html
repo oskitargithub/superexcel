@@ -1,6 +1,7 @@
 <div class="js-sidebar-content">
   <header class="logo hidden-sm-down">
-    <a *ngIf="perfil=='USER'" [routerLink]=" ['/app/'] " title="FORMULARIO DE DIAGNÓSTICO DE IGUALDAD"><img class="rounded-circle" src="assets/img/icono.jpg" alt="Equality Momentum" title="Equality Momentum"> {{config.name}}</a>
+    <a *ngIf="perfil=='USER' && authService.tipocuest=='1'" [routerLink]=" ['/app/'] " title="FORMULARIO DE DIAGNÓSTICO DE IGUALDAD"><img class="rounded-circle" src="assets/img/icono.jpg" alt="Equality Momentum" title="Equality Momentum"> {{config.name}}</a>
+    <a *ngIf="perfil=='USER' && authService.tipocuest=='2'" [routerLink]=" ['/app/introduccionpr'] " title="FORMULARIO DE DIAGNÓSTICO DE IGUALDAD"><img class="rounded-circle" src="assets/img/icono.jpg" alt="Equality Momentum" title="Equality Momentum"> {{config.name}}</a>
     <a *ngIf="perfil=='ADM'" [routerLink]=" ['/app/admin'] " title="FORMULARIO DE DIAGNÓSTICO DE IGUALDAD"><img class="rounded-circle" src="assets/img/icono.jpg" alt="Equality Momentum" title="Equality Momentum"> {{config.name}}</a>
   </header>
   <!-- main notification links are placed inside of .sidebar-nav -->

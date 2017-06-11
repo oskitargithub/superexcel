@@ -147,6 +147,9 @@ export class Login implements OnInit {
                                 redirect = this.config.urladmin; 
                             }
                             else{
+                               if( this.authService.tipocuest == 2 ){
+                                   this.config.urluser += "introduccionpr";
+                               }
                                 redirect = this.config.urluser; 
                             }
                             console.log("redirect a " +redirect);

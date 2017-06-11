@@ -56,7 +56,7 @@ const routes: Routes = [
     { path: 'prllpr', loadChildren: '../dashboard/prllpr/prllpr.module#PRLLPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'acosprpr', loadChildren: '../dashboard/acosprpr/acosprpr.module#AcosPRPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'rrpppr', loadChildren: '../dashboard/rrpppr/rrpppr.module#RRPPPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
-    /*{ path: 'comunicacionpr', loadChildren: '../dashboard/comunicacionpr/comunicacionpr.module#ComunicacionPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },*/
+    { path: 'comunicacionpr', loadChildren: '../dashboard/comunicacionpr/comunicacionpr.module#ComunicacionPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
 ]},
    { path: 'admin', component: Layout, children: [
      { path: '', redirectTo: 'dashboardadmin', pathMatch: 'full', canActivateChild: [AuthGuard], data:{ roles:['ADM'] } },
