@@ -284,7 +284,7 @@ export class ConciliacionPrComponent implements OnInit {
                 else {
                     this.ifForm.markAsPristine();  
                     if (redirigir) {
-                        this.router.navigate(["/app/formacion"]);
+                        this.router.navigate(["/app/formacionpr"]);
                     }
                     Messenger().post({
                         message: 'Los datos han sido guardados correctamente',

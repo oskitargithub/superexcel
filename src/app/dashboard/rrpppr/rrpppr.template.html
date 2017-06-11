@@ -1,0 +1,356 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Representación de Personal</li>
+</ol>
+
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="page-title">Representación de <span class="fw-semi-bold">Personal</span></h1>
+    </div>
+    <div class="col-md-4">
+        <div class="row progress-stats">            
+            <div class="col-md-9 col-xs-12">
+                <p class="description deemphasize">Progreso de la pestaña</p>
+                <div class="bg-white progress-bar">
+                    <progress class="progress progress-sm progress-{{type}}" value="100" max="100" [ngStyle]="{'width': dynamic+'%'}"></progress>
+
+
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-12 text-xs-center">
+                <span class="status rounded rounded-lg bg-body-light">
+                                    <small><span number-animate>{{getValorBarra()}}</span>%</small>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="widget" widget>
+            <div class="widget-body">
+                <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
+                    <div class="section" style="margin-top:40px" formArrayName="preg_675_tabla_3">
+                        <fieldset>
+
+                            <div class="row">
+                                <div class="col-md-7 offset-md-2 text-md-center">
+                                    Categoría
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 offset-md-2 text-md-center">
+                                    
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    Nº Mujeres
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    Nº Hombres
+                                </div>
+                            </div>
+                            <div *ngFor="let datos of getPregunta('preg_675_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                <div class="row">
+                                    <div class="col-md-5 offset-md-2 ">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Integrantes Junta de Personal por sindicato"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 ">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                            </div>
+                                             <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_675_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                {{serviceErrores.objetoErrores['numerico']}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 ">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                            </div>
+                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_675_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                {{serviceErrores.objetoErrores['numerico']}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 ">
+                                        <span *ngIf="getPregunta('preg_675_tabla_3').controls.length > 1">
+                                            <button type="button"(click)="removeFila(ifForm.controls.preg_675_tabla_3, i,'preg_675_tabla_3')" class="btn btn-danger btn-xs mb-xs">Borrar</button> 
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="row">
+                                <div class="col-md-5 offset-md-2 ">
+                                    <div class="form-group">
+                                        <div class="text-md-right">
+                                            TOTAL
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <div class="text-md-center">
+                                            {{getTotalMujeres(ifForm.controls.preg_675_tabla_3)}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <div class="text-md-center">
+                                            {{getTotalHombres(ifForm.controls.preg_675_tabla_3)}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila(ifForm.controls.preg_675_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Categoría</button>
+                                    </div>
+                                </div>
+                        </fieldset>
+                    </div>
+
+                     <div class="section" style="margin-top:40px" formArrayName="preg_676_tabla_3">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-md-5 offset-md-2 text-md-center">
+                                    Delegados sindicales segun central sindical
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    Nº Mujeres
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    Nº Hombres
+                                </div>
+                            </div>
+                            <div *ngFor="let datos of getPregunta('preg_676_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                <div class="row">
+                                    <div class="col-md-5 offset-md-2 ">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="{{datos.controls['texto'].value}}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 ">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                            </div>
+                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_676_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                {{serviceErrores.objetoErrores['numerico']}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 ">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                            </div>
+                                             <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_676_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                {{serviceErrores.objetoErrores['numerico']}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 ">
+                                        <span *ngIf="getPregunta('preg_676_tabla_3').controls.length > 1">
+                                            <button type="button"(click)="removeFila(ifForm.controls.preg_676_tabla_3, i,'preg_676_tabla_3')" class="btn btn-danger btn-xs mb-xs">Borrar</button> 
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="row">
+                                <div class="col-md-5 offset-md-2 ">
+                                    <div class="form-group">
+                                        <div class="text-md-right">
+                                            TOTAL
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <div class="text-md-center">
+                                            {{getTotalMujeres(ifForm.controls.preg_676_tabla_3)}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <div class="text-md-center">
+                                            {{getTotalHombres(ifForm.controls.preg_676_tabla_3)}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila(ifForm.controls.preg_676_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Delegado</button>
+                                    </div>
+                                </div>
+                        </fieldset>
+                    </div>
+                    <div class="section" style="margin-top:40px" formArrayName="preg_677_tabla_3">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-md-5 offset-md-2 text-md-center">
+                                    Integrantes de las comisiones ejecutivas de las secciones sindicales, por centrales sindicales (en su caso)
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    Nº Mujeres
+                                </div>
+                                <div class="col-md-1 text-md-center">
+                                    Nº Hombres
+                                </div>
+                            </div>
+                            <div *ngFor="let datos of getPregunta('preg_677_tabla_3').controls; let i=index" [formGroupName]="i">
+
+                                <div class="row">
+                                    <div class="col-md-5 offset-md-2 ">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="{{datos.controls['texto'].value}}"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 ">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
+                                            </div>
+                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_677_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                {{serviceErrores.objetoErrores['numerico']}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 ">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
+                                            </div>
+                                             <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_677_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                {{serviceErrores.objetoErrores['numerico']}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 ">
+                                        <span *ngIf="getPregunta('preg_677_tabla_3').controls.length > 1">
+                                            <button type="button"(click)="removeFila(ifForm.controls.preg_677_tabla_3, i,'preg_677_tabla_3')" class="btn btn-danger btn-xs mb-xs">Borrar</button> 
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="row">
+                                <div class="col-md-5 offset-md-2 ">
+                                    <div class="form-group">
+                                        <div class="text-md-right">
+                                            TOTAL
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <div class="text-md-center">
+                                            {{getTotalMujeres(ifForm.controls.preg_677_tabla_3)}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 ">
+                                    <div class="form-group">
+                                        <div class="text-md-center">
+                                            {{getTotalHombres(ifForm.controls.preg_677_tabla_3)}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-2 offset-md-2">
+                                        <button (click)="addFila(ifForm.controls.preg_677_tabla_3)" type="button" class="btn btn-success btn-xs mb-xs">Añade Delegado</button>
+                                    </div>
+                                </div>
+                        </fieldset>
+                    </div>
+
+
+
+                     <div class="section" style="margin-top:40px" formGroupName="data">
+                         <fieldset>
+                            <legend>Realice una descripción de la orientación general de la política negociadora con la empresa</legend>
+                            <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_678"
+                                            formControlName="preg_678" autosize placeholder="Orientación general de la política negociadora con la empresa"></textarea>
+                                    </div>
+                         </fieldset>
+                     </div>
+
+                     <div class="section" style="margin-top:40px" formArrayName="preg_679">
+                        <p>Marque el grado de consideración del principio de igualdad en todos los temas sujetos a negociación</p>
+                        <fieldset>
+                            
+                            <div class="col-md-10 offset-md-2">
+                                <div class="row">
+                                    <div *ngFor="let datos of getPregunta('preg_679').controls; let i=index" [formGroupName]="i" class="col-md-10">
+                                        <md-checkbox formControlName="valor1">
+                                            {{ifForm.controls.preg_679.value[i].texto}}
+                                        </md-checkbox>                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <div class="section" style="margin-top:40px" formArrayName="preg_680">
+                        <p>Cual es la prioridad en la negociación con la empresa de las medidas que favorezcan la conciliación de la vida profesional y laboral del personal de la empresa</p>
+                        <fieldset>
+                            
+                            <div class="col-md-10 offset-md-2">
+                                <div class="row">
+                                    <div *ngFor="let datos of getPregunta('preg_680').controls; let i=index" [formGroupName]="i" class="col-md-10">
+                                        <md-checkbox formControlName="valor1">
+                                            {{ifForm.controls.preg_680.value[i].texto}}
+                                        </md-checkbox>                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+                     <div class="section" style="margin-top:40px" formGroupName="data">
+                         <fieldset>
+                            <legend>Describa el orden de las prioridades en la negociación con la empresa</legend>
+                            <div class="col-md-8 offset-md-2">
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_681"
+                                            formControlName="preg_681" autosize placeholder="Prioridades en la negociación con la empresa"></textarea>
+                                    </div>
+                         </fieldset>
+                     </div>
+
+
+                     <div class="form-actions" style="margin-top:40px">
+                        <div class="row">
+                            <div class="offset-md-4 col-md-7 ">
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(false)" class="btn btn-primary">Guardar cambios</button>
+                                <button [disabled]="!ifForm.valid" type="button" (click)="onSubmit(true)" class="btn btn-success">Guardar y Continuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>

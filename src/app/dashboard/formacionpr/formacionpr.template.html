@@ -32,30 +32,30 @@
                 <form class="form-horizontal" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm" role="form" novalidate>
                     <div class="form-group row" style="margin-top:40px" formGroupName="data">
                         <div class="col-md-5 offset-md-2">
-                            <p>Dispone la organización de un PLAN DE FORMACIÓN dirigido a todo o parte del personal?</p>
+                            <p>Dispone la organización de un PLAN DE FORMACIÓN dirigido a todo el personal de la plantilla</p>
                         </div>
                         <div class="col-md-2">
-                            <md-radio-group formControlName="preg_160">
+                            <md-radio-group formControlName="preg_510">
                                 <md-radio-button value="si">Si</md-radio-button>
                                 <md-radio-button value="no">No</md-radio-button>
                             </md-radio-group>
                         </div>
                         <div class="w-100"></div>
-                        <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_160.value=='si'">
+                        <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_510.value=='si'">
                             <div class="col-md-6 offset-md-2">
                                 <p>En caso afirmativo</p>
                             </div>
-                            <div class="col-md-8 offset-md-2"><label for="preg_162">A) Especifique los OBJETIVOS del Plan Formativo y a quien se dirige</label></div>
+                            <div class="col-md-8 offset-md-2"><label for="preg_512">A) Especifique los OBJETIVOS del Plan Formativo y a quien se dirige</label></div>
                             <div class="col-md-8 offset-md-2">
-                                <textarea rows="3" [readonly]="getValorElemento('data.preg_160')!='si'" class="autogrow form-control transition-height" id="preg_162"
-                                    formControlName="preg_162" autosize placeholder="OBJETIVOS del Plan Formativo y a quien se dirige"></textarea>
+                                <textarea rows="3" [readonly]="getValorElemento('data.preg_510')!='si'" class="autogrow form-control transition-height" id="preg_512"
+                                    formControlName="preg_512" autosize placeholder="OBJETIVOS del Plan Formativo y a quien se dirige"></textarea>
                             </div>
                             <div class="w-100"></div>
 
-                            <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_163">B) Mencione las personas responsables del plan formativo tanto en la fase de diseño como de ejecución del mismo (indíquese su posición dentro de la organización)</label></div>
+                            <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_513">B) Mencione las personas responsables del plan formativo tanto en la fase de diseño como de ejecución del mismo (indíquese su posición dentro de la organización)</label></div>
                             <div class="col-md-8 offset-md-2">
-                                <textarea rows="3" [readonly]="getValorElemento('data.preg_160')!='si'" class="autogrow form-control transition-height" id="preg_163"
-                                    formControlName="preg_163" autosize placeholder="Personas responsables del plan formativo"></textarea>
+                                <textarea rows="3" [readonly]="getValorElemento('data.preg_510')!='si'" class="autogrow form-control transition-height" id="preg_513"
+                                    formControlName="preg_513" autosize placeholder="Personas responsables del plan formativo"></textarea>
                             </div>
                         </div>
                     </div>
@@ -67,55 +67,41 @@
                             <p>Dispone la organización de mecanismos de detección de necesidades formativas?</p>
                         </div>
                         <div class="col-md-2">
-                            <md-radio-group formControlName="preg_164">
+                            <md-radio-group formControlName="preg_514">
                                 <md-radio-button value="si">Si</md-radio-button>
                                 <md-radio-button value="no">No</md-radio-button>
                             </md-radio-group>
                         </div>
                         <div class="w-100"></div>
-                        <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_164.value=='si'">
+                        <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_514.value=='si'">
                             <div class="col-md-6 offset-md-2">
                                 <p>En caso afirmativo</p>
                             </div>
-                            <div class="col-md-8 offset-md-2"><label for="preg_165">Indíquense cuáles</label></div>
+                            <div class="col-md-8 offset-md-2"><label for="preg_515">Indíquense cuáles</label></div>
                             <div class="col-md-8 offset-md-2">
-                                <textarea rows="3" [readonly]="getValorElemento('data.preg_164')!='si'" class="autogrow form-control transition-height" id="preg_165"
-                                    formControlName="preg_165" autosize placeholder="Indíquense cuáles"></textarea>
+                                <textarea rows="3" [readonly]="getValorElemento('data.preg_514')!='si'" class="autogrow form-control transition-height" id="preg_515"
+                                    formControlName="preg_515" autosize placeholder="Indíquense cuáles"></textarea>
                             </div>
+
+                            <div class="col-md-8 offset-md-2"><label for="preg_516">En caso de existir oferta formativa, defínanse brevemente lineas esenciales</label></div>
+                            <div class="col-md-8 offset-md-2">
+                                <textarea rows="3" [readonly]="getValorElemento('data.preg_514')!='si'" class="autogrow form-control transition-height" id="preg_516"
+                                    formControlName="preg_516" autosize placeholder="Defínanse brevemente lineas esenciales"></textarea>
+                            </div>
+
+                            <div class="col-md-8 offset-md-2"><label for="preg_517">Mencione cuales son los criterios de selección de las personas destinatarias  de la oferta formativa</label></div>
+                            <div class="col-md-8 offset-md-2">
+                                <textarea rows="3" [readonly]="getValorElemento('data.preg_514')!='si'" class="autogrow form-control transition-height" id="preg_517"
+                                    formControlName="preg_517" autosize placeholder="Criterios de selección de las personas destinatarias  de la oferta formativa"></textarea>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="form-group row" style="margin-top:40px" formGroupName="data">
-                        <div class="col-md-5 offset-md-2">
-                            <p>Disfruta su organización de convenios especiales con otras organizaciones o administraciones
-                                para que el personal pueda realizar formación?</p>
-                        </div>
-                        <div class="col-md-2">
-                            <md-radio-group formControlName="preg_166">
-                                <md-radio-button value="si">Si</md-radio-button>
-                                <md-radio-button value="no">No</md-radio-button>
-                            </md-radio-group>
-                        </div>
-                        <div class="w-100"></div>
-                        <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_166.value=='si'">
-                            <div class="col-md-6 offset-md-2">
-                                <p>En caso afirmativo</p>
-                            </div>
-                            <div class="col-md-8 offset-md-2"><label for="preg_167">Especifique las organizaciones con quien mantiene convenios o acuerdo para la formación</label></div>
-                            <div class="col-md-8 offset-md-2">
-                                <textarea rows="3" [readonly]="getValorElemento('data.preg_166')!='si'" class="autogrow form-control transition-height" id="preg_167"
-                                    formControlName="preg_167" autosize placeholder="Organizaciones con quien mantiene convenios o acuerdo para la formación"></textarea>
-                            </div>
-                            <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_168">Mencione cuales son los criterios de selección de las personas destinatarias  de la oferta formativa</label></div>
-                            <div class="col-md-8 offset-md-2">
-                                <textarea rows="3" [readonly]="getValorElemento('data.preg_166')!='si'" class="autogrow form-control transition-height" id="preg_168"
-                                    formControlName="preg_168" autosize placeholder="Criterios de selección"></textarea>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     <!--<div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_10">En caso de existir oferta formativa, defínanse brevemente líneas esenciales</label></div>
                         <div class="col-md-8 offset-md-2">
-                            <textarea rows="3" [readonly]="getValorElemento('data.preg_164')!='si'" class="autogrow form-control transition-height" id="preg_10"
+                            <textarea rows="3" [readonly]="getValorElemento('data.preg_514')!='si'" class="autogrow form-control transition-height" id="preg_10"
                                 formControlName="preg_10" autosize placeholder="Defínanse brevemente líneas esenciales"></textarea>
                         </div>
 
@@ -127,20 +113,19 @@
                             <label for="preg_12">La formación que realiza la organización es obligatoria o voluntaria</label>
                         </div>
                         <div class="col-md-2">
-                            <md-radio-group formControlName="preg_169">
+                            <md-radio-group formControlName="preg_518">
                                 <md-radio-button value="si">Voluntaria</md-radio-button>
                                 <md-radio-button value="no">Obligatoria</md-radio-button>
                             </md-radio-group>
                         </div>
                         <div class="w-100"></div>
-                        <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_169.value=='si'">
-                            <div class="col-md-6 offset-md-2">
-                               
+                        <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_518.value=='si'">
+                            <div class="col-md-6 offset-md-2">                                
                             </div>
-                            <div class="col-md-8 offset-md-2"><label for="preg_170">Especifique si hubiera diferentes tipos</label></div>
+                            <div class="col-md-8 offset-md-2"><label for="preg_519">Especifique si hubiera diferentes tipos</label></div>
                             <div class="col-md-8 offset-md-2">
-                                <textarea rows="3" [readonly]="getValorElemento('data.preg_169')!='si'" class="autogrow form-control transition-height" id="preg_170"
-                                    formControlName="preg_170" autosize placeholder="Especifique si hubiera diferentes tipos"></textarea>
+                                <textarea rows="3" [readonly]="getValorElemento('data.preg_518')!='si'" class="autogrow form-control transition-height" id="preg_519"
+                                    formControlName="preg_519" autosize placeholder="Especifique si hubiera diferentes tipos"></textarea>
                             </div>
                         </div>
                     </div>
@@ -152,7 +137,7 @@
                                 <p>Marque la frecuencia con la que participan las mujeres</p>
                             </div>
                             <div class="col-md-1 offset-md-2" formGroupName="data">
-                                <md-radio-group formControlName="preg_171">
+                                <md-radio-group formControlName="preg_520">
                                     <md-radio-button value="4">Mayoritariamente</md-radio-button>
                                     <md-radio-button value="3">Generalmente</md-radio-button>
                                     <md-radio-button value="2">A veces</md-radio-button>
@@ -171,19 +156,19 @@
                                         <p>Existe previsión/provisión de ayudas o beneficios para la formación externa</p>
                                     </div>
                                     <div class="col-md-2">
-                                        <md-radio-group formControlName="preg_173">
+                                        <md-radio-group formControlName="preg_522">
                                             <md-radio-button value="si">Si</md-radio-button>
                                             <md-radio-button value="no">No</md-radio-button>
                                         </md-radio-group>
                                     </div>
                                 </div>
 
-                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_173.value=='si'">
+                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_522.value=='si'">
                                     <div class="col-md-9 offset-md-2">
                                         <p>En caso afirmativo indique cuantas personas se benefician de esa formación</p>
                                     </div>
 
-                                    <div class="section" formArrayName="preg_174_tabla_3">
+                                    <div class="section" formArrayName="preg_523_tabla_3">
                                         <fieldset>
                                             <div class="row">
                                                 <div class="col-md-5 offset-md-2 text-md-center">
@@ -196,7 +181,7 @@
                                                     Nº Hombres
                                                 </div>
                                             </div>
-                                            <div *ngFor="let datos of getPregunta('preg_174_tabla_3').controls; let i=index" [formGroupName]="i">
+                                            <div *ngFor="let datos of getPregunta('preg_523_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                                 <div class="row" *ngIf="i==0">
                                                     <div class="col-md-5 offset-md-2 ">
@@ -213,7 +198,7 @@
                                                             <div class="input-group">
                                                                 <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                             </div>
-                                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_174_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_523_tabla_3']).controls[i].controls['mujeres'].errors?.number">
                                                                 {{serviceErrores.objetoErrores['numerico']}}
                                                             </div>
                                                         </div>
@@ -223,7 +208,7 @@
                                                             <div class="input-group">
                                                                 <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                             </div>
-                                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_174_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_523_tabla_3']).controls[i].controls['hombres'].errors?.number">
                                                                 {{serviceErrores.objetoErrores['numerico']}}
                                                             </div>
                                                         </div>
@@ -239,18 +224,18 @@
                                         <p>¿Existe formación para el personal en materia de Igualdad de género?</p>
                                     </div>
                                     <div class="col-md-2">
-                                        <md-radio-group formControlName="preg_177">
+                                        <md-radio-group formControlName="preg_524">
                                             <md-radio-button value="si">Si</md-radio-button>
                                             <md-radio-button value="no">No</md-radio-button>
                                         </md-radio-group>
                                     </div>
                                 </div>
 
-                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_177.value=='si'">
+                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_524.value=='si'">
                                     <div class="col-md-9 offset-md-2">
                                         <p>En caso afirmativo </p>
                                     </div>
-                                    <div class="section" formArrayName="preg_174_tabla_3">
+                                    <div class="section" formArrayName="preg_523_tabla_3">
                                         <fieldset>
                                             <div class="row">
                                                 <div class="col-md-5 offset-md-2 text-md-center">
@@ -262,7 +247,7 @@
                                                     Nº Hombres
                                                 </div>
                                             </div>
-                                            <div *ngFor="let datos of getPregunta('preg_174_tabla_3').controls; let i=index" [formGroupName]="i">
+                                            <div *ngFor="let datos of getPregunta('preg_523_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                                 <div class="row" *ngIf="i==1">
                                                     <div class="col-md-5 offset-md-2 ">
@@ -279,7 +264,7 @@
                                                             <div class="input-group">
                                                                 <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                             </div>
-                                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_174_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_523_tabla_3']).controls[i].controls['mujeres'].errors?.number">
                                                                 {{serviceErrores.objetoErrores['numerico']}}
                                                             </div>
                                                         </div>
@@ -289,7 +274,7 @@
                                                             <div class="input-group">
                                                                 <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                             </div>
-                                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_174_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_523_tabla_3']).controls[i].controls['hombres'].errors?.number">
                                                                 {{serviceErrores.objetoErrores['numerico']}}
                                                             </div>
                                                         </div>
@@ -301,17 +286,17 @@
                                     <div style="margin-top:40px" class="form-group row" formGroupName="data">
 
                                         <div class="col-md-4 offset-md-2">
-                                            <label for="preg_179">A) Indicar su carácter obligatorio o voluntario para el personal</label>
+                                            <label for="preg_527">A) Indicar su carácter obligatorio o voluntario para el personal</label>
                                         </div>
                                         <div class="col-md-2">
-                                            <md-radio-group formControlName="preg_179">
+                                            <md-radio-group formControlName="preg_527">
                                                 <md-radio-button value="si">Voluntaria</md-radio-button>
                                                 <md-radio-button value="no">Obligatoria</md-radio-button>
                                             </md-radio-group>
                                         </div>
-                                        <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_180">B) Indicar esquema de CONTENIDOS</label></div>
+                                        <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_528">B) Indicar esquema de CONTENIDOS</label></div>
                                         <div class="col-md-8 offset-md-2">
-                                            <textarea rows="3" class="autogrow form-control transition-height" id="preg_180" formControlName="preg_180" autosize placeholder="Indicar esquema de CONTENIDOS"></textarea>
+                                            <textarea rows="3" class="autogrow form-control transition-height" id="preg_528" formControlName="preg_528" autosize placeholder="Indicar esquema de CONTENIDOS"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -319,18 +304,18 @@
 
 
                                 <div class="form-group row" formGroupName="data">
-                                    <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_181">Mencione las estrategias de difusión de los planes de formación realizado en la organización</label></div>
+                                    <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_529">Mencione las estrategias de difusión de los planes de formación realizado en la organización</label></div>
                                     <div class="col-md-8 offset-md-2">
-                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_181" formControlName="preg_181" autosize placeholder="Mencione las estrategias de difusión de los planes de formación realizado en la organización"></textarea>
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_529" formControlName="preg_529" autosize placeholder="Mencione las estrategias de difusión de los planes de formación realizado en la organización"></textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-group row" formGroupName="data">
                                     <div class="col-md-4 offset-md-2">
-                                        <label for="preg_182">¿Puede solicitar el personal la asistencia a cualquier curso impartido en el Plan de Formación de la organización o de otras admones? </label>
+                                        <label for="preg_530">¿Puede solicitar el personal la asistencia a cualquier curso impartido en el Plan de Formación de la organización o de otras admones? </label>
                                     </div>
                                     <div class="col-md-2">
-                                        <md-radio-group formControlName="preg_182">
+                                        <md-radio-group formControlName="preg_530">
                                             <md-radio-button value="si">Si</md-radio-button>
                                             <md-radio-button value="no">No</md-radio-button>
                                         </md-radio-group>
@@ -347,12 +332,12 @@
                                         <div class="col-md-4 offset-md-2 ">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <label for="preg_184">En el lugar de trabajo</label>
+                                                    <label for="preg_532">En el lugar de trabajo</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <md-radio-group formControlName="preg_184">
+                                            <md-radio-group formControlName="preg_532">
                                                 <md-radio-button value="1">Siempre</md-radio-button>
                                                 <md-radio-button value="2">Casi siempre</md-radio-button>
                                                 <md-radio-button value="3">Nunca</md-radio-button>
@@ -364,12 +349,12 @@
                                         <div class="col-md-4 offset-md-2 ">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <label for="preg_185">Fuera del lugar de trabajo</label>
+                                                    <label for="preg_533">Fuera del lugar de trabajo</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <md-radio-group formControlName="preg_185">
+                                            <md-radio-group formControlName="preg_533">
                                                 <md-radio-button value="1">Siempre</md-radio-button>
                                                 <md-radio-button value="2">Casi siempre</md-radio-button>
                                                 <md-radio-button value="3">Nunca</md-radio-button>
@@ -381,12 +366,12 @@
                                         <div class="col-md-4 offset-md-2 ">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <label for="preg_186">Online o Semipresencial</label>
+                                                    <label for="preg_534">Online</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <md-radio-group formControlName="preg_186">
+                                            <md-radio-group formControlName="preg_534">
                                                 <md-radio-button value="1">Siempre</md-radio-button>
                                                 <md-radio-button value="2">Casi siempre</md-radio-button>
                                                 <md-radio-button value="3">Nunca</md-radio-button>
@@ -398,12 +383,12 @@
                                         <div class="col-md-4 offset-md-2 ">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <label for="preg_187">En jornada laboral</label>
+                                                    <label for="preg_535">En jornada laboral</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <md-radio-group formControlName="preg_187">
+                                            <md-radio-group formControlName="preg_535">
                                                 <md-radio-button value="1">Siempre</md-radio-button>
                                                 <md-radio-button value="2">Casi siempre</md-radio-button>
                                                 <md-radio-button value="3">Nunca</md-radio-button>
@@ -415,12 +400,29 @@
                                         <div class="col-md-4 offset-md-2 ">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <label for="preg_188">Fuera de la jornada laboral</label>
+                                                    <label for="preg_536">Fuera de la jornada laboral</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <md-radio-group formControlName="preg_188">
+                                            <md-radio-group formControlName="preg_536">
+                                                <md-radio-button value="1">Siempre</md-radio-button>
+                                                <md-radio-button value="2">Casi siempre</md-radio-button>
+                                                <md-radio-button value="3">Nunca</md-radio-button>
+                                                <md-radio-button value="4">A veces</md-radio-button>
+                                            </md-radio-group>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-2 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <label for="preg_537">Mixta (dentro y fuera de la jornada laboral)</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <md-radio-group formControlName="preg_537">
                                                 <md-radio-button value="1">Siempre</md-radio-button>
                                                 <md-radio-button value="2">Casi siempre</md-radio-button>
                                                 <md-radio-button value="3">Nunca</md-radio-button>
@@ -431,55 +433,55 @@
                                 </div>
 
                                 <div class="form-group row" formGroupName="data">
-                                    <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_190">En caso en que la organización realice cursos de formación fuera del horario laboral mencione de que tipo son y a que miembros de la organización van dirigidos</label></div>
+                                    <div class="col-md-8 offset-md-2" style="margin-top:40px"><label for="preg_538">En caso en que la organización realice cursos de formación fuera del horario laboral mencione de que tipo son y a que miembros de la organización van dirigidos</label></div>
                                     <div class="col-md-8 offset-md-2">
-                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_190" formControlName="preg_190" autosize placeholder="Mencione de que tipo son y a que miembros de la organización van dirigidos"></textarea>
+                                        <textarea rows="3" class="autogrow form-control transition-height" id="preg_538" formControlName="preg_538" autosize placeholder="Mencione de que tipo son y a que miembros de la organización van dirigidos"></textarea>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group row" style="margin-top:40px" formGroupName="data">
                                 <div class="col-md-5 offset-md-2">
-                                    <label for="preg_191"> ¿Se ofrecen facilidades o compensaciones si los cursos se ofrecen fuera del horario laboral?</label>
+                                    <label for="preg_539"> ¿Se ofrecen facilidades o compensaciones si los cursos se ofrecen fuera del horario laboral?</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <md-radio-group formControlName="preg_191">
+                                    <md-radio-group formControlName="preg_539">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_191.value=='si'">
+                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_539.value=='si'">
                                     <div class="col-md-6 offset-md-2">
                                         <p>En caso afirmativo</p>
                                     </div>
-                                    <div class="col-md-8 offset-md-2"><label for="preg_192">¿De qué tipo?</label></div>
+                                    <div class="col-md-8 offset-md-2"><label for="preg_540">¿De qué tipo?</label></div>
                                     <div class="col-md-8 offset-md-2">
-                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_191')!='si'" class="autogrow form-control transition-height" id="preg_192"
-                                            formControlName="preg_192" autosize placeholder="Tipo"></textarea>
+                                        <textarea rows="3" [readonly]="getValorElemento('data.preg_539')!='si'" class="autogrow form-control transition-height" id="preg_540"
+                                            formControlName="preg_540" autosize placeholder="Tipo"></textarea>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group row" style="margin-top:40px" formGroupName="data">
                                 <div class="col-md-5 offset-md-2">
-                                    <label for="preg_28"> ¿Se ofrece la posibilidad de recibir formación que no esté directamente relacionada con el puesto de trabajo?</label>
+                                    <label for="preg_541"> ¿Se ofrece la posibilidad de recibir formación que no esté directamente relacionada con el puesto de trabajo?</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <md-radio-group formControlName="preg_193">
+                                    <md-radio-group formControlName="preg_541">
                                         <md-radio-button value="si">Si</md-radio-button>
                                         <md-radio-button value="no">No</md-radio-button>
                                     </md-radio-group>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_193.value=='si'">
+                                <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_541.value=='si'">
                                     <div class="col-md-6 offset-md-2">
                                         <p>En caso afirmativo</p>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-5 offset-md-2"><label for="preg_194">¿Esta posibilidad está abierta a toda la plantilla?</label></div>
+                                        <div class="col-md-5 offset-md-2"><label for="preg_542">¿Esta posibilidad está abierta a todo el personal contratado y plantilla?</label></div>
                                         <div class="col-md-2">
-                                            <md-radio-group formControlName="preg_194">
+                                            <md-radio-group formControlName="preg_542">
                                                 <md-radio-button value="si">Si</md-radio-button>
                                                 <md-radio-button value="no">No</md-radio-button>
                                             </md-radio-group>
@@ -488,15 +490,15 @@
                                 </div>
                                 <!-- <div class="col-md-8 offset-md-2">
                                     Tipo de formación no asociada al puesto de trabajo
-                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_193')!='si'" class="autogrow form-control transition-height" id="preg_194"
-                                        formControlName="preg_194" autosize placeholder="¿Esta posibilidad está abierta a toda la plantilla?"></textarea>
+                                    <textarea rows="3" [readonly]="getValorElemento('data.preg_539')!='si'" class="autogrow form-control transition-height" id="preg_542"
+                                        formControlName="preg_542" autosize placeholder="¿Esta posibilidad está abierta a toda la plantilla?"></textarea>
                                 </div>-->
                             </div>
-                            <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_193.value=='si'">
+                            <div class="col-md-12" *ngIf="ifForm.controls.data.controls.preg_541.value=='si'">
                                 <div class="col-md-9 offset-md-2">
                                     <p>En caso afirmativo indique cuantas personas se benefician de esa formación</p>
                                 </div>
-                                <div class="section" formArrayName="preg_195_tabla_3">
+                                <div class="section" formArrayName="preg_543_tabla_3">
                                     <fieldset>
                                         <div class="row">
                                             <div class="col-md-7 offset-md-2 text-md-center">
@@ -509,7 +511,7 @@
                                                 Nº Hombres
                                             </div>
                                         </div>
-                                        <div *ngFor="let datos of getPregunta('preg_195_tabla_3').controls; let i=index" [formGroupName]="i">
+                                        <div *ngFor="let datos of getPregunta('preg_543_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                             <div class="row">
                                                 <div class="col-md-7 offset-md-2 ">
@@ -525,7 +527,7 @@
                                                         <div class="input-group">
                                                             <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                                         </div>
-                                                        <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_195_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                                        <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_543_tabla_3']).controls[i].controls['mujeres'].errors?.number">
                                                             {{serviceErrores.objetoErrores['numerico']}}
                                                         </div>
                                                     </div>
@@ -535,7 +537,7 @@
                                                         <div class="input-group">
                                                             <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                                         </div>
-                                                        <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_195_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                                        <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_543_tabla_3']).controls[i].controls['hombres'].errors?.number">
                                                             {{serviceErrores.objetoErrores['numerico']}}
                                                         </div>
                                                     </div>
@@ -548,9 +550,9 @@
                         </fieldset>
                     </div>
 
-                    <div class="section" style="margin-top:40px" formArrayName="preg_199_tabla_3">
+                    <div class="section" style="margin-top:40px" formArrayName="preg_545_tabla_3">
                         <fieldset>
-                            <legend>Teniendo en cuenta la situación de la organización complete la siguiente información:</legend>
+                            <legend>Teniendo en cuenta la situación de la empresa en formación complete la siguiente información:</legend>
                             <div class="row">
 
                                 <div class="col-md-7 offset-md-2 text-md-center">
@@ -563,7 +565,7 @@
                                     Nº Hombres
                                 </div>
                             </div>
-                            <div *ngFor="let datos of getPregunta('preg_199_tabla_3').controls; let i=index" [formGroupName]="i">
+                            <div *ngFor="let datos of getPregunta('preg_545_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                 <div class="row">
                                     <div class="col-md-7 offset-md-2 ">
@@ -578,7 +580,7 @@
                                             <div class="input-group">
                                                 <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                             </div>
-                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_199_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_545_tabla_3']).controls[i].controls['mujeres'].errors?.number">
                                                 {{serviceErrores.objetoErrores['numerico']}}
                                             </div>
                                         </div>
@@ -588,7 +590,7 @@
                                             <div class="input-group">
                                                 <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                             </div>
-                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_199_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_545_tabla_3']).controls[i].controls['hombres'].errors?.number">
                                                 {{serviceErrores.objetoErrores['numerico']}}
                                             </div>
                                         </div>
@@ -606,14 +608,14 @@
                                 <div class="col-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-center">
-                                            {{getTotalMujeres(ifForm.controls.preg_199_tabla_3)}}
+                                            {{getTotalMujeres(ifForm.controls.preg_545_tabla_3)}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-center">
-                                            {{getTotalHombres(ifForm.controls.preg_199_tabla_3)}}
+                                            {{getTotalHombres(ifForm.controls.preg_545_tabla_3)}}
                                         </div>
                                     </div>
                                 </div>
@@ -623,7 +625,7 @@
                     </div>
 
 
-                    <div class="section" style="margin-top:40px" formArrayName="preg_200_tabla_3">
+                    <div class="section" style="margin-top:40px" formArrayName="preg_546_tabla_3">
                         <fieldset>
                             <legend>Número de personas beneficiarias según grupo o categoría profesional</legend>
                             <div class="row">
@@ -638,7 +640,7 @@
                                     Nº Hombres
                                 </div>
                             </div>
-                            <div *ngFor="let datos of getPregunta('preg_200_tabla_3').controls; let i=index" [formGroupName]="i">
+                            <div *ngFor="let datos of getPregunta('preg_546_tabla_3').controls; let i=index" [formGroupName]="i">
 
                                 <div class="row">
                                     <div class="col-md-3 offset-md-2 ">
@@ -653,7 +655,7 @@
                                             <div class="input-group">
                                                 <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
                                             </div>
-                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_200_tabla_3']).controls[i].controls['mujeres'].errors?.number">
+                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_546_tabla_3']).controls[i].controls['mujeres'].errors?.number">
                                                 {{serviceErrores.objetoErrores['numerico']}}
                                             </div>
                                         </div>
@@ -663,7 +665,7 @@
                                             <div class="input-group">
                                                 <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
                                             </div>
-                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_200_tabla_3']).controls[i].controls['hombres'].errors?.number">
+                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_546_tabla_3']).controls[i].controls['hombres'].errors?.number">
                                                 {{serviceErrores.objetoErrores['numerico']}}
                                             </div>
                                         </div>
@@ -681,20 +683,20 @@
                                 <div class="col-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-center">
-                                            {{getTotalMujeres(ifForm.controls.preg_200_tabla_3)}}
+                                            {{getTotalMujeres(ifForm.controls.preg_546_tabla_3)}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-1 ">
                                     <div class="form-group">
                                         <div class="text-md-center">
-                                            {{getTotalHombres(ifForm.controls.preg_200_tabla_3)}}
+                                            {{getTotalHombres(ifForm.controls.preg_546_tabla_3)}}
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                            <div class="row" *ngIf="getTotalMujeres(ifForm.controls.preg_200_tabla_3)!= getTotalMujeres(ifForm.controls.preg_199_tabla_3) || getTotalHombres(ifForm.controls.preg_200_tabla_3) != getTotalHombres(ifForm.controls.preg_199_tabla_3) || getTotalTotal(ifForm.controls.preg_200_tabla_3)!= getTotalTotal(ifForm.controls.preg_199_tabla_3)">
+                            <div class="row" *ngIf="getTotalMujeres(ifForm.controls.preg_546_tabla_3)!= getTotalMujeres(ifForm.controls.preg_545_tabla_3) || getTotalHombres(ifForm.controls.preg_546_tabla_3) != getTotalHombres(ifForm.controls.preg_545_tabla_3) || getTotalTotal(ifForm.controls.preg_546_tabla_3)!= getTotalTotal(ifForm.controls.preg_545_tabla_3)">
                                 <div class="col-md-10 offset-md-1">
                                     <div class="form-group">
                                         <div class="alert alert-danger">

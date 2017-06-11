@@ -51,12 +51,12 @@ const routes: Routes = [
     { path: 'selpersonalpr', loadChildren: '../dashboard/selpersonalpr/selpersonalpr.module#SelPersonalPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'bajaseincorppr', loadChildren: '../dashboard/bajaseincorppr/bajaseincorppr.module#BajasEIncorpPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'conciliacionpr', loadChildren: '../dashboard/conciliacionpr/conciliacionpr.module#ConciliacionPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
-    /*{ path: 'formacionpr', loadChildren: '../dashboard/formacionpr/formacionpr.module#FormacionPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
+    { path: 'formacionpr', loadChildren: '../dashboard/formacionpr/formacionpr.module#FormacionPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'promocarrerapr', loadChildren: '../dashboard/promocarrerapr/promocarrerapr.module#PromoCarreraPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'prllpr', loadChildren: '../dashboard/prllpr/prllpr.module#PRLLPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'acosprpr', loadChildren: '../dashboard/acosprpr/acosprpr.module#AcosPRPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
     { path: 'rrpppr', loadChildren: '../dashboard/rrpppr/rrpppr.module#RRPPPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },
-    { path: 'comunicacionpr', loadChildren: '../dashboard/comunicacionpr/comunicacionpr.module#ComunicacionPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },*/
+    /*{ path: 'comunicacionpr', loadChildren: '../dashboard/comunicacionpr/comunicacionpr.module#ComunicacionPrModule', canActivate: [AuthGuard], data:{ roles:['USER'] } },*/
 ]},
    { path: 'admin', component: Layout, children: [
      { path: '', redirectTo: 'dashboardadmin', pathMatch: 'full', canActivateChild: [AuthGuard], data:{ roles:['ADM'] } },
