@@ -238,7 +238,7 @@ export class FuncionesHighChartsT3Service {
         let ancho = 800;
         let alto = 1200;
         if (numelems < 4) {
-            alto = 600;
+            alto = 300;
             ancho = 400;
         }
         else if (numelems < 12) {
@@ -357,17 +357,16 @@ export class FuncionesHighChartsT3Service {
         let alto = 1200;
         let milayout = 'vertical';
         if (numelems < 4) {
-            alto = 600;
-            ancho = 600;
+            alto = 300;
+            ancho = 400;
         }
         else if (numelems < 12) {
             alto = 800;
-            ancho = 600;
+            ancho = 400;
         }
         else if (numelems < 24) {
-            milayout = 'vertical';
             alto = 1200;
-            ancho = 600;
+            ancho = 400;
         }
         else {
             milayout = 'vertical';
@@ -495,17 +494,16 @@ export class FuncionesHighChartsT3Service {
         let alto = 1200;
         let milayout = 'vertical';
         if (numelems < 4) {
-            alto = 600;
-            ancho = 600;
+            alto = 300;
+            ancho = 400;
         }
         else if (numelems < 12) {
             alto = 800;
-            ancho = 600;
+            ancho = 400;
         }
         else if (numelems < 24) {
-            milayout = 'vertical';
             alto = 1200;
-            ancho = 600;
+            ancho = 400;
         }
         else {
             milayout = 'vertical';
@@ -583,7 +581,7 @@ export class FuncionesHighChartsT3Service {
         tabla.forEach(elemento => {
 
             if (elemento.hombres != 0 || elemento.mujeres != 0) {
-                if(elemento.texto == opcionmostrar){
+                if (elemento.texto == opcionmostrar) {
                     misopciones.xAxis.categories.push(elemento.texto);
                     if (tipo == "fila") {
                         //mujeres
@@ -619,17 +617,16 @@ export class FuncionesHighChartsT3Service {
         let alto = 1200;
         let milayout = 'vertical';
         if (numelems < 4) {
-            alto = 600;
-            ancho = 600;
+            alto = 300;
+            ancho = 400;
         }
         else if (numelems < 12) {
             alto = 800;
-            ancho = 600;
+            ancho = 400;
         }
         else if (numelems < 24) {
-            milayout = 'vertical';
             alto = 1200;
-            ancho = 600;
+            ancho = 400;
         }
         else {
             milayout = 'vertical';
@@ -707,7 +704,7 @@ export class FuncionesHighChartsT3Service {
         tabla.forEach(elemento => {
 
             if (elemento.hombres != 0 || elemento.mujeres != 0) {
-                if(elemento.texto != opcionmostrar && elemento.texto != opcionmostrar2){
+                if (elemento.texto != opcionmostrar && elemento.texto != opcionmostrar2) {
                     misopciones.xAxis.categories.push(elemento.texto);
                     if (tipo == "fila") {
                         //mujeres
@@ -743,17 +740,16 @@ export class FuncionesHighChartsT3Service {
         let alto = 1200;
         let milayout = 'vertical';
         if (numelems < 4) {
-            alto = 600;
-            ancho = 600;
+            alto = 300;
+            ancho = 400;
         }
         else if (numelems < 12) {
             alto = 800;
-            ancho = 600;
+            ancho = 400;
         }
         else if (numelems < 24) {
-            milayout = 'vertical';
             alto = 1200;
-            ancho = 600;
+            ancho = 400;
         }
         else {
             milayout = 'vertical';
@@ -950,8 +946,13 @@ export class FuncionesHighChartsT3Service {
     GraficaCompuestat5(nombregrafica: string, subnombregrafica: string, tabla: Tabla5Model[], mostrarceros = 0): Object {
         let numelems = 0;
         tabla.forEach(elemento => {
-            if (elemento.hombres != 0 || elemento.mujeres != 0) {
+            if (mostrarceros == 1) {
                 numelems++;
+            }
+            else {
+                if (elemento.hombres != 0 || elemento.mujeres != 0) {
+                    numelems++;
+                }
             }
         });
         let ancho = 800;
@@ -1077,8 +1078,13 @@ export class FuncionesHighChartsT3Service {
     GraficaCompuestat5_2(nombregrafica: string, subnombregrafica: string, tabla: Tabla5Model[], mostrarceros = 0): Object {
         let numelems = 0;
         tabla.forEach(elemento => {
-            if (elemento.hombres2 != 0 || elemento.mujeres2 != 0) {
+            if (mostrarceros == 1) {
                 numelems++;
+            }
+            else {
+                if (elemento.hombres2 != 0 || elemento.mujeres2 != 0) {
+                    numelems++;
+                }
             }
         });
 
@@ -1090,11 +1096,11 @@ export class FuncionesHighChartsT3Service {
             ancho = 400;
         }
         else if (numelems < 12) {
-            alto = 800;
+            alto = 600;
             ancho = 400;
         }
         else if (numelems < 24) {
-            alto = 1200;
+            alto = 800;
             ancho = 400;
         }
         else {

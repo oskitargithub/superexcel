@@ -9,8 +9,8 @@ export class AppConfig {
     title: 'FORMULARIO DE DIAGNÓSTICO DE IGUALDAD -- Equality Momentum',
     version: '1.0.0',
     api: 'http://localhost/superexcel/api/',
-    apilaravel: 'http://localhost/superexcel-be/public/api/',
-    /*apilaravel: 'http://planigualdad.com.mialias.net/backend/public/api/',*/
+    /*apilaravel: 'http://localhost/superexcel-be/public/api/',*/
+    apilaravel: 'http://planigualdad.com.mialias.net/backend/public/api/',
     urluser: '/app/',
     urladmin: '/app/admin/dashboardadmin',
     /*urlpestanapublic: '/app/admin/infoencuestapb',*/
