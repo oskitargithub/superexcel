@@ -62,16 +62,12 @@ export class TipoDeContratoAdmComponent implements OnInit {
     public router: Router,
     injector: Injector
   ) {
-    console.log("paso1");
     this.config = config.getConfig();
     if (this.AuthService.usucuest == 0) {
-      console.log("paso2");
       let redirect = this.config.urladmin;
       this.router.navigate([redirect]);
     }
-    console.log("paso3");
     this.modelo = new ClasProfesional2Model();
-
   }
 
   ngOnInit(): void {

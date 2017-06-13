@@ -1,0 +1,952 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Bajas e Incorporaciones</li>
+</ol>
+<h1 class="page-title"><span class="fw-semi-bold">Bajas e Incorporaciones</span></h1>
+
+
+<accordion [closeOthers]="true" class="mb-lg show" id="accordion">
+    <accordion-group isOpen="true">
+        <div accordion-heading>
+            BAJAS DEFINITIVAS EN LA ORGANIZACIÓN Y SUS CAUSAS (últimos dos años)
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>BAJAS DEFINITIVAS EN LA ORGANIZACIÓN Y SUS CAUSAS (últimos dos años)</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Motivo</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_465_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_465_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_465_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_465_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_465_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_465_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_465_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_465_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_465_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_465_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_465_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_465_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_465_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Gráficas BAJA EN LA ORGANIZACIÓN Y SUS CAUSAS (últimos 2 años)-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>BAJAS DEFINITIVAS EN LA ORGANIZACIÓN Y SUS CAUSAS (últimos dos años)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart1options"></chart>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>BAJAS DEFINITIVAS EN LA ORGANIZACIÓN Y SUS CAUSAS (últimos dos años) (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart2options"></chart>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Fin BAJA EN LA ORGANIZACIÓN Y SUS CAUSAS (últimos 2 años)-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+    <accordion-group>
+        <div accordion-heading>
+            INCORPORACIONES Y BAJAS (INFORMACIÓN CUANTITATIVA)
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>INCORPORACIONES Y BAJAS (INFORMACIÓN CUANTITATIVA)</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Año</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_466_tabla_5 | orderByPipe; let i=index">                                                
+                                                    <td class="text-md-center">{{item.texto}}</td>
+                                                    <td class="text-md-center">{{item.mujeres}}</td>
+                                                    <td class="text-md-center">{{funcionest5.getMujeresDeFila1(item, modelo.preg_466_tabla_5) | percent:'1.0-0'}}</td>
+                                                    <td class="text-md-center">{{item.hombres}}</td>
+                                                    <td class="text-md-center">{{funcionest5.getHombresDeFila1(item, modelo.preg_466_tabla_5) | percent:'1.0-0'}}</td>
+                                                    <td class="text-md-center">{{funcionest5.getSumaFila1(item)}}</td>
+                                                    <td class="text-md-center">{{funcionest5.getMujeresAbs1(item, modelo.preg_466_tabla_5)}}</td>
+                                                    <td class="text-md-center">{{funcionest5.getHombresAbs1(item, modelo.preg_466_tabla_5)}}</td>
+                                                    <td class="text-md-center">{{(funcionest5.getTotalAbs1(item, modelo.preg_466_tabla_5))}}</td>
+                                                    <td class="text-md-center">{{funcionest5.getPorcMujeresAbs1(item,modelo.preg_466_tabla_5) | percent:'1.0-0'}}</td>
+                                                    <td class="text-md-center">{{funcionest5.getPorcHombresAbs1(item,modelo.preg_466_tabla_5) | percent:'1.0-0'}}</td>                                                                                               
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funcionest5.getTotalMujeres1(modelo.preg_466_tabla_5)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funcionest5.getSumaMujeresDelTotal1(modelo.preg_466_tabla_5) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funcionest5.getTotalHombres1(modelo.preg_466_tabla_5)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funcionest5.getSumaHombresDelTotal1(modelo.preg_466_tabla_5) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funcionest5.getTotalHombresMujeres1(modelo.preg_466_tabla_5)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Gráficas Incorporaciones-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>INCORPORACIONES Y BAJAS (INFORMACIÓN CUANTITATIVA)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart3options"></chart>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>INCORPORACIONES Y BAJAS (INFORMACIÓN CUANTITATIVA) (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart4options"></chart>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Fin Incorporaciones-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+    <accordion-group>
+        <div accordion-heading>
+            PERSONAS CONTRATADAS DIRECTAMENTE POR LA COMPAÑIA EN EL ULTIMO AÑO
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>PERSONAS CONTRATADAS DIRECTAMENTE POR LA COMPAÑIA EN EL ULTIMO AÑO</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Categoría Profesional</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_467_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_467_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_467_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_467_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_467_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_467_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_467_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_467_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_467_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_467_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_467_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_467_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_467_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Gráficas BAJA EN LA ORGANIZACIÓN Y SUS CAUSAS (últimos 2 años)-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>PERSONAS CONTRATADAS DIRECTAMENTE POR LA COMPAÑIA EN EL ULTIMO AÑO</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart5options"></chart>                                    
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>PERSONAS CONTRATADAS DIRECTAMENTE POR LA COMPAÑIA EN EL ULTIMO AÑO (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart6options"></chart>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Fin BAJA EN LA ORGANIZACIÓN Y SUS CAUSAS (últimos 2 años)-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+    <accordion-group>
+        <div accordion-heading>
+            PERSONAS CONTRATADAS POR ETT EN EL ÚLTIMO AÑO
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>PERSONAS CONTRATADAS POR ETT EN EL ÚLTIMO AÑO</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Categoría Profesional</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_468_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_468_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_468_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_468_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_468_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_468_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_468_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_468_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_468_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_468_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_468_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_468_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_468_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Gráficas Incorporaciones último año por categoría-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>PERSONAS CONTRATADAS POR ETT EN EL ÚLTIMO AÑO</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart7options"></chart>                                    
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>PERSONAS CONTRATADAS POR ETT EN EL ÚLTIMO AÑO (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart8options"></chart>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Incorporaciones último año por categoría Mujeres</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart7pieoptions"></chart>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>Incorporaciones último año por categoría Hombres</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart8pieoptions"></chart>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Fin Incorporaciones último año por categoría-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+    <accordion-group>
+        <div accordion-heading>
+            INCORPORACIONES ÚLTIMO AÑO POR CATEGORIA PROFESIONAL
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>INCORPORACIONES ÚLTIMO AÑO POR CATEGORIA PROFESIONAL</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Descripcion</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_469_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_469_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_469_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_469_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_469_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_469_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_469_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_469_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_469_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_469_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_469_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_469_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_469_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Gráficas BAJAS DEFINITIVAS ÚLTIMO AÑO POR GRUPO DE EDAD-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>INCORPORACIONES ÚLTIMO AÑO POR CATEGORIA PROFESIONAL</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart9options"></chart>                                    
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>INCORPORACIONES ÚLTIMO AÑO POR CATEGORIA PROFESIONAL (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart10options"></chart>                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Fin BAJAS DEFINITIVAS ÚLTIMO AÑO POR GRUPO DE EDAD-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+    <accordion-group>
+        <div accordion-heading>
+            INCORPORACIONES ÚLTIMO AÑO POR ETT Y CATEGORIA PROFESIONAL
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>INCORPORACIONES ÚLTIMO AÑO POR ETT Y CATEGORIA PROFESIONAL</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Descripción</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_470_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_470_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_470_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_470_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_470_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_470_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_470_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_470_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_470_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_470_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_470_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_470_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_470_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Gráficas BAJAS TEMPORALES ÚLTIMO AÑO-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>INCORPORACIONES ÚLTIMO AÑO POR ETT Y CATEGORIA PROFESIONAL</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart11options"></chart>                                      
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>INCORPORACIONES ÚLTIMO AÑO POR ETT Y CATEGORIA PROFESIONAL (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart12options"></chart>                                      
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Fin BAJAS TEMPORALES ÚLTIMO AÑO-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+
+
+    <accordion-group>
+        <div accordion-heading>
+            BAJAS DEFINITIVAS ÚLTIMO AÑO
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>BAJAS DEFINITIVAS ÚLTIMO AÑO</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Descripción</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_471_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_471_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_471_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_471_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_471_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_471_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_471_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_471_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_471_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_471_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_471_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_471_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_471_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Gráficas BAJAS TEMPORALES ÚLTIMO AÑO-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>BAJAS DEFINITIVAS ÚLTIMO AÑO</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart13options"></chart>                                      
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>BAJAS DEFINITIVAS ÚLTIMO AÑO (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart14options"></chart>                                      
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Fin BAJAS TEMPORALES ÚLTIMO AÑO-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+
+    <accordion-group>
+        <div accordion-heading>
+            BAJAS DEFINITIVAS ÚLTIMO AÑO por EDAD
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>BAJAS DEFINITIVAS ÚLTIMO AÑO por EDAD</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Descripción</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_472_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_472_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_472_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_472_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_472_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_472_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_472_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_472_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_472_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_472_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_472_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_472_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_472_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Gráficas BAJAS TEMPORALES ÚLTIMO AÑO-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>BAJAS DEFINITIVAS ÚLTIMO AÑO por EDAD</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart15options"></chart>                                      
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>BAJAS DEFINITIVAS ÚLTIMO AÑO por EDAD (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart16options"></chart>                                      
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Fin BAJAS TEMPORALES ÚLTIMO AÑO-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+    <accordion-group>
+        <div accordion-heading>
+            BAJAS TEMPORALES
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>BAJAS TEMPORALES</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Descripción</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_473_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_473_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_473_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_473_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_473_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_473_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_473_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_473_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_473_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_473_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_473_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_473_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_473_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Gráficas BAJAS TEMPORALES ÚLTIMO AÑO-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>BAJAS TEMPORALES</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart17options"></chart>                                      
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <header>
+                                    <h5>BAJAS TEMPORALES (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart18options"></chart>                                      
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Fin BAJAS TEMPORALES ÚLTIMO AÑO-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+</accordion>

@@ -5,7 +5,9 @@ import { FuncionesHighChartsT3Service } from '../serviciofunciones/funcioneshigh
 import { RetribucionesAdmService } from './retribucionesadm.service';
 import { FuncionesT5Service } from '../serviciofunciones/funcionest5.service';
 import { RetribucionesModel, Tabla5Model } from '../../dashboard/retribuciones/retribuciones.model';
-
+import { AppConfig } from '../../app.config';
+import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 declare var jQuery: any;
 declare var Messenger: any;
 
@@ -24,6 +26,7 @@ export class RetribucionesAdmComponent implements OnInit {
   domSharedStylesHost: any;
   colorOptions: Object = { color: '#f0b518' };
   submitted = false;
+  config: any;
   public modelo: RetribucionesModel;
   public errorMessage: string;
   public status: string;
@@ -79,9 +82,18 @@ export class RetribucionesAdmComponent implements OnInit {
     private servicio: RetribucionesAdmService,
     public funciones: FuncionesT5Service,
     public funccioneshct3: FuncionesHighChartsT3Service,
+    config: AppConfig,
+    private AuthService: AuthService,
+    public router: Router,
     injector: Injector
   ) {
+    this.config = config.getConfig();
+    if (this.AuthService.usucuest == 0) {
+      let redirect = this.config.urladmin;
+      this.router.navigate([redirect]);
+    }
     this.modelo = new RetribucionesModel();
+    
   }
 
   ngOnInit(): void {

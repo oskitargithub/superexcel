@@ -59,6 +59,94 @@
     </accordion-group>
     <accordion-group>
         <div accordion-heading>
+            Puestos directivos
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Puestos directivos</strong>
+                                    </legend>
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Puesto</th>
+                                                <th class="text-md-center">Mujeres</th>
+                                                <th class="text-md-center">% Mujeres</th>
+                                                <th class="text-md-center">Hombres</th>
+                                                <th class="text-md-center">% Hombres</th>
+                                                <th class="text-md-center">Total Empleados</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of modelo.preg_390_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_390_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_390_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
+                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_390_tabla_3)}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_390_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_390_tabla_3) + serviciot3.getHombresAbs(item,
+                                                    modelo.preg_390_tabla_3))}}
+                                                </td>
+                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_390_tabla_3) | percent:'1.0-0'
+                                                    }}</td>
+                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_390_tabla_3) | percent:'1.0-0'
+                                                    }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_390_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_390_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_390_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row" colspan="5"></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Puestos Directivos</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart7options"></chart> 
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Puestos Directivos</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart8options"></chart>     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+    <accordion-group>
+        <div accordion-heading>
             Distribución de la plantilla por Departamentos Servicios y/o Unidades Funcionales
             <i class="fa fa-angle-down float-xs-right"></i>
         </div>
@@ -91,30 +179,30 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of modelo.preg_48_tabla_3; let i=index">
+                                            <tr *ngFor="let item of modelo.preg_391_tabla_3; let i=index">
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_48_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_391_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{item.hombres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_48_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_391_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_48_tabla_3)}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_48_tabla_3)}}</td>
-                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_48_tabla_3) + serviciot3.getHombresAbs(item,
-                                                    modelo.preg_48_tabla_3))}}
+                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_391_tabla_3)}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_391_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_391_tabla_3) + serviciot3.getHombresAbs(item,
+                                                    modelo.preg_391_tabla_3))}}
                                                 </td>
-                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_48_tabla_3) | percent:'1.0-0'
+                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_391_tabla_3) | percent:'1.0-0'
                                                     }}</td>
-                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_48_tabla_3) | percent:'1.0-0'
+                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_391_tabla_3) | percent:'1.0-0'
                                                     }}</td>
                                             </tr>
                                             <tr>
                                                 <th class="text-md-center" scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_48_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_391_tabla_3)}}</th>
                                                 <th class="text-md-center" scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_48_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_391_tabla_3)}}</th>
                                                 <th class="text-md-center" scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_48_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_391_tabla_3)}}</th>
                                                 <th class="text-md-center" scope="row" colspan="5"></th>
                                             </tr>
                                         </tbody>
@@ -179,30 +267,30 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of modelo.preg_54_tabla_3; let i=index">
+                                            <tr *ngFor="let item of modelo.preg_392_tabla_3; let i=index">
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_54_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_392_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{item.hombres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_54_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_392_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_54_tabla_3)}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_54_tabla_3)}}</td>
-                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_54_tabla_3) + serviciot3.getHombresAbs(item,
-                                                    modelo.preg_54_tabla_3))}}
+                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_392_tabla_3)}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_392_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_392_tabla_3) + serviciot3.getHombresAbs(item,
+                                                    modelo.preg_392_tabla_3))}}
                                                 </td>
-                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_54_tabla_3) | percent:'1.0-0'
+                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_392_tabla_3) | percent:'1.0-0'
                                                     }}</td>
-                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_54_tabla_3) | percent:'1.0-0'
+                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_392_tabla_3) | percent:'1.0-0'
                                                     }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_54_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_392_tabla_3)}}</th>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_54_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_392_tabla_3)}}</th>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_54_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_392_tabla_3)}}</th>
                                                 <th scope="row" colspan="5"></th>
                                             </tr>
                                         </tbody>
@@ -271,30 +359,30 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of modelo.preg_55_tabla_3; let i=index">
+                                            <tr *ngFor="let item of modelo.preg_393_tabla_3; let i=index">
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_55_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_393_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{item.hombres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_55_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_393_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_55_tabla_3)}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_55_tabla_3)}}</td>
-                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_55_tabla_3) + serviciot3.getHombresAbs(item,
-                                                    modelo.preg_55_tabla_3))}}
+                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_393_tabla_3)}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_393_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_393_tabla_3) + serviciot3.getHombresAbs(item,
+                                                    modelo.preg_393_tabla_3))}}
                                                 </td>
-                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_55_tabla_3) | percent:'1.0-0'
+                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_393_tabla_3) | percent:'1.0-0'
                                                     }}</td>
-                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_55_tabla_3) | percent:'1.0-0'
+                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_393_tabla_3) | percent:'1.0-0'
                                                     }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_55_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_393_tabla_3)}}</th>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_55_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_393_tabla_3)}}</th>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_55_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_393_tabla_3)}}</th>
                                                 <th scope="row" colspan="5"></th>
                                             </tr>
                                         </tbody>
@@ -329,190 +417,8 @@
             <!-- Fin Puestos de Coordinación / Supervisión -->
         </div>
     </accordion-group>
-    <accordion-group>
-        <div accordion-heading>
-            Órganos Rectores
-            <i class="fa fa-angle-down float-xs-right"></i>
-        </div>
-        <div>
-            <!-- Órganos Rectores -->
-            <div class="col-lg-12">
-                <section class="widget" widget>
-                    <div class="widget-body">
-                        <!-- Tabla4 y gráficas Órganos Rectores -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <fieldset>
-                                    <legend>
-                                        <strong>Órganos Rectores</strong>
-                                    </legend>
-                                    <table class="table table-bordered table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-md-center">Nombre del Puesto</th>
-                                                <th class="text-md-center">Mujeres</th>
-                                                <th class="text-md-center">% Mujeres</th>
-                                                <th class="text-md-center">Hombres</th>
-                                                <th class="text-md-center">% Hombres</th>
-                                                <th class="text-md-center">Total Empleados</th>
-                                                <th class="text-md-center">Nº Mujeres absoluto</th>
-                                                <th class="text-md-center">Nº Hombres absoluto</th>
-                                                <th class="text-md-center">Total absoluto</th>
-                                                <th class="text-md-center">% Mujeres absoluto</th>
-                                                <th class="text-md-center">% Hombres absoluto</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let item of modelo.preg_56_tabla_3; let i=index">
-                                                <td class="text-md-center">{{item.texto}}</td>
-                                                <td class="text-md-center">{{item.mujeres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_56_tabla_3) | percent:'1.0-0'}}</td>
-                                                <td class="text-md-center">{{item.hombres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_56_tabla_3) | percent:'1.0-0'}}</td>
-                                                <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_56_tabla_3)}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_56_tabla_3)}}</td>
-                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_56_tabla_3) + serviciot3.getHombresAbs(item,
-                                                    modelo.preg_56_tabla_3))}}
-                                                </td>
-                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_56_tabla_3) | percent:'1.0-0'
-                                                    }}</td>
-                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_56_tabla_3) | percent:'1.0-0'
-                                                    }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_56_tabla_3)}}</th>
-                                                <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_56_tabla_3)}}</th>
-                                                <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_56_tabla_3)}}</th>
-                                                <th scope="row" colspan="5"></th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </fieldset>
-                            </div>
-                        </div>
-                        <!-- Fin Tabla2 -->
-                        <!-- Gráficas Tabla2 -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <header>
-                                    <h5>Distribución de la plantilla Organos Rectores</h5>
-                                </header>
-                                <div class="widget-body">
-                                    <chart [options]="chart7options"></chart>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <header>
-                                    <h5>Distribución de la plantilla Organos Rectores (porporcionado)</h5>
-                                </header>
-                                <div class="widget-body">
-                                    <chart [options]="chart8options"></chart>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Fin Gráficas Tabla2 -->
-                    </div>
-                </section>
-            </div>
-            <!-- Fin Órganos Rectores -->
-        </div>
-    </accordion-group>
-    <accordion-group>
-        <div accordion-heading>
-            Órganos Asesores
-            <i class="fa fa-angle-down float-xs-right"></i>
-        </div>
-        <div>
-            <!-- Órganos Asesores -->
-            <div class="col-lg-12">
-                <section class="widget" widget>
-                    <div class="widget-body">
-                        <!-- Tabla5 y gráficas Órganos Asesores -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <fieldset>
-                                    <legend>
-                                        <strong>Órganos Asesores</strong>
-                                    </legend>
-                                    <table class="table table-bordered table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-md-center">Nombre del Puesto</th>
-                                                <th class="text-md-center">Mujeres</th>
-                                                <th class="text-md-center">% Mujeres</th>
-                                                <th class="text-md-center">Hombres</th>
-                                                <th class="text-md-center">% Hombres</th>
-                                                <th class="text-md-center">Total Empleados</th>
-                                                <th class="text-md-center">Nº Mujeres absoluto</th>
-                                                <th class="text-md-center">Nº Hombres absoluto</th>
-                                                <th class="text-md-center">Total absoluto</th>
-                                                <th class="text-md-center">% Mujeres absoluto</th>
-                                                <th class="text-md-center">% Hombres absoluto</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let item of modelo.preg_57_tabla_3; let i=index">
-                                                <td class="text-md-center">{{item.texto}}</td>
-                                                <td class="text-md-center">{{item.mujeres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_57_tabla_3) | percent:'1.0-0'}}</td>
-                                                <td class="text-md-center">{{item.hombres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_57_tabla_3) | percent:'1.0-0'}}</td>
-                                                <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_57_tabla_3)}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_57_tabla_3)}}</td>
-                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_57_tabla_3) + serviciot3.getHombresAbs(item,
-                                                    modelo.preg_57_tabla_3))}}
-                                                </td>
-                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_57_tabla_3) | percent:'1.0-0'
-                                                    }}</td>
-                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_57_tabla_3) | percent:'1.0-0'
-                                                    }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_57_tabla_3)}}</th>
-                                                <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_57_tabla_3)}}</th>
-                                                <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_57_tabla_3)}}</th>
-                                                <th scope="row" colspan="5"></th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </fieldset>
-                            </div>
-                        </div>
-                        <!-- Fin Tabla2 -->
-                        <!-- Gráficas Tabla2 -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <header>
-                                    <h5>Distribución de la plantilla Organos Asesores</h5>
-                                </header>
-                                <div class="widget-body">
-                                    <chart [options]="chart10options"></chart>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <header>
-                                    <h5>Distribución de la plantilla Organos Asesores (porporcionado)</h5>
-                                </header>
-                                <div class="widget-body">
-                                    <chart [options]="chart11options"></chart>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Fin Gráficas Tabla5 -->
-                    </div>
-                </section>
-            </div>
-            <!-- Fin Órganos Asesores -->
-        </div>
-    </accordion-group>
+    
+    
     <accordion-group>
         <div accordion-heading>
             Grupos Profesionales Técnico
@@ -547,30 +453,30 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of modelo.preg_59_tabla_3; let i=index">
+                                            <tr *ngFor="let item of modelo.preg_394_tabla_3; let i=index">
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_59_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_394_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{item.hombres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_59_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_394_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_59_tabla_3)}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_59_tabla_3)}}</td>
-                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_59_tabla_3) + serviciot3.getHombresAbs(item,
-                                                    modelo.preg_59_tabla_3))}}
+                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_394_tabla_3)}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_394_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_394_tabla_3) + serviciot3.getHombresAbs(item,
+                                                    modelo.preg_394_tabla_3))}}
                                                 </td>
-                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_59_tabla_3) | percent:'1.0-0'
+                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_394_tabla_3) | percent:'1.0-0'
                                                     }}</td>
-                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_59_tabla_3) | percent:'1.0-0'
+                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_394_tabla_3) | percent:'1.0-0'
                                                     }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_59_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_394_tabla_3)}}</th>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_59_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_394_tabla_3)}}</th>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_59_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_394_tabla_3)}}</th>
                                                 <th scope="row" colspan="5"></th>
                                             </tr>
                                         </tbody>
@@ -639,30 +545,30 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of modelo.preg_60_tabla_3; let i=index">
+                                            <tr *ngFor="let item of modelo.preg_395_tabla_3; let i=index">
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_60_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_395_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{item.hombres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_60_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_395_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_60_tabla_3)}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_60_tabla_3)}}</td>
-                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_60_tabla_3) + serviciot3.getHombresAbs(item,
-                                                    modelo.preg_60_tabla_3))}}
+                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_395_tabla_3)}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_395_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_395_tabla_3) + serviciot3.getHombresAbs(item,
+                                                    modelo.preg_395_tabla_3))}}
                                                 </td>
-                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_60_tabla_3) | percent:'1.0-0'
+                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_395_tabla_3) | percent:'1.0-0'
                                                     }}</td>
-                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_60_tabla_3) | percent:'1.0-0'
+                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_395_tabla_3) | percent:'1.0-0'
                                                     }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_60_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_395_tabla_3)}}</th>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_60_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_395_tabla_3)}}</th>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_60_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_395_tabla_3)}}</th>
                                                 <th scope="row" colspan="5"></th>
                                             </tr>
                                         </tbody>
@@ -697,6 +603,101 @@
             <!-- Fin Grupos profesionales Administrativos -->
         </div>
     </accordion-group>
+
+    <accordion-group>
+        <div accordion-heading>
+            Grupos profesionales cualificados
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <!-- Grupos profesionales cualificados -->
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <!-- Tabla8 y gráficas Grupos profesionales cualificados -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Grupos profesionales no cualificados</strong>
+                                    </legend>
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Nombre del Puesto</th>
+                                                <th class="text-md-center">Mujeres</th>
+                                                <th class="text-md-center">% Mujeres</th>
+                                                <th class="text-md-center">Hombres</th>
+                                                <th class="text-md-center">% Hombres</th>
+                                                <th class="text-md-center">Total Empleados</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of modelo.preg_396_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_396_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_396_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
+                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_396_tabla_3)}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_396_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_396_tabla_3) + serviciot3.getHombresAbs(item,
+                                                    modelo.preg_396_tabla_3))}}
+                                                </td>
+                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_396_tabla_3) | percent:'1.0-0'
+                                                    }}</td>
+                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_396_tabla_3) | percent:'1.0-0'
+                                                    }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_396_tabla_3)}}</th>
+                                                <th scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_396_tabla_3)}}</th>
+                                                <th scope="row"></th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_396_tabla_3)}}</th>
+                                                <th scope="row" colspan="5"></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Fin Tabla2 -->
+                        <!-- Gráficas Tabla2 -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Distribución de la plantilla Grupos profesionales cualificados</h5>
+                                </header>
+                                <div class="widget-body">
+                                     <chart [options]="chart16options"></chart>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Distribución de la plantilla Grupos profesionales cualificados (porporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                     <chart [options]="chart17options"></chart>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Gráficas Tabla6 -->
+                    </div>
+                </section>
+            </div>
+            <!-- Fin Grupos profesionales cualificados -->
+        </div>
+    </accordion-group>
+
+
     <accordion-group>
         <div accordion-heading>
             Grupos profesionales no cualificados
@@ -731,30 +732,30 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of modelo.preg_61_tabla_3; let i=index">
+                                            <tr *ngFor="let item of modelo.preg_397_tabla_3; let i=index">
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_61_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_397_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{item.hombres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_61_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_397_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_61_tabla_3)}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_61_tabla_3)}}</td>
-                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_61_tabla_3) + serviciot3.getHombresAbs(item,
-                                                    modelo.preg_61_tabla_3))}}
+                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_397_tabla_3)}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_397_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_397_tabla_3) + serviciot3.getHombresAbs(item,
+                                                    modelo.preg_397_tabla_3))}}
                                                 </td>
-                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_61_tabla_3) | percent:'1.0-0'
+                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_397_tabla_3) | percent:'1.0-0'
                                                     }}</td>
-                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_61_tabla_3) | percent:'1.0-0'
+                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_397_tabla_3) | percent:'1.0-0'
                                                     }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_61_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_397_tabla_3)}}</th>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_61_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_397_tabla_3)}}</th>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_61_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_397_tabla_3)}}</th>
                                                 <th scope="row" colspan="5"></th>
                                             </tr>
                                         </tbody>
@@ -789,190 +790,7 @@
             <!-- Fin Grupos profesionales no cualificados -->
         </div>
     </accordion-group>
-    <accordion-group>
-        <div accordion-heading>
-            Cuerpos y fuerzas de seguridad
-            <i class="fa fa-angle-down float-xs-right"></i>
-        </div>
-        <div>
-            <!-- Grupos Cuerpos y fuerzas de seguridad -->
-            <div class="col-lg-12">
-                <section class="widget" widget>
-                    <div class="widget-body">
-                        <!-- Tabla9 y gráficas Grupos profesionales no cualificados -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <fieldset>
-                                    <legend>
-                                        <strong>Cuerpos y fuerzas de seguridad</strong>
-                                    </legend>
-                                    <table class="table table-bordered table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-md-center">Nombre del Puesto</th>
-                                                <th class="text-md-center">Mujeres</th>
-                                                <th class="text-md-center">% Mujeres</th>
-                                                <th class="text-md-center">Hombres</th>
-                                                <th class="text-md-center">% Hombres</th>
-                                                <th class="text-md-center">Total Empleados</th>
-                                                <th class="text-md-center">Nº Mujeres absoluto</th>
-                                                <th class="text-md-center">Nº Hombres absoluto</th>
-                                                <th class="text-md-center">Total absoluto</th>
-                                                <th class="text-md-center">% Mujeres absoluto</th>
-                                                <th class="text-md-center">% Hombres absoluto</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let item of modelo.preg_62_tabla_3; let i=index">
-                                                <td class="text-md-center">{{item.texto}}</td>
-                                                <td class="text-md-center">{{item.mujeres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_62_tabla_3) | percent:'1.0-0'}}</td>
-                                                <td class="text-md-center">{{item.hombres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_62_tabla_3) | percent:'1.0-0'}}</td>
-                                                <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_62_tabla_3)}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_62_tabla_3)}}</td>
-                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_62_tabla_3) + serviciot3.getHombresAbs(item,
-                                                    modelo.preg_62_tabla_3))}}
-                                                </td>
-                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_62_tabla_3) | percent:'1.0-0'
-                                                    }}</td>
-                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_62_tabla_3) | percent:'1.0-0'
-                                                    }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_62_tabla_3)}}</th>
-                                                <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_62_tabla_3)}}</th>
-                                                <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_62_tabla_3)}}</th>
-                                                <th scope="row" colspan="5"></th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </fieldset>
-                            </div>
-                        </div>
-                        <!-- Fin Tabla2 -->
-                        <!-- Gráficas Tabla2 -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <header>
-                                    <h5>Distribución de la plantilla Cuerpos y fuerzas de seguridad</h5>
-                                </header>
-                                <div class="widget-body">
-                                    <chart [options]="chart18options"></chart>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <header>
-                                    <h5>Distribución de la plantilla Cuerpos y fuerzas de seguridad (porporcionado)</h5>
-                                </header>
-                                <div class="widget-body">
-                                    <chart [options]="chart19options"></chart>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Fin Gráficas Tabla6 -->
-                    </div>
-                </section>
-            </div>
-            <!-- Fin Cuerpos y fuerzas de seguridad -->
-        </div>
-    </accordion-group>
-    <accordion-group>
-        <div accordion-heading>
-            Distribución Categoría Agente de Policía
-            <i class="fa fa-angle-down float-xs-right"></i>
-        </div>
-        <div>
-            <!-- Grupos Distribución Categoría Agente de Policía -->
-            <div class="col-lg-12">
-                <section class="widget" widget>
-                    <div class="widget-body">
-                        <!-- Tabla10 y gráficas Distribución Categoría Agente de Policía -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <fieldset>
-                                    <legend>
-                                        <strong>Distribución Categoría Agente de Policía</strong>
-                                    </legend>
-                                    <table class="table table-bordered table-sm">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-md-center">Nombre del Puesto</th>
-                                                <th class="text-md-center">Mujeres</th>
-                                                <th class="text-md-center">% Mujeres</th>
-                                                <th class="text-md-center">Hombres</th>
-                                                <th class="text-md-center">% Hombres</th>
-                                                <th class="text-md-center">Total Empleados</th>
-                                                <th class="text-md-center">Nº Mujeres absoluto</th>
-                                                <th class="text-md-center">Nº Hombres absoluto</th>
-                                                <th class="text-md-center">Total absoluto</th>
-                                                <th class="text-md-center">% Mujeres absoluto</th>
-                                                <th class="text-md-center">% Hombres absoluto</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let item of modelo.preg_63_tabla_3; let i=index">
-                                                <td class="text-md-center">{{item.texto}}</td>
-                                                <td class="text-md-center">{{item.mujeres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_63_tabla_3) | percent:'1.0-0'}}</td>
-                                                <td class="text-md-center">{{item.hombres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_63_tabla_3) | percent:'1.0-0'}}</td>
-                                                <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_63_tabla_3)}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_63_tabla_3)}}</td>
-                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_63_tabla_3) + serviciot3.getHombresAbs(item,
-                                                    modelo.preg_63_tabla_3))}}
-                                                </td>
-                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_63_tabla_3) | percent:'1.0-0'
-                                                    }}</td>
-                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_63_tabla_3) | percent:'1.0-0'
-                                                    }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_63_tabla_3)}}</th>
-                                                <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_63_tabla_3)}}</th>
-                                                <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_63_tabla_3)}}</th>
-                                                <th scope="row" colspan="5"></th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </fieldset>
-                            </div>
-                        </div>
-                        <!-- Fin Tabla2 -->
-                        <!-- Gráficas Tabla2 -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <header>
-                                    <h5>Distribución de la plantilla Distribución Categoría Agente de Policía</h5>
-                                </header>
-                                <div class="widget-body">
-                                    <chart [options]="chart20options"></chart>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <header>
-                                    <h5>Distribución de la plantilla Distribución Categoría Agente de Policía (porporcionado)</h5>
-                                </header>
-                                <div class="widget-body">
-                                    <chart [options]="chart21options"></chart>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Fin Gráficas Tabla6 -->
-                    </div>
-                </section>
-            </div>
-            <!-- Fin Distribución Categoría Agente de Policía -->
-        </div>
-    </accordion-group>
+    
     <accordion-group>
         <div accordion-heading>
             PLANTILLA POR EDADES
@@ -1007,30 +825,30 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of modelo.preg_49_tabla_3; let i=index">
+                                            <tr *ngFor="let item of modelo.preg_383_tabla_3; let i=index">
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_49_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{serviciot3.getMujeresDelTotal(item, modelo.preg_383_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{item.hombres}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_49_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresDelTotal(item, modelo.preg_383_tabla_3) | percent:'1.0-0'}}</td>
                                                 <td class="text-md-center">{{item.mujeres*1 + item.hombres*1}}</td>
-                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_49_tabla_3)}}</td>
-                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_49_tabla_3)}}</td>
-                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_49_tabla_3) + serviciot3.getHombresAbs(item,
-                                                    modelo.preg_49_tabla_3))}}
+                                                <td class="text-md-center">{{serviciot3.getMujeresAbs(item, modelo.preg_383_tabla_3)}}</td>
+                                                <td class="text-md-center">{{serviciot3.getHombresAbs(item, modelo.preg_383_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(serviciot3.getMujeresAbs(item, modelo.preg_383_tabla_3) + serviciot3.getHombresAbs(item,
+                                                    modelo.preg_383_tabla_3))}}
                                                 </td>
-                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_49_tabla_3) | percent:'1.0-0'
+                                                <td class="text-md-center">{{serviciot3.getPorcMujeresAbs(item,modelo.preg_383_tabla_3) | percent:'1.0-0'
                                                     }}</td>
-                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_49_tabla_3) | percent:'1.0-0'
+                                                <td class="text-md-center">{{serviciot3.getPorcHombresAbs(item,modelo.preg_383_tabla_3) | percent:'1.0-0'
                                                     }}</td>
                                             </tr>
                                             <tr>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_49_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalMujeres(modelo.preg_383_tabla_3)}}</th>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_49_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombres(modelo.preg_383_tabla_3)}}</th>
                                                 <th scope="row"></th>
-                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_49_tabla_3)}}</th>
+                                                <th class="text-md-center" scope="row">{{serviciot3.getTotalHombresMujeres(modelo.preg_383_tabla_3)}}</th>
                                                 <th scope="row" colspan="5"></th>
                                             </tr>
                                         </tbody>

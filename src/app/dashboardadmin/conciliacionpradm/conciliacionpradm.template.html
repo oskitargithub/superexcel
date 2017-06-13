@@ -1,0 +1,960 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Home</li>
+    <li class="breadcrumb-item active">Conciliación Familiar</li>
+</ol>
+<h1 class="page-title"><span class="fw-semi-bold">Conciliación Familiar</span></h1>
+
+
+<accordion [closeOthers]="true" class="mb-lg show" id="accordion">
+    <accordion-group isOpen="true">
+        <div accordion-heading>
+            Circunstancias familiares
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Circunstancias familiares</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Circunstancia</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_490_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_490_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_490_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_490_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_490_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_490_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_490_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_490_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_490_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_490_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_490_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_490_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_490_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- CIRCUNSTANCIAS FAMILIARES-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Conciliación - Circunstancias familiares</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart1options"></chart>                                    
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Conciliación - Circunstancias familiares (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart2options"></chart> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Fin BAJA EN LA ORGANIZACIÓN Y SUS CAUSAS (últimos 2 años)-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+    
+    <accordion-group >
+        <div accordion-heading>
+            Responsabilidades familiares en No. de hijos e hijas
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Responsabilidades familiares en No. de hijos e hijas</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">No. de hijos/as</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_492_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_492_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_492_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_492_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_492_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_492_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_492_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_492_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_492_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_492_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_492_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_492_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_492_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Responsabilidades familiares en No. de hijos e hijas-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Responsabilidades familiares en No. de hijos e hijas</h5>
+                                </header>
+                                <div class="widget-body">
+                                     <chart [options]="chart3options"></chart>                                     
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Responsabilidades familiares en No. de hijos e hijas (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart4options"></chart> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Fin Responsabilidades familiares en No. de hijos e hijas-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+    <accordion-group >
+        <div accordion-heading>
+            Responsabilidades familiares en No. De hijos e hijas con discapacidad
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Responsabilidades familiares en No. De hijos e hijas con discapacidad</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">No. de hijos/as</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_493_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_493_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_493_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_493_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_493_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_493_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_493_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_493_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_493_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_493_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_493_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_493_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_493_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Responsabilidades familiares en No. De hijos e hijas con discapacidad-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Responsabilidades familiares en No. De hijos e hijas con discapacidad</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart5options"></chart> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Responsabilidades familiares en No. De hijos e hijas con discapacidad (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart6options"></chart> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Fin Responsabilidades familiares en No. De hijos e hijas con discapacidad-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+     <accordion-group >
+        <div accordion-heading>
+            Responsabilidades familiares en No. De hijos e hijas por edad
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Responsabilidades familiares en No. De hijos e hijas por edad</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Edad de los hijos/as</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_496_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_496_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_496_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_496_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_496_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_496_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_496_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_496_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_496_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_496_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_496_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_496_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_496_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Responsabilidades familiares en No. De hijos e hijas por edad-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Responsabilidades familiares en No. De hijos e hijas por edad</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart7options"></chart> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Responsabilidades familiares en No. De hijos e hijas por edad (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart8options"></chart> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Responsabilidades familiares en No. De hijos e hijas por edad-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+    <accordion-group >
+        <div accordion-heading>
+            Responsabilidades familiares en No. De hijos e hijas por edad con discapacidad
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Responsabilidades familiares en No. De hijos e hijas por edad con discapacidad</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Edad de los hijos/as</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_497_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_497_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_497_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_497_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_497_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_497_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_497_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_497_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_497_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_497_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_497_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_497_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_497_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!-- Responsabilidades familiares en No. De hijos e hijas con discapacidad-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Responsabilidades familiares en No. De hijos e hijas por edad con discapacidad</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart9options"></chart> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Responsabilidades familiares en No. De hijos e hijas por edad con discapacidad (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart10options"></chart> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Responsabilidades familiares en No. De hijos e hijas con discapacidad-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+    <accordion-group >
+        <div accordion-heading>
+            Responsabilidades familiares en No. De personas dependientes a cargo (No hijos/as)
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong> Responsabilidades familiares en No. De personas dependientes a cargo (No hijos/as)</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Nº de Personas/as</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_498_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_498_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_498_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_498_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_498_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_498_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_498_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_498_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_498_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_498_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_498_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_498_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_498_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!--  Responsabilidades familiares en No. De personas dependientes a cargo (No hijos/as)-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5> Responsabilidades familiares en No. De personas dependientes a cargo (No hijos/as)</h5>
+                                </header>
+                                <div class="widget-body">
+                                     <chart [options]="chart11options"></chart> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <header>
+                                    <h5> Responsabilidades familiares en No. De personas dependientes a cargo (No hijos/as) (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                     <chart [options]="chart12options"></chart> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Responsabilidades familiares en No. De hijos e hijas con discapacidad-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+    <accordion-group >
+        <div accordion-heading>
+            Uso mecanismos legales de conciliación
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Uso mecanismos legales de conciliación</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Descripción</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_500_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_500_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_500_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_500_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_500_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_500_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_500_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_500_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_500_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_500_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_500_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_500_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_500_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!--  Uso mecanismos legales de conciliación-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Uso mecanismos legales de conciliación</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart19options"></chart> 
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Uso mecanismos legales de conciliación (Flexibilidad horaria)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart17options"></chart> 
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Uso mecanismos legales de conciliación (Permiso para acudir a servicios sanitarios)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart18options"></chart> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Uso mecanismos legales de conciliación (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart14options"></chart> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Uso mecanismos legales de conciliación-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+     <accordion-group >
+        <div accordion-heading>
+            Recursos para la conciliación establecidos por la organización, número de personas usuarias
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Recursos para la conciliación establecidos por la organización, número de personas usuarias</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Descripción</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
+                                                <th class="text-md-center">Nº Mujeres absoluto</th>
+                                                <th class="text-md-center">Nº Hombres absoluto</th>
+                                                <th class="text-md-center">Total absoluto</th>
+                                                <th class="text-md-center">% Mujeres absoluto</th>
+                                                <th class="text-md-center">% Hombres absoluto</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->
+                                            <tr *ngFor="let item of modelo.preg_501_tabla_3; let i=index">
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila(item, modelo.preg_501_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila(item, modelo.preg_501_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs(item, modelo.preg_501_tabla_3)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs(item, modelo.preg_501_tabla_3)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs(item, modelo.preg_501_tabla_3))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs(item,modelo.preg_501_tabla_3) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs(item,modelo.preg_501_tabla_3) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Totales -->
+                                            <tr>
+                                                <th class="text-md-center" scope="row">Total</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalMujeres(modelo.preg_501_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaMujeresDelTotal(modelo.preg_501_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombres(modelo.preg_501_tabla_3)}}
+                                                </th>
+                                                <th class="text-md-center" scope="row">{{funciones.getSumaHombresDelTotal(modelo.preg_501_tabla_3) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">
+                                                    {{funciones.getTotalHombresMujeres(modelo.preg_501_tabla_3)}}
+
+                                                </th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"></th>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!--  Recursos para la conciliación establecidos por la organización, número de personas usuarias-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Recursos para la conciliación establecidos por la organización, número de personas usuarias</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart15options"></chart> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Recursos para la conciliación establecidos por la organización, número de personas usuarias (Proporcionado)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart16options"></chart> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Recursos para la conciliación establecidos por la organización, número de personas usuarias-->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+
+     <accordion-group >
+        <div accordion-heading>
+            “NORMALIZACIÓN” de la vida profesional tras la atención de obligaciones familiares
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>“NORMALIZACIÓN” de la vida profesional tras la atención de obligaciones familiares</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Descripción</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>                                                
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->                                            
+                                                <td class="text-md-center">Reincorporaciones tras excedencia por cuidado de hijos/as a puestos de categoría inferior</td>
+                                                <td class="text-md-center">{{modelo.data.preg_506}}</td>
+                                                <td class="text-md-center">{{modelo.data.preg_507}}</td>
+                                                                               
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!--  Recursos para la conciliación establecidos por la organización, número de personas usuarias-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Reincorporaciones tras excedencia por cuidado de hijos/as a puestos de categoría inferior</h5>
+                                </header>
+                                <div class="widget-body">
+                                     <chart [options]="chart1pieoptions"></chart> 
+                                </div>
+                                
+                            </div>                            
+                        </div>
+
+                       
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+
+     <accordion-group >
+        <div accordion-heading>
+            Factores relacionados con maternidad o paternidad
+            <i class="fa fa-angle-down float-xs-right"></i>
+        </div>
+        <div>
+            <div class="col-lg-12">
+                <section class="widget" widget>
+                    <div class="widget-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <legend>
+                                        <strong>Factores relacionados con maternidad o paternidad</strong>
+                                    </legend>
+
+                                    <table class="table table-bordered table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-md-center">Descripción</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>                                                
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Banda 2 -->                                            
+                                                <td class="text-md-center">¿Cuántos trabajadores/as han sido padres y madres en el último año? </td>
+                                                <td class="text-md-center">{{modelo.data.preg_503}}</td>
+                                                <td class="text-md-center">{{modelo.data.preg_504}}</td>
+                                                                               
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <!--  Recursos para la conciliación establecidos por la organización, número de personas usuarias-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>¿Cuántos trabajadores/as han sido padres y madres en el último año?</h5>
+                                </header>
+                                <div class="widget-body">
+                                     <chart [options]="chart2pieoptions"></chart> 
+                                </div>
+                                
+                            </div>                            
+                        </div>
+
+                       
+                    </div>
+                </section>
+            </div>
+        </div>
+    </accordion-group>
+</accordion>

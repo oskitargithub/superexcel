@@ -4,7 +4,7 @@ import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { FormsModule,ReactiveFormsModule  }    from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { TooltipModule } from 'ng2-bootstrap';
+import { TooltipModule,AccordionModule } from 'ng2-bootstrap';
 import { ClasProfesional2Component } from './clasprofesional2.component';
 
 
@@ -17,6 +17,7 @@ export const routes = [
             FormsModule,
             ReactiveFormsModule, 
             TooltipModule.forRoot(),
+            AccordionModule.forRoot(),
             RouterModule.forChild(routes) ],
   declarations: [ ClasProfesional2Component ]
 })

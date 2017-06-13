@@ -44,7 +44,8 @@ export class DashboardAdmin implements OnInit {
     private fb: FormBuilder,
     injector: Injector) 
   {
-      this.config = config.getConfig();   
+      this.config = config.getConfig();  
+      this.AuthService.tipocuest = 0;      
       this.creaFormUsuario(); 
   }
  

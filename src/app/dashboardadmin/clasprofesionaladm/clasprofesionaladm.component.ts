@@ -3,6 +3,9 @@ import { ClasProfesionalAdmService } from './clasprofesionaladm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
 import { ClasProfesional1Model, dataModel, Tabla3Model } from '../../dashboard/clasprofesional1/ClasProfesional1.model';
 import { FuncionesHighChartsT3Service } from '../serviciofunciones/funcioneshighchartst3.service';
+import { AppConfig } from '../../app.config';
+import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 declare var jQuery: any;
 declare var Messenger: any;
 
@@ -21,6 +24,7 @@ export class ClasProfesionalAdmComponent implements OnInit {
   domSharedStylesHost: any;
   colorOptions: Object = { color: '#f0b518' };
   submitted = false;
+  config:any;
 
   public modelo: ClasProfesional1Model;
   public errorMessage: string;
@@ -59,8 +63,17 @@ export class ClasProfesionalAdmComponent implements OnInit {
     private servicio: ClasProfesionalAdmService,
     public serviciot3: FuncionesService,
     public funccioneshct3:FuncionesHighChartsT3Service,
+    config: AppConfig,
+    private AuthService: AuthService,    
+    public router: Router,
     injector: Injector
   ) {
+    this.config = config.getConfig();
+    if (this.AuthService.usucuest == 0) {
+      console.log("paso2");
+      let redirect = this.config.urladmin;
+      this.router.navigate([redirect]);
+    }
     this.modelo = new ClasProfesional1Model();
     this.modelo.data = new dataModel();
   }

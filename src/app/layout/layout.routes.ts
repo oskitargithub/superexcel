@@ -77,6 +77,11 @@ const routes: Routes = [
 
     { path: 'infoencuestapr', loadChildren: '../dashboardadmin/infoencuestapr/infoencuestapr.module#InfoEncuestaPRModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'clasificacionprofesionalpradm', loadChildren: '../dashboardadmin/clasprofesionalpradm/clasprofesionalpradm.module#ClasProfesionalPrAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'tipodecontratopradm', loadChildren: '../dashboardadmin/tipodecontratopradm/tipodecontratopradm.module#TipoDeContratoPrAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'retribucionespradm', loadChildren: '../dashboardadmin/retribucionespradm/retribucionespradm.module#RetribucionesPrAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'retribucionespradm2', loadChildren: '../dashboardadmin/retribucionespradm2/retribucionespradm2.module#RetribucionesPrAdm2Module', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'bajaseincorppradm', loadChildren: '../dashboardadmin/bajaseincorppradm/bajaseincorppradm.module#BajasEIncorpPrAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'conciliacionpradm', loadChildren: '../dashboardadmin/conciliacionpradm/conciliacionpradm.module#ConciliacionPrAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
   ]},
   { path: 'login', loadChildren: '../login/login.module#LoginModule'}
   

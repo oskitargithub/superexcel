@@ -3,7 +3,9 @@ import { ConciliacionAdmService } from './conciliacionadm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
 import { FuncionesHighChartsT3Service } from '../serviciofunciones/funcioneshighchartst3.service';
 import { ConciliacionModel,datosModel, Tabla3Model } from '../../dashboard/conciliacion/conciliacion.model';
-
+import { AppConfig } from '../../app.config';
+import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 declare var jQuery: any;
 declare var Messenger: any;
 
@@ -20,6 +22,7 @@ declare var Messenger: any;
 export class ConciliacionAdmComponent implements OnInit {
   injector: Injector;    
   submitted = false;
+  config:any;
   public modelo: ConciliacionModel;
   public errorMessage: string;
   public status: string;
@@ -57,9 +60,18 @@ export class ConciliacionAdmComponent implements OnInit {
   constructor(
     private servicio: ConciliacionAdmService,
     public funciones: FuncionesService,  
-    public funccioneshct3:FuncionesHighChartsT3Service,  
+    public funccioneshct3:FuncionesHighChartsT3Service, 
+    private AuthService: AuthService,
+     public router: Router,
+    config: AppConfig, 
     injector: Injector
   ) {
+    this.config = config.getConfig();
+    if (this.AuthService.usucuest == 0) {
+      console.log("paso2");
+      let redirect = this.config.urladmin;
+      this.router.navigate([redirect]);
+    }
     this.modelo = new ConciliacionModel();
     this.modelo.data = new datosModel();
     

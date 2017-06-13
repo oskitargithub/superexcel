@@ -39,6 +39,7 @@
     <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['rrpppr'] " title="Representación de Personal">Rep. de Personal</a></li>
     <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['comunicacionpr']" title="Comunicación">Comunicación</a></li>
   </ul>
+ 
   <ul class="sidebar-nav" id="sidebar-dashboardadmin" *ngIf="perfil=='ADM'">
     <li *ngIf="authService.tipocuest=='1'"><a [routerLink]=" ['dashboardadmin'] ">Dashboard Admin</a></li>
     <!-- rutas y enlaces para amin cuestionarios tipo=1 que son de empresa pública -->
@@ -56,9 +57,14 @@
     <!-- fin enlaces empresa pública -->
 
     
-    <!-- rutas y enlaces para amin cuestionarios tipo=1 que son de empresa privada -->
-    <li *ngIf="authService.tipocuest=='2' && authService.perfilauth=='ADM'"><a [routerLink]=" ['infoencuestapr'] ">Inicio</a></li>
-    <li *ngIf="authService.tipocuest=='2' && authService.perfilauth=='ADM'"><a [routerLink]=" ['clasificacionprofesionalpradm'] ">2 Clasificación Profesional</a></li>
-    <!-- fin enlaces empresa pública -->
+    <!-- rutas y enlaces para amin cuestionarios tipo=2 que son de empresa privada -->
+    <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['infoencuestapr'] ">Inicio</a></li>
+    <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['clasificacionprofesionalpradm'] ">Clasificación Profesional</a></li>
+    <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['tipodecontratopradm'] ">Tipo de Contrato</a></li>
+    <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['retribucionespradm'] ">Estructura Salarial</a></li>
+    <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['retribucionespradm2'] ">Estructura Salarial 2</a></li>
+    <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['bajaseincorppradm'] ">Bajas e Incorporaciones</a></li>
+    <li *ngIf="authService.tipocuest=='2'"><a [routerLink]=" ['conciliacionpradm'] ">Conciliacion Familiar</a></li>
+    <!-- fin enlaces empresa privada -->
   </ul>
 </div>

@@ -3,6 +3,9 @@ import { ClasProfesionalPrAdmService } from './clasprofesionalpradm.service';
 import { FuncionesService } from '../serviciofunciones/funciones.service';
 import { ClasProfesional1PrModel, dataModel, Tabla3Model } from '../../dashboard/clasprofesional1pr/clasprofesional1pr.model';
 import { FuncionesHighChartsT3Service } from '../serviciofunciones/funcioneshighchartst3.service';
+import { AuthService } from '../../auth/auth.service';
+import { AppConfig } from '../../app.config';
+import { Router } from '@angular/router';
 declare var jQuery: any;
 declare var Messenger: any;
 
@@ -21,7 +24,7 @@ export class ClasProfesionalPrAdmComponent implements OnInit {
   domSharedStylesHost: any;
   colorOptions: Object = { color: '#f0b518' };
   submitted = false;
-
+  config: any;
   public modelo: ClasProfesional1PrModel;
   public errorMessage: string;
   public status: string;
@@ -59,8 +62,17 @@ export class ClasProfesionalPrAdmComponent implements OnInit {
     private servicio: ClasProfesionalPrAdmService,
     public serviciot3: FuncionesService,
     public funccioneshct3:FuncionesHighChartsT3Service,
+    private AuthService: AuthService,
+     public router: Router,
+    config: AppConfig,
     injector: Injector
   ) {
+    this.config = config.getConfig();
+    if (this.AuthService.usucuest == 0) {      
+      let redirect = this.config.urladmin;
+      this.router.navigate([redirect]);
+    }
+
     this.modelo = new ClasProfesional1PrModel();
     this.modelo.data = new dataModel();
   }
@@ -124,28 +136,25 @@ export class ClasProfesionalPrAdmComponent implements OnInit {
     /** Asignamos los datos para las gráficas */    
     this.chart1pieoptions = this.funccioneshct3.GraficaPiePlantillaPr(this.modelo, "Distribución de la plantilla por sexo","");
     
-    /*this.chart1options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales', '',this.modelo.preg_48_tabla_3, "total");
-    this.chart2options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales', 'Proporcionada',this.modelo.preg_48_tabla_3);
-    this.chart3options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Puestos de Jefatura', '',this.modelo.preg_54_tabla_3, "total");
-    this.chart4options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Puestos de Jefatura', 'Proporcionada',this.modelo.preg_54_tabla_3);
-    this.chart5options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Puestos de Coordinación / Supervisión', '',this.modelo.preg_55_tabla_3, "total");
-    this.chart6options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Puestos de Coordinación / Supervisión', 'Proporcionada',this.modelo.preg_55_tabla_3);
-    this.chart7options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Organos Rectores', '',this.modelo.preg_56_tabla_3, "total");
-    this.chart8options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Organos Rectores', 'Proporcionada',this.modelo.preg_56_tabla_3);
-    this.chart10options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Organos Asesores', '',this.modelo.preg_57_tabla_3, "total");
-    this.chart11options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Organos Asesores', 'Proporcionada',this.modelo.preg_57_tabla_3);
-    this.chart12options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Grupos Profesionales Técnico', '',this.modelo.preg_59_tabla_3, "total");
-    this.chart13options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Grupos Profesionales Técnico', 'Proporcionada',this.modelo.preg_59_tabla_3);    
-    this.chart14options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Grupos Profesionales Administrativos', '',this.modelo.preg_60_tabla_3, "total");
-    this.chart15options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Grupos Profesionales Administrativos', 'Proporcionada',this.modelo.preg_60_tabla_3);
-    this.chart16options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Grupos profesionales no cualificados', '',this.modelo.preg_61_tabla_3, "total");
-    this.chart17options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Grupos profesionales no cualificados', 'Proporcionada',this.modelo.preg_61_tabla_3);
-    this.chart18options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Cuerpos y fuerzas de seguridad', '',this.modelo.preg_62_tabla_3, "total");
-    this.chart19options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Cuerpos y fuerzas de seguridad', 'Proporcionada',this.modelo.preg_62_tabla_3);
-    this.chart20options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Distribución Categoría Agente de Policía', '',this.modelo.preg_63_tabla_3, "total");
-    this.chart21options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Distribución Categoría Agente de Policía', 'Proporcionada',this.modelo.preg_63_tabla_3);
+    this.chart7options = this.funccioneshct3.GraficaCompuesta1('Puestos directivos', '',this.modelo.preg_390_tabla_3, "total");
+    this.chart8options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Puestos directivos', 'Proporcionada',this.modelo.preg_390_tabla_3);
 
-*/
+
+    this.chart1options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales', '',this.modelo.preg_391_tabla_3, "total");
+    this.chart2options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales', 'Proporcionada',this.modelo.preg_391_tabla_3);
+    this.chart3options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Puestos de Jefatura', '',this.modelo.preg_392_tabla_3, "total");
+    this.chart4options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Puestos de Jefatura', 'Proporcionada',this.modelo.preg_392_tabla_3);
+    this.chart5options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Puestos de Coordinación / Supervisión', '',this.modelo.preg_393_tabla_3, "total");
+    this.chart6options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Puestos de Coordinación / Supervisión', 'Proporcionada',this.modelo.preg_393_tabla_3);
+    this.chart12options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Grupos Profesionales Técnico', '',this.modelo.preg_394_tabla_3, "total");
+    this.chart13options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Grupos Profesionales Técnico', 'Proporcionada',this.modelo.preg_394_tabla_3); 
+    this.chart14options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Grupos Profesionales Administrativos', '',this.modelo.preg_395_tabla_3, "total");
+    this.chart15options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Grupos Profesionales Administrativos', 'Proporcionada',this.modelo.preg_395_tabla_3);
+    this.chart16options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Grupos profesionales cualificados', '',this.modelo.preg_396_tabla_3, "total");
+    this.chart17options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Grupos profesionales cualificados', 'Proporcionada',this.modelo.preg_396_tabla_3);
+    this.chart18options = this.funccioneshct3.GraficaCompuesta1('Distribución de la plantilla Grupos profesionales no cualificados', '',this.modelo.preg_397_tabla_3, "total");
+    this.chart19options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Distribución de la plantilla Grupos profesionales no cualificados', 'Proporcionada',this.modelo.preg_397_tabla_3);
+   
     this.chart2pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Edad de las mujeres de la plantilla","",this.modelo.preg_383_tabla_3,"total");
     this.chart3pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Edad de los hombres de la plantilla","",this.modelo.preg_383_tabla_3,"total");
     this.chart22options = this.funccioneshct3.GraficaCompuesta1('Comparativo plantilla por edad', '',this.modelo.preg_383_tabla_3);

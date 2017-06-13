@@ -13,7 +13,7 @@ export class AuthService {
   config: any;
   isLoggedIn: boolean = false;
   perfilauth: string = '';
-  tipocuest: number = 1;
+  tipocuest: number = 0;
   usucuest: number = 0;
   api_token: any='';
   constructor(private _http: Http, config: AppConfig, private router: Router) {
