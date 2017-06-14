@@ -35,7 +35,7 @@
             <mfDefaultSorter by="fecha_ini">Fecha Inicial</mfDefaultSorter>
           </th>
           <th class="hidden-sm-down">
-            <mfDefaultSorter by="fecha_fin">Fecha Cierre</mfDefaultSorter>
+            <mfDefaultSorter by="fecha_fin">Estado</mfDefaultSorter>
           </th>
           <th class="no-sort">
             Opciones
@@ -58,7 +58,16 @@
             </small>
           </td>
           <td class="hidden-sm-down">{{person.fecha_ini}}</td>
-          <td class="hidden-sm-down">{{person.fecha_fin}}</td>
+
+          <td class="hidden-sm-down">             
+                <span [class.badge-success]="person.fecha_fin=='' || person.fecha_fin==null"
+                      [class.badge-danger]="person.fecha_fin!='' && person.fecha_fin!=null" 
+                      class="badge" tooltip="&nbsp;Estado&nbsp;">&nbsp;{{person.fecha_fin==''||person.fecha_fin==null ? 'Abierto':'Cerrado' }}&nbsp;</span>
+          </td>
+
+
+
+          <!--<td class="hidden-sm-down">{{person.fecha_fin}}</td>-->
           <td>
             <div class="buttons">
               <!-- <progress class="progress progress-sm progress-{{person.status.type}}" value="100" max="100" [ngStyle]="{ 'width': person.status.progress}"></progress> -->

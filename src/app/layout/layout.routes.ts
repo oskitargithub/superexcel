@@ -82,6 +82,10 @@ const routes: Routes = [
     { path: 'retribucionespradm2', loadChildren: '../dashboardadmin/retribucionespradm2/retribucionespradm2.module#RetribucionesPrAdm2Module', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'bajaseincorppradm', loadChildren: '../dashboardadmin/bajaseincorppradm/bajaseincorppradm.module#BajasEIncorpPrAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
     { path: 'conciliacionpradm', loadChildren: '../dashboardadmin/conciliacionpradm/conciliacionpradm.module#ConciliacionPrAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'formacionpradm', loadChildren: '../dashboardadmin/formacionpradm/formacionpradm.module#FormacionPrAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'promocarrerapradm', loadChildren: '../dashboardadmin/promocarrerapradm/promocarrerapradm.module#PromoCarreraPrAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'acosprpradm', loadChildren: '../dashboardadmin/acosprpradm/acosprpradm.module#AcosPRPrAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
+    { path: 'rrpppradm', loadChildren: '../dashboardadmin/rrpppradm/rrpppradm.module#RRPPPrAdmModule', canActivate: [AuthGuard], data:{ roles:['ADM'] }},
   ]},
   { path: 'login', loadChildren: '../login/login.module#LoginModule'}
   

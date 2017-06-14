@@ -241,12 +241,16 @@ export class FuncionesHighChartsT3Service {
             alto = 300;
             ancho = 400;
         }
+        else if (numelems < 8) {
+            alto = 500;
+            ancho = 400;
+        }
         else if (numelems < 12) {
-            alto = 800;
+            alto = 600;
             ancho = 400;
         }
         else if (numelems < 24) {
-            alto = 1200;
+            alto = 800;
             ancho = 400;
         }
         else {
@@ -360,12 +364,16 @@ export class FuncionesHighChartsT3Service {
             alto = 300;
             ancho = 400;
         }
+        else if (numelems < 8) {
+            alto = 500;
+            ancho = 400;
+        }
         else if (numelems < 12) {
-            alto = 800;
+            alto = 600;
             ancho = 400;
         }
         else if (numelems < 24) {
-            alto = 1200;
+            alto = 800;
             ancho = 400;
         }
         else {
@@ -417,7 +425,7 @@ export class FuncionesHighChartsT3Service {
                     }
                 },
                 series: {
-                    pointPadding: 0.1,
+                    pointPadding: 0,
                     pointWidth: 20,
                     groupPadding: 0
                 }
@@ -484,34 +492,10 @@ export class FuncionesHighChartsT3Service {
     }
 
     GraficaCompuesta1ConOpcion(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[], tipo = "fila", opcionmostrar): Object {
-        let numelems = 0;
-        tabla.forEach(elemento => {
-            if (elemento.hombres != 0 || elemento.mujeres != 0) {
-                numelems++;
-            }
-        });
-        let ancho = 800;
-        let alto = 1200;
+        let numelems = 2;        
+        let ancho = 300;
+        let alto = 200;
         let milayout = 'vertical';
-        if (numelems < 4) {
-            alto = 300;
-            ancho = 400;
-        }
-        else if (numelems < 12) {
-            alto = 800;
-            ancho = 400;
-        }
-        else if (numelems < 24) {
-            alto = 1200;
-            ancho = 400;
-        }
-        else {
-            milayout = 'vertical';
-            ancho = 800;
-            alto = (tabla.length / 2) * 100;
-        }
-
-
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
@@ -554,7 +538,7 @@ export class FuncionesHighChartsT3Service {
                     }
                 },
                 series: {
-                    pointPadding: 0.1,
+                    pointPadding: 0.01,
                     pointWidth: 20,
                     groupPadding: 0
                 }
@@ -613,6 +597,7 @@ export class FuncionesHighChartsT3Service {
                 numelems++;
             }
         });
+        numelems = numelems - 2;
         let ancho = 800;
         let alto = 1200;
         let milayout = 'vertical';
@@ -620,12 +605,16 @@ export class FuncionesHighChartsT3Service {
             alto = 300;
             ancho = 400;
         }
+        else if (numelems < 8) {
+            alto = 500;
+            ancho = 400;
+        }
         else if (numelems < 12) {
-            alto = 800;
+            alto = 600;
             ancho = 400;
         }
         else if (numelems < 24) {
-            alto = 1200;
+            alto = 800;
             ancho = 400;
         }
         else {
@@ -677,7 +666,7 @@ export class FuncionesHighChartsT3Service {
                     }
                 },
                 series: {
-                    pointPadding: 0.1,
+                    pointPadding: 0,
                     pointWidth: 20,
                     groupPadding: 0
                 }
@@ -743,12 +732,16 @@ export class FuncionesHighChartsT3Service {
             alto = 300;
             ancho = 400;
         }
+        else if (numelems < 8) {
+            alto = 500;
+            ancho = 400;
+        }
         else if (numelems < 12) {
-            alto = 800;
+            alto = 600;
             ancho = 400;
         }
         else if (numelems < 24) {
-            alto = 1200;
+            alto = 800;
             ancho = 400;
         }
         else {
@@ -800,7 +793,7 @@ export class FuncionesHighChartsT3Service {
                     }
                 },
                 series: {
-                    pointPadding: 0.1,
+                    pointPadding: 0,
                     pointWidth: 20,
                     groupPadding: 0
                 }
@@ -961,6 +954,10 @@ export class FuncionesHighChartsT3Service {
             alto = 300;
             ancho = 400;
         }
+        else if (numelems < 8) {
+            alto = 500;
+            ancho = 400;
+        }
         else if (numelems < 12) {
             alto = 600;
             ancho = 400;
@@ -1095,6 +1092,10 @@ export class FuncionesHighChartsT3Service {
             alto = 300;
             ancho = 400;
         }
+        else if (numelems < 8) {
+            alto = 500;
+            ancho = 400;
+        }
         else if (numelems < 12) {
             alto = 600;
             ancho = 400;
@@ -1211,12 +1212,16 @@ export class FuncionesHighChartsT3Service {
             alto = 300;
             ancho = 400;
         }
+        else if (numelems < 8) {
+            alto = 500;
+            ancho = 400;
+        }
         else if (numelems < 12) {
-            alto = 800;
+            alto = 600;
             ancho = 400;
         }
         else if (numelems < 24) {
-            alto = 1200;
+            alto = 800;
             ancho = 400;
         }
         else {

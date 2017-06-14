@@ -51,6 +51,7 @@ export class BajasEIncorpPrAdmComponent implements OnInit {
   public chart15options: Object;
   public chart16options: Object;
   public chart17options: Object;
+  public chart18options: Object;
 //}
  
 
