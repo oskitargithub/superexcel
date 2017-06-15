@@ -122,8 +122,8 @@ export class ClasProfesional2Component implements OnInit {
                     }
                 }
                 else {
-                    this.mujerestotal = response.data.preg_46;
-                    this.hombrestotal = response.data.preg_47;
+                    this.mujerestotal = response.data.mujeres;
+                    this.hombrestotal = response.data.hombres;
                     this.getDatosModelo();
                     console.log("El total da" + this.SumaTotal());
                     /*Messenger().post({
