@@ -491,6 +491,273 @@ export class FuncionesHighChartsT3Service {
         return misopciones;
     }
 
+
+
+    GraficaCompuesta1Hombres(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[], tipo = "fila", mostrarceros = 0): Object {
+        let numelems = 0;
+        tabla.forEach(elemento => {
+            if (elemento.hombres != 0) {
+                numelems++;
+            }
+        });
+        let ancho = 800;
+        let alto = 1200;
+        let milayout = 'vertical';
+        if (numelems < 4) {
+            alto = 300;
+            ancho = 400;
+        }
+        else if (numelems < 8) {
+            alto = 500;
+            ancho = 400;
+        }
+        else if (numelems < 12) {
+            alto = 600;
+            ancho = 400;
+        }
+        else if (numelems < 24) {
+            alto = 800;
+            ancho = 400;
+        }
+        else {
+            milayout = 'vertical';
+            ancho = 800;
+            alto = (tabla.length / 2) * 100;
+        }
+
+
+        let misopciones: OpcionesModel;
+        misopciones = {
+            chart: {
+                type: 'bar',
+                height: alto,
+                width: ancho
+            },
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            title: {
+                text: nombregrafica
+            },
+            subtitle: {
+                text: subnombregrafica
+            },
+            xAxis: {
+                categories: [], /*['Africa', 'America', 'Asia', 'Europe', 'Oceania'],*/
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '',/* 'Population (millions)',*/
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                shared: true
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true,
+                        format: '{y} / {point.miporc:.0f} %',
+                        valueDecimals: 2
+                    }
+                },
+                series: {
+                    pointPadding: 0,
+                    pointWidth: 20,
+                    groupPadding: 0
+                }
+            },
+            legend: {
+                layout: milayout,
+                align: 'right',
+                verticalAlign: 'top',
+                x: -20,
+                y: 20,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: ('#FFFFFF'),
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        };
+        
+        let datoshombres = [];
+
+        tabla.forEach(elemento => {
+            if (mostrarceros == 1) {
+                misopciones.xAxis.categories.push(elemento.texto);
+                if (tipo == "fila") {
+                    //hombres
+                    datoshombres.push({ y: elemento.hombres == '' ? 0 : elemento.hombres, miporc: this.getHombresDeFila(elemento, tabla), color: this.colorhombre });
+                }
+                else if (tipo == "total") {
+                    //hombres
+                    datoshombres.push({ y: elemento.hombres == '' ? 0 : elemento.hombres, miporc: Math.round(this.getHombresDelTotal(elemento, tabla) * 100), color: this.colorhombre });
+                }
+            }
+            else {
+                if (elemento.hombres != 0) {
+                    misopciones.xAxis.categories.push(elemento.texto);
+                    if (tipo == "fila") {
+                        //hombres
+                        datoshombres.push({ y: elemento.hombres, miporc: this.getHombresDeFila(elemento, tabla), color: this.colorhombre });
+                    }
+                    else if (tipo == "total") {
+                        //hombres
+                        datoshombres.push({ y: elemento.hombres, miporc: Math.round(this.getHombresDelTotal(elemento, tabla) * 100), color: this.colorhombre });
+                    }
+
+                }
+            }
+        });
+        misopciones.series.push({ name: 'Hombres', data: datoshombres });
+        //console.log("misopciones");
+        //console.log(misopciones);
+        return misopciones;
+    }
+
+    GraficaCompuesta1Mujeres(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[], tipo = "fila", mostrarceros = 0): Object {
+        let numelems = 0;
+        tabla.forEach(elemento => {
+            if (elemento.mujeres != 0) {
+                numelems++;
+            }
+        });
+        let ancho = 800;
+        let alto = 1200;
+        let milayout = 'vertical';
+        if (numelems < 4) {
+            alto = 300;
+            ancho = 400;
+        }
+        else if (numelems < 8) {
+            alto = 500;
+            ancho = 400;
+        }
+        else if (numelems < 12) {
+            alto = 600;
+            ancho = 400;
+        }
+        else if (numelems < 24) {
+            alto = 800;
+            ancho = 400;
+        }
+        else {
+            milayout = 'vertical';
+            ancho = 800;
+            alto = (tabla.length / 2) * 100;
+        }
+
+
+        let misopciones: OpcionesModel;
+        misopciones = {
+            chart: {
+                type: 'bar',
+                height: alto,
+                width: ancho
+            },
+            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            title: {
+                text: nombregrafica
+            },
+            subtitle: {
+                text: subnombregrafica
+            },
+            xAxis: {
+                categories: [], /*['Africa', 'America', 'Asia', 'Europe', 'Oceania'],*/
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '',/* 'Population (millions)',*/
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                shared: true
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true,
+                        format: '{y} / {point.miporc:.0f} %',
+                        valueDecimals: 2
+                    }
+                },
+                series: {
+                    pointPadding: 0,
+                    pointWidth: 20,
+                    groupPadding: 0
+                }
+            },
+            legend: {
+                layout: milayout,
+                align: 'right',
+                verticalAlign: 'top',
+                x: -20,
+                y: 20,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: ('#FFFFFF'),
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: []
+        };
+        let datosmujeres = [];
+        
+
+        tabla.forEach(elemento => {
+            if (mostrarceros == 1) {
+                misopciones.xAxis.categories.push(elemento.texto);
+                if (tipo == "fila") {
+                    //mujeres
+                    datosmujeres.push({ y: elemento.mujeres == '' ? 0 : elemento.mujeres, miporc: this.getMujeresDeFila(elemento, tabla), color: this.colormujer });                    
+                }
+                else if (tipo == "total") {
+                    //mujeres
+                    datosmujeres.push({ y: elemento.mujeres == '' ? 0 : elemento.mujeres, miporc: Math.round(this.getMujeresDelTotal(elemento, tabla) * 100), color: this.colormujer });                    
+                }
+            }
+            else {
+                if (elemento.mujeres != 0) {
+                    misopciones.xAxis.categories.push(elemento.texto);
+                    if (tipo == "fila") {
+                        //mujeres
+                        datosmujeres.push({ y: elemento.mujeres, miporc: this.getMujeresDeFila(elemento, tabla), color: this.colormujer });
+                    }
+                    else if (tipo == "total") {
+                        //mujeres
+                        datosmujeres.push({ y: elemento.mujeres, miporc: Math.round(this.getMujeresDelTotal(elemento, tabla) * 100), color: this.colormujer });
+                    }
+
+                }
+            }
+        });
+        misopciones.series.push({ name: 'Mujeres', data: datosmujeres });
+        //console.log("misopciones");
+        //console.log(misopciones);
+        return misopciones;
+    }
+
+
     GraficaCompuesta1ConOpcion(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[], tipo = "fila", opcionmostrar): Object {
         let numelems = 2;        
         let ancho = 300;
