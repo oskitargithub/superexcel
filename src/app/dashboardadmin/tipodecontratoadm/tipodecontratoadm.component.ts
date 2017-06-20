@@ -146,16 +146,16 @@ export class TipoDeContratoAdmComponent implements OnInit {
     this.chart8options = this.funccioneshct3.GraficaCompuesta1('Comparativo por número de turnos', '', this.modelo.preg_67_tabla_3, "fila");
     this.chart9options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Comparativo por número de turnos', 'Proporcionado', this.modelo.preg_67_tabla_3);
 
-    this.chart1pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Tipo de contrato según tipo de Jornada","Mujeres",this.modelo.preg_65_tabla_3,"total");
-    this.chart2pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Tipo de contrato según tipo de Jornada","Hombres",this.modelo.preg_65_tabla_3, "total");
+    this.chart1pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Tipo de contrato según tipo de Jornada - Mujeres","Mujeres",this.modelo.preg_65_tabla_3,"total");
+    this.chart2pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Tipo de contrato según tipo de Jornada - Hombres","Hombres",this.modelo.preg_65_tabla_3, "total");
 
-    this.chart3pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Comparativo de Antigüedad","Mujeres",this.modelo.preg_69_tabla_3,"total");
-    this.chart4pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Comparativo de Antigüedad","Hombres",this.modelo.preg_69_tabla_3,"total");
+    this.chart3pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Comparativo de Antigüedad - Mujeres","Mujeres",this.modelo.preg_69_tabla_3,"total");
+    this.chart4pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Comparativo de Antigüedad - Hombres","Hombres",this.modelo.preg_69_tabla_3,"total");
 
-    this.chart5pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Horas dedicadas al Trabajo","Mujeres",this.modelo.preg_68_tabla_3,"fila");
-    this.chart6pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Horas dedicadas al Trabajo","Hombres",this.modelo.preg_68_tabla_3,"fila");
+    this.chart5pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Horas dedicadas al Trabajo - Mujeres","Mujeres",this.modelo.preg_68_tabla_3,"fila");
+    this.chart6pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Horas dedicadas al Trabajo - Hombres","Hombres",this.modelo.preg_68_tabla_3,"fila");
 
-    this.chart7pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Comparativo Turnos","Mujeres",this.modelo.preg_67_tabla_3,"total");
-    this.chart8pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Comparativo Turnos","Hombres",this.modelo.preg_67_tabla_3,"total");
+    this.chart7pieoptions = this.funccioneshct3.GraficaPieCompuesta1("Comparativo Turnos - Mujeres","Mujeres",this.modelo.preg_67_tabla_3,"total");
+    this.chart8pieoptions = this.funccioneshct3.GraficaPieCompuesta2("Comparativo Turnos - Hombres","Hombres",this.modelo.preg_67_tabla_3,"total");
   }
 }

@@ -33,11 +33,14 @@ export class FuncionesHighChartsT3Service {
     private colorespie: any[];
     private colormujer = '#910000';
     private colorhombre = '#8bbc21';
+    private pointPadding = 0.01;
+    private pointWidth = 22;
+    private groupPadding = 0.3;
     constructor() {
         /** Vacío */
         /*this.colorespie = ['#492970', '#f28f43', '#1aadce', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a',
             '#81F7BE', '#DF3A01', '#A901DB', '#0B0B61', '#0B6121', '#FF0040', '#F3F781', '#8A0868', '#FA5858', '#9FF781'];*/
-        this.colorespie = ['#E5AEFA', '#1F9DDD', '#60DDD0', '#E2F9D4', '#42A407', '#F4F87B', '#FEC323', '#DD9B60',
+        this.colorespie = ['#E5AEFA', '#60DDD0', '#1F9DDD', '#E2F9D4', '#F4F87B', '#FEC323', '#DD9B60', '#42A407',
             '#81F7BE', '#DF3A01', '#A901DB', '#0B0B61', '#0B6121', '#FF0040', '#F3F781', '#8A0868', '#FA5858', '#9FF781'];
     }
 
@@ -304,9 +307,9 @@ export class FuncionesHighChartsT3Service {
                     }
                 },
                 series: {
-                    pointPadding: 0.1,
-                    pointWidth: 20,
-                    groupPadding: 0
+                    pointPadding: this.pointPadding,
+                    pointWidth: this.pointWidth,
+                    groupPadding: this.groupPadding
                 }
             },
             legend: {
@@ -361,6 +364,7 @@ export class FuncionesHighChartsT3Service {
         let alto = 1200;
         let milayout = 'vertical';
         if (numelems < 4) {
+            console.log("elementos:" + numelems + " de grafica:" + nombregrafica);
             alto = 300;
             ancho = 400;
         }
@@ -425,9 +429,9 @@ export class FuncionesHighChartsT3Service {
                     }
                 },
                 series: {
-                    pointPadding: 0,
-                    pointWidth: 20,
-                    groupPadding: 0
+                    pointPadding: this.pointPadding,
+                    pointWidth: this.pointWidth,
+                    groupPadding: this.groupPadding
                 }
             },
             legend: {
@@ -568,9 +572,9 @@ export class FuncionesHighChartsT3Service {
                     }
                 },
                 series: {
-                    pointPadding: 0,
-                    pointWidth: 20,
-                    groupPadding: 0
+                    pointPadding: this.pointPadding,
+                    pointWidth: this.pointWidth,
+                    groupPadding: this.groupPadding
                 }
             },
             legend: {
@@ -589,7 +593,7 @@ export class FuncionesHighChartsT3Service {
             },
             series: []
         };
-        
+
         let datoshombres = [];
 
         tabla.forEach(elemento => {
@@ -700,9 +704,9 @@ export class FuncionesHighChartsT3Service {
                     }
                 },
                 series: {
-                    pointPadding: 0,
-                    pointWidth: 20,
-                    groupPadding: 0
+                    pointPadding: this.pointPadding,
+                    pointWidth: this.pointWidth,
+                    groupPadding: this.groupPadding
                 }
             },
             legend: {
@@ -722,18 +726,18 @@ export class FuncionesHighChartsT3Service {
             series: []
         };
         let datosmujeres = [];
-        
+
 
         tabla.forEach(elemento => {
             if (mostrarceros == 1) {
                 misopciones.xAxis.categories.push(elemento.texto);
                 if (tipo == "fila") {
                     //mujeres
-                    datosmujeres.push({ y: elemento.mujeres == '' ? 0 : elemento.mujeres, miporc: this.getMujeresDeFila(elemento, tabla), color: this.colormujer });                    
+                    datosmujeres.push({ y: elemento.mujeres == '' ? 0 : elemento.mujeres, miporc: this.getMujeresDeFila(elemento, tabla), color: this.colormujer });
                 }
                 else if (tipo == "total") {
                     //mujeres
-                    datosmujeres.push({ y: elemento.mujeres == '' ? 0 : elemento.mujeres, miporc: Math.round(this.getMujeresDelTotal(elemento, tabla) * 100), color: this.colormujer });                    
+                    datosmujeres.push({ y: elemento.mujeres == '' ? 0 : elemento.mujeres, miporc: Math.round(this.getMujeresDelTotal(elemento, tabla) * 100), color: this.colormujer });
                 }
             }
             else {
@@ -759,7 +763,7 @@ export class FuncionesHighChartsT3Service {
 
 
     GraficaCompuesta1ConOpcion(nombregrafica: string, subnombregrafica: string, tabla: Tabla3Model[], tipo = "fila", opcionmostrar): Object {
-        let numelems = 2;        
+        let numelems = 2;
         let ancho = 300;
         let alto = 200;
         let milayout = 'vertical';
@@ -805,9 +809,9 @@ export class FuncionesHighChartsT3Service {
                     }
                 },
                 series: {
-                    pointPadding: 0.01,
-                    pointWidth: 20,
-                    groupPadding: 0
+                    pointPadding: this.pointPadding,
+                    pointWidth: this.pointWidth,
+                    groupPadding: this.groupPadding
                 }
             },
             legend: {
@@ -933,9 +937,9 @@ export class FuncionesHighChartsT3Service {
                     }
                 },
                 series: {
-                    pointPadding: 0,
-                    pointWidth: 20,
-                    groupPadding: 0
+                    pointPadding: this.pointPadding,
+                    pointWidth: this.pointWidth,
+                    groupPadding: this.groupPadding
                 }
             },
             legend: {
@@ -1060,9 +1064,9 @@ export class FuncionesHighChartsT3Service {
                     }
                 },
                 series: {
-                    pointPadding: 0,
-                    pointWidth: 20,
-                    groupPadding: 0
+                    pointPadding: this.pointPadding,
+                    pointWidth: this.pointWidth,
+                    groupPadding: this.groupPadding
                 }
             },
             legend: {
@@ -1281,9 +1285,9 @@ export class FuncionesHighChartsT3Service {
                     }
                 },
                 series: {
-                    pointPadding: 0.1,
-                    pointWidth: 20,
-                    groupPadding: 0
+                    pointPadding: this.pointPadding,
+                    pointWidth: this.pointWidth,
+                    groupPadding: this.groupPadding
                 }
             },
             legend: {
@@ -1417,9 +1421,9 @@ export class FuncionesHighChartsT3Service {
                     }
                 },
                 series: {
-                    pointPadding: 0.1,
-                    pointWidth: 20,
-                    groupPadding: 0
+                    pointPadding: this.pointPadding,
+                    pointWidth: this.pointWidth,
+                    groupPadding: this.groupPadding
                 },
             },
             legend: {
@@ -1537,9 +1541,9 @@ export class FuncionesHighChartsT3Service {
                     }
                 },
                 series: {
-                    pointPadding: 0.1,
-                    pointWidth: 20,
-                    groupPadding: 0
+                    pointPadding: this.pointPadding,
+                    pointWidth: this.pointWidth,
+                    groupPadding: this.groupPadding
                 },
             },
             legend: {

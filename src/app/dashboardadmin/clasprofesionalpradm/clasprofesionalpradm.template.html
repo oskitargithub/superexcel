@@ -7,7 +7,7 @@
 <accordion [closeOthers]="true" class="mb-lg show" id="accordion">
     <accordion-group isOpen="true">
         <div accordion-heading>
-            Distribución de la plantilla por sexo
+            Distribución por sexo
             <i class="fa fa-angle-down float-xs-right"></i>
         </div>
         <div>
@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <fieldset>
-                                    <legend><strong>Distribución de la plantilla por sexo</strong></legend>
+                                    <legend><strong>Distribución por sexo</strong></legend>
                                     <table class="table table-bordered table-sm">
                                         <thead>
                                             <tr>
@@ -43,7 +43,7 @@
                                 <section class="widget" widget>
                                     <header>
                                         <h5>
-                                            Distribución de la plantilla por sexo
+                                            Distribución por sexo
                                         </h5>
                                     </header>
                                     <div class="widget-body">
@@ -147,7 +147,7 @@
     </accordion-group>
     <accordion-group>
         <div accordion-heading>
-            Distribución de la plantilla por Departamentos Servicios y/o Unidades Funcionales
+            Distribución por Departamentos Servicios y/o Unidades Funcionales
             <i class="fa fa-angle-down float-xs-right"></i>
         </div>
         <div>
@@ -160,7 +160,7 @@
                             <div class="col-md-12">
                                 <fieldset>
                                     <legend>
-                                        <strong>Distribución de la plantilla por Departamentos Servicios y/o Unidades Funcionales</strong>
+                                        <strong>Distribución por Departamentos Servicios y/o Unidades Funcionales</strong>
                                     </legend>
                                     <table class="table table-bordered table-sm">
                                         <thead>
@@ -213,7 +213,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales</h5>
+                                    <h5>Distribución por Departamentos, Servicios y/o Unidades Funcionales</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart1options"></chart> 
@@ -221,7 +221,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Distribución de la plantilla por Departamentos, Servicios y/o Unidades Funcionales (Proporcionado)</h5>
+                                    <h5>Distribución por Departamentos, Servicios y/o Unidades Funcionales (Proporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart2options"></chart>     
@@ -303,15 +303,23 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Distribución de la plantilla Puestos de Jefatura</h5>
+                                    <h5>Distribución Puestos de Jefatura (Mujeres)</h5>
                                 </header>
                                 <div class="widget-body">
-                                    <chart [options]="chart3options"></chart> 
+                                    <chart [options]="chart23options"></chart> 
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Distribución de la plantilla Puestos de Jefatura (porporcionado)</h5>
+                                    <h5>Distribución Puestos de Jefatura (Hombres)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart24options"></chart> 
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Distribución Puestos de Jefatura (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart4options"></chart>
@@ -395,7 +403,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Distribución de la plantilla Puestos de Coordinación / Supervisión</h5>
+                                    <h5>Distribución Puestos de Coordinación / Supervisión</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart5options"></chart>
@@ -403,7 +411,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Distribución de la plantilla Puestos de Coordinación / Supervisión (porporcionado)</h5>
+                                    <h5>Distribución Puestos de Coordinación / Supervisión (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart6options"></chart>
@@ -489,7 +497,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Distribución de la plantilla Grupos Profesionales Técnico</h5>
+                                    <h5>Distribución Grupos Profesionales Técnico</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart12options"></chart>
@@ -497,7 +505,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Distribución de la plantilla Grupos Profesionales Técnico (porporcionado)</h5>
+                                    <h5>Distribución Grupos Profesionales Técnico (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart13options"></chart>
@@ -581,7 +589,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Distribución de la plantilla Grupos Profesionales Administrativos</h5>
+                                    <h5>Distribución Grupos Profesionales Administrativos</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart14options"></chart>
@@ -589,7 +597,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Distribución de la plantilla Grupos Profesionales Administrativos (porporcionado)</h5>
+                                    <h5>Distribución Grupos Profesionales Administrativos (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart15options"></chart>
@@ -674,7 +682,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Distribución de la plantilla Grupos profesionales cualificados</h5>
+                                    <h5>Distribución Grupos profesionales cualificados</h5>
                                 </header>
                                 <div class="widget-body">
                                      <chart [options]="chart16options"></chart>
@@ -682,7 +690,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Distribución de la plantilla Grupos profesionales cualificados (porporcionado)</h5>
+                                    <h5>Distribución Grupos profesionales cualificados (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
                                      <chart [options]="chart17options"></chart>
@@ -768,7 +776,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Distribución de la plantilla Grupos profesionales no cualificados</h5>
+                                    <h5>Distribución Grupos profesionales no cualificados</h5>
                                 </header>
                                 <div class="widget-body">
                                      <chart [options]="chart16options"></chart>
@@ -776,7 +784,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Distribución de la plantilla Grupos profesionales no cualificados (porporcionado)</h5>
+                                    <h5>Distribución Grupos profesionales no cualificados (porporcionado)</h5>
                                 </header>
                                 <div class="widget-body">
                                      <chart [options]="chart17options"></chart>
