@@ -21,7 +21,7 @@ export class OpcionesPieModel {
     title: any;
     plotOptions: any;
     series: any;
-
+    credits: any;
 }
 
 
@@ -55,6 +55,9 @@ export class FuncionesHighChartsT3Service {
                     alpha: 45,
                     beta: 0
                 }
+            },
+            credits: {
+                enabled: false
             },
             title: {
                 text: texto1
@@ -97,6 +100,9 @@ export class FuncionesHighChartsT3Service {
                     alpha: 45,
                     beta: 0
                 }
+            },
+            credits: {
+                enabled: false
             },
             title: {
                 text: texto1
@@ -141,6 +147,9 @@ export class FuncionesHighChartsT3Service {
                     beta: 0
                 }
             },
+            credits: {
+                enabled: false
+            },
             title: {
                 text: titulo
             },
@@ -184,6 +193,9 @@ export class FuncionesHighChartsT3Service {
                     alpha: 45,
                     beta: 0
                 }
+            },
+            credits: {
+                enabled: false
             },
             title: {
                 text: nombregrafica
@@ -316,7 +328,7 @@ export class FuncionesHighChartsT3Service {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'top',
-                x: -20,
+                x: 14,
                 y: 20,
                 floating: true,
                 borderWidth: 1,
@@ -438,7 +450,7 @@ export class FuncionesHighChartsT3Service {
                 layout: milayout,
                 align: 'right',
                 verticalAlign: 'top',
-                x: -20,
+                x: 14,
                 y: 20,
                 floating: true,
                 borderWidth: 1,
@@ -581,7 +593,7 @@ export class FuncionesHighChartsT3Service {
                 layout: milayout,
                 align: 'right',
                 verticalAlign: 'top',
-                x: -20,
+                x: 14,
                 y: 20,
                 floating: true,
                 borderWidth: 1,
@@ -713,7 +725,7 @@ export class FuncionesHighChartsT3Service {
                 layout: milayout,
                 align: 'right',
                 verticalAlign: 'top',
-                x: -20,
+                x: 14,
                 y: 20,
                 floating: true,
                 borderWidth: 1,
@@ -818,7 +830,7 @@ export class FuncionesHighChartsT3Service {
                 layout: milayout,
                 align: 'right',
                 verticalAlign: 'top',
-                x: -20,
+                x: 14,
                 y: 20,
                 floating: true,
                 borderWidth: 1,
@@ -946,7 +958,7 @@ export class FuncionesHighChartsT3Service {
                 layout: milayout,
                 align: 'right',
                 verticalAlign: 'top',
-                x: -20,
+                x: 14,
                 y: 20,
                 floating: true,
                 borderWidth: 1,
@@ -1073,7 +1085,7 @@ export class FuncionesHighChartsT3Service {
                 layout: milayout,
                 align: 'right',
                 verticalAlign: 'top',
-                x: -20,
+                x: 24,
                 y: 20,
                 floating: true,
                 borderWidth: 1,
@@ -1114,6 +1126,9 @@ export class FuncionesHighChartsT3Service {
                     alpha: 45,
                     beta: 0
                 }
+            },
+            credits: {
+                enabled: false
             },
             title: {
                 text: nombregrafica
@@ -1165,6 +1180,9 @@ export class FuncionesHighChartsT3Service {
                     alpha: 45,
                     beta: 0
                 }
+            },
+            credits: {
+                enabled: false
             },
             title: {
                 text: nombregrafica
@@ -1294,7 +1312,7 @@ export class FuncionesHighChartsT3Service {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'top',
-                x: -20,
+                x: 14,
                 y: 20,
                 floating: true,
                 borderWidth: 1,
@@ -1430,7 +1448,7 @@ export class FuncionesHighChartsT3Service {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'top',
-                x: -20,
+                x: 14,
                 y: 20,
                 floating: true,
                 borderWidth: 1,
@@ -1550,7 +1568,7 @@ export class FuncionesHighChartsT3Service {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'top',
-                x: -20,
+                x: 14,
                 y: 20,
                 floating: true,
                 borderWidth: 1,
@@ -1599,6 +1617,9 @@ export class FuncionesHighChartsT3Service {
                     alpha: 45,
                     beta: 0
                 }
+            },
+            credits: {
+                enabled: false
             },
             title: {
                 text: nombregrafica + " " + subnombregrafica
@@ -1652,6 +1673,9 @@ export class FuncionesHighChartsT3Service {
                     beta: 0
                 }
             },
+            credits: {
+                enabled: false
+            },
             title: {
                 text: nombregrafica + " " + subnombregrafica
             },
@@ -1697,6 +1721,9 @@ export class FuncionesHighChartsT3Service {
                     beta: 0
                 }
             },
+            credits: {
+                enabled: false
+            },
             title: {
                 text: nombregrafica + " " + subnombregrafica
             },
@@ -1741,6 +1768,9 @@ export class FuncionesHighChartsT3Service {
                     alpha: 45,
                     beta: 0
                 }
+            },
+            credits: {
+                enabled: false
             },
             title: {
                 text: nombregrafica + " " + subnombregrafica
