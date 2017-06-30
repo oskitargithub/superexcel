@@ -34,8 +34,8 @@ export class FuncionesHighChartsT3Service {
     private colormujer = '#910000';
     private colorhombre = '#8bbc21';
     private pointPadding = 0.01;
-    private pointWidth = 22;
-    private groupPadding = 0.3;
+    private pointWidth = 20;
+    private groupPadding = 0.1;
     constructor() {
         /** Vacío */
         /*this.colorespie = ['#492970', '#f28f43', '#1aadce', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a',
