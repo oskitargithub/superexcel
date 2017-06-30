@@ -36,6 +36,8 @@ export class FuncionesHighChartsT3Service {
     private pointPadding = 0.01;
     private pointWidth = 20;
     private groupPadding = 0.1;
+    private legendx = 0;
+    private legendy = 20;
     constructor() {
         /** Vacío */
         /*this.colorespie = ['#492970', '#f28f43', '#1aadce', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a',
@@ -252,26 +254,8 @@ export class FuncionesHighChartsT3Service {
         });
         let ancho = 800;
         let alto = 1200;
-        if (numelems < 4) {
-            alto = 300;
-            ancho = 400;
-        }
-        else if (numelems < 8) {
-            alto = 500;
-            ancho = 400;
-        }
-        else if (numelems < 12) {
-            alto = 600;
-            ancho = 400;
-        }
-        else if (numelems < 24) {
-            alto = 800;
-            ancho = 400;
-        }
-        else {
-            ancho = 800;
-            alto = (numelems / 2) * 100;
-        }
+        alto = this.altoGrafica(numelems);
+        ancho = this.anchoGrafica(numelems);
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
@@ -328,8 +312,8 @@ export class FuncionesHighChartsT3Service {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'top',
-                x: 14,
-                y: 20,
+                x: this.legendx,
+                y: this.legendy,
                 floating: true,
                 borderWidth: 1,
                 backgroundColor: ('#FFFFFF'),
@@ -375,30 +359,8 @@ export class FuncionesHighChartsT3Service {
         let ancho = 800;
         let alto = 1200;
         let milayout = 'vertical';
-        if (numelems < 4) {
-            console.log("elementos:" + numelems + " de grafica:" + nombregrafica);
-            alto = 300;
-            ancho = 400;
-        }
-        else if (numelems < 8) {
-            alto = 500;
-            ancho = 400;
-        }
-        else if (numelems < 12) {
-            alto = 600;
-            ancho = 400;
-        }
-        else if (numelems < 24) {
-            alto = 800;
-            ancho = 400;
-        }
-        else {
-            milayout = 'vertical';
-            ancho = 800;
-            alto = (tabla.length / 2) * 100;
-        }
-
-
+        alto = this.altoGrafica(numelems);
+        ancho = this.anchoGrafica(numelems);
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
@@ -450,8 +412,8 @@ export class FuncionesHighChartsT3Service {
                 layout: milayout,
                 align: 'right',
                 verticalAlign: 'top',
-                x: 14,
-                y: 20,
+                x: this.legendx,
+                y: this.legendy,
                 floating: true,
                 borderWidth: 1,
                 backgroundColor: ('#FFFFFF'),
@@ -483,7 +445,9 @@ export class FuncionesHighChartsT3Service {
             }
             else {
                 if (elemento.hombres != 0 || elemento.mujeres != 0) {
-                    misopciones.xAxis.categories.push(elemento.texto);
+                    var re = /En caso afirmativo indique cuantas personas/gi; 
+                    var newstr = elemento.texto.replace(re, "Personas que"); 
+                    misopciones.xAxis.categories.push(newstr);
                     if (tipo == "fila") {
                         //mujeres
                         datosmujeres.push({ y: elemento.mujeres, miporc: this.getMujeresDeFila(elemento, tabla), color: this.colormujer });
@@ -519,27 +483,8 @@ export class FuncionesHighChartsT3Service {
         let ancho = 800;
         let alto = 1200;
         let milayout = 'vertical';
-        if (numelems < 4) {
-            alto = 300;
-            ancho = 400;
-        }
-        else if (numelems < 8) {
-            alto = 500;
-            ancho = 400;
-        }
-        else if (numelems < 12) {
-            alto = 600;
-            ancho = 400;
-        }
-        else if (numelems < 24) {
-            alto = 800;
-            ancho = 400;
-        }
-        else {
-            milayout = 'vertical';
-            ancho = 800;
-            alto = (tabla.length / 2) * 100;
-        }
+        alto = this.altoGrafica(numelems);
+        ancho = this.anchoGrafica(numelems);
 
 
         let misopciones: OpcionesModel;
@@ -593,8 +538,8 @@ export class FuncionesHighChartsT3Service {
                 layout: milayout,
                 align: 'right',
                 verticalAlign: 'top',
-                x: 14,
-                y: 20,
+                x: this.legendx,
+                y: this.legendy,
                 floating: true,
                 borderWidth: 1,
                 backgroundColor: ('#FFFFFF'),
@@ -651,27 +596,8 @@ export class FuncionesHighChartsT3Service {
         let ancho = 800;
         let alto = 1200;
         let milayout = 'vertical';
-        if (numelems < 4) {
-            alto = 300;
-            ancho = 400;
-        }
-        else if (numelems < 8) {
-            alto = 500;
-            ancho = 400;
-        }
-        else if (numelems < 12) {
-            alto = 600;
-            ancho = 400;
-        }
-        else if (numelems < 24) {
-            alto = 800;
-            ancho = 400;
-        }
-        else {
-            milayout = 'vertical';
-            ancho = 800;
-            alto = (tabla.length / 2) * 100;
-        }
+        alto = this.altoGrafica(numelems);
+        ancho = this.anchoGrafica(numelems);
 
 
         let misopciones: OpcionesModel;
@@ -725,8 +651,8 @@ export class FuncionesHighChartsT3Service {
                 layout: milayout,
                 align: 'right',
                 verticalAlign: 'top',
-                x: 14,
-                y: 20,
+                x: this.legendx,
+                y: this.legendy,
                 floating: true,
                 borderWidth: 1,
                 backgroundColor: ('#FFFFFF'),
@@ -830,8 +756,8 @@ export class FuncionesHighChartsT3Service {
                 layout: milayout,
                 align: 'right',
                 verticalAlign: 'top',
-                x: 14,
-                y: 20,
+                x: this.legendx,
+                y: this.legendy,
                 floating: true,
                 borderWidth: 1,
                 backgroundColor: ('#FFFFFF'),
@@ -884,27 +810,8 @@ export class FuncionesHighChartsT3Service {
         let ancho = 800;
         let alto = 1200;
         let milayout = 'vertical';
-        if (numelems < 4) {
-            alto = 300;
-            ancho = 400;
-        }
-        else if (numelems < 8) {
-            alto = 500;
-            ancho = 400;
-        }
-        else if (numelems < 12) {
-            alto = 600;
-            ancho = 400;
-        }
-        else if (numelems < 24) {
-            alto = 800;
-            ancho = 400;
-        }
-        else {
-            milayout = 'vertical';
-            ancho = 800;
-            alto = (tabla.length / 2) * 100;
-        }
+        alto = this.altoGrafica(numelems);
+        ancho = this.anchoGrafica(numelems);
 
 
         let misopciones: OpcionesModel;
@@ -958,8 +865,8 @@ export class FuncionesHighChartsT3Service {
                 layout: milayout,
                 align: 'right',
                 verticalAlign: 'top',
-                x: 14,
-                y: 20,
+                x: this.legendx,
+                y: this.legendy,
                 floating: true,
                 borderWidth: 1,
                 backgroundColor: ('#FFFFFF'),
@@ -1011,29 +918,9 @@ export class FuncionesHighChartsT3Service {
         let ancho = 800;
         let alto = 1200;
         let milayout = 'vertical';
-        if (numelems < 4) {
-            alto = 300;
-            ancho = 400;
-        }
-        else if (numelems < 8) {
-            alto = 500;
-            ancho = 400;
-        }
-        else if (numelems < 12) {
-            alto = 600;
-            ancho = 400;
-        }
-        else if (numelems < 24) {
-            alto = 800;
-            ancho = 400;
-        }
-        else {
-            milayout = 'vertical';
-            ancho = 800;
-            alto = (tabla.length / 2) * 100;
-        }
-
-
+        alto = this.altoGrafica(numelems);
+        ancho = this.anchoGrafica(numelems);
+        
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
@@ -1085,8 +972,8 @@ export class FuncionesHighChartsT3Service {
                 layout: milayout,
                 align: 'right',
                 verticalAlign: 'top',
-                x: 24,
-                y: 20,
+                x: this.legendx,
+                y: this.legendy,
                 floating: true,
                 borderWidth: 1,
                 backgroundColor: ('#FFFFFF'),
@@ -1239,26 +1126,8 @@ export class FuncionesHighChartsT3Service {
         });
         let ancho = 800;
         let alto = 1200;
-        if (numelems < 4) {
-            alto = 300;
-            ancho = 400;
-        }
-        else if (numelems < 8) {
-            alto = 500;
-            ancho = 400;
-        }
-        else if (numelems < 12) {
-            alto = 600;
-            ancho = 400;
-        }
-        else if (numelems < 24) {
-            alto = 800;
-            ancho = 400;
-        }
-        else {
-            ancho = 800;
-            alto = (numelems / 2) * 100;
-        }
+        alto = this.altoGrafica(numelems);
+        ancho = this.anchoGrafica(numelems);
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
@@ -1312,8 +1181,8 @@ export class FuncionesHighChartsT3Service {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'top',
-                x: 14,
-                y: 20,
+                x: this.legendx,
+                y: this.legendy,
                 floating: true,
                 borderWidth: 1,
                 backgroundColor: ('#FFFFFF'),
@@ -1377,26 +1246,8 @@ export class FuncionesHighChartsT3Service {
 
         let ancho = 800;
         let alto = 1200;
-        if (numelems < 4) {
-            alto = 300;
-            ancho = 400;
-        }
-        else if (numelems < 8) {
-            alto = 500;
-            ancho = 400;
-        }
-        else if (numelems < 12) {
-            alto = 600;
-            ancho = 400;
-        }
-        else if (numelems < 24) {
-            alto = 800;
-            ancho = 400;
-        }
-        else {
-            ancho = 800;
-            alto = (numelems / 2) * 100;
-        }
+        alto = this.altoGrafica(numelems);
+        ancho = this.anchoGrafica(numelems);
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
@@ -1448,8 +1299,8 @@ export class FuncionesHighChartsT3Service {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'top',
-                x: 14,
-                y: 20,
+                x: this.legendx,
+                y: this.legendy,
                 floating: true,
                 borderWidth: 1,
                 backgroundColor: ('#FFFFFF'),
@@ -1497,26 +1348,8 @@ export class FuncionesHighChartsT3Service {
 
         let ancho = 800;
         let alto = 1200;
-        if (numelems < 4) {
-            alto = 300;
-            ancho = 400;
-        }
-        else if (numelems < 8) {
-            alto = 500;
-            ancho = 400;
-        }
-        else if (numelems < 12) {
-            alto = 600;
-            ancho = 400;
-        }
-        else if (numelems < 24) {
-            alto = 800;
-            ancho = 400;
-        }
-        else {
-            ancho = 800;
-            alto = (tabla.length / 2) * 100;
-        }
+        alto = this.altoGrafica(numelems);
+        ancho = this.anchoGrafica(numelems);
         let misopciones: OpcionesModel;
         misopciones = {
             chart: {
@@ -1568,8 +1401,8 @@ export class FuncionesHighChartsT3Service {
                 layout: 'vertical',
                 align: 'right',
                 verticalAlign: 'top',
-                x: 14,
-                y: 20,
+                x: this.legendx,
+                y: this.legendy,
                 floating: true,
                 borderWidth: 1,
                 backgroundColor: ('#FFFFFF'),
@@ -1808,6 +1641,46 @@ export class FuncionesHighChartsT3Service {
 
 
 
+
+    altoGrafica(numelems: any) {
+        let alto = 0;
+        if (numelems < 4) {
+            alto = 300;
+        }
+        else if (numelems < 8) {
+            alto = 500;
+        }
+        else if (numelems < 12) {
+            alto = 600;
+        }
+        else if (numelems < 24) {
+            alto = 800;
+        }
+        else {
+            alto = (numelems / 2) * 100;
+        }
+        return alto;
+    }
+
+    anchoGrafica(numelems: any) {
+        let ancho = 0;
+        if (numelems < 4) {
+            ancho = 600;
+        }
+        else if (numelems < 8) {
+            ancho = 600;
+        }
+        else if (numelems < 12) {
+            ancho = 600;
+        }
+        else if (numelems < 24) {
+            ancho = 600;
+        }
+        else {
+            ancho = 800;
+        }
+        return ancho;
+    }
 
 
 
