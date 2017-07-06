@@ -32,9 +32,7 @@ export class InformacionBasicaService{
             var datePipe = new DatePipe("es");
             if (fechacrea!=null && fechacrea.length>1){
                 miobjeto.user.created_at = datePipe.transform(fechacrea, 'yyyy-MM-dd');
-                console.log("ea");
             }
-            console.log("getDatosModelo");
             return(miobjeto);
         });
         /*return this._http.post(this.config.api + "informacionbasica.php/getinformacionbasica", 

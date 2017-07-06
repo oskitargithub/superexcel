@@ -1,10 +1,10 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { AppConfig } from '../app.config';
-import { Router} from '@angular/router';
-import {DashBoardAdminModel, UserAdminModel} from './dashboardadmin.model';
-import {DashBoardAdminService} from "./dashboardadmin.service";
+import { Router } from '@angular/router';
+import { DashBoardAdminModel, UserAdminModel } from './dashboardadmin.model';
+import { DashBoardAdminService } from "./dashboardadmin.service";
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {AuthService} from '../auth/auth.service';
+import { AuthService } from '../auth/auth.service';
 
 declare var Messenger: any;
 declare var jQuery: any;
@@ -19,150 +19,238 @@ export class DashboardAdmin implements OnInit {
   config: any;
   month: any;
   year: any;
-  
+
   ifForm: FormGroup;
 
   public errorMessage: string;
-	public status: string;
-  public data:  any[];
-  
-  public page:number = 1;
-  public itemsPerPage:number = 10;
-  public maxSize:number = 5;
-  public numPages:number = 1;
-  public length:number = 0;
+  public status: string;
+  public data: any[];
+
+  public page: number = 1;
+  public itemsPerPage: number = 10;
+  public maxSize: number = 5;
+  public numPages: number = 1;
+  public length: number = 0;
   public muestrausu: boolean = false;
-  public ususel : UserAdminModel;
- 
- domSharedStylesHost: any;
+  public ususel: UserAdminModel;
+
+  domSharedStylesHost: any;
 
   constructor(
-    config: AppConfig, 
-    public router: Router, 
-    private dashboardadminservice:DashBoardAdminService, 
-    private AuthService: AuthService, 
+    config: AppConfig,
+    public router: Router,
+    private dashboardadminservice: DashBoardAdminService,
+    private AuthService: AuthService,
     private fb: FormBuilder,
-    injector: Injector) 
-  {
-      this.config = config.getConfig();  
-      this.AuthService.tipocuest = 0;      
-      this.creaFormUsuario(); 
+    injector: Injector) {
+    this.config = config.getConfig();
+    this.AuthService.tipocuest = 0;
+    this.creaFormUsuario();
   }
- 
-  creaFormUsuario(){
+
+  creaFormUsuario() {
     this.ifForm = this.fb.group({
-     id: 0,
-     user:0,
-     cuest:0,
-     fecha_ini:'',
-     fecha_fin: '',
-     nomUsu:'',
-     Personal:'',
-     apellidos:''
+      id: 0,
+      user: 0,
+      cuest: 0,
+      fecha_ini: '',
+      fecha_fin: '',
+      nomUsu: '',
+      Personal: '',
+      apellidos: ''
     });
     console.log(this.ifForm);
-    }
+  }
 
- 
+
   ngOnInit(): void {
-    
+
     let now = new Date();
     this.month = now.getMonth() + 1;
-    this.year = now.getFullYear();    
+    this.year = now.getFullYear();
     Messenger.options = { theme: 'air' };
-     
-    
+    this.getDatos();
+  }
 
 
+  getDatos(){
     this.dashboardadminservice.getCuestionarios().subscribe(
-      response => { 
+      response => {
         /*copio user a name */
         let prueba = response.data;
-        for(var item in prueba){         
+        for (var item in prueba) {
           prueba[item].name = prueba[item].nomUsu + ' ' + prueba[item].apellidos;
         }
-        
         this.data = prueba;
-
-        
       },
       error => {
         this.errorMessage = <any>error;
-					if(this.errorMessage !== null){
-                                          
-                        Messenger().post({
-                            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
-                            type: 'error',
-                            showCloseButton: true
-                        });
-					
-					}
+        if (this.errorMessage !== null) {
+
+          Messenger().post({
+            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+            type: 'error',
+            showCloseButton: true
+          });
+
+        }
       }
-     );
+    );
   }
 
-  onSubmit(model:DashBoardAdminModel){
-     Messenger().post({
-                            message: 'Los datos han sido guardados correctamente',
-                            type: 'success',
-                            showCloseButton: true
-                        });
+  onSubmit(model: DashBoardAdminModel) {
+    Messenger().post({
+      message: 'Los datos han sido guardados correctamente',
+      type: 'success',
+      showCloseButton: true
+    });
     console.log(model);
-    this.muestrausu=false;
+    this.muestrausu = false;
   }
 
-  getDatosUsuario(usuario: DashBoardAdminModel){    
+  getDatosUsuario(usuario: DashBoardAdminModel) {
     this.dashboardadminservice.getDatosUsuario(usuario).subscribe(
-      response => { 
+      response => {
         this.ususel = response.data;
-        this.ususel.password="";
-        this.ususel.repitepassword ="";
+        this.ususel.password = "";
+        this.ususel.repitepassword = "";
         this.ifForm = this.fb.group(this.ususel);
-        this.muestrausu=true;  
+        this.muestrausu = true;
         console.log("parsely");
         setTimeout(() => jQuery('.parsleyjs').parsley(), 1000);
-        
-        ;  
-       },
+
+        ;
+      },
       error => {
         this.errorMessage = <any>error;
-					if(this.errorMessage !== null){
-                                          
-                        Messenger().post({
-                            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
-                            type: 'error',
-                            showCloseButton: true
-                        });
-					
-					}
+        if (this.errorMessage !== null) {
+
+          Messenger().post({
+            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+            type: 'error',
+            showCloseButton: true
+          });
+
+        }
       }
-     );
-    
-    
-         
+    );
+
+
+
   }
 
-  cancelModifUsu(){
-    this.muestrausu=false;
+  cancelModifUsu() {
+    this.muestrausu = false;
   }
 
-  prueba(): void{
+  prueba(): void {
     console.log("seleccionado usuario");
   }
 
+  bajaCuestionario(persona: DashBoardAdminModel) {
 
-  onSelect(persona: DashBoardAdminModel){ 
+    if (window.confirm('¿Vas a cerrar el cuestionario, estás seguro?')) {
+      this.bajaCuestionarioConfirmed(persona.user.toString());
+    }
+  }
+
+  altaCuestionario(persona: DashBoardAdminModel) {
+
+    if (window.confirm('¿Vas a abrir de nuevo el cuestionario, estás seguro?')) {
+      this.altaCuestionarioConfirmed(persona.user.toString());
+    }
+  }
+
+  borraUsuario(persona: DashBoardAdminModel) {
+
+    if (window.confirm('¿Vas a eliminar el usuario, estás seguro?')) {
+      this.borraUsuarioConfirmed(persona.user.toString());
+    }
+  }
+
+
+  altaCuestionarioConfirmed(idusu: string){
+    this.dashboardadminservice.altaCuestionario(idusu).subscribe(
+      response => {
+        if (response.status == "success") {
+          let registro = this.data.find(x=>x.user == idusu);
+          registro.fecha_fin = null;
+        }
+
+      },
+      error => {
+        this.errorMessage = <any>error;
+        if (this.errorMessage !== null) {
+
+          Messenger().post({
+            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+            type: 'error',
+            showCloseButton: true
+          });
+
+        }
+      }
+    );
+  }
+  bajaCuestionarioConfirmed(idusu: string){
+    this.dashboardadminservice.bajaCuestionario(idusu).subscribe(
+      response => {
+        if (response.status == "success") {
+          let registro = this.data.find(x=>x.user == idusu);
+          registro.fecha_fin = "cerrado";
+        }
+
+      },
+      error => {
+        this.errorMessage = <any>error;
+        if (this.errorMessage !== null) {
+
+          Messenger().post({
+            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+            type: 'error',
+            showCloseButton: true
+          });
+
+        }
+      }
+    );
+  }
+
+  borraUsuarioConfirmed(idusu) {
+    this.dashboardadminservice.borraUsuario(idusu).subscribe(
+      response => {
+        if (response.status == "success") {
+          this.data.splice(this.data.indexOf(x=>x.user == idusu));
+        }
+
+      },
+      error => {
+        this.errorMessage = <any>error;
+        if (this.errorMessage !== null) {
+
+          Messenger().post({
+            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+            type: 'error',
+            showCloseButton: true
+          });
+
+        }
+      }
+    );
+  }
+
+  onSelect(persona: DashBoardAdminModel) {
     console.log("seleccionado usuario");
     this.AuthService.tipocuest = persona.cuest;
     this.AuthService.usucuest = persona.user;
     console.log("tipocuest");
     console.log(this.AuthService.tipocuest);
     let redirect = '';
-    localStorage.setItem('usuariocuest',persona.user.toString());
-    if(persona.cuest == 1){
+    localStorage.setItem('usuariocuest', persona.user.toString());
+    if (persona.cuest == 1) {
       redirect = this.config.urlpestanapublic;
     }
-    else if(persona.cuest==2){
+    else if (persona.cuest == 2) {
       redirect = this.config.urlpestanaprivate;
     }
     this.router.navigate([redirect]);

@@ -1,4 +1,5 @@
-<h1 class="page-title">Dashboard Administrador <small><small>FDI</small></small></h1>
+<h1 class="page-title">Dashboard Administrador <small><small>FDI</small></small>
+</h1>
 
 <section class="widget animated bounceInDown" widget>
   <header>
@@ -6,10 +7,10 @@
     <div class="widget-controls">
       <a data-widgster="expand" title="Expand" href="#"><i class="glyphicon glyphicon-chevron-up"></i></a>
       <a data-widgster="collapse" title="Collapse" href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
-     
+
     </div>
   </header>
-  <div class="widget-body">  
+  <div class="widget-body">
     <div class="mt">
       <div class="width-200 float-xs-right">
         <div class="input-group input-group-sm input-group-transparent input-group-rounded">
@@ -21,79 +22,91 @@
       </div>
       <table class="table table-hover" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="10">
         <thead>
-        <tr>
-          <th>
-            <mfDefaultSorter by="id">Id</mfDefaultSorter>
-          </th>
-          <th>
-            <mfDefaultSorter by="name">Usuario</mfDefaultSorter>
-          </th>
-          <th class="no-sort hidden-sm-down">
-            <mfDefaultSorter by="user">Cuestionario</mfDefaultSorter>
-          </th>
-          <th class="hidden-sm-down">
-            <mfDefaultSorter by="fecha_ini">Fecha Inicial</mfDefaultSorter>
-          </th>
-          <th class="hidden-sm-down">
-            <mfDefaultSorter by="fecha_fin">Estado</mfDefaultSorter>
-          </th>
-          <th class="no-sort">
-            Opciones
-          </th>
-        </tr>
+          <tr>
+            <th>
+              <mfDefaultSorter by="id">Id</mfDefaultSorter>
+            </th>
+            <th>
+              <mfDefaultSorter by="name">Usuario</mfDefaultSorter>
+            </th>
+            <th class="no-sort hidden-sm-down">
+              <mfDefaultSorter by="cuest">Cuestionario</mfDefaultSorter>
+            </th>
+            <th class="hidden-sm-down">
+              <mfDefaultSorter by="fecha_ini">Fecha Inicial</mfDefaultSorter>
+            </th>
+            <th class="hidden-sm-down">
+              <mfDefaultSorter by="fecha_fin">Estado</mfDefaultSorter>
+            </th>
+            <th class="no-sort">
+              Opciones
+            </th>
+          </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let person of mf.data | SearchPipe : searchText">
-          <td>{{person.id}}</td>
-          <td><span class="fw-semi-bold">{{person.name}}</span></td>
-          <td class="hidden-sm-down">
-            <small>
+          <tr *ngFor="let person of mf.data | SearchPipe : searchText">
+            <td>{{person.id}}</td>
+            <td><span class="fw-semi-bold">{{person.name}}</span></td>
+            <td class="hidden-sm-down">
+              <small>
               <span class="fw-semi-bold">Tipo:</span>
               &nbsp; {{person.cuest}}
             </small>
-            <br>
-            <small>
+              <br>
+              <small>
               <span class="fw-semi-bold">Nombre:</span>
               &nbsp; {{person.nomCuest}}
             </small>
-          </td>
-          <td class="hidden-sm-down">{{person.fecha_ini}}</td>
+            </td>
+            <td class="hidden-sm-down">{{person.fecha_ini}}</td>
 
-          <td class="hidden-sm-down">             
-                <span [class.badge-success]="person.fecha_fin=='' || person.fecha_fin==null"
-                      [class.badge-danger]="person.fecha_fin!='' && person.fecha_fin!=null" 
-                      class="badge" tooltip="&nbsp;Estado&nbsp;">&nbsp;{{person.fecha_fin==''||person.fecha_fin==null ? 'Abierto':'Cerrado' }}&nbsp;</span>
-          </td>
+            <td class="hidden-sm-down">
+              <span [class.badge-success]="person.fecha_fin=='' || person.fecha_fin==null" [class.badge-danger]="person.fecha_fin!='' && person.fecha_fin!=null"
+                class="badge" tooltip="&nbsp;Estado&nbsp;">&nbsp;{{person.fecha_fin==''||person.fecha_fin==null ? 'Abierto':'Cerrado' }}&nbsp;</span>              &nbsp;
+              <button *ngIf="person.fecha_fin==''||person.fecha_fin==null" class="btn btn-info btn-xs mb-xs" role="button" (click)="bajaCuestionario(person)">
+                <i class="glyphicon glyphicon-eye-close"></i>
+                <span>Cerrar</span>
+              </button>
+              <button *ngIf="person.fecha_fin!=''&&person.fecha_fin!=null" class="btn btn-info btn-xs mb-xs" role="button" (click)="altaCuestionario(person)">
+                <i class="glyphicon glyphicon-eye-open"></i>
+                <span>Abrir</span>
+              </button>
+            </td>
 
 
 
-          <!--<td class="hidden-sm-down">{{person.fecha_fin}}</td>-->
-          <td>
-            <div class="buttons">
-              <!-- <progress class="progress progress-sm progress-{{person.status.type}}" value="100" max="100" [ngStyle]="{ 'width': person.status.progress}"></progress> -->
-               <button class="btn btn-inverse btn-xs mb-xs" role="button" (click)="onSelect(person)">
+            <!--<td class="hidden-sm-down">{{person.fecha_fin}}</td>-->
+            <td>
+              <div class="buttons">
+                <!-- <progress class="progress progress-sm progress-{{person.status.type}}" value="100" max="100" [ngStyle]="{ 'width': person.status.progress}"></progress> -->
+                <button class="btn btn-inverse btn-xs mb-xs" role="button" (click)="onSelect(person)">
                   <i class="glyphicon glyphicon-list-alt text-info"></i>
                   <span class="text-info">Encuesta</span>
                 </button>
-               <button class="btn btn-inverse btn-xs mb-xs" role="button" (click)="getDatosUsuario(person)">
+                <button class="btn btn-inverse btn-xs mb-xs" role="button" (click)="getDatosUsuario(person)">
                 <i class="glyphicon glyphicon-user text-info"></i>
                 <span class="text-info">Usuario</span>
               </button>
-            </div>
-          </td>
-        </tr>
-        <tr *ngIf="(mf.data | SearchPipe : searchText).length === 0">
-          <td colspan="100">
-            No hay resultados
-          </td>
-        </tr>
+
+                <button class="btn btn-inverse btn-xs mb-xs" role="button" (click)="borraUsuario(person)">
+                <i class="glyphicon glyphicon-trash text-danger"></i>
+                <span class="text-danger">Borrar</span>
+              </button>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="(mf.data | SearchPipe : searchText).length === 0">
+            <td colspan="100">
+              No hay resultados
+            </td>
+          </tr>
         </tbody>
         <tfoot>
-        <tr>
-          <td colspan="12">
-            <mfBootstrapPaginator [rowsOnPageSet]="[10, 25, 50, 100]"></mfBootstrapPaginator>
-          </td>
-        </tr>
+          <tr>
+            <td colspan="12">
+              <mfBootstrapPaginator [rowsOnPageSet]="[10, 25, 50, 100]"></mfBootstrapPaginator>
+            </td>
+          </tr>
         </tfoot>
       </table>
     </div>
@@ -103,73 +116,68 @@
 
 <!-- información de usuario -->
 <section id="seccion-datosusuario" class="widget animated fadeInUp" *ngIf="muestrausu" widget>
-     
-      <div class="widget-body">
-        <form class="form-horizontal parsleyjs" data-parsley-priority-enabled="false" (ngSubmit)="onSubmit(ifForm)"  [formGroup]="ifForm" role="form" novalidate>
-          <fieldset>
-            <legend><strong>{{ususel.nombre}}</strong> Datos de Usuario</legend>
-            
-            <div class="form-group row">
-              <label class="col-md-4  col-form-label text-md-right" for="username">Usuario</label>
-              <div class="col-md-7 ">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  <input formControlName="username" class="form-control" size="16" type="text" tooltip="Usuario" [placement]="top"   placeholder="Usuario">
-                </div>
-              </div>
-            </div>
 
-            <div class="form-group row">
-              <label class="col-md-4  col-form-label text-md-right" for="email">Email</label>
-              <div class="col-md-7 ">
-                <div class="input-group">
-                  <span class="input-group-addon"><strong>@</strong></span>
-                  <input type="email" id="email" name="email" class="form-control" 
-                       data-parsley-trigger="change"
-                       data-parsley-validation-threshold="1"
-                       required="required"  formControlName="email"
-                       tooltip="Email" placeholder="Email">
-                </div>
-              </div>
-            </div>
-         
-            <div class="form-group row">
-              <label class="col-md-4  col-form-label text-md-right" for="password">Password</label>
-              <div class="col-md-7 ">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                  <input id="password" name="password" formControlName="password" class="form-control" 
-                    data-parsley-trigger="change"
-                       data-parsley-minlength="6"
-                  size="16" type="text" tooltip="Resetear Password" placeholder="Resetear Password">
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-4  col-form-label text-md-right" for="repitepassword">Repite Password</label>
-              <div class="col-md-7 ">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                  <input id="repitepassword" name="repitepassword" formControlName="repitepassword" class="form-control"
-                  data-parsley-trigger="change"
-                       data-parsley-minlength="6"
-                       data-parsley-equalto="#password" size="16" type="text" tooltip="Repite Password" placeholder="Repite Password">
-                </div>
-              </div>
-            </div>
+  <div class="widget-body">
+    <form class="form-horizontal parsleyjs" data-parsley-priority-enabled="false" (ngSubmit)="onSubmit(ifForm)" [formGroup]="ifForm"
+      role="form" novalidate>
+      <fieldset>
+        <legend><strong>{{ususel.nombre}}</strong> Datos de Usuario</legend>
 
-
-
-          </fieldset>
-          <div class="form-actions">
-            <div class="row">
-              <div class="offset-md-4 col-md-7 ">
-                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                <button type="button" class="btn btn-inverse" (click)="cancelModifUsu()">Cancelar</button>
-              </div>
+        <div class="form-group row">
+          <label class="col-md-4  col-form-label text-md-right" for="username">Usuario</label>
+          <div class="col-md-7 ">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input formControlName="username" class="form-control" size="16" type="text" tooltip="Usuario" [placement]="top" placeholder="Usuario">
             </div>
           </div>
-        </form>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-4  col-form-label text-md-right" for="email">Email</label>
+          <div class="col-md-7 ">
+            <div class="input-group">
+              <span class="input-group-addon"><strong>@</strong></span>
+              <input type="email" id="email" name="email" class="form-control" data-parsley-trigger="change" data-parsley-validation-threshold="1"
+                required="required" formControlName="email" tooltip="Email" placeholder="Email">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-4  col-form-label text-md-right" for="password">Password</label>
+          <div class="col-md-7 ">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+              <input id="password" name="password" formControlName="password" class="form-control" data-parsley-trigger="change" data-parsley-minlength="6"
+                size="16" type="text" tooltip="Resetear Password" placeholder="Resetear Password">
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-4  col-form-label text-md-right" for="repitepassword">Repite Password</label>
+          <div class="col-md-7 ">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+              <input id="repitepassword" name="repitepassword" formControlName="repitepassword" class="form-control" data-parsley-trigger="change"
+                data-parsley-minlength="6" data-parsley-equalto="#password" size="16" type="text" tooltip="Repite Password"
+                placeholder="Repite Password">
+            </div>
+          </div>
+        </div>
+
+
+
+      </fieldset>
+      <div class="form-actions">
+        <div class="row">
+          <div class="offset-md-4 col-md-7 ">
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <button type="button" class="btn btn-inverse" (click)="cancelModifUsu()">Cancelar</button>
+          </div>
+        </div>
       </div>
-    </section>
+    </form>
+  </div>
+</section>
 <!-- fin info usuario -->
