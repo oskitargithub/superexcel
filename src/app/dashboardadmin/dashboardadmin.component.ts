@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { AppConfig } from '../app.config';
 import { Router } from '@angular/router';
-import { DashBoardAdminModel, UserAdminModel } from './dashboardadmin.model';
+import { DashBoardAdminModel, UserAdminModel,UserFormModel } from './dashboardadmin.model';
 import { DashBoardAdminService } from "./dashboardadmin.service";
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
@@ -32,7 +32,7 @@ export class DashboardAdmin implements OnInit {
   public numPages: number = 1;
   public length: number = 0;
   public muestrausu: boolean = false;
-  public ususel: UserAdminModel;
+  public ususel: UserFormModel;
 
   domSharedStylesHost: any;
 
@@ -99,21 +99,56 @@ export class DashboardAdmin implements OnInit {
   }
 
   onSubmit(model: DashBoardAdminModel) {
-    Messenger().post({
-      message: 'Los datos han sido guardados correctamente',
-      type: 'success',
-      showCloseButton: true
-    });
-    console.log(model);
-    this.muestrausu = false;
+    console.log("enviando formulario");
+    console.log(this.ifForm.value);
+    this.dashboardadminservice.altaUsuario(this.ifForm.value).subscribe(
+            response => {
+                this.status = response.status;
+                if (this.status !== "success") {
+                    Messenger().post({
+                        message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+                }
+                else {
+                  console.log("hecho");
+                     this.ifForm.markAsPristine();
+                    this.muestrausu = false;
+                    /* let datos = this.data.find(x=>x.user == this.ifForm.value.user_id);
+                    datos.name = this.ifForm.value.nombre + " " + this.ifForm.value.apellidos; */
+                    Messenger().post({
+                        message: 'Los datos han sido guardados correctamente',
+                        type: 'success',
+                        showCloseButton: true
+                    }); 
+                      this.getDatos();
+                }
+
+            },
+            error => {
+                this.errorMessage = <any>error;
+                if (this.errorMessage !== null) {
+
+                    Messenger().post({
+                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+
+                }
+            });
+    
   }
 
+  
   getDatosUsuario(usuario: DashBoardAdminModel) {
     this.dashboardadminservice.getDatosUsuario(usuario).subscribe(
       response => {
         this.ususel = response.data;
         this.ususel.password = "";
         this.ususel.repitepassword = "";
+        this.ususel.cuest = 1;
         this.ifForm = this.fb.group(this.ususel);
         this.muestrausu = true;
         console.log("parsely");
@@ -135,9 +170,20 @@ export class DashboardAdmin implements OnInit {
       }
     );
 
+    
+
 
 
   }
+nuevoUsuario(){
+        this.ususel = new UserFormModel();
+        this.ususel.password = "";
+        this.ususel.repitepassword = "";
+        this.ifForm = this.fb.group(this.ususel);
+      this.muestrausu = true;
+      setTimeout(() => jQuery('.parsleyjs').parsley(), 1000);
+    }
+  
 
   cancelModifUsu() {
     this.muestrausu = false;

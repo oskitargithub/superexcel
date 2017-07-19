@@ -95,7 +95,25 @@ export class DashBoardAdminService{
         let misheaders = new Headers({ "X-Requested-With": "XMLHttpRequest", 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: misheaders });
 
-        return this._http.post(this.config.apilaravel + "cuestionario/cierre",
+        return this._http.post(this.config.apilaravel + "gestion/informe/reabrir",
+            parametros2, options).map(res => res.json());
+
+    }
+
+
+    altaUsuario(modelo: any){
+        let tokenfdi = JSON.parse(localStorage.getItem('fditoken'));
+        let mitoken = localStorage.getItem('token');
+        let api_token = tokenfdi.api_token;
+        let json = JSON.stringify(modelo);
+        let parametros2: URLSearchParams = new URLSearchParams();
+        parametros2.set('_token', mitoken);
+        parametros2.set('api_token', api_token);
+        parametros2.set('data', json);
+        let misheaders = new Headers({ "X-Requested-With": "XMLHttpRequest", 'Content-Type': 'application/x-www-form-urlencoded' });
+        let options = new RequestOptions({ headers: misheaders });
+
+        return this._http.post(this.config.apilaravel + "gestion/usuario",
             parametros2, options).map(res => res.json());
 
     }
