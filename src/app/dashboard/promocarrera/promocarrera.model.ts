@@ -61,6 +61,7 @@ export class dataModel{
     public preg_237: any;
     public preg_238: any;
     public preg_239: any;
+    public preg_567: any;
     constructor(){
         this.preg_210 = '',
         this.preg_212 = '',
@@ -87,6 +88,7 @@ export class dataModel{
         this.preg_236 = '',
         this.preg_237 = '',
         this.preg_238 = '',
-        this.preg_239 = ''
+        this.preg_239 = '',
+        this.preg_567 = ''
     }
 }

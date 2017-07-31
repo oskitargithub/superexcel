@@ -5,7 +5,7 @@
 
 <div class="row">
     <div class="col-md-8">
-        <h1 class="page-title">Conciliación <span class="fw-semi-bold">Trabajo Familia</span></h1>
+        <h1 class="page-title">CONCILIACIÓN DE LA VIDA PERSONAL, LABORAL Y FAMILIAR</h1>
     </div>
     <div class="col-md-4">
         <div class="row progress-stats">
@@ -76,20 +76,20 @@
                                     </md-radio-group>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-8 offset-md-1">
+                                <div class="col-md-8 offset-md-1" *ngIf="ifForm.controls.data.controls.preg_131.value=='si'">
                                     <p>En caso afirmativo, breve descripción del método divulgativo</p>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-8 offset-md-1">
+                                <div class="col-md-8 offset-md-1" *ngIf="ifForm.controls.data.controls.preg_131.value=='si'">
                                     <textarea rows="3" [readonly]="getValorElemento('data.preg_131')!='si'" class="autogrow form-control transition-height" id="preg_132"
                                         formControlName="preg_132" autosize placeholder="Descripción del método divulgativo"></textarea>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-8 offset-md-1">
+                                <div class="col-md-8 offset-md-1" *ngIf="ifForm.controls.data.controls.preg_131.value=='si'">
                                     <p>En caso afirmativo, indicar personas destinatarias</p>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-8 offset-md-1">
+                                <div class="col-md-8 offset-md-1" *ngIf="ifForm.controls.data.controls.preg_131.value=='si'">
                                     <textarea rows="3" [readonly]="getValorElemento('data.preg_131')!='si'" class="autogrow form-control transition-height" id="preg_133"
                                         formControlName="preg_133" autosize placeholder="Personas destinatarias"></textarea>
                                 </div>
@@ -105,20 +105,20 @@
                                     </md-radio-group>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-8 offset-md-1">
+                                <div class="col-md-8 offset-md-1" *ngIf="ifForm.controls.data.controls.preg_134.value=='si'">
                                     <p>En caso afirmativo, breve descripción del método de promoción</p>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-8 offset-md-1">
+                                <div class="col-md-8 offset-md-1" *ngIf="ifForm.controls.data.controls.preg_134.value=='si'">
                                     <textarea rows="3" [readonly]="getValorElemento('data.preg_134')!='si'" class="autogrow form-control transition-height" id="preg_135"
                                         formControlName="preg_135" autosize placeholder="Método de promoción"></textarea>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-8 offset-md-1">
+                                <div class="col-md-8 offset-md-1" *ngIf="ifForm.controls.data.controls.preg_134.value=='si'">
                                     <p>En caso afirmativo, indicar personas destinatarias</p>
                                 </div>
                                 <div class="w-100"></div>
-                                <div class="col-md-8 offset-md-1">
+                                <div class="col-md-8 offset-md-1" *ngIf="ifForm.controls.data.controls.preg_134.value=='si'">
                                     <textarea rows="3" [readonly]="getValorElemento('data.preg_134')!='si'" class="autogrow form-control transition-height" id="preg_136"
                                         formControlName="preg_136" autosize placeholder="Personas destinatarias"></textarea>
                                 </div>
@@ -142,9 +142,9 @@
                                     </md-radio-group>
                                 </div>
                                 <div class="w-100"></div>
-                                <label class="col-md-8 offset-md-1  col-form-label" for="preg_139">Cual es el tiempo estimado de respuesta a la comunicación del trabajador o trabajadora</label>
+                                <label *ngIf="ifForm.controls.data.controls.preg_138.value=='si'" class="col-md-8 offset-md-1  col-form-label" for="preg_139">Cual es el tiempo estimado de respuesta a la comunicación del trabajador o trabajadora</label>
                                 <div class="w-100"></div>
-                                <div class="col-md-8 offset-md-1">
+                                <div class="col-md-8 offset-md-1" *ngIf="ifForm.controls.data.controls.preg_138.value=='si'">
                                     <input type="text" formControlName="preg_139" class="form-control" tooltip="Cual es el tiempo estimado de respuesta a la comunicación del trabajador o trabajadora"
                                         placeholder="Cual es el tiempo estimado de respuesta a la comunicación del trabajador o trabajadora"
                                     />
