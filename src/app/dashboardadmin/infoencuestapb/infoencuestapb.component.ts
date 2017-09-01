@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
+import { WindowRef } from './windowref';
 import { Router } from '@angular/router';
 import { AppConfig } from '../../app.config';
 import { AuthService } from '../../auth/auth.service';
@@ -16,15 +17,19 @@ declare var Messenger: any;
 export class InfoEncuestaPBComponent implements OnInit {
     config: any;
     configFn: any;
+    nativeWindow: any
     public errorMessage: string;
     public status: string;
     public modelo: InfoEncuestaPBModel;
+
     constructor(config: AppConfig,
         private servicio: InfoEncuestaPBService,
         private AuthService: AuthService,
         public router: Router,
+        private winRef: WindowRef,
         injector: Injector
     ) {
+        this.nativeWindow = winRef.getNativeWindow();
         this.config = config.getConfig();
         if (this.AuthService.usucuest == 0) {
             let redirect = this.config.urladmin;
@@ -36,6 +41,12 @@ export class InfoEncuestaPBComponent implements OnInit {
         Messenger.options = { theme: 'air' };
         this.modelo = new InfoEncuestaPBModel();
         this.getDatosModelo();
+    }
+
+    generaInforme(){
+        console.log("generando informe de "+this.modelo.user_id);
+        var newWindow = this.nativeWindow.open(this.config.apilaravel+"gestion/informe/"+this.modelo.user_id);
+        
     }
 
     getNombre() {
