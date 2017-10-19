@@ -494,7 +494,7 @@ export class FuncionesHighChartsT3Service {
                 height: alto,
                 width: ancho
             },
-            colors: ['#910000', '#8bbc21', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
+            colors: ['#8bbc21', '#910000', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a', '#2f7ed8', '#0d233a'],
             title: {
                 text: nombregrafica
             },

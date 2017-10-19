@@ -153,6 +153,6 @@ export class ConciliacionAdmComponent implements OnInit {
     this.chart16options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Recursos para la conciliación establecidos por la organización, número de personas usuarias', 'Proporcionada',this.modelo.preg_152_tabla_3);
 
     this.chart1pieoptions = this.funccioneshct3.GraficaPieHM("Reincorporaciones tras excedencia por cuidado de hijos/as a puestos de categoría inferior",this.modelo.data.preg_157,this.modelo.data.preg_158);
-    this.chart2pieoptions = this.funccioneshct3.GraficaPieHM("¿Cuántos trabajadores/as han sido padres y madres en el último año? Especificar la cantidad por sexo.",this.modelo.data.preg_154,this.modelo.data.preg_155);
+    this.chart2pieoptions = this.funccioneshct3.GraficaPieHM("Nº de padres y madres en el último año",this.modelo.data.preg_154,this.modelo.data.preg_155);
   }  
 }

@@ -114,8 +114,8 @@ export class PromoCarreraPrAdmComponent implements OnInit {
     }
 
     asignaDatosGraficas() {
-        this.chart1options = this.funccioneshct3.GraficaCompuesta1('Relación de Ascensos por categorías profesionales por género', '', this.modelo.preg_577_tabla_3, "fila");
-        this.chart2options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Relación de Ascensos por categorías profesionales por género', 'Proporcionada', this.modelo.preg_577_tabla_3);
+        this.chart1options = this.funccioneshct3.GraficaCompuesta1('Relación de Ascensos por categorías profesionales', '', this.modelo.preg_577_tabla_3, "fila");
+        this.chart2options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Relación de Ascensos por categorías profesionales', 'Proporcionada', this.modelo.preg_577_tabla_3);
         this.chart3options = this.funccioneshct3.GraficaCompuesta1('Comparativo promociones en el último año', '', this.modelo.preg_586_tabla_3, "fila");
         this.chart4options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Comparativo promociones en el último año', 'Proporcionada', this.modelo.preg_586_tabla_3);
         
@@ -123,8 +123,8 @@ export class PromoCarreraPrAdmComponent implements OnInit {
         
         this.chart5options = this.funccioneshct3.GraficaCompuesta1('Solicitudes de promoción presentadas', '', this.modelo.preg_575_tabla_3, "fila");
         this.chart6options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Solicitudes de promoción presentadas', 'Proporcionada', this.modelo.preg_575_tabla_3);
-        this.chart7options = this.funccioneshct3.GraficaCompuesta1('Comparativo Ascensos Por Género', '', this.modelo.preg_576_tabla_3, "fila");
-        this.chart8options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Comparativo Ascensos Por Género', 'Proporcionada', this.modelo.preg_576_tabla_3);
+        this.chart7options = this.funccioneshct3.GraficaCompuesta1('Comparativo Ascensos', '', this.modelo.preg_576_tabla_3, "fila");
+        this.chart8options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Comparativo Ascensos', 'Proporcionada', this.modelo.preg_576_tabla_3);
         this.chart9options = this.funccioneshct3.GraficaCompuesta1('Transformación de contratos a tiempo parcial en tiempo completo', '', this.modelo.preg_585_tabla_3, "fila");
         this.chart10options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Transformación de contratos a tiempo parcial en tiempo completo', 'Proporcionada', this.modelo.preg_585_tabla_3);
 
