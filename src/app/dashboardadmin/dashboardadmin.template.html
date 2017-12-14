@@ -186,7 +186,16 @@
           </div>
         </div>
 
-        
+        <div class="form-group row" *ngIf="accion==1">
+          <label class="col-md-4  col-form-label text-md-right" for="cuest">Tipo Usuario</label>
+          <div class="col-md-7 ">
+            <div class="input-group">
+              <select class="form-control" formControlName="cuest">
+                <option *ngFor="let tipo of tiposcuest" [value]="tipo.id">{{tipo.nombre}}</option>
+              </select>
+          </div>
+        </div>
+        </div>
         <div class="form-group row">
           <label class="col-md-4  col-form-label text-md-right" for="password">Password</label>
           <div class="col-md-7 ">
@@ -215,8 +224,8 @@
       <div class="form-actions">
         <div class="row">
           <div class="offset-md-4 col-md-7 ">
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-            <button type="submit" class="btn btn-primary"  (click)="onSubmit(ifForm)">Crear Usuario</button>
+            <button type="submit" class="btn btn-primary"  (click)="onSubmit(ifForm)" *ngIf="accion==2">Guardar Cambios</button>
+            <button type="submit" class="btn btn-primary"  (click)="onSubmit(ifForm)" *ngIf="accion==1">Crear Usuario</button>
             <button type="button" class="btn btn-inverse" (click)="cancelModifUsu()">Cancelar</button>
           </div>
         </div>

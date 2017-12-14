@@ -32,8 +32,9 @@ export class DashboardAdmin implements OnInit {
   public numPages: number = 1;
   public length: number = 0;
   public muestrausu: boolean = false;
+  public accion: number;
   public ususel: UserFormModel;
-
+  public tiposcuest:any[] = [{"id":1, "nombre":"Emp. Pública"},{"id":2, "nombre":"Emp. Privada"}];
   domSharedStylesHost: any;
 
   constructor(
@@ -52,7 +53,7 @@ export class DashboardAdmin implements OnInit {
     this.ifForm = this.fb.group({
       id: 0,
       user: 0,
-      cuest: 0,
+      cuest: 1,
       fecha_ini: '',
       fecha_fin: '',
       nomUsu: '',
@@ -78,10 +79,10 @@ export class DashboardAdmin implements OnInit {
       response => {
         /*copio user a name */
         let prueba = response.data;
-        for (var item in prueba) {
-          prueba[item].name = prueba[item].nomUsu + ' ' + prueba[item].apellidos;
+        for (var item in prueba) {          
+          prueba[item].name = prueba[item].nomUsu + ' ' + prueba[item].apellidos;          
         }
-        this.data = prueba;
+        this.data = prueba.filter(item => item.estado !== "BAJA")
       },
       error => {
         this.errorMessage = <any>error;
@@ -148,9 +149,10 @@ export class DashboardAdmin implements OnInit {
         this.ususel = response.data;
         this.ususel.password = "";
         this.ususel.repitepassword = "";
-        this.ususel.cuest = 1;
+        this.ususel.cuest = usuario.cuest;
         this.ifForm = this.fb.group(this.ususel);
         this.muestrausu = true;
+        this.accion = 2; //accion 2 = modificar
         console.log("parsely");
         setTimeout(() => jQuery('.parsleyjs').parsley(), 1000);
 
@@ -180,7 +182,8 @@ nuevoUsuario(){
         this.ususel.password = "";
         this.ususel.repitepassword = "";
         this.ifForm = this.fb.group(this.ususel);
-      this.muestrausu = true;
+        this.muestrausu = true;
+        this.accion = 1;
       setTimeout(() => jQuery('.parsleyjs').parsley(), 1000);
     }
   
