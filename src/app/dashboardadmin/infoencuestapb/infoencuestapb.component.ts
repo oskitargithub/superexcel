@@ -17,7 +17,7 @@ declare var Messenger: any;
 export class InfoEncuestaPBComponent implements OnInit {
     config: any;
     configFn: any;
-    nativeWindow: any
+    nativeWindow: any;
     public errorMessage: string;
     public status: string;
     public modelo: InfoEncuestaPBModel;

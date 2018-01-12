@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ng2-bootstrap';
 import { LiveTileModule } from '../../components/tile/tile.module';
-
+import { WindowRef } from '../infoencuestapb/windowref';
 import { InfoEncuestaPRComponent } from './infoencuestapr.component';
 
 export const routes = [
@@ -22,7 +22,7 @@ export const routes = [
     RouterModule.forChild(routes),
     
   ],
-  providers: []
+  providers: [WindowRef]
 })
 export class InfoEncuestaPRModule {
   static routes = routes;

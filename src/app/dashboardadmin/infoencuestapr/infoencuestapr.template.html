@@ -171,9 +171,9 @@
               </span>
               <h5 class="fw-normal">{{modelo.nombre}} <span class="fw-semi-bold">{{modelo.apellidos}}</span></h5>
               <p>{{modelo.empresa}}</p>
-              <a href="#" class="btn btn-danger btn-sm mt">
-                &nbsp;Enviar
-                <i class="fa fa-envelope ml-xs"></i>&nbsp;
+              <a href="#" (click)="generaInforme()" class="btn btn-danger btn-sm mt">
+                &nbsp;Generar Informe
+                <i class="glyphicon glyphicon-file"></i>&nbsp;
               </a>
               <ul class="contacts">
                 <li><i class="fa fa-phone fa-fw mr-xs"></i><a href="#">{{modelo.telefonos}}</a></li>
