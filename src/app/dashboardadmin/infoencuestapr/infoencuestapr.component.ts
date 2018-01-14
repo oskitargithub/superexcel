@@ -1,7 +1,6 @@
 import { Component, ViewEncapsulation, Injector, OnInit } from '@angular/core';
 import { WindowRef } from '../infoencuestapb/windowref';
 import { Router } from '@angular/router';
-import { WindowRef } from '../infoencuestapb/windowref';
 import { AppConfig } from '../../app.config';
 import { AuthService } from '../../auth/auth.service';
 import { InfoEncuestaPRService } from './infoencuestapr.service';
@@ -24,7 +23,7 @@ export class InfoEncuestaPRComponent implements OnInit {
     public errorMessage: string;
     public status: string;
     public modelo: InfoEncuestaPRModel;
-    nativeWindow: any;
+    
     public modelo2: any = "";
     public modelo3: any = "";
     public modelo4: any = "";
@@ -33,7 +32,7 @@ export class InfoEncuestaPRComponent implements OnInit {
         public serviciot3: FuncionesService,
         public serviciot5: FuncionesT5Service,
         private AuthService: AuthService,
-        private winRef: WindowRef,
+        
         public router: Router,
         private winRef: WindowRef,
         injector: Injector
@@ -54,11 +53,7 @@ export class InfoEncuestaPRComponent implements OnInit {
         this.getDatosRetribucionesModelo();
     }
 
-    generaInforme(){
-        console.log("generando informe de "+this.modelo.user_id);
-        var newWindow = this.nativeWindow.open(this.config.apilaravel+"gestion/informe/"+this.modelo.user_id);
-        
-    }
+    
 
     getNombre() {
         return this.modelo.nombre + " " + this.modelo.apellidos;
