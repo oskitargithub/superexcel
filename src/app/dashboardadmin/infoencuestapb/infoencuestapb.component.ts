@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AppConfig } from '../../app.config';
 import { AuthService } from '../../auth/auth.service';
 import { InfoEncuestaPBService } from './infoencuestapb.service';
+import { FuncionesService } from '../serviciofunciones/funciones.service';
+import { FuncionesT5Service } from '../serviciofunciones/funcionest5.service';
 import { InfoEncuestaPBModel } from './infoencuestapb.model';
 declare var Messenger: any;
 
@@ -12,18 +14,22 @@ declare var Messenger: any;
     templateUrl: './infoencuestapb.template.html',
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./infoencuestapb.style.scss'],
-    providers: [InfoEncuestaPBService],
+    providers: [InfoEncuestaPBService, FuncionesService,FuncionesT5Service],
 })
 export class InfoEncuestaPBComponent implements OnInit {
     config: any;
     configFn: any;
-    nativeWindow: any
+    nativeWindow: any;
     public errorMessage: string;
     public status: string;
     public modelo: InfoEncuestaPBModel;
-
+    public modelo2: any = "";
+    public modelo3: any = "";
+    public modelo4: any = "";
     constructor(config: AppConfig,
         private servicio: InfoEncuestaPBService,
+        public serviciot3: FuncionesService,
+        public serviciot5: FuncionesT5Service,
         private AuthService: AuthService,
         public router: Router,
         private winRef: WindowRef,
@@ -41,6 +47,8 @@ export class InfoEncuestaPBComponent implements OnInit {
         Messenger.options = { theme: 'air' };
         this.modelo = new InfoEncuestaPBModel();
         this.getDatosModelo();
+        this.getDatosPlantillaModelo();
+        this.getDatosRetribucionesModelo();
     }
 
     generaInforme(){
@@ -98,4 +106,88 @@ export class InfoEncuestaPBComponent implements OnInit {
             });
         }
     }
+    getDatosPlantillaModelo() {
+        this.servicio.getDatosModeloPlantilla()
+            .subscribe(
+            response => {
+                this.modelo2 = response.data;
+                this.modelo3 = response;
+
+            },
+            error => {
+                this.errorMessage = <any>error;
+                if (this.errorMessage !== null) {
+
+                    Messenger().post({
+                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                        type: 'error',
+                        showCloseButton: true
+                    });
+
+                }
+            });
+    }
+    getDatosRetribucionesModelo() {
+        this.servicio.getDatosModeloRetribuciones()
+          .subscribe(
+          response => {
+    
+            /** Asignamos las tablas */
+            this.modelo4 = response;
+            /** Asignamos los datos para las gráficas */
+            
+            
+          },
+          error => {
+            this.errorMessage = <any>error;
+            if (this.errorMessage !== null) {
+    
+              Messenger().post({
+                message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                type: 'error',
+                showCloseButton: true
+              });
+    
+            }
+          });
+      }
+
+      getTotalCompoPlantilla() {
+        let salida = this.modelo2.preg_46 * 1 + this.modelo2.preg_47 * 1;
+        if (!isNaN(salida))
+            return salida;
+        else
+            return 0;
+    }
+    getMujeresPlantilla() {
+        let salida = this.modelo2.preg_46 * 1;
+        if (!isNaN(salida))
+          return salida;
+        else
+          return 0;
+      }
+      getMujeresPlantillaPorcentaje() {
+        let salida = (this.modelo2.preg_46 * 1) * 100 / ((this.modelo2.preg_46 * 1 + this.modelo2.preg_47 * 1));
+        if (!isNaN(salida))
+          return salida;
+        else
+          return 0;
+      }
+    
+      getHombresPlantilla() {
+        let salida = this.modelo2.preg_47 * 1;
+        if (!isNaN(salida))
+          return salida;
+        else
+          return 0;
+      }
+    
+      getHombresPlantillaPorcentaje() {
+        let salida = (this.modelo2.preg_47 * 1) * 100 / ((this.modelo2.preg_46 * 1) + (this.modelo2.preg_47 * 1));
+        if (!isNaN(salida))
+          return salida;
+        else
+          return 0;
+    
+      }
 }

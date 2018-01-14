@@ -126,7 +126,7 @@ export class Login implements OnInit {
                             else{
                                 console.log("error ");
                                 Messenger().post({
-                                    message: 'Ha ocurrido un error cargando los datos.' + this.errorMessage,
+                                    message: 'Ha ocurrido un error cargando los datos. Identificación fallida',
                                     type: 'error',
                                     showCloseButton: true
                                 });
