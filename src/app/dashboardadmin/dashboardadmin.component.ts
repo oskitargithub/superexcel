@@ -149,6 +149,7 @@ export class DashboardAdmin implements OnInit {
         this.ususel = response.data;
         this.ususel.password = "";
         this.ususel.repitepassword = "";
+        this.ususel.domicilio = "";
         this.ususel.cuest = usuario.cuest;
         this.ifForm = this.fb.group(this.ususel);
         this.muestrausu = true;
@@ -181,6 +182,7 @@ nuevoUsuario(){
         this.ususel = new UserFormModel();
         this.ususel.password = "";
         this.ususel.repitepassword = "";
+        this.ususel.domicilio = "";
         this.ifForm = this.fb.group(this.ususel);
         this.muestrausu = true;
         this.accion = 1;

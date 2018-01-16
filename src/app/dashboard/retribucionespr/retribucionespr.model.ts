@@ -5,7 +5,13 @@ export class RetribucionesPrModel{
     public preg_418_tabla_5: Tabla5Model[];
     public preg_419_tabla_5: Tabla5Model[];
     public preg_420_tabla_5: Tabla5Model[];
-    public preg_421_tabla_5: Tabla5Model[];    
+    public preg_421_tabla_5: Tabla5Model[];   
+    
+    public preg_694_tabla_5: Tabla5Model[]; 
+    public preg_695_tabla_5: Tabla5Model[]; 
+    public preg_696_tabla_5: Tabla5Model[]; 
+    public preg_697_tabla_5: Tabla5Model[]; 
+    public preg_698_tabla_5: Tabla5Model[]; 
 }
 
 

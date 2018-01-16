@@ -222,7 +222,7 @@
                                         <tbody>
                                             <!-- Grupo A1 -->
                                             <tr *ngFor="let item of modelo.preg_416_tabla_5; let i=index">
-                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Grupo A Subgrupo A1</td>
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Ingenierías y Licenciaturas (Grados). Personal de alta dirección no incluido en el artículo 1.3.c) del Estatuto de los Trabajadores </td>
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
                                                 <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_416_tabla_5) | percent:'1.0-0'}}</td>
@@ -254,7 +254,7 @@
                                             </tr>
                                             <!-- Grupo A2 -->
                                             <tr *ngFor="let item of modelo.preg_417_tabla_5; let i=index">
-                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Grupo A Subgrupo A2</td>
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Ingenierías Técnicas, Puestos de peritación y Ayudantes con Titulación</td>
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
                                                 <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_417_tabla_5) | percent:'1.0-0'}}</td>
@@ -281,7 +281,7 @@
                                             </tr>
                                             <!-- Grupo B -->
                                             <tr *ngFor="let item of modelo.preg_418_tabla_5; let i=index">
-                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Grupo B</td>
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Jefaturas Administrativas y de Taller </td>
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
                                                 <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_418_tabla_5) | percent:'1.0-0'}}</td>
@@ -308,7 +308,7 @@
                                             </tr>
                                             <!-- Grupo C1 -->
                                             <tr *ngFor="let item of modelo.preg_419_tabla_5; let i=index">
-                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Grupo C Subgrupo C1</td>
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Ayudantes sin Titulación</td>
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
                                                 <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_419_tabla_5) | percent:'1.0-0'}}</td>
@@ -335,7 +335,7 @@
                                             </tr>
                                             <!-- Grupo C2 -->
                                             <tr *ngFor="let item of modelo.preg_420_tabla_5; let i=index">
-                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Grupo C Subgrupo C2</td>
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Oficialías Administrativas</td>
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
                                                 <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_420_tabla_5) | percent:'1.0-0'}}</td>
@@ -362,7 +362,7 @@
                                             </tr>
                                             <!-- Grupo E -->
                                             <tr *ngFor="let item of modelo.preg_421_tabla_5; let i=index">
-                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Grupo E</td>
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Personal Subalterno</td>
                                                 <td class="text-md-center">{{item.texto}}</td>
                                                 <td class="text-md-center">{{item.mujeres}}</td>
                                                 <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_421_tabla_5) | percent:'1.0-0'}}</td>
@@ -388,6 +388,146 @@
                                                 <td class="text-md-center">{{funciones.getPorcHombresAbs2(item,modelo.preg_421_tabla_5) | percent:'1.0-0'}}</td>
                                             </tr>
 
+                                            <!-- Grupo 694 -->
+                                            <tr *ngFor="let item of modelo.preg_694_tabla_5; let i=index">
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Personal Auxiliar Administrativo</td>
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_694_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila1(item, modelo.preg_694_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila1(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs1(item, modelo.preg_694_tabla_5)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs1(item, modelo.preg_694_tabla_5)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs1(item, modelo.preg_694_tabla_5))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs1(item,modelo.preg_694_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs1(item,modelo.preg_694_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td>&nbsp;</td>
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres2}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila2(item, modelo.preg_694_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila2(item, modelo.preg_694_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila2(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs2(item, modelo.preg_694_tabla_5)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs2(item, modelo.preg_694_tabla_5)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs2(item, modelo.preg_694_tabla_5))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs2(item,modelo.preg_694_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs2(item,modelo.preg_694_tabla_5) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Grupo 695 -->
+                                            <tr *ngFor="let item of modelo.preg_695_tabla_5; let i=index">
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Oficiales y Oficialas de primera y segunda </td>
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_695_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila1(item, modelo.preg_695_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila1(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs1(item, modelo.preg_695_tabla_5)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs1(item, modelo.preg_695_tabla_5)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs1(item, modelo.preg_695_tabla_5))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs1(item,modelo.preg_695_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs1(item,modelo.preg_695_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td>&nbsp;</td>
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres2}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila2(item, modelo.preg_695_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila2(item, modelo.preg_695_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila2(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs2(item, modelo.preg_695_tabla_5)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs2(item, modelo.preg_695_tabla_5)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs2(item, modelo.preg_695_tabla_5))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs2(item,modelo.preg_695_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs2(item,modelo.preg_695_tabla_5) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Grupo 696 -->
+                                            <tr *ngFor="let item of modelo.preg_696_tabla_5; let i=index">
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Oficiales y Oficialas de tercera y Especialistas </td>
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_696_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila1(item, modelo.preg_696_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila1(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs1(item, modelo.preg_696_tabla_5)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs1(item, modelo.preg_696_tabla_5)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs1(item, modelo.preg_696_tabla_5))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs1(item,modelo.preg_696_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs1(item,modelo.preg_696_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td>&nbsp;</td>
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres2}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila2(item, modelo.preg_696_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila2(item, modelo.preg_696_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila2(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs2(item, modelo.preg_696_tabla_5)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs2(item, modelo.preg_696_tabla_5)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs2(item, modelo.preg_696_tabla_5))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs2(item,modelo.preg_696_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs2(item,modelo.preg_696_tabla_5) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Grupo 697 -->
+                                            <tr *ngFor="let item of modelo.preg_697_tabla_5; let i=index">
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Peón / Peona</td>
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_697_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila1(item, modelo.preg_697_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila1(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs1(item, modelo.preg_697_tabla_5)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs1(item, modelo.preg_697_tabla_5)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs1(item, modelo.preg_697_tabla_5))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs1(item,modelo.preg_697_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs1(item,modelo.preg_697_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td>&nbsp;</td>
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres2}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila2(item, modelo.preg_697_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila2(item, modelo.preg_697_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila2(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs2(item, modelo.preg_697_tabla_5)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs2(item, modelo.preg_697_tabla_5)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs2(item, modelo.preg_697_tabla_5))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs2(item,modelo.preg_697_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs2(item,modelo.preg_697_tabla_5) | percent:'1.0-0'}}</td>
+                                            </tr>
+
+                                            <!-- Grupo 698 -->
+                                            <tr *ngFor="let item of modelo.preg_698_tabla_5; let i=index">
+                                                <td *ngIf="i==0" rowspan="8" class="text-md-center align-middle">Menores de dieciocho años, cualquiera que sea su categoría profesional</td>
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila1(item, modelo.preg_698_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila1(item, modelo.preg_698_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila1(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs1(item, modelo.preg_698_tabla_5)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs1(item, modelo.preg_698_tabla_5)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs1(item, modelo.preg_698_tabla_5))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs1(item,modelo.preg_698_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs1(item,modelo.preg_698_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td>&nbsp;</td>
+                                                <td class="text-md-center">{{item.texto}}</td>
+                                                <td class="text-md-center">{{item.mujeres2}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresDeFila2(item, modelo.preg_698_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{item.hombres}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresDeFila2(item, modelo.preg_698_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getSumaFila2(item)}}</td>
+                                                <td class="text-md-center">{{funciones.getMujeresAbs2(item, modelo.preg_698_tabla_5)}}</td>
+                                                <td class="text-md-center">{{funciones.getHombresAbs2(item, modelo.preg_698_tabla_5)}}</td>
+                                                <td class="text-md-center">{{(funciones.getTotalAbs2(item, modelo.preg_698_tabla_5))}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcMujeresAbs2(item,modelo.preg_698_tabla_5) | percent:'1.0-0'}}</td>
+                                                <td class="text-md-center">{{funciones.getPorcHombresAbs2(item,modelo.preg_698_tabla_5) | percent:'1.0-0'}}</td>
+                                            </tr>
+
                                             <!-- Totales -->
                                             <tr>
                                                 <th></th>
@@ -395,19 +535,26 @@
                                                 <th class="text-md-center" scope="row">
                                                     {{funciones.getTotalMujeres1(modelo.preg_416_tabla_5) + funciones.getTotalMujeres1(modelo.preg_417_tabla_5) + funciones.getTotalMujeres1(modelo.preg_418_tabla_5)
                                                     + funciones.getTotalMujeres1(modelo.preg_419_tabla_5) + funciones.getTotalMujeres1(modelo.preg_420_tabla_5)
-                                                    + funciones.getTotalMujeres1(modelo.preg_421_tabla_5)}}
+                                                    + funciones.getTotalMujeres1(modelo.preg_421_tabla_5)+ funciones.getTotalMujeres1(modelo.preg_694_tabla_5)+ funciones.getTotalMujeres1(modelo.preg_695_tabla_5)
+                                                    + funciones.getTotalMujeres1(modelo.preg_696_tabla_5)+ funciones.getTotalMujeres1(modelo.preg_697_tabla_5)
+                                                    + funciones.getTotalMujeres1(modelo.preg_698_tabla_5)}}
                                                 </th>
                                                 <th class="text-md-center" scope="row"></th>
                                                 <th class="text-md-center" scope="row">
                                                     {{funciones.getTotalHombres1(modelo.preg_416_tabla_5) + funciones.getTotalHombres1(modelo.preg_417_tabla_5) + funciones.getTotalHombres1(modelo.preg_418_tabla_5)
                                                     + funciones.getTotalHombres1(modelo.preg_419_tabla_5) + funciones.getTotalHombres1(modelo.preg_420_tabla_5)
-                                                    + funciones.getTotalHombres1(modelo.preg_421_tabla_5)}}
+                                                    + funciones.getTotalHombres1(modelo.preg_421_tabla_5)+ funciones.getTotalHombres1(modelo.preg_694_tabla_5)+ funciones.getTotalHombres1(modelo.preg_695_tabla_5)
+                                                    + funciones.getTotalHombres1(modelo.preg_696_tabla_5)+ funciones.getTotalHombres1(modelo.preg_697_tabla_5)
+                                                    + funciones.getTotalHombres1(modelo.preg_698_tabla_5)}}
                                                 </th>
                                                 <th class="text-md-center" scope="row"></th>
                                                 <th class="text-md-center" scope="row">
                                                     {{funciones.getTotalHombresMujeres1(modelo.preg_416_tabla_5) + funciones.getTotalHombresMujeres1(modelo.preg_417_tabla_5)
                                                     + funciones.getTotalHombresMujeres1(modelo.preg_418_tabla_5) + funciones.getTotalHombresMujeres1(modelo.preg_419_tabla_5)
-                                                    + funciones.getTotalHombresMujeres1(modelo.preg_420_tabla_5) + funciones.getTotalHombresMujeres1(modelo.preg_421_tabla_5)}}
+                                                    + funciones.getTotalHombresMujeres1(modelo.preg_420_tabla_5) + funciones.getTotalHombresMujeres1(modelo.preg_421_tabla_5)
+                                                    + funciones.getTotalHombresMujeres1(modelo.preg_694_tabla_5)+ funciones.getTotalHombresMujeres1(modelo.preg_695_tabla_5)
+                                                    + funciones.getTotalHombresMujeres1(modelo.preg_696_tabla_5)+ funciones.getTotalHombresMujeres1(modelo.preg_697_tabla_5)
+                                                    + funciones.getTotalHombresMujeres1(modelo.preg_698_tabla_5)}}
                                                     
                                                 </th>
                                                 <th class="text-md-center" scope="row"></th>
@@ -423,7 +570,12 @@
                                                     funciones.getTotalMujeres2(modelo.preg_418_tabla_5) +
                                                     funciones.getTotalMujeres2(modelo.preg_419_tabla_5) +
                                                     funciones.getTotalMujeres2(modelo.preg_420_tabla_5) +
-                                                    funciones.getTotalMujeres2(modelo.preg_421_tabla_5)}}
+                                                    funciones.getTotalMujeres2(modelo.preg_421_tabla_5) +
+                                                    funciones.getTotalMujeres2(modelo.preg_694_tabla_5) +
+                                                    funciones.getTotalMujeres2(modelo.preg_695_tabla_5) +
+                                                    funciones.getTotalMujeres2(modelo.preg_696_tabla_5) +
+                                                    funciones.getTotalMujeres2(modelo.preg_697_tabla_5) +
+                                                    funciones.getTotalMujeres2(modelo.preg_698_tabla_5)}}
                                                 </th>
                                                 <th class="text-md-center" scope="row"></th>
                                                 <th class="text-md-center" scope="row">
@@ -432,7 +584,12 @@
                                                     funciones.getTotalHombres2(modelo.preg_418_tabla_5) +
                                                     funciones.getTotalHombres2(modelo.preg_419_tabla_5) +
                                                     funciones.getTotalHombres2(modelo.preg_420_tabla_5) +
-                                                    funciones.getTotalHombres2(modelo.preg_421_tabla_5)}}
+                                                    funciones.getTotalHombres2(modelo.preg_421_tabla_5) +
+                                                    funciones.getTotalHombres2(modelo.preg_694_tabla_5) +
+                                                    funciones.getTotalHombres2(modelo.preg_695_tabla_5) +
+                                                    funciones.getTotalHombres2(modelo.preg_696_tabla_5) +
+                                                    funciones.getTotalHombres2(modelo.preg_697_tabla_5) +
+                                                    funciones.getTotalHombres2(modelo.preg_698_tabla_5)}}
                                                 </th>
                                                 <th class="text-md-center" scope="row"></th>
                                                 <th class="text-md-center" scope="row">
@@ -441,7 +598,12 @@
                                                     funciones.getTotalHombresMujeres2(modelo.preg_418_tabla_5) +
                                                     funciones.getTotalHombresMujeres2(modelo.preg_419_tabla_5) +
                                                     funciones.getTotalHombresMujeres2(modelo.preg_420_tabla_5) +
-                                                    funciones.getTotalHombresMujeres2(modelo.preg_421_tabla_5)}} 
+                                                    funciones.getTotalHombresMujeres2(modelo.preg_421_tabla_5)+
+                                                    funciones.getTotalHombresMujeres2(modelo.preg_694_tabla_5) +
+                                                    funciones.getTotalHombresMujeres2(modelo.preg_695_tabla_5) +
+                                                    funciones.getTotalHombresMujeres2(modelo.preg_696_tabla_5) +
+                                                    funciones.getTotalHombresMujeres2(modelo.preg_697_tabla_5) +
+                                                    funciones.getTotalHombresMujeres2(modelo.preg_698_tabla_5)}} 
                                                 </th>
                                                 <th class="text-md-center" scope="row"></th>
                                                 <th class="text-md-center" scope="row"></th>
@@ -460,7 +622,7 @@
                          <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Retribuciones salariales Comparativa por sexo - Grupo A1  (Sin compensaciones)</h5>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Ingenierías y Licenciaturas (Grados). Personal de alta dirección no incluido en el artículo 1.3.c) del Estatuto de los Trabajadores  (Sin compensaciones)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart3options"></chart> 
@@ -469,7 +631,7 @@
 
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Retribuciones salariales Comparativa por sexo - Grupo A1 (Con compensaciones)</h5>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Ingenierías y Licenciaturas (Grados). Personal de alta dirección no incluido en el artículo 1.3.c) del Estatuto de los Trabajadores (Con compensaciones)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart4options"></chart> 
@@ -479,7 +641,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual sin compensaciones  Mujeres Grupo A1</h5>
+                                    <h5>Salario bruto anual sin compensaciones  Mujeres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart5pieoptions"></chart>
@@ -487,7 +649,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual sin compensaciones Hombres Grupo A1</h5>
+                                    <h5>Salario bruto anual sin compensaciones Hombres</h5>
                                 </header>
                                 <div class="widget-body">
                                   <chart [options]="chart6pieoptions"></chart>
@@ -497,7 +659,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual con compensaciones  Mujeres Grupo A1</h5>
+                                    <h5>Salario bruto anual con compensaciones  Mujeres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart7pieoptions"></chart>
@@ -505,7 +667,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual con compensaciones  Hombres Grupo A1</h5>
+                                    <h5>Salario bruto anual con compensaciones  Hombres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart8pieoptions"></chart>
@@ -517,7 +679,7 @@
                          <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Retribuciones salariales Comparativa por sexo - Grupo A2  (Sin compensaciones)</h5>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Ingenierías Técnicas, Puestos de peritación y Ayudantes con Titulación  (Sin compensaciones)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart5options"></chart> 
@@ -526,7 +688,7 @@
 
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Retribuciones salariales Comparativa por sexo - Grupo A2 (Con compensaciones)</h5>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Ingenierías Técnicas, Puestos de peritación y Ayudantes con Titulación (Con compensaciones)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart6options"></chart> 
@@ -536,7 +698,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual sin compensaciones  Mujeres Grupo A2</h5>
+                                    <h5>Salario bruto anual sin compensaciones  Mujeres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart9pieoptions"></chart>
@@ -544,7 +706,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual sin compensaciones Hombres Grupo A2</h5>
+                                    <h5>Salario bruto anual sin compensaciones Hombres </h5>
                                 </header>
                                 <div class="widget-body">
                                   <chart [options]="chart10pieoptions"></chart>
@@ -554,7 +716,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual con compensaciones  Mujeres Grupo A2</h5>
+                                    <h5>Salario bruto anual con compensaciones  Mujeres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart11pieoptions"></chart>
@@ -562,7 +724,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual con compensaciones  Hombres Grupo A2</h5>
+                                    <h5>Salario bruto anual con compensaciones  Hombres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart12pieoptions"></chart>
@@ -574,7 +736,7 @@
                          <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Retribuciones salariales Comparativa por sexo - Grupo B  (Sin compensaciones)</h5>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Jefaturas Administrativas y de Taller (Sin compensaciones)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart7options"></chart> 
@@ -583,7 +745,7 @@
 
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Retribuciones salariales Comparativa por sexo - Grupo B (Con compensaciones)</h5>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Jefaturas Administrativas y de Taller  (Con compensaciones)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart8options"></chart> 
@@ -593,7 +755,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual sin compensaciones  Mujeres Grupo B</h5>
+                                    <h5>Salario bruto anual sin compensaciones  Mujeres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart13pieoptions"></chart>
@@ -601,7 +763,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual sin compensaciones Hombres Grupo B</h5>
+                                    <h5>Salario bruto anual sin compensaciones Hombres </h5>
                                 </header>
                                 <div class="widget-body">
                                   <chart [options]="chart14pieoptions"></chart>
@@ -611,7 +773,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual con compensaciones  Mujeres Grupo B</h5>
+                                    <h5>Salario bruto anual con compensaciones  Mujeres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart15pieoptions"></chart>
@@ -619,7 +781,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual con compensaciones  Hombres Grupo B</h5>
+                                    <h5>Salario bruto anual con compensaciones  Hombres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart16pieoptions"></chart>
@@ -631,7 +793,7 @@
                          <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Retribuciones salariales Comparativa por sexo - Grupo C1  (Sin compensaciones)</h5>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Ayudantes sin Titulación  (Sin compensaciones)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart9options"></chart> 
@@ -640,7 +802,7 @@
 
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Retribuciones salariales Comparativa por sexo - Grupo C1 (Con compensaciones)</h5>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Ayudantes sin Titulación (Con compensaciones)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart10options"></chart> 
@@ -650,7 +812,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual sin compensaciones  Mujeres Grupo C1</h5>
+                                    <h5>Salario bruto anual sin compensaciones  Mujeres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart17pieoptions"></chart>
@@ -658,7 +820,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual sin compensaciones Hombres Grupo C1</h5>
+                                    <h5>Salario bruto anual sin compensaciones Hombres </h5>
                                 </header>
                                 <div class="widget-body">
                                   <chart [options]="chart18pieoptions"></chart>
@@ -668,7 +830,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual con compensaciones  Mujeres Grupo C1</h5>
+                                    <h5>Salario bruto anual con compensaciones  Mujeres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart19pieoptions"></chart>
@@ -676,7 +838,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual con compensaciones  Hombres Grupo C1</h5>
+                                    <h5>Salario bruto anual con compensaciones  Hombres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart20pieoptions"></chart>
@@ -688,7 +850,7 @@
                          <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Retribuciones salariales Comparativa por sexo - Grupo C2  (Sin compensaciones)</h5>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Oficialías Administrativas (Sin compensaciones)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart11options"></chart> 
@@ -697,7 +859,7 @@
 
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Retribuciones salariales Comparativa por sexo - Grupo C2 (Con compensaciones)</h5>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Oficialías Administrativas (Con compensaciones)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart12options"></chart> 
@@ -707,7 +869,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual sin compensaciones  Mujeres Grupo C2</h5>
+                                    <h5>Salario bruto anual sin compensaciones  Mujeres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart21pieoptions"></chart>
@@ -715,7 +877,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual sin compensaciones Hombres Grupo C2</h5>
+                                    <h5>Salario bruto anual sin compensaciones Hombres </h5>
                                 </header>
                                 <div class="widget-body">
                                   <chart [options]="chart22pieoptions"></chart>
@@ -725,7 +887,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual con compensaciones  Mujeres Grupo C2</h5>
+                                    <h5>Salario bruto anual con compensaciones  Mujeres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart23pieoptions"></chart>
@@ -733,7 +895,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual con compensaciones  Hombres Grupo C2</h5>
+                                    <h5>Salario bruto anual con compensaciones  Hombres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart24pieoptions"></chart>
@@ -745,7 +907,7 @@
                          <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Retribuciones salariales Comparativa por sexo - Grupo E  (Sin compensaciones)</h5>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Personal Subalterno (Sin compensaciones)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart13options"></chart> 
@@ -754,7 +916,7 @@
 
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Retribuciones salariales Comparativa por sexo - Grupo E (Con compensaciones)</h5>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Personal Subalterno (Con compensaciones)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart14options"></chart> 
@@ -764,7 +926,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual sin compensaciones  Mujeres Grupo E</h5>
+                                    <h5>Salario bruto anual sin compensaciones  Mujeres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart25pieoptions"></chart>
@@ -772,7 +934,7 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual sin compensaciones Hombres Grupo E</h5>
+                                    <h5>Salario bruto anual sin compensaciones Hombres </h5>
                                 </header>
                                 <div class="widget-body">
                                   <chart [options]="chart26pieoptions"></chart>
@@ -782,7 +944,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual con compensaciones  Mujeres Grupo E</h5>
+                                    <h5>Salario bruto anual con compensaciones  Mujeres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart27pieoptions"></chart>
@@ -790,13 +952,325 @@
                             </div>
                             <div class="col-md-12">
                                 <header>
-                                    <h5>Salario bruto anual con compensaciones  Hombres Grupo C2</h5>
+                                    <h5>Salario bruto anual con compensaciones  Hombres </h5>
                                 </header>
                                 <div class="widget-body">
                                    <chart [options]="chart28pieoptions"></chart>
                                 </div>
                             </div>
                         </div>
+
+
+
+
+
+
+                        <!-- nuevas gráficas -->
+                        <!-- Gráficas 694-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Personal Auxiliar Administrativo (Sin compensaciones)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart15options"></chart> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Personal Auxiliar Administrativo (Con compensaciones)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart16options"></chart> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual sin compensaciones  Mujeres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart29pieoptions"></chart>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual sin compensaciones Hombres </h5>
+                                </header>
+                                <div class="widget-body">
+                                  <chart [options]="chart30pieoptions"></chart>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual con compensaciones  Mujeres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart31pieoptions"></chart>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual con compensaciones  Hombres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart32pieoptions"></chart>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- graf 695 -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Oficiales y Oficialas de primera y segunda  (Sin compensaciones)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart17options"></chart> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Oficiales y Oficialas de primera y segunda  (Con compensaciones)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart18options"></chart> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual sin compensaciones  Mujeres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart33pieoptions"></chart>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual sin compensaciones Hombres </h5>
+                                </header>
+                                <div class="widget-body">
+                                  <chart [options]="chart34pieoptions"></chart>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual con compensaciones  Mujeres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart35pieoptions"></chart>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual con compensaciones  Hombres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart36pieoptions"></chart>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- graf 696 -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Oficiales y Oficialas de tercera y Especialistas   (Sin compensaciones)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart19options"></chart> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Oficiales y Oficialas de tercera y Especialistas   (Con compensaciones)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart20options"></chart> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual sin compensaciones  Mujeres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart37pieoptions"></chart>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual sin compensaciones Hombres </h5>
+                                </header>
+                                <div class="widget-body">
+                                  <chart [options]="chart38pieoptions"></chart>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual con compensaciones  Mujeres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart39pieoptions"></chart>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual con compensaciones  Hombres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart40pieoptions"></chart>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- graf 697 -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Peón / Peona   (Sin compensaciones)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart21options"></chart> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Peón / Peona   (Con compensaciones)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart22options"></chart> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual sin compensaciones  Mujeres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart41pieoptions"></chart>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual sin compensaciones Hombres </h5>
+                                </header>
+                                <div class="widget-body">
+                                  <chart [options]="chart42pieoptions"></chart>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual con compensaciones  Mujeres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart43pieoptions"></chart>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual con compensaciones  Hombres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart44pieoptions"></chart>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- graf 698 -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Menores de dieciocho años, cualquiera que sea su categoría profesional (Sin compensaciones)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart23options"></chart> 
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Retribuciones salariales Comparativa por sexo - Menores de dieciocho años, cualquiera que sea su categoría profesional (Con compensaciones)</h5>
+                                </header>
+                                <div class="widget-body">
+                                    <chart [options]="chart24options"></chart> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual sin compensaciones  Mujeres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart45pieoptions"></chart>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual sin compensaciones Hombres </h5>
+                                </header>
+                                <div class="widget-body">
+                                  <chart [options]="chart46pieoptions"></chart>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual con compensaciones  Mujeres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart47pieoptions"></chart>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <header>
+                                    <h5>Salario bruto anual con compensaciones  Hombres </h5>
+                                </header>
+                                <div class="widget-body">
+                                   <chart [options]="chart48pieoptions"></chart>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- fin nuevas gráficas -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     </div>
                 </section>

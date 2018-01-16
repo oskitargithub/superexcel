@@ -147,6 +147,13 @@ export class RetribucionesPrComponent implements OnInit {
             preg_419_tabla_5: this.fb.array([]),
             preg_420_tabla_5: this.fb.array([]),
             preg_421_tabla_5: this.fb.array([]),
+
+            preg_694_tabla_5: this.fb.array([]),
+            preg_695_tabla_5: this.fb.array([]),
+            preg_696_tabla_5: this.fb.array([]),
+            preg_697_tabla_5: this.fb.array([]),
+            preg_698_tabla_5: this.fb.array([]),
+            
         });
     }
 
@@ -159,7 +166,15 @@ export class RetribucionesPrComponent implements OnInit {
         let valor_c1 = (<FormGroup>(<FormArray>this.ifForm.get('preg_419_tabla_5')).controls[indice]).controls['mujeres'].value;
         let valor_c2 = (<FormGroup>(<FormArray>this.ifForm.get('preg_420_tabla_5')).controls[indice]).controls['mujeres'].value;
         let valor_e = (<FormGroup>(<FormArray>this.ifForm.get('preg_421_tabla_5')).controls[indice]).controls['mujeres'].value;
-        let totalm = valor_a1 * 1 + valor_a2 * 1 + valor_b * 1 + valor_c1 * 1 + valor_c2 * 1 + valor_e * 1;
+
+
+        let valor_4 = (<FormGroup>(<FormArray>this.ifForm.get('preg_694_tabla_5')).controls[indice]).controls['mujeres'].value;
+        let valor_5 = (<FormGroup>(<FormArray>this.ifForm.get('preg_695_tabla_5')).controls[indice]).controls['mujeres'].value;
+        let valor_6 = (<FormGroup>(<FormArray>this.ifForm.get('preg_696_tabla_5')).controls[indice]).controls['mujeres'].value;
+        let valor_7 = (<FormGroup>(<FormArray>this.ifForm.get('preg_697_tabla_5')).controls[indice]).controls['mujeres'].value;
+        let valor_8 = (<FormGroup>(<FormArray>this.ifForm.get('preg_698_tabla_5')).controls[indice]).controls['mujeres'].value;
+
+        let totalm = valor_a1 * 1 + valor_a2 * 1 + valor_b * 1 + valor_c1 * 1 + valor_c2 * 1 + valor_e * 1 + valor_4 * 1 + valor_5 * 1 + valor_6 * 1 + valor_7 * 1 + valor_8 * 1;
         if (!isNaN(totalm))
             (<FormGroup>(<FormArray>this.ifForm.get('preg_415_tabla_5')).controls[indice]).controls['mujeres'].setValue(totalm);
 
@@ -169,7 +184,15 @@ export class RetribucionesPrComponent implements OnInit {
         valor_c1 = (<FormGroup>(<FormArray>this.ifForm.get('preg_419_tabla_5')).controls[indice]).controls['hombres'].value;
         valor_c2 = (<FormGroup>(<FormArray>this.ifForm.get('preg_420_tabla_5')).controls[indice]).controls['hombres'].value;
         valor_e = (<FormGroup>(<FormArray>this.ifForm.get('preg_421_tabla_5')).controls[indice]).controls['hombres'].value;
-        let totalh = valor_a1 * 1 + valor_a2 * 1 + valor_b * 1 + valor_c1 * 1 + valor_c2 * 1 + valor_e * 1;
+
+        valor_4 = (<FormGroup>(<FormArray>this.ifForm.get('preg_694_tabla_5')).controls[indice]).controls['hombres'].value;
+        valor_5 = (<FormGroup>(<FormArray>this.ifForm.get('preg_695_tabla_5')).controls[indice]).controls['hombres'].value;
+        valor_6 = (<FormGroup>(<FormArray>this.ifForm.get('preg_696_tabla_5')).controls[indice]).controls['hombres'].value;
+        valor_7 = (<FormGroup>(<FormArray>this.ifForm.get('preg_697_tabla_5')).controls[indice]).controls['hombres'].value;
+        valor_8 = (<FormGroup>(<FormArray>this.ifForm.get('preg_698_tabla_5')).controls[indice]).controls['hombres'].value;
+
+
+        let totalh = valor_a1 * 1 + valor_a2 * 1 + valor_b * 1 + valor_c1 * 1 + valor_c2 * 1 + valor_e * 1  + valor_4 * 1 + valor_5 * 1 + valor_6 * 1 + valor_7 * 1 + valor_8 * 1;
         if (!isNaN(totalh))
             (<FormGroup>(<FormArray>this.ifForm.get('preg_415_tabla_5')).controls[indice]).controls['hombres'].setValue(totalh);
 
@@ -180,7 +203,14 @@ export class RetribucionesPrComponent implements OnInit {
         valor_c1 = (<FormGroup>(<FormArray>this.ifForm.get('preg_419_tabla_5')).controls[indice]).controls['mujeres2'].value;
         valor_c2 = (<FormGroup>(<FormArray>this.ifForm.get('preg_420_tabla_5')).controls[indice]).controls['mujeres2'].value;
         valor_e = (<FormGroup>(<FormArray>this.ifForm.get('preg_421_tabla_5')).controls[indice]).controls['mujeres2'].value;
-        let totalm2 = valor_a1 * 1 + valor_a2 * 1 + valor_b * 1 + valor_c1 * 1 + valor_c2 * 1 + valor_e * 1;
+
+        valor_4 = (<FormGroup>(<FormArray>this.ifForm.get('preg_694_tabla_5')).controls[indice]).controls['mujeres2'].value;
+        valor_5 = (<FormGroup>(<FormArray>this.ifForm.get('preg_695_tabla_5')).controls[indice]).controls['mujeres2'].value;
+        valor_6 = (<FormGroup>(<FormArray>this.ifForm.get('preg_696_tabla_5')).controls[indice]).controls['mujeres2'].value;
+        valor_7 = (<FormGroup>(<FormArray>this.ifForm.get('preg_697_tabla_5')).controls[indice]).controls['mujeres2'].value;
+        valor_8 = (<FormGroup>(<FormArray>this.ifForm.get('preg_698_tabla_5')).controls[indice]).controls['mujeres2'].value;
+
+        let totalm2 = valor_a1 * 1 + valor_a2 * 1 + valor_b * 1 + valor_c1 * 1 + valor_c2 * 1 + valor_e * 1  + valor_4 * 1 + valor_5 * 1 + valor_6 * 1 + valor_7 * 1 + valor_8 * 1;
         if (!isNaN(totalm2))
             (<FormGroup>(<FormArray>this.ifForm.get('preg_415_tabla_5')).controls[indice]).controls['mujeres2'].setValue(totalm2);
 
@@ -190,7 +220,15 @@ export class RetribucionesPrComponent implements OnInit {
         valor_c1 = (<FormGroup>(<FormArray>this.ifForm.get('preg_419_tabla_5')).controls[indice]).controls['hombres2'].value;
         valor_c2 = (<FormGroup>(<FormArray>this.ifForm.get('preg_420_tabla_5')).controls[indice]).controls['hombres2'].value;
         valor_e = (<FormGroup>(<FormArray>this.ifForm.get('preg_421_tabla_5')).controls[indice]).controls['hombres2'].value;
-        let totalh2 = valor_a1 * 1 + valor_a2 * 1 + valor_b * 1 + valor_c1 * 1 + valor_c2 * 1 + valor_e * 1;
+
+        valor_4 = (<FormGroup>(<FormArray>this.ifForm.get('preg_694_tabla_5')).controls[indice]).controls['hombres2'].value;
+        valor_5 = (<FormGroup>(<FormArray>this.ifForm.get('preg_695_tabla_5')).controls[indice]).controls['hombres2'].value;
+        valor_6 = (<FormGroup>(<FormArray>this.ifForm.get('preg_696_tabla_5')).controls[indice]).controls['hombres2'].value;
+        valor_7 = (<FormGroup>(<FormArray>this.ifForm.get('preg_697_tabla_5')).controls[indice]).controls['hombres2'].value;
+        valor_8 = (<FormGroup>(<FormArray>this.ifForm.get('preg_698_tabla_5')).controls[indice]).controls['hombres2'].value;
+
+
+        let totalh2 = valor_a1 * 1 + valor_a2 * 1 + valor_b * 1 + valor_c1 * 1 + valor_c2 * 1 + valor_e * 1  + valor_4 * 1 + valor_5 * 1 + valor_6 * 1 + valor_7 * 1 + valor_8 * 1;
         if (!isNaN(totalh2))
             (<FormGroup>(<FormArray>this.ifForm.get('preg_415_tabla_5')).controls[indice]).controls['hombres2'].setValue(totalh2);
 
@@ -294,6 +332,12 @@ export class RetribucionesPrComponent implements OnInit {
                     this.setPregunta(response.preg_420_tabla_5, 'preg_420_tabla_5');
                     this.setPregunta(response.preg_421_tabla_5, 'preg_421_tabla_5');
 
+                    this.setPregunta(response.preg_694_tabla_5, 'preg_694_tabla_5');
+                    this.setPregunta(response.preg_695_tabla_5, 'preg_695_tabla_5');
+                    this.setPregunta(response.preg_696_tabla_5, 'preg_696_tabla_5');
+                    this.setPregunta(response.preg_697_tabla_5, 'preg_697_tabla_5');
+                    this.setPregunta(response.preg_698_tabla_5, 'preg_698_tabla_5');
+
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
                     this.valorBarraProgreso();
@@ -369,6 +413,11 @@ export class RetribucionesPrComponent implements OnInit {
             preg_419_tabla_5: formModel.preg_419_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
             preg_420_tabla_5: formModel.preg_420_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
             preg_421_tabla_5: formModel.preg_421_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+            preg_694_tabla_5: formModel.preg_694_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+            preg_695_tabla_5: formModel.preg_695_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+            preg_696_tabla_5: formModel.preg_696_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+            preg_697_tabla_5: formModel.preg_697_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
+            preg_698_tabla_5: formModel.preg_698_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),            
         };
         return saveModelo;
     }
