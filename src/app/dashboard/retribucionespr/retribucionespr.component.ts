@@ -276,8 +276,8 @@ export class RetribucionesPrComponent implements OnInit {
                     }
                 }
                 else {
-                    this.mujerestotal = response.data.preg_46;
-                    this.hombrestotal = response.data.preg_47;
+                    this.mujerestotal = response.data.preg_381;
+                    this.hombrestotal = response.data.preg_382;
                     this.getDatosModelo();
                     console.log("El total da" + this.SumaTotal());
                     /*Messenger().post({
