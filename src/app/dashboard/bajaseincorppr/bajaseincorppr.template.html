@@ -94,7 +94,7 @@
                                         <div class="col-md-6 offset-md-2 ">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input class="form-control" [readonly]="i<7" formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
+                                                    <input class="form-control" [readonly]="i<13" formControlName="texto" tooltip="{{datos.controls['texto'].value}}" placeholder="Denominación"
                                                     />
                                                 </div>
                                             </div>
@@ -122,7 +122,7 @@
 
 
                                         <div class="col-md-1 ">
-                                            <span *ngIf="i > 6">
+                                            <span *ngIf="i > 12">
                                      <button type="button"(click)="removeFila(ifForm.controls.preg_465_tabla_3, i,'preg_465_tabla_3')" class="btn btn-danger btn-xs mb-xs">Borrar</button> 
                                         </span>
                                         </div>
