@@ -130,17 +130,17 @@ export class BajasEIncorpPrAdmComponent implements OnInit {
     this.chart1options = this.funccioneshct3.GraficaCompuesta1('Baja en la organización en los dos últimos años', '',this.modelo.preg_465_tabla_3);
     this.chart2options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Baja en la organización en los dos últimos años', 'Proporcionada',this.modelo.preg_465_tabla_3);
     this.chart3options = this.funccioneshct3.GraficaCompuestat5('Incorporaciones', '',this.modelo.preg_466_tabla_5);
-    this.chart4options = this.funccioneshct3.GraficaCompuestat5Proporcionada('Incorporaciones', 'Proporcionada',this.modelo.preg_466_tabla_5);
+    this.chart4options = this.funccioneshct3.GraficaCompuestat5_2('Bajas', '',this.modelo.preg_466_tabla_5);
     this.chart5options = this.funccioneshct3.GraficaCompuesta1('Incorporaciones último año por tipo de contrato', '',this.modelo.preg_467_tabla_3);
     this.chart6options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Incorporaciones último año por tipo de contrato', 'Proporcionada',this.modelo.preg_467_tabla_3);
-    this.chart7options = this.funccioneshct3.GraficaCompuesta1('Incorporaciones último año por categoría', '',this.modelo.preg_468_tabla_3);
-    this.chart8options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Incorporaciones último año por categoría', 'Proporcionada',this.modelo.preg_468_tabla_3);
-    this.chart7pieoptions = this.funccioneshct3.GraficaPieCompuesta1('Incorporaciones último año por categoría Mujeres', '',this.modelo.preg_468_tabla_3);
-    this.chart8pieoptions = this.funccioneshct3.GraficaPieCompuesta2('Incorporaciones último año por categoría Hombres', '',this.modelo.preg_468_tabla_3);
-    this.chart9options = this.funccioneshct3.GraficaCompuesta1('BAJAS DEFINITIVAS ÚLTIMO AÑO POR GRUPO DE EDAD', '',this.modelo.preg_469_tabla_3);
-    this.chart10options = this.funccioneshct3.GraficaCompuesta1Proporcionada('BAJAS DEFINITIVAS ÚLTIMO AÑO POR GRUPO DE EDAD', 'Proporcionada',this.modelo.preg_469_tabla_3);
-    this.chart11options = this.funccioneshct3.GraficaCompuesta1('BAJAS TEMPORALES, PERMISOS Y EXCEDENCIAS ÚLTIMO AÑO', '',this.modelo.preg_470_tabla_3);
-    this.chart12options = this.funccioneshct3.GraficaCompuesta1Proporcionada('BAJAS TEMPORALES, PERMISOS Y EXCEDENCIAS ÚLTIMO AÑO', 'Proporcionada',this.modelo.preg_470_tabla_3);
+    this.chart7options = this.funccioneshct3.GraficaCompuesta1('Incorporaciones último año por ETT', '',this.modelo.preg_468_tabla_3);
+    this.chart8options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Incorporaciones último año por ETT', 'Proporcionada',this.modelo.preg_468_tabla_3);
+    this.chart7pieoptions = this.funccioneshct3.GraficaPieCompuesta1('Incorporaciones último año por ETT Mujeres', '',this.modelo.preg_468_tabla_3);
+    this.chart8pieoptions = this.funccioneshct3.GraficaPieCompuesta2('Incorporaciones último año por ETT Hombres', '',this.modelo.preg_468_tabla_3);
+    this.chart9options = this.funccioneshct3.GraficaCompuesta1('Incorporaciones último año por categoría profesional', '',this.modelo.preg_469_tabla_3);
+    this.chart10options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Incorporaciones último año por categoría profesional', 'Proporcionada',this.modelo.preg_469_tabla_3);
+    this.chart11options = this.funccioneshct3.GraficaCompuesta1('Incorporaciones último año por ETT y categoría profesional', '',this.modelo.preg_470_tabla_3);
+    this.chart12options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Incorporaciones último año por ETT y categoría profesional', 'Proporcionada',this.modelo.preg_470_tabla_3);
 
 
     this.chart13options = this.funccioneshct3.GraficaCompuesta1('BAJAS DEFINITIVAS ÚLTIMO AÑO', '',this.modelo.preg_471_tabla_3);

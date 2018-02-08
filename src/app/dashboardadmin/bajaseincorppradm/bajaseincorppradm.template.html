@@ -127,17 +127,23 @@
                                     <table class="table table-bordered table-sm">
                                         <thead>
                                             <tr>
+                                                    <th class="text-md-center"></th>
+                                                    <th colspan="5" class="text-md-center">Incorporaciones</th>
+                                                    <th colspan="5" class="text-md-center">Bajas</th>
+                                            </tr>
+
+                                            <tr>
                                                 <th class="text-md-center">Año</th>
                                                 <th class="text-md-center">Nº de Mujeres</th>
                                                 <th class="text-md-center">Porcentaje</th>
                                                 <th class="text-md-center">Nº de Hombres</th>
                                                 <th class="text-md-center">Porcentaje</th>
                                                 <th class="text-md-center">Total</th>
-                                                <th class="text-md-center">Nº Mujeres absoluto</th>
-                                                <th class="text-md-center">Nº Hombres absoluto</th>
-                                                <th class="text-md-center">Total absoluto</th>
-                                                <th class="text-md-center">% Mujeres absoluto</th>
-                                                <th class="text-md-center">% Hombres absoluto</th>
+                                                <th class="text-md-center">Nº de Mujeres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Nº de Hombres</th>
+                                                <th class="text-md-center">Porcentaje</th>
+                                                <th class="text-md-center">Total</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -149,11 +155,11 @@
                                                     <td class="text-md-center">{{item.hombres}}</td>
                                                     <td class="text-md-center">{{funcionest5.getHombresDeFila1(item, modelo.preg_466_tabla_5) | percent:'1.0-0'}}</td>
                                                     <td class="text-md-center">{{funcionest5.getSumaFila1(item)}}</td>
-                                                    <td class="text-md-center">{{funcionest5.getMujeresAbs1(item, modelo.preg_466_tabla_5)}}</td>
-                                                    <td class="text-md-center">{{funcionest5.getHombresAbs1(item, modelo.preg_466_tabla_5)}}</td>
-                                                    <td class="text-md-center">{{(funcionest5.getTotalAbs1(item, modelo.preg_466_tabla_5))}}</td>
-                                                    <td class="text-md-center">{{funcionest5.getPorcMujeresAbs1(item,modelo.preg_466_tabla_5) | percent:'1.0-0'}}</td>
-                                                    <td class="text-md-center">{{funcionest5.getPorcHombresAbs1(item,modelo.preg_466_tabla_5) | percent:'1.0-0'}}</td>                                                                                               
+                                                    <td class="text-md-center">{{item.mujeres2}}</td>
+                                                    <td class="text-md-center">{{funcionest5.getMujeresDeFila2(item, modelo.preg_466_tabla_5) | percent:'1.0-0'}}</td>
+                                                    <td class="text-md-center">{{item.hombres2}}</td>
+                                                    <td class="text-md-center">{{funcionest5.getHombresDeFila2(item, modelo.preg_466_tabla_5) | percent:'1.0-0'}}</td>
+                                                    <td class="text-md-center">{{funcionest5.getSumaFila2(item)}}</td>                                                                                               
                                             </tr>
 
                                             <!-- Totales -->
@@ -171,11 +177,11 @@
                                                     {{funcionest5.getTotalHombresMujeres1(modelo.preg_466_tabla_5)}}
 
                                                 </th>
-                                                <th class="text-md-center" scope="row"></th>
-                                                <th class="text-md-center" scope="row"></th>
-                                                <th class="text-md-center" scope="row"></th>
-                                                <th class="text-md-center" scope="row"></th>
-                                                <th class="text-md-center" scope="row"></th>
+                                                <th class="text-md-center" scope="row"> {{funcionest5.getTotalMujeres2(modelo.preg_466_tabla_5)}}</th>
+                                                <th class="text-md-center" scope="row">{{funcionest5.getSumaMujeresDelTotal2(modelo.preg_466_tabla_5) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">{{funcionest5.getTotalHombres2(modelo.preg_466_tabla_5)}}</th>
+                                                <th class="text-md-center" scope="row">{{funcionest5.getSumaHombresDelTotal2(modelo.preg_466_tabla_5) | percent:'1.0-0'}}</th>
+                                                <th class="text-md-center" scope="row">{{funcionest5.getTotalHombresMujeres2(modelo.preg_466_tabla_5)}}</th>
                                             </tr>
 
                                         </tbody>
@@ -187,7 +193,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <header>
-                                    <h5>INCORPORACIONES Y BAJAS (INFORMACIÓN CUANTITATIVA)</h5>
+                                    <h5>INCORPORACIONES (INFORMACIÓN CUANTITATIVA)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart3options"></chart>
@@ -196,7 +202,7 @@
 
                             <div class="col-md-6">
                                 <header>
-                                    <h5>INCORPORACIONES Y BAJAS (INFORMACIÓN CUANTITATIVA) (Proporcionado)</h5>
+                                    <h5>BAJAS (INFORMACIÓN CUANTITATIVA)</h5>
                                 </header>
                                 <div class="widget-body">
                                     <chart [options]="chart4options"></chart>
