@@ -70,7 +70,7 @@
                                         <md-checkbox formControlName="valor1">
                                             {{ifForm.controls.preg_436.value[i].texto}}
                                         </md-checkbox>
-                                        <div class="col-md-10" *ngIf="i==5">
+                                        <div class="col-md-10" *ngIf="ifForm.controls.preg_436.value[i].respuesta==561">
                                             <input [readonly]="!ifForm.controls.preg_436.value[i].valor1" type="text" class="form-control" formControlName="texto1" tooltip="Otros"
                                                 placeholder="Otros" />
                                         </div>

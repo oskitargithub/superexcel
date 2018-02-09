@@ -1044,6 +1044,9 @@ export class FuncionesHighChartsT3Service {
         tabla.forEach((elemento, index) => {
             if (elemento.mujeres != 0) {
                 if (tipo == "fila") {
+                    
+                    console.log("mujeres"+elemento.mujeres+"/"+this.getMujeresDeFila(elemento, tabla));
+                    
                     datos.push({ y: elemento.mujeres, name: elemento.texto, numero: this.getMujeresDeFila(elemento, tabla), color: this.colorespie[index] });
                 }
                 else if (tipo == "total") {

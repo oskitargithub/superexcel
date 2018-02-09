@@ -188,6 +188,8 @@ export class SelPersonalPrComponent implements OnInit {
             });
     }
 
+    
+
     onSubmit(redirigir: boolean) {
         this.modelo = this.preparaParaGuardar();
         this.servicio.setDatosModelo(this.modelo)
