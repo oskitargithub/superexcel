@@ -135,8 +135,8 @@ export class TipoDeContratoPrAdmComponent implements OnInit {
   asignaDatosGraficas() {
     /** Asignamos los datos para las gráficas */
     this.chart1options = this.funccioneshct3.GraficaCompuesta1('Tipo de relación contractual', '', this.modelo.preg_406_tabla_3, "fila");
-    this.chart2_1options = this.funccioneshct3.GraficaCompuesta1('Personas contratados de forma indefinida', '', this.modelo.preg_408_tabla_3, "fila");
-    this.chart2_2options = this.funccioneshct3.GraficaCompuesta1('Indefinidas por cambio o conversión de contrato temporal', '', this.modelo.preg_409_tabla_3, "fila");
+    this.chart2_1options = this.funccioneshct3.GraficaCompuesta1('Personas indefinidas mediante programas o situaciones especiales', '', this.modelo.preg_408_tabla_3, "fila");
+    this.chart2_2options = this.funccioneshct3.GraficaCompuesta1('Personas indefinidas por cambio o conversión del contrato temporal ', '', this.modelo.preg_409_tabla_3, "fila");
     this.chart2options = this.funccioneshct3.GraficaCompuesta1('Personas contratadas de manera temporal', '', this.modelo.preg_410_tabla_3, "fila");
     this.chart7options = this.funccioneshct3.GraficaCompuesta1('Comparativo Jornada laboral', '', this.modelo.preg_411_tabla_3, "fila");    
     this.chart3options = this.funccioneshct3.GraficaCompuesta1('Comparativa según el tipo de jornada', '', this.modelo.preg_412_tabla_3, "fila");
