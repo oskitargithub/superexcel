@@ -9,6 +9,9 @@ export class Retribuciones2PrModel{
     public preg_428_tabla_5: Tabla5Model[];
     public preg_429_tabla_5: Tabla5Model[];
     public preg_430_tabla_3: Tabla3Model[];
+
+    public preg_699_tabla_5: Tabla5Model[];
+
     constructor() {
         this.data = new dataModel();
     }
