@@ -138,10 +138,10 @@ export class ConciliacionPrAdmComponent implements OnInit {
     this.chart4options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Responsabilidades familiares en No. de hijos e hijas', 'Proporcionada',this.modelo.preg_492_tabla_3);
     this.chart5options = this.funccioneshct3.GraficaCompuesta1('Responsabilidades familiares en No. De hijos e hijas con discapacidad', '',this.modelo.preg_493_tabla_3, "fila");
     this.chart6options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Responsabilidades familiares en No. De hijos e hijas con discapacidad', 'Proporcionada',this.modelo.preg_493_tabla_3);
-    this.chart7options = this.funccioneshct3.GraficaCompuesta1('Responsabilidades familiares en No. De hijos e hijas por edad', '',this.modelo.preg_496_tabla_3, "fila");
-    this.chart8options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Responsabilidades familiares en No. De hijos e hijas por edad', 'Proporcionada',this.modelo.preg_496_tabla_3);
-    this.chart9options = this.funccioneshct3.GraficaCompuesta1('Responsabilidades familiares en No. De hijos e hijas por edad con discapacidad', '',this.modelo.preg_497_tabla_3, "fila");
-    this.chart10options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Responsabilidades familiares en No. De hijos e hijas por edad con discapacidad', 'Proporcionada',this.modelo.preg_497_tabla_3);
+    this.chart7options = this.funccioneshct3.GraficaCompuesta1('Responsabilidades familiares de hijas e hijos por edad', '',this.modelo.preg_496_tabla_3, "fila");
+    this.chart8options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Responsabilidades familiares de hijas e hijos por edad', 'Proporcionada',this.modelo.preg_496_tabla_3);
+    this.chart9options = this.funccioneshct3.GraficaCompuesta1('Responsabilidades familiares de hijas e hijos con discapacidad por edad', '',this.modelo.preg_497_tabla_3, "fila");
+    this.chart10options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Responsabilidades familiares de hijas e hijos con discapacidad por edad', 'Proporcionada',this.modelo.preg_497_tabla_3);
     this.chart11options = this.funccioneshct3.GraficaCompuesta1('Responsabilidades familiares en No. De personas dependientes a cargo (No hijos/as)', '',this.modelo.preg_498_tabla_3, "fila");
     this.chart12options = this.funccioneshct3.GraficaCompuesta1Proporcionada('Responsabilidades familiares en No. De personas dependientes a cargo (No hijos/as)', 'Proporcionada',this.modelo.preg_498_tabla_3);
     

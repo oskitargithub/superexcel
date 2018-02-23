@@ -8,7 +8,6 @@ import { FuncionesService } from '../serviciofunciones/funciones.service';
 import { FuncionesT5Service } from '../serviciofunciones/funcionest5.service';
 import { InfoEncuestaPRModel } from './infoencuestapr.model';
 declare var Messenger: any;
-
 @Component({
     selector: 'infoencuestapr',
     templateUrl: './infoencuestapr.template.html',

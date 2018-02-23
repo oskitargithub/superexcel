@@ -6,7 +6,6 @@ import { TooltipModule } from 'ng2-bootstrap';
 import { LiveTileModule } from '../../components/tile/tile.module';
 import { WindowRef } from '../infoencuestapb/windowref';
 import { InfoEncuestaPRComponent } from './infoencuestapr.component';
-
 export const routes = [
   {path: '', component: InfoEncuestaPRComponent, pathMatch: 'full'}
 ];
