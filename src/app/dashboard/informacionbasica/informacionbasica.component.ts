@@ -234,11 +234,22 @@ export class InformacionBasicaComponent implements OnInit {
                     console.log(response.data);
                     console.log(response.user);
                      Object.getOwnPropertyNames(response.data).map((key: string) =>
-                        (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
+                     {
+                         if((<FormArray>this.ifForm.controls['data']).controls[key] != undefined)
+                         {
+                            (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
+                         }
+                     }
                     );
 
                      Object.getOwnPropertyNames(response.user).map((key: string) =>
-                        (<FormArray>this.ifForm.controls['user']).controls[key].setValue(response.user[key])
+                     {
+                         if((<FormArray>this.ifForm.controls['user']).controls[key]!=undefined)
+                         {
+                            (<FormArray>this.ifForm.controls['user']).controls[key].setValue(response.user[key])
+                         }
+                        
+                     }
                     );                   
                     console.log("asignado");
                     this.addValidaciones();
