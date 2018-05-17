@@ -115,6 +115,8 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('fditoken');
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuariocuest');
     this.isLoggedIn = false;
   }
 }

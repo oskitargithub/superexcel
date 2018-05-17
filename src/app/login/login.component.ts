@@ -141,6 +141,8 @@ export class Login implements OnInit {
                             this.authService.api_token = datosjau.api_token;
                             console.log(this.authuser);
                             localStorage.setItem('fditoken', JSON.stringify({ "token": this.authuser.token, "usuario": this.authuser.usuario, "perfil": this.authuser.perfil, "api_token":datosjau.api_token }));                             
+                            localStorage.setItem('usuariocuest', datosjau.id);
+                            localStorage.setItem('usuario', datosjau.user);
                             //let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '';
                             let redirect = '';
                             if(this.authuser.perfil == "ADM"){

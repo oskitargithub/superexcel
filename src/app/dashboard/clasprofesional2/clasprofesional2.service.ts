@@ -31,13 +31,13 @@ export class ClasProfesional2Service {
     let tokenfdi = JSON.parse(localStorage.getItem('fditoken'));
     let mitoken = localStorage.getItem('token');
     let api_token = tokenfdi.api_token;
-    let usuariocuest = localStorage.getItem('usuariocuest');
+    let usuario = localStorage.getItem('usuario');
     let parametros2: URLSearchParams = new URLSearchParams();
     //parametros2.set('uc', usuariocuest);
     parametros2.set('_token', mitoken);
     parametros2.set('api_token', api_token);
     let headers = '';
-    return this._http.get(this.config.apilaravel + "cuestionario/organo/"+usuariocuest, { search: parametros2 }).map(res => {
+    return this._http.get(this.config.apilaravel + "cuestionario/organo/"+usuario, { search: parametros2 }).map(res => {
       let headers = res.headers;
       let miobjeto = res.json();
       return (miobjeto);
