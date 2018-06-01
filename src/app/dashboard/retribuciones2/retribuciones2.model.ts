@@ -15,6 +15,8 @@ export class Retribuciones2Model{
     public preg_84_tabla_5: Tabla5Model[];
     public preg_85_tabla_5: Tabla5Model[];
     public preg_86_tabla_3: Tabla3Model[];
+
+    public preg_700_tabla_5: Tabla5Model[]; /*resumen*/
 }
 
 

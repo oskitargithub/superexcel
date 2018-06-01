@@ -52,6 +52,9 @@ export class RetribucionesAdm2Component implements OnInit {
   public chart16options: Object;
   public chart17options: Object;
 
+  public chart18options: Object;
+  public chart19options: Object;
+
   public chart1pieoptions: Object;
   public chart2pieoptions: Object;
 
@@ -164,6 +167,10 @@ export class RetribucionesAdm2Component implements OnInit {
     
     this.chart16options = this.funccioneshct3.GraficaCompuestat5('Distribución BANDA SALARIAL Menos de 7.200 € Sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_85_tabla_5,1);
     this.chart17options = this.funccioneshct3.GraficaCompuestat5_2('Distribución BANDA SALARIAL Menos de 7.200 € Con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_85_tabla_5,1);
+
+    this.chart18options = this.funccioneshct3.GraficaCompuestat5('Retribuciones sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_700_tabla_5, 1);
+    this.chart19options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_700_tabla_5, 1);
+    
   }
 
 

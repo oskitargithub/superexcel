@@ -34,6 +34,9 @@ export class Retribuciones2Component implements OnInit {
     public dynamic: number;
     public type: string;
 
+    public mujerestotal: number = 0;
+    public hombrestotal: number = 0;
+
     constructor(private router: Router,
         private fb: FormBuilder,
         private servicio: Retribuciones2Service,
@@ -92,6 +95,7 @@ export class Retribuciones2Component implements OnInit {
             preg_84_tabla_5: this.fb.array([]),
             preg_85_tabla_5: this.fb.array([]),
             preg_86_tabla_3: this.fb.array([]),
+            preg_700_tabla_5: this.fb.array([]),
         });
     }
 
@@ -179,6 +183,8 @@ export class Retribuciones2Component implements OnInit {
                     this.setPregunta(response.preg_85_tabla_5, 'preg_85_tabla_5');
                     this.setPregunta3(response.preg_86_tabla_3, 'preg_86_tabla_3');
 
+                    this.setPregunta(response.preg_700_tabla_5, 'preg_700_tabla_5');
+
                     this.respondidasSeccion = response.respondidasSeccion;
                     this.totalSeccion = response.totalSeccion;
                     this.valorBarraProgreso();
@@ -244,6 +250,122 @@ export class Retribuciones2Component implements OnInit {
             });
     }
 
+    SumaMujeres() {
+        return this.mujerestotal * 1;
+    }
+    SumaHombres() {
+        return this.hombrestotal * 1;
+    }
+    SumaTotal() {
+        return ((this.mujerestotal * 1) + (this.hombrestotal * 1));
+    }
+    getTotalMujeres(elemento: FormArray) {
+        return elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1), 0);
+    }
+    getTotalHombres(elemento: FormArray) {
+        return elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1), 0);
+    }
+    getTotalMujeres2(elemento: FormArray) {
+        return elemento.value.map(c => c.mujeres2).reduce((sum, current) => (sum * 1) + (current * 1), 0);
+    }
+    getTotalHombres2(elemento: FormArray) {
+        return elemento.value.map(c => c.hombres2).reduce((sum, current) => (sum * 1) + (current * 1), 0);
+    }
+    getTotalMujeresT5(elemento: FormArray) {
+        let m1 = elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1), 0);
+        let m2 = elemento.value.map(c => c.mujeres2).reduce((sum, current) => (sum * 1) + (current * 1), 0);
+        /*console.log(m1 * 1 + m2 * 1);
+        console.log(this.SumaMujeres());*/
+        return (m1 * 1 + m2 * 1) != this.SumaMujeres();
+    }
+
+    getTotalHombresT5(elemento: FormArray) {
+        let h1 = elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1), 0);
+        let h2 = elemento.value.map(c => c.hombres2).reduce((sum, current) => (sum * 1) + (current * 1), 0);
+        /*console.log(h1 * 1 + h2 * 1);
+        console.log(this.SumaHombres());*/
+        return (h1 * 1 + h2 * 1) != this.SumaHombres();
+    }
+    getTotalTotal(elemento: FormArray) {
+        let hombres = elemento.value.map(c => c.hombres).reduce((sum, current) => (sum * 1) + (current * 1), 0);
+        let mujeres = elemento.value.map(c => c.mujeres).reduce((sum, current) => (sum * 1) + (current * 1), 0);
+        let hombres2 = elemento.value.map(c => c.hombres2).reduce((sum, current) => (sum * 1) + (current * 1), 0);
+        let mujeres2 = elemento.value.map(c => c.mujeres2).reduce((sum, current) => (sum * 1) + (current * 1), 0);
+        /*console.log(this.SumaTotal());
+        console.log("sumando totales");*/
+        return (hombres * 1 + mujeres * 1 + hombres2 * 1 + mujeres2 * 1) != this.SumaTotal();
+    }
+
+    CalculaValor(indice: any) {
+        //console.log("el índice es:" + indice);
+        let valor = 0;
+        let valor1 = 0;
+        let valor2 = 0;
+        let valor3 = 0;
+        switch (indice) {            
+            case 0:
+                valor = this.getTotalMujeres(<FormArray>this.ifForm.get('preg_85_tabla_5'));
+                valor1 = this.getTotalHombres(<FormArray>this.ifForm.get('preg_85_tabla_5'));
+                valor2 = this.getTotalMujeres2(<FormArray>this.ifForm.get('preg_85_tabla_5'));
+                valor3 = this.getTotalHombres2(<FormArray>this.ifForm.get('preg_85_tabla_5'));                
+                break;
+                case 1:
+                valor = this.getTotalMujeres(<FormArray>this.ifForm.get('preg_77_tabla_5'));
+                valor1 = this.getTotalHombres(<FormArray>this.ifForm.get('preg_77_tabla_5'));
+                valor2 = this.getTotalMujeres2(<FormArray>this.ifForm.get('preg_77_tabla_5'));
+                valor3 = this.getTotalHombres2(<FormArray>this.ifForm.get('preg_77_tabla_5'));                
+                break;
+                case 2:
+                valor = this.getTotalMujeres(<FormArray>this.ifForm.get('preg_78_tabla_5')); 
+                valor1 = this.getTotalHombres(<FormArray>this.ifForm.get('preg_78_tabla_5'));
+                valor2 = this.getTotalMujeres2(<FormArray>this.ifForm.get('preg_78_tabla_5'));
+                valor3 = this.getTotalHombres2(<FormArray>this.ifForm.get('preg_78_tabla_5'));               
+                break;
+                case 3:
+                valor = this.getTotalMujeres(<FormArray>this.ifForm.get('preg_79_tabla_5'));
+                valor1 = this.getTotalHombres(<FormArray>this.ifForm.get('preg_79_tabla_5'));
+                valor2 = this.getTotalMujeres2(<FormArray>this.ifForm.get('preg_79_tabla_5'));
+                valor3 = this.getTotalHombres2(<FormArray>this.ifForm.get('preg_79_tabla_5'));                
+                break;
+                case 4:
+                valor = this.getTotalMujeres(<FormArray>this.ifForm.get('preg_80_tabla_5'));
+                valor1 = this.getTotalHombres(<FormArray>this.ifForm.get('preg_80_tabla_5'));
+                valor2 = this.getTotalMujeres2(<FormArray>this.ifForm.get('preg_80_tabla_5'));
+                valor3 = this.getTotalHombres2(<FormArray>this.ifForm.get('preg_80_tabla_5'));                
+                break;
+                case 5:
+                valor = this.getTotalMujeres(<FormArray>this.ifForm.get('preg_81_tabla_5')); 
+                valor1 = this.getTotalHombres(<FormArray>this.ifForm.get('preg_81_tabla_5'));
+                valor2 = this.getTotalMujeres2(<FormArray>this.ifForm.get('preg_81_tabla_5'));
+                valor3 = this.getTotalHombres2(<FormArray>this.ifForm.get('preg_81_tabla_5'));               
+                break;
+                case 6:
+                valor = this.getTotalMujeres(<FormArray>this.ifForm.get('preg_83_tabla_5'));
+                valor1 = this.getTotalHombres(<FormArray>this.ifForm.get('preg_83_tabla_5'));
+                valor2 = this.getTotalMujeres2(<FormArray>this.ifForm.get('preg_83_tabla_5'));
+                valor3 = this.getTotalHombres2(<FormArray>this.ifForm.get('preg_83_tabla_5'));                
+                break;
+                case 7:
+                valor = this.getTotalMujeres(<FormArray>this.ifForm.get('preg_84_tabla_5'));
+                valor1 = this.getTotalHombres(<FormArray>this.ifForm.get('preg_84_tabla_5'));
+                valor2 = this.getTotalMujeres2(<FormArray>this.ifForm.get('preg_84_tabla_5'));
+                valor3 = this.getTotalHombres2(<FormArray>this.ifForm.get('preg_84_tabla_5'));
+                break;
+        }
+        if (!isNaN(valor)){
+            (<FormGroup>(<FormArray>this.ifForm.get('preg_700_tabla_5')).controls[indice]).controls['mujeres'].setValue(valor);
+        }
+        if (!isNaN(valor1)){
+            (<FormGroup>(<FormArray>this.ifForm.get('preg_700_tabla_5')).controls[indice]).controls['hombres'].setValue(valor1);
+        }
+        if (!isNaN(valor2)){
+            (<FormGroup>(<FormArray>this.ifForm.get('preg_700_tabla_5')).controls[indice]).controls['mujeres2'].setValue(valor2);
+        }
+        if (!isNaN(valor3)){
+            (<FormGroup>(<FormArray>this.ifForm.get('preg_700_tabla_5')).controls[indice]).controls['hombres2'].setValue(valor3);
+        }        
+    }
+
     preparaParaGuardar(): any {
         const formModel = this.ifForm.value;
         const saveModelo: any = {
@@ -256,6 +378,7 @@ export class Retribuciones2Component implements OnInit {
             preg_84_tabla_5: formModel.preg_84_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
             preg_85_tabla_5: formModel.preg_85_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
             preg_86_tabla_3: formModel.preg_86_tabla_3.map((datos: Tabla3Model) => Object.assign({}, datos)),
+            preg_700_tabla_5: formModel.preg_700_tabla_5.map((datos: Tabla5Model) => Object.assign({}, datos)),
         };
         return saveModelo;
     }
