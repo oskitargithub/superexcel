@@ -31,7 +31,7 @@ export class InformacionBasicaService{
             let fechacrea = miobjeto.user.created_at;
             var datePipe = new DatePipe("es");
             if (fechacrea!=null && fechacrea.length>1){
-                miobjeto.user.created_at = datePipe.transform(fechacrea, 'yyyy-MM-dd');
+                miobjeto.user.created_at = datePipe.transform(fechacrea.substring(0, 10), 'yyyy-MM-dd');
             }
             return(miobjeto);
         });
