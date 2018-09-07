@@ -51,7 +51,7 @@
         <tbody>
           <tr *ngFor="let person of mf.data | SearchPipe : searchText">
             <td>{{person.id}}</td>
-            <td><span class="fw-semi-bold">{{person.name}}</span></td>
+            <td><span class="fw-semi-bold">{{person.name}}</span><br/>{{person.empresa}}</td>
             <td class="hidden-sm-down">
               <small>
               <span class="fw-semi-bold">Tipo:</span>
