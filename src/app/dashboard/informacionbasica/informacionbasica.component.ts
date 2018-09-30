@@ -5,11 +5,11 @@ import {
 } from '@angular/router';
 import { Select2OptionData } from 'ng2-select2';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { InformacionBasicaModel, CentroActividad, datosUserModel, dataModel } from './informacionbasica.model';
+import { InformacionBasicaModel, CentroActividad, datosUserModel, dataModel, Organos } from './informacionbasica.model';
 import { InformacionBasicaService } from "./informacionbasica.service";
 import { CustomValidators } from 'ng2-validation';
 import { DashBoardFormErrorsService } from '../dashboard.formerrors.service';
-import { AuthService }      from '../../auth/auth.service';
+import { AuthService } from '../../auth/auth.service';
 import * as moment from 'moment';
 declare var jQuery: any;
 declare var Messenger: any;
@@ -21,7 +21,7 @@ declare var Messenger: any;
     styleUrls: ['./informacionbasica.css',
         '../../scss/elements.style.scss',
         '../../scss/notifications.style.scss'],
-    providers: [InformacionBasicaService, DashBoardFormErrorsService,AuthService],
+    providers: [InformacionBasicaService, DashBoardFormErrorsService, AuthService],
     encapsulation: ViewEncapsulation.None,
 })
 export class InformacionBasicaComponent implements OnInit {
@@ -59,9 +59,9 @@ export class InformacionBasicaComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        Messenger.options = { theme: 'air' };              
+        Messenger.options = { theme: 'air' };
         this.getInformacionBasica();
-        moment.locale('es');  
+        moment.locale('es');
         this.midatePickeropt = new Date();
     }
 
@@ -98,48 +98,49 @@ export class InformacionBasicaComponent implements OnInit {
         this.informacionbasica = this.preparaParaGuardar();
         this.servicio.setDatosModelo(this.informacionbasica)
             .subscribe(
-            response => {
-                this.status = response.status;
-                if (this.status !== "success") {
-                    Messenger().post({
-                        message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
-                        type: 'error',
-                        showCloseButton: true
-                    });
-                }
-                else {
-                    this.ifForm.markAsPristine();                   
-                    if (redirigir) {         
-                        this.router.navigate(["/app/clasificacionprofesional1"]);
+                response => {
+                    this.status = response.status;
+                    if (this.status !== "success") {
+                        Messenger().post({
+                            message: 'Ha ocurrido un error guardando los datos.' + this.errorMessage,
+                            type: 'error',
+                            showCloseButton: true
+                        });
                     }
-                    Messenger().post({
-                        message: 'Los datos han sido guardados correctamente',
-                        type: 'success',
-                        showCloseButton: true
-                    });
-                }
+                    else {
+                        this.ifForm.markAsPristine();
+                        if (redirigir) {
+                            this.router.navigate(["/app/clasificacionprofesional1"]);
+                        }
+                        Messenger().post({
+                            message: 'Los datos han sido guardados correctamente',
+                            type: 'success',
+                            showCloseButton: true
+                        });
+                    }
 
-            },
-            error => {
-                this.errorMessage = <any>error;
-                if (this.errorMessage !== null) {
+                },
+                error => {
+                    this.errorMessage = <any>error;
+                    if (this.errorMessage !== null) {
 
-                    Messenger().post({
-                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
-                        type: 'error',
-                        showCloseButton: true
-                    });
+                        Messenger().post({
+                            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                            type: 'error',
+                            showCloseButton: true
+                        });
 
-                }
-            });
+                    }
+                });
     }
 
 
     createForm() {
         this.ifForm = this.fb.group({
             data: this.fb.group(new dataModel()),
-            user: this.fb.group(new datosUserModel()),            
+            user: this.fb.group(new datosUserModel()),
             preg_2_tabla_2: this.fb.array([]),
+            preg_701_tabla_2: this.fb.array([]),
             _token: ''
         });
         console.log("ifform");
@@ -147,7 +148,7 @@ export class InformacionBasicaComponent implements OnInit {
 
 
 
-    
+
 
     get user(): FormArray {
         return this.ifForm.get('user') as FormArray;
@@ -183,6 +184,32 @@ export class InformacionBasicaComponent implements OnInit {
         this.preg_2_tabla_2.removeAt(i);
     }
 
+    /*
+    Nueva opción de órganos
+    */
+    setOrganos(preg_701_tabla_2: Organos[]) {
+        const organosFGs = preg_701_tabla_2.map(organoact => this.fb.group(organoact));
+        const organosFormArray = this.fb.array(organosFGs);
+        this.ifForm.setControl('preg_701_tabla_2', organosFormArray);
+    }
+
+    get preg_701_tabla_2(): FormArray {
+        return this.ifForm.get('preg_701_tabla_2') as FormArray;
+    };
+
+    addOrgano() {
+        this.preg_701_tabla_2.push(this.fb.group(new Organos()));
+    }
+
+    removeOrganos(i: number) {
+        this.preg_701_tabla_2.removeAt(i);
+    }
+
+    /**
+     * 
+     * fin nueva opción órganos
+     */
+
     addValidaciones() {
         this.ifForm.get('data.preg_5').setValidators([CustomValidators.number]);
         this.ifForm.get('data.preg_6').setValidators([CustomValidators.number]);
@@ -209,81 +236,81 @@ export class InformacionBasicaComponent implements OnInit {
     getInformacionBasica() {
         this.servicio.getDatosModelo()
             .subscribe(
-            response => {
-                this.status = response.status;
-                if (this.status !== "success") {
-                    if (this.status == "tokenerror") {
-                        Messenger().post({
-                            message: 'Ha ocurrido un error de token.' + this.errorMessage,
-                            type: 'error',
-                            showCloseButton: true
-                        });
+                response => {
+                    this.status = response.status;
+                    if (this.status !== "success") {
+                        if (this.status == "tokenerror") {
+                            Messenger().post({
+                                message: 'Ha ocurrido un error de token.' + this.errorMessage,
+                                type: 'error',
+                                showCloseButton: true
+                            });
+                        }
+                        else {
+                            Messenger().post({
+                                message: 'Ha ocurrido un error cargando los datos.' + this.errorMessage,
+                                type: 'error',
+                                showCloseButton: true
+                            });
+                        }
                     }
                     else {
+                        //this.ifForm = this.fb.group(response); 
+                        this.token = response._token;
+                        console.log("trayendoo datos");
+                        console.log(response.data);
+                        console.log(response.user);
+                        Object.getOwnPropertyNames(response.data).map((key: string) => {
+                            if ((<FormArray>this.ifForm.controls['data']).controls[key] != undefined) {
+                                (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
+                            }
+                        }
+                        );
+
+                        Object.getOwnPropertyNames(response.user).map((key: string) => {
+                            if ((<FormArray>this.ifForm.controls['user']).controls[key] != undefined) {
+                                (<FormArray>this.ifForm.controls['user']).controls[key].setValue(response.user[key])
+                            }
+
+                        }
+                        );
+                        console.log("asignado");
+                        this.addValidaciones();
+                        console.log("add validaciones");
+                        this.setCentroActividad(response.preg_2_tabla_2);
+                        this.setOrganos(response.preg_701_tabla_2);
+                        this.respondidasSeccion = response.respondidasSeccion;
+                        this.totalSeccion = response.totalSeccion;
+                        this.valorBarraProgreso();
+                        console.log("fin trayendoo datos");
                         Messenger().post({
-                            message: 'Ha ocurrido un error cargando los datos.' + this.errorMessage,
-                            type: 'error',
+                            message: 'Los datos han sido cargados correctamente',
+                            type: 'success',
                             showCloseButton: true
                         });
                     }
-                }
-                else {
-                    //this.ifForm = this.fb.group(response); 
-                    this.token = response._token;     
-                    console.log("trayendoo datos");               
-                    console.log(response.data);
-                    console.log(response.user);
-                     Object.getOwnPropertyNames(response.data).map((key: string) =>
-                     {
-                         if((<FormArray>this.ifForm.controls['data']).controls[key] != undefined)
-                         {
-                            (<FormArray>this.ifForm.controls['data']).controls[key].setValue(response.data[key])
-                         }
-                     }
-                    );
+                },
+                error => {
+                    this.errorMessage = <any>error;
+                    if (this.errorMessage !== null) {
 
-                     Object.getOwnPropertyNames(response.user).map((key: string) =>
-                     {
-                         if((<FormArray>this.ifForm.controls['user']).controls[key]!=undefined)
-                         {
-                            (<FormArray>this.ifForm.controls['user']).controls[key].setValue(response.user[key])
-                         }
-                        
-                     }
-                    );                   
-                    console.log("asignado");
-                    this.addValidaciones();
-                    console.log("add validaciones");
-                    this.setCentroActividad(response.preg_2_tabla_2);
-                    this.respondidasSeccion = response.respondidasSeccion;
-                    this.totalSeccion = response.totalSeccion;
-                    this.valorBarraProgreso();
-                    console.log("fin trayendoo datos");                     
-                    Messenger().post({
-                        message: 'Los datos han sido cargados correctamente',
-                        type: 'success',
-                        showCloseButton: true
-                    });
-                }
-            },
-            error => {
-                this.errorMessage = <any>error;
-                if (this.errorMessage !== null) {
+                        Messenger().post({
+                            message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
+                            type: 'error',
+                            showCloseButton: true
+                        });
 
-                    Messenger().post({
-                        message: 'Ha ocurrido un error en la petición.' + this.errorMessage,
-                        type: 'error',
-                        showCloseButton: true
-                    });
-
-                }
-            });
+                    }
+                });
     }
 
     preparaParaGuardar(): InformacionBasicaModel {
         const formModel = this.ifForm.value;
         const secretLairsDeepCopy: CentroActividad[] = formModel.preg_2_tabla_2.map(
             (centroact: CentroActividad) => Object.assign({}, centroact)
+        );
+        const secretLairsDeepCopy2: Organos[] = formModel.preg_701_tabla_2.map(
+            (organosact: Organos) => Object.assign({}, organosact)
         );
 
         const misdatosusuario: datosUserModel = formModel.user;
@@ -296,11 +323,12 @@ export class InformacionBasicaComponent implements OnInit {
             respondidasCuest: formModel.respondidasCuest,
             totalSeccion: formModel.totalSeccion,
             respondidasSeccion: formModel.respondidasSeccion,
-            preg_2_tabla_2: secretLairsDeepCopy
+            preg_2_tabla_2: secretLairsDeepCopy,
+            preg_701_tabla_2:secretLairsDeepCopy2
         };
         return saveInformacionBasica;
     }
 
-    
-    
+
+
 }

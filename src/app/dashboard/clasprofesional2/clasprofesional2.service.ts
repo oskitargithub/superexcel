@@ -37,7 +37,7 @@ export class ClasProfesional2Service {
     parametros2.set('_token', mitoken);
     parametros2.set('api_token', api_token);
     let headers = '';
-    return this._http.get(this.config.apilaravel + "cuestionario/organo/"+usuario, { search: parametros2 }).map(res => {
+    return this._http.get(this.config.apilaravel + "cuestionario/personalcontratado/"+usuario, { search: parametros2 }).map(res => {
       let headers = res.headers;
       let miobjeto = res.json();
       return (miobjeto);

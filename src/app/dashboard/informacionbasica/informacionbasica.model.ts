@@ -7,6 +7,7 @@ export class InformacionBasicaModel{
         public respondidasCuest: number;
         public totalSeccion: number;
         public respondidasSeccion: number;
+        public preg_701_tabla_2: Organos[];
         /*constructor(){
                 this.data = new dataModel();
                 this.user = new datosUserModel();
@@ -16,6 +17,10 @@ export class InformacionBasicaModel{
 export class CentroActividad{
         centro: string = '';
         actividad: string ='';
+}
+export class Organos{
+        texto1: string = '';
+        texto2: string = '';
 }
 export class dataModel{
         public preg_1: any;//public desarrollaact: string;       
