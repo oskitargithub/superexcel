@@ -4,10 +4,10 @@
 </ol>
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <h1 class="page-title">Actuaciones de la organización <span class="fw-semi-bold">en materia de formación</span></h1>
     </div>
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
         <div class="row progress-stats">
             <div class="col-md-9 col-xs-12">
                 <p class="description deemphasize">Progreso de la pestaña</p>
@@ -23,7 +23,7 @@
                 </span>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 <div class="row">
     <div class="col-lg-12">
@@ -250,54 +250,7 @@
                                     <div class="col-md-9 offset-md-2">
                                         <p>En caso afirmativo </p>
                                     </div>
-                                    <div class="section" formArrayName="preg_174_tabla_3">
-                                        <fieldset>
-                                            <div class="row">
-                                                <div class="col-md-5 offset-md-2 text-md-center">
-                                                </div>
-                                                <div class="col-md-1 text-md-center">
-                                                    Nº Mujeres
-                                                </div>
-                                                <div class="col-md-1 text-md-center">
-                                                    Nº Hombres
-                                                </div>
-                                            </div>
-                                            <div *ngFor="let datos of getPregunta('preg_174_tabla_3').controls; let i=index" [formGroupName]="i">
-
-                                                <div class="row" *ngIf="i==1">
-                                                    <div class="col-md-5 offset-md-2 ">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input class="form-control" readonly value="Cuantas personas se benefician de esa formación" tooltip="formación para el personal en materia de Igualdad de oportunidades"
-                                                                    placeholder="formación para el personal en materia de Igualdad de oportunidades"
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-1 ">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input class="form-control" formControlName="mujeres" tooltip="Mujeres" placeholder="Mujeres" />
-                                                            </div>
-                                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_174_tabla_3']).controls[i].controls['mujeres'].errors?.number">
-                                                                {{serviceErrores.objetoErrores['numerico']}}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-1 ">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <input class="form-control" formControlName="hombres" tooltip="Hombres" placeholder="Hombres" />
-                                                            </div>
-                                                            <div class="alert alert-danger" *ngIf="(ifForm.controls['preg_174_tabla_3']).controls[i].controls['hombres'].errors?.number">
-                                                                {{serviceErrores.objetoErrores['numerico']}}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                    </div>
+                                    
                                     <div style="margin-top:40px" class="form-group row" formGroupName="data">
 
                                         <div class="col-md-4 offset-md-2">
