@@ -131,8 +131,8 @@ export class BajasEIncorpAdmComponent implements OnInit {
     this.chart8pieoptions = this.funccioneshct3.GraficaPieCompuesta2('Incorporaciones último año por categoría Hombres', '',this.modelo.preg_123_tabla_3);
     this.chart9options = this.funccioneshct3.GraficaCompuesta1('BAJAS DEFINITIVAS ÚLTIMO AÑO POR GRUPO DE EDAD', '',this.modelo.preg_124_tabla_3);
     this.chart10options = this.funccioneshct3.GraficaCompuesta1Proporcionada('BAJAS DEFINITIVAS ÚLTIMO AÑO POR GRUPO DE EDAD', 'Proporcionada',this.modelo.preg_124_tabla_3);
-    this.chart11options = this.funccioneshct3.GraficaCompuesta1('BAJAS TEMPORALES, PERMISOS Y EXCEDENCIAS ÚLTIMO AÑO', '',this.modelo.preg_125_tabla_3);
-    this.chart12options = this.funccioneshct3.GraficaCompuesta1Proporcionada('BAJAS TEMPORALES, PERMISOS Y EXCEDENCIAS ÚLTIMO AÑO', 'Proporcionada',this.modelo.preg_125_tabla_3);
+    this.chart11options = this.funccioneshct3.GraficaCompuesta1('BAJAS TEMPORALES ÚLTIMO AÑO', '',this.modelo.preg_125_tabla_3);
+    this.chart12options = this.funccioneshct3.GraficaCompuesta1Proporcionada('BAJAS TEMPORALES ÚLTIMO AÑO', 'Proporcionada',this.modelo.preg_125_tabla_3);
   }
 
   ordenaanyo(index,item){
