@@ -162,72 +162,72 @@ export class RetribucionesAdmComponent implements OnInit {
     /**
      * GENERAL
      */
-    this.chart1options = this.funccioneshct3.GraficaCompuestat5('Retribuciones sin compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_70_tabla_5,1);
-    this.chart2options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones con compensaciones extrasalariales', 'Comparativa por sexo', this.modelo.preg_70_tabla_5,1);
-    this.chart1pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones sin compensaciones extrasalariales","Mujeres",this.modelo.preg_70_tabla_5);
-    this.chart2pieoptions = this.funccioneshct3.GraficaPie_t5_1Hombres("Retribuciones sin compensaciones extrasalariales","Hombres",this.modelo.preg_70_tabla_5);
-    this.chart3pieoptions = this.funccioneshct3.GraficaPie_t5_2Mujeres("Retribuciones con compensaciones extrasalariales","Mujeres",this.modelo.preg_70_tabla_5);
-    this.chart4pieoptions = this.funccioneshct3.GraficaPie_t5_2Hombres("Retribuciones con compensaciones extrasalariales","Hombres",this.modelo.preg_70_tabla_5);
+    this.chart1options = this.funccioneshct3.GraficaCompuestat5('Retribuciones Sin complementos', 'Comparativa por sexo', this.modelo.preg_70_tabla_5,1);
+    this.chart2options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones Con complementos', 'Comparativa por sexo', this.modelo.preg_70_tabla_5,1);
+    this.chart1pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones Sin complementos","Mujeres",this.modelo.preg_70_tabla_5);
+    this.chart2pieoptions = this.funccioneshct3.GraficaPie_t5_1Hombres("Retribuciones Sin complementos","Hombres",this.modelo.preg_70_tabla_5);
+    this.chart3pieoptions = this.funccioneshct3.GraficaPie_t5_2Mujeres("Retribuciones Con complementos","Mujeres",this.modelo.preg_70_tabla_5);
+    this.chart4pieoptions = this.funccioneshct3.GraficaPie_t5_2Hombres("Retribuciones Con complementos","Hombres",this.modelo.preg_70_tabla_5);
 
     /**
      * A1
      */
-    this.chart3options = this.funccioneshct3.GraficaCompuestat5('Retribuciones salariales Comparativa por sexo ', 'Grupo A1 - Sin compensaciones', this.modelo.preg_71_tabla_5,1);
-    this.chart4options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones salariales Comparativa por sexo ', 'Grupo A1 - Con compensaciones', this.modelo.preg_71_tabla_5,1);
-    this.chart5pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones sin compensaciones extrasalariales","Grupo A1 - Mujeres",this.modelo.preg_71_tabla_5);
-    this.chart6pieoptions = this.funccioneshct3.GraficaPie_t5_1Hombres("Retribuciones sin compensaciones extrasalariales","Grupo A1 - Hombres",this.modelo.preg_71_tabla_5);
-    this.chart7pieoptions = this.funccioneshct3.GraficaPie_t5_2Mujeres("Retribuciones con compensaciones extrasalariales","Grupo A1 - Mujeres",this.modelo.preg_71_tabla_5);
-    this.chart8pieoptions = this.funccioneshct3.GraficaPie_t5_2Hombres("Retribuciones con compensaciones extrasalariales","Grupo A1 - Hombres",this.modelo.preg_71_tabla_5);
+    this.chart3options = this.funccioneshct3.GraficaCompuestat5('Retribuciones salariales Comparativa por sexo ', 'Grupo A1 - Sin complementos', this.modelo.preg_71_tabla_5,1);
+    this.chart4options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones salariales Comparativa por sexo ', 'Grupo A1 - Con complementos', this.modelo.preg_71_tabla_5,1);
+    this.chart5pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones Sin complementos","Grupo A1 - Mujeres",this.modelo.preg_71_tabla_5);
+    this.chart6pieoptions = this.funccioneshct3.GraficaPie_t5_1Hombres("Retribuciones Sin complementos","Grupo A1 - Hombres",this.modelo.preg_71_tabla_5);
+    this.chart7pieoptions = this.funccioneshct3.GraficaPie_t5_2Mujeres("Retribuciones Con complementos","Grupo A1 - Mujeres",this.modelo.preg_71_tabla_5);
+    this.chart8pieoptions = this.funccioneshct3.GraficaPie_t5_2Hombres("Retribuciones Con complementos","Grupo A1 - Hombres",this.modelo.preg_71_tabla_5);
 
     /**
      * A2
      */
-    this.chart5options = this.funccioneshct3.GraficaCompuestat5('Retribuciones salariales Comparativa por sexo ', 'Grupo A2 - Sin compensaciones', this.modelo.preg_72_tabla_5,1);
-    this.chart6options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones salariales Comparativa por sexo ', 'Grupo A2 - Con compensaciones', this.modelo.preg_72_tabla_5,1);
-    this.chart9pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones sin compensaciones extrasalariales","Grupo A2 - Mujeres",this.modelo.preg_72_tabla_5);
-    this.chart10pieoptions = this.funccioneshct3.GraficaPie_t5_1Hombres("Retribuciones sin compensaciones extrasalariales","Grupo A2 - Hombres",this.modelo.preg_72_tabla_5);
-    this.chart11pieoptions = this.funccioneshct3.GraficaPie_t5_2Mujeres("Retribuciones con compensaciones extrasalariales","Grupo A2 - Mujeres",this.modelo.preg_72_tabla_5);
-    this.chart12pieoptions = this.funccioneshct3.GraficaPie_t5_2Hombres("Retribuciones con compensaciones extrasalariales","Grupo A2 - Hombres",this.modelo.preg_72_tabla_5);
+    this.chart5options = this.funccioneshct3.GraficaCompuestat5('Retribuciones salariales Comparativa por sexo ', 'Grupo A2 - Sin complementos', this.modelo.preg_72_tabla_5,1);
+    this.chart6options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones salariales Comparativa por sexo ', 'Grupo A2 - Con complementos', this.modelo.preg_72_tabla_5,1);
+    this.chart9pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones Sin complementos","Grupo A2 - Mujeres",this.modelo.preg_72_tabla_5);
+    this.chart10pieoptions = this.funccioneshct3.GraficaPie_t5_1Hombres("Retribuciones Sin complementos","Grupo A2 - Hombres",this.modelo.preg_72_tabla_5);
+    this.chart11pieoptions = this.funccioneshct3.GraficaPie_t5_2Mujeres("Retribuciones Con complementos","Grupo A2 - Mujeres",this.modelo.preg_72_tabla_5);
+    this.chart12pieoptions = this.funccioneshct3.GraficaPie_t5_2Hombres("Retribuciones Con complementos","Grupo A2 - Hombres",this.modelo.preg_72_tabla_5);
 
     /**
      * B
      */
-    this.chart7options = this.funccioneshct3.GraficaCompuestat5('Retribuciones salariales Comparativa por sexo ', 'Grupo B - Sin compensaciones', this.modelo.preg_73_tabla_5,1);
-    this.chart8options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones salariales Comparativa por sexo ', 'Grupo B - Con compensaciones', this.modelo.preg_73_tabla_5,1);
-    this.chart13pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones sin compensaciones extrasalariales","Grupo B - Mujeres",this.modelo.preg_73_tabla_5);
-    this.chart14pieoptions = this.funccioneshct3.GraficaPie_t5_1Hombres("Retribuciones sin compensaciones extrasalariales","Grupo B - Hombres",this.modelo.preg_73_tabla_5);
-    this.chart15pieoptions = this.funccioneshct3.GraficaPie_t5_2Mujeres("Retribuciones con compensaciones extrasalariales","Grupo B - Mujeres",this.modelo.preg_73_tabla_5);
-    this.chart16pieoptions = this.funccioneshct3.GraficaPie_t5_2Hombres("Retribuciones con compensaciones extrasalariales","Grupo B - Hombres",this.modelo.preg_73_tabla_5);
+    this.chart7options = this.funccioneshct3.GraficaCompuestat5('Retribuciones salariales Comparativa por sexo ', 'Grupo B - Sin complementos', this.modelo.preg_73_tabla_5,1);
+    this.chart8options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones salariales Comparativa por sexo ', 'Grupo B - Con complementos', this.modelo.preg_73_tabla_5,1);
+    this.chart13pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones Sin complementos","Grupo B - Mujeres",this.modelo.preg_73_tabla_5);
+    this.chart14pieoptions = this.funccioneshct3.GraficaPie_t5_1Hombres("Retribuciones Sin complementos","Grupo B - Hombres",this.modelo.preg_73_tabla_5);
+    this.chart15pieoptions = this.funccioneshct3.GraficaPie_t5_2Mujeres("Retribuciones Con complementos","Grupo B - Mujeres",this.modelo.preg_73_tabla_5);
+    this.chart16pieoptions = this.funccioneshct3.GraficaPie_t5_2Hombres("Retribuciones Con complementos","Grupo B - Hombres",this.modelo.preg_73_tabla_5);
 
     /**
      * C1
      */
-    this.chart9options = this.funccioneshct3.GraficaCompuestat5('Retribuciones salariales Comparativa por sexo ', 'Grupo C1 - Sin compensaciones', this.modelo.preg_74_tabla_5,1);
-    this.chart10options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones salariales Comparativa por sexo ', 'Grupo C1 - Con compensaciones', this.modelo.preg_74_tabla_5,1);
-    this.chart17pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones sin compensaciones extrasalariales","Grupo C1 - Mujeres",this.modelo.preg_74_tabla_5);
-    this.chart18pieoptions = this.funccioneshct3.GraficaPie_t5_1Hombres("Retribuciones sin compensaciones extrasalariales","Grupo C1 - Hombres",this.modelo.preg_74_tabla_5);
-    this.chart19pieoptions = this.funccioneshct3.GraficaPie_t5_2Mujeres("Retribuciones con compensaciones extrasalariales","Grupo C1 - Mujeres",this.modelo.preg_74_tabla_5);
-    this.chart20pieoptions = this.funccioneshct3.GraficaPie_t5_2Hombres("Retribuciones con compensaciones extrasalariales","Grupo C1 - Hombres",this.modelo.preg_74_tabla_5);
+    this.chart9options = this.funccioneshct3.GraficaCompuestat5('Retribuciones salariales Comparativa por sexo ', 'Grupo C1 - Sin complementos', this.modelo.preg_74_tabla_5,1);
+    this.chart10options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones salariales Comparativa por sexo ', 'Grupo C1 - Con complementos', this.modelo.preg_74_tabla_5,1);
+    this.chart17pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones Sin complementos","Grupo C1 - Mujeres",this.modelo.preg_74_tabla_5);
+    this.chart18pieoptions = this.funccioneshct3.GraficaPie_t5_1Hombres("Retribuciones Sin complementos","Grupo C1 - Hombres",this.modelo.preg_74_tabla_5);
+    this.chart19pieoptions = this.funccioneshct3.GraficaPie_t5_2Mujeres("Retribuciones Con complementos","Grupo C1 - Mujeres",this.modelo.preg_74_tabla_5);
+    this.chart20pieoptions = this.funccioneshct3.GraficaPie_t5_2Hombres("Retribuciones Con complementos","Grupo C1 - Hombres",this.modelo.preg_74_tabla_5);
 
     /**
      * C2
      */
-    this.chart11options = this.funccioneshct3.GraficaCompuestat5('Retribuciones salariales Comparativa por sexo ', 'Grupo C2 - Sin compensaciones', this.modelo.preg_75_tabla_5,1);
-    this.chart12options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones salariales Comparativa por sexo ', 'Grupo C2 - Con compensaciones', this.modelo.preg_75_tabla_5,1);
-    this.chart21pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones sin compensaciones extrasalariales","Grupo C2 - Mujeres",this.modelo.preg_75_tabla_5);
-    this.chart22pieoptions = this.funccioneshct3.GraficaPie_t5_1Hombres("Retribuciones sin compensaciones extrasalariales","Grupo C2 - Hombres",this.modelo.preg_75_tabla_5);
-    this.chart23pieoptions = this.funccioneshct3.GraficaPie_t5_2Mujeres("Retribuciones con compensaciones extrasalariales","Grupo C2 - Mujeres",this.modelo.preg_75_tabla_5);
-    this.chart24pieoptions = this.funccioneshct3.GraficaPie_t5_2Hombres("Retribuciones con compensaciones extrasalariales","Grupo C2 - Hombres",this.modelo.preg_75_tabla_5);
+    this.chart11options = this.funccioneshct3.GraficaCompuestat5('Retribuciones salariales Comparativa por sexo ', 'Grupo C2 - Sin complementos', this.modelo.preg_75_tabla_5,1);
+    this.chart12options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones salariales Comparativa por sexo ', 'Grupo C2 - Con complementos', this.modelo.preg_75_tabla_5,1);
+    this.chart21pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones Sin complementos","Grupo C2 - Mujeres",this.modelo.preg_75_tabla_5);
+    this.chart22pieoptions = this.funccioneshct3.GraficaPie_t5_1Hombres("Retribuciones Sin complementos","Grupo C2 - Hombres",this.modelo.preg_75_tabla_5);
+    this.chart23pieoptions = this.funccioneshct3.GraficaPie_t5_2Mujeres("Retribuciones Con complementos","Grupo C2 - Mujeres",this.modelo.preg_75_tabla_5);
+    this.chart24pieoptions = this.funccioneshct3.GraficaPie_t5_2Hombres("Retribuciones Con complementos","Grupo C2 - Hombres",this.modelo.preg_75_tabla_5);
 
     /**
      * E
      */
-    this.chart13options = this.funccioneshct3.GraficaCompuestat5('Retribuciones salariales Comparativa por sexo ', 'Grupo E - Sin compensaciones', this.modelo.preg_76_tabla_5,1);
-    this.chart14options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones salariales Comparativa por sexo ', 'Grupo E - Con compensaciones', this.modelo.preg_76_tabla_5,1);
-    this.chart25pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones sin compensaciones extrasalariales","Grupo E - Mujeres",this.modelo.preg_76_tabla_5);
-    this.chart26pieoptions = this.funccioneshct3.GraficaPie_t5_1Hombres("Retribuciones sin compensaciones extrasalariales","Grupo E - Hombres",this.modelo.preg_76_tabla_5);
-    this.chart27pieoptions = this.funccioneshct3.GraficaPie_t5_2Mujeres("Retribuciones con compensaciones extrasalariales","Grupo E - Mujeres",this.modelo.preg_76_tabla_5);
-    this.chart28pieoptions = this.funccioneshct3.GraficaPie_t5_2Hombres("Retribuciones con compensaciones extrasalariales","Grupo E - Hombres",this.modelo.preg_76_tabla_5);
+    this.chart13options = this.funccioneshct3.GraficaCompuestat5('Retribuciones salariales Comparativa por sexo ', 'Grupo E - Sin complementos', this.modelo.preg_76_tabla_5,1);
+    this.chart14options = this.funccioneshct3.GraficaCompuestat5_2('Retribuciones salariales Comparativa por sexo ', 'Grupo E - Con complementos', this.modelo.preg_76_tabla_5,1);
+    this.chart25pieoptions = this.funccioneshct3.GraficaPie_t5_1Mujeres("Retribuciones Sin complementos","Grupo E - Mujeres",this.modelo.preg_76_tabla_5);
+    this.chart26pieoptions = this.funccioneshct3.GraficaPie_t5_1Hombres("Retribuciones Sin complementos","Grupo E - Hombres",this.modelo.preg_76_tabla_5);
+    this.chart27pieoptions = this.funccioneshct3.GraficaPie_t5_2Mujeres("Retribuciones Con complementos","Grupo E - Mujeres",this.modelo.preg_76_tabla_5);
+    this.chart28pieoptions = this.funccioneshct3.GraficaPie_t5_2Hombres("Retribuciones Con complementos","Grupo E - Hombres",this.modelo.preg_76_tabla_5);
   }
 
 
